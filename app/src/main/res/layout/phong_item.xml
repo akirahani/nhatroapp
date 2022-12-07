@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <TextView
+        android:layout_width="20dp"
+        android:layout_height="50dp"
+        android:id="@+id/id">
+    </TextView>
+
+    <TextView
+        android:layout_toRightOf="@+id/id"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:id="@+id/ten">
+    </TextView>
+
+    <TextView
+        android:layout_toRightOf="@+id/ten"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:id="@+id/trangthai">
+    </TextView>
+
+    <TextView
+        android:layout_toRightOf="@+id/trangthai"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:id="@+id/vitri">
+    </TextView>
+
+    <TextView
+        android:layout_toRightOf="@+id/vitri"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:id="@+id/dichvu">
+    </TextView>
+    <TextView
+        android:layout_toRightOf="@+id/dichvu"
+        android:layout_width="120dp"
+        android:layout_height="50dp"
+        android:id="@+id/datcoc">
+    </TextView>
+    <TextView
+        android:layout_toRightOf="@+id/datcoc"
+        android:layout_width="65dp"
+        android:layout_height="50dp"
+        android:id="@+id/khach">
+    </TextView>
+</LinearLayout>
