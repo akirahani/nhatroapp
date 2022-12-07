@@ -23,10 +23,16 @@ import retrofit2.Response;
 public class HomeActivity extends AppCompatActivity {
     RecyclerView listRoom;
     BottomNavigationView navigation;
+    private int mMenuId;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
+        //Menu
+        navigation = (BottomNavigationView) findViewById(R.id.menu);
+        navigation.setOnNavigationItemSelectedListener(this);
+        navigation.getMenu().findItem(R.id.action_yoga).setChecked(true);
+
         //Phong
         listRoom = findViewById(R.id.listRoom);
         listRoom.setLayoutManager(new LinearLayoutManager(HomeActivity.this));
@@ -55,5 +61,33 @@ public class HomeActivity extends AppCompatActivity {
 
 
     }
+
+    @Override
+    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+        // uncheck the other items.
+        mMenuId = item.getItemId();
+        for (int i = 0; i < mBtmView.getMenu().size(); i++) {
+            MenuItem menuItem = mBtmView.getMenu().getItem(i);
+            boolean isChecked = menuItem.getItemId() == item.getItemId();
+            menuItem.setChecked(isChecked);
+        }
+
+        switch (item.getItemId()) {
+            case R.id.action_food: {
+            }
+            break;
+            case R.id.action_medical: {
+            }
+            break;
+            case R.id.action_yoga: {
+            }
+            break;
+            case R.id.action_postures: {
+            }
+            break;
+        }
+        return true;
+    }
+
 
 }
