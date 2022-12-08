@@ -42,17 +42,24 @@ public class MainActivity extends AppCompatActivity {
                 String user = username.getText().toString();
                 String passd = password.getText().toString();
 
-//                shpEdit = shp.edit();
-//                shpEdit.putString("login","Minh");
-//                shpEdit.commit();
 
                 Api.api.postLogin(user, passd).enqueue(new Callback<ThanhVienModel>() {
                     @Override
                     public void onResponse(Call<ThanhVienModel> call, Response<ThanhVienModel> response) {
                         ThanhVienModel thanhvien = response.body();
-                        Intent intent = new Intent(MainActivity.this, HomeActivity.class);
-                        startActivity(intent);
-                        Toast.makeText(MainActivity.this,"success",Toast.LENGTH_SHORT).show();
+//                        if(thanhvien.getId() != 0)
+//                        {
+                            shpEdit = shp.edit();
+                            shpEdit.putInt("idThanhVien",thanhvien.getId());
+                            shpEdit.putString("tenThanhVien",thanhvien.getFullname());
+                            shpEdit.putString("dienthoaiThanhVien",thanhvien.getDienthoai());
+                            shpEdit.putString("usernameThanhVien",thanhvien.getUsername());
+                            shpEdit.commit();
+
+                            Intent intent = new Intent(MainActivity.this, HomeActivity.class);
+                            startActivity(intent);
+                            Toast.makeText(MainActivity.this,"success",Toast.LENGTH_SHORT).show();
+//                        }
                     }
 
                     @Override
