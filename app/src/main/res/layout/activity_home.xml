@@ -7,37 +7,22 @@
     tools:context=".HomeActivity"
     android:orientation="vertical">
 
-    <LinearLayout
+
+    <FrameLayout
+        android:id="@+id/fragContainer"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
-        <TextView
-            android:id="@+id/home"
-            android:text="Hệ thống"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            />
-        <androidx.recyclerview.widget.RecyclerView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/listRoom"
-            >
-        </androidx.recyclerview.widget.RecyclerView>
-    </LinearLayout>
-
-
+        android:layout_height="match_parent">
+    </FrameLayout>
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="bottom"
+        app:menu="@menu/menu"
         android:layout_alignParentBottom="true"
         android:background="@color/teal_700"
-        android:foreground="?attr/selectableItemBackground"
-        app:itemIconTint="@android:color/white"
-        app:itemTextColor="@android:color/white"
         android:id="@+id/menu">
-
     </com.google.android.material.bottomnavigation.BottomNavigationView>
+
+
 
 </RelativeLayout>
