@@ -55,7 +55,7 @@ public class PhongAdapter extends RecyclerView.Adapter<PhongAdapter.PhongViewHol
         return phong.size();
     }
 
-    public class PhongViewHolder extends RecyclerView.ViewHolder {
+    public static class PhongViewHolder extends RecyclerView.ViewHolder {
         TextView id,ten,vitri,trangthai,dichvu,datcoc,khach;
         public PhongViewHolder(@NonNull View itemView) {
             super(itemView);

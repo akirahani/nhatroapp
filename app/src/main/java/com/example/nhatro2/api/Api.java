@@ -39,4 +39,9 @@ public interface Api {
     Call <POST> addPhong(@Field("tenphong") String tenphong,
                          @Field("trangthai") int trangthai,
                          @Field("vitri") int vitri);
+
+    @FormUrlEncoded
+    @POST ("/nhatro/admin/api/auth/login.php")
+    Call <ThanhVienModel> postLogin(@Field("username") String username,
+                         @Field("password") String password);
 }

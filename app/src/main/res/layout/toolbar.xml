@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.Toolbar xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/colorHeader"
+    android:elevation="5dp"
+ >
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        >
+        <LinearLayout
+            android:id="@+id/rightToolbar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            >
+            <ImageView
+                android:backgroundTint="@color/white"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/ic_thoat"
+                android:id="@+id/thoat">
+            </ImageView>
+            <TextView
+                android:textColor="@color/white"
+                android:layout_toRightOf="@+id/thoat"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/ten"
+                android:text="Thoát"
+                android:layout_centerHorizontal="true" >
+            </TextView>
+        </LinearLayout>
+
+        <ImageView
+            android:id="@+id/logo"
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:background="@drawable/ic_logo"
+            android:backgroundTint="@color/white" />
+
+        <LinearLayout
+            android:id="@+id/leftToolbar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true">
+            >
+
+            <ImageView
+                android:id="@+id/thongbao"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="15dp"
+                android:background="@drawable/ic_thongbao"
+                android:backgroundTint="@color/white" />
+        </LinearLayout>
+    </RelativeLayout>
+
+
+
+</androidx.appcompat.widget.Toolbar>
