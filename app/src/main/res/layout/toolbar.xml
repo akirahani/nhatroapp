@@ -2,12 +2,11 @@
 <androidx.appcompat.widget.Toolbar xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@color/colorHeader"
-    android:elevation="5dp"
+    android:background="@drawable/gradient_header"
  >
 
     <RelativeLayout
-        android:layout_width="wrap_content"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         >
         <LinearLayout
@@ -15,12 +14,13 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
             >
             <ImageView
                 android:backgroundTint="@color/white"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="@drawable/ic_thoat"
+                android:background="@drawable/ic_back"
                 android:id="@+id/thoat">
             </ImageView>
             <TextView
@@ -30,23 +30,31 @@
                 android:layout_height="wrap_content"
                 android:id="@+id/ten"
                 android:text="Thoát"
-                android:layout_centerHorizontal="true" >
+                android:paddingLeft="5dp">
             </TextView>
         </LinearLayout>
-
-        <ImageView
-            android:id="@+id/logo"
-
+        <LinearLayout
+            android:id="@+id/centerToolbar"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
             android:layout_centerInParent="true"
+            android:paddingRight="10dp">
+        >
+        <ImageView
+            android:id="@+id/logo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:background="@drawable/ic_logo"
-            android:backgroundTint="@color/white" />
+            android:backgroundTint="@color/white"
+            />
+        </LinearLayout>
 
         <LinearLayout
             android:id="@+id/leftToolbar"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
             android:layout_alignParentRight="true">
             >
 
@@ -55,7 +63,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginRight="15dp"
-                android:background="@drawable/ic_thongbao"
+                android:background="@drawable/ic_alert"
                 android:backgroundTint="@color/white" />
         </LinearLayout>
     </RelativeLayout>
