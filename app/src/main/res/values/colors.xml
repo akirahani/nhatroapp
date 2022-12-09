@@ -11,5 +11,7 @@
     <color name="colorPrimaryDark">#6539ba</color>
     <color name="colorAccent">#FF4081</color>
     <color name="bgBottomNavigation">#fe485a</color>
-
+    <color name="doanhThuThang">#8F8F8F</color>
+    <color name="textChiTiet">#354B9C</color>
+    <color name="khungNgoai">#F2F1F6</color>
 </resources>

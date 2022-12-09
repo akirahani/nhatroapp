@@ -67,6 +67,8 @@ public class HomeActivity extends AppCompatActivity {
                         Toast.makeText(HomeActivity.this,"Out", Toast.LENGTH_SHORT).show();
                         Intent intent = new Intent(HomeActivity.this, MainActivity.class);
                         startActivity(intent);
+                        SharedPreferences preferences = getSharedPreferences("user", MODE_PRIVATE);
+                        preferences.edit().clear().commit();
                         finish();
                     }
                 });
