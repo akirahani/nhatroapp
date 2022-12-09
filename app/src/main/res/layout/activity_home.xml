@@ -20,16 +20,6 @@
         </include>
     </FrameLayout>
 
-    <!-- trang chu -->
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:layout_alignBottom="@+id/fragContainer"
-        >
-
-    </LinearLayout>
-
     <!-- bottom navigation -->
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:layout_width="match_parent"
