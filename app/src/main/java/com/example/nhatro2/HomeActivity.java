@@ -12,8 +12,11 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
@@ -27,6 +30,7 @@ import retrofit2.Callback;
 
 import com.example.nhatro2.phong.PhongAdapter;
 import com.example.nhatro2.phong.PhongModel;
+import com.example.nhatro2.thanhvien.ThanhVienModel;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
 
@@ -39,6 +43,7 @@ public class HomeActivity extends AppCompatActivity {
     Toolbar header;
     ImageView thoat;
     Context context;
+    SharedPreferences shp;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -51,24 +56,24 @@ public class HomeActivity extends AppCompatActivity {
         thoat.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                AlertDialog.Builder builder = new AlertDialog.Builder(context);
+                AlertDialog.Builder builder = new AlertDialog.Builder(HomeActivity.this);
                 builder.setTitle("Confirm").setMessage("Bạn có thực sự muốn thoát ?");
                 builder.setCancelable(true);
-                builder.setIcon(R.drawable.ic_outline_notifications_24);
+                builder.setIcon(R.drawable.alert_bottom);
                 //check
                 builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
-                        Toast.makeText(context,"Stay",
-                                Toast.LENGTH_SHORT).show();
-                        MainActivity activity = (MainActivity) context;
-                        activity.finish();
+                        Toast.makeText(HomeActivity.this,"Out", Toast.LENGTH_SHORT).show();
+                        Intent intent = new Intent(HomeActivity.this, MainActivity.class);
+                        startActivity(intent);
+                        finish();
                     }
                 });
                 // NO
                 builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
-                        Toast.makeText(context,"Out", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(HomeActivity.this,"Stay", Toast.LENGTH_SHORT).show();
                         //  Cancel
                         dialog.cancel();
                     }
@@ -95,7 +100,7 @@ public class HomeActivity extends AppCompatActivity {
                         transaction.replace(R.id.fragContainer, fragment);
                         transaction.commit();
                         return true;
-                    case R.id.menumenu:
+                    case R.id.menualert:
                         Fragment fragmenta = MenuFragment.newInstance();
                         FragmentTransaction transactiona = getSupportFragmentManager().beginTransaction();
                         transactiona.replace(R.id.fragContainer, fragmenta);
@@ -111,41 +116,5 @@ public class HomeActivity extends AppCompatActivity {
                 return false;
             }
         });
-//        navigation.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
-//            @Override
-//            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-//                Fragment fragment = null;
-//
-////                switch (item.getItemId()){
-////                    case R.id.item1:
-////                        fragment = new HomeFragment();
-////                        break;
-////                    case R.id.item2:
-////                        fragment = new MenuFragment();
-////                        break;
-////                    case R.id.item3:
-////                        fragment = new NotificationFragment();
-////                        break;
-////                }
-////                getSupportFragmentManager().beginTransaction().replace(R.id.fragContainer,fragment).commit();
-////                return true;
-//            //}
-//        });
-        //Menu
     }
-
-//    @Override
-//    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-//        // uncheck the other items.
-//        mMenuId = item.getItemId();
-//        for (int i = 0; i < mBtmView.getMenu().size(); i++) {
-//            MenuItem menuItem = mBtmView.getMenu().getItem(i);
-//            boolean isChecked = menuItem.getItemId() == item.getItemId();
-//            menuItem.setChecked(isChecked);
-//        }
-
-//        return true;
-//    }
-//
-
 }

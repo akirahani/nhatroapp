@@ -6,12 +6,11 @@
     android:layout_height="match_parent"
     tools:context=".HomeActivity"
     android:orientation="vertical">
-
+    <!-- header   -->
     <FrameLayout
         android:id="@+id/fragContainer"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-
         <include
             android:id="@+id/header"
             layout="@layout/toolbar"
@@ -21,12 +20,24 @@
         </include>
     </FrameLayout>
 
-    <com.google.android.material.bottomnavigation.BottomNavigationView
+    <!-- trang chu -->
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_alignBottom="@+id/fragContainer"
+        >
+
+    </LinearLayout>
+
+    <!-- bottom navigation -->
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
         app:menu="@menu/menu"
         android:layout_alignParentBottom="true"
         android:background="@color/white"
+        app:itemTextColor="@color/black"
         android:id="@+id/menu">
     </com.google.android.material.bottomnavigation.BottomNavigationView>
 
