@@ -11,6 +11,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.nhatro2.api.Api;
@@ -27,6 +28,7 @@ import retrofit2.http.Tag;
 public class HomeFragment extends Fragment {
     RecyclerView listRoom;
     PhongAdapter phongAdapter;
+    TextView tenThanhVien;
 
     public HomeFragment() {
         // Required empty public constructor
@@ -54,22 +56,22 @@ public class HomeFragment extends Fragment {
         listRoom.hasFixedSize();
         listRoom.setNestedScrollingEnabled(false);
 
-        Api.api.getPhongList().enqueue(new Callback<List<PhongModel>>() {
-            @Override
-            public void onResponse(Call<List<PhongModel>> call, Response<List<PhongModel>> response) {
-                if (!response.isSuccessful()) {
-                    Toast.makeText(getContext(),response.code(), Toast.LENGTH_SHORT).show();
-                    return;
-                }
-                List<PhongModel> phongList = response.body();
-                phongAdapter = new PhongAdapter(getContext(),phongList);
-                listRoom.setAdapter(phongAdapter);
-            }
-            @Override
-            public void onFailure(Call<List<PhongModel>> call, Throwable t) {
-                Toast.makeText(getContext(),t.getMessage(), Toast.LENGTH_SHORT).show();
-            }
-        });
+//        Api.api.getPhongList().enqueue(new Callback<List<PhongModel>>() {
+//            @Override
+//            public void onResponse(Call<List<PhongModel>> call, Response<List<PhongModel>> response) {
+//                if (!response.isSuccessful()) {
+//                    Toast.makeText(getContext(),response.code(), Toast.LENGTH_SHORT).show();
+//                    return;
+//                }
+//                List<PhongModel> phongList = response.body();
+//                phongAdapter = new PhongAdapter(getContext(),phongList);
+//                listRoom.setAdapter(phongAdapter);
+//            }
+//            @Override
+//            public void onFailure(Call<List<PhongModel>> call, Throwable t) {
+//                Toast.makeText(getContext(),t.getMessage(), Toast.LENGTH_SHORT).show();
+//            }
+//        });
         return view;
     }
 }
