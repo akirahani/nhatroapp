@@ -89,20 +89,25 @@
                 android:id="@+id/infoUser"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="60dp"
-                android:gravity="center"
+                android:layout_marginTop="22dp"
+                android:layout_marginBottom="7dp"
                 android:orientation="horizontal">
                 <TextView
+                    android:textColor="@color/black"
                     android:layout_marginHorizontal="5dp"
                     android:id="@+id/tenUser"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:fontFamily="sans-serif-black"
                     android:layout_centerHorizontal="true"
                     android:textSize="18dp"
+                    android:textAllCaps="true"
+                    android:paddingLeft="14dp"
+
                     android:text="Đặng Hoàng Minh" />
                 <ImageView
                     android:id="@+id/nextUser"
-                    android:layout_marginBottom="13dp"
+                    android:layout_marginTop="8dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:background="@drawable/next"
@@ -114,6 +119,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="14dp"
+                android:layout_marginBottom="13dp"
                 android:layout_marginRight="14dp"
                 app:cardCornerRadius="10dp"
                 app:cardElevation="15dp"
@@ -193,20 +199,21 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:background="@drawable/demuc" />
+
                         <TextView
                             android:id="@+id/textQuanLyChung"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:fontFamily="sans-serif-black"
+                            android:gravity="center"
+                            android:lineHeight="19dp"
+                            android:paddingLeft="14dp"
+                            android:paddingTop="3dp"
+                            android:paddingBottom="6dp"
                             android:text="Quản lý chung"
                             android:textAllCaps="true"
-                            android:paddingTop="3dp"
-                            android:paddingLeft="14dp"
-                            android:paddingBottom="6dp"
-                            android:gravity="center"
                             android:textColor="@color/white"
-                            android:fontFamily="sans-serif-black"
-                            android:textSize="16dp"
-                            android:lineHeight="19dp" />
+                            android:textSize="16dp" />
                     </RelativeLayout>
                     <androidx.recyclerview.widget.RecyclerView
                         android:id="@+id/quanLyChung"
