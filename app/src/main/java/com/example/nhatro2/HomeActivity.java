@@ -40,17 +40,12 @@ import retrofit2.Response;
 public class HomeActivity extends AppCompatActivity {
     BottomNavigationView navigation;
     private int mMenuId;
-    Toolbar header;
-    ImageView thoat;
     Context context;
     SharedPreferences shp;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
-
-        //Tắt hiển thị tên project
-        getSupportActionBar().setDisplayShowTitleEnabled(false);
         //Menu
         getSupportFragmentManager().beginTransaction().replace(R.id.fragContainer,new HomeFragment()).commit();
         navigation = findViewById(R.id.menu);

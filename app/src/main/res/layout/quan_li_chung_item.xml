@@ -2,16 +2,24 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:gravity="center"
+    android:layout_marginTop="14dp"
+    android:layout_marginBottom="11dp">
 
     <ImageView
+
         android:id="@+id/dichvu"
+        android:layout_gravity="center"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginVertical="5dp"
         android:background="@drawable/dichvu"></ImageView>
 
     <TextView
         android:id="@+id/tenNoiDungQL"
+        android:layout_gravity="center"
         android:layout_width="wrap_content"
+        android:textColor="@color/textQuanLyChung"
         android:layout_height="wrap_content"></TextView>
 </LinearLayout>
