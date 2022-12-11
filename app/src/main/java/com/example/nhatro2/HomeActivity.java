@@ -40,53 +40,12 @@ import retrofit2.Response;
 public class HomeActivity extends AppCompatActivity {
     BottomNavigationView navigation;
     private int mMenuId;
-    Toolbar header;
-    ImageView thoat;
     Context context;
     SharedPreferences shp;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
-        // Toolbar (Header)
-        header = findViewById(R.id.header);
-        setSupportActionBar(header);
-        // Nút thoát
-        thoat = findViewById(R.id.thoat);
-        thoat.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                AlertDialog.Builder builder = new AlertDialog.Builder(HomeActivity.this);
-                builder.setTitle("Confirm").setMessage("Bạn có thực sự muốn thoát ?");
-                builder.setCancelable(true);
-                builder.setIcon(R.drawable.alert_bottom);
-                //check
-                builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {
-                        Toast.makeText(HomeActivity.this,"Out", Toast.LENGTH_SHORT).show();
-                        Intent intent = new Intent(HomeActivity.this, MainActivity.class);
-                        startActivity(intent);
-                        SharedPreferences preferences = getSharedPreferences("user", MODE_PRIVATE);
-                        preferences.edit().clear().commit();
-                        finish();
-                    }
-                });
-                // NO
-                builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int id) {
-                        Toast.makeText(HomeActivity.this,"Stay", Toast.LENGTH_SHORT).show();
-                        //  Cancel
-                        dialog.cancel();
-                    }
-                });
-                // show alert
-                AlertDialog alert = builder.create();
-                alert.show();
-            }
-        });
-        //Tắt hiển thị tên project
-        getSupportActionBar().setDisplayShowTitleEnabled(false);
         //Menu
         getSupportFragmentManager().beginTransaction().replace(R.id.fragContainer,new HomeFragment()).commit();
         navigation = findViewById(R.id.menu);
