@@ -1,5 +1,6 @@
 package com.example.nhatro2.api;
 
+import com.example.nhatro2.dich_vu.DichVuModel;
 import com.example.nhatro2.thanhvien.ThanhVienModel;
 import com.example.nhatro2.phong.PhongModel;
 import com.google.gson.Gson;
@@ -45,6 +46,9 @@ public interface Api {
     Call <POST> addPhong(@Field("tenphong") String tenphong,
                          @Field("trangthai") int trangthai,
                          @Field("vitri") int vitri);
+    //Dịch vụ
+    @GET ("/nhatro/admin/api/dichvu/list.php")
+    Call<List<DichVuModel>> getDichVuList();
 
 
 }

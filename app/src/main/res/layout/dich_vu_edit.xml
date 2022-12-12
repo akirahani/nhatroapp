@@ -75,6 +75,8 @@
             </LinearLayout>
         </RelativeLayout>
     </androidx.appcompat.widget.Toolbar>
+    <!-- edit  -->
+
     <!-- Tiêu đề dịch vụ  -->
     <RelativeLayout
         android:id="@+id/tieuDeDichVu"
@@ -177,7 +179,6 @@
     </androidx.recyclerview.widget.RecyclerView>
     <ImageView
         android:layout_below="@+id/listThietBi"
-        android:id="@+id/themDichVu"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="12dp"

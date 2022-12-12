@@ -75,6 +75,8 @@
             </LinearLayout>
         </RelativeLayout>
     </androidx.appcompat.widget.Toolbar>
+    <!-- add -->
+
     <!-- Tiêu đề dịch vụ  -->
     <RelativeLayout
         android:id="@+id/tieuDeDichVu"
@@ -130,63 +132,64 @@
             android:textSize="16dp"
             android:lineHeight="19dp" />
     </RelativeLayout>
-    <!-- danh sách thiết bị -->
-    <RelativeLayout
+    <LinearLayout
+        android:id="@+id/tenDichVuAdd"
         android:layout_below="@+id/tieuDeThietBi"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
-        android:layout_marginLeft="25dp"
-        android:layout_marginRight="25dp">
+        android:orientation="horizontal">
         <TextView
-            android:id="@+id/tieuDeTenThietBi"
-            android:text="Tên"
-            android:textColor="@color/black"
-            android:textStyle="bold"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Tên thiết bị">
+        </TextView>
+        <EditText
             android:layout_width="wrap_content"
             android:layout_height="wrap_content">
-        </TextView>
-        <TextView
-            android:layout_centerHorizontal="true"
-            android:id="@+id/tieuDeGiaThietBi"
-            android:text="Giá"
-            android:textColor="@color/black"
-            android:textStyle="bold"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
-        </TextView>
 
+        </EditText>
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/giaDichVuAdd"
+        android:layout_below="@+id/tenDichVuAdd"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Giá hàng tháng">
+        </TextView>
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+        </EditText>
+    </LinearLayout>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/giaDichVuAdd">
+        <TextView
+            android:layout_alignParentLeft="true"
+            android:id="@+id/backDichVu"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Quay lại"
+            android:textAllCaps="true">
+
+        </TextView>
         <TextView
             android:layout_alignParentRight="true"
-            android:id="@+id/tacVuThietBi"
-            android:paddingRight="10dp"
-            android:text="Tác vụ"
-            android:textColor="@color/black"
-            android:textStyle="bold"
+            android:id="@+id/themDichVu"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:text="Thêm Mới"
+
+            android:textAllCaps="true">
         </TextView>
+
     </RelativeLayout>
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/listThietBi"
-        android:layout_marginTop="30dp"
-        android:layout_below="@+id/tieuDeThietBi"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-    </androidx.recyclerview.widget.RecyclerView>
-    <ImageView
-        android:layout_below="@+id/listThietBi"
-        android:id="@+id/themDichVu"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
-        android:layout_marginBottom="14dp"
-        android:layout_centerHorizontal="true"
-        android:background="@drawable/them">
-
-    </ImageView>
-
 
 
 </RelativeLayout>
