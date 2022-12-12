@@ -53,8 +53,8 @@ public class ChungAdapter extends RecyclerView.Adapter<ChungAdapter.ChungViewHol
                         context.startActivity(dichvu);
                         break;
                     case "thongtin":
-                        Intent thhongtin = new Intent(context, ThongTin.class);
-                        context.startActivity(thhongtin);
+                        Intent thongtin = new Intent(context, ThongTin.class);
+                        context.startActivity(thongtin);
                         break;
                 }
             }
