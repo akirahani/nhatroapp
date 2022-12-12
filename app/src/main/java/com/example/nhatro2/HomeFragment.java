@@ -29,6 +29,10 @@ import com.example.nhatro2.phong.PhongAdapter;
 import com.example.nhatro2.phong.PhongModel;
 import com.example.nhatro2.quanlychung.ChungAdapter;
 import com.example.nhatro2.quanlychung.ChungModel;
+import com.example.nhatro2.tai_khoan.TaiKhoanAdapter;
+import com.example.nhatro2.tai_khoan.TaiKhoanModel;
+import com.example.nhatro2.thanhvien.ThanhVienAdapter;
+import com.example.nhatro2.thanhvien.ThanhVienModel;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -40,6 +44,7 @@ import retrofit2.http.Tag;
 
 public class HomeFragment extends Fragment {
     List<ChungModel> chung = new ArrayList<>();
+    List<TaiKhoanModel> taiKhoan = new ArrayList<>();
     RecyclerView listRoom,quanLyChung,quanLyThanhVien;
     PhongAdapter phongAdapter;
     TextView tenThanhVien;
@@ -118,8 +123,16 @@ public class HomeFragment extends Fragment {
         quanLyChung.setAdapter(new ChungAdapter(getContext(),chung));
 
         //QL Thanh vien
-        quanLyThanhVien = view.findViewById(R.id.quanLyTaiKhoan);
+        taiKhoan.add(new TaiKhoanModel(R.drawable.nhom,"Nhóm","nhom"));
+        taiKhoan.add(new TaiKhoanModel(R.drawable.thanhvien,"Thành viên","thanhvien"));
+        taiKhoan.add(new TaiKhoanModel(R.drawable.phanquyen,"Phân quyền","phanquyen"));
+        taiKhoan.add(new TaiKhoanModel(R.drawable.trang,"Trang","trang"));
 
+        quanLyThanhVien = view.findViewById(R.id.quanLyTaiKhoan);
+        quanLyThanhVien.setLayoutManager(new GridLayoutManager(getContext(),4));
+        quanLyThanhVien.hasFixedSize();
+        quanLyThanhVien.setNestedScrollingEnabled(false);
+        quanLyThanhVien.setAdapter(new TaiKhoanAdapter(getContext(),taiKhoan));
 
         // Phong
 //        listRoom = view.findViewById(R.id.listRoom);
