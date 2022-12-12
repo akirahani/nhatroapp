@@ -30,6 +30,20 @@
                 android:value="" />
         </activity>
         <activity
+            android:name=".dich_vu.DichVuAdd"
+            android:exported="false" >
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".dich_vu.DichVuEdit"
+            android:exported="false" >
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
             android:name=".nhom.Nhom"
             android:exported="false" >
             <meta-data
