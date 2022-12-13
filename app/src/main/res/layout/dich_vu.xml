@@ -1,192 +1,194 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.core.widget.NestedScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    tools:context=".dich_vu.DichVu">
-    <androidx.appcompat.widget.Toolbar
-        android:id="@+id/header"
+    android:layout_height="match_parent">
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@drawable/gradient_header"
-        xmlns:android="http://schemas.android.com/apk/res/android">
-        <RelativeLayout
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:context=".dich_vu.DichVu">
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/header"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            >
-            <LinearLayout
-                android:id="@+id/rightToolbar"
-                android:layout_width="wrap_content"
+            android:background="@drawable/gradient_header"
+            xmlns:android="http://schemas.android.com/apk/res/android">
+            <RelativeLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_alignParentLeft="true"
-                android:layout_centerVertical="true"
                 >
-                <ImageView
-                    android:backgroundTint="@color/white"
+                <LinearLayout
+                    android:id="@+id/rightToolbar"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:background="@drawable/ic_back"
-                    android:id="@+id/thoat">
-                </ImageView>
-                <TextView
-                    android:textColor="@color/white"
-                    android:layout_toRightOf="@+id/thoat"
+                    android:layout_alignParentLeft="true"
+                    android:layout_centerVertical="true"
+                    >
+                    <ImageView
+                        android:backgroundTint="@color/white"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/ic_back"
+                        android:id="@+id/thoat">
+                    </ImageView>
+                    <TextView
+                        android:textColor="@color/white"
+                        android:layout_toRightOf="@+id/thoat"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/ten"
+                        android:text="Thoát"
+                        android:paddingLeft="5dp">
+                    </TextView>
+                </LinearLayout>
+                <LinearLayout
+                    android:id="@+id/centerToolbar"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:id="@+id/ten"
-                    android:text="Thoát"
-                    android:paddingLeft="5dp">
-                </TextView>
-            </LinearLayout>
-            <LinearLayout
-                android:id="@+id/centerToolbar"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerVertical="true"
-                android:layout_centerInParent="true"
-                android:paddingRight="10dp">
-                >
-                <ImageView
-                    android:id="@+id/logo"
+                    android:layout_centerVertical="true"
+                    android:layout_centerInParent="true"
+                    android:paddingRight="10dp">
+                    >
+                    <ImageView
+                        android:id="@+id/logo"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/ic_logo"
+                        android:backgroundTint="@color/white"
+                        />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/leftToolbar"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:background="@drawable/ic_logo"
-                    android:backgroundTint="@color/white"
-                    />
-            </LinearLayout>
+                    android:layout_centerVertical="true"
+                    android:layout_alignParentRight="true">
+                    >
 
-            <LinearLayout
-                android:id="@+id/leftToolbar"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerVertical="true"
-                android:layout_alignParentRight="true">
-                >
-
-                <ImageView
-                    android:id="@+id/thongbao"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginRight="15dp"
-                    android:background="@drawable/ic_alert"
-                    android:backgroundTint="@color/white" />
-            </LinearLayout>
-        </RelativeLayout>
-    </androidx.appcompat.widget.Toolbar>
-    <!-- Tiêu đề dịch vụ  -->
-    <RelativeLayout
-        android:id="@+id/tieuDeDichVu"
-        android:layout_below="@+id/header"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/white"
-        android:gravity="center"
-        android:paddingTop="9dp">
-
-        <ImageView
-            android:id="@+id/imageDichVu"
-            android:layout_width="wrap_content"
+                    <ImageView
+                        android:id="@+id/thongbao"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="15dp"
+                        android:background="@drawable/ic_alert"
+                        android:backgroundTint="@color/white" />
+                </LinearLayout>
+            </RelativeLayout>
+        </androidx.appcompat.widget.Toolbar>
+        <!-- Tiêu đề dịch vụ  -->
+        <RelativeLayout
+            android:id="@+id/tieuDeDichVu"
+            android:layout_below="@+id/header"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@drawable/dichvu" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_toRightOf="@+id/imageDichVu"
-            android:fontFamily="sans-serif-black"
-            android:lineHeight="22dp"
-            android:paddingLeft="8dp"
-            android:paddingTop="18dp"
-            android:text="quản lí dịch vụ nhà trọ"
-            android:textAllCaps="true"
-            android:textColor="@color/textQuanLyChung"
-            android:textSize="18dp" />
-    </RelativeLayout>
-    <!-- mục thiết bị   -->
-    <RelativeLayout
-        android:id="@+id/tieuDeThietBi"
-        android:layout_below="@+id/tieuDeDichVu"
-        android:layout_marginTop="9dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
-        <ImageView
-            android:id="@+id/khoanthu"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@drawable/demuc" />
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Thiết bị"
-            android:textAllCaps="true"
-            android:paddingTop="3dp"
-            android:paddingLeft="14dp"
-            android:paddingBottom="6dp"
+            android:background="@color/white"
             android:gravity="center"
-            android:textColor="@color/white"
-            android:fontFamily="sans-serif-black"
-            android:textSize="16dp"
-            android:lineHeight="19dp" />
-    </RelativeLayout>
-    <!-- danh sách thiết bị -->
-    <RelativeLayout
-        android:layout_below="@+id/tieuDeThietBi"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
-        android:layout_marginLeft="25dp"
-        android:layout_marginRight="25dp">
-        <TextView
-            android:id="@+id/tieuDeTenThietBi"
-            android:text="Tên"
-            android:textColor="@color/black"
-            android:textStyle="bold"
+            android:paddingTop="9dp">
+
+            <ImageView
+                android:id="@+id/imageDichVu"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/dichvu" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@+id/imageDichVu"
+                android:fontFamily="sans-serif-black"
+                android:lineHeight="22dp"
+                android:paddingLeft="8dp"
+                android:paddingTop="18dp"
+                android:text="quản lí dịch vụ nhà trọ"
+                android:textAllCaps="true"
+                android:textColor="@color/textQuanLyChung"
+                android:textSize="18dp" />
+        </RelativeLayout>
+        <!-- mục thiết bị   -->
+        <RelativeLayout
+            android:id="@+id/tieuDeThietBi"
+            android:layout_below="@+id/tieuDeDichVu"
+            android:layout_marginTop="9dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content">
-        </TextView>
-        <TextView
+            <ImageView
+                android:id="@+id/khoanthu"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/demuc" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Thiết bị"
+                android:textAllCaps="true"
+                android:paddingTop="3dp"
+                android:paddingLeft="14dp"
+                android:paddingBottom="6dp"
+                android:gravity="center"
+                android:textColor="@color/white"
+                android:fontFamily="sans-serif-black"
+                android:textSize="16dp"
+                android:lineHeight="19dp" />
+        </RelativeLayout>
+        <!-- danh sách thiết bị -->
+        <RelativeLayout
+            android:layout_below="@+id/tieuDeThietBi"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:layout_marginLeft="25dp"
+            android:layout_marginRight="25dp">
+            <TextView
+                android:id="@+id/tieuDeTenThietBi"
+                android:text="Tên"
+                android:textColor="@color/black"
+                android:textStyle="bold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+            </TextView>
+            <TextView
+                android:layout_centerHorizontal="true"
+                android:id="@+id/tieuDeGiaThietBi"
+                android:text="Giá"
+                android:textColor="@color/black"
+                android:textStyle="bold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+            </TextView>
+
+            <TextView
+                android:layout_alignParentRight="true"
+                android:id="@+id/tacVuThietBi"
+                android:paddingRight="10dp"
+                android:text="Tác vụ"
+                android:textColor="@color/black"
+                android:textStyle="bold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+            </TextView>
+        </RelativeLayout>
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/listThietBi"
+            android:layout_marginTop="30dp"
+            android:layout_below="@+id/tieuDeThietBi"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+        </androidx.recyclerview.widget.RecyclerView>
+        <ImageView
+            android:layout_below="@+id/listThietBi"
+            android:id="@+id/themDichVu"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:layout_marginBottom="14dp"
             android:layout_centerHorizontal="true"
-            android:id="@+id/tieuDeGiaThietBi"
-            android:text="Giá"
-            android:textColor="@color/black"
-            android:textStyle="bold"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
-        </TextView>
+            android:background="@drawable/them">
 
-        <TextView
-            android:layout_alignParentRight="true"
-            android:id="@+id/tacVuThietBi"
-            android:paddingRight="10dp"
-            android:text="Tác vụ"
-            android:textColor="@color/black"
-            android:textStyle="bold"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
-        </TextView>
+        </ImageView>
     </RelativeLayout>
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/listThietBi"
-        android:layout_marginTop="30dp"
-        android:layout_below="@+id/tieuDeThietBi"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-    </androidx.recyclerview.widget.RecyclerView>
-    <ImageView
-        android:layout_below="@+id/listThietBi"
-        android:id="@+id/themDichVu"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
-        android:layout_marginBottom="14dp"
-        android:layout_centerHorizontal="true"
-        android:background="@drawable/them">
-
-    </ImageView>
-
-
-
-</RelativeLayout>
+</androidx.core.widget.NestedScrollView>
