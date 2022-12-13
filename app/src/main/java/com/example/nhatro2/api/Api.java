@@ -49,6 +49,14 @@ public interface Api {
     //Dịch vụ
     @GET ("/nhatro/admin/api/dichvu/list.php")
     Call<List<DichVuModel>> getDichVuList();
-
+    //Thêm Dịch vụ
+    @POST("/nhatro/admin/api/dichvu/add.php")
+    @FormUrlEncoded
+    Call<DichVuModel> addThietBi(@Field("ten") String tenthietbi, @Field("gia") Integer giathietbi);
+    // Get Thông tin dịch vụ
+    @GET ("/nhatro/admin/api/dichvu/edit.php")
+    Call <DichVuModel> editDichVu (@Field("id") int id);
+    // Cập nhật Thông tin dịch vụ
+    // Xóa dịch vụ
 
 }

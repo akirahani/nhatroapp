@@ -16,4 +16,5 @@
     <color name="khungNgoai">#F2F1F6</color>
     <color name="textQuanLyChung">#354B9C</color>
     <color name="cardThietBi" >#E8EDFF</color>
+    <color  name="cardThietBiAdd">#F3F6FF</color>
 </resources>
