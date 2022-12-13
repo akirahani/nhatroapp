@@ -77,6 +77,8 @@ public class DichVu extends AppCompatActivity {
                 alert.show();
             }
         });
+
+
         // Thiết bị
         listThietBi = findViewById(R.id.listThietBi);
         listThietBi.setLayoutManager(new LinearLayoutManager(DichVu.this));

@@ -1,23 +1,34 @@
 package com.example.nhatro2.dich_vu;
 
 import android.content.Context;
+import android.content.Intent;
+import android.media.Image;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.nhatro2.R;
+import com.example.nhatro2.api.Api;
 
 import java.text.DecimalFormat;
 import java.util.List;
 
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+
 public class DichVuAdapter extends RecyclerView.Adapter<DichVuAdapter.DichVuViewHolder> {
     Context context;
     List<DichVuModel> dichVu;
+    ImageView editDichVu, xoaDichVu;
 
     public DichVuAdapter(Context context, List<DichVuModel> dichVu) {
         this.context = context;
@@ -28,23 +39,58 @@ public class DichVuAdapter extends RecyclerView.Adapter<DichVuAdapter.DichVuView
     @Override
     public DichVuAdapter.DichVuViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(context).inflate(R.layout.dich_vu_item,parent,false);
+        editDichVu = view.findViewById(R.id.suaDichVu);
+        xoaDichVu = view.findViewById(R.id.xoaDichVu);
         return new DichVuViewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(@NonNull DichVuAdapter.DichVuViewHolder holder, int position) {
-        DichVuModel data = dichVu.get(position);
-        int id = data.getId();
-        String ten = data.getTen();
-        int loai = data.getLoai();
-        int gia = data.getGia();
+        DichVuModel dataDV = dichVu.get(position);
+        int id = dataDV.getId();
+        String ten = dataDV.getTen();
+        int loai = dataDV.getLoai();
+        int gia = dataDV.getGia();
+
+        //Lấy Id dịch vụ để sửa
+        editDichVu.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(context.getApplicationContext(),DichVuEdit.class);
+                intent.putExtra("idDichVu",id);
+                context.startActivity(intent);
+
+            }
+
+        });
+
+        //Xóa dịch vụ
+        xoaDichVu.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Api.api.delDichVu(id).enqueue(new Callback<DichVuModel>() {
+                    @Override
+                    public void onResponse(Call<DichVuModel> call, Response<DichVuModel> response) {
+                        DichVuModel dichVu = response.body();
+                        view.getContext().startActivity(new Intent(view.getContext(),DichVu.class));
+                        Toast.makeText(view.getContext(),"Xóa thành công",Toast.LENGTH_SHORT).show();
+                    }
+
+                    @Override
+                    public void onFailure(Call<DichVuModel> call, Throwable t) {
+                        Toast.makeText(view.getContext(),"Xóa thất bại",Toast.LENGTH_SHORT).show();
+                    }
+                });
+            }
+        });
 
         DecimalFormat formatter = new DecimalFormat("#,###,###");
         String giaFormat = formatter.format(gia);
-//        holder.idDichVu.setText(id+"");
+        // holder.idDichVu.setText(id+"");
         holder.tenDichVu.setText(ten);
-//        holder.loaiDichVu.setText(loai+"");
+        // holder.loaiDichVu.setText(loai+"");
         holder.giaDichVu.setText(giaFormat+"đ");
+
     }
 
     @Override

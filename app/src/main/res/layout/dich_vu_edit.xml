@@ -191,8 +191,7 @@
                     android:layout_marginRight="14dp"
                     android:layout_marginTop="16dp"
                     app:cardCornerRadius="8dp"
-                    android:layout_below="@+id/tieuDeThietBiAdd"
-                    >
+                    android:layout_below="@+id/tieuDeThietBiAdd">
                     <LinearLayout
                         android:background="@color/white"
                         android:layout_width="match_parent"
@@ -209,7 +208,7 @@
                             android:text="Tên thiết bị: ">
                         </TextView>
                         <EditText
-                            android:id="@+id/tenThietBiAdd"
+                            android:id="@+id/tenThietBiEdit"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:background="@null">
@@ -240,7 +239,7 @@
                             android:textColor="@color/black">
                         </TextView>
                         <EditText
-                            android:id="@+id/giaThietBiAdd"
+                            android:id="@+id/giaThietBiEdit"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:inputType="number"
@@ -255,7 +254,7 @@
                 android:layout_marginRight="25dp"
                 android:layout_marginTop="29dp"
                 android:layout_marginBottom="21dp"
-                android:layout_below="@+id/giaThietBiAdd">
+                android:layout_below="@+id/giaThietBiEdit">
                 <androidx.cardview.widget.CardView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
