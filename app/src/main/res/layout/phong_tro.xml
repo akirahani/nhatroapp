@@ -1,74 +1,73 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.core.widget.NestedScrollView
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/khungNgoai">
+
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
         tools:context=".dich_vu.DichVu">
         <!--header-->
-        <androidx.appcompat.widget.Toolbar
+        <androidx.appcompat.widget.Toolbar xmlns:android="http://schemas.android.com/apk/res/android"
             android:id="@+id/header"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@drawable/gradient_header"
-            xmlns:android="http://schemas.android.com/apk/res/android">
+            android:background="@drawable/gradient_header">
+
             <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                >
+                android:layout_height="wrap_content">
                 <LinearLayout
                     android:id="@+id/rightToolbar"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentLeft="true"
-                    android:layout_centerVertical="true"
-                    >
+                    android:layout_centerVertical="true">
+
                     <ImageView
-                        android:backgroundTint="@color/white"
+                        android:id="@+id/thoat"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:background="@drawable/ic_back"
-                        android:id="@+id/thoat">
-                    </ImageView>
+                        android:backgroundTint="@color/white"></ImageView>
+
                     <TextView
-                        android:textColor="@color/white"
-                        android:layout_toRightOf="@+id/thoat"
+                        android:id="@+id/ten"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:id="@+id/ten"
+                        android:layout_toRightOf="@+id/thoat"
+                        android:paddingLeft="5dp"
                         android:text="Thoát"
-                        android:paddingLeft="5dp">
-                    </TextView>
+                        android:textColor="@color/white"></TextView>
                 </LinearLayout>
+
                 <LinearLayout
                     android:id="@+id/centerToolbar"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_centerVertical="true"
                     android:layout_centerInParent="true"
+                    android:layout_centerVertical="true"
                     android:paddingRight="10dp">
                     >
+
                     <ImageView
                         android:id="@+id/logo"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:background="@drawable/ic_logo"
-                        android:backgroundTint="@color/white"
-                        />
+                        android:backgroundTint="@color/white" />
                 </LinearLayout>
 
                 <LinearLayout
                     android:id="@+id/leftToolbar"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_centerVertical="true"
-                    android:layout_alignParentRight="true">
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true">
                     >
 
                     <ImageView
@@ -84,61 +83,69 @@
         <!-- title -->
         <RelativeLayout
             android:id="@+id/tieuDePhongTro"
-            android:layout_below="@+id/header"
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
+            android:layout_below="@+id/header"
             android:background="@color/white"
             android:gravity="left"
             android:paddingLeft="23dp"
             android:paddingTop="9dp">
+            <FrameLayout
+                android:id="@+id/rowTitleRoom"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+                <RelativeLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent">
+                    <ImageView
+                        android:id="@+id/imageDichVu"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/phongtro" />
 
-            <ImageView
-                android:id="@+id/imageDichVu"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="@drawable/phongtro"
-                />
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_toRightOf="@+id/imageDichVu"
-                android:fontFamily="sans-serif-black"
-                android:lineHeight="22dp"
-                android:paddingLeft="8dp"
-                android:paddingTop="18dp"
-                android:text="quản lí phòng trọ"
-                android:textAllCaps="true"
-                android:textColor="@color/textQuanLyChung"
-                android:textSize="18dp" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_toRightOf="@+id/imageDichVu"
+                        android:textStyle="bold"
+                        android:lineHeight="22dp"
+                        android:paddingLeft="8dp"
+                        android:paddingTop="18dp"
+                        android:text="quản lí phòng trọ"
+                        android:textAllCaps="true"
+                        android:textColor="@color/textQuanLyChung"
+                        android:textSize="18dp" />
+                </RelativeLayout>
+            </FrameLayout>
 
 
         </RelativeLayout>
         <!-- tab room -->
         <com.google.android.material.tabs.TabLayout
             android:id="@+id/tabRoom"
-            android:layout_below="@+id/tieuDePhongTro"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-            <com.google.android.material.tabs.TabItem
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:text="Phòng Trống"/>
-            <com.google.android.material.tabs.TabItem
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:text="Phòng bàn giao"/>
-            <com.google.android.material.tabs.TabItem
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:text="Phòng đang ở"/>
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tieuDePhongTro"
+            app:tabBackground="@drawable/tab_selector"
+            app:tabTextColor="@color/white"
+            app:tabIndicatorHeight="0dp"
+            >
         </com.google.android.material.tabs.TabLayout>
-        <!-- list room-->
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/listRoom"
-            android:background="@color/white"
+
+        <androidx.viewpager2.widget.ViewPager2
+            android:id="@+id/tabContentViewRoom"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/tabRoom">
+
+        </androidx.viewpager2.widget.ViewPager2>
+        <!-- list room-->
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/listRoom"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tabContentViewRoom"
+            android:background="@color/white">
 
         </androidx.recyclerview.widget.RecyclerView>
     </RelativeLayout>

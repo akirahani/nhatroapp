@@ -6,20 +6,26 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
+import android.view.ViewGroup;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.viewpager2.widget.ViewPager2;
 
 import com.example.nhatro2.HomeActivity;
 import com.example.nhatro2.MainActivity;
 import com.example.nhatro2.R;
 import com.example.nhatro2.api.Api;
 import com.example.nhatro2.dich_vu.DichVu;
+import com.google.android.material.tabs.TabLayout;
+import com.google.android.material.tabs.TabLayoutMediator;
 
 import java.util.List;
 
@@ -31,7 +37,10 @@ public class Phong extends AppCompatActivity {
     RecyclerView listRoom;
     SharedPreferences shp;
     PhongAdapter phongAdapter;
-    ImageView thoat,logo;
+    ImageView thoat,logo,imageDichVu;
+    ViewPager2 tabContentViewRoom;
+    TabLayout tabRoom;
+    FrameLayout rowTitleRoom;
     @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -85,7 +94,7 @@ public class Phong extends AppCompatActivity {
         listRoom.setLayoutManager(new LinearLayoutManager(Phong.this));
         listRoom.hasFixedSize();
         listRoom.setNestedScrollingEnabled(false);
-
+        // list room
         Api.api.getPhongList().enqueue(new Callback<List<PhongModel>>() {
             @Override
             public void onResponse(Call<List<PhongModel>> call, Response<List<PhongModel>> response) {
@@ -102,5 +111,47 @@ public class Phong extends AppCompatActivity {
                 Toast.makeText(Phong.this,t.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
+        //tab room
+        tabRoom = findViewById(R.id.tabRoom);
+        tabContentViewRoom = findViewById(R.id.tabContentViewRoom);
+
+        TabPhongAdapter tabPhong  = new TabPhongAdapter(Phong.this);
+        tabContentViewRoom.setAdapter(tabPhong);
+
+        new TabLayoutMediator(tabRoom, tabContentViewRoom, new TabLayoutMediator.TabConfigurationStrategy() {
+            @Override
+            public void onConfigureTab(@NonNull TabLayout.Tab tab, int position) {
+                switch (position) {
+                    case 0:
+                    default:
+                        tab.setText("Phòng trống");
+                        break;
+                    case 1:
+                        tab.setText("Bàn giao");
+                        break;
+                    case 2:
+                        tab.setText("Đang thuê");
+                        break;
+                }
+            }
+        }).attach();
+
+        //Tạo khoảng trống tab items
+        int betweenSpace = 10;
+        ViewGroup slidingTabStrip = (ViewGroup) tabRoom.getChildAt(0);
+        for (int i=0; i<slidingTabStrip.getChildCount(); i++) {
+            View v = slidingTabStrip.getChildAt(i);
+            ViewGroup.MarginLayoutParams params = (ViewGroup.MarginLayoutParams) v.getLayoutParams();
+            params.rightMargin = betweenSpace;
+            params.height = 90;
+        }
+        // Xét ví trí tương đối
+        rowTitleRoom = findViewById(R.id.rowTitleRoom);
+        ImageView iv = new ImageView(this);
+
+        FrameLayout.LayoutParams params = new FrameLayout.LayoutParams(100, 100);
+        params.leftMargin = 50;
+        params.topMargin = 160;
+        rowTitleRoom.addView(iv, params);
     }
 }
