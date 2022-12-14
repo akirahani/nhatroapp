@@ -14,6 +14,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.nhatro2.R;
 import com.example.nhatro2.ThongTin;
 import com.example.nhatro2.dich_vu.DichVu;
+import com.example.nhatro2.phong.Phong;
 
 import java.util.List;
 
@@ -52,9 +53,9 @@ public class ChungAdapter extends RecyclerView.Adapter<ChungAdapter.ChungViewHol
                         Intent dichvu = new Intent(context, DichVu.class);
                         context.startActivity(dichvu);
                         break;
-                    case "thongtin":
-                        Intent thongtin = new Intent(context, ThongTin.class);
-                        context.startActivity(thongtin);
+                    case "phong":
+                        Intent phong = new Intent(context, Phong.class);
+                        context.startActivity(phong);
                         break;
                 }
             }

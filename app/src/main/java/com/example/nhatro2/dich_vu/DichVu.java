@@ -15,10 +15,12 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.nhatro2.HomeActivity;
 import com.example.nhatro2.MainActivity;
 import com.example.nhatro2.R;
 import com.example.nhatro2.api.Api;
@@ -32,8 +34,9 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class DichVu extends AppCompatActivity {
-    ImageView thoat,them;
+    ImageView thoat,them,logo,imageDichVu;
     SharedPreferences shp;
+    RelativeLayout tieuDeDichVu;
     RecyclerView listThietBi;
     TextView tenThietBi, giaThietBi, tacVu;
     List<DichVuModel> dichVu;
@@ -43,6 +46,15 @@ public class DichVu extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.dich_vu);
+        // home
+        logo = findViewById(R.id.logo);
+        logo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(DichVu.this, HomeActivity.class);
+                startActivity(intent);
+            }
+        });
         // Nút thoát
         thoat = findViewById(R.id.thoat);
         thoat.setOnClickListener(new View.OnClickListener() {
@@ -77,6 +89,7 @@ public class DichVu extends AppCompatActivity {
                 alert.show();
             }
         });
+
         // Thiết bị
         listThietBi = findViewById(R.id.listThietBi);
         listThietBi.setLayoutManager(new LinearLayoutManager(DichVu.this));
@@ -111,5 +124,11 @@ public class DichVu extends AppCompatActivity {
                 finish();
             }
         });
+        // Xét vị trí tương đối
+        imageDichVu = findViewById(R.id.imageDichVu);
+        tieuDeDichVu = findViewById(R.id.tieuDeDichVu);
+;
+
+
     }
 }
