@@ -18,6 +18,7 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.nhatro2.HomeActivity;
 import com.example.nhatro2.MainActivity;
 import com.example.nhatro2.R;
 import com.example.nhatro2.api.Api;
@@ -28,7 +29,7 @@ import retrofit2.Response;
 
 public class DichVuEdit extends AppCompatActivity {
     TextView tacVuThietBi,tieuDeTenThietBi,tieuDeGiaThietBi,backDV, capNhat;
-    ImageView thoat,them;
+    ImageView thoat,them,logo;
     EditText ten,gia,tenTB, giaTB;
     SharedPreferences shp;
     int id_update = 0;
@@ -37,6 +38,15 @@ public class DichVuEdit extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.dich_vu_edit);
+        // logo
+        logo = findViewById(R.id.logo);
+        logo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(DichVuEdit.this, HomeActivity.class);
+                startActivity(intent);
+            }
+        });
         // Nút thoát
         thoat = findViewById(R.id.thoat);
         thoat.setOnClickListener(new View.OnClickListener() {

@@ -1,6 +1,8 @@
 package com.example.nhatro2.dich_vu;
 
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.media.Image;
 import android.util.Log;
@@ -68,19 +70,43 @@ public class DichVuAdapter extends RecyclerView.Adapter<DichVuAdapter.DichVuView
         xoaDichVu.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Api.api.delDichVu(id).enqueue(new Callback<DichVuModel>() {
+                AlertDialog.Builder builder  = new AlertDialog.Builder(view.getContext());
+                builder.setTitle("Confirm").setMessage("Bạn có thực sự muốn xóa ?");
+                builder.setCancelable(true);
+                builder.setIcon(R.drawable.alert_bottom);
+                // Yes
+                builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                     @Override
-                    public void onResponse(Call<DichVuModel> call, Response<DichVuModel> response) {
-                        DichVuModel dichVu = response.body();
-                        view.getContext().startActivity(new Intent(view.getContext(),DichVu.class));
-                        Toast.makeText(view.getContext(),"Xóa thành công",Toast.LENGTH_SHORT).show();
-                    }
+                    public void onClick(DialogInterface dialogInterface, int id) {
+                        id = dataDV.getId();
+                        Log.d("id","tag"+id);
+                        Api.api.delDichVu(id).enqueue(new Callback<DichVuModel>() {
+                            @Override
+                            public void onResponse(Call <DichVuModel> call, Response <DichVuModel> response){
+                                DichVuModel dichVu = response.body();
+                                Log.d("id","here"+dichVu.getId());
+                                view.getContext().startActivity(new Intent(view.getContext(), DichVu.class));
+                                Toast.makeText(view.getContext(), "Xóa thành công", Toast.LENGTH_SHORT).show();
+                            }
 
-                    @Override
-                    public void onFailure(Call<DichVuModel> call, Throwable t) {
-                        Toast.makeText(view.getContext(),"Xóa thất bại",Toast.LENGTH_SHORT).show();
+                            @Override
+                            public void onFailure (Call < DichVuModel > call, Throwable t){
+                                Toast.makeText(view.getContext(), "Xóa thất bại", Toast.LENGTH_SHORT).show();
+                            }
+                        });
                     }
                 });
+
+                // No
+                builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int id) {
+                        Toast.makeText(view.getContext(), "Xóa thất bại", Toast.LENGTH_SHORT).show();
+                    }
+                });
+                // show alert
+                AlertDialog alert = builder.create();
+                alert.show();
             }
         });
 

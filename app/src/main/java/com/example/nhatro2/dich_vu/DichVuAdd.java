@@ -17,6 +17,7 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.nhatro2.HomeActivity;
 import com.example.nhatro2.MainActivity;
 import com.example.nhatro2.R;
 import com.example.nhatro2.api.Api;
@@ -30,7 +31,7 @@ import retrofit2.Response;
 import retrofit2.http.POST;
 
 public class DichVuAdd extends AppCompatActivity {
-    ImageView thoat,them;
+    ImageView thoat,them,logo;
     EditText ten,gia;
     TextView themDV, backDV;
     SharedPreferences shp;
@@ -38,7 +39,15 @@ public class DichVuAdd extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.dich_vu_add);
-
+        // logo
+        logo = findViewById(R.id.logo);
+        logo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(DichVuAdd.this, HomeActivity.class);
+                startActivity(intent);
+            }
+        });
         // Nút thoát
         thoat = findViewById(R.id.thoat);
         thoat.setOnClickListener(new View.OnClickListener() {

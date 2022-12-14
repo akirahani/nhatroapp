@@ -45,8 +45,7 @@ import retrofit2.http.Tag;
 public class HomeFragment extends Fragment {
     List<ChungModel> chung = new ArrayList<>();
     List<TaiKhoanModel> taiKhoan = new ArrayList<>();
-    RecyclerView listRoom,quanLyChung,quanLyThanhVien;
-    PhongAdapter phongAdapter;
+    RecyclerView quanLyChung,quanLyThanhVien;
     TextView tenThanhVien;
     Toolbar header;
     ImageView thoat;
@@ -114,7 +113,7 @@ public class HomeFragment extends Fragment {
 
         chung.add(new ChungModel(R.drawable.dichvu,"Dịch vụ", "dichvu"));
         chung.add(new ChungModel(R.drawable.khachtro,"TT khách trọ", "khachtro"));
-        chung.add(new ChungModel(R.drawable.phongtro,"TT phòng trọ", "phongtro"));
+        chung.add(new ChungModel(R.drawable.phongtro,"TT phòng trọ", "phong"));
         chung.add(new ChungModel(R.drawable.hopdong,"Hợp đồng", "hopdong"));
         chung.add(new ChungModel(R.drawable.quytien,"Quỹ tiền", "quytien"));
         chung.add(new ChungModel(R.drawable.tiencoc,"Tiền cọc", "tiencoc"));
@@ -134,28 +133,7 @@ public class HomeFragment extends Fragment {
         quanLyThanhVien.setNestedScrollingEnabled(false);
         quanLyThanhVien.setAdapter(new TaiKhoanAdapter(getContext(),taiKhoan));
 
-        // Phong
-//        listRoom = view.findViewById(R.id.listRoom);
-//        listRoom.setLayoutManager(new LinearLayoutManager(getContext()));
-//        listRoom.hasFixedSize();
-//        listRoom.setNestedScrollingEnabled(false);
 
-//        Api.api.getPhongList().enqueue(new Callback<List<PhongModel>>() {
-//            @Override
-//            public void onResponse(Call<List<PhongModel>> call, Response<List<PhongModel>> response) {
-//                if (!response.isSuccessful()) {
-//                    Toast.makeText(getContext(),response.code(), Toast.LENGTH_SHORT).show();
-//                    return;
-//                }
-//                List<PhongModel> phongList = response.body();
-//                phongAdapter = new PhongAdapter(getContext(),phongList);
-//                listRoom.setAdapter(phongAdapter);
-//            }
-//            @Override
-//            public void onFailure(Call<List<PhongModel>> call, Throwable t) {
-//                Toast.makeText(getContext(),t.getMessage(), Toast.LENGTH_SHORT).show();
-//            }
-//        });
         return view;
     }
 }

@@ -11,6 +11,7 @@
         android:layout_height="match_parent"
         android:orientation="vertical"
         tools:context=".dich_vu.DichVu">
+        <!--header-->
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/header"
             android:layout_width="match_parent"
@@ -80,125 +81,65 @@
                 </LinearLayout>
             </RelativeLayout>
         </androidx.appcompat.widget.Toolbar>
-        <!-- Tiêu đề dịch vụ  -->
+        <!-- title -->
         <RelativeLayout
-            android:id="@+id/tieuDeDichVu"
+            android:id="@+id/tieuDePhongTro"
             android:layout_below="@+id/header"
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
             android:background="@color/white"
-            android:gravity="center"
+            android:gravity="left"
+            android:paddingLeft="23dp"
             android:paddingTop="9dp">
 
-                <ImageView
-                    android:id="@+id/imageDichVu"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/dichvu"
-                    />
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_toRightOf="@+id/imageDichVu"
-                    android:fontFamily="sans-serif-black"
-                    android:lineHeight="22dp"
-                    android:paddingLeft="8dp"
-                    android:paddingTop="18dp"
-                    android:text="quản lí dịch vụ nhà trọ"
-                    android:textAllCaps="true"
-                    android:textColor="@color/textQuanLyChung"
-                    android:textSize="18dp" />
-
-
-        </RelativeLayout>
-        <!-- mục thiết bị   -->
-        <RelativeLayout
-            android:id="@+id/tieuDeThietBi"
-            android:layout_below="@+id/tieuDeDichVu"
-            android:layout_marginTop="9dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
             <ImageView
-                android:id="@+id/khoanthu"
+                android:id="@+id/imageDichVu"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="@drawable/demuc" />
+                android:background="@drawable/phongtro"
+                />
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Thiết bị"
-                android:textAllCaps="true"
-                android:paddingTop="3dp"
-                android:paddingLeft="14dp"
-                android:paddingBottom="6dp"
-                android:gravity="center"
-                android:textColor="@color/white"
+                android:layout_toRightOf="@+id/imageDichVu"
                 android:fontFamily="sans-serif-black"
-                android:textSize="16dp"
-                android:lineHeight="19dp" />
+                android:lineHeight="22dp"
+                android:paddingLeft="8dp"
+                android:paddingTop="18dp"
+                android:text="quản lí phòng trọ"
+                android:textAllCaps="true"
+                android:textColor="@color/textQuanLyChung"
+                android:textSize="18dp" />
+
+
         </RelativeLayout>
-        <!-- danh sách thiết bị -->
-        <LinearLayout
-            android:layout_below="@+id/tieuDeThietBi"
+        <!-- tab room -->
+        <com.google.android.material.tabs.TabLayout
+            android:id="@+id/tabRoom"
+            android:layout_below="@+id/tieuDePhongTro"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <com.google.android.material.tabs.TabItem
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="Phòng Trống"/>
+            <com.google.android.material.tabs.TabItem
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="Phòng bàn giao"/>
+            <com.google.android.material.tabs.TabItem
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="Phòng đang ở"/>
+        </com.google.android.material.tabs.TabLayout>
+        <!-- list room-->
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/listRoom"
+            android:background="@color/white"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:background="@color/white">
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="12dp"
-                android:layout_marginLeft="25dp"
-                android:layout_marginRight="25dp">
-                <TextView
-                    android:id="@+id/tieuDeTenThietBi"
-                    android:text="Tên"
-                    android:textColor="@color/black"
-                    android:textStyle="bold"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content">
-                </TextView>
-                <TextView
-                    android:layout_centerHorizontal="true"
-                    android:id="@+id/tieuDeGiaThietBi"
-                    android:text="Giá"
-                    android:textColor="@color/black"
-                    android:textStyle="bold"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content">
-                </TextView>
+            android:layout_below="@+id/tabRoom">
 
-                <TextView
-                    android:layout_alignParentRight="true"
-                    android:id="@+id/tacVuThietBi"
-                    android:paddingRight="10dp"
-                    android:text="Tác vụ"
-                    android:textColor="@color/black"
-                    android:textStyle="bold"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content">
-                </TextView>
-            </RelativeLayout>
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/listThietBi"
-                android:layout_marginTop="4dp"
-                android:layout_below="@+id/tieuDeThietBi"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-            </androidx.recyclerview.widget.RecyclerView>
-        <ImageView
-            android:layout_below="@+id/listThietBi"
-            android:id="@+id/themDichVu"
-            android:layout_gravity="center"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="12dp"
-            android:layout_marginBottom="14dp"
-            android:layout_centerHorizontal="true"
-            android:background="@drawable/them">
-
-        </ImageView>
-        </LinearLayout>
+        </androidx.recyclerview.widget.RecyclerView>
     </RelativeLayout>
 </androidx.core.widget.NestedScrollView>
