@@ -1,14 +1,56 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".phong.BanGiaoFragment">
+    tools:context=".phong.PhongTrongFragment">
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
+    <RelativeLayout
         android:background="@color/white"
-        android:text="Phòng bàn giao" />
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
 
-</FrameLayout>
+        <RelativeLayout
+            android:id="@+id/tHeadBookRoom"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="25dp"
+            android:layout_marginTop="12dp"
+            android:layout_marginRight="25dp">
+
+            <TextView
+                android:id="@+id/tenBookRoom"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Tên"
+                android:textColor="@color/black"
+                android:textStyle="bold"></TextView>
+
+            <TextView
+                android:id="@+id/dayTangBookRoom"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:text="Dãy-Tầng"
+                android:textColor="@color/black"
+                android:textStyle="bold"></TextView>
+
+            <TextView
+                android:id="@+id/tacVuBookRoom"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:paddingRight="10dp"
+                android:text="Tác vụ"
+                android:textColor="@color/black"
+                android:textStyle="bold"></TextView>
+        </RelativeLayout>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/listBookRoom"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tHeadBookRoom"></androidx.recyclerview.widget.RecyclerView>
+    </RelativeLayout>
+</androidx.core.widget.NestedScrollView>

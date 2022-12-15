@@ -83,28 +83,37 @@
         android:layout_below="@+id/header"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/white"
-        android:gravity="center"
-        android:paddingTop="9dp">
+        android:background="@color/white">
+        <LinearLayout
+            android:id="@+id/rowServiceAdd"
+            android:orientation="horizontal"
+            android:elevation="20dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <FrameLayout
+                android:id="@+id/imageServiceAdd"
+                android:layout_width="72dp"
+                android:layout_height="72dp">
+            </FrameLayout>
 
-        <ImageView
-            android:id="@+id/imageDichVu"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@drawable/dichvu" />
-
+            <TextView
+                android:id="@+id/textDichVuAdd"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textStyle="bold"
+                android:paddingLeft="8dp"
+                android:paddingTop="18dp"
+                android:text="quản lí dịch vụ nhà trọ"
+                android:textAllCaps="true"
+                android:textColor="@color/textQuanLyChung"
+                android:textSize="18dp" />
+        </LinearLayout>
         <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_toRightOf="@+id/imageDichVu"
-            android:fontFamily="sans-serif-black"
-            android:lineHeight="22dp"
-            android:paddingLeft="8dp"
-            android:paddingTop="18dp"
-            android:text="quản lí dịch vụ nhà trọ"
-            android:textAllCaps="true"
-            android:textColor="@color/textQuanLyChung"
-            android:textSize="18dp" />
+            android:layout_below="@+id/rowServiceAdd"
+            android:background="@color/khungNgoai"
+            android:layout_marginTop="-25dp"
+            android:layout_width="match_parent"
+            android:layout_height="25dp" />
     </RelativeLayout>
     <!-- mục thiết bị   -->
     <LinearLayout
@@ -115,7 +124,6 @@
         android:background="@color/khungNgoai">
         <RelativeLayout
             android:id="@+id/tieuDeThietBi"
-            android:layout_marginTop="9dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content">
             <ImageView
@@ -133,7 +141,7 @@
                 android:paddingBottom="6dp"
                 android:gravity="center"
                 android:textColor="@color/white"
-                android:fontFamily="sans-serif-black"
+                android:textStyle="bold"
                 android:textSize="16dp"
                 android:lineHeight="19dp" />
         </RelativeLayout>

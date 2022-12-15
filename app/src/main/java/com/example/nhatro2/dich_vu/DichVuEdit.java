@@ -10,6 +10,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -162,5 +163,13 @@ public class DichVuEdit extends AppCompatActivity {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             ((TextView)findViewById(R.id.tieuDeGiaThietBi)).setTextColor(Color.argb(alpha, 0, 0, 0));
         }
+        // Vị trí tương đối
+        FrameLayout imageServiceAdd = findViewById(R.id.imageServiceEdit);
+        ImageView iv = new ImageView(this);
+        iv.setBackgroundResource(R.drawable.dichvu);
+        FrameLayout.LayoutParams params = new FrameLayout.LayoutParams(145,145);
+        params.leftMargin = 46;
+        params.topMargin = 18;
+        imageServiceAdd.addView(iv, params);
     }
 }

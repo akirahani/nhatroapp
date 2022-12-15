@@ -34,10 +34,16 @@ public interface Api {
     @FormUrlEncoded
     Call <ThanhVienModel> postLogin(@Field("username") String username,
                                     @Field("password") String password);
-
+    // Phòng trống
     @GET ("/nhatro/admin/api/phong/list.php")
     Call<List<PhongModel>> getPhongList();
-
+    // Phòng đặt
+    @GET ("/nhatro/admin/api/phong/book.php")
+    Call<List<PhongModel>> getBookRoomList();
+    // Phòng thuê
+    @GET ("/nhatro/admin/api/phong/rent.php")
+    Call<List<PhongModel>> getRentRoomList();
+    // Khách thuê
     @GET ("/nhatro/admin/api/khach/list.php")
     Call<List<ThanhVienModel>> getKhachList();
 
