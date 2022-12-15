@@ -35,10 +35,18 @@ public interface Api {
     Call <ThanhVienModel> postLogin(@Field("username") String username,
                                     @Field("password") String password);
 
+    // Phòng trống
     @GET ("/nhatro2/admin/api/phong/list.php")
     Call<List<PhongModel>> getPhongList();
-
+    // Phòng đặt
+    @GET ("/nhatro2/admin/api/phong/book.php")
+    Call<List<PhongModel>> getBookRoomList();
+    // Phòng thuê
+    @GET ("/nhatro2/admin/api/phong/rent.php")
+    Call<List<PhongModel>> getRentRoomList();
+    // Khách thuê
     @GET ("/nhatro2/admin/api/khach/list.php")
+
     Call<List<ThanhVienModel>> getKhachList();
 
     @POST ("/nhatro2/admin/api/phong/add.php")

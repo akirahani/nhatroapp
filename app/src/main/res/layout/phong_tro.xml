@@ -83,57 +83,57 @@
         </androidx.appcompat.widget.Toolbar>
         <!-- title -->
         <RelativeLayout
-            android:id="@+id/tieuDePhongTro"
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
+            android:id="@+id/tren"
             android:layout_below="@+id/header"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:background="@color/white"
-            android:gravity="left"
-            android:paddingLeft="23dp"
-            android:paddingTop="9dp">
 
-            <FrameLayout
+            android:orientation="horizontal">
+            <LinearLayout
                 android:id="@+id/rowTitleRoom"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
-
-                <RelativeLayout
-                    android:layout_width="fill_parent"
-                    android:layout_height="fill_parent">
-
-                    <ImageView
-                        android:id="@+id/imageDichVu"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:background="@drawable/phongtro" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_toRightOf="@+id/imageDichVu"
-                        android:lineHeight="22dp"
-                        android:paddingLeft="8dp"
-                        android:paddingTop="18dp"
-                        android:text="quản lí phòng trọ"
-                        android:textAllCaps="true"
-                        android:textColor="@color/textQuanLyChung"
-                        android:textSize="18dp"
-                        android:textStyle="bold" />
-                </RelativeLayout>
-            </FrameLayout>
-
+                android:elevation="20dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <FrameLayout
+                    android:id="@+id/tieuDePhongTro"
+                    android:layout_width="72dp"
+                    android:layout_height="72dp">
+                   >
+                </FrameLayout>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textStyle="bold"
+                    android:paddingTop="18dp"
+                    android:text="quản lí phòng trọ"
+                    android:textAllCaps="true"
+                    android:textColor="@color/textQuanLyChung"
+                    android:textSize="18dp" />
+            </LinearLayout>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:layout_below="@+id/rowTitleRoom"
+                android:layout_marginTop="-25dp"
+                android:background="@color/khungNgoai"
+                />
 
         </RelativeLayout>
         <!-- tab room -->
         <com.google.android.material.tabs.TabLayout
-            android:layout_marginTop="24dp"
             android:id="@+id/tabRoom"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/tieuDePhongTro"
+            android:layout_below="@+id/tren"
             app:tabBackground="@drawable/tab_selector"
             app:tabIndicatorHeight="0dp"
-            app:tabTextColor="@color/white"></com.google.android.material.tabs.TabLayout>
+            android:background="@color/khungNgoai"
+            android:layout_marginTop="-10dp"
+            android:layout_marginBottom="-15dp"
+            >
+        </com.google.android.material.tabs.TabLayout>
 
         <androidx.viewpager2.widget.ViewPager2
             android:id="@+id/tabContentViewRoom"
@@ -142,14 +142,6 @@
             android:layout_below="@+id/tabRoom">
 
         </androidx.viewpager2.widget.ViewPager2>
-        <!-- list room-->
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/listRoom"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/tabContentViewRoom"
-            android:background="@color/white">
 
-        </androidx.recyclerview.widget.RecyclerView>
     </RelativeLayout>
 </androidx.core.widget.NestedScrollView>
