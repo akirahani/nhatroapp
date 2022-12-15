@@ -150,8 +150,7 @@ public class Phong extends AppCompatActivity {
         ImageView iv = new ImageView(this);
 
         FrameLayout.LayoutParams params = new FrameLayout.LayoutParams(100, 100);
-        params.leftMargin = 50;
-        params.topMargin = 160;
+        params.topMargin = 120;
         rowTitleRoom.addView(iv, params);
     }
 }

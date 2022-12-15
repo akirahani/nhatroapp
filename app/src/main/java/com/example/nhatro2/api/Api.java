@@ -50,21 +50,21 @@ public interface Api {
     @GET ("/nhatro2/admin/api/dichvu/list.php")
     Call<List<DichVuModel>> getDichVuList();
     //Thêm Dịch vụ
-    @POST("/nhatro/admin/api/dichvu/add.php")
+    @POST("/nhatro2/admin/api/dichvu/add.php")
     @FormUrlEncoded
     Call<DichVuModel> addThietBi(@Field("ten") String tenthietbi, @Field("gia") Integer giathietbi);
     // Get Thông tin dịch vụ
-    @POST ("/nhatro/admin/api/dichvu/detail.php")
+    @POST ("/nhatro2/admin/api/dichvu/detail.php")
     @FormUrlEncoded
     Call <DichVuModel> detailDichVu (@Field("id") int id);
     // Cập nhật Thông tin dịch vụ
-    @POST ("/nhatro/admin/api/dichvu/edit.php")
+    @POST ("/nhatro2/admin/api/dichvu/edit.php")
     @FormUrlEncoded
     Call <DichVuModel> editDichVu (@Field("id") int id,
                                    @Field("ten") String ten,
                                    @Field("gia") int gia);
     // Xóa dịch vụ
-    @POST ("/nhatro/admin/api/dichvu/del.php")
+    @POST ("/nhatro2/admin/api/dichvu/del.php")
     @FormUrlEncoded
     Call <DichVuModel> delDichVu (@Field("id") int id);
 }
