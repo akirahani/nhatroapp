@@ -144,16 +144,15 @@ public class Phong extends AppCompatActivity {
             View v = slidingTabStrip.getChildAt(i);
             ViewGroup.MarginLayoutParams params = (ViewGroup.MarginLayoutParams) v.getLayoutParams();
             params.rightMargin = betweenSpace;
-//            params.height = 90;
+            params.height = 90;
         }
         // Xét ví trí tương đối
-        tieuDePhongTro = findViewById(R.id.tieuDePhongTro);
+        FrameLayout imageFrame = findViewById(R.id.tieuDePhongTro);
         ImageView iv = new ImageView(this);
-        FrameLayout.LayoutParams params = new FrameLayout.LayoutParams(100, 100);
-        params.topMargin = 150;
-        if(iv.getParent() != null) {
-            ((ViewGroup) iv.getParent()).removeView(iv); // <- fix
-        }
-        tieuDePhongTro.addView(iv, params);
+        iv.setBackgroundResource(R.drawable.phongtro);
+        FrameLayout.LayoutParams params = new FrameLayout.LayoutParams(145, 145);
+        params.leftMargin = 46;
+        params.topMargin = 18;
+        imageFrame.addView(iv, params);
     }
 }

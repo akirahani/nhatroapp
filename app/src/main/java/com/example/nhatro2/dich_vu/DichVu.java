@@ -14,6 +14,7 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
@@ -125,10 +126,12 @@ public class DichVu extends AppCompatActivity {
             }
         });
         // Xét vị trí tương đối
-        imageDichVu = findViewById(R.id.imageDichVu);
-        tieuDeDichVu = findViewById(R.id.tieuDeDichVu);
-;
-
-
+        FrameLayout imageFrame = findViewById(R.id.imageDichVu);
+        ImageView iv = new ImageView(this);
+        iv.setBackgroundResource(R.drawable.dichvu);
+        FrameLayout.LayoutParams params = new FrameLayout.LayoutParams(145,145);
+        params.leftMargin = 46;
+        params.topMargin = 18;
+        imageFrame.addView(iv, params);
     }
 }

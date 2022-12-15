@@ -1,5 +1,6 @@
 package com.example.nhatro2.dich_vu;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -8,6 +9,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -123,5 +125,14 @@ public class DichVuAdd extends AppCompatActivity {
                     }
                 }
             });
+
+            @SuppressLint({"MissingInflatedId", "LocalSuppress"})
+            FrameLayout imageServiceAdd = findViewById(R.id.imageServiceAdd);
+            ImageView iv = new ImageView(this);
+            iv.setBackgroundResource(R.drawable.dichvu);
+            FrameLayout.LayoutParams params = new FrameLayout.LayoutParams(145,145);
+            params.leftMargin = 46;
+            params.topMargin = 18;
+            imageServiceAdd.addView(iv, params);
     }
 }
