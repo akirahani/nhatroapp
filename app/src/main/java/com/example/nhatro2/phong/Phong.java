@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -37,10 +38,10 @@ public class Phong extends AppCompatActivity {
     RecyclerView listRoom;
     SharedPreferences shp;
     PhongAdapter phongAdapter;
-    ImageView thoat,logo,imageDichVu;
+    ImageView thoat,logo,imagePhongTro;
     ViewPager2 tabContentViewRoom;
     TabLayout tabRoom;
-    FrameLayout rowTitleRoom;
+    RelativeLayout tieuDePhongTro;
     @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -90,27 +91,27 @@ public class Phong extends AppCompatActivity {
             }
         });
         // Phong
-        listRoom = findViewById(R.id.listRoom);
-        listRoom.setLayoutManager(new LinearLayoutManager(Phong.this));
-        listRoom.hasFixedSize();
-        listRoom.setNestedScrollingEnabled(false);
+//        listRoom = findViewById(R.id.listRoom);
+//        listRoom.setLayoutManager(new LinearLayoutManager(Phong.this));
+//        listRoom.hasFixedSize();
+//        listRoom.setNestedScrollingEnabled(false);
         // list room
-        Api.api.getPhongList().enqueue(new Callback<List<PhongModel>>() {
-            @Override
-            public void onResponse(Call<List<PhongModel>> call, Response<List<PhongModel>> response) {
-                if (!response.isSuccessful()) {
-                    Toast.makeText(Phong.this,response.code(), Toast.LENGTH_SHORT).show();
-                    return;
-                }
-                List<PhongModel> phongList = response.body();
-                phongAdapter = new PhongAdapter(Phong.this,phongList);
-                listRoom.setAdapter(phongAdapter);
-            }
-            @Override
-            public void onFailure(Call<List<PhongModel>> call, Throwable t) {
-                Toast.makeText(Phong.this,t.getMessage(), Toast.LENGTH_SHORT).show();
-            }
-        });
+//        Api.api.getPhongList().enqueue(new Callback<List<PhongModel>>() {
+//            @Override
+//            public void onResponse(Call<List<PhongModel>> call, Response<List<PhongModel>> response) {
+//                if (!response.isSuccessful()) {
+//                    Toast.makeText(Phong.this,response.code(), Toast.LENGTH_SHORT).show();
+//                    return;
+//                }
+//                List<PhongModel> phongList = response.body();
+//                phongAdapter = new PhongAdapter(Phong.this,phongList);
+//                listRoom.setAdapter(phongAdapter);
+//            }
+//            @Override
+//            public void onFailure(Call<List<PhongModel>> call, Throwable t) {
+//                Toast.makeText(Phong.this,t.getMessage(), Toast.LENGTH_SHORT).show();
+//            }
+//        });
         //tab room
         tabRoom = findViewById(R.id.tabRoom);
         tabContentViewRoom = findViewById(R.id.tabContentViewRoom);
@@ -143,15 +144,16 @@ public class Phong extends AppCompatActivity {
             View v = slidingTabStrip.getChildAt(i);
             ViewGroup.MarginLayoutParams params = (ViewGroup.MarginLayoutParams) v.getLayoutParams();
             params.rightMargin = betweenSpace;
-            params.height = 90;
+//            params.height = 90;
         }
         // Xét ví trí tương đối
-        rowTitleRoom = findViewById(R.id.rowTitleRoom);
+        tieuDePhongTro = findViewById(R.id.tieuDePhongTro);
         ImageView iv = new ImageView(this);
-
         FrameLayout.LayoutParams params = new FrameLayout.LayoutParams(100, 100);
-        params.leftMargin = 50;
-        params.topMargin = 160;
-        rowTitleRoom.addView(iv, params);
+        params.topMargin = 150;
+        if(iv.getParent() != null) {
+            ((ViewGroup) iv.getParent()).removeView(iv); // <- fix
+        }
+        tieuDePhongTro.addView(iv, params);
     }
 }
