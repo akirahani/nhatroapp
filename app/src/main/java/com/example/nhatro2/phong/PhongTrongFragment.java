@@ -1,5 +1,6 @@
 package com.example.nhatro2.phong;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -10,11 +11,13 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 
 import com.example.nhatro2.R;
 import com.example.nhatro2.api.Api;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import retrofit2.Call;
@@ -23,7 +26,7 @@ import retrofit2.Response;
 
 public class PhongTrongFragment extends Fragment {
     RecyclerView listEmptyRoom ;
-    List<PhongModel> roomEmpty ;
+    List<PhongModel> roomEmpty = new ArrayList<>();
     public PhongTrongFragment() {
 
     }
@@ -38,6 +41,7 @@ public class PhongTrongFragment extends Fragment {
         super.onCreate(savedInstanceState);
     }
 
+    @SuppressLint("MissingInflatedId")
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view =  inflater.inflate(R.layout.fragment_phong_trong, container, false);
@@ -50,7 +54,7 @@ public class PhongTrongFragment extends Fragment {
             @Override
             public void onResponse(Call<List<PhongModel>> call, Response<List<PhongModel>> response) {
                 roomEmpty = response.body();
-                Log.d("phong","phong"+roomEmpty);
+                listEmptyRoom.setAdapter(new PhongAdapter(view.getContext(),roomEmpty));
 
             }
 

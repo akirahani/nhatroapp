@@ -11,13 +11,13 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <RelativeLayout
         android:layout_width="match_parent"
-        android:background="@color/cardThietBi"
+        android:background="@color/phongBanGiao"
         android:layout_height="wrap_content"
         android:padding="16dp"
         android:orientation="horizontal">
         <TextView
             android:layout_alignParentStart="true"
-            android:id="@+id/tenDichVu"
+            android:id="@+id/tenPhongBanGiao"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="@color/black"
@@ -28,8 +28,13 @@
             android:layout_centerHorizontal="true"
             >
             <TextView
-                android:layout_toRightOf="@+id/tenDichVu"
-                android:id="@+id/giaDichVu"
+                android:id="@+id/dayBanGiao"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black"
+                />
+            <TextView
+                android:id="@+id/tangBanGiao"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textColor="@color/black"
@@ -41,11 +46,10 @@
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true">
             <ImageView
-                android:id="@+id/suaDichVu"
-                android:layout_toRightOf="@+id/giaDichVu"
+                android:id="@+id/tacVuBanGiao"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="@drawable/sua"/>
+                android:background="@drawable/editbookroom"/>
         </LinearLayout>
     </RelativeLayout>
 </androidx.cardview.widget.CardView>

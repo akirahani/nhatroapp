@@ -19,4 +19,6 @@
     <color  name="cardThietBiAdd">#F3F6FF</color>
     <color name="tabPhong">#CBC1C1</color>
     <color name="tabActive">#1338BD</color>
+    <color name="phongThue">#FFEFEF</color>
+    <color name="phongBanGiao">#FFF9DE</color>
 </resources>
