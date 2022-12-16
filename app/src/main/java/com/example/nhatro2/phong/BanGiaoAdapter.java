@@ -22,7 +22,7 @@ public class BanGiaoAdapter extends RecyclerView.Adapter<BanGiaoAdapter.BanGiaoV
     Context context;
     ImageView tacVuBanGiao;
 
-    public BanGiaoAdapter(List<PhongModel> phongBanGiao, Context context) {
+    public BanGiaoAdapter(Context context, List<PhongModel> phongBanGiao) {
         this.phongBanGiao = phongBanGiao;
         this.context = context;
     }
@@ -56,7 +56,7 @@ public class BanGiaoAdapter extends RecyclerView.Adapter<BanGiaoAdapter.BanGiaoV
         tacVuBanGiao.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Log.d("id",""+idPhong);
+
             }
         });
     }

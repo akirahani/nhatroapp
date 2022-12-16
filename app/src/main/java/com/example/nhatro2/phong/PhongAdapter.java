@@ -52,7 +52,7 @@ public class PhongAdapter extends RecyclerView.Adapter<PhongAdapter.PhongViewHol
         tacVuTrong.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Log.d("id",""+idPhong);
+
             }
         });
     }

@@ -90,28 +90,6 @@ public class Phong extends AppCompatActivity {
                 alert.show();
             }
         });
-        // Phong
-//        listRoom = findViewById(R.id.listRoom);
-//        listRoom.setLayoutManager(new LinearLayoutManager(Phong.this));
-//        listRoom.hasFixedSize();
-//        listRoom.setNestedScrollingEnabled(false);
-        // list room
-//        Api.api.getPhongList().enqueue(new Callback<List<PhongModel>>() {
-//            @Override
-//            public void onResponse(Call<List<PhongModel>> call, Response<List<PhongModel>> response) {
-//                if (!response.isSuccessful()) {
-//                    Toast.makeText(Phong.this,response.code(), Toast.LENGTH_SHORT).show();
-//                    return;
-//                }
-//                List<PhongModel> phongList = response.body();
-//                phongAdapter = new PhongAdapter(Phong.this,phongList);
-//                listRoom.setAdapter(phongAdapter);
-//            }
-//            @Override
-//            public void onFailure(Call<List<PhongModel>> call, Throwable t) {
-//                Toast.makeText(Phong.this,t.getMessage(), Toast.LENGTH_SHORT).show();
-//            }
-//        });
         //tab room
         tabRoom = findViewById(R.id.tabRoom);
         tabContentViewRoom = findViewById(R.id.tabContentViewRoom);

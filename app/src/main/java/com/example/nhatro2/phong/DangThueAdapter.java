@@ -17,13 +17,22 @@ import com.example.nhatro2.R;
 import java.util.List;
 
 public class DangThueAdapter extends RecyclerView.Adapter<DangThueAdapter.DangThueViewHolder> {
+
     List<PhongModel> phongThue;
     Context context;
     ImageView tacVuPhongThue;
+
+    public DangThueAdapter(Context context, List<PhongModel> phongThue) {
+        this.phongThue = phongThue;
+        this.context = context;
+    }
+
+
     @NonNull
     @Override
     public DangThueAdapter.DangThueViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(context).inflate(R.layout.phong_thue_item,parent,false);
+        tacVuPhongThue = view.findViewById(R.id.tacVuPhongThue);
         return new DangThueViewHolder(view);
     }
 
@@ -42,11 +51,9 @@ public class DangThueAdapter extends RecyclerView.Adapter<DangThueAdapter.DangTh
         holder.ten.setText(ten);
         holder.day.setText(day);
         holder.tang.setText("-"+tang);
-
         tacVuPhongThue.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Log.d("id",""+idPhong);
             }
         });
     }

@@ -51,7 +51,7 @@ public class BanGiaoFragment extends Fragment {
             @Override
             public void onResponse(Call<List<PhongModel>> call, Response<List<PhongModel>> response) {
                 phongBanGiao = response.body();
-                listBookRoom.setAdapter(new BanGiaoAdapter(phongBanGiao,view.getContext()));
+                listBookRoom.setAdapter(new BanGiaoAdapter(view.getContext(),phongBanGiao));
             }
 
             @Override

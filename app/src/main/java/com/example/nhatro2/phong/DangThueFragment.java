@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -48,7 +49,7 @@ public class DangThueFragment extends Fragment {
             @Override
             public void onResponse(Call<List<PhongModel>> call, Response<List<PhongModel>> response) {
                 phongThue = response.body();
-                listRentRoom.setAdapter(new BanGiaoAdapter(phongThue,view.getContext()));
+                listRentRoom.setAdapter(new DangThueAdapter(view.getContext(),phongThue));
             }
 
             @Override
