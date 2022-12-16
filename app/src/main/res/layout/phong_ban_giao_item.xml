@@ -6,7 +6,6 @@
     app:cardCornerRadius="10dp"
     android:layout_marginLeft="14dp"
     android:layout_marginRight="14dp"
-    android:background="@color/cardThietBi"
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <RelativeLayout
