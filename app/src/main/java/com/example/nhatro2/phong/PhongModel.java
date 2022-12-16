@@ -9,8 +9,28 @@ public class PhongModel {
     private int datcoc;
     private int khach;
 
+    public String getDay() {
+        return day;
+    }
+
+    public void setDay(String day) {
+        this.day = day;
+    }
+
+    public int getTang() {
+        return tang;
+    }
+
+    public void setTang(int tang) {
+        this.tang = tang;
+    }
+
+    private String day;
+    private int tang;
+
     //contrucstor
-    public PhongModel(int id, String ten, int trangthai, int vitri, String dichvu, int datcoc, int khach) {
+
+    public PhongModel(int id, String ten, int trangthai, int vitri, String dichvu, int datcoc, int khach, String day, int tang) {
         this.id = id;
         this.ten = ten;
         this.trangthai = trangthai;
@@ -18,7 +38,10 @@ public class PhongModel {
         this.dichvu = dichvu;
         this.datcoc = datcoc;
         this.khach = khach;
+        this.day = day;
+        this.tang = tang;
     }
+
     // setter
     public void setId(int id) {
         this.id = id;

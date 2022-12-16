@@ -3,46 +3,61 @@ package com.example.nhatro2.phong;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.nhatro2.R;
+import com.example.nhatro2.api.Api;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class DangThueFragment extends Fragment {
-
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
-
-    private String mParam1;
-    private String mParam2;
-
+    RecyclerView listRentRoom;
+    List<PhongModel> phongThue = new ArrayList<>();
     public DangThueFragment() {
     }
 
     public static DangThueFragment newInstance(String param1, String param2) {
         DangThueFragment fragment = new DangThueFragment();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
         return fragment;
     }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_dang_thue, container, false);
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        View view = inflater.inflate(R.layout.fragment_dang_thue,container,false);
+        listRentRoom = view.findViewById(R.id.listStayRoom);
+        listRentRoom.setLayoutManager(new LinearLayoutManager(view.getContext()));
+        listRentRoom.hasFixedSize();
+        listRentRoom.setNestedScrollingEnabled(false);
+
+        Api.api.getRentRoomList().enqueue(new Callback<List<PhongModel>>() {
+            @Override
+            public void onResponse(Call<List<PhongModel>> call, Response<List<PhongModel>> response) {
+                phongThue = response.body();
+                listRentRoom.setAdapter(new DangThueAdapter(view.getContext(),phongThue));
+            }
+
+            @Override
+            public void onFailure(Call<List<PhongModel>> call, Throwable t) {
+
+            }
+        });
+
+        return view;
     }
 }

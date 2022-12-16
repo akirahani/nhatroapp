@@ -1,6 +1,7 @@
 package com.example.nhatro2.phong;
 
 import android.content.Context;
+import android.text.Layout;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -15,27 +16,29 @@ import com.example.nhatro2.R;
 
 import java.util.List;
 
-public class PhongAdapter extends RecyclerView.Adapter<PhongAdapter.PhongViewHolder> {
+public class DangThueAdapter extends RecyclerView.Adapter<DangThueAdapter.DangThueViewHolder> {
 
+    List<PhongModel> phongThue;
     Context context;
-    List<PhongModel> phong;
-    ImageView tacVuTrong ;
-    public PhongAdapter(Context context, List<PhongModel> phong) {
+    ImageView tacVuPhongThue;
+
+    public DangThueAdapter(Context context, List<PhongModel> phongThue) {
+        this.phongThue = phongThue;
         this.context = context;
-        this.phong = phong;
     }
+
 
     @NonNull
     @Override
-    public PhongAdapter.PhongViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(context).inflate(R.layout.phong_trong_item,parent,false);
-        tacVuTrong = view.findViewById(R.id.tacVuTrong);
-        return new PhongViewHolder(view);
+    public DangThueAdapter.DangThueViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        View view = LayoutInflater.from(context).inflate(R.layout.phong_thue_item,parent,false);
+        tacVuPhongThue = view.findViewById(R.id.tacVuPhongThue);
+        return new DangThueViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull PhongAdapter.PhongViewHolder holder, int position) {
-        PhongModel data = phong.get(position);
+    public void onBindViewHolder(@NonNull DangThueAdapter.DangThueViewHolder holder, int position) {
+        PhongModel data = phongThue.get(position);
         int idPhong = data.getId();
         String ten = data.getTen();
         String day = data.getDay();
@@ -48,29 +51,25 @@ public class PhongAdapter extends RecyclerView.Adapter<PhongAdapter.PhongViewHol
         holder.ten.setText(ten);
         holder.day.setText(day);
         holder.tang.setText("-"+tang);
-
-        tacVuTrong.setOnClickListener(new View.OnClickListener() {
+        tacVuPhongThue.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
             }
         });
     }
 
     @Override
     public int getItemCount() {
-
-        return phong.size();
+        return phongThue.size();
     }
 
-    public static class PhongViewHolder extends RecyclerView.ViewHolder {
+    public class DangThueViewHolder extends RecyclerView.ViewHolder {
         TextView id,ten,vitri,trangthai,dichvu,datcoc,khach,day,tang;
-        public PhongViewHolder(@NonNull View itemView) {
+        public DangThueViewHolder(@NonNull View itemView) {
             super(itemView);
-            ten = itemView.findViewById(R.id.tenPhongTrong);
-            day = itemView.findViewById(R.id.dayTrong);
-            tang = itemView.findViewById(R.id.tangTrong);
+            ten = itemView.findViewById(R.id.tenPhongThue);
+            day = itemView.findViewById(R.id.dayPhongThue);
+            tang = itemView.findViewById(R.id.tangPhongThue);
         }
-
     }
 }

@@ -51,6 +51,7 @@
             android:id="@+id/listBookRoom"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/tHeadBookRoom"></androidx.recyclerview.widget.RecyclerView>
+            android:layout_below="@+id/tHeadBookRoom"
+            android:layout_marginBottom="17dp"></androidx.recyclerview.widget.RecyclerView>
     </RelativeLayout>
 </androidx.core.widget.NestedScrollView>

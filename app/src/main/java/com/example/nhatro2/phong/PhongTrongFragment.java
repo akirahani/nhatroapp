@@ -1,20 +1,31 @@
 package com.example.nhatro2.phong;
 
+import android.annotation.SuppressLint;
+import android.app.SearchManager;
+import android.content.Context;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.widget.SearchView;
+import androidx.core.view.MenuItemCompat;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 
 import com.example.nhatro2.R;
 import com.example.nhatro2.api.Api;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import retrofit2.Call;
@@ -23,7 +34,9 @@ import retrofit2.Response;
 
 public class PhongTrongFragment extends Fragment {
     RecyclerView listEmptyRoom ;
-    List<PhongModel> roomEmpty ;
+    List<PhongModel> roomEmpty = new ArrayList<>();
+    private SearchView searchView = null;
+    private SearchView.OnQueryTextListener queryTextListener;
     public PhongTrongFragment() {
 
     }
@@ -36,8 +49,10 @@ public class PhongTrongFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setHasOptionsMenu(true);
     }
 
+    @SuppressLint("MissingInflatedId")
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view =  inflater.inflate(R.layout.fragment_phong_trong, container, false);
@@ -50,7 +65,7 @@ public class PhongTrongFragment extends Fragment {
             @Override
             public void onResponse(Call<List<PhongModel>> call, Response<List<PhongModel>> response) {
                 roomEmpty = response.body();
-                Log.d("phong","phong"+roomEmpty);
+                listEmptyRoom.setAdapter(new PhongAdapter(view.getContext(),roomEmpty));
 
             }
 
@@ -59,7 +74,51 @@ public class PhongTrongFragment extends Fragment {
 
             }
         });
+
+
 //        listEmptyRoom.setAdapter(view.getContext());
         return view;
     }
+    @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        inflater.inflate(R.menu.search_room, menu);
+        MenuItem searchItem = menu.findItem(R.id.searchRoom);
+        SearchManager searchManager = (SearchManager) getActivity().getSystemService(Context.SEARCH_SERVICE);
+
+        if (searchItem != null) {
+            searchView = (SearchView) searchItem.getActionView();
+        }
+        if (searchView != null) {
+            searchView.setSearchableInfo(searchManager.getSearchableInfo(getActivity().getComponentName()));
+
+            queryTextListener = new SearchView.OnQueryTextListener() {
+                @Override
+                public boolean onQueryTextChange(String newText) {
+                    Log.i("onQueryTextChange", newText);
+                    return true;
+                }
+                @Override
+                public boolean onQueryTextSubmit(String query) {
+                    Log.i("onQueryTextSubmit", query);
+                    return true;
+                }
+            };
+            searchView.setOnQueryTextListener(queryTextListener);
+        }
+        super.onCreateOptionsMenu(menu, inflater);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.searchRoom:
+                return false;
+            default:
+                break;
+        }
+        searchView.setOnQueryTextListener(queryTextListener);
+        return super.onOptionsItemSelected(item);
+    }
+
+
 }
