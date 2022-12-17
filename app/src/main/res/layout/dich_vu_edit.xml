@@ -271,6 +271,7 @@
                     android:layout_marginBottom="21dp"
                     android:layout_below="@+id/giaThietBiEdit">
                     <androidx.cardview.widget.CardView
+                        android:layout_alignParentLeft="true"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         app:cardCornerRadius="6dp"
@@ -278,8 +279,8 @@
                         <TextView
                             android:background="@drawable/gradient_back"
                             android:id="@+id/backDichVu"
-                            android:paddingLeft="45dp"
-                            android:paddingRight="45dp"
+                            android:paddingLeft="35dp"
+                            android:paddingRight="35dp"
                             android:paddingTop="5dp"
                             android:paddingBottom="5dp"
                             android:textColor="@color/white"
@@ -300,8 +301,8 @@
                         <TextView
                             android:id="@+id/capNhat"
                             android:background="@drawable/gradient_add"
-                            android:paddingLeft="45dp"
-                            android:paddingRight="45dp"
+                            android:paddingLeft="35dp"
+                            android:paddingRight="35dp"
                             android:paddingTop="5dp"
                             android:paddingBottom="5dp"
                             android:textColor="@color/white"
