@@ -1,6 +1,7 @@
 package com.example.nhatro2.phong;
 
 import android.content.Context;
+import android.content.Intent;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -52,7 +53,8 @@ public class PhongAdapter extends RecyclerView.Adapter<PhongAdapter.PhongViewHol
         tacVuTrong.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                Intent intent = new Intent(context.getApplicationContext(),PhongEdit.class);
+                context.startActivity(intent);
             }
         });
     }

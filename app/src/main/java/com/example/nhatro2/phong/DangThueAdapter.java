@@ -1,6 +1,7 @@
 package com.example.nhatro2.phong;
 
 import android.content.Context;
+import android.content.Intent;
 import android.text.Layout;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -54,6 +55,8 @@ public class DangThueAdapter extends RecyclerView.Adapter<DangThueAdapter.DangTh
         tacVuPhongThue.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                Intent intent = new Intent(context.getApplicationContext(),PhongEdit.class);
+                context.startActivity(intent);
             }
         });
     }

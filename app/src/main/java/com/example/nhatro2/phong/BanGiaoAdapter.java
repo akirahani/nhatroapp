@@ -2,6 +2,7 @@ package com.example.nhatro2.phong;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.Intent;
 import android.media.Image;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -56,7 +57,8 @@ public class BanGiaoAdapter extends RecyclerView.Adapter<BanGiaoAdapter.BanGiaoV
         tacVuBanGiao.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                Intent intent = new Intent(context.getApplicationContext(),PhongEdit.class);
+                context.startActivity(intent);
             }
         });
     }
