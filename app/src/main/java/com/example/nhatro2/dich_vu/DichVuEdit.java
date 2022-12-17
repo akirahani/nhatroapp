@@ -66,7 +66,6 @@ public class DichVuEdit extends AppCompatActivity {
                         startActivity(intent);
                         shp = view.getContext().getSharedPreferences("user", MODE_PRIVATE);
                         shp.edit().clear().commit();
-//                        view.getContext();
                     }
                 });
                 // NO
