@@ -130,7 +130,7 @@ public class DichVuAdd extends AppCompatActivity {
             FrameLayout imageServiceAdd = findViewById(R.id.imageServiceAdd);
             ImageView iv = new ImageView(this);
             iv.setBackgroundResource(R.drawable.dichvu);
-            FrameLayout.LayoutParams params = new FrameLayout.LayoutParams(145,145);
+            FrameLayout.LayoutParams params = new FrameLayout.LayoutParams(134,134);
             params.leftMargin = 46;
             params.topMargin = 18;
             imageServiceAdd.addView(iv, params);
