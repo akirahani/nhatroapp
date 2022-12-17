@@ -79,12 +79,10 @@ public class DichVuAdapter extends RecyclerView.Adapter<DichVuAdapter.DichVuView
                     @Override
                     public void onClick(DialogInterface dialogInterface, int id) {
                         id = dataDV.getId();
-
                         Api.api.delDichVu(id).enqueue(new Callback<DichVuModel>() {
                             @Override
                             public void onResponse(Call <DichVuModel> call, Response <DichVuModel> response){
                                 DichVuModel dichVu = response.body();
-                                Log.d("id",""+response);
                                 context.startActivity(new Intent(context.getApplicationContext(), DichVu.class));
                                 Toast.makeText(view.getContext(), "Xóa thành công", Toast.LENGTH_SHORT).show();
                             }
