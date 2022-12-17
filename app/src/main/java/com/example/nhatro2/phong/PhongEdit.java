@@ -93,7 +93,7 @@ public class PhongEdit extends AppCompatActivity {
         FrameLayout imageFrame = findViewById(R.id.tieuDePhongTro);
         ImageView iv = new ImageView(this);
         iv.setBackgroundResource(R.drawable.phongtro);
-        FrameLayout.LayoutParams params = new FrameLayout.LayoutParams(145, 145);
+        FrameLayout.LayoutParams params = new FrameLayout.LayoutParams(134, 134);
         params.leftMargin = 46;
         params.topMargin = 18;
         imageFrame.addView(iv, params);

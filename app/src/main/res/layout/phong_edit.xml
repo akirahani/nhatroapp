@@ -82,9 +82,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/header"
         android:background="@color/white"
-
         android:orientation="horizontal">
-
         <LinearLayout
             android:id="@+id/rowTitleRoom"
             android:layout_width="match_parent"
@@ -94,14 +92,15 @@
 
             <FrameLayout
                 android:id="@+id/tieuDePhongTro"
-                android:layout_width="72dp"
-                android:layout_height="72dp">
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" >
                 ></FrameLayout>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:paddingTop="18dp"
+                android:paddingLeft="8dp"
                 android:text="quản lí phòng trọ"
                 android:textAllCaps="true"
                 android:textColor="@color/textQuanLyChung"
@@ -113,7 +112,7 @@
             android:layout_width="match_parent"
             android:layout_height="30dp"
             android:layout_below="@+id/rowTitleRoom"
-            android:layout_marginTop="-25dp"
+            android:layout_marginTop="-15dp"
             android:background="@color/khungNgoai" />
 
     </RelativeLayout>

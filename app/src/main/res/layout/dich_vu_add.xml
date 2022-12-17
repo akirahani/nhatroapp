@@ -92,8 +92,8 @@
             android:layout_height="wrap_content">
             <FrameLayout
                 android:id="@+id/imageServiceAdd"
-                android:layout_width="72dp"
-                android:layout_height="72dp">
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" >
             </FrameLayout>
 
             <TextView
@@ -111,9 +111,9 @@
         <TextView
             android:layout_below="@+id/rowServiceAdd"
             android:background="@color/khungNgoai"
-            android:layout_marginTop="-25dp"
+            android:layout_marginTop="-10dp"
             android:layout_width="match_parent"
-            android:layout_height="25dp" />
+            android:layout_height="20dp" />
     </RelativeLayout>
     <!-- mục thiết bị   -->
     <LinearLayout

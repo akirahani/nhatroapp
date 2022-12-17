@@ -72,7 +72,7 @@ public interface Api {
                                    @Field("ten") String ten,
                                    @Field("gia") int gia);
     // Xóa dịch vụ
-    @POST ("/nhatro2/admin/api/dichvu/del.php")
+    @POST ("/nhatro/admin/api/dichvu/del.php")
     @FormUrlEncoded
     Call <DichVuModel> delDichVu (@Field("id") int id);
 }

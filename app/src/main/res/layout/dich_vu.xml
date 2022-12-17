@@ -98,14 +98,14 @@
 
                 <FrameLayout
                     android:id="@+id/imageDichVu"
-                    android:layout_width="72dp"
-                    android:layout_height="72dp" />
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:paddingLeft="8dp"
-                    android:paddingTop="18dp"
+                    android:paddingTop="15dp"
                     android:text="quản lí dịch vụ nhà trọ"
                     android:textAllCaps="true"
                     android:textColor="@color/textQuanLyChung"
@@ -115,9 +115,9 @@
             <TextView
                 android:layout_below="@id/rowTitleService"
                 android:layout_width="match_parent"
-                android:layout_height="25dp"
+                android:layout_height="20dp"
                 android:background="@color/khungNgoai"
-                android:layout_marginTop="-20dp"
+                android:layout_marginTop="-10dp"
                 >
             </TextView>
         </RelativeLayout>
@@ -125,7 +125,7 @@
         <!-- mục thiết bị   -->
         <RelativeLayout
             android:id="@+id/tieuDeThietBi"
-            android:layout_marginTop="-5dp"
+            android:layout_marginTop="9dp"
             android:layout_below="@+id/tieuDeDichVu"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content">
