@@ -21,4 +21,6 @@
     <color name="tabActive">#1338BD</color>
     <color name="phongThue">#FFEFEF</color>
     <color name="phongBanGiao">#FFF9DE</color>
+    <color name="tabBanGiao">#FFB21C</color>
+    <color name="tabThue">#B71616</color>
 </resources>

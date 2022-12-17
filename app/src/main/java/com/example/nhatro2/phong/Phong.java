@@ -103,13 +103,13 @@ public class Phong extends AppCompatActivity {
                 switch (position) {
                     case 0:
                     default:
-                        tab.setText("Phòng trống");
+                        tab.setCustomView(R.layout.tab_trong);
                         break;
                     case 1:
-                        tab.setText("Bàn giao");
+                        tab.setCustomView(R.layout.tab_ban_giao);
                         break;
                     case 2:
-                        tab.setText("Đang thuê");
+                        tab.setCustomView(R.layout.tab_thue);
                         break;
                 }
             }
