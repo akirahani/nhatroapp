@@ -9,6 +9,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.nhatro2.HomeActivity;
@@ -22,7 +23,7 @@ import retrofit2.http.POST;
 import retrofit2.http.Tag;
 
 public class MainActivity extends AppCompatActivity {
-    Button btnLogin;
+    TextView btnLogin;
     EditText username,password;
     SharedPreferences shp ;
     SharedPreferences.Editor shpEdit;
