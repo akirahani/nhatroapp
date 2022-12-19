@@ -54,6 +54,11 @@ public class PhongAdapter extends RecyclerView.Adapter<PhongAdapter.PhongViewHol
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(context.getApplicationContext(),PhongEdit.class);
+                intent.putExtra("idPhong",idPhong);
+                intent.putExtra("tenPhong",ten);
+                intent.putExtra("day",day);
+                intent.putExtra("tang",tang);
+                intent.putExtra("trangthai",trangthai);
                 context.startActivity(intent);
             }
         });

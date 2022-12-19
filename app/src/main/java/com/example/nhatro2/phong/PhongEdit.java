@@ -4,12 +4,17 @@ import android.annotation.SuppressLint;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Color;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.RadioButton;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -32,6 +37,10 @@ public class PhongEdit extends AppCompatActivity {
     ViewPager2 tabContentViewRoom;
     TabLayout tabRoom;
     RelativeLayout tieuDePhongTro;
+    LinearLayout rowFirstEditRoom;
+    RadioButton trong,thue,bangiao;
+    TextView tenPhongEdit,vitriPhongEdit;
+    int trangthai;
     @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -98,20 +107,44 @@ public class PhongEdit extends AppCompatActivity {
         params.topMargin = 18;
         imageFrame.addView(iv, params);
 
+        //
+        trong = findViewById(R.id.trong);
+        bangiao = findViewById(R.id.bangiao);
+        thue = findViewById(R.id.thue);
+        rowFirstEditRoom = findViewById(R.id.rowFirstEditRoom);
+        Bundle bundle = getIntent().getExtras();
+        if(bundle == null){
+            Toast.makeText(this,"Có lỗi !",Toast.LENGTH_SHORT).show();
+        }else{
+            int idPhong = bundle.getInt("idPhong");
+            int tang = bundle.getInt("tang");
+            trangthai = bundle.getInt("trangthai");
+            String tenPhong = bundle.getString("tenPhong");
+            String dayPhong = bundle.getString("day");
+            tenPhongEdit = findViewById(R.id.tenPhongEdit);
+            vitriPhongEdit = findViewById(R.id.vitriPhongEdit);
+            tenPhongEdit.setText("Tên: "+tenPhong);
+            vitriPhongEdit.setText("Vị trí: Dãy "+dayPhong+" - Tầng "+tang);
+
+            switch(trangthai) {
+                case 1:
+                    trong.setChecked(true);
+                    int color1 = Color.parseColor("#F4F7FF");
+                    rowFirstEditRoom.setBackgroundColor(color1);
+                    break;
+                case 2:
+                    thue.setChecked(true);
+                    int color2 = Color.parseColor("#FFF7F7");
+                    rowFirstEditRoom.setBackgroundColor(color2);
+                    break;
+                case 3:
+                    bangiao.setChecked(true);
+                    int color3 = Color.parseColor("#FFFDF5");
+                    rowFirstEditRoom.setBackgroundColor(color3);
+                    break;
+            }
+        }
     }
-//    public void onRadioButtonClicked(View view) {
-//        boolean checked = ((RadioButton) view).isChecked();
-//
-//        switch(view.getId()) {
-//            case R.id.radio_pirates:
-//                if (checked)
-//                    // Pirates are the best
-//                    break;
-//            case R.id.radio_ninjas:
-//                if (checked)
-//                    // Ninjas rule
-//                    break;
-//        }
-//    }
+
 
 }

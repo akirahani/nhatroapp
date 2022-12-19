@@ -23,7 +23,7 @@
     <color name="phongBanGiao">#FFF9DE</color>
     <color name="tabBanGiao">#FFB21C</color>
     <color name="tabThue">#B71616</color>
-    <color name="formEditRoom">#F4F7FF</color>
     <color name="loginButton">#354B9C</color>
     <color name="inputLogin">#F9F9FA</color>
+    #FFFDF5
 </resources>
