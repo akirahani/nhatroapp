@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -27,8 +28,16 @@ import androidx.viewpager2.widget.ViewPager2;
 import com.example.nhatro2.HomeActivity;
 import com.example.nhatro2.MainActivity;
 import com.example.nhatro2.R;
+import com.example.nhatro2.api.Api;
 import com.google.android.material.tabs.TabLayout;
 import com.google.android.material.tabs.TabLayoutMediator;
+
+import java.util.List;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.http.POST;
 
 public class PhongEdit extends AppCompatActivity {
     ImageView closeFormEdit,thoat,logo,imagePhongTro;
@@ -39,7 +48,8 @@ public class PhongEdit extends AppCompatActivity {
     RelativeLayout tieuDePhongTro;
     LinearLayout rowFirstEditRoom;
     RadioButton trong,thue,bangiao;
-    TextView tenPhongEdit,vitriPhongEdit;
+    TextView tenPhongEdit,vitriPhongEdit,editRoomButton;
+    EditText tienPhong,daidien,dienthoai;
     int trangthai;
     @SuppressLint("MissingInflatedId")
     @Override
@@ -107,24 +117,41 @@ public class PhongEdit extends AppCompatActivity {
         params.topMargin = 18;
         imageFrame.addView(iv, params);
 
-        //
+        // Ánh xạ thông tin phòng edit
         trong = findViewById(R.id.trong);
         bangiao = findViewById(R.id.bangiao);
         thue = findViewById(R.id.thue);
+        tienPhong = findViewById(R.id.tienPhong);
         rowFirstEditRoom = findViewById(R.id.rowFirstEditRoom);
+        daidien = findViewById(R.id.daiDien);
+        dienthoai = findViewById(R.id.dienThoai);
+        tenPhongEdit = findViewById(R.id.tenPhongEdit);
+        vitriPhongEdit = findViewById(R.id.vitriPhongEdit);
+        tienPhong = findViewById(R.id.tienPhong);
+
+        // Lấy thông tin gửi từ adapter
         Bundle bundle = getIntent().getExtras();
+        int idPhong = bundle.getInt("idPhong");
+        int tang = bundle.getInt("tang");
+        trangthai = bundle.getInt("trangthai");
+        int giaPhong = bundle.getInt("gia");
+        String tenPhong = bundle.getString("tenPhong");
+        String dayPhong = bundle.getString("day");
+        String daiDien = bundle.getString("daidien");
+        String dienThoai = bundle.getString("dienthoai");
         if(bundle == null){
             Toast.makeText(this,"Có lỗi !",Toast.LENGTH_SHORT).show();
         }else{
-            int idPhong = bundle.getInt("idPhong");
-            int tang = bundle.getInt("tang");
-            trangthai = bundle.getInt("trangthai");
-            String tenPhong = bundle.getString("tenPhong");
-            String dayPhong = bundle.getString("day");
-            tenPhongEdit = findViewById(R.id.tenPhongEdit);
-            vitriPhongEdit = findViewById(R.id.vitriPhongEdit);
             tenPhongEdit.setText("Tên: "+tenPhong);
             vitriPhongEdit.setText("Vị trí: Dãy "+dayPhong+" - Tầng "+tang);
+            tienPhong.setText(""+giaPhong);
+            if(trangthai == 2 || trangthai == 3){
+                daidien.setText(daiDien);
+                dienthoai.setText(dienThoai);
+            }else{
+                daidien.setText("");
+                dienthoai.setText("");
+            }
 
             switch(trangthai) {
                 case 1:
@@ -144,6 +171,34 @@ public class PhongEdit extends AppCompatActivity {
                     break;
             }
         }
+        // Ánh xạ cho việc cập nhật phòng
+        editRoomButton = findViewById(R.id.editRoomButton);
+        editRoomButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String tenDaiDien = daidien.getText().toString();
+                String dienThoai = dienthoai.getText().toString();
+                Api.api.editPhong(idPhong,trangthai,tenDaiDien,dienThoai).enqueue(new Callback<PhongModel>() {
+                    @Override
+                    public void onResponse(Call<PhongModel> call, Response<PhongModel> response) {
+                        PhongModel phongEdit = response.body();
+                        if(phongEdit.getId() == idPhong){
+                            Toast.makeText(PhongEdit.this,"Cập nhật phòng thành công !", Toast.LENGTH_SHORT).show();
+                            Intent intent = new Intent(PhongEdit.this, Phong.class);
+                            startActivity(intent);
+                        }else{
+                            Toast.makeText(PhongEdit.this,"Cập nhật phòng không thành công !", Toast.LENGTH_SHORT).show();
+                        }
+
+                    }
+
+                    @Override
+                    public void onFailure(Call<PhongModel> call, Throwable t) {
+                        Toast.makeText(PhongEdit.this,"Cập nhật phòng không thành công !", Toast.LENGTH_SHORT).show();
+                    }
+                });
+            }
+        });
     }
 
 

@@ -132,7 +132,6 @@ public class DichVuEdit extends AppCompatActivity {
                     @Override
                     public void onResponse(Call<DichVuModel> call, Response<DichVuModel> response) {
                         DichVuModel dichVuModel = response.body();
-                        Log.d("tahg0","giatri"+dichVuModel);
                         if(dichVuModel.getId() == id_send) {
                             Intent intent = new Intent(DichVuEdit.this, DichVu.class);
                             startActivity(intent);

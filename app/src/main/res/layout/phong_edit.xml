@@ -355,7 +355,7 @@
                             android:textStyle="bold"></TextView>
 
                         <EditText
-                            android:id="@+id/tenThietBiEdit"
+                            android:id="@+id/dienThoai"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:background="@null"></EditText>

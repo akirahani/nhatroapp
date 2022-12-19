@@ -8,6 +8,36 @@ public class PhongModel {
     private String dichvu;
     private int datcoc;
     private int khach;
+    private String day;
+    private int tang;
+
+    public String getDaidien() {
+        return daidien;
+    }
+
+    public void setDaidien(String daidien) {
+        this.daidien = daidien;
+    }
+
+    public String getDienthoai() {
+        return dienthoai;
+    }
+
+    public void setDienthoai(String dienthoai) {
+        this.dienthoai = dienthoai;
+    }
+
+    public int getGia() {
+        return gia;
+    }
+
+    public void setGia(int gia) {
+        this.gia = gia;
+    }
+
+    private String daidien;
+    private String dienthoai;
+    private int gia;
 
     public String getDay() {
         return day;
@@ -25,12 +55,8 @@ public class PhongModel {
         this.tang = tang;
     }
 
-    private String day;
-    private int tang;
-
     //contrucstor
-
-    public PhongModel(int id, String ten, int trangthai, int vitri, String dichvu, int datcoc, int khach, String day, int tang) {
+    public PhongModel(int id, String ten, int trangthai, int vitri, String dichvu, int datcoc, int khach, String day, int tang, String daidien, String dienthoai, int gia) {
         this.id = id;
         this.ten = ten;
         this.trangthai = trangthai;
@@ -40,6 +66,9 @@ public class PhongModel {
         this.khach = khach;
         this.day = day;
         this.tang = tang;
+        this.daidien = daidien;
+        this.dienthoai = dienthoai;
+        this.gia = gia;
     }
 
     // setter
