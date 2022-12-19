@@ -45,6 +45,7 @@ public class PhongAdapter extends RecyclerView.Adapter<PhongAdapter.PhongViewHol
         String dichvu = data.getDichvu();
         int datcoc = data.getDatcoc();
         int khach = data.getKhach();
+        int gia = data.getGia();
 
         holder.ten.setText(ten);
         holder.day.setText(day);
@@ -54,6 +55,12 @@ public class PhongAdapter extends RecyclerView.Adapter<PhongAdapter.PhongViewHol
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(context.getApplicationContext(),PhongEdit.class);
+                intent.putExtra("idPhong",idPhong);
+                intent.putExtra("tenPhong",ten);
+                intent.putExtra("day",day);
+                intent.putExtra("tang",tang);
+                intent.putExtra("trangthai",trangthai);
+                intent.putExtra("gia",gia);
                 context.startActivity(intent);
             }
         });

@@ -131,7 +131,7 @@
             android:id="@+id/rowFirstEditRoom"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/formEditRoom"
+
             android:orientation="vertical">
 
             <FrameLayout
@@ -149,7 +149,6 @@
                         android:id="@+id/tenPhongEdit"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Tên : A103"
                         android:textAllCaps="true"
 
                         android:textColor="@color/black"
@@ -160,7 +159,6 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_below="@+id/tenPhongEdit"
-                        android:text="Vị trí: Dãy A - Tầng 1"
                         android:textAllCaps="true"
                         android:textColor="@color/black"
                         android:textStyle="bold" />
@@ -209,19 +207,19 @@
                         <RadioButton
                             android:id="@+id/trong"
                             android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
+                            android:layout_height="25dp"
                             android:text="Phòng trống" />
 
                         <RadioButton
                             android:id="@+id/bangiao"
                             android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
+                            android:layout_height="25dp"
                             android:text="Phòng bàn giao" />
 
                         <RadioButton
                             android:id="@+id/thue"
                             android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
+                            android:layout_height="25dp"
                             android:text="Phòng đang thuê" />
                     </RadioGroup>
                 </LinearLayout>
@@ -357,7 +355,7 @@
                             android:textStyle="bold"></TextView>
 
                         <EditText
-                            android:id="@+id/tenThietBiEdit"
+                            android:id="@+id/dienThoai"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:background="@null"></EditText>

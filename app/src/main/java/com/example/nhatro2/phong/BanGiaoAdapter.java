@@ -48,7 +48,10 @@ public class BanGiaoAdapter extends RecyclerView.Adapter<BanGiaoAdapter.BanGiaoV
         int trangthai = data.getTrangthai();
         String dichvu = data.getDichvu();
         int datcoc = data.getDatcoc();
+        int gia = data.getGia();
         int khach = data.getKhach();
+        String daidien = data.getDaidien();
+        String dienthoai = data.getDienthoai();
 
         holder.ten.setText(ten);
         holder.day.setText(day);
@@ -58,6 +61,14 @@ public class BanGiaoAdapter extends RecyclerView.Adapter<BanGiaoAdapter.BanGiaoV
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(context.getApplicationContext(),PhongEdit.class);
+                intent.putExtra("idPhong",idPhong);
+                intent.putExtra("tenPhong",ten);
+                intent.putExtra("day",day);
+                intent.putExtra("tang",tang);
+                intent.putExtra("gia",gia);
+                intent.putExtra("trangthai",trangthai);
+                intent.putExtra("daidien",daidien);
+                intent.putExtra("dienthoai",dienthoai);
                 context.startActivity(intent);
             }
         });

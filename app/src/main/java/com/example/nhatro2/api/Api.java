@@ -46,7 +46,6 @@ public interface Api {
     Call<List<PhongModel>> getRentRoomList();
     // Khách thuê
     @GET ("/nhatro/admin/api/khach/list.php")
-
     Call<List<ThanhVienModel>> getKhachList();
 
     @POST ("/nhatro/admin/api/phong/add.php")
@@ -54,6 +53,12 @@ public interface Api {
     Call <POST> addPhong(@Field("tenphong") String tenphong,
                          @Field("trangthai") int trangthai,
                          @Field("vitri") int vitri);
+    @POST ("/nhatro/admin/api/phong/edit.php")
+    @FormUrlEncoded
+    Call <PhongModel> editPhong(@Field("id") int id,
+                          @Field("trangthai") int trangthai ,
+                          @Field("daidien") String daidien,
+                          @Field("dienthoai") String dienthoai);
     //Dịch vụ
     @GET ("/nhatro/admin/api/dichvu/list.php")
     Call<List<DichVuModel>> getDichVuList();
