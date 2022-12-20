@@ -144,6 +144,6 @@
             android:layout_below="@+id/tabRoom">
 
         </androidx.viewpager2.widget.ViewPager2>
-
     </RelativeLayout>
+
 </androidx.core.widget.NestedScrollView>

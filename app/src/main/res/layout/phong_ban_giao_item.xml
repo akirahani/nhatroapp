@@ -45,6 +45,13 @@
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true">
             <ImageView
+                android:id="@+id/taoHopDong"
+                android:layout_width="wrap_content"
+                android:layout_marginRight="10dp"
+                android:layout_height="wrap_content"
+                android:src="@drawable/add_hopdong"
+                android:background="@drawable/preferedbackground"/>
+            <ImageView
                 android:id="@+id/tacVuBanGiao"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

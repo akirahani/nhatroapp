@@ -54,5 +54,27 @@
             android:layout_height="match_parent"
             android:layout_below="@+id/tHeadEmptyRoom"
             android:layout_marginBottom="17dp"></androidx.recyclerview.widget.RecyclerView>
+        <RelativeLayout
+            android:id="@+id/allEmpty"
+            android:background="@color/white"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:layout_alignParentBottom="true"
+            android:animateLayoutChanges="true">
+            <LinearLayout
+                android:id="@+id/slideUp"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:orientation="vertical"
+                android:background="@color/loginButton"
+
+                >
+                <TextView android:id="@+id/text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Title"/>
+            </LinearLayout>
+        </RelativeLayout>
     </RelativeLayout>
 </androidx.core.widget.NestedScrollView>
