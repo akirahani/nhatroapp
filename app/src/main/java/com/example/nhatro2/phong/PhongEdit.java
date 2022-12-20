@@ -22,6 +22,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager2.widget.ViewPager2;
 
@@ -50,6 +51,7 @@ public class PhongEdit extends AppCompatActivity {
     RadioButton trong,thue,bangiao;
     TextView tenPhongEdit,vitriPhongEdit,editRoomButton;
     EditText tienPhong,daidien,dienthoai;
+    CardView rowDaiDien,rowDienThoai;
     int trangthai;
     @SuppressLint("MissingInflatedId")
     @Override
@@ -118,6 +120,8 @@ public class PhongEdit extends AppCompatActivity {
         imageFrame.addView(iv, params);
 
         // Ánh xạ thông tin phòng edit
+        rowDaiDien = findViewById(R.id.rowDaiDien);
+        rowDienThoai = findViewById(R.id.rowDienThoai);
         trong = findViewById(R.id.trong);
         bangiao = findViewById(R.id.bangiao);
         thue = findViewById(R.id.thue);
@@ -159,25 +163,23 @@ public class PhongEdit extends AppCompatActivity {
                     int color1 = Color.parseColor("#F4F7FF");
                     rowFirstEditRoom.setBackgroundColor(color1);
                     thue.setVisibility(View.GONE);
-                    Log.d("","a"+daidien.getVisibility());
-                    if (daidien.getVisibility() == View.VISIBLE) {
-                        daidien.setVisibility(View.GONE);
-                    }
-
                     break;
                 case 2:
                     thue.setChecked(true);
                     int color2 = Color.parseColor("#FFF7F7");
                     rowFirstEditRoom.setBackgroundColor(color2);
+                    bangiao.setVisibility(View.GONE);
                     break;
                 case 3:
                     bangiao.setChecked(true);
                     int color3 = Color.parseColor("#FFFDF5");
+                    thue.setVisibility(View.GONE);
                     rowFirstEditRoom.setBackgroundColor(color3);
                     break;
             }
         }
-       
+
+
         // Ánh xạ cho việc cập nhật phòng
         editRoomButton = findViewById(R.id.editRoomButton);
         editRoomButton.setOnClickListener(new View.OnClickListener() {
@@ -191,7 +193,6 @@ public class PhongEdit extends AppCompatActivity {
                     trangThaiPost = 1;
                 }else if(bangiao.isChecked()){
                     trangThaiPost = 3;
-                    daidien.setVisibility(View.VISIBLE);
                 }else if(thue.isChecked()){
                     trangThaiPost = 2;
                 }
