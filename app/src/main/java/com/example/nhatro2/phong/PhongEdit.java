@@ -158,6 +158,12 @@ public class PhongEdit extends AppCompatActivity {
                     trong.setChecked(true);
                     int color1 = Color.parseColor("#F4F7FF");
                     rowFirstEditRoom.setBackgroundColor(color1);
+                    thue.setVisibility(View.GONE);
+                    Log.d("","a"+daidien.getVisibility());
+                    if (daidien.getVisibility() == View.VISIBLE) {
+                        daidien.setVisibility(View.GONE);
+                    }
+
                     break;
                 case 2:
                     thue.setChecked(true);
@@ -171,14 +177,26 @@ public class PhongEdit extends AppCompatActivity {
                     break;
             }
         }
+       
         // Ánh xạ cho việc cập nhật phòng
         editRoomButton = findViewById(R.id.editRoomButton);
         editRoomButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                int trangThaiPost = 0;
                 String tenDaiDien = daidien.getText().toString();
                 String dienThoai = dienthoai.getText().toString();
-                Api.api.editPhong(idPhong,trangthai,tenDaiDien,dienThoai).enqueue(new Callback<PhongModel>() {
+                
+                if(trong.isChecked()){
+                    trangThaiPost = 1;
+                }else if(bangiao.isChecked()){
+                    trangThaiPost = 3;
+                    daidien.setVisibility(View.VISIBLE);
+                }else if(thue.isChecked()){
+                    trangThaiPost = 2;
+                }
+
+                Api.api.editPhong(idPhong,trangthai,trangThaiPost,tenDaiDien,dienThoai).enqueue(new Callback<PhongModel>() {
                     @Override
                     public void onResponse(Call<PhongModel> call, Response<PhongModel> response) {
                         PhongModel phongEdit = response.body();
@@ -191,7 +209,6 @@ public class PhongEdit extends AppCompatActivity {
                         }
 
                     }
-
                     @Override
                     public void onFailure(Call<PhongModel> call, Throwable t) {
                         Toast.makeText(PhongEdit.this,"Cập nhật phòng không thành công !", Toast.LENGTH_SHORT).show();

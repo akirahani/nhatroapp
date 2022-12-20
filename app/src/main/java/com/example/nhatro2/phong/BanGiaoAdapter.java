@@ -40,7 +40,6 @@ public class BanGiaoAdapter extends RecyclerView.Adapter<BanGiaoAdapter.BanGiaoV
     @Override
     public void onBindViewHolder(@NonNull BanGiaoAdapter.BanGiaoViewHolder holder, int position) {
         PhongModel data = phongBanGiao.get(position);
-        Log.d("ten",""+data.getTen());
         int idPhong = data.getId();
         String ten = data.getTen();
         String day = data.getDay();
