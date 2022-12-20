@@ -259,6 +259,7 @@
                             android:id="@+id/tienCoc"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
+                            android:maxHeight="28dp"
                             android:background="@null"></EditText>
                     </LinearLayout>
                 </androidx.cardview.widget.CardView>
@@ -291,6 +292,7 @@
                         android:id="@+id/tienPhong"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:maxHeight="28dp"
                         android:background="@null"></EditText>
                 </LinearLayout>
                 </androidx.cardview.widget.CardView>
@@ -325,6 +327,7 @@
                             android:id="@+id/daiDien"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
+                            android:maxHeight="28dp"
                             android:background="@null"></EditText>
                     </LinearLayout>
                 </androidx.cardview.widget.CardView>
@@ -337,7 +340,6 @@
                     android:layout_marginRight="6dp"
                     android:layout_marginTop="9dp"
                     android:layout_gravity="center"
-                    android:layout_marginBottom="18dp"
                     app:cardCornerRadius="6dp">
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -358,6 +360,7 @@
                             android:id="@+id/dienThoai"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
+                            android:maxHeight="28dp"
                             android:background="@null"></EditText>
                 </LinearLayout>
                 </androidx.cardview.widget.CardView>
@@ -368,6 +371,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
+                android:layout_marginTop="18dp"
                 android:layout_marginBottom="18dp"
                 app:cardCornerRadius="6dp">
                 <TextView

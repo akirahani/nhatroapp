@@ -56,7 +56,7 @@ public interface Api {
     @POST ("/nhatro/admin/api/phong/edit.php")
     @FormUrlEncoded
     Call <PhongModel> editPhong(@Field("id") int id,
-                          @Field("trangthai") int trangthai ,
+                          @Field("trangthai") int trangthai, @Field("trangthaipost") int trangthaipost ,
                           @Field("daidien") String daidien,
                           @Field("dienthoai") String dienthoai);
     //Dịch vụ
