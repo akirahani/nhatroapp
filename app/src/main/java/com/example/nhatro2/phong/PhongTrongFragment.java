@@ -35,6 +35,7 @@ import retrofit2.Response;
 public class PhongTrongFragment extends Fragment {
     RecyclerView listEmptyRoom ;
     List<PhongModel> roomEmpty = new ArrayList<>();
+    LinearLayout slideUp;
     private SearchView searchView = null;
     private SearchView.OnQueryTextListener queryTextListener;
     public PhongTrongFragment() {
@@ -79,6 +80,7 @@ public class PhongTrongFragment extends Fragment {
 //        listEmptyRoom.setAdapter(view.getContext());
         return view;
     }
+
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
         inflater.inflate(R.menu.search_room, menu);
@@ -119,6 +121,8 @@ public class PhongTrongFragment extends Fragment {
         searchView.setOnQueryTextListener(queryTextListener);
         return super.onOptionsItemSelected(item);
     }
+
+
 
 
 }
