@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -7,9 +7,10 @@
     android:background="@color/khungNgoai">
 
     <RelativeLayout
-        android:background="@color/khungNgoai"
+        android:id="@+id/khungNgoai"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="@color/khungNgoai"
         android:orientation="vertical"
         tools:context=".dich_vu.DichVu">
         <!--header-->
@@ -22,6 +23,7 @@
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
+
                 <LinearLayout
                     android:id="@+id/rightToolbar"
                     android:layout_width="wrap_content"
@@ -84,42 +86,44 @@
         <!-- title -->
         <RelativeLayout
             android:id="@+id/tren"
-            android:layout_below="@+id/header"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_below="@+id/header"
             android:background="@color/white"
 
             android:orientation="horizontal">
+
             <LinearLayout
                 android:id="@+id/rowTitleRoom"
-                android:elevation="20dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:elevation="20dp"
                 android:orientation="horizontal">
+
                 <FrameLayout
                     android:id="@+id/tieuDePhongTro"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" >
-                   >
-                </FrameLayout>
+                    android:layout_height="wrap_content">
+                    ></FrameLayout>
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textStyle="bold"
-                    android:paddingTop="18dp"
                     android:paddingLeft="8dp"
+                    android:paddingTop="18dp"
                     android:text="quản lí phòng trọ"
                     android:textAllCaps="true"
                     android:textColor="@color/textQuanLyChung"
-                    android:textSize="18dp" />
+                    android:textSize="18dp"
+                    android:textStyle="bold" />
             </LinearLayout>
+
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="30dp"
                 android:layout_below="@+id/rowTitleRoom"
                 android:layout_marginTop="-15dp"
-                android:background="@color/khungNgoai"
-                />
+                android:background="@color/khungNgoai" />
 
         </RelativeLayout>
         <!-- tab room -->
@@ -128,14 +132,12 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/tren"
-            app:tabBackground="@drawable/tab_selector"
-            app:tabIndicatorHeight="0dp"
-            app:tabTextColor="@color/white"
-            android:background="@color/khungNgoai"
             android:layout_marginTop="-10dp"
             android:layout_marginBottom="-15dp"
-            >
-        </com.google.android.material.tabs.TabLayout>
+            android:background="@color/khungNgoai"
+            app:tabBackground="@drawable/tab_selector"
+            app:tabIndicatorHeight="0dp"
+            app:tabTextColor="@color/white"></com.google.android.material.tabs.TabLayout>
 
         <androidx.viewpager2.widget.ViewPager2
             android:id="@+id/tabContentViewRoom"
@@ -146,4 +148,4 @@
         </androidx.viewpager2.widget.ViewPager2>
     </RelativeLayout>
 
-</androidx.core.widget.NestedScrollView>
+</RelativeLayout>

@@ -12,7 +12,11 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.transition.Slide;
+import android.transition.Transition;
+import android.transition.TransitionManager;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -24,6 +28,7 @@ import android.widget.LinearLayout;
 
 import com.example.nhatro2.R;
 import com.example.nhatro2.api.Api;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -35,7 +40,7 @@ import retrofit2.Response;
 public class PhongTrongFragment extends Fragment {
     RecyclerView listEmptyRoom ;
     List<PhongModel> roomEmpty = new ArrayList<>();
-    LinearLayout slideUp;
+    BottomNavigationView slideUp;
     private SearchView searchView = null;
     private SearchView.OnQueryTextListener queryTextListener;
     public PhongTrongFragment() {
@@ -61,12 +66,25 @@ public class PhongTrongFragment extends Fragment {
         listEmptyRoom.setLayoutManager(new LinearLayoutManager(view.getContext()));
         listEmptyRoom.hasFixedSize();
         listEmptyRoom.setNestedScrollingEnabled(false);
-
         Api.api.getPhongList().enqueue(new Callback<List<PhongModel>>() {
             @Override
             public void onResponse(Call<List<PhongModel>> call, Response<List<PhongModel>> response) {
                 roomEmpty = response.body();
-                listEmptyRoom.setAdapter(new PhongAdapter(view.getContext(),roomEmpty));
+                listEmptyRoom.setAdapter(new PhongAdapter(view.getContext(), roomEmpty, new PhongTrongItemClick() {
+                    @Override
+                    public void itemOnClick(int count) {
+                        //Click show hide slide
+                        View redLayout = view.findViewById(R.id.slideUp);
+                        ViewGroup parent = view.findViewById(R.id.parent);
+
+                        Transition transition = new Slide(Gravity.BOTTOM);
+                        transition.setDuration(600);
+                        transition.addTarget(R.id.slideUp);
+
+                        TransitionManager.beginDelayedTransition(parent, transition);
+                        redLayout.setVisibility((count == 0) ? View.GONE : View.VISIBLE);
+                    }
+                }));
 
             }
 
@@ -76,8 +94,8 @@ public class PhongTrongFragment extends Fragment {
             }
         });
 
-
-//        listEmptyRoom.setAdapter(view.getContext());
+        slideUp = view.findViewById(R.id.slideUp);
+        slideUp.setVisibility(View.INVISIBLE);
         return view;
     }
 
