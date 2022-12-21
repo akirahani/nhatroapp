@@ -1,80 +1,85 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical"
     tools:context=".phong.PhongTrongFragment">
 
     <RelativeLayout
-        android:background="@color/white"
+        android:id="@+id/tHeadEmptyRoom"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="25dp"
+        android:layout_marginTop="12dp"
+        android:layout_marginRight="25dp">
 
-        <RelativeLayout
-            android:id="@+id/tHeadEmptyRoom"
-            android:layout_width="match_parent"
+        <TextView
+            android:id="@+id/tenEmptyRoom"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="25dp"
-            android:layout_marginTop="12dp"
-            android:layout_marginRight="25dp">
+            android:text="Tên"
+            android:textColor="@color/black"
+            android:textStyle="bold"></TextView>
 
-            <TextView
-                android:id="@+id/tenEmptyRoom"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Tên"
-                android:textColor="@color/black"
-                android:textStyle="bold"></TextView>
+        <TextView
+            android:id="@+id/dayTangEmptyRoom"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:text="Dãy-Tầng"
+            android:textColor="@color/black"
+            android:textStyle="bold"></TextView>
 
-            <TextView
-                android:id="@+id/dayTangEmptyRoom"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerHorizontal="true"
-                android:text="Dãy-Tầng"
-                android:textColor="@color/black"
-                android:textStyle="bold"></TextView>
+        <TextView
+            android:id="@+id/tacVuEmptyRoom"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:paddingRight="10dp"
+            android:text="Tác vụ"
+            android:textColor="@color/black"
+            android:textStyle="bold"></TextView>
+    </RelativeLayout>
 
-            <TextView
-                android:id="@+id/tacVuEmptyRoom"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentRight="true"
-                android:paddingRight="10dp"
-                android:text="Tác vụ"
-                android:textColor="@color/black"
-                android:textStyle="bold"></TextView>
-        </RelativeLayout>
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:minHeight="300dp">
 
         <androidx.recyclerview.widget.RecyclerView
-            android:background="@color/white"
             android:id="@+id/listEmptyRoom"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_below="@+id/tHeadEmptyRoom"
-            android:layout_marginBottom="17dp"></androidx.recyclerview.widget.RecyclerView>
-        <RelativeLayout
-            android:id="@+id/allEmpty"
-            android:background="@color/white"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical"
-            android:layout_alignParentBottom="true"
-            android:animateLayoutChanges="true">
-            <LinearLayout
-                android:id="@+id/slideUp"
-                android:layout_width="match_parent"
-                android:layout_height="200dp"
-                android:orientation="vertical"
-                android:background="@color/loginButton"
+            android:layout_marginBottom="17dp"
+            android:background="@color/white"></androidx.recyclerview.widget.RecyclerView>
+    </ScrollView>
 
-                >
-                <TextView android:id="@+id/text"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Title"/>
-            </LinearLayout>
-        </RelativeLayout>
+    <RelativeLayout
+        android:id="@+id/allEmpty"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:animateLayoutChanges="true"
+        android:background="@color/white"
+        android:orientation="vertical"
+        tools:ignore="MergeRootFrame">
+
+        <LinearLayout
+            android:id="@+id/slideUp"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:background="@color/loginButton"
+            android:orientation="vertical"
+
+            >
+
+            <TextView
+                android:id="@+id/text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Title" />
+        </LinearLayout>
     </RelativeLayout>
-</androidx.core.widget.NestedScrollView>
+</RelativeLayout>

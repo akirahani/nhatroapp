@@ -46,7 +46,7 @@ public class PhongAdapter extends RecyclerView.Adapter<PhongAdapter.PhongViewHol
         View view = LayoutInflater.from(context).inflate(R.layout.phong_trong_item,parent,false);
         tacVuTrong = view.findViewById(R.id.tacVuTrong);
         checkMulti = view.findViewById(R.id.checkMulti);
-        slideUp = view.findViewById(R.id.slideUp);
+//        slideUp = view.findViewById(R.id.slideUp);
 
         isUp = false;
         return new PhongViewHolder(view);
