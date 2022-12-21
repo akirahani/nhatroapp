@@ -15,13 +15,14 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.nhatro2.R;
+import com.example.nhatro2.hop_dong.HopDongAdd;
 
 import java.util.List;
 
 public class BanGiaoAdapter extends RecyclerView.Adapter<BanGiaoAdapter.BanGiaoViewHolder> {
     List<PhongModel> phongBanGiao;
     Context context;
-    ImageView tacVuBanGiao;
+    ImageView tacVuBanGiao,taoHopDong;
 
     public BanGiaoAdapter(Context context, List<PhongModel> phongBanGiao) {
         this.phongBanGiao = phongBanGiao;
@@ -34,6 +35,7 @@ public class BanGiaoAdapter extends RecyclerView.Adapter<BanGiaoAdapter.BanGiaoV
     public BanGiaoAdapter.BanGiaoViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(context).inflate(R.layout.phong_ban_giao_item,parent,false);
         tacVuBanGiao = view.findViewById(R.id.tacVuBanGiao);
+        taoHopDong = view.findViewById(R.id.taoHopDong);
         return new BanGiaoViewHolder(view);
     }
 
@@ -68,6 +70,16 @@ public class BanGiaoAdapter extends RecyclerView.Adapter<BanGiaoAdapter.BanGiaoV
                 intent.putExtra("trangthai",trangthai);
                 intent.putExtra("daidien",daidien);
                 intent.putExtra("dienthoai",dienthoai);
+                context.startActivity(intent);
+            }
+        });
+
+        taoHopDong.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(context.getApplicationContext(), HopDongAdd.class);
+                intent.putExtra("idPhong",idPhong);
+                Log.d("",""+idPhong);
                 context.startActivity(intent);
             }
         });
