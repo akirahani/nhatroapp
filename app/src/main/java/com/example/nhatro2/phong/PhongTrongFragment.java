@@ -3,12 +3,14 @@ package com.example.nhatro2.phong;
 import android.annotation.SuppressLint;
 import android.app.SearchManager;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.widget.SearchView;
 import androidx.core.view.MenuItemCompat;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -26,9 +28,13 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 
+import com.example.nhatro2.HomeFragment;
+import com.example.nhatro2.MenuFragment;
+import com.example.nhatro2.NotificationFragment;
 import com.example.nhatro2.R;
 import com.example.nhatro2.api.Api;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.android.material.navigation.NavigationBarView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -38,11 +44,12 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class PhongTrongFragment extends Fragment {
-    RecyclerView listEmptyRoom ;
+    RecyclerView listEmptyRoom;
     List<PhongModel> roomEmpty = new ArrayList<>();
     BottomNavigationView slideUp;
     private SearchView searchView = null;
     private SearchView.OnQueryTextListener queryTextListener;
+
     public PhongTrongFragment() {
 
     }
@@ -61,7 +68,7 @@ public class PhongTrongFragment extends Fragment {
     @SuppressLint("MissingInflatedId")
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view =  inflater.inflate(R.layout.fragment_phong_trong, container, false);
+        View view = inflater.inflate(R.layout.fragment_phong_trong, container, false);
         listEmptyRoom = view.findViewById(R.id.listEmptyRoom);
         listEmptyRoom.setLayoutManager(new LinearLayoutManager(view.getContext()));
         listEmptyRoom.hasFixedSize();
@@ -96,6 +103,20 @@ public class PhongTrongFragment extends Fragment {
 
         slideUp = view.findViewById(R.id.slideUp);
         slideUp.setVisibility(View.INVISIBLE);
+        slideUp.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
+            @SuppressLint("NonConstantResourceId")
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                switch (item.getItemId())
+                {
+                    case R.id.multiroom:
+                        Intent intent = new Intent(getContext(), MultiRoom.class);
+                        startActivity(intent);
+                        return true;
+                }
+                return false;
+            }
+        });
         return view;
     }
 
@@ -117,6 +138,7 @@ public class PhongTrongFragment extends Fragment {
                     Log.i("onQueryTextChange", newText);
                     return true;
                 }
+
                 @Override
                 public boolean onQueryTextSubmit(String query) {
                     Log.i("onQueryTextSubmit", query);
@@ -139,8 +161,6 @@ public class PhongTrongFragment extends Fragment {
         searchView.setOnQueryTextListener(queryTextListener);
         return super.onOptionsItemSelected(item);
     }
-
-
 
 
 }

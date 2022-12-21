@@ -25,12 +25,19 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.nhatro2.R;
+import com.example.nhatro2.api.Api;
+import com.example.nhatro2.hop_dong.HopDongAdd;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.http.POST;
 
 public class PhongAdapter extends RecyclerView.Adapter<PhongAdapter.PhongViewHolder> {
 
@@ -93,8 +100,10 @@ public class PhongAdapter extends RecyclerView.Adapter<PhongAdapter.PhongViewHol
             //Set color model
             if (lst.contains(idPhong)) {
                 holder.ten.setTextColor(Color.rgb(46, 184, 75));
+                holder.checkMulti.setChecked(true);
             } else {
                 holder.ten.setTextColor(Color.rgb(0, 0, 0));
+                holder.checkMulti.setChecked(false);
             }
         } else {
             List<Integer> lst = null;
@@ -141,11 +150,9 @@ public class PhongAdapter extends RecyclerView.Adapter<PhongAdapter.PhongViewHol
                     notifyDataSetChanged();
                 } else {
                     //Convert string to List
-
                     if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.N) {
                         arrInt = Arrays.stream(listRoom.split(",")).map(Integer::parseInt).collect(Collectors.toList());
                     }
-
                     if (arrInt.contains(idPhong)) {
                         //Xóa khỏi list
                         arrInt.remove(Integer.valueOf(idPhong));
@@ -173,7 +180,17 @@ public class PhongAdapter extends RecyclerView.Adapter<PhongAdapter.PhongViewHol
                 }
                 listRoom = sharedPhong.getString("items", "");
                 phongClick.itemOnClick(arrInt.size());
+                Api.api.phongChecked(listRoom).enqueue(new Callback<POST>() {
+                    @Override
+                    public void onResponse(Call<POST> call, Response<POST> response) {
+                        Log.d("",""+response.body());
+                    }
 
+                    @Override
+                    public void onFailure(Call<POST> call, Throwable t) {
+
+                    }
+                });
             }
         });
     }

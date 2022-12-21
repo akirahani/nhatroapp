@@ -16,7 +16,14 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
-            android:name=".HopDongAdd"
+            android:name=".phong.MultiRoom"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".hop_dong.HopDongAdd"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
