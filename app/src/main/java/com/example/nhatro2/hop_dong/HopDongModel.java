@@ -1,0 +1,4 @@
+package com.example.nhatro2.hop_dong;
+
+public class HopDongModel {
+}

@@ -3,6 +3,7 @@ package com.example.nhatro2.hop_dong;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
+import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager2.widget.ViewPager2;
 
@@ -26,18 +27,30 @@ import com.example.nhatro2.HomeActivity;
 import com.example.nhatro2.MainActivity;
 import com.example.nhatro2.R;
 import com.example.nhatro2.api.Api;
+import com.example.nhatro2.dich_vu.DichVu;
+import com.example.nhatro2.dich_vu.DichVuAdapter;
+import com.example.nhatro2.dich_vu.DichVuModel;
 import com.example.nhatro2.phong.PhongEdit;
 import com.google.android.material.tabs.TabLayout;
 
+import java.util.List;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.http.POST;
+
 public class HopDongAdd extends AppCompatActivity {
 
-    ImageView thoat,logo;
+    ImageView thoat, logo;
     SharedPreferences shp;
     RelativeLayout tieuDePhongTro;
     LinearLayout rowFirstEditRoom;
-
-
+    RecyclerView listThietBi;
+    ThietBiAddAdapter dichVuAdapter;
+    List<DichVuModel> dichVu;
     int trangthai;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -65,7 +78,7 @@ public class HopDongAdd extends AppCompatActivity {
                 builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
-                        Toast.makeText(HopDongAdd.this,"Out", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(HopDongAdd.this, "Out", Toast.LENGTH_SHORT).show();
                         Intent intent = new Intent(HopDongAdd.this, MainActivity.class);
                         startActivity(intent);
                         shp = view.getContext().getSharedPreferences("user", MODE_PRIVATE);
@@ -76,7 +89,7 @@ public class HopDongAdd extends AppCompatActivity {
                 // NO
                 builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
-                        Toast.makeText(HopDongAdd.this,"Stay", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(HopDongAdd.this, "Stay", Toast.LENGTH_SHORT).show();
                         //  Cancel
                         dialog.cancel();
                     }
@@ -98,8 +111,43 @@ public class HopDongAdd extends AppCompatActivity {
         imageFrame.addView(iv, params);
 
         Bundle bundle = getIntent().getExtras();
-        int phong = bundle.getInt("idPhong");
+        int idPhong = bundle.getInt("idPhong");
+
+        listThietBi = findViewById(R.id.thietbiCheck);
+        listThietBi.setLayoutManager(new GridLayoutManager(HopDongAdd.this, 3));
+        listThietBi.hasFixedSize();
+        listThietBi.setNestedScrollingEnabled(false);
+
+        //
+        Api.api.hopDongPhong(idPhong).enqueue(new Callback<POST>() {
+            @Override
+            public void onResponse(Call<POST> call, Response<POST> response) {
+                Log.d("kq", "" + response.body());
+            }
 
 
+            @Override
+            public void onFailure(Call<POST> call, Throwable t) {
+
+            }
+        });
+        // Thiết bị
+        Api.api.getDichVuList().enqueue(new Callback<List<DichVuModel>>() {
+            @Override
+            public void onResponse(Call<List<DichVuModel>> call, Response<List<DichVuModel>> response) {
+                if (!response.isSuccessful()) {
+                    Toast.makeText(HopDongAdd.this, response.code(), Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                dichVu = response.body();
+                dichVuAdapter = new ThietBiAddAdapter(HopDongAdd.this, dichVu);
+                listThietBi.setAdapter(dichVuAdapter);
+            }
+
+            @Override
+            public void onFailure(Call<List<DichVuModel>> call, Throwable t) {
+
+            }
+        });
     }
 }

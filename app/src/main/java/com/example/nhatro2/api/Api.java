@@ -47,7 +47,7 @@ public interface Api {
     // Phòng chọn multi
     @POST ("/nhatro/admin/api/phong/multi_check.php")
     @FormUrlEncoded
-    Call<PhongModel> phongChecked(@Field("idPhong") String idPhong);
+    Call<List<PhongModel>> phongChecked(@Field("idPhong") String idPhong);
     // Khách thuê
     @GET ("/nhatro/admin/api/khach/list.php")
     Call<List<ThanhVienModel>> getKhachList();
@@ -57,12 +57,18 @@ public interface Api {
     Call <POST> addPhong(@Field("tenphong") String tenphong,
                          @Field("trangthai") int trangthai,
                          @Field("vitri") int vitri);
+    // Cập nhật phòng
     @POST ("/nhatro/admin/api/phong/edit.php")
     @FormUrlEncoded
     Call <PhongModel> editPhong(@Field("id") int id,
                           @Field("trangthai") int trangthai, @Field("trangthaipost") int trangthaipost ,
                           @Field("daidien") String daidien,
                           @Field("dienthoai") String dienthoai);
+    // Thêm hợp đồng
+    @POST ("/nhatro/admin/api/hop-dong/phong.php")
+    @FormUrlEncoded
+    Call <POST> hopDongPhong(@Field("id") int id);
+
     //Dịch vụ
     @GET ("/nhatro/admin/api/dichvu/list.php")
     Call<List<DichVuModel>> getDichVuList();
