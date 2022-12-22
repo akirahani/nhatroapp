@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/parent"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white"
     android:orientation="vertical"
     tools:context=".phong.PhongTrongFragment">
 
@@ -43,43 +44,20 @@
             android:textStyle="bold"></TextView>
     </RelativeLayout>
 
-    <ScrollView
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/listEmptyRoom"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:minHeight="300dp">
+        android:layout_below="@+id/tHeadEmptyRoom"
+        android:background="@color/white"
+        android:paddingBottom="60dp"></androidx.recyclerview.widget.RecyclerView>
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/listEmptyRoom"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_below="@+id/tHeadEmptyRoom"
-            android:layout_marginBottom="17dp"
-            android:background="@color/white"></androidx.recyclerview.widget.RecyclerView>
-    </ScrollView>
-
-    <RelativeLayout
-        android:id="@+id/allEmpty"
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/slideUp"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:animateLayoutChanges="true"
+        android:layout_height="60dp"
+        android:layout_alignParentBottom="true"
         android:background="@color/white"
         android:orientation="vertical"
-        tools:ignore="MergeRootFrame">
-
-        <LinearLayout
-            android:id="@+id/slideUp"
-            android:layout_width="match_parent"
-            android:layout_height="200dp"
-            android:background="@color/loginButton"
-            android:orientation="vertical"
-
-            >
-
-            <TextView
-                android:id="@+id/text"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Title" />
-        </LinearLayout>
-    </RelativeLayout>
+        app:menu="@menu/multi_room"></com.google.android.material.bottomnavigation.BottomNavigationView>
 </RelativeLayout>

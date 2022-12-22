@@ -44,6 +44,10 @@ public interface Api {
     // Phòng thuê
     @GET ("/nhatro2/admin/api/phong/rent.php")
     Call<List<PhongModel>> getRentRoomList();
+    // Phòng chọn multi
+    @POST ("/nhatro2/admin/api/phong/multi_check.php")
+    @FormUrlEncoded
+    Call <PhongModel> phongChecked(@Field("idPhong") String idPhong);
     // Khách thuê
     @GET ("/nhatro2/admin/api/khach/list.php")
     Call<List<ThanhVienModel>> getKhachList();
