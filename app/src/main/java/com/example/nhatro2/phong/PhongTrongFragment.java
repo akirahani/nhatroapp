@@ -4,6 +4,7 @@ import android.annotation.SuppressLint;
 import android.app.SearchManager;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -47,6 +48,7 @@ public class PhongTrongFragment extends Fragment {
     RecyclerView listEmptyRoom;
     List<PhongModel> roomEmpty = new ArrayList<>();
     BottomNavigationView slideUp;
+    String listRoom;
     private SearchView searchView = null;
     private SearchView.OnQueryTextListener queryTextListener;
 
@@ -110,7 +112,10 @@ public class PhongTrongFragment extends Fragment {
                 switch (item.getItemId())
                 {
                     case R.id.multiroom:
+                        SharedPreferences sharedPhong = getContext().getSharedPreferences("idPhong", Context.MODE_PRIVATE);
+                        listRoom = sharedPhong.getString("items", "");
                         Intent intent = new Intent(getContext(), MultiRoom.class);
+                        intent.putExtra("idRoom",""+listRoom);
                         startActivity(intent);
                         return true;
                 }

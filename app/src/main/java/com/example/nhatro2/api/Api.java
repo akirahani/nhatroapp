@@ -47,7 +47,7 @@ public interface Api {
     // Phòng chọn multi
     @POST ("/nhatro/admin/api/phong/multi_check.php")
     @FormUrlEncoded
-    Call <POST> phongChecked(@Field("idPhong") String idPhong);
+    Call<PhongModel> phongChecked(@Field("idPhong") String idPhong);
     // Khách thuê
     @GET ("/nhatro/admin/api/khach/list.php")
     Call<List<ThanhVienModel>> getKhachList();

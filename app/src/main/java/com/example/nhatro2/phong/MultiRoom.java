@@ -30,18 +30,22 @@ public class MultiRoom extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_multi_room);
-        SharedPreferences sharedPhong = getSharedPreferences("idPhong", Context.MODE_PRIVATE);
-        listRoom = sharedPhong.getString("items", "");
-        Api.api.phongChecked(listRoom).enqueue(new Callback<POST>() {
-            @Override
-            public void onResponse(Call<POST> call, Response<POST> response) {
-                Log.d("",""+response.body());
-            }
-
-            @Override
-            public void onFailure(Call<POST> call, Throwable t) {
-
-            }
-        });
+//        SharedPreferences sharedPhong = getSharedPreferences("idPhong", Context.MODE_PRIVATE);
+//        listRoom = sharedPhong.getString("items", "");
+        Bundle bundle = getIntent().getExtras();
+        listRoom = bundle.getString("idRoom");
+        Log.d("tag",""+listRoom);
+//        Api.api.phongChecked(listRoom).enqueue(new Callback<PhongModel>() {
+//            @Override
+//            public void onResponse(Call<PhongModel> call, Response<PhongModel> response) {
+//                PhongModel phongCheck = response.body();
+//                Log.d("",""+phongCheck.getTen());
+//            }
+//
+//            @Override
+//            public void onFailure(Call<PhongModel> call, Throwable t) {
+//
+//            }
+//        });
     }
 }
