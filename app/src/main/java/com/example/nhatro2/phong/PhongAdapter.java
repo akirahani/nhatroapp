@@ -180,17 +180,6 @@ public class PhongAdapter extends RecyclerView.Adapter<PhongAdapter.PhongViewHol
                 }
                 listRoom = sharedPhong.getString("items", "");
                 phongClick.itemOnClick(arrInt.size());
-                Api.api.phongChecked(listRoom).enqueue(new Callback<POST>() {
-                    @Override
-                    public void onResponse(Call<POST> call, Response<POST> response) {
-                        Log.d("",""+response.body());
-                    }
-
-                    @Override
-                    public void onFailure(Call<POST> call, Throwable t) {
-
-                    }
-                });
             }
         });
     }
