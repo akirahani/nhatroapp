@@ -56,7 +56,7 @@ public class MultiRoom extends AppCompatActivity {
                 int sizePhong = phongCheck.size();
                 for (int i = 0; i < sizePhong; i++) {
                     tenPhongchecked = phongCheck.get(i).toString();
-                    
+
                     nameRoomChecked.append(tenPhongchecked);
                 }
 
