@@ -97,23 +97,23 @@ public class DichVu extends AppCompatActivity {
         listThietBi.hasFixedSize();
         listThietBi.setNestedScrollingEnabled(false);
 
-        Api.api.getDichVuList().enqueue(new Callback<List<DichVuModel>>() {
-            @Override
-            public void onResponse(Call<List<DichVuModel>> call, Response<List<DichVuModel>> response) {
-                if (!response.isSuccessful()) {
-                    Toast.makeText(DichVu.this,response.code(), Toast.LENGTH_SHORT).show();
-                    return;
+            Api.api.getDichVuList().enqueue(new Callback<List<DichVuModel>>() {
+                @Override
+                public void onResponse(Call<List<DichVuModel>> call, Response<List<DichVuModel>> response) {
+                    if (!response.isSuccessful()) {
+                        Toast.makeText(DichVu.this,response.code(), Toast.LENGTH_SHORT).show();
+                        return;
+                    }
+                    dichVu = response.body();
+                    dichVuAdapter = new DichVuAdapter(DichVu.this,dichVu);
+                    listThietBi.setAdapter(dichVuAdapter);
                 }
-                dichVu = response.body();
-                dichVuAdapter = new DichVuAdapter(DichVu.this,dichVu);
-                listThietBi.setAdapter(dichVuAdapter);
-            }
 
-            @Override
-            public void onFailure(Call<List<DichVuModel>> call, Throwable t) {
+                @Override
+                public void onFailure(Call<List<DichVuModel>> call, Throwable t) {
 
-            }
-        });
+                }
+            });
 
         //Thêm mới
         them = findViewById(R.id.themDichVu);
