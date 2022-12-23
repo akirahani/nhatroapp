@@ -6,21 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".phong.MultiRoom">
-    <TextView
-        android:id="@+id/titleRoomCheck"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textStyle="bold"
-        android:textColor="@color/black"
-        android:text="Khách đặt cọc các phòng">
-    </TextView>
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/roomChecked"
-        android:layout_below="@+id/titleRoomCheck"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-    </androidx.recyclerview.widget.RecyclerView>
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
@@ -30,12 +16,32 @@
         android:layout_marginTop="5dp"
         android:layout_marginRight="14dp"
         app:cardCornerRadius="10dp">
-
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@color/cardThietBi"
             android:orientation="vertical">
+            <TextView
+                android:paddingLeft="9dp"
+                android:paddingTop="11dp"
+                android:id="@+id/titleRoomCheck"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                android:text="Khách đặt cọc các phòng">
+            </TextView>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/roomChecked"
+                android:layout_below="@+id/titleRoomCheck"
+                android:layout_marginLeft="14dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginRight="14dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+            </androidx.recyclerview.widget.RecyclerView>
+
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -139,7 +145,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:background="@null"
-                        android:inputType="number"></EditText>
+                        android:inputType="date"></EditText>
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
 
@@ -171,8 +177,7 @@
                         android:id="@+id/noiCapDaiDienText"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:background="@null"
-                        android:inputType="number"></EditText>
+                        android:background="@null"></EditText>
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
 
@@ -205,7 +210,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:background="@null"
-                        android:inputType="number"></EditText>
+                        android:inputType="date"></EditText>
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
 
@@ -242,13 +247,62 @@
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
 
-            <RelativeLayout
+            <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/giaThietBiEdit"
-                android:layout_marginBottom="19dp">
-            </RelativeLayout>
+                android:layout_below="@+id/sdtDaiDien"
+                android:layout_marginLeft="14dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginRight="14dp"
+                app:cardCornerRadius="8dp">
 
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/white"
+                    android:orientation="horizontal"
+                    android:paddingTop="8dp"
+                    android:paddingBottom="8dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingLeft="6dp"
+                        android:text="Tiền cọc: "
+                        android:textColor="@color/black"></TextView>
+
+                    <EditText
+                        android:id="@+id/tienCoc"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@null"
+                        android:inputType="number"></EditText>
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    app:cardCornerRadius="6dp"
+                    android:layout_marginBottom="19dp"
+                    android:layout_marginTop="19dp">
+                    <TextView
+                        android:id="@+id/capNhatMulti"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:text="Cập nhật"
+                        android:background="@drawable/gradient_button"
+                        android:paddingLeft="54dp"
+                        android:paddingTop="5dp"
+                        android:paddingRight="54dp"
+                        android:paddingBottom="5dp"
+                        android:textAllCaps="true"
+                        android:textColor="@color/white"
+                        android:textStyle="bold"></TextView>
+                </androidx.cardview.widget.CardView>=
         </LinearLayout>
     </androidx.cardview.widget.CardView>
 </LinearLayout>

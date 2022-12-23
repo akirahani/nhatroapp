@@ -138,10 +138,10 @@ public class PhongAdapter extends RecyclerView.Adapter<PhongAdapter.PhongViewHol
             @Override
             public void onClick(View view) {
                 List<Integer> arrInt = new ArrayList<>();
+                List<Integer> arrStatus = new ArrayList<>();
                 //Xử lý lưu mảng số nguyên sản phẩm
                 if (listRoom.equals("")) {
                     //Tạo mảng
-                    Log.d("1",""+arrInt.get(0));
                     arrInt.add(idPhong);
                     //Convert list to string
                     String convertString = null;
@@ -156,12 +156,11 @@ public class PhongAdapter extends RecyclerView.Adapter<PhongAdapter.PhongViewHol
                     if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.N) {
                         arrInt = Arrays.stream(listRoom.split(",")).map(Integer::parseInt).collect(Collectors.toList());
                     }
-                    Log.d("2",""+arrInt.get(0));
+
                     if (arrInt.contains(idPhong)) {
 
                         //Xóa khỏi list
                         arrInt.remove(Integer.valueOf(idPhong));
-                        Log.d("3",""+arrInt.get(0));
                         //Convert list to string
                         String convertString = null;
                         if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.N) {
@@ -173,7 +172,6 @@ public class PhongAdapter extends RecyclerView.Adapter<PhongAdapter.PhongViewHol
                     } else {
                         //Xử lý lưu thêm
                         arrInt.add(idPhong);
-                        Log.d("4",""+arrInt.get(0));
                         //Convert list to string
                         String convertString = null;
                         if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.N) {
@@ -186,6 +184,7 @@ public class PhongAdapter extends RecyclerView.Adapter<PhongAdapter.PhongViewHol
 
                 }
                 listRoom = sharedPhong.getString("items", "");
+//                roomEditor.remove("items");
                 phongClick.itemOnClick(arrInt.size());
 
                 Api.api.phongChecked(listRoom).enqueue(new Callback<List<PhongModel>>() {

@@ -1,6 +1,7 @@
 package com.example.nhatro2.phong;
 
 import android.annotation.SuppressLint;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -181,6 +182,9 @@ public class PhongEdit extends AppCompatActivity {
         }
 
         // Ánh xạ cho việc cập nhật phòng
+        SharedPreferences sharedPhong = getSharedPreferences("idPhong", Context.MODE_PRIVATE);
+        SharedPreferences.Editor roomEditor = sharedPhong.edit();
+        String listRoom = sharedPhong.getString("items", "");
         editRoomButton = findViewById(R.id.editRoomButton);
         editRoomButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -197,11 +201,18 @@ public class PhongEdit extends AppCompatActivity {
                     trangThaiPost = 2;
                 }
 
+                int finalTrangThaiPost = trangThaiPost;
                 Api.api.editPhong(idPhong, trangthai, trangThaiPost, tenDaiDien, dienThoai).enqueue(new Callback<PhongModel>() {
                     @Override
                     public void onResponse(Call<PhongModel> call, Response<PhongModel> response) {
+                        if( finalTrangThaiPost ==3 || finalTrangThaiPost == 2 ){
+                            roomEditor.remove("items");
+                            roomEditor.commit();
+                        }
                         PhongModel phongEdit = response.body();
+
                         if (phongEdit.getId() == idPhong) {
+
                             Toast.makeText(PhongEdit.this, "Cập nhật phòng thành công !", Toast.LENGTH_SHORT).show();
                             Intent intent = new Intent(PhongEdit.this, Phong.class);
                             startActivity(intent);
