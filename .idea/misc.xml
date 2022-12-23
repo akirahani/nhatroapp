@@ -3,8 +3,13 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/nhatro/app/src/main/res/layout/activity_main.xml" value="0.19067028985507245" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/nhatro/app/src/main/res/layout/activity_multi_room.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/Admin/AndroidStudioProjects/nhatro/app/src/main/res/layout/fragment_home.xml" value="0.264" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/nhatro/app/src/main/res/layout/fragment_phong_trong.xml" value="0.264" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/nhatro/app/src/main/res/layout/multi_room.xml" value="0.14635416666666667" />
         <entry key="..\:/Users/Admin/AndroidStudioProjects/nhatro/app/src/main/res/layout/phong_tro.xml" value="0.19067028985507245" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/nhatro/app/src/main/res/layout/room_checked_item.xml" value="0.14635416666666667" />
         <entry key="..\:/Users/Admin/AndroidStudioProjects/nhatro/app/src/main/res/layout/tab_ban_giao.xml" value="0.19067028985507245" />
         <entry key="..\:/Users/Admin/AndroidStudioProjects/nhatro/app/src/main/res/layout/tab_thue.xml" value="0.19067028985507245" />
         <entry key="..\:/Users/Admin/AndroidStudioProjects/nhatro/app/src/main/res/layout/tab_trong.xml" value="0.19067028985507245" />
