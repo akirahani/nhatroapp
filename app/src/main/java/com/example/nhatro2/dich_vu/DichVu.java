@@ -35,13 +35,14 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class DichVu extends AppCompatActivity {
-    ImageView thoat,them,logo,imageDichVu;
+    ImageView thoat, them, logo, imageDichVu;
     SharedPreferences shp;
     RelativeLayout tieuDeDichVu;
     RecyclerView listThietBi;
     TextView tenThietBi, giaThietBi, tacVu;
     List<DichVuModel> dichVu;
     DichVuAdapter dichVuAdapter;
+
     @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -69,7 +70,7 @@ public class DichVu extends AppCompatActivity {
                 builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
-                        Toast.makeText(DichVu.this,"Out", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(DichVu.this, "Out", Toast.LENGTH_SHORT).show();
                         Intent intent = new Intent(DichVu.this, MainActivity.class);
                         startActivity(intent);
                         shp = view.getContext().getSharedPreferences("user", MODE_PRIVATE);
@@ -80,7 +81,7 @@ public class DichVu extends AppCompatActivity {
                 // NO
                 builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
-                        Toast.makeText(DichVu.this,"Stay", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(DichVu.this, "Stay", Toast.LENGTH_SHORT).show();
                         //  Cancel
                         dialog.cancel();
                     }
@@ -97,30 +98,30 @@ public class DichVu extends AppCompatActivity {
         listThietBi.hasFixedSize();
         listThietBi.setNestedScrollingEnabled(false);
 
-            Api.api.getDichVuList().enqueue(new Callback<List<DichVuModel>>() {
-                @Override
-                public void onResponse(Call<List<DichVuModel>> call, Response<List<DichVuModel>> response) {
-                    if (!response.isSuccessful()) {
-                        Toast.makeText(DichVu.this,response.code(), Toast.LENGTH_SHORT).show();
-                        return;
-                    }
-                    dichVu = response.body();
-                    dichVuAdapter = new DichVuAdapter(DichVu.this,dichVu);
-                    listThietBi.setAdapter(dichVuAdapter);
+        Api.api.getDichVuList().enqueue(new Callback<List<DichVuModel>>() {
+            @Override
+            public void onResponse(Call<List<DichVuModel>> call, Response<List<DichVuModel>> response) {
+                if (!response.isSuccessful()) {
+                    Toast.makeText(DichVu.this, response.code(), Toast.LENGTH_SHORT).show();
+                    return;
                 }
+                dichVu = response.body();
+                dichVuAdapter = new DichVuAdapter(DichVu.this, dichVu);
+                listThietBi.setAdapter(dichVuAdapter);
+            }
 
-                @Override
-                public void onFailure(Call<List<DichVuModel>> call, Throwable t) {
+            @Override
+            public void onFailure(Call<List<DichVuModel>> call, Throwable t) {
 
-                }
-            });
+            }
+        });
 
         //Thêm mới
         them = findViewById(R.id.themDichVu);
         them.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(DichVu.this,DichVuAdd.class);
+                Intent intent = new Intent(DichVu.this, DichVuAdd.class);
                 startActivity(intent);
                 finish();
             }
@@ -129,7 +130,7 @@ public class DichVu extends AppCompatActivity {
         FrameLayout imageFrame = findViewById(R.id.imageDichVu);
         ImageView iv = new ImageView(this);
         iv.setBackgroundResource(R.drawable.dichvu);
-        FrameLayout.LayoutParams params = new FrameLayout.LayoutParams(134,134);
+        FrameLayout.LayoutParams params = new FrameLayout.LayoutParams(134, 134);
         params.leftMargin = 46;
         params.topMargin = 18;
         imageFrame.addView(iv, params);

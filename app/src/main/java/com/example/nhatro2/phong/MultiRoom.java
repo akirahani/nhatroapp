@@ -1,6 +1,7 @@
 package com.example.nhatro2.phong;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -31,8 +32,10 @@ public class MultiRoom extends AppCompatActivity {
 
     SharedPreferences sharedPhong;
     String listRoom, tenPhongchecked;
+    List<PhongModel> phongCheckedList;
     TextView nameRoomChecked;
     RecyclerView phongList;
+
     @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,27 +47,25 @@ public class MultiRoom extends AppCompatActivity {
         Bundle bundle = getIntent().getExtras();
         listRoom = bundle.getString("idRoom");
         nameRoomChecked = findViewById(R.id.nameRoomChecked);
-        phongList.setLayoutManager(new LinearLayoutManager(MultiRoom.this));
+        phongList = findViewById(R.id.roomChecked);
+        phongList.setLayoutManager(new GridLayoutManager(MultiRoom.this, 3));
         phongList.hasFixedSize();
         phongList.setNestedScrollingEnabled(false);
-
 
         Api.api.phongChecked(listRoom).enqueue(new Callback<List<PhongModel>>() {
             @Override
             public void onResponse(Call<List<PhongModel>> call, Response<List<PhongModel>> response) {
                 List<PhongModel> phongCheck = response.body();
+                phongCheckedList = response.body();
                 int sizePhong = phongCheck.size();
                 for (int i = 0; i < sizePhong; i++) {
                     tenPhongchecked = phongCheck.get(i).toString();
-                    
-                    nameRoomChecked.append(tenPhongchecked);
+                    phongList.setAdapter(new MultiRoomAdapter(MultiRoom.this, phongCheckedList));
                 }
-
             }
-
             @Override
             public void onFailure(Call<List<PhongModel>> call, Throwable t) {
-                Log.d("",""+t.toString());
+                Log.d("", "" + t.toString());
             }
         });
     }
