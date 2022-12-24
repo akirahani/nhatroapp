@@ -67,6 +67,7 @@ public class DangThueAdapter extends RecyclerView.Adapter<DangThueAdapter.DangTh
                 intent.putExtra("gia",gia);
                 intent.putExtra("daidien",daidien);
                 intent.putExtra("dienthoai",dienthoai);
+                intent.putExtra("datcoc",datcoc);
                 context.startActivity(intent);
             }
         });
