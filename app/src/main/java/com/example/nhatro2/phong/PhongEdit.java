@@ -1,6 +1,7 @@
 package com.example.nhatro2.phong;
 
 import android.annotation.SuppressLint;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -41,18 +42,19 @@ import retrofit2.Response;
 import retrofit2.http.POST;
 
 public class PhongEdit extends AppCompatActivity {
-    ImageView closeFormEdit,thoat,logo,imagePhongTro;
+    ImageView closeFormEdit, thoat, logo, imagePhongTro;
     RecyclerView listRoom;
     SharedPreferences shp;
     ViewPager2 tabContentViewRoom;
     TabLayout tabRoom;
     RelativeLayout tieuDePhongTro;
     LinearLayout rowFirstEditRoom;
-    RadioButton trong,thue,bangiao;
-    TextView tenPhongEdit,vitriPhongEdit,editRoomButton;
-    EditText tienPhong,daidien,dienthoai;
-    CardView rowDaiDien,rowDienThoai;
+    RadioButton trong, thue, bangiao;
+    TextView tenPhongEdit, vitriPhongEdit, editRoomButton;
+    EditText tienPhong, daidien, dienthoai;
+    CardView rowDaiDien, rowDienThoai;
     int trangthai;
+
     @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -62,7 +64,7 @@ public class PhongEdit extends AppCompatActivity {
         closeFormEdit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(PhongEdit.this,Phong.class);
+                Intent intent = new Intent(PhongEdit.this, Phong.class);
                 startActivity(intent);
             }
         });
@@ -88,7 +90,7 @@ public class PhongEdit extends AppCompatActivity {
                 builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
-                        Toast.makeText(PhongEdit.this,"Out", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(PhongEdit.this, "Out", Toast.LENGTH_SHORT).show();
                         Intent intent = new Intent(PhongEdit.this, MainActivity.class);
                         startActivity(intent);
                         shp = view.getContext().getSharedPreferences("user", MODE_PRIVATE);
@@ -99,7 +101,7 @@ public class PhongEdit extends AppCompatActivity {
                 // NO
                 builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
-                        Toast.makeText(PhongEdit.this,"Stay", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(PhongEdit.this, "Stay", Toast.LENGTH_SHORT).show();
                         //  Cancel
                         dialog.cancel();
                     }
@@ -143,21 +145,21 @@ public class PhongEdit extends AppCompatActivity {
         String dayPhong = bundle.getString("day");
         String daiDien = bundle.getString("daidien");
         String dienThoai = bundle.getString("dienthoai");
-        if(bundle == null){
-            Toast.makeText(this,"Có lỗi !",Toast.LENGTH_SHORT).show();
-        }else{
-            tenPhongEdit.setText("Tên: "+tenPhong);
-            vitriPhongEdit.setText("Vị trí: Dãy "+dayPhong+" - Tầng "+tang);
-            tienPhong.setText(""+giaPhong);
-            if(trangthai == 2 || trangthai == 3){
+        if (bundle == null) {
+            Toast.makeText(this, "Có lỗi !", Toast.LENGTH_SHORT).show();
+        } else {
+            tenPhongEdit.setText("Tên: " + tenPhong);
+            vitriPhongEdit.setText("Vị trí: Dãy " + dayPhong + " - Tầng " + tang);
+            tienPhong.setText("" + giaPhong);
+            if (trangthai == 2 || trangthai == 3) {
                 daidien.setText(daiDien);
                 dienthoai.setText(dienThoai);
-            }else{
+            } else {
                 daidien.setText("");
                 dienthoai.setText("");
             }
 
-            switch(trangthai) {
+            switch (trangthai) {
                 case 1:
                     trong.setChecked(true);
                     int color1 = Color.parseColor("#F4F7FF");
@@ -179,8 +181,10 @@ public class PhongEdit extends AppCompatActivity {
             }
         }
 
-
         // Ánh xạ cho việc cập nhật phòng
+        SharedPreferences sharedPhong = getSharedPreferences("idPhong", Context.MODE_PRIVATE);
+        SharedPreferences.Editor roomEditor = sharedPhong.edit();
+        String listRoom = sharedPhong.getString("items", "");
         editRoomButton = findViewById(R.id.editRoomButton);
         editRoomButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -188,31 +192,39 @@ public class PhongEdit extends AppCompatActivity {
                 int trangThaiPost = 0;
                 String tenDaiDien = daidien.getText().toString();
                 String dienThoai = dienthoai.getText().toString();
-                
-                if(trong.isChecked()){
+
+                if (trong.isChecked()) {
                     trangThaiPost = 1;
-                }else if(bangiao.isChecked()){
+                } else if (bangiao.isChecked()) {
                     trangThaiPost = 3;
-                }else if(thue.isChecked()){
+                } else if (thue.isChecked()) {
                     trangThaiPost = 2;
                 }
 
-                Api.api.editPhong(idPhong,trangthai,trangThaiPost,tenDaiDien,dienThoai).enqueue(new Callback<PhongModel>() {
+                int finalTrangThaiPost = trangThaiPost;
+                Api.api.editPhong(idPhong, trangthai, trangThaiPost, tenDaiDien, dienThoai).enqueue(new Callback<PhongModel>() {
                     @Override
                     public void onResponse(Call<PhongModel> call, Response<PhongModel> response) {
+                        if( finalTrangThaiPost ==3 || finalTrangThaiPost == 2 ){
+                            roomEditor.remove("items");
+                            roomEditor.commit();
+                        }
                         PhongModel phongEdit = response.body();
-                        if(phongEdit.getId() == idPhong){
-                            Toast.makeText(PhongEdit.this,"Cập nhật phòng thành công !", Toast.LENGTH_SHORT).show();
+
+                        if (phongEdit.getId() == idPhong) {
+
+                            Toast.makeText(PhongEdit.this, "Cập nhật phòng thành công !", Toast.LENGTH_SHORT).show();
                             Intent intent = new Intent(PhongEdit.this, Phong.class);
                             startActivity(intent);
-                        }else{
-                            Toast.makeText(PhongEdit.this,"Cập nhật phòng không thành công !", Toast.LENGTH_SHORT).show();
+                        } else {
+                            Toast.makeText(PhongEdit.this, "Cập nhật phòng không thành công !", Toast.LENGTH_SHORT).show();
                         }
 
                     }
+
                     @Override
                     public void onFailure(Call<PhongModel> call, Throwable t) {
-                        Toast.makeText(PhongEdit.this,"Cập nhật phòng không thành công !", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(PhongEdit.this, "Cập nhật phòng không thành công !", Toast.LENGTH_SHORT).show();
                     }
                 });
             }

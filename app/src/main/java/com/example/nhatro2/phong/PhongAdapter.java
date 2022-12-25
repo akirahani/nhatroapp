@@ -112,8 +112,10 @@ public class PhongAdapter extends RecyclerView.Adapter<PhongAdapter.PhongViewHol
                 //Set color model
                 if (lst.contains(idPhong)) {
                     holder.ten.setTextColor(Color.rgb(46, 184, 75));
+                    holder.checkMulti.setChecked(true);
                 } else {
                     holder.ten.setTextColor(Color.rgb(0, 0, 0));
+                    holder.checkMulti.setChecked(false);
                 }
             }
         }
@@ -136,6 +138,7 @@ public class PhongAdapter extends RecyclerView.Adapter<PhongAdapter.PhongViewHol
             @Override
             public void onClick(View view) {
                 List<Integer> arrInt = new ArrayList<>();
+                List<Integer> arrStatus = new ArrayList<>();
                 //Xử lý lưu mảng số nguyên sản phẩm
                 if (listRoom.equals("")) {
                     //Tạo mảng
@@ -153,7 +156,9 @@ public class PhongAdapter extends RecyclerView.Adapter<PhongAdapter.PhongViewHol
                     if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.N) {
                         arrInt = Arrays.stream(listRoom.split(",")).map(Integer::parseInt).collect(Collectors.toList());
                     }
+
                     if (arrInt.contains(idPhong)) {
+
                         //Xóa khỏi list
                         arrInt.remove(Integer.valueOf(idPhong));
                         //Convert list to string
@@ -179,6 +184,7 @@ public class PhongAdapter extends RecyclerView.Adapter<PhongAdapter.PhongViewHol
 
                 }
                 listRoom = sharedPhong.getString("items", "");
+//                roomEditor.remove("items");
                 phongClick.itemOnClick(arrInt.size());
 
                 Api.api.phongChecked(listRoom).enqueue(new Callback<List<PhongModel>>() {

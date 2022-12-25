@@ -1,11 +1,13 @@
 package com.example.nhatro2.api;
 
 import com.example.nhatro2.dich_vu.DichVuModel;
+import com.example.nhatro2.phong.PhongMultiModel;
 import com.example.nhatro2.thanhvien.ThanhVienModel;
 import com.example.nhatro2.phong.PhongModel;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
+import java.util.ArrayList;
 import java.util.List;
 import retrofit2.Call;
 import okhttp3.OkHttpClient;
@@ -48,6 +50,12 @@ public interface Api {
     @POST ("/nhatro2/admin/api/phong/multi_check.php")
     @FormUrlEncoded
     Call<List<PhongModel>> phongChecked(@Field("idPhong") String idPhong);
+    // Cọc phòng multi
+    @POST ("/nhatro2/admin/api/phong/coc_multi.php")
+    @FormUrlEncoded
+    Call<PhongMultiModel> datCocPhong(@Field("ten") String ten, @Field("dienthoai") String dienthoai, @Field("tiencoc") String  tiencoc,
+                                      @Field("phong") String phong);
+
     // Khách thuê
     @GET ("/nhatro2/admin/api/khach/list.php")
     Call<List<ThanhVienModel>> getKhachList();
