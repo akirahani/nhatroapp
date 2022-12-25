@@ -53,8 +53,7 @@ public interface Api {
     // Cọc phòng multi
     @POST ("/nhatro2/admin/api/phong/coc_multi.php")
     @FormUrlEncoded
-    Call<PhongMultiModel> datCocPhong(@Field("ten") String ten, @Field("dienthoai") String dienthoai, @Field("tiencoc") String  tiencoc,
-                                      @Field("phong") String phong);
+    Call<PhongMultiModel> datCocPhong(@Field("ten") String ten, @Field("dienthoai") String dienthoai, @Field("tiencoc") String  tiencoc, @Field("phong") String phong);
 
     // Khách thuê
     @GET ("/nhatro2/admin/api/khach/list.php")

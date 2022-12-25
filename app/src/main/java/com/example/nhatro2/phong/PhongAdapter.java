@@ -184,7 +184,6 @@ public class PhongAdapter extends RecyclerView.Adapter<PhongAdapter.PhongViewHol
 
                 }
                 listRoom = sharedPhong.getString("items", "");
-//                roomEditor.remove("items");
                 phongClick.itemOnClick(arrInt.size());
 
                 Api.api.phongChecked(listRoom).enqueue(new Callback<List<PhongModel>>() {
