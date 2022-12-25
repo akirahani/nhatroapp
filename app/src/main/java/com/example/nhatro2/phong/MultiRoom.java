@@ -15,6 +15,7 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.nhatro2.R;
 import com.example.nhatro2.api.Api;
@@ -91,12 +92,12 @@ public class MultiRoom extends AppCompatActivity {
                         startActivity(intent);
                         roomEditor.remove("items");
                         roomEditor.commit();
-                        Log.d("ok ok","");
+                        Toast.makeText(MultiRoom.this, "Đặt cọc cho nhiều phòng thành công",Toast.LENGTH_SHORT);
                     }
 
                     @Override
                     public void onFailure(Call<PhongMultiModel> call, Throwable t) {
-                        Log.d("err",""+t.toString());
+                        Toast.makeText(MultiRoom.this, "Đặt cọc cho nhiều phòng thất bại",Toast.LENGTH_SHORT);
                     }
                 });
             }

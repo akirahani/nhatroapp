@@ -831,7 +831,6 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/giaThietBiEdit"
                 android:layout_marginLeft="25dp"
-                android:layout_marginTop="29dp"
                 android:gravity="center"
                 android:layout_marginRight="25dp"
                 android:layout_marginBottom="21dp">

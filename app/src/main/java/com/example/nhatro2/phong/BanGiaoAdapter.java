@@ -70,6 +70,7 @@ public class BanGiaoAdapter extends RecyclerView.Adapter<BanGiaoAdapter.BanGiaoV
                 intent.putExtra("trangthai",trangthai);
                 intent.putExtra("daidien",daidien);
                 intent.putExtra("dienthoai",dienthoai);
+                intent.putExtra("datcoc",datcoc);
                 context.startActivity(intent);
             }
         });

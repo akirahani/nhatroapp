@@ -51,7 +51,7 @@ public class PhongEdit extends AppCompatActivity {
     LinearLayout rowFirstEditRoom;
     RadioButton trong, thue, bangiao;
     TextView tenPhongEdit, vitriPhongEdit, editRoomButton;
-    EditText tienPhong, daidien, dienthoai;
+    EditText tienPhong, daidien, dienthoai,tiencoc;
     CardView rowDaiDien, rowDienThoai;
     int trangthai;
 
@@ -134,6 +134,7 @@ public class PhongEdit extends AppCompatActivity {
         tenPhongEdit = findViewById(R.id.tenPhongEdit);
         vitriPhongEdit = findViewById(R.id.vitriPhongEdit);
         tienPhong = findViewById(R.id.tienPhong);
+        tiencoc = findViewById(R.id.tienCoc);
 
         // Lấy thông tin gửi từ adapter
         Bundle bundle = getIntent().getExtras();
@@ -145,6 +146,7 @@ public class PhongEdit extends AppCompatActivity {
         String dayPhong = bundle.getString("day");
         String daiDien = bundle.getString("daidien");
         String dienThoai = bundle.getString("dienthoai");
+        int datcoc = bundle.getInt("datcoc");
         if (bundle == null) {
             Toast.makeText(this, "Có lỗi !", Toast.LENGTH_SHORT).show();
         } else {
@@ -154,9 +156,11 @@ public class PhongEdit extends AppCompatActivity {
             if (trangthai == 2 || trangthai == 3) {
                 daidien.setText(daiDien);
                 dienthoai.setText(dienThoai);
+                tiencoc.setText(""+datcoc);
             } else {
                 daidien.setText("");
                 dienthoai.setText("");
+                tiencoc.setText("");
             }
 
             switch (trangthai) {
@@ -210,9 +214,7 @@ public class PhongEdit extends AppCompatActivity {
                             roomEditor.commit();
                         }
                         PhongModel phongEdit = response.body();
-
                         if (phongEdit.getId() == idPhong) {
-
                             Toast.makeText(PhongEdit.this, "Cập nhật phòng thành công !", Toast.LENGTH_SHORT).show();
                             Intent intent = new Intent(PhongEdit.this, Phong.class);
                             startActivity(intent);
