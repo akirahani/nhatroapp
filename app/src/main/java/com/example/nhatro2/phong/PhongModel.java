@@ -10,6 +10,9 @@ public class PhongModel {
     private int khach;
     private String day;
     private int tang;
+    private String daidien;
+    private String dienthoai;
+    private int gia;
 
     public String getDaidien() {
         return daidien;
@@ -34,10 +37,6 @@ public class PhongModel {
     public void setGia(int gia) {
         this.gia = gia;
     }
-
-    private String daidien;
-    private String dienthoai;
-    private int gia;
 
     public String getDay() {
         return day;
