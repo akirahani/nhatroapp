@@ -16,7 +16,14 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
-            android:name=".KhachTro"
+            android:name=".thanhvien.KhachTroAdd"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".thanhvien.KhachTro"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"

@@ -4,9 +4,224 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".thanhvien.KhachTro">
+    android:background="@color/khungNgoai">
 
+    <RelativeLayout
+        android:id="@+id/khungNgoai"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/khungNgoai"
+        android:orientation="vertical"
+        tools:context=".thanhvien.KhachTro">
+        <!--header-->
+        <androidx.appcompat.widget.Toolbar xmlns:android="http://schemas.android.com/apk/res/android"
+            android:id="@+id/header"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/gradient_header">
 
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
 
+                <LinearLayout
+                    android:id="@+id/rightToolbar"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_centerVertical="true">
+
+                    <ImageView
+                        android:id="@+id/thoat"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/ic_back"
+                        android:backgroundTint="@color/white"></ImageView>
+
+                    <TextView
+                        android:id="@+id/ten"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_toRightOf="@+id/thoat"
+                        android:paddingLeft="5dp"
+                        android:text="Thoát"
+                        android:textColor="@color/white"></TextView>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/centerToolbar"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:layout_centerVertical="true"
+                    android:paddingRight="10dp">
+                    >
+
+                    <ImageView
+                        android:id="@+id/logo"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/ic_logo"
+                        android:backgroundTint="@color/white" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/leftToolbar"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true">
+                    >
+
+                    <ImageView
+                        android:id="@+id/thongbao"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="15dp"
+                        android:background="@drawable/ic_alert"
+                        android:backgroundTint="@color/white" />
+                </LinearLayout>
+            </RelativeLayout>
+        </androidx.appcompat.widget.Toolbar>
+        <!-- title -->
+        <RelativeLayout
+            android:id="@+id/tren"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/header"
+            android:background="@color/white"
+            android:orientation="horizontal">
+            <LinearLayout
+                android:id="@+id/rowTitleRoom"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:elevation="20dp"
+                android:orientation="horizontal">
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+                    <FrameLayout
+                        android:id="@+id/imageKhachTro"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+                        ></FrameLayout>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingLeft="8dp"
+                        android:paddingTop="18dp"
+                        android:text="quản lí khách trọ"
+                        android:textAllCaps="true"
+                        android:textColor="@color/textQuanLyChung"
+                        android:textSize="18dp"
+                        android:textStyle="bold" />
+                </LinearLayout>
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginRight="10dp"
+                    >
+                    <ImageView
+                        android:id="@+id/addCustomer"
+                        android:layout_width="18dp"
+                        android:layout_height="18dp"
+                        android:src="@drawable/them"
+                        android:layout_toLeftOf="@+id/searchCustomer"
+                        android:layout_marginRight="5dp"
+                        >
+                    </ImageView>
+                    <ImageView
+                        android:id="@+id/searchCustomer"
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:src="@drawable/search"
+                        android:layout_alignParentEnd="true"
+                        >
+                    </ImageView>
+                </RelativeLayout>
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:layout_below="@+id/rowTitleRoom"
+                android:layout_marginTop="-15dp"
+                android:background="@color/khungNgoai" />
+
+        </RelativeLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tren"
+            android:orientation="vertical"
+            android:background="@color/white"
+            android:layout_marginTop="-10dp">
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:layout_marginLeft="25dp"
+                android:layout_marginRight="25dp"
+                >
+                <TextView
+                    android:id="@+id/tenKhach"
+                    android:text="Tên"
+                    android:textColor="@color/black"
+                    android:textStyle="bold"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+                </TextView>
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true">
+                    <TextView
+                        android:layout_toRightOf="@id/tenKhach"
+                        android:id="@+id/dienThoaiKhach"
+                        android:text="Điện thoại"
+                        android:textColor="@color/black"
+                        android:textStyle="bold"
+                        android:layout_marginLeft="40dp"
+                        android:layout_marginRight="40dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+                    </TextView>
+                    <TextView
+                        android:layout_toRightOf="@id/dienThoaiKhach"
+                        android:id="@+id/phongThue"
+                        android:text="Phòng"
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginRight="50dp"
+                        android:textColor="@color/black"
+                        android:textStyle="bold"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+                    </TextView>
+                </LinearLayout>
+                <TextView
+                    android:layout_alignParentRight="true"
+                    android:id="@+id/tacVuThietBi"
+                    android:paddingRight="10dp"
+                    android:text="Tác vụ"
+                    android:textColor="@color/black"
+                    android:textStyle="bold"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+                </TextView>
+            </RelativeLayout>
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/listKhachTro"
+                android:layout_marginTop="4dp"
+                android:paddingBottom="12dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+            </androidx.recyclerview.widget.RecyclerView>
+        </LinearLayout>
+
+    </RelativeLayout>
 
 </RelativeLayout>

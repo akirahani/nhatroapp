@@ -81,8 +81,10 @@ public class BanGiaoAdapter extends RecyclerView.Adapter<BanGiaoAdapter.BanGiaoV
                 Intent intent = new Intent(context.getApplicationContext(), HopDongAdd.class);
                 intent.putExtra("idPhong",idPhong);
                 intent.putExtra("tenPhong",ten);
+                intent.putExtra("gia",gia);
                 intent.putExtra("daidien",daidien);
                 intent.putExtra("dienthoai",dienthoai);
+                intent.putExtra("datcoc",datcoc);
                 context.startActivity(intent);
             }
         });

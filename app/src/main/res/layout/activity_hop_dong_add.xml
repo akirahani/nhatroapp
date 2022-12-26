@@ -613,11 +613,11 @@
                     android:background="@color/cardThietBi"
                     android:orientation="vertical">
                     <TextView
+                        android:id="@+id/textNameRoom"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:textStyle="bold"
                         android:textColor="@color/black"
-                        android:text="Phòng thuê A101"
                         android:paddingLeft="9dp"
                         android:paddingTop="11dp">
                     </TextView>

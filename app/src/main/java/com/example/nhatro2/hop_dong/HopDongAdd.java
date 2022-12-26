@@ -11,7 +11,9 @@ import android.annotation.SuppressLint;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.icu.util.Calendar;
 import android.os.Bundle;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
@@ -31,6 +33,7 @@ import com.example.nhatro2.dich_vu.DichVu;
 import com.example.nhatro2.dich_vu.DichVuAdapter;
 import com.example.nhatro2.dich_vu.DichVuModel;
 import com.example.nhatro2.phong.PhongEdit;
+import com.example.nhatro2.phong.PhongModel;
 import com.google.android.material.tabs.TabLayout;
 
 import java.util.List;
@@ -49,6 +52,8 @@ public class HopDongAdd extends AppCompatActivity {
     RecyclerView listThietBi;
     ThietBiAddAdapter dichVuAdapter;
     List<DichVuModel> dichVu;
+    EditText tenDaiDienText,sdtDaiDienText,ngayKetThuc;
+    TextView textNameRoom;
     int trangthai;
 
     @Override
@@ -113,25 +118,39 @@ public class HopDongAdd extends AppCompatActivity {
         Bundle bundle = getIntent().getExtras();
         int idPhong = bundle.getInt("idPhong");
         String tenPhong = bundle.getString("tenPhong");
+        int giaPhong = bundle.getInt("gia");
         String daiDien = bundle.getString("daidien");
         String dienThoai = bundle.getString("dienthoai");
+        int tienCoc = bundle.getInt("datcoc");
+
 
         listThietBi = findViewById(R.id.thietbiCheck);
         listThietBi.setLayoutManager(new GridLayoutManager(HopDongAdd.this, 3));
         listThietBi.hasFixedSize();
         listThietBi.setNestedScrollingEnabled(false);
 
+        tenDaiDienText = findViewById(R.id.tenDaiDienText);
+        sdtDaiDienText = findViewById(R.id.sdtDaiDienText);
+        textNameRoom = findViewById(R.id.textNameRoom);
+
+
+
+        ngayKetThuc = findViewById(R.id.ngayKetThuc);
+
+
         //
-        Api.api.hopDongPhong(idPhong).enqueue(new Callback<POST>() {
+        Api.api.hopDongPhong(idPhong).enqueue(new Callback<PhongModel>() {
             @Override
-            public void onResponse(Call<POST> call, Response<POST> response) {
-                Log.d("kq", "" + response.body());
+            public void onResponse(Call<PhongModel> call, Response<PhongModel> response) {
+                PhongModel phongHopDong = response.body();
+                tenDaiDienText.setText(phongHopDong.getDaidien());
+                sdtDaiDienText.setText(phongHopDong.getDienthoai());
+                textNameRoom.setText("Phòng thuê "+phongHopDong.getTen());
             }
 
-
             @Override
-            public void onFailure(Call<POST> call, Throwable t) {
-
+            public void onFailure(Call<PhongModel> call, Throwable t) {
+                Log.d("err",""+t.toString());
             }
         });
         // Thiết bị

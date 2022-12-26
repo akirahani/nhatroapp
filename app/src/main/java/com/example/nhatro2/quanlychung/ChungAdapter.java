@@ -15,6 +15,7 @@ import com.example.nhatro2.R;
 import com.example.nhatro2.ThongTin;
 import com.example.nhatro2.dich_vu.DichVu;
 import com.example.nhatro2.phong.Phong;
+import com.example.nhatro2.thanhvien.KhachTro;
 
 import java.util.List;
 
@@ -56,6 +57,10 @@ public class ChungAdapter extends RecyclerView.Adapter<ChungAdapter.ChungViewHol
                     case "phong":
                         Intent phong = new Intent(context, Phong.class);
                         context.startActivity(phong);
+                        break;
+                    case "khachtro" :
+                        Intent khachtro = new Intent(context, KhachTro.class);
+                        context.startActivity(khachtro);
                         break;
                 }
             }
