@@ -74,7 +74,7 @@ public interface Api {
     // Thêm hợp đồng
     @POST ("/nhatro2/admin/api/hop-dong/phong.php")
     @FormUrlEncoded
-    Call <POST> hopDongPhong(@Field("id") int id);
+    Call <PhongModel> hopDongPhong(@Field("id") int id);
 
     //Dịch vụ
     @GET ("/nhatro2/admin/api/dichvu/list.php")
