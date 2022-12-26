@@ -1,6 +1,7 @@
 package com.example.nhatro2.thanhvien;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -39,6 +40,17 @@ public class KhachTroAdapter extends RecyclerView.Adapter<KhachTroAdapter.KhachT
 
         holder.tenKhach.setText(tenKhachThue);
         holder.sdtKhach.setText(sdtKhachThue);
+
+        holder.suaKhach.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(context.getApplicationContext(),KhachTroEdit.class);
+                intent.putExtra("idKhach",idKhachThue);
+                intent.putExtra("tenKhach",tenKhachThue);
+                intent.putExtra("sdtKhach",sdtKhachThue);
+                context.startActivity(intent);
+            }
+        });
     }
 
     @Override
@@ -53,7 +65,7 @@ public class KhachTroAdapter extends RecyclerView.Adapter<KhachTroAdapter.KhachT
             super(itemView);
             tenKhach = itemView.findViewById(R.id.tenKhach);
             sdtKhach = itemView.findViewById(R.id.sdtKhach);
-            phongThue = itemView.findViewById(R.id.phongKhachThue);
+//            phongThue = itemView.findViewById(R.id.phongKhachThue);
             suaKhach = itemView.findViewById(R.id.suaKhachThue);
             xoaKhach = itemView.findViewById(R.id.xoaKhachThue);
         }

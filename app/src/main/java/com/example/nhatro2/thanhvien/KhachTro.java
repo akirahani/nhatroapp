@@ -33,9 +33,10 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class KhachTro extends AppCompatActivity {
-    ImageView thoat,logo,addCustomer;
+    ImageView thoat, logo, addCustomer;
     SharedPreferences shp;
     RecyclerView listKhachThue;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -103,7 +104,7 @@ public class KhachTro extends AppCompatActivity {
             @Override
             public void onResponse(Call<List<ThanhVienModel>> call, Response<List<ThanhVienModel>> response) {
                 List<ThanhVienModel> listKhachTro = response.body();
-                listKhachThue.setAdapter(new KhachTroAdapter(KhachTro.this,listKhachTro));
+                listKhachThue.setAdapter(new KhachTroAdapter(KhachTro.this, listKhachTro));
             }
 
             @Override
@@ -117,7 +118,7 @@ public class KhachTro extends AppCompatActivity {
         addCustomer.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(KhachTro.this,KhachTroAdd.class);
+                Intent intent = new Intent(KhachTro.this, KhachTroAdd.class);
                 startActivity(intent);
             }
         });

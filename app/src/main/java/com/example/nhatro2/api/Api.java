@@ -59,11 +59,16 @@ public interface Api {
     @GET ("/nhatro/admin/api/khach/list.php")
     Call<List<ThanhVienModel>> getKhachList();
 
-    @POST ("/nhatro/admin/api/phong/add.php")
+    //Thêm khách
+    @POST ("/nhatro/admin/api/khach/add.php")
     @FormUrlEncoded
-    Call <POST> addPhong(@Field("tenphong") String tenphong,
-                         @Field("trangthai") int trangthai,
-                         @Field("vitri") int vitri);
+    Call <ThanhVienModel> themKhach(@Field("fullname") String tenKhach, @Field("dienthoai") String dienthoai);
+
+//    @POST ("/nhatro/admin/api/phong/add.php")
+//    @FormUrlEncoded
+//    Call <POST> addPhong(@Field("tenphong") String tenphong,
+//                         @Field("trangthai") int trangthai,
+//                         @Field("vitri") int vitri);
 
     @POST ("/nhatro/admin/api/phong/edit.php")
     @FormUrlEncoded

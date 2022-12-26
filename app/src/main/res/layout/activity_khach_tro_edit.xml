@@ -4,9 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    tools:context=".thanhvien.KhachTroAdd"
-    android:background="@color/khungNgoai">
+    android:background="@color/khungNgoai"
+    tools:context=".thanhvien.KhachTroEdit">
 
     <androidx.appcompat.widget.Toolbar xmlns:android="http://schemas.android.com/apk/res/android"
         android:id="@+id/header"
@@ -79,10 +78,10 @@
     </androidx.appcompat.widget.Toolbar>
     <!-- add -->
     <RelativeLayout
-        android:id="@+id/titleAddKhach"
+        android:layout_below="@+id/header"
+        android:id="@+id/titleCustomerInfo"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/header"
         android:background="@color/white">
 
         <LinearLayout
@@ -117,34 +116,38 @@
             android:layout_marginTop="-10dp"
             android:background="@color/khungNgoai" />
     </RelativeLayout>
+    <!-- Tiêu đề dịch vụ  -->
 
     <TextView
         android:id="@+id/tieuDeThemHopDong"
-        android:layout_width="173dp"
-        android:layout_height="33dp"
-        android:layout_below="@+id/titleAddKhach"
+        android:layout_below="@+id/titleCustomerInfo"
         android:background="@drawable/title_card"
         android:backgroundTint="@color/tabActive"
+        android:layout_width="173dp"
+        android:layout_height="33dp"
         android:gravity="center"
-        android:paddingLeft="23dp"
-        android:paddingTop="8dp"
-        android:paddingRight="23dp"
+        android:textColor="@color/white"
+        android:paddingTop="5dp"
         android:paddingBottom="8dp"
-        android:text="Thêm khách"
-        android:textColor="@color/white"></TextView>
-    <!-- Tiêu đề dịch vụ  -->
+        android:paddingRight="23dp"
+        android:paddingLeft="23dp"
+        android:text="Sửa thông tin khách">
+    </TextView>
     <ScrollView
+        android:layout_below="@+id/tieuDeThemHopDong"
         android:id="@+id/tieuDeThemKhachTro"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/tieuDeThemHopDong">
+        >
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
+
             <!-- mục thiết bị   -->
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -161,10 +164,11 @@
                     <TextView
                         android:id="@+id/tieuDeKhachAdd"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"></TextView>
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/tieuDeThietBi"></TextView>
 
                     <androidx.cardview.widget.CardView
-                        android:id="@+id/KhachAdd"
+                        android:id="@+id/tenKhachEdit"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_below="@+id/tieuDeThietBiAdd"
@@ -189,7 +193,7 @@
                                 android:textStyle="bold"></TextView>
 
                             <EditText
-                                android:id="@+id/tenKhachAdd"
+                                android:id="@+id/tenKhachEditText"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:background="@null"></EditText>
@@ -199,7 +203,7 @@
                     <androidx.cardview.widget.CardView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_below="@+id/sdtKhachAdd"
+                        android:layout_below="@+id/sdtKhachEdit"
                         android:layout_marginLeft="14dp"
                         android:layout_marginTop="8dp"
                         android:layout_marginRight="14dp"
@@ -222,7 +226,7 @@
                                 android:textStyle="bold"></TextView>
 
                             <EditText
-                                android:id="@+id/sdtKhachAddText"
+                                android:id="@+id/sdtKhachEditText"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:background="@null"
@@ -233,7 +237,7 @@
                     <androidx.cardview.widget.CardView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_below="@+id/sdtKhachAdd"
+                        android:layout_below="@+id/canCuocKhachEdit"
                         android:layout_marginLeft="14dp"
                         android:layout_marginTop="8dp"
                         android:layout_marginRight="14dp"
@@ -256,7 +260,7 @@
                                 android:textStyle="bold"></TextView>
 
                             <EditText
-                                android:id="@+id/soCanCuocAddText"
+                                android:id="@+id/canCuocKhachEditText"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:background="@null"
@@ -267,7 +271,7 @@
                     <androidx.cardview.widget.CardView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_below="@+id/diaChiKhachAdd"
+                        android:layout_below="@+id/diaChiKhachEdit"
                         android:layout_marginLeft="14dp"
                         android:layout_marginTop="8dp"
                         android:layout_marginRight="14dp"
@@ -290,7 +294,7 @@
                                 android:textStyle="bold"></TextView>
 
                             <EditText
-                                android:id="@+id/diaChiKhachAddText"
+                                android:id="@+id/diaChiKhachEditText"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:background="@null"
@@ -301,7 +305,7 @@
                     <androidx.cardview.widget.CardView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_below="@+id/ngayCapAdd"
+                        android:layout_below="@+id/ngayCapEdit"
                         android:layout_marginLeft="14dp"
                         android:layout_marginTop="8dp"
                         android:layout_marginRight="14dp"
@@ -324,7 +328,7 @@
                                 android:textStyle="bold"></TextView>
 
                             <EditText
-                                android:id="@+id/ngayCapAddText"
+                                android:id="@+id/ngayCapEditText"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:background="@null"
@@ -335,7 +339,7 @@
                     <androidx.cardview.widget.CardView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_below="@+id/quocTichAdd"
+                        android:layout_below="@+id/quocTichEdit"
                         android:layout_marginLeft="14dp"
                         android:layout_marginTop="8dp"
                         android:layout_marginRight="14dp"
@@ -358,7 +362,7 @@
                                 android:textStyle="bold"></TextView>
 
                             <EditText
-                                android:id="@+id/quocTichText"
+                                android:id="@+id/quocTichEditText"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:background="@null"></EditText>
@@ -368,7 +372,7 @@
                     <androidx.cardview.widget.CardView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_below="@+id/ngaySinhAdd"
+                        android:layout_below="@+id/ngaySinhEdit"
                         android:layout_marginLeft="14dp"
                         android:layout_marginTop="8dp"
                         android:layout_marginRight="14dp"
@@ -391,7 +395,7 @@
                                 android:textStyle="bold"></TextView>
 
                             <EditText
-                                android:id="@+id/ngaySinhAddText"
+                                android:id="@+id/ngaySinhEditText"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:background="@null"
@@ -402,7 +406,7 @@
                     <androidx.cardview.widget.CardView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_below="@+id/ngaySinhAdd"
+                        android:layout_below="@+id/gioiTinhEdit"
                         android:layout_marginLeft="14dp"
                         android:layout_marginTop="8dp"
                         android:layout_marginRight="14dp"
@@ -417,7 +421,7 @@
                             android:paddingBottom="8dp">
 
                             <TextView
-                                android:id="@+id/gioiTinhTitle"
+                                android:id="@+id/gioiTinhTitleEdit"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_centerVertical="true"
@@ -429,25 +433,25 @@
                             <RadioGroup
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:layout_toRightOf="@+id/gioiTinhTitle"
+                                android:layout_toRightOf="@+id/gioiTinhTitleEdit"
                                 android:orientation="horizontal">
 
                                 <RadioButton
-                                    android:id="@+id/nam"
+                                    android:id="@+id/namEdit"
                                     android:layout_width="wrap_content"
                                     android:layout_height="25dp"
                                     android:layout_marginLeft="10dp"
                                     android:text="Nam" />
 
                                 <RadioButton
-                                    android:id="@+id/nu"
+                                    android:id="@+id/nuEdit"
                                     android:layout_width="wrap_content"
                                     android:layout_height="25dp"
                                     android:layout_marginLeft="10dp"
                                     android:text="Nữ" />
 
                                 <RadioButton
-                                    android:id="@+id/khac"
+                                    android:id="@+id/khacEdit"
                                     android:layout_width="wrap_content"
                                     android:layout_height="25dp"
                                     android:layout_marginLeft="10dp"
@@ -476,7 +480,7 @@
                             android:paddingBottom="8dp">
 
                             <TextView
-                                android:id="@+id/nhomTuoi"
+                                android:id="@+id/nhomTuoiEdit"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_centerVertical="true"
@@ -489,18 +493,18 @@
                                 android:id="@+id/doiTuongGroup"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:layout_toRightOf="@+id/nhomTuoi"
+                                android:layout_toRightOf="@+id/nhomTuoiEdit"
                                 android:orientation="horizontal">
 
                                 <RadioButton
-                                    android:id="@+id/nguoiLon"
+                                    android:id="@+id/nguoiLonEdit"
                                     android:layout_width="wrap_content"
                                     android:layout_height="25dp"
                                     android:layout_marginLeft="10dp"
                                     android:text="Người lớn" />
 
                                 <RadioButton
-                                    android:id="@+id/treEm"
+                                    android:id="@+id/treEmEdit"
                                     android:layout_width="wrap_content"
                                     android:layout_height="25dp"
                                     android:layout_marginLeft="10dp"
@@ -520,7 +524,8 @@
                         android:layout_marginLeft="25dp"
                         android:layout_marginTop="20dp"
                         android:layout_marginRight="25dp"
-                        android:paddingBottom="10dp">
+                        android:paddingBottom="10dp"
+                        >
 
                         <androidx.cardview.widget.CardView
                             android:layout_width="wrap_content"
@@ -529,7 +534,7 @@
                             app:cardCornerRadius="6dp">
 
                             <TextView
-                                android:id="@+id/backKhachList"
+                                android:id="@+id/backKhachEditList"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_alignParentLeft="true"
@@ -551,7 +556,7 @@
                             app:cardCornerRadius="6dp">
 
                             <TextView
-                                android:id="@+id/themKhach"
+                                android:id="@+id/capNhatKhach"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:background="@drawable/gradient_add"
@@ -559,7 +564,7 @@
                                 android:paddingTop="5dp"
                                 android:paddingRight="35dp"
                                 android:paddingBottom="5dp"
-                                android:text="Thêm Mới"
+                                android:text="Cập nhật"
                                 android:textAllCaps="true"
                                 android:textColor="@color/white"
                                 android:textStyle="bold"></TextView>

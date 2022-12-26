@@ -12,7 +12,7 @@
         android:layout_height="match_parent"
         android:background="@color/khungNgoai"
         android:orientation="vertical"
-        tools:context=".dich_vu.DichVu">
+        tools:context=".phong.Phong">
         <!--header-->
         <androidx.appcompat.widget.Toolbar xmlns:android="http://schemas.android.com/apk/res/android"
             android:id="@+id/header"
