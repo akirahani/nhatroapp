@@ -80,6 +80,9 @@ public class BanGiaoAdapter extends RecyclerView.Adapter<BanGiaoAdapter.BanGiaoV
             public void onClick(View view) {
                 Intent intent = new Intent(context.getApplicationContext(), HopDongAdd.class);
                 intent.putExtra("idPhong",idPhong);
+                intent.putExtra("tenPhong",ten);
+                intent.putExtra("daidien",daidien);
+                intent.putExtra("dienthoai",dienthoai);
                 context.startActivity(intent);
             }
         });

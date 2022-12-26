@@ -112,6 +112,9 @@ public class HopDongAdd extends AppCompatActivity {
 
         Bundle bundle = getIntent().getExtras();
         int idPhong = bundle.getInt("idPhong");
+        String tenPhong = bundle.getString("tenPhong");
+        String daiDien = bundle.getString("daidien");
+        String dienThoai = bundle.getString("dienthoai");
 
         listThietBi = findViewById(R.id.thietbiCheck);
         listThietBi.setLayoutManager(new GridLayoutManager(HopDongAdd.this, 3));
