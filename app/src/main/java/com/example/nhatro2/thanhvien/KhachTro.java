@@ -6,11 +6,19 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.annotation.SuppressLint;
+import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.Gravity;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
+import android.widget.EditText;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
@@ -33,9 +41,11 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class KhachTro extends AppCompatActivity {
-    ImageView thoat, logo, addCustomer;
+    ImageView thoat, logo, addCustomer, searchCustomer;
     SharedPreferences shp;
     RecyclerView listKhachThue;
+    TextView searchClose, searchClick;
+    EditText keySearch;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -120,6 +130,67 @@ public class KhachTro extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(KhachTro.this, KhachTroAdd.class);
                 startActivity(intent);
+            }
+        });
+
+
+        // Tìm kiếm khách
+        searchCustomer = findViewById(R.id.searchCustomer);
+        searchCustomer.setOnClickListener(new View.OnClickListener() {
+            // Ánh xạ
+            @Override
+            public void onClick(View view) {
+
+
+                Dialog dialogSearch = new Dialog(KhachTro.this);
+                dialogSearch.requestWindowFeature(Window.FEATURE_NO_TITLE);
+                dialogSearch.setContentView(R.layout.layout_dialog_search_khach);
+
+                Window window = dialogSearch.getWindow();
+                if (window == null) {
+                    return;
+                }
+
+                window.setLayout(WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.WRAP_CONTENT);
+                window.setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+
+                WindowManager.LayoutParams windowAttr = window.getAttributes();
+                windowAttr.gravity = Gravity.CENTER;
+                window.setAttributes(windowAttr);
+
+                searchClick = dialogSearch.findViewById(R.id.searchClick);
+                searchClose = dialogSearch.findViewById(R.id.searchClose);
+
+
+                searchClick.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        keySearch = dialogSearch.findViewById(R.id.keySearch);
+                        String keyTimKiem = keySearch.getText().toString();
+                        Api.api.searchKhach(keyTimKiem).enqueue(new Callback<List<ThanhVienModel>>() {
+                            @Override
+                            public void onResponse(Call<List<ThanhVienModel>> call, Response<List<ThanhVienModel>> response) {
+                                List<ThanhVienModel> khachCanTim = response.body();
+                                listKhachThue.setAdapter(new KhachTroAdapter(KhachTro.this, khachCanTim));
+                                Log.d("list khach tim",""+khachCanTim);
+                            }
+
+                            @Override
+                            public void onFailure(Call<List<ThanhVienModel>> call, Throwable t) {
+                                Log.d("error",""+t.toString());
+                            }
+                        });
+                    }
+                });
+
+                searchClose.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        dialogSearch.dismiss();
+                    }
+                });
+
+                dialogSearch.show();
             }
         });
 

@@ -24,9 +24,14 @@ import android.widget.Toast;
 import com.example.nhatro2.HomeActivity;
 import com.example.nhatro2.MainActivity;
 import com.example.nhatro2.R;
+import com.example.nhatro2.api.Api;
 
 import java.util.Calendar;
 import java.util.Locale;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class KhachTroEdit extends AppCompatActivity {
     ImageView thoat, logo, addCustomer;
@@ -34,7 +39,7 @@ public class KhachTroEdit extends AppCompatActivity {
     TextView backKhachEditList, capNhatKhach, ngaySinhEditText, ngayCapEditText;
     EditText tenKhachEditText, sdtKhachEditText, soCanCuocEditText, diaChiKhachEditText, quocTichEditText;
     RadioButton namEdit, nuEdit, khacEdit, nguoiLonEdit, treEmEdit;
-    private int mYear, mMonth, mDay, mYearCap, mMonthCap, mDayCap;
+    private int mYear, mMonth, mDay, mYearCap, mMonthCap, mDayCap, gioiTinhSent, doiTuong;
     DatePickerDialog.OnDateSetListener setListener, setNgayCap;
 
     @SuppressLint("MissingInflatedId")
@@ -149,18 +154,21 @@ public class KhachTroEdit extends AppCompatActivity {
         });
 
         // Hiển thị ngày sinh lên textView
-        if(ngaySinh.equals("")){
-            setListener = new DatePickerDialog.OnDateSetListener() {
-                @Override
-                public void onDateSet(DatePicker datePicker, int year, int month, int day) {
-                    month += 1;
-                    String date = day + "-" + month + "-" + year;
-//                ngaySinhEditText.setText(date);
-                }
-            };
+        Log.d("ngaysinh",""+ngaySinh);
+        if(ngaySinh == null){
+            ngaySinhEditText.setText("dd-mm-yyyy");
         }else{
             ngaySinhEditText.setText(ngaySinh);
         }
+
+        setListener = new DatePickerDialog.OnDateSetListener() {
+            @Override
+            public void onDateSet(DatePicker datePicker, int year, int month, int day) {
+                month += 1;
+                String date = day + "-" + month + "-" + year;
+                ngaySinhEditText.setText(date);
+            }
+        };
 
 
         // Bắt sự kiện chọn ngày cấp
@@ -172,21 +180,21 @@ public class KhachTroEdit extends AppCompatActivity {
                 datePickerDialog.show();
             }
         });
-
+        Log.d("ngaycap",""+ngayCap);
         // Hiển thị ngày cấp lên textView
-        if(ngayCap.equals("")){
-            setNgayCap = new DatePickerDialog.OnDateSetListener() {
-                @Override
-                public void onDateSet(DatePicker datePicker, int yearCap, int monthCap, int dayCap) {
-                    monthCap += 1;
-                    String dateCap = dayCap + "-" + monthCap + "-" + yearCap;
-//                ngayCapEditText.setText(dateCap);
-                }
-            };
+        if(ngayCap == null){
+            ngayCapEditText.setText("dd-mm-yyyy");
         }else{
             ngayCapEditText.setText(ngayCap);
         }
-
+        setNgayCap = new DatePickerDialog.OnDateSetListener() {
+            @Override
+            public void onDateSet(DatePicker datePicker, int yearCap, int monthCap, int dayCap) {
+                monthCap += 1;
+                String dateCap = dayCap + "-" + monthCap + "-" + yearCap;
+                ngayCapEditText.setText(dateCap);
+            }
+        };
 
 
         if (bundle == null) {
@@ -242,7 +250,54 @@ public class KhachTroEdit extends AppCompatActivity {
         capNhatKhach.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Log.d("cap nhat", "khach");
+                String tenKhachPost = tenKhachEditText.getText().toString();
+                String sdtKhachPost = sdtKhachEditText.getText().toString();
+                String ngayCap = ngayCapEditText.getText().toString();
+                String ngaySinh =  ngaySinhEditText.getText().toString();
+                String canCuoc = soCanCuocEditText.getText().toString();
+                String diaChi = diaChiKhachEditText.getText().toString();
+                String quocTich = quocTichEditText.getText().toString();
+                // xét checked
+                namEdit = findViewById(R.id.namEdit);
+                nuEdit = findViewById(R.id.nuEdit);
+                khacEdit = findViewById(R.id.khacEdit);
+                if(namEdit.isChecked()){
+                    gioiTinhSent = 1;
+                }else if(nuEdit.isChecked()){
+                    gioiTinhSent = 2;
+                }else if(khacEdit.isChecked()){
+                    gioiTinhSent = 3;
+                }
+
+
+                // Chọn đối tượng
+                // Ánh xạ
+                nguoiLonEdit = findViewById(R.id.nguoiLonEdit);
+                treEmEdit = findViewById(R.id.treEmEdit);
+                //  xét checked
+                if(nguoiLonEdit.isChecked()){
+                    doiTuong = 1;
+                }else if(treEmEdit.isChecked()){
+                    doiTuong = 2;
+                }
+                int idKhachUpdate = idKhach;
+
+                Api.api.updateKhach(idKhachUpdate,tenKhachPost, sdtKhachPost,canCuoc,diaChi,ngayCap,ngaySinh,quocTich,gioiTinhSent,doiTuong).enqueue(new Callback<ThanhVienModel>() {
+                    @Override
+                    public void onResponse(Call<ThanhVienModel> call, Response<ThanhVienModel> response) {
+                        ThanhVienModel khachUpdate = response.body();
+                        Intent intent = new Intent(KhachTroEdit.this,KhachTro.class);
+                        startActivity(intent);
+                        Toast.makeText(KhachTroEdit.this,"Cập nhật khách thành công", Toast.LENGTH_SHORT).show();
+                    }
+
+                    @Override
+                    public void onFailure(Call<ThanhVienModel> call, Throwable t) {
+                        Toast.makeText(KhachTroEdit.this,"Lỗi cập nhật khách", Toast.LENGTH_SHORT).show();
+                    }
+                });
+
+
             }
         });
 

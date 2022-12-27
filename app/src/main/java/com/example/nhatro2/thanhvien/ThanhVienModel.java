@@ -11,13 +11,30 @@ public class ThanhVienModel {
     private String dienthoai;
     private String diachi;
     private String cancuoc;
-    private Date ngaycap;
     private String quoctich;
-    private Date ngaysinh;
+
+    public String getNgaycap() {
+        return ngaycap;
+    }
+
+    public void setNgaycap(String ngaycap) {
+        this.ngaycap = ngaycap;
+    }
+
+    public String getNgaysinh() {
+        return ngaysinh;
+    }
+
+    public void setNgaysinh(String ngaysinh) {
+        this.ngaysinh = ngaysinh;
+    }
+
+    private String ngaycap;
+    private String ngaysinh;
     private int gioitinh;
     private int nhomtuoi;
 
-    public ThanhVienModel(int id, String username, String password, String fullname, int nhom, String dienthoai, String diachi, String cancuoc, Date ngaycap, String quoctich, Date ngaysinh, int gioitinh, int nhomtuoi) {
+    public ThanhVienModel(int id, String username, String password, String fullname, int nhom, String dienthoai, String diachi, String cancuoc, String ngaycap, String quoctich, String ngaysinh, int gioitinh, int nhomtuoi) {
         this.id = id;
         this.username = username;
         this.password = password;
@@ -113,14 +130,6 @@ public class ThanhVienModel {
         this.cancuoc = cancuoc;
     }
 
-    public Date getNgaycap() {
-        return ngaycap;
-    }
-
-    public void setNgaycap(Date ngaycap) {
-        this.ngaycap = ngaycap;
-    }
-
     public String getQuoctich() {
         return quoctich;
     }
@@ -129,13 +138,7 @@ public class ThanhVienModel {
         this.quoctich = quoctich;
     }
 
-    public Date getNgaysinh() {
-        return ngaysinh;
-    }
 
-    public void setNgaysinh(Date ngaysinh) {
-        this.ngaysinh = ngaysinh;
-    }
 
 
 }

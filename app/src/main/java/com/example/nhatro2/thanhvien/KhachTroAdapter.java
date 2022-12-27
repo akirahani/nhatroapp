@@ -40,8 +40,8 @@ public class KhachTroAdapter extends RecyclerView.Adapter<KhachTroAdapter.KhachT
         int idKhachThue = khach.getId();
         String diachi = khach.getDiachi();
         String cancuoc = khach.getCancuoc();
-        Date ngaycap = khach.getNgaycap();
-        Date ngaysinh = khach.getNgaysinh();
+        String ngaycap = khach.getNgaycap();
+        String ngaysinh = khach.getNgaysinh();
         String quoctich = khach.getQuoctich();
         int gioitinh = khach.getGioitinh();
         int nhomtuoi = khach.getNhomtuoi();
