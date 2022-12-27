@@ -62,7 +62,34 @@ public interface Api {
     //Thêm khách
     @POST ("/nhatro/admin/api/khach/add.php")
     @FormUrlEncoded
-    Call <ThanhVienModel> themKhach(@Field("fullname") String tenKhach, @Field("dienthoai") String dienthoai, @Field("cancuoc") String cancuoc, @Field("diachi") String diachi, @Field("ngaycap") String ngaycap,@Field("ngaysinh") String ngaysinh,@Field("quoctich") String quoctich,@Field("gioitinh") int gioitinh,@Field("nhomtuoi") int nhomtuoi);
+    Call <ThanhVienModel> themKhach(@Field("fullname") String tenKhach,
+                                    @Field("dienthoai") String dienthoai,
+                                    @Field("cancuoc") String cancuoc,
+                                    @Field("diachi") String diachi,
+                                    @Field("ngaycap") String ngaycap,
+                                    @Field("ngaysinh") String ngaysinh,
+                                    @Field("quoctich") String quoctich,
+                                    @Field("gioitinh") int gioitinh,
+                                    @Field("nhomtuoi") int nhomtuoi);
+
+    //Cập nhật khách
+    @POST ("/nhatro/admin/api/khach/edit.php")
+    @FormUrlEncoded
+    Call <ThanhVienModel> updateKhach( @Field("id") int id,
+                                       @Field("fullname") String tenKhach,
+                                       @Field("dienthoai") String dienthoai,
+                                       @Field("cancuoc") String cancuoc,
+                                       @Field("diachi") String diachi,
+                                       @Field("ngaycap") String ngaycap,
+                                       @Field("ngaysinh") String ngaysinh,
+                                       @Field("quoctich") String quoctich,
+                                       @Field("gioitinh") int gioitinh,
+                                       @Field("nhomtuoi") int nhomtuoi);
+
+    //Tìm kiếm khách
+    @POST ("/nhatro/admin/api/khach/search.php")
+    @FormUrlEncoded
+    Call <List<ThanhVienModel>> searchKhach( @Field("key") String key);
 
 //    @POST ("/nhatro/admin/api/phong/add.php")
 //    @FormUrlEncoded
