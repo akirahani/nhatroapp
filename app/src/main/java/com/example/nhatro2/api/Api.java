@@ -62,7 +62,7 @@ public interface Api {
     //Thêm khách
     @POST ("/nhatro/admin/api/khach/add.php")
     @FormUrlEncoded
-    Call <ThanhVienModel> themKhach(@Field("fullname") String tenKhach, @Field("dienthoai") String dienthoai);
+    Call <ThanhVienModel> themKhach(@Field("fullname") String tenKhach, @Field("dienthoai") String dienthoai, @Field("cancuoc") String cancuoc, @Field("diachi") String diachi, @Field("ngaycap") String ngaycap,@Field("ngaysinh") String ngaysinh,@Field("quoctich") String quoctich,@Field("gioitinh") int gioitinh,@Field("nhomtuoi") int nhomtuoi);
 
 //    @POST ("/nhatro/admin/api/phong/add.php")
 //    @FormUrlEncoded

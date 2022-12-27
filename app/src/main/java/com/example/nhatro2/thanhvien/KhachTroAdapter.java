@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.nhatro2.R;
 
+import java.util.Date;
 import java.util.List;
 
 public class KhachTroAdapter extends RecyclerView.Adapter<KhachTroAdapter.KhachTroViewHolder> {
@@ -37,7 +38,13 @@ public class KhachTroAdapter extends RecyclerView.Adapter<KhachTroAdapter.KhachT
         String tenKhachThue = khach.getFullname();
         String sdtKhachThue = khach.getDienthoai();
         int idKhachThue = khach.getId();
-
+        String diachi = khach.getDiachi();
+        String cancuoc = khach.getCancuoc();
+        Date ngaycap = khach.getNgaycap();
+        Date ngaysinh = khach.getNgaysinh();
+        String quoctich = khach.getQuoctich();
+        int gioitinh = khach.getGioitinh();
+        int nhomtuoi = khach.getNhomtuoi();
         holder.tenKhach.setText(tenKhachThue);
         holder.sdtKhach.setText(sdtKhachThue);
 
@@ -48,6 +55,13 @@ public class KhachTroAdapter extends RecyclerView.Adapter<KhachTroAdapter.KhachT
                 intent.putExtra("idKhach",idKhachThue);
                 intent.putExtra("tenKhach",tenKhachThue);
                 intent.putExtra("sdtKhach",sdtKhachThue);
+                intent.putExtra("diachi",diachi);
+                intent.putExtra("cancuoc",cancuoc);
+                intent.putExtra("ngaycap",ngaycap);
+                intent.putExtra("ngaysinh",ngaysinh);
+                intent.putExtra("quoctich",quoctich);
+                intent.putExtra("gioitinh",gioitinh);
+                intent.putExtra("nhomtuoi",nhomtuoi);
                 context.startActivity(intent);
             }
         });
