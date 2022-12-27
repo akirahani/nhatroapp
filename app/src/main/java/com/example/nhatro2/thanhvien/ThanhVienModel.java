@@ -14,8 +14,10 @@ public class ThanhVienModel {
     private Date ngaycap;
     private String quoctich;
     private Date ngaysinh;
+    private int gioitinh;
+    private int nhomtuoi;
 
-    public ThanhVienModel(int id, String username, String password, String fullname, int nhom, String dienthoai, String diachi, String cancuoc, Date ngaycap, String quoctich, Date ngaysinh) {
+    public ThanhVienModel(int id, String username, String password, String fullname, int nhom, String dienthoai, String diachi, String cancuoc, Date ngaycap, String quoctich, Date ngaysinh, int gioitinh, int nhomtuoi) {
         this.id = id;
         this.username = username;
         this.password = password;
@@ -27,7 +29,26 @@ public class ThanhVienModel {
         this.ngaycap = ngaycap;
         this.quoctich = quoctich;
         this.ngaysinh = ngaysinh;
+        this.gioitinh = gioitinh;
+        this.nhomtuoi = nhomtuoi;
     }
+
+    public int getGioitinh() {
+        return gioitinh;
+    }
+
+    public void setGioitinh(int gioitinh) {
+        this.gioitinh = gioitinh;
+    }
+
+    public int getNhomtuoi() {
+        return nhomtuoi;
+    }
+
+    public void setNhomtuoi(int nhomtuoi) {
+        this.nhomtuoi = nhomtuoi;
+    }
+
     public int getId() {
         return id;
     }
