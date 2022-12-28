@@ -74,14 +74,13 @@ public class KhachTroAdapter extends RecyclerView.Adapter<KhachTroAdapter.KhachT
 
     public class KhachTroViewHolder extends RecyclerView.ViewHolder {
         TextView tenKhach, sdtKhach, phongThue;
-        ImageView suaKhach, xoaKhach;
+        ImageView suaKhach;
         public KhachTroViewHolder(@NonNull View itemView) {
             super(itemView);
             tenKhach = itemView.findViewById(R.id.tenKhach);
             sdtKhach = itemView.findViewById(R.id.sdtKhach);
-//            phongThue = itemView.findViewById(R.id.phongKhachThue);
+            // phongThue = itemView.findViewById(R.id.phongKhachThue);
             suaKhach = itemView.findViewById(R.id.suaKhachThue);
-            xoaKhach = itemView.findViewById(R.id.xoaKhachThue);
         }
     }
 }

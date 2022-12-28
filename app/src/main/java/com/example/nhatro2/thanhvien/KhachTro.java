@@ -172,12 +172,11 @@ public class KhachTro extends AppCompatActivity {
                             public void onResponse(Call<List<ThanhVienModel>> call, Response<List<ThanhVienModel>> response) {
                                 List<ThanhVienModel> khachCanTim = response.body();
                                 listKhachThue.setAdapter(new KhachTroAdapter(KhachTro.this, khachCanTim));
-                                Log.d("list khach tim",""+khachCanTim);
+                                dialogSearch.dismiss();
                             }
 
                             @Override
                             public void onFailure(Call<List<ThanhVienModel>> call, Throwable t) {
-                                Log.d("error",""+t.toString());
                             }
                         });
                     }
