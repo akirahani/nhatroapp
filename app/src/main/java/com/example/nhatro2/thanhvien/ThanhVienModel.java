@@ -1,7 +1,5 @@
 package com.example.nhatro2.thanhvien;
 
-import java.util.Date;
-
 public class ThanhVienModel {
     private int id;
     private String username;
@@ -12,6 +10,36 @@ public class ThanhVienModel {
     private String diachi;
     private String cancuoc;
     private String quoctich;
+    private String ngaycap;
+    private String ngaysinh;
+    private String noicap;
+    private int gioitinh;
+    private int nhomtuoi;
+
+    public ThanhVienModel(int id, String username, String password, String fullname, int nhom, String dienthoai, String diachi, String cancuoc, String quoctich, String ngaycap, String ngaysinh, String noicap, int gioitinh, int nhomtuoi) {
+        this.id = id;
+        this.username = username;
+        this.password = password;
+        this.fullname = fullname;
+        this.nhom = nhom;
+        this.dienthoai = dienthoai;
+        this.diachi = diachi;
+        this.cancuoc = cancuoc;
+        this.quoctich = quoctich;
+        this.ngaycap = ngaycap;
+        this.ngaysinh = ngaysinh;
+        this.noicap = noicap;
+        this.gioitinh = gioitinh;
+        this.nhomtuoi = nhomtuoi;
+    }
+
+    public String getNoicap() {
+        return noicap;
+    }
+
+    public void setNoicap(String noicap) {
+        this.noicap = noicap;
+    }
 
     public String getNgaycap() {
         return ngaycap;
@@ -29,26 +57,6 @@ public class ThanhVienModel {
         this.ngaysinh = ngaysinh;
     }
 
-    private String ngaycap;
-    private String ngaysinh;
-    private int gioitinh;
-    private int nhomtuoi;
-
-    public ThanhVienModel(int id, String username, String password, String fullname, int nhom, String dienthoai, String diachi, String cancuoc, String ngaycap, String quoctich, String ngaysinh, int gioitinh, int nhomtuoi) {
-        this.id = id;
-        this.username = username;
-        this.password = password;
-        this.fullname = fullname;
-        this.nhom = nhom;
-        this.dienthoai = dienthoai;
-        this.diachi = diachi;
-        this.cancuoc = cancuoc;
-        this.ngaycap = ngaycap;
-        this.quoctich = quoctich;
-        this.ngaysinh = ngaysinh;
-        this.gioitinh = gioitinh;
-        this.nhomtuoi = nhomtuoi;
-    }
 
     public int getGioitinh() {
         return gioitinh;

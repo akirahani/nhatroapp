@@ -48,7 +48,6 @@
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/tenDichVuAdd"
         android:layout_marginLeft="14dp"
         android:layout_marginTop="8dp"
         android:layout_marginRight="14dp"
@@ -81,7 +80,6 @@
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/ngayCapHopDongAdd"
         android:layout_marginLeft="14dp"
         android:layout_marginTop="8dp"
         android:layout_marginRight="14dp"
@@ -114,7 +112,6 @@
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/noiCapHopDongAdd"
         android:layout_marginLeft="14dp"
         android:layout_marginTop="8dp"
         android:layout_marginRight="14dp"
@@ -147,7 +144,6 @@
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/tenDichVuAdd"
         android:layout_marginLeft="14dp"
         android:layout_marginTop="8dp"
         android:layout_marginRight="14dp"

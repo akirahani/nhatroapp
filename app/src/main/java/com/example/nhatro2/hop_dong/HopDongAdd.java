@@ -5,6 +5,7 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager2.widget.ViewPager2;
 
@@ -40,10 +41,12 @@ import com.example.nhatro2.dich_vu.DichVuAdapter;
 import com.example.nhatro2.dich_vu.DichVuModel;
 import com.example.nhatro2.phong.PhongEdit;
 import com.example.nhatro2.phong.PhongModel;
+import com.example.nhatro2.thanhvien.ThanhVienModel;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.tabs.TabLayout;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 
@@ -54,11 +57,11 @@ import retrofit2.http.POST;
 
 public class HopDongAdd extends AppCompatActivity {
 
-    ImageView thoat, logo;
+    ImageView thoat, logo, themNguoiThue;
     SharedPreferences shp;
     RelativeLayout tieuDePhongTro;
     LinearLayout rowFirstEditRoom;
-    RecyclerView listThietBi;
+    RecyclerView listThietBi,listKhachAdd;
     ThietBiAddAdapter dichVuAdapter;
     List<DichVuModel> dichVu;
     EditText tenDaiDienText, sdtDaiDienText;
@@ -66,6 +69,7 @@ public class HopDongAdd extends AppCompatActivity {
     private int mYear, mMonth, mDay;
     DatePickerDialog.OnDateSetListener setListener;
     FloatingActionButton fab;
+    List<ThanhVienModel> listKhachArr = new ArrayList<>();
     int trangthai;
 
     @RequiresApi(api = Build.VERSION_CODES.N)
@@ -221,5 +225,20 @@ public class HopDongAdd extends AppCompatActivity {
 //                        .setAction("Action", null).show();
 //            }
 //        });
+
+        listKhachAdd = findViewById(R.id.listKhachAdd);
+        listKhachAdd.setLayoutManager(new LinearLayoutManager(HopDongAdd.this));
+        listKhachAdd.hasFixedSize();
+        listKhachAdd.setNestedScrollingEnabled(false);
+
+
+        themNguoiThue = findViewById(R.id.themNguoiThue);
+        themNguoiThue.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                listKhachArr.add(new ThanhVienModel( 0 ,"","","",4,"","","","","","","",0,0));
+                listKhachAdd.setAdapter(new KhachAddAdapter(HopDongAdd.this,listKhachArr));
+            }
+        });
     }
 }

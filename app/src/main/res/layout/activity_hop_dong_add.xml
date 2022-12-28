@@ -380,13 +380,11 @@
                         android:id="@+id/listKhachAdd"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content">
-
                     </androidx.recyclerview.widget.RecyclerView>
 
                     <RelativeLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_below="@+id/giaThietBiEdit"
                         android:layout_marginTop="15dp"
                         android:gravity="center"
                         android:layout_marginBottom="19dp">
