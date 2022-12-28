@@ -154,7 +154,6 @@ public class KhachTroEdit extends AppCompatActivity {
         });
 
         // Hiển thị ngày sinh lên textView
-        Log.d("ngaysinh",""+ngaySinh);
         if(ngaySinh == null){
             ngaySinhEditText.setText("dd-mm-yyyy");
         }else{
@@ -180,7 +179,7 @@ public class KhachTroEdit extends AppCompatActivity {
                 datePickerDialog.show();
             }
         });
-        Log.d("ngaycap",""+ngayCap);
+
         // Hiển thị ngày cấp lên textView
         if(ngayCap == null){
             ngayCapEditText.setText("dd-mm-yyyy");
@@ -212,9 +211,6 @@ public class KhachTroEdit extends AppCompatActivity {
             diaChiKhachEditText.setText(diaChi);
             quocTichEditText.setText(quocTich);
             //set Text cho textview
-
-
-
             namEdit = findViewById(R.id.namEdit);
             nuEdit = findViewById(R.id.nuEdit);
             khacEdit = findViewById(R.id.khacEdit);
