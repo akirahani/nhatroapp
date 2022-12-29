@@ -67,14 +67,6 @@ public class PhongAdapter extends RecyclerView.Adapter<PhongAdapter.PhongViewHol
         return new PhongViewHolder(view);
     }
 
-    private void toggle(boolean show) {
-        Transition transition = new Slide(Gravity.BOTTOM);
-        transition.setDuration(600);
-        transition.addTarget(R.id.slideUp);
-        TransitionManager.beginDelayedTransition(khungNgoai, transition);
-        slideUp.setVisibility(show ? View.GONE : View.VISIBLE);
-    }
-
     @Override
     public void onBindViewHolder(@NonNull PhongAdapter.PhongViewHolder holder, int position) {
         PhongModel data = phong.get(position);
@@ -138,7 +130,6 @@ public class PhongAdapter extends RecyclerView.Adapter<PhongAdapter.PhongViewHol
             @Override
             public void onClick(View view) {
                 List<Integer> arrInt = new ArrayList<>();
-                List<Integer> arrStatus = new ArrayList<>();
                 //Xử lý lưu mảng số nguyên sản phẩm
                 if (listRoom.equals("")) {
                     //Tạo mảng
@@ -158,7 +149,6 @@ public class PhongAdapter extends RecyclerView.Adapter<PhongAdapter.PhongViewHol
                     }
 
                     if (arrInt.contains(idPhong)) {
-
                         //Xóa khỏi list
                         arrInt.remove(Integer.valueOf(idPhong));
                         //Convert list to string

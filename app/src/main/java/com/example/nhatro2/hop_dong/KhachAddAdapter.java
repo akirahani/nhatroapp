@@ -39,13 +39,16 @@ public class KhachAddAdapter extends RecyclerView.Adapter<KhachAddAdapter.KhachT
         String ngayCap = khachThueItem.getNgaycap();
         String ngaySinh = khachThueItem.getNgaysinh();
         String dienThoai = khachThueItem.getDienthoai();
+        String noicap = khachThueItem.getNoicap();
 
         holder.tenKhachAdd.setText(tenKhach);
         holder.canCuocKhachAdd.setText(canCuoc);
         holder.ngayCapKhachAdd.setText(ngayCap);
         holder.ngaySinhHopDongAddText.setText(ngaySinh);
         holder.sdtKhachAdd.setText(dienThoai);
-
+        holder.noiCapKhachAdd.setText(noicap);
+        position++;
+        holder.thuTuKhachTro.setText("Khách trọ "+position);
     }
 
     @Override
@@ -55,7 +58,7 @@ public class KhachAddAdapter extends RecyclerView.Adapter<KhachAddAdapter.KhachT
 
     public class KhachTroAddViewHolder extends RecyclerView.ViewHolder {
         EditText tenKhachAdd, canCuocKhachAdd, noiCapKhachAdd, sdtKhachAdd;
-        TextView ngayCapKhachAdd,ngaySinhHopDongAddText;
+        TextView ngayCapKhachAdd,ngaySinhHopDongAddText,thuTuKhachTro;
         public KhachTroAddViewHolder(@NonNull View itemView) {
             super(itemView);
             tenKhachAdd = itemView.findViewById(R.id.tenKhachAdd);
@@ -64,6 +67,7 @@ public class KhachAddAdapter extends RecyclerView.Adapter<KhachAddAdapter.KhachT
             sdtKhachAdd = itemView.findViewById(R.id.sdtKhachAdd);
             ngayCapKhachAdd = itemView.findViewById(R.id.ngayCapKhachAdd);
             ngaySinhHopDongAddText = itemView.findViewById(R.id.ngaySinhHopDongAddText);
+            thuTuKhachTro = itemView.findViewById(R.id.thuTuKhachTro);
         }
     }
 }

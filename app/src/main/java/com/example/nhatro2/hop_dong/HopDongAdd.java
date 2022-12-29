@@ -59,18 +59,16 @@ public class HopDongAdd extends AppCompatActivity {
 
     ImageView thoat, logo, themNguoiThue;
     SharedPreferences shp;
-    RelativeLayout tieuDePhongTro;
-    LinearLayout rowFirstEditRoom;
-    RecyclerView listThietBi,listKhachAdd;
+    RecyclerView listThietBi, listKhachAdd;
     ThietBiAddAdapter dichVuAdapter;
     List<DichVuModel> dichVu;
     EditText tenDaiDienText, sdtDaiDienText;
-    TextView textNameRoom, ngayKetThuc;
+    TextView textNameRoom, ngayKetThuc,themHopDong;
     private int mYear, mMonth, mDay;
     DatePickerDialog.OnDateSetListener setListener;
-    FloatingActionButton fab;
+//    FloatingActionButton fab;
     List<ThanhVienModel> listKhachArr = new ArrayList<>();
-    int trangthai;
+    KhachAddAdapter addAdapterKhach;
 
     @RequiresApi(api = Build.VERSION_CODES.N)
     @Override
@@ -230,15 +228,31 @@ public class HopDongAdd extends AppCompatActivity {
         listKhachAdd.setLayoutManager(new LinearLayoutManager(HopDongAdd.this));
         listKhachAdd.hasFixedSize();
         listKhachAdd.setNestedScrollingEnabled(false);
+        addAdapterKhach = new KhachAddAdapter(HopDongAdd.this, listKhachArr);
+        listKhachAdd.setAdapter(addAdapterKhach);
 
-
+        // Thêm khách thuê trọ
         themNguoiThue = findViewById(R.id.themNguoiThue);
         themNguoiThue.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                listKhachArr.add(new ThanhVienModel( 0 ,"","","",4,"","","","","","","",0,0));
-                listKhachAdd.setAdapter(new KhachAddAdapter(HopDongAdd.this,listKhachArr));
+                listKhachArr.add(new ThanhVienModel(0, "", "", "", 4, "", "", "", "", "", "", "", 0, 0));
+
+                if (listKhachArr.size() == 4) {
+                    themNguoiThue.setVisibility(View.GONE);
+                }
+
+                addAdapterKhach.notifyDataSetChanged();
             }
         });
+
+        // Thêm hợp đồng
+        themHopDong.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+            }
+        });
+
     }
 }
