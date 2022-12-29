@@ -7,6 +7,7 @@
     android:background="@color/khungNgoai"
     android:orientation="vertical"
     tools:context=".hop_dong.HopDongAdd">
+
     <androidx.appcompat.widget.Toolbar xmlns:android="http://schemas.android.com/apk/res/android"
         android:id="@+id/header"
         android:layout_width="match_parent"
@@ -83,6 +84,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/header"
         android:background="@color/white">
+
         <LinearLayout
             android:id="@+id/rowServiceEdit"
             android:layout_width="match_parent"
@@ -115,31 +117,32 @@
             android:layout_marginTop="-10dp"
             android:background="@color/khungNgoai" />
     </RelativeLayout>
+
     <TextView
         android:id="@+id/tieuDeThemHopDong"
+        android:layout_width="173dp"
+        android:layout_height="33dp"
         android:layout_below="@+id/tieuDeHopDong"
         android:background="@drawable/title_card"
         android:backgroundTint="@color/tabActive"
-        android:layout_width="173dp"
-        android:layout_height="33dp"
         android:gravity="center"
-        android:textColor="@color/white"
-        android:paddingTop="8dp"
-        android:paddingBottom="8dp"
-        android:paddingRight="23dp"
         android:paddingLeft="23dp"
-        android:text="Thêm hợp đồng">
-    </TextView>
+        android:paddingTop="8dp"
+        android:paddingRight="23dp"
+        android:paddingBottom="8dp"
+        android:text="Thêm hợp đồng"
+        android:textColor="@color/white"></TextView>
     <!-- danh sách thiết bị -->
-    <ScrollView
-        android:layout_below="@+id/tieuDeThemHopDong"
+    <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tieuDeThemHopDong">
+
         <LinearLayout
             android:id="@+id/formCapNhat"
-            android:layout_below="@+id/tieuDeHopDong"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:layout_below="@+id/tieuDeHopDong"
             android:background="@color/white"
             android:orientation="vertical">
 
@@ -150,8 +153,7 @@
                 android:layout_below="@+id/tieuDeThietBi"
                 android:layout_marginLeft="25dp"
                 android:layout_marginTop="12dp"
-                android:layout_marginRight="25dp">
-            </RelativeLayout>
+                android:layout_marginRight="25dp"></RelativeLayout>
 
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
@@ -168,15 +170,16 @@
                     android:layout_height="wrap_content"
                     android:background="@color/cardThietBi"
                     android:orientation="vertical">
+
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:textStyle="bold"
-                        android:textColor="@color/black"
-                        android:text="Người đại diện"
                         android:paddingLeft="9dp"
-                        android:paddingTop="11dp">
-                    </TextView>
+                        android:paddingTop="11dp"
+                        android:text="Người đại diện"
+                        android:textColor="@color/black"
+                        android:textStyle="bold"></TextView>
+
                     <androidx.cardview.widget.CardView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -270,8 +273,7 @@
                                 android:id="@+id/ngayCapDaiDienText"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:text="dd-mm-yyyy"
-                                />
+                                android:text="dd-mm-yyyy" />
                         </LinearLayout>
                     </androidx.cardview.widget.CardView>
 
@@ -336,7 +338,7 @@
                                 android:id="@+id/ngaySinhDaiDienText"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:text="dd-mm-yyyy"/>
+                                android:text="dd-mm-yyyy" />
                         </LinearLayout>
                     </androidx.cardview.widget.CardView>
 
@@ -373,29 +375,33 @@
                         </LinearLayout>
                     </androidx.cardview.widget.CardView>
 
-                    <androidx.recyclerview.widget.RecyclerView
-                        android:layout_marginTop="8dp"
-                        android:layout_marginLeft="14dp"
-                        android:layout_marginRight="14dp"
-                        android:id="@+id/listKhachAdd"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
-                    </androidx.recyclerview.widget.RecyclerView>
-
-                    <RelativeLayout
+                    <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="15dp"
-                        android:gravity="center"
-                        android:layout_marginBottom="19dp">
-                        <ImageView
-                            android:id="@+id/themNguoiThue"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:textAllCaps="true"
-                            android:src="@drawable/addicon"></ImageView>
+                        android:orientation="vertical">
 
-                    </RelativeLayout>
+                        <androidx.recyclerview.widget.RecyclerView
+                            android:id="@+id/listKhachAdd"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_marginTop="8dp"></androidx.recyclerview.widget.RecyclerView>
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_marginTop="15dp"
+                            android:layout_marginBottom="19dp"
+                            android:gravity="center">
+
+                            <ImageView
+                                android:id="@+id/themNguoiThue"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:src="@drawable/addicon"
+                                android:textAllCaps="true"></ImageView>
+
+                        </RelativeLayout>
+                    </LinearLayout>
 
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
@@ -415,100 +421,99 @@
                     android:layout_height="wrap_content"
                     android:background="@color/cardThietBi"
                     android:orientation="vertical">
+
                     <TextView
                         android:id="@+id/textNameRoom"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:textStyle="bold"
-                        android:textColor="@color/black"
                         android:paddingLeft="9dp"
-                        android:paddingTop="11dp">
-                    </TextView>
+                        android:paddingTop="11dp"
+                        android:textColor="@color/black"
+                        android:textStyle="bold"></TextView>
 
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:textColor="@color/black"
-                        android:text="Thiết bị: "
                         android:paddingLeft="9dp"
-                        android:paddingTop="11dp">
-                    </TextView>
+                        android:paddingTop="11dp"
+                        android:text="Thiết bị: "
+                        android:textColor="@color/black"></TextView>
 
                     <androidx.recyclerview.widget.RecyclerView
                         android:id="@+id/thietbiCheck"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="6dp"
                         android:layout_marginLeft="8dp"
+                        android:layout_marginTop="6dp"
                         android:layout_marginRight="8dp">
 
                     </androidx.recyclerview.widget.RecyclerView>
 
-                    <androidx.cardview.widget.CardView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_below="@+id/thietbiCheck"
-                        android:layout_marginLeft="14dp"
-                        android:layout_marginTop="16dp"
-                        android:layout_marginRight="14dp"
-                        app:cardCornerRadius="8dp">
+<!--                    <androidx.cardview.widget.CardView-->
+<!--                        android:layout_width="match_parent"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:layout_below="@+id/thietbiCheck"-->
+<!--                        android:layout_marginLeft="14dp"-->
+<!--                        android:layout_marginTop="16dp"-->
+<!--                        android:layout_marginRight="14dp"-->
+<!--                        app:cardCornerRadius="8dp">-->
 
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:background="@color/white"
-                            android:orientation="horizontal"
-                            android:paddingTop="8dp"
-                            android:paddingBottom="8dp">
+<!--                        <LinearLayout-->
+<!--                            android:layout_width="match_parent"-->
+<!--                            android:layout_height="wrap_content"-->
+<!--                            android:background="@color/white"-->
+<!--                            android:orientation="horizontal"-->
+<!--                            android:paddingTop="8dp"-->
+<!--                            android:paddingBottom="8dp">-->
 
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:paddingLeft="6dp"
-                                android:text="Giá phòng: "
-                                android:textColor="@color/black"></TextView>
+<!--                            <TextView-->
+<!--                                android:layout_width="wrap_content"-->
+<!--                                android:layout_height="wrap_content"-->
+<!--                                android:paddingLeft="6dp"-->
+<!--                                android:text="Giá phòng: "-->
+<!--                                android:textColor="@color/black"></TextView>-->
 
-                            <EditText
-                                android:id="@+id/giaPhhong"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:background="@null"
-                                android:inputType="number"></EditText>
-                        </LinearLayout>
-                    </androidx.cardview.widget.CardView>
+<!--                            <EditText-->
+<!--                                android:id="@+id/giaPhhong"-->
+<!--                                android:layout_width="match_parent"-->
+<!--                                android:layout_height="wrap_content"-->
+<!--                                android:background="@null"-->
+<!--                                android:inputType="number"></EditText>-->
+<!--                        </LinearLayout>-->
+<!--                    </androidx.cardview.widget.CardView>-->
 
-                    <androidx.cardview.widget.CardView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_below="@+id/tenDichVuAdd"
-                        android:layout_marginLeft="14dp"
-                        android:layout_marginTop="8dp"
-                        android:layout_marginRight="14dp"
-                        app:cardCornerRadius="8dp">
+<!--                    <androidx.cardview.widget.CardView-->
+<!--                        android:layout_width="match_parent"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:layout_below="@+id/tenDichVuAdd"-->
+<!--                        android:layout_marginLeft="14dp"-->
+<!--                        android:layout_marginTop="8dp"-->
+<!--                        android:layout_marginRight="14dp"-->
+<!--                        app:cardCornerRadius="8dp">-->
 
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:background="@color/white"
-                            android:orientation="horizontal"
-                            android:paddingTop="8dp"
-                            android:paddingBottom="8dp">
+<!--                        <LinearLayout-->
+<!--                            android:layout_width="match_parent"-->
+<!--                            android:layout_height="wrap_content"-->
+<!--                            android:background="@color/white"-->
+<!--                            android:orientation="horizontal"-->
+<!--                            android:paddingTop="8dp"-->
+<!--                            android:paddingBottom="8dp">-->
 
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:paddingLeft="6dp"
-                                android:text="Tiền cọc: "
-                                android:textColor="@color/black"></TextView>
+<!--                            <TextView-->
+<!--                                android:layout_width="wrap_content"-->
+<!--                                android:layout_height="wrap_content"-->
+<!--                                android:paddingLeft="6dp"-->
+<!--                                android:text="Tiền cọc: "-->
+<!--                                android:textColor="@color/black"></TextView>-->
 
-                            <EditText
-                                android:id="@+id/tienCocHopDongAdd"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:background="@null"
-                                android:inputType="number"></EditText>
-                        </LinearLayout>
-                    </androidx.cardview.widget.CardView>
+<!--                            <EditText-->
+<!--                                android:id="@+id/tienCocHopDongAdd"-->
+<!--                                android:layout_width="match_parent"-->
+<!--                                android:layout_height="wrap_content"-->
+<!--                                android:background="@null"-->
+<!--                                android:inputType="number"></EditText>-->
+<!--                        </LinearLayout>-->
+<!--                    </androidx.cardview.widget.CardView>-->
 
 
                     <RelativeLayout
@@ -516,8 +521,8 @@
                         android:layout_height="wrap_content"
                         android:layout_below="@+id/giaThietBiEdit"
                         android:layout_marginTop="15dp"
-                        android:gravity="center"
-                        android:layout_marginBottom="19dp">
+                        android:layout_marginBottom="19dp"
+                        android:gravity="center">
 
                     </RelativeLayout>
 
@@ -539,16 +544,15 @@
                     android:layout_height="wrap_content"
                     android:background="@color/cardThietBi"
                     android:orientation="vertical">
+
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:textStyle="bold"
-                        android:textColor="@color/black"
-                        android:text="Thông tin hiệu lực hợp đồng"
                         android:paddingLeft="9dp"
-                        android:paddingTop="11dp">
-                    </TextView>
-
+                        android:paddingTop="11dp"
+                        android:text="Thông tin hiệu lực hợp đồng"
+                        android:textColor="@color/black"
+                        android:textStyle="bold"></TextView>
 
 
                     <androidx.cardview.widget.CardView
@@ -579,7 +583,7 @@
                                 android:id="@+id/ngayKetThuc"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:text="dd-mm-yyyy"/>
+                                android:text="dd-mm-yyyy" />
                         </LinearLayout>
                     </androidx.cardview.widget.CardView>
 
@@ -589,8 +593,8 @@
                         android:layout_height="wrap_content"
                         android:layout_below="@+id/giaThietBiEdit"
                         android:layout_marginTop="15dp"
-                        android:gravity="center"
-                        android:layout_marginBottom="19dp">
+                        android:layout_marginBottom="19dp"
+                        android:gravity="center">
 
                     </RelativeLayout>
 
@@ -602,9 +606,9 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/giaThietBiEdit"
                 android:layout_marginLeft="25dp"
-                android:gravity="center"
                 android:layout_marginRight="25dp"
-                android:layout_marginBottom="21dp">
+                android:layout_marginBottom="21dp"
+                android:gravity="center">
 
 
                 <androidx.cardview.widget.CardView
@@ -629,13 +633,13 @@
                 </androidx.cardview.widget.CardView>
             </RelativeLayout>
         </LinearLayout>
-    </ScrollView>
-<!--    <com.google.android.material.floatingactionbutton.FloatingActionButton-->
-<!--        android:id="@+id/floatButtonHopDongAdd"-->
+    </androidx.core.widget.NestedScrollView>
+    <!--    <com.google.android.material.floatingactionbutton.FloatingActionButton-->
+    <!--        android:id="@+id/floatButtonHopDongAdd"-->
 
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:layout_alignParentBottom="true"-->
-<!--        android:layout_alignParentRight="true"-->
-<!--        android:layout_margin="16dp" />-->
+    <!--        android:layout_width="wrap_content"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        android:layout_alignParentBottom="true"-->
+    <!--        android:layout_alignParentRight="true"-->
+    <!--        android:layout_margin="16dp" />-->
 </RelativeLayout>

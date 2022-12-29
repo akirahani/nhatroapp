@@ -3,6 +3,7 @@ package com.example.nhatro2.phong;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.media.Image;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -85,6 +86,12 @@ public class BanGiaoAdapter extends RecyclerView.Adapter<BanGiaoAdapter.BanGiaoV
                 intent.putExtra("daidien",daidien);
                 intent.putExtra("dienthoai",dienthoai);
                 intent.putExtra("datcoc",datcoc);
+                // Khai báo mảng dữ liệu thiết bị
+                SharedPreferences shpThietBi = context.getSharedPreferences("idThietBiHopDong",Context.MODE_PRIVATE);
+                SharedPreferences.Editor thietBiEdit = shpThietBi.edit();
+                String listThietBiString = shpThietBi.getString("itemThietBi","");
+                thietBiEdit.remove("itemThietBi");
+                thietBiEdit.commit();
                 context.startActivity(intent);
             }
         });
