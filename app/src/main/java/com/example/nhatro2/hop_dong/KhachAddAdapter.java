@@ -43,17 +43,12 @@ public class KhachAddAdapter extends RecyclerView.Adapter<KhachAddAdapter.KhachT
         String dienThoai = khachThueItem.getDienthoai();
         String noicap = khachThueItem.getNoicap();
 
+        holder.tenKhachAdd.setText(tenKhach);
         holder.canCuocKhachAdd.setText(canCuoc);
         holder.ngayCapKhachAdd.setText(ngayCap);
         holder.ngaySinhHopDongAddText.setText(ngaySinh);
         holder.sdtKhachAdd.setText(dienThoai);
         holder.noiCapKhachAdd.setText(noicap);
-
-        SharedPreferences shpKhachThem = context.getSharedPreferences("thongTinKhach",Context.MODE_PRIVATE);
-        SharedPreferences.Editor khachEdit = shpKhachThem.edit();
-        String tenKhachLuu = shpKhachThem.getString("itemTenKhach", "");
-        String sdtKhachLuu = shpKhachThem.getString("itemDienThoai", "");
-
         position++;
         holder.thuTuKhachTro.setText("Khách trọ "+position);
     }
