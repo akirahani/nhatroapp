@@ -11,6 +11,7 @@ import androidx.viewpager2.widget.ViewPager2;
 
 import android.annotation.SuppressLint;
 import android.app.DatePickerDialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -69,6 +70,9 @@ public class HopDongAdd extends AppCompatActivity {
 //    FloatingActionButton fab;
     List<ThanhVienModel> listKhachArr = new ArrayList<>();
     KhachAddAdapter addAdapterKhach;
+
+    EditText tenKhachAdd, canCuocKhachAdd, noiCapKhachAdd, sdtKhachAdd;
+    TextView ngayCapKhachAdd,ngaySinhHopDongAddText,thuTuKhachTro;
 
     @RequiresApi(api = Build.VERSION_CODES.N)
     @Override
@@ -159,7 +163,7 @@ public class HopDongAdd extends AppCompatActivity {
 
             @Override
             public void onFailure(Call<PhongModel> call, Throwable t) {
-                Log.d("err", "" + t.toString());
+
             }
         });
         // Thiết bị
@@ -215,14 +219,6 @@ public class HopDongAdd extends AppCompatActivity {
             }
         };
         //
-//        fab = findViewById(R.id.floatButtonHopDongAdd);
-//        fab.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                Snackbar.make(view, "Here's a Snackbar", Snackbar.LENGTH_LONG)
-//                        .setAction("Action", null).show();
-//            }
-//        });
 
         listKhachAdd = findViewById(R.id.listKhachAdd);
         listKhachAdd.setLayoutManager(new LinearLayoutManager(HopDongAdd.this));
@@ -237,20 +233,29 @@ public class HopDongAdd extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 listKhachArr.add(new ThanhVienModel(0, "", "", "", 4, "", "", "", "", "", "", "", 0, 0));
-
                 if (listKhachArr.size() == 4) {
                     themNguoiThue.setVisibility(View.GONE);
                 }
-
                 addAdapterKhach.notifyDataSetChanged();
             }
         });
 
+
+        themHopDong = findViewById(R.id.themHopDong);
         // Thêm hợp đồng
         themHopDong.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                SharedPreferences shpThietBi = getSharedPreferences("idThietBiHopDong", Context.MODE_PRIVATE);
+                SharedPreferences.Editor thietBiEdit = shpThietBi.edit();
+                String listThietBiString = shpThietBi.getString("itemThietBi", "");
 
+                SharedPreferences shpKhachThem = getSharedPreferences("thongTinKhach",Context.MODE_PRIVATE);
+                SharedPreferences.Editor khachEdit = shpKhachThem.edit();
+                String tenKhachLuu = shpKhachThem.getString("itemTenKhach", "");
+                String sdtKhachLuu = shpKhachThem.getString("itemDienThoai", "");
+
+                
             }
         });
 

@@ -1,6 +1,8 @@
 package com.example.nhatro2.hop_dong;
 
 import android.content.Context;
+import android.content.SharedPreferences;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -41,12 +43,17 @@ public class KhachAddAdapter extends RecyclerView.Adapter<KhachAddAdapter.KhachT
         String dienThoai = khachThueItem.getDienthoai();
         String noicap = khachThueItem.getNoicap();
 
-        holder.tenKhachAdd.setText(tenKhach);
         holder.canCuocKhachAdd.setText(canCuoc);
         holder.ngayCapKhachAdd.setText(ngayCap);
         holder.ngaySinhHopDongAddText.setText(ngaySinh);
         holder.sdtKhachAdd.setText(dienThoai);
         holder.noiCapKhachAdd.setText(noicap);
+
+        SharedPreferences shpKhachThem = context.getSharedPreferences("thongTinKhach",Context.MODE_PRIVATE);
+        SharedPreferences.Editor khachEdit = shpKhachThem.edit();
+        String tenKhachLuu = shpKhachThem.getString("itemTenKhach", "");
+        String sdtKhachLuu = shpKhachThem.getString("itemDienThoai", "");
+
         position++;
         holder.thuTuKhachTro.setText("Khách trọ "+position);
     }
@@ -68,6 +75,7 @@ public class KhachAddAdapter extends RecyclerView.Adapter<KhachAddAdapter.KhachT
             ngayCapKhachAdd = itemView.findViewById(R.id.ngayCapKhachAdd);
             ngaySinhHopDongAddText = itemView.findViewById(R.id.ngaySinhHopDongAddText);
             thuTuKhachTro = itemView.findViewById(R.id.thuTuKhachTro);
+
         }
     }
 }

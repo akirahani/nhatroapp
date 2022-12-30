@@ -8,17 +8,25 @@ import java.util.List;
 
 public class HopDongModel {
     private int id;
-    private List<PhongModel> phong;
-    private  List<ThanhVienModel> khach;
-    private  List<DichVuModel> thietbi;
+    private int phong;
+    private List<ThanhVienModel> khach;
+    private List<DichVuModel> thietbi;
     private String ngayKetThuc;
 
-    public HopDongModel(int id, List<PhongModel> phong, List<ThanhVienModel> khach, List<DichVuModel> thietbi, String ngayKetThuc) {
+    public HopDongModel(int id, int phong, List<ThanhVienModel> khach, List<DichVuModel> thietbi, String ngayKetThuc) {
         this.id = id;
         this.phong = phong;
         this.khach = khach;
         this.thietbi = thietbi;
         this.ngayKetThuc = ngayKetThuc;
+    }
+
+    public int getPhong() {
+        return phong;
+    }
+
+    public void setPhong(int phong) {
+        this.phong = phong;
     }
 
 
@@ -28,14 +36,6 @@ public class HopDongModel {
 
     public void setId(int id) {
         this.id = id;
-    }
-
-    public List<PhongModel> getPhong() {
-        return phong;
-    }
-
-    public void setPhong(List<PhongModel> phong) {
-        this.phong = phong;
     }
 
     public List<ThanhVienModel> getKhach() {
