@@ -47,9 +47,9 @@ public class ThietBiAddAdapter extends RecyclerView.Adapter<ThietBiAddAdapter.Th
         holder.tenThietBi.setText(tenThietBi);
 
         // Khai báo mảng dữ liệu thiết bị
-        SharedPreferences shpThietBi = context.getSharedPreferences("idThietBiHopDong",Context.MODE_PRIVATE);
+        SharedPreferences shpThietBi = context.getSharedPreferences("idThietBiHopDong", Context.MODE_PRIVATE);
         SharedPreferences.Editor thietBiEdit = shpThietBi.edit();
-        listThietBiString = shpThietBi.getString("itemThietBi","");
+        listThietBiString = shpThietBi.getString("itemThietBi", "");
 
         // check thiet bi hien thi
         if (listThietBiString.equals("")) {
@@ -74,49 +74,48 @@ public class ThietBiAddAdapter extends RecyclerView.Adapter<ThietBiAddAdapter.Th
         }
 
 
-
         holder.imgThietBi.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
                 List<Integer> listThietBiChoose = new ArrayList<>();
-                if(listThietBiString.equals("")){
+                if (listThietBiString.equals("")) {
                     listThietBiChoose.add(idThietBi);
                     String idThietBiConvert = null;
                     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
                         idThietBiConvert = listThietBiChoose.stream().map(String::valueOf).collect(Collectors.joining(","));
                     }
-                    thietBiEdit.putString("itemThietBi",idThietBiConvert);
+                    thietBiEdit.putString("itemThietBi", idThietBiConvert);
                     thietBiEdit.apply();
                     notifyDataSetChanged();
 
-                }else{
+                } else {
 
                     if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.N) {
                         listThietBiChoose = Arrays.stream(listThietBiString.split(",")).map(Integer::parseInt).collect(Collectors.toList());
                     }
-                    if(listThietBiChoose.contains(idThietBi)){
+                    if (listThietBiChoose.contains(idThietBi)) {
                         listThietBiChoose.remove(Integer.valueOf(idThietBi));
                         String idThietBiConvert = null;
                         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
                             idThietBiConvert = listThietBiChoose.stream().map(String::valueOf).collect(Collectors.joining(","));
                         }
-                        thietBiEdit.putString("itemThietBi",idThietBiConvert);
+                        thietBiEdit.putString("itemThietBi", idThietBiConvert);
                         thietBiEdit.apply();
                         notifyDataSetChanged();
 
-                    }else{
+                    } else {
                         listThietBiChoose.add(idThietBi);
                         String idThietBiConvert = null;
                         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
                             idThietBiConvert = listThietBiChoose.stream().map(String::valueOf).collect(Collectors.joining(","));
                         }
-                        thietBiEdit.putString("itemThietBi",idThietBiConvert);
+                        thietBiEdit.putString("itemThietBi", idThietBiConvert);
                         thietBiEdit.apply();
                         notifyDataSetChanged();
                     }
                 }
-                listThietBiString = shpThietBi.getString("itemThietBi","");
+                listThietBiString = shpThietBi.getString("itemThietBi", "");
             }
         });
     }
