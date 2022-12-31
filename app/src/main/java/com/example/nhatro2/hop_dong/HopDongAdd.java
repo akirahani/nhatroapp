@@ -50,6 +50,7 @@ import com.google.android.material.tabs.TabLayout;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
+import java.util.stream.Collectors;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -63,7 +64,7 @@ public class HopDongAdd extends AppCompatActivity {
     RecyclerView listThietBi, listKhachAdd;
     ThietBiAddAdapter dichVuAdapter;
     List<DichVuModel> dichVu;
-    EditText tenDaiDienText, sdtDaiDienText;
+    EditText tenDaiDienText, sdtDaiDienText, tenKhachText, sdtKhachText;
     TextView textNameRoom, ngayKetThuc,themHopDong;
     private int mYear, mMonth, mDay;
     DatePickerDialog.OnDateSetListener setListener;
@@ -236,6 +237,7 @@ public class HopDongAdd extends AppCompatActivity {
                 if (listKhachArr.size() == 4) {
                     themNguoiThue.setVisibility(View.GONE);
                 }
+
                 addAdapterKhach.notifyDataSetChanged();
             }
         });
@@ -250,12 +252,41 @@ public class HopDongAdd extends AppCompatActivity {
                 SharedPreferences.Editor thietBiEdit = shpThietBi.edit();
                 String listThietBiString = shpThietBi.getString("itemThietBi", "");
 
+                Log.d("thietbi",""+listThietBiString);
+                Log.d("ngayketthuc",""+ngayKetThuc.getText().toString());
+
                 SharedPreferences shpKhachThem = getSharedPreferences("thongTinKhach",Context.MODE_PRIVATE);
                 SharedPreferences.Editor khachEdit = shpKhachThem.edit();
                 String tenKhachLuu = shpKhachThem.getString("itemTenKhach", "");
                 String sdtKhachLuu = shpKhachThem.getString("itemDienThoai", "");
 
-                
+                List<String> thanhVienPhong = new ArrayList<>();
+
+                if (listKhachArr.size() < 1) {
+                    Toast.makeText(HopDongAdd.this, "Chưa có khách ở phòng", Toast.LENGTH_SHORT).show();
+                }else{
+                    tenKhachText = findViewById(R.id.tenKhachAdd);
+                    sdtKhachText = findViewById(R.id.sdtKhachAdd);
+                    String nameCustomer = tenKhachText.getText().toString();
+                    String phone = sdtKhachText.getText().toString();
+                    thanhVienPhong.add(nameCustomer);
+                    String convertStringTenKhach = null;
+                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+                        convertStringTenKhach = thanhVienPhong.stream().map(String::valueOf).collect(Collectors.joining(","));
+                    }
+
+                    khachEdit.putString("itemTenKhach",convertStringTenKhach);
+                    khachEdit.commit();
+
+                    Log.d("tenKhach1",""+convertStringTenKhach);
+                    Log.d("tenKhach",""+tenKhachLuu);
+                }
+
+                if(sdtKhachLuu.equals("")){
+
+                }else{
+
+                }
             }
         });
 
