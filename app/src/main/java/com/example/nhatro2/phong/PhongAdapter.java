@@ -179,7 +179,7 @@ public class PhongAdapter extends RecyclerView.Adapter<PhongAdapter.PhongViewHol
                 Api.api.phongChecked(listRoom).enqueue(new Callback<List<PhongModel>>() {
                     @Override
                     public void onResponse(Call<List<PhongModel>> call, Response<List<PhongModel>> response) {
-                        Log.d("",""+response.body());
+                        Log.d("", "" + response.body());
                     }
 
                     @Override

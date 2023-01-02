@@ -60,12 +60,13 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true">
+
             <ImageView
                 android:id="@+id/tacVuTrong"
-                android:layout_toRightOf="@+id/dayTangTrong"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="@drawable/sua"/>
+                android:layout_height="match_parent"
+                android:layout_toRightOf="@+id/dayTangTrong"
+                android:background="@drawable/sua" />
         </LinearLayout>
     </RelativeLayout>
 </androidx.cardview.widget.CardView>
