@@ -323,12 +323,12 @@
                                 android:gravity="center"
                                 android:layout_marginBottom="10dp"
                                 android:layout_height="wrap_content">
+
                                 <ImageView
                                     android:id="@+id/imageElectric"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:background="@drawable/thuchi">
-                                </ImageView>
+                                    android:background="@drawable/tiendien"></ImageView>
                                 <TextView
                                     android:id="@+id/electronic"
                                     android:paddingLeft="10dp"

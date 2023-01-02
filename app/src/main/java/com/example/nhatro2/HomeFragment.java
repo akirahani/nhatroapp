@@ -20,6 +20,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Adapter;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.Toolbar;
@@ -33,6 +34,8 @@ import com.example.nhatro2.tai_khoan.TaiKhoanAdapter;
 import com.example.nhatro2.tai_khoan.TaiKhoanModel;
 import com.example.nhatro2.thanhvien.ThanhVienAdapter;
 import com.example.nhatro2.thanhvien.ThanhVienModel;
+import com.example.nhatro2.tien_dien.TienDien;
+import com.example.nhatro2.tien_nuoc.TienNuoc;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -49,6 +52,7 @@ public class HomeFragment extends Fragment {
     TextView tenThanhVien;
     Toolbar header;
     ImageView thoat;
+    RelativeLayout rowWater, rowElectric;
     SharedPreferences shp;
     public HomeFragment() {
         // Required empty public constructor
@@ -131,6 +135,24 @@ public class HomeFragment extends Fragment {
         quanLyThanhVien.setNestedScrollingEnabled(false);
         quanLyThanhVien.setAdapter(new TaiKhoanAdapter(getContext(),taiKhoan));
 
+        rowWater = view.findViewById(R.id.rowWater);
+        rowElectric = view.findViewById(R.id.rowElectric);
+
+        rowWater.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getContext(), TienNuoc.class);
+                startActivity(intent);
+            }
+        });
+
+        rowElectric.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getContext(), TienDien.class);
+                startActivity(intent);
+            }
+        });
 
         return view;
     }
