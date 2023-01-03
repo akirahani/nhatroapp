@@ -1,12 +1,12 @@
 package com.example.nhatro2.tien_nuoc;
-import androidx.appcompat.app.AlertDialog;
-import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
 import android.app.DatePickerDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -16,17 +16,35 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.example.nhatro2.HomeActivity;
 import com.example.nhatro2.MainActivity;
 import com.example.nhatro2.R;
-import com.example.nhatro2.thanhvien.KhachTro;
+import com.example.nhatro2.api.Api;
+import com.example.nhatro2.thanhvien.KhachTroAdd;
+import com.kal.rackmonthpicker.RackMonthPicker;
+import com.kal.rackmonthpicker.listener.DateMonthDialogListener;
+import com.kal.rackmonthpicker.listener.OnCancelMonthDialogListener;
 
+import java.time.YearMonth;
+import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.List;
+import java.util.Locale;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class TienNuoc extends AppCompatActivity {
     ImageView thoat, logo;
     SharedPreferences shp;
     TextView chonThangNuoc;
+    DatePickerDialog.OnDateSetListener setListener;
+    private int mYear, mMonth;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -89,34 +107,39 @@ public class TienNuoc extends AppCompatActivity {
         chonThangNuoc.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                final Calendar calendar = Calendar.getInstance();
-                MonthPickerDialog.Builder builder = new MonthPickerDialog.Builder(MainActivity.this,
-                        new MonthPickerDialog.OnDateSetListener() {
+                RackMonthPicker rackMonthPicker = new RackMonthPicker(TienNuoc.this);
+                rackMonthPicker.setLocale(Locale.ENGLISH)
+                        .setPositiveButton(new DateMonthDialogListener() {
                             @Override
-                            public void onDateSet(int selectedMonth, int selectedYear) { // on date set }
-                            }, today.get(Calendar.YEAR), today.get(Calendar.MONTH));
+                            public void onDateMonth(int month, int startDate, int endDate, int year, String monthLabel) {
+                                chonThangNuoc.setText("Tháng "+month+"- năm "+year);
+                                Api.api.chooseTime(month,year).enqueue(new Callback<List<TienNuocModel>>() {
+                                    @Override
+                                    public void onResponse(Call<List<TienNuocModel>> call, Response<List<TienNuocModel>> response) {
 
-                builder.setActivatedMonth(Calendar.JULY).setMinYear(1990)
-                       .setActivatedYear(2017)
-                       .setMaxYear(2030)
-                       .setMinMonth(Calendar.FEBRUARY)
-                       .setTitle("Select trading month")
-                       .setMonthRange(Calendar.FEBRUARY, Calendar.NOVEMBER)
-                                            // .setMaxMonth(Calendar.OCTOBER)
-                                            // .setYearRange(1890, 1890)
-                                            // .setMonthAndYearRange(Calendar.FEBRUARY, Calendar.OCTOBER, 1890, 1890)
-                                            //.showMonthOnly()
-                                            // .showYearOnly()
-                       .setOnMonthChangedListener(new MonthPickerDialog.OnMonthChangedListener() {
-                                                @Override
-                                                public void onMonthChanged(int selectedMonth) { // on month selected } })
-                       .setOnYearChangedListener(new MonthPickerDialog.OnYearChangedListener() {
-                                                        @Override
-                                                        public void onYearChanged(int selectedYear) { // on year selected } })
-                        .build()
-                                                                    .show();
-                //
+//                                        List<TienNuocModel> phongNuoc = response.body();
+                                        Log.d("ten",""+response.body());
+                                    }
+
+                                    @Override
+                                    public void onFailure(Call<List<TienNuocModel>> call, Throwable t) {
+                                        Log.d("err",""+t.toString());
+                                    }
+                                });
+
+                            }
+                        })
+                        .setNegativeButton(new OnCancelMonthDialogListener() {
+                            @Override
+                            public void onCancel(AlertDialog dialog) {
+                                rackMonthPicker.dismiss();
+                            }
+                        }).show();
+
             }
         });
+
+
+
     }
 }
