@@ -18,6 +18,8 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.nhatro2.HomeActivity;
 import com.example.nhatro2.MainActivity;
@@ -43,6 +45,7 @@ public class TienNuoc extends AppCompatActivity {
     SharedPreferences shp;
     TextView chonThangNuoc;
     DatePickerDialog.OnDateSetListener setListener;
+    RecyclerView danhSachPhongNuoc;
     private int mYear, mMonth;
 
 
@@ -103,6 +106,11 @@ public class TienNuoc extends AppCompatActivity {
         params.topMargin = 18;
         imageKhachTro.addView(iv, params);
 
+        danhSachPhongNuoc = findViewById(R.id.danhSachPhongNuoc);
+        danhSachPhongNuoc.setLayoutManager(new LinearLayoutManager(TienNuoc.this));
+        danhSachPhongNuoc.hasFixedSize();
+        danhSachPhongNuoc.setNestedScrollingEnabled(false);
+
         chonThangNuoc = findViewById(R.id.chonThangNuoc);
         chonThangNuoc.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -116,9 +124,8 @@ public class TienNuoc extends AppCompatActivity {
                                 Api.api.chooseTime(month,year).enqueue(new Callback<List<TienNuocModel>>() {
                                     @Override
                                     public void onResponse(Call<List<TienNuocModel>> call, Response<List<TienNuocModel>> response) {
-
-//                                        List<TienNuocModel> phongNuoc = response.body();
-                                        Log.d("ten",""+response.body());
+                                        List<TienNuocModel> phongNuoc = response.body();
+                                        danhSachPhongNuoc.setAdapter(new TienNuocAdapter(TienNuoc.this,phongNuoc));
                                     }
 
                                     @Override
@@ -138,8 +145,6 @@ public class TienNuoc extends AppCompatActivity {
 
             }
         });
-
-
 
     }
 }
