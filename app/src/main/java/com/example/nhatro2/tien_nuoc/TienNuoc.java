@@ -23,6 +23,8 @@ import com.example.nhatro2.thanhvien.KhachTro;
 
 import java.util.Calendar;
 
+import by.dzmitry_lakisau.month_year_picker_dialog.MonthYearPickerDialog;
+
 public class TienNuoc extends AppCompatActivity {
     ImageView thoat, logo;
     SharedPreferences shp;
@@ -89,34 +91,43 @@ public class TienNuoc extends AppCompatActivity {
         chonThangNuoc.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                final Calendar calendar = Calendar.getInstance();
-                MonthPickerDialog.Builder builder = new MonthPickerDialog.Builder(MainActivity.this,
-                        new MonthPickerDialog.OnDateSetListener() {
-                            @Override
-                            public void onDateSet(int selectedMonth, int selectedYear) { // on date set }
-                            }, today.get(Calendar.YEAR), today.get(Calendar.MONTH));
 
-                builder.setActivatedMonth(Calendar.JULY).setMinYear(1990)
-                       .setActivatedYear(2017)
-                       .setMaxYear(2030)
-                       .setMinMonth(Calendar.FEBRUARY)
-                       .setTitle("Select trading month")
-                       .setMonthRange(Calendar.FEBRUARY, Calendar.NOVEMBER)
-                                            // .setMaxMonth(Calendar.OCTOBER)
-                                            // .setYearRange(1890, 1890)
-                                            // .setMonthAndYearRange(Calendar.FEBRUARY, Calendar.OCTOBER, 1890, 1890)
-                                            //.showMonthOnly()
-                                            // .showYearOnly()
-                       .setOnMonthChangedListener(new MonthPickerDialog.OnMonthChangedListener() {
-                                                @Override
-                                                public void onMonthChanged(int selectedMonth) { // on month selected } })
-                       .setOnYearChangedListener(new MonthPickerDialog.OnYearChangedListener() {
-                                                        @Override
-                                                        public void onYearChanged(int selectedYear) { // on year selected } })
-                        .build()
-                                                                    .show();
-                //
+
             }
         });
+
+        //
+        Calendar calendar = Calendar.getInstance();
+
+        if(etBirthday.getText().length()> 0  ){
+            if(checkIsYearAvailable(etBirthday.getText().toString().trim()))
+                calendar = DateTimeOp.getCalendarFromFormat(etBirthday.getText().toString().trim(), Constants.dateFormat21);
+            else
+                calendar = DateTimeOp.getCalendarFromFormat(etBirthday.getText().toString().trim() + ", 1917",Constants.dateFormat21);
+        }
+
+        MonthYearPickerDialog pd = MonthYearPickerDialog.newInstance(calendar.get(Calendar.MONTH) + 1,
+                calendar.get(Calendar.DAY_OF_MONTH),calendar.get(Calendar.YEAR));
+
+        pd.setListener(new DatePickerDialog.OnDateSetListener() {
+            @Override
+            public void onDateSet(DatePicker view, int selectedYear, int selectedMonth, int selectedDay) {
+
+                String formatedDate = "";
+
+                if(selectedYear == 1904)
+                {
+                    String currentDateFormat = selectedMonth + "/" + selectedDay;// + "/" + selectedYear;  //"MM/dd/yyyy"
+                    formatedDate = DateTimeOp.oneFormatToAnother(currentDateFormat, Constants.dateFormat20, Constants.dateFormat24);
+                }
+                else{
+                    String currentDateFormat = selectedMonth + "/" + selectedDay + "/" + selectedYear;  //"MM/dd/yyyy"
+                    formatedDate = DateTimeOp.oneFormatToAnother(currentDateFormat, Constants.dateFormat0, Constants.dateFormat21);
+                }
+
+                etBirthday.setText(formatedDate);
+            }
+        });
+        pd.show(getFragmentManager(), "MonthYearPickerDialog");
     }
 }
