@@ -1,7 +1,6 @@
 package com.example.nhatro2.tien_nuoc;
 
 import android.content.Context;
-import android.media.Image;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,7 +11,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.nhatro2.R;
-import com.example.nhatro2.tien_dien.TienDienAdapter;
+import com.example.nhatro2.tien_dien.TienDienModel;
 
 import java.util.List;
 
@@ -38,9 +37,9 @@ public class TienNuocAdapter extends RecyclerView.Adapter<TienNuocAdapter.TienNu
         TienNuocModel listPhongNuoc = phongNuoc.get(position);
 
         String tenPhong = listPhongNuoc.getPhong();
-        int soNuocText = listPhongNuoc.getSocuoi();
-        int tienNuocText = listPhongNuoc.getDongia();
-        
+        int soNuocText = listPhongNuoc.getSonuoc();
+        int tienNuocText = listPhongNuoc.getTien();
+
         holder.tenPhongNuoc.setText(tenPhong);
         holder.soNuoc.setText("" + soNuocText);
         holder.tienNuoc.setText("" + tienNuocText);

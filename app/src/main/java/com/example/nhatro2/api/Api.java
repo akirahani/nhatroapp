@@ -4,6 +4,7 @@ import com.example.nhatro2.dich_vu.DichVuModel;
 import com.example.nhatro2.phong.PhongMultiModel;
 import com.example.nhatro2.thanhvien.ThanhVienModel;
 import com.example.nhatro2.phong.PhongModel;
+import com.example.nhatro2.tien_dien.TienDienModel;
 import com.example.nhatro2.tien_nuoc.TienNuocModel;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -132,8 +133,24 @@ public interface Api {
     @FormUrlEncoded
     Call <DichVuModel> delDichVu (@Field("id") int id);
 
-    // Tiền nước
+    // Tiền nước lựa chọn
     @POST ("/nhatro/admin/api/tien-nuoc/choose_month.php")
     @FormUrlEncoded
     Call <List<TienNuocModel>> chooseTime (@Field("month") int thang, @Field("year") int nam);
+
+    // Tiền nước tháng hiện tại
+    @GET ("/nhatro/admin/api/tien-nuoc/list.php")
+    Call<List<TienNuocModel>> getTienNuoc();
+
+
+
+    // Tiền điện lựa chọn
+    @POST ("/nhatro/admin/api/tien-dien/choose_month.php")
+    @FormUrlEncoded
+    Call <List<TienDienModel>> chooseTimeElectric (@Field("month") int thang, @Field("year") int nam);
+
+    // Tiền điện tháng hiện tại
+    @GET ("/nhatro/admin/api/tien-nuoc/list.php")
+    Call<List<TienDienModel>> getTienDien();
+
 }
