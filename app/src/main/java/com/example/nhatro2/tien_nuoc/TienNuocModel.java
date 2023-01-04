@@ -8,9 +8,10 @@ public class TienNuocModel {
     private int khach;
     private int dongia;
     private int tien;
+    private int sonuoc;
     private int sodu;
 
-    public TienNuocModel(String phong, int sodau, int socuoi, String ngaychot, int khach, int dongia, int tien, int sodu) {
+    public TienNuocModel(String phong, int sodau, int socuoi, String ngaychot, int khach, int dongia, int tien, int sonuoc, int sodu) {
         this.phong = phong;
         this.sodau = sodau;
         this.socuoi = socuoi;
@@ -18,6 +19,7 @@ public class TienNuocModel {
         this.khach = khach;
         this.dongia = dongia;
         this.tien = tien;
+        this.sonuoc = sonuoc;
         this.sodu = sodu;
     }
 
@@ -78,6 +80,14 @@ public class TienNuocModel {
         this.tien = tien;
     }
 
+    public int getSonuoc() {
+        return sonuoc;
+    }
+
+    public void setSonuoc(int sonuoc) {
+        this.sonuoc = sonuoc;
+    }
+
     public int getSodu() {
         return sodu;
     }
@@ -85,4 +95,5 @@ public class TienNuocModel {
     public void setSodu(int sodu) {
         this.sodu = sodu;
     }
+
 }

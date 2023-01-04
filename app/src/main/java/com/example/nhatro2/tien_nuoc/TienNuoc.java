@@ -25,14 +25,18 @@ import com.example.nhatro2.HomeActivity;
 import com.example.nhatro2.MainActivity;
 import com.example.nhatro2.R;
 import com.example.nhatro2.api.Api;
+import com.example.nhatro2.dich_vu.DichVuModel;
 import com.example.nhatro2.thanhvien.KhachTroAdd;
 import com.kal.rackmonthpicker.RackMonthPicker;
 import com.kal.rackmonthpicker.listener.DateMonthDialogListener;
 import com.kal.rackmonthpicker.listener.OnCancelMonthDialogListener;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.time.YearMonth;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 
@@ -128,13 +132,11 @@ public class TienNuoc extends AppCompatActivity {
                                     @Override
                                     public void onResponse(Call<List<TienNuocModel>> call, Response<List<TienNuocModel>> response) {
                                         phongNuoc = response.body();
-                                        Log.d("aaaa",""+phongNuoc);
                                         danhSachPhongNuoc.setAdapter(new TienNuocAdapter(TienNuoc.this,phongNuoc));
                                     }
 
                                     @Override
                                     public void onFailure(Call<List<TienNuocModel>> call, Throwable t) {
-                                        Log.d("err",""+t.toString());
                                     }
                                 });
 
@@ -150,5 +152,22 @@ public class TienNuoc extends AppCompatActivity {
             }
         });
 
+
+        Api.api.getTienNuoc().enqueue(new Callback<List<TienNuocModel>>() {
+            @Override
+            public void onResponse(Call<List<TienNuocModel>> call, Response<List<TienNuocModel>> response) {
+                phongNuoc = response.body();
+                DateFormat monthFormat = new SimpleDateFormat("MM");
+                Date date = new Date();
+                Calendar calendar = Calendar.getInstance();
+                int year = calendar.get(Calendar.YEAR);
+                chonThangNuoc.setText("Tháng "+monthFormat.format(date)+" - năm "+year);
+                danhSachPhongNuoc.setAdapter(new TienNuocAdapter(TienNuoc.this,phongNuoc));
+            }
+
+            @Override
+            public void onFailure(Call<List<TienNuocModel>> call, Throwable t) {
+            }
+        });
     }
 }
