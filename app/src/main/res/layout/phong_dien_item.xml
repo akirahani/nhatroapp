@@ -16,21 +16,21 @@
         android:padding="16dp">
 
         <TextView
-            android:id="@+id/tenPhongNuoc"
+            android:id="@+id/tenPhongDien"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:textColor="@color/black" />
 
         <TextView
-            android:id="@+id/soNuoc"
+            android:id="@+id/soDien"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:textColor="@color/black" />
 
         <TextView
-            android:id="@+id/tienNuoc"
+            android:id="@+id/tienDien"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -43,10 +43,9 @@
             android:gravity="right">
 
             <ImageView
-                android:id="@+id/tacVuPhongNuoc"
+                android:id="@+id/tacVuPhongDien"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_toRightOf="@+id/giaDichVu"
                 android:background="@drawable/sua" />
         </LinearLayout>
     </LinearLayout>

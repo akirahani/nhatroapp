@@ -1,74 +1,58 @@
 package com.example.nhatro2.tien_dien;
 
 public class TienDienModel {
-    private int soDau;
-    private int soCuoi;
-    private String ngayChot;
-    private String ngayCapNhat;
+    private String phong;
+    private int sodau;
+    private int socuoi;
+    private String ngaychot;
     private int khach;
     private int dongia;
     private int tien;
+    private int sodien;
     private int sodu;
-    private int phong;
 
-    public TienDienModel(int soDau, int soCuoi, String ngayChot, String ngayCapNhat, int khach, int dongia, int tien, int sodu, int phong) {
-        this.soDau = soDau;
-        this.soCuoi = soCuoi;
-        this.ngayChot = ngayChot;
-        this.ngayCapNhat = ngayCapNhat;
+    public TienDienModel(String phong, int sodau, int socuoi, String ngaychot, int khach, int dongia, int tien, int sodien, int sodu) {
+        this.phong = phong;
+        this.sodau = sodau;
+        this.socuoi = socuoi;
+        this.ngaychot = ngaychot;
         this.khach = khach;
         this.dongia = dongia;
         this.tien = tien;
+        this.sodien = sodien;
         this.sodu = sodu;
+    }
+
+    public String getPhong() {
+        return phong;
+    }
+
+    public void setPhong(String phong) {
         this.phong = phong;
     }
 
-    public int getTien() {
-        return tien;
+    public int getSodau() {
+        return sodau;
     }
 
-    public void setTien(int tien) {
-        this.tien = tien;
+    public void setSodau(int sodau) {
+        this.sodau = sodau;
     }
 
-    public int getSodu() {
-        return sodu;
+    public int getSocuoi() {
+        return socuoi;
     }
 
-    public void setSodu(int sodu) {
-        this.sodu = sodu;
+    public void setSocuoi(int socuoi) {
+        this.socuoi = socuoi;
     }
 
-    public int getSoDau() {
-        return soDau;
+    public String getNgaychot() {
+        return ngaychot;
     }
 
-    public void setSoDau(int soDau) {
-        this.soDau = soDau;
-    }
-
-    public int getSoCuoi() {
-        return soCuoi;
-    }
-
-    public void setSoCuoi(int soCuoi) {
-        this.soCuoi = soCuoi;
-    }
-
-    public String getNgayChot() {
-        return ngayChot;
-    }
-
-    public void setNgayChot(String ngayChot) {
-        this.ngayChot = ngayChot;
-    }
-
-    public String getNgayCapNhat() {
-        return ngayCapNhat;
-    }
-
-    public void setNgayCapNhat(String ngayCapNhat) {
-        this.ngayCapNhat = ngayCapNhat;
+    public void setNgaychot(String ngaychot) {
+        this.ngaychot = ngaychot;
     }
 
     public int getKhach() {
@@ -87,12 +71,28 @@ public class TienDienModel {
         this.dongia = dongia;
     }
 
-    public int getPhong() {
-        return phong;
+    public int getTien() {
+        return tien;
     }
 
-    public void setPhong(int phong) {
-        this.phong = phong;
+    public void setTien(int tien) {
+        this.tien = tien;
+    }
+
+    public int getSodien() {
+        return sodien;
+    }
+
+    public void setSodien(int sodien) {
+        this.sodien = sodien;
+    }
+
+    public int getSodu() {
+        return sodu;
+    }
+
+    public void setSodu(int sodu) {
+        this.sodu = sodu;
     }
 
 }
