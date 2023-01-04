@@ -1,12 +1,12 @@
 package com.example.nhatro2.tien_nuoc;
-import androidx.appcompat.app.AlertDialog;
-import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
 import android.app.DatePickerDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -16,12 +16,29 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
 import com.example.nhatro2.HomeActivity;
 import com.example.nhatro2.MainActivity;
 import com.example.nhatro2.R;
-import com.example.nhatro2.thanhvien.KhachTro;
+import com.example.nhatro2.api.Api;
+import com.example.nhatro2.thanhvien.KhachTroAdd;
+import com.kal.rackmonthpicker.RackMonthPicker;
+import com.kal.rackmonthpicker.listener.DateMonthDialogListener;
+import com.kal.rackmonthpicker.listener.OnCancelMonthDialogListener;
 
+import java.time.YearMonth;
+import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.List;
+import java.util.Locale;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 import by.dzmitry_lakisau.month_year_picker_dialog.MonthYearPickerDialog;
 
@@ -29,6 +46,10 @@ public class TienNuoc extends AppCompatActivity {
     ImageView thoat, logo;
     SharedPreferences shp;
     TextView chonThangNuoc;
+    DatePickerDialog.OnDateSetListener setListener;
+    RecyclerView danhSachPhongNuoc;
+    private int mYear, mMonth;
+    List<TienNuocModel> phongNuoc = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -87,47 +108,47 @@ public class TienNuoc extends AppCompatActivity {
         params.topMargin = 18;
         imageKhachTro.addView(iv, params);
 
+        danhSachPhongNuoc = findViewById(R.id.danhSachPhongNuoc);
+        danhSachPhongNuoc.setLayoutManager(new LinearLayoutManager(TienNuoc.this));
+        danhSachPhongNuoc.hasFixedSize();
+        danhSachPhongNuoc.setNestedScrollingEnabled(false);
+
         chonThangNuoc = findViewById(R.id.chonThangNuoc);
         chonThangNuoc.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
+                RackMonthPicker rackMonthPicker = new RackMonthPicker(TienNuoc.this);
+                rackMonthPicker.setLocale(Locale.ENGLISH)
+                        .setPositiveButton(new DateMonthDialogListener() {
+                            @Override
+                            public void onDateMonth(int month, int startDate, int endDate, int year, String monthLabel) {
+                                chonThangNuoc.setText("Tháng "+month+"- năm "+year);
+                                Api.api.chooseTime(month,year).enqueue(new Callback<List<TienNuocModel>>() {
+                                    @Override
+                                    public void onResponse(Call<List<TienNuocModel>> call, Response<List<TienNuocModel>> response) {
+                                        phongNuoc = response.body();
+                                        Log.d("aaaa",""+phongNuoc);
+                                        danhSachPhongNuoc.setAdapter(new TienNuocAdapter(TienNuoc.this,phongNuoc));
+                                    }
+
+                                    @Override
+                                    public void onFailure(Call<List<TienNuocModel>> call, Throwable t) {
+                                        Log.d("err",""+t.toString());
+                                    }
+                                });
+
+                            }
+                        })
+                        .setNegativeButton(new OnCancelMonthDialogListener() {
+                            @Override
+                            public void onCancel(AlertDialog dialog) {
+                                rackMonthPicker.dismiss();
+                            }
+                        }).show();
 
             }
         });
 
-        //
-        Calendar calendar = Calendar.getInstance();
-
-        if(etBirthday.getText().length()> 0  ){
-            if(checkIsYearAvailable(etBirthday.getText().toString().trim()))
-                calendar = DateTimeOp.getCalendarFromFormat(etBirthday.getText().toString().trim(), Constants.dateFormat21);
-            else
-                calendar = DateTimeOp.getCalendarFromFormat(etBirthday.getText().toString().trim() + ", 1917",Constants.dateFormat21);
-        }
-
-        MonthYearPickerDialog pd = MonthYearPickerDialog.newInstance(calendar.get(Calendar.MONTH) + 1,
-                calendar.get(Calendar.DAY_OF_MONTH),calendar.get(Calendar.YEAR));
-
-        pd.setListener(new DatePickerDialog.OnDateSetListener() {
-            @Override
-            public void onDateSet(DatePicker view, int selectedYear, int selectedMonth, int selectedDay) {
-
-                String formatedDate = "";
-
-                if(selectedYear == 1904)
-                {
-                    String currentDateFormat = selectedMonth + "/" + selectedDay;// + "/" + selectedYear;  //"MM/dd/yyyy"
-                    formatedDate = DateTimeOp.oneFormatToAnother(currentDateFormat, Constants.dateFormat20, Constants.dateFormat24);
-                }
-                else{
-                    String currentDateFormat = selectedMonth + "/" + selectedDay + "/" + selectedYear;  //"MM/dd/yyyy"
-                    formatedDate = DateTimeOp.oneFormatToAnother(currentDateFormat, Constants.dateFormat0, Constants.dateFormat21);
-                }
-
-                etBirthday.setText(formatedDate);
-            }
-        });
-        pd.show(getFragmentManager(), "MonthYearPickerDialog");
     }
 }
