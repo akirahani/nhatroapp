@@ -47,7 +47,7 @@ public class TienNuoc extends AppCompatActivity {
     DatePickerDialog.OnDateSetListener setListener;
     RecyclerView danhSachPhongNuoc;
     private int mYear, mMonth;
-
+    List<TienNuocModel> phongNuoc = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -124,7 +124,8 @@ public class TienNuoc extends AppCompatActivity {
                                 Api.api.chooseTime(month,year).enqueue(new Callback<List<TienNuocModel>>() {
                                     @Override
                                     public void onResponse(Call<List<TienNuocModel>> call, Response<List<TienNuocModel>> response) {
-                                        List<TienNuocModel> phongNuoc = response.body();
+                                        phongNuoc = response.body();
+                                        Log.d("aaaa",""+phongNuoc);
                                         danhSachPhongNuoc.setAdapter(new TienNuocAdapter(TienNuoc.this,phongNuoc));
                                     }
 

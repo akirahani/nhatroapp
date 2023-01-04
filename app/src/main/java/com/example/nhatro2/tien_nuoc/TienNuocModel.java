@@ -1,6 +1,7 @@
 package com.example.nhatro2.tien_nuoc;
 
 public class TienNuocModel {
+    private String phong;
     private int sodau;
     private int socuoi;
     private String ngaychot;
@@ -8,9 +9,9 @@ public class TienNuocModel {
     private int dongia;
     private int tien;
     private int sodu;
-    private String phong;
 
-    public TienNuocModel(int sodau, int socuoi, String ngaychot, int khach, int dongia, int tien, int sodu, String phong) {
+    public TienNuocModel(String phong, int sodau, int socuoi, String ngaychot, int khach, int dongia, int tien, int sodu) {
+        this.phong = phong;
         this.sodau = sodau;
         this.socuoi = socuoi;
         this.ngaychot = ngaychot;
@@ -18,6 +19,14 @@ public class TienNuocModel {
         this.dongia = dongia;
         this.tien = tien;
         this.sodu = sodu;
+    }
+
+
+    public String getPhong() {
+        return phong;
+    }
+
+    public void setPhong(String phong) {
         this.phong = phong;
     }
 
@@ -76,14 +85,4 @@ public class TienNuocModel {
     public void setSodu(int sodu) {
         this.sodu = sodu;
     }
-
-    public String getPhong() {
-        return phong;
-    }
-
-    public void setPhong(String phong) {
-        this.phong = phong;
-    }
-
-
 }

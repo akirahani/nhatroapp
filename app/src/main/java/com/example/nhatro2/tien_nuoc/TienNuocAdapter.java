@@ -39,8 +39,8 @@ public class TienNuocAdapter extends RecyclerView.Adapter<TienNuocAdapter.TienNu
 
         String tenPhong = listPhongNuoc.getPhong();
         int soNuocText = listPhongNuoc.getSocuoi();
-        int tienNuocText = listPhongNuoc.getTien();
-
+        int tienNuocText = listPhongNuoc.getDongia();
+        
         holder.tenPhongNuoc.setText(tenPhong);
         holder.soNuoc.setText("" + soNuocText);
         holder.tienNuoc.setText("" + tienNuocText);
