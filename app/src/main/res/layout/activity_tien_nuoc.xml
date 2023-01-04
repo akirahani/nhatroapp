@@ -167,7 +167,6 @@
                 android:gravity="center"
                 android:paddingTop="5dp"
                 android:paddingBottom="5dp"
-                android:text="Tháng 12 / 2022"
                 android:textColor="@color/white"
                 android:textStyle="bold" />
         </LinearLayout>
