@@ -11,7 +11,6 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.nhatro2.R;
-import com.example.nhatro2.tien_dien.TienDienModel;
 
 import java.text.DecimalFormat;
 import java.util.List;
@@ -19,10 +18,12 @@ import java.util.List;
 public class TienNuocAdapter extends RecyclerView.Adapter<TienNuocAdapter.TienNuocViewHolder> {
     Context context;
     List<TienNuocModel> phongNuoc;
+    NuocItemClick nuocItemCliick;
 
-    public TienNuocAdapter(Context context, List<TienNuocModel> phongNuoc) {
+    public TienNuocAdapter(Context context, List<TienNuocModel> phongNuoc, NuocItemClick nuocItemCliick) {
         this.context = context;
         this.phongNuoc = phongNuoc;
+        this.nuocItemCliick = nuocItemCliick;
     }
 
     @NonNull
@@ -47,6 +48,13 @@ public class TienNuocAdapter extends RecyclerView.Adapter<TienNuocAdapter.TienNu
         DecimalFormat formatter = new DecimalFormat("#,###,###");
         String tienNuocFormat = formatter.format(tienNuocText);
         holder.tienNuoc.setText("" +tienNuocFormat );
+
+        holder.tacVuPhongNuoc.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                nuocItemCliick.itemOnClick(tenPhong);
+            }
+        });
     }
 
     @Override

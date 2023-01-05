@@ -14,7 +14,6 @@ import android.view.Gravity;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
-import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
@@ -30,18 +29,12 @@ import com.example.nhatro2.HomeActivity;
 import com.example.nhatro2.MainActivity;
 import com.example.nhatro2.R;
 import com.example.nhatro2.api.Api;
-import com.example.nhatro2.dich_vu.DichVuModel;
-import com.example.nhatro2.thanhvien.KhachTro;
-import com.example.nhatro2.thanhvien.KhachTroAdapter;
-import com.example.nhatro2.thanhvien.KhachTroAdd;
-import com.example.nhatro2.thanhvien.ThanhVienModel;
 import com.kal.rackmonthpicker.RackMonthPicker;
 import com.kal.rackmonthpicker.listener.DateMonthDialogListener;
 import com.kal.rackmonthpicker.listener.OnCancelMonthDialogListener;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
-import java.time.YearMonth;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
@@ -61,6 +54,8 @@ public class TienNuoc extends AppCompatActivity {
     private int mYear, mMonth;
     List<TienNuocModel> phongNuoc = new ArrayList<>();
     EditText keyWaterRoom;
+    String timeSendAdapter;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -140,7 +135,23 @@ public class TienNuoc extends AppCompatActivity {
                                     @Override
                                     public void onResponse(Call<List<TienNuocModel>> call, Response<List<TienNuocModel>> response) {
                                         phongNuoc = response.body();
-                                        danhSachPhongNuoc.setAdapter(new TienNuocAdapter(TienNuoc.this,phongNuoc));
+                                        danhSachPhongNuoc.setAdapter(new TienNuocAdapter(TienNuoc.this, phongNuoc, new NuocItemClick() {
+                                            @Override
+                                            public void itemOnClick(String idPhong) {
+                                                Api.api.detailWater(idPhong,month,year).enqueue(new Callback<TienNuocModel>() {
+                                                    @Override
+                                                    public void onResponse(Call<TienNuocModel> call, Response<TienNuocModel> response) {
+                                                        TienNuocModel detailPhongNuoc = response.body();
+                                                        Log.d("chi tiet",""+detailPhongNuoc);
+                                                    }
+
+                                                    @Override
+                                                    public void onFailure(Call<TienNuocModel> call, Throwable t) {
+                                                        Log.d("err",""+t.toString());
+                                                    }
+                                                });
+                                            }
+                                        }));
                                     }
 
                                     @Override
@@ -169,8 +180,25 @@ public class TienNuoc extends AppCompatActivity {
                 Date date = new Date();
                 Calendar calendar = Calendar.getInstance();
                 int year = calendar.get(Calendar.YEAR);
+                int monthGet = Integer.parseInt(monthFormat.format(date));
                 chonThangNuoc.setText("Tháng "+monthFormat.format(date)+" - năm "+year);
-                danhSachPhongNuoc.setAdapter(new TienNuocAdapter(TienNuoc.this,phongNuoc));
+                danhSachPhongNuoc.setAdapter(new TienNuocAdapter(TienNuoc.this, phongNuoc, new NuocItemClick() {
+                    @Override
+                    public void itemOnClick(String idPhong) {
+                        Api.api.detailWater(idPhong,monthGet,year).enqueue(new Callback<TienNuocModel>() {
+                            @Override
+                            public void onResponse(Call<TienNuocModel> call, Response<TienNuocModel> response) {
+                                TienNuocModel detailPhongNuocChon = response.body();
+                                Log.d("chi tiet chon",""+detailPhongNuocChon);
+                            }
+
+                            @Override
+                            public void onFailure(Call<TienNuocModel> call, Throwable t) {
+                                Log.d("err chon",""+t.toString());
+                            }
+                        });
+                    }
+                }));
             }
 
             @Override
@@ -215,8 +243,23 @@ public class TienNuoc extends AppCompatActivity {
                             @Override
                             public void onResponse(Call<List<TienNuocModel>> call, Response<List<TienNuocModel>> response) {
                                 List<TienNuocModel> phongCanTim = response.body();
-                                Log.d("phong tim ",""+phongCanTim.get(0).getPhong());
-                                danhSachPhongNuoc.setAdapter(new TienNuocAdapter(TienNuoc.this, phongCanTim));
+                                danhSachPhongNuoc.setAdapter(new TienNuocAdapter(TienNuoc.this, phongCanTim, new NuocItemClick() {
+                                    @Override
+                                    public void itemOnClick(String idPhong) {
+                                        Api.api.detailWater(idPhong,thangSend,namSend).enqueue(new Callback<TienNuocModel>() {
+                                            @Override
+                                            public void onResponse(Call<TienNuocModel> call, Response<TienNuocModel> response) {
+                                                TienNuocModel detailPhongNuocTimKiem = response.body();
+                                                Log.d("chi tiet tim kiem",""+detailPhongNuocTimKiem);
+                                            }
+
+                                            @Override
+                                            public void onFailure(Call<TienNuocModel> call, Throwable t) {
+                                                Log.d("err search",""+t.toString());
+                                            }
+                                        });
+                                    }
+                                }));
                                 dialogSearch.dismiss();
                             }
 
@@ -238,5 +281,7 @@ public class TienNuoc extends AppCompatActivity {
                 dialogSearch.show();
             }
         });
+
     }
+
 }
