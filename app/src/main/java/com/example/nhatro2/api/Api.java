@@ -142,7 +142,15 @@ public interface Api {
     @GET ("/nhatro/admin/api/tien-nuoc/list.php")
     Call<List<TienNuocModel>> getTienNuoc();
 
+    // Tìm kiếm phòng nước
+    @POST ("/nhatro/admin/api/tien-nuoc/search.php")
+    @FormUrlEncoded
+    Call <List<TienNuocModel>> searchWater (@Field("key") String keyWater,@Field("month") int thang, @Field("year") int nam);
 
+    // Tiền nước chi tiết
+    @POST ("/nhatro/admin/api/tien-nuoc/detail.php")
+    @FormUrlEncoded
+    Call <TienNuocModel> detailWater (@Field("ten") String ten, @Field("month") int thang, @Field("year") int nam);
 
     // Tiền điện lựa chọn
     @POST ("/nhatro/admin/api/tien-dien/choose_month.php")
@@ -150,7 +158,17 @@ public interface Api {
     Call <List<TienDienModel>> chooseTimeElectric (@Field("month") int thang, @Field("year") int nam);
 
     // Tiền điện tháng hiện tại
-    @GET ("/nhatro/admin/api/tien-nuoc/list.php")
+    @GET ("/nhatro/admin/api/tien-dien/list.php")
     Call<List<TienDienModel>> getTienDien();
+
+    // Tìm kiếm phòng điện
+    @POST ("/nhatro/admin/api/tien-dien/search.php")
+    @FormUrlEncoded
+    Call <List<TienDienModel>> searchElectric (@Field("key") String keyElectric,@Field("month") int thang, @Field("year") int nam);
+
+    // Tiền điện chi tiết
+    @POST ("/nhatro/admin/api/tien-dien/detail.php")
+    @FormUrlEncoded
+    Call <TienDienModel> detailElectric (@Field("ten") int ten, @Field("month") int thang, @Field("year") int nam);
 
 }
