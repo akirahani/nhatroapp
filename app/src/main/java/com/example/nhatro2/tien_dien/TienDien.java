@@ -7,13 +7,20 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.annotation.SuppressLint;
 import android.app.DatePickerDialog;
+import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.DatePicker;
+import android.widget.EditText;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -44,12 +51,12 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class TienDien extends AppCompatActivity {
-    ImageView thoat, logo;
+    ImageView thoat, logo, searchDien;
     SharedPreferences shp;
-    TextView chonThangDien;
+    TextView chonThangDien, searchElectricClick, searchElectricClose;
     List<TienDienModel> phongDien = new ArrayList<>();
     RecyclerView danhSachPhongDien;
-
+    EditText keyElectricRoom;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -121,7 +128,7 @@ public class TienDien extends AppCompatActivity {
                         .setPositiveButton(new DateMonthDialogListener() {
                             @Override
                             public void onDateMonth(int month, int startDate, int endDate, int year, String monthLabel) {
-                                chonThangDien.setText("Tháng "+month+"- năm "+year);
+                                chonThangDien.setText("Tháng "+month+" - năm "+year);
                                 Api.api.chooseTimeElectric(month,year).enqueue(new Callback<List<TienDienModel>>() {
                                     @Override
                                     public void onResponse(Call<List<TienDienModel>> call, Response<List<TienDienModel>> response) {
@@ -160,6 +167,66 @@ public class TienDien extends AppCompatActivity {
             @Override
             public void onFailure(Call<List<TienDienModel>> call, Throwable t) {
 
+            }
+        });
+
+        // Tìm kiếm phòng trọ
+        searchDien = findViewById(R.id.searchDien);
+        searchDien.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Dialog dialogSearch = new Dialog(TienDien.this);
+                dialogSearch.requestWindowFeature(Window.FEATURE_NO_TITLE);
+                dialogSearch.setContentView(R.layout.layout_dialog_search_phong_dien);
+
+                Window window = dialogSearch.getWindow();
+                if (window == null) {
+                    return;
+                }
+
+                window.setLayout(WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.WRAP_CONTENT);
+                window.setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+
+                WindowManager.LayoutParams windowAttr = window.getAttributes();
+                windowAttr.gravity = Gravity.CENTER;
+                window.setAttributes(windowAttr);
+
+                searchElectricClick = dialogSearch.findViewById(R.id.searchElectricClick);
+                searchElectricClose = dialogSearch.findViewById(R.id.searchElectricClose);
+
+                searchElectricClick.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        keyElectricRoom = dialogSearch.findViewById(R.id.keyElectricRoom);
+                        String keyTimKiem = keyElectricRoom.getText().toString();
+                        String timeChoose = chonThangDien.getText().toString();
+                        String[] elementTime = timeChoose.split(" ");
+                        int thangSend =  Integer.parseInt(elementTime[1]);
+                        int namSend = Integer.parseInt(elementTime[4]);
+                        Api.api.searchElectric(keyTimKiem,thangSend,namSend).enqueue(new Callback<List<TienDienModel>>() {
+                            @Override
+                            public void onResponse(Call<List<TienDienModel>> call, Response<List<TienDienModel>> response) {
+                                List<TienDienModel> phongCanTim = response.body();
+                                danhSachPhongDien.setAdapter(new TienDienAdapter(TienDien.this, phongCanTim));
+                                dialogSearch.dismiss();
+                            }
+
+                            @Override
+                            public void onFailure(Call<List<TienDienModel>> call, Throwable t) {
+                                Log.d("err",""+t.toString());
+                            }
+                        });
+                    }
+                });
+
+                searchElectricClose.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        dialogSearch.dismiss();
+                    }
+                });
+
+                dialogSearch.show();
             }
         });
     }

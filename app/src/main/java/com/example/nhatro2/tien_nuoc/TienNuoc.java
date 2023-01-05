@@ -2,6 +2,7 @@ package com.example.nhatro2.tien_nuoc;
 
 import android.annotation.SuppressLint;
 import android.app.DatePickerDialog;
+import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -9,8 +10,12 @@ import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.DatePicker;
+import android.widget.EditText;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -26,7 +31,10 @@ import com.example.nhatro2.MainActivity;
 import com.example.nhatro2.R;
 import com.example.nhatro2.api.Api;
 import com.example.nhatro2.dich_vu.DichVuModel;
+import com.example.nhatro2.thanhvien.KhachTro;
+import com.example.nhatro2.thanhvien.KhachTroAdapter;
 import com.example.nhatro2.thanhvien.KhachTroAdd;
+import com.example.nhatro2.thanhvien.ThanhVienModel;
 import com.kal.rackmonthpicker.RackMonthPicker;
 import com.kal.rackmonthpicker.listener.DateMonthDialogListener;
 import com.kal.rackmonthpicker.listener.OnCancelMonthDialogListener;
@@ -45,13 +53,14 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class TienNuoc extends AppCompatActivity {
-    ImageView thoat, logo;
+    ImageView thoat, logo, searchNuoc;
     SharedPreferences shp;
-    TextView chonThangNuoc;
+    TextView chonThangNuoc, searchWaterClick, searchWaterClose;
     DatePickerDialog.OnDateSetListener setListener;
     RecyclerView danhSachPhongNuoc;
     private int mYear, mMonth;
     List<TienNuocModel> phongNuoc = new ArrayList<>();
+    EditText keyWaterRoom;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -110,11 +119,13 @@ public class TienNuoc extends AppCompatActivity {
         params.topMargin = 18;
         imageKhachTro.addView(iv, params);
 
+        // Danh sách phòng nước
         danhSachPhongNuoc = findViewById(R.id.danhSachPhongNuoc);
         danhSachPhongNuoc.setLayoutManager(new LinearLayoutManager(TienNuoc.this));
         danhSachPhongNuoc.hasFixedSize();
         danhSachPhongNuoc.setNestedScrollingEnabled(false);
 
+        // Ánh xạ chọn tháng nước
         chonThangNuoc = findViewById(R.id.chonThangNuoc);
         chonThangNuoc.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -124,7 +135,7 @@ public class TienNuoc extends AppCompatActivity {
                         .setPositiveButton(new DateMonthDialogListener() {
                             @Override
                             public void onDateMonth(int month, int startDate, int endDate, int year, String monthLabel) {
-                                chonThangNuoc.setText("Tháng "+month+"- năm "+year);
+                                chonThangNuoc.setText("Tháng "+month+" - năm "+year);
                                 Api.api.chooseTime(month,year).enqueue(new Callback<List<TienNuocModel>>() {
                                     @Override
                                     public void onResponse(Call<List<TienNuocModel>> call, Response<List<TienNuocModel>> response) {
@@ -149,7 +160,7 @@ public class TienNuoc extends AppCompatActivity {
             }
         });
 
-
+        // Lấy ra dữ liệu phòng nước theo tháng
         Api.api.getTienNuoc().enqueue(new Callback<List<TienNuocModel>>() {
             @Override
             public void onResponse(Call<List<TienNuocModel>> call, Response<List<TienNuocModel>> response) {
@@ -164,6 +175,67 @@ public class TienNuoc extends AppCompatActivity {
 
             @Override
             public void onFailure(Call<List<TienNuocModel>> call, Throwable t) {
+            }
+        });
+
+        // Tìm kiếm phòng trọ
+        searchNuoc = findViewById(R.id.searchNuoc);
+        searchNuoc.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Dialog dialogSearch = new Dialog(TienNuoc.this);
+                dialogSearch.requestWindowFeature(Window.FEATURE_NO_TITLE);
+                dialogSearch.setContentView(R.layout.layout_dialog_search_phong_nuoc);
+
+                Window window = dialogSearch.getWindow();
+                if (window == null) {
+                    return;
+                }
+
+                window.setLayout(WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.WRAP_CONTENT);
+                window.setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+
+                WindowManager.LayoutParams windowAttr = window.getAttributes();
+                windowAttr.gravity = Gravity.CENTER;
+                window.setAttributes(windowAttr);
+
+                searchWaterClick = dialogSearch.findViewById(R.id.searchWaterClick);
+                searchWaterClose = dialogSearch.findViewById(R.id.searchWaterClose);
+
+                searchWaterClick.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        keyWaterRoom = dialogSearch.findViewById(R.id.keyWaterRoom);
+                        String keyTimKiem = keyWaterRoom.getText().toString();
+                        String timeChoose = chonThangNuoc.getText().toString();
+                        String[] elementTime = timeChoose.split(" ");
+                        int thangSend =  Integer.parseInt(elementTime[1]);
+                        int namSend = Integer.parseInt(elementTime[4]);
+                        Api.api.searchWater(keyTimKiem,thangSend,namSend).enqueue(new Callback<List<TienNuocModel>>() {
+                            @Override
+                            public void onResponse(Call<List<TienNuocModel>> call, Response<List<TienNuocModel>> response) {
+                                List<TienNuocModel> phongCanTim = response.body();
+                                Log.d("phong tim ",""+phongCanTim.get(0).getPhong());
+                                danhSachPhongNuoc.setAdapter(new TienNuocAdapter(TienNuoc.this, phongCanTim));
+                                dialogSearch.dismiss();
+                            }
+
+                            @Override
+                            public void onFailure(Call<List<TienNuocModel>> call, Throwable t) {
+                                Log.d("err",""+t.toString());
+                            }
+                        });
+                    }
+                });
+
+                searchWaterClose.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        dialogSearch.dismiss();
+                    }
+                });
+
+                dialogSearch.show();
             }
         });
     }
