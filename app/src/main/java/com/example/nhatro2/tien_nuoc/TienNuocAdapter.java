@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.nhatro2.R;
 import com.example.nhatro2.tien_dien.TienDienModel;
 
+import java.text.DecimalFormat;
 import java.util.List;
 
 public class TienNuocAdapter extends RecyclerView.Adapter<TienNuocAdapter.TienNuocViewHolder> {
@@ -42,7 +43,10 @@ public class TienNuocAdapter extends RecyclerView.Adapter<TienNuocAdapter.TienNu
 
         holder.tenPhongNuoc.setText(tenPhong);
         holder.soNuoc.setText("" + soNuocText);
-        holder.tienNuoc.setText("" + tienNuocText);
+
+        DecimalFormat formatter = new DecimalFormat("#,###,###");
+        String tienNuocFormat = formatter.format(tienNuocText);
+        holder.tienNuoc.setText("" +tienNuocFormat );
     }
 
     @Override
