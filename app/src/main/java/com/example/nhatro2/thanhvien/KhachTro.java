@@ -140,8 +140,6 @@ public class KhachTro extends AppCompatActivity {
             // Ánh xạ
             @Override
             public void onClick(View view) {
-
-
                 Dialog dialogSearch = new Dialog(KhachTro.this);
                 dialogSearch.requestWindowFeature(Window.FEATURE_NO_TITLE);
                 dialogSearch.setContentView(R.layout.layout_dialog_search_khach);
