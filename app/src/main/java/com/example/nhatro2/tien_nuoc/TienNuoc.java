@@ -189,7 +189,13 @@ public class TienNuoc extends AppCompatActivity {
                             @Override
                             public void onResponse(Call<TienNuocModel> call, Response<TienNuocModel> response) {
                                 TienNuocModel detailPhongNuocChon = response.body();
-                                Log.d("chi tiet chon",""+detailPhongNuocChon);
+                                Log.d("chi tiet chon",""+detailPhongNuocChon.getPhong());
+                                Log.d("chi tiet chon",""+detailPhongNuocChon.getTien());
+                                Log.d("chi tiet chon",""+detailPhongNuocChon.getSonuoc());
+                                Log.d("chi tiet chon",""+detailPhongNuocChon.getSocuoi());
+                                Log.d("chi tiet chon",""+detailPhongNuocChon.getSodau());
+                                Log.d("chi tiet chon",""+detailPhongNuocChon.getKhach());
+                                Log.d("chi tiet chon",""+detailPhongNuocChon.getNgaychot());
                             }
 
                             @Override
