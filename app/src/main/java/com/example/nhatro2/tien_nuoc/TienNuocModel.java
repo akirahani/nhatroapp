@@ -6,23 +6,24 @@ public class TienNuocModel {
     private int socuoi;
     private String ngaychot;
     private int khach;
+    private String tenkhach;
     private int dongia;
     private int tien;
     private int sonuoc;
     private int sodu;
 
-    public TienNuocModel(String phong, int sodau, int socuoi, String ngaychot, int khach, int dongia, int tien, int sonuoc, int sodu) {
+    public TienNuocModel(String phong, int sodau, int socuoi, String ngaychot, int khach, String tenkhach, int dongia, int tien, int sonuoc, int sodu) {
         this.phong = phong;
         this.sodau = sodau;
         this.socuoi = socuoi;
         this.ngaychot = ngaychot;
         this.khach = khach;
+        this.tenkhach = tenkhach;
         this.dongia = dongia;
         this.tien = tien;
         this.sonuoc = sonuoc;
         this.sodu = sodu;
     }
-
 
     public String getPhong() {
         return phong;
@@ -63,6 +64,15 @@ public class TienNuocModel {
     public void setKhach(int khach) {
         this.khach = khach;
     }
+
+    public String getTenkhach() {
+        return tenkhach;
+    }
+
+    public void setTenkhach(String tenkhach) {
+        this.tenkhach = tenkhach;
+    }
+
 
     public int getDongia() {
         return dongia;

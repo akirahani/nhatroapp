@@ -16,7 +16,7 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
-            android:name=".TienNuocEdit"
+            android:name=".tien_nuoc.TienNuocEdit"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
