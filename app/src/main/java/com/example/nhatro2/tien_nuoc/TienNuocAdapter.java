@@ -18,12 +18,12 @@ import java.util.List;
 public class TienNuocAdapter extends RecyclerView.Adapter<TienNuocAdapter.TienNuocViewHolder> {
     Context context;
     List<TienNuocModel> phongNuoc;
-    NuocItemClick nuocItemCliick;
+    NuocItemClick nuocItemClick;
 
-    public TienNuocAdapter(Context context, List<TienNuocModel> phongNuoc, NuocItemClick nuocItemCliick) {
+    public TienNuocAdapter(Context context, List<TienNuocModel> phongNuoc, NuocItemClick nuocItemClick) {
         this.context = context;
         this.phongNuoc = phongNuoc;
-        this.nuocItemCliick = nuocItemCliick;
+        this.nuocItemClick = nuocItemClick;
     }
 
     @NonNull
@@ -52,7 +52,7 @@ public class TienNuocAdapter extends RecyclerView.Adapter<TienNuocAdapter.TienNu
         holder.tacVuPhongNuoc.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                nuocItemCliick.itemOnClick(tenPhong);
+                nuocItemClick.itemOnClick(tenPhong);
             }
         });
     }
