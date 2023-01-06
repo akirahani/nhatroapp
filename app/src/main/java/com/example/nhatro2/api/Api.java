@@ -5,6 +5,7 @@ import com.example.nhatro2.phong.PhongMultiModel;
 import com.example.nhatro2.thanhvien.ThanhVienModel;
 import com.example.nhatro2.phong.PhongModel;
 import com.example.nhatro2.tien_dien.TienDienModel;
+import com.example.nhatro2.tien_nuoc.LichSuNuocModel;
 import com.example.nhatro2.tien_nuoc.TienNuocModel;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -22,8 +23,8 @@ import retrofit2.http.POST;
 
 
 public interface Api {
-//    String url = "http://172.16.1.71";
-    String url = "http://192.168.1.190";
+    String url = "http://172.16.1.71";
+//    String url = "http://192.168.1.190";
 //    String url = "http://192.168.1.9";
     //Init
     Gson gson = new GsonBuilder().setDateFormat("yyyy-MM-DD HH:mm:ss").create();
@@ -152,6 +153,11 @@ public interface Api {
     @FormUrlEncoded
     Call <TienNuocModel> detailWater (@Field("ten") String ten, @Field("month") int thang, @Field("year") int nam);
 
+    // Danh sách lịch sử số nước dùng
+    @POST("/nhatro/admin/api/tien-nuoc/hisory.php")
+    @FormUrlEncoded
+    Call <List<LichSuNuocModel>> historyWater(@Field("phong") String ten, @Field("month") int month, @Field("year") int year);
+
     // Tiền điện lựa chọn
     @POST ("/nhatro/admin/api/tien-dien/choose_month.php")
     @FormUrlEncoded
@@ -170,5 +176,6 @@ public interface Api {
     @POST ("/nhatro/admin/api/tien-dien/detail.php")
     @FormUrlEncoded
     Call <TienDienModel> detailElectric (@Field("ten") int ten, @Field("month") int thang, @Field("year") int nam);
+
 
 }

@@ -25,5 +25,6 @@
     <color name="tabThue">#B71616</color>
     <color name="loginButton">#354B9C</color>
     <color name="inputLogin">#F9F9FA</color>
+    <color name="buttonDienNuoc">#3252C5</color>
     #FFFDF5
 </resources>

@@ -142,7 +142,19 @@ public class TienNuoc extends AppCompatActivity {
                                                     @Override
                                                     public void onResponse(Call<TienNuocModel> call, Response<TienNuocModel> response) {
                                                         TienNuocModel detailPhongNuoc = response.body();
-                                                        Log.d("chi tiet",""+detailPhongNuoc);
+                                                        Intent intent = new Intent(TienNuoc.this,TienNuocEdit.class);
+                                                        intent.putExtra("tenKhach",detailPhongNuoc.getTenkhach());
+                                                        intent.putExtra("idKhach",detailPhongNuoc.getKhach());
+                                                        intent.putExtra("phongNuoc",detailPhongNuoc.getPhong());
+                                                        intent.putExtra("tongTien",detailPhongNuoc.getTien());
+                                                        intent.putExtra("soNuoc",detailPhongNuoc.getSonuoc());
+                                                        intent.putExtra("soDau",detailPhongNuoc.getSodau());
+                                                        intent.putExtra("soCuoi",detailPhongNuoc.getSocuoi());
+                                                        intent.putExtra("donGia",detailPhongNuoc.getDongia());
+                                                        intent.putExtra("ngayChot",detailPhongNuoc.getNgaychot());
+                                                        intent.putExtra("thang",month);
+                                                        intent.putExtra("nam",year);
+                                                        startActivity(intent);
                                                     }
 
                                                     @Override
@@ -189,13 +201,19 @@ public class TienNuoc extends AppCompatActivity {
                             @Override
                             public void onResponse(Call<TienNuocModel> call, Response<TienNuocModel> response) {
                                 TienNuocModel detailPhongNuocChon = response.body();
-                                Log.d("chi tiet chon",""+detailPhongNuocChon.getPhong());
-                                Log.d("chi tiet chon",""+detailPhongNuocChon.getTien());
-                                Log.d("chi tiet chon",""+detailPhongNuocChon.getSonuoc());
-                                Log.d("chi tiet chon",""+detailPhongNuocChon.getSocuoi());
-                                Log.d("chi tiet chon",""+detailPhongNuocChon.getSodau());
-                                Log.d("chi tiet chon",""+detailPhongNuocChon.getKhach());
-                                Log.d("chi tiet chon",""+detailPhongNuocChon.getNgaychot());
+                                Intent intent = new Intent(TienNuoc.this,TienNuocEdit.class);
+                                intent.putExtra("tenKhach",detailPhongNuocChon.getTenkhach());
+                                intent.putExtra("idKhach",detailPhongNuocChon.getKhach());
+                                intent.putExtra("phongNuoc",detailPhongNuocChon.getPhong());
+                                intent.putExtra("tongTien",detailPhongNuocChon.getTien());
+                                intent.putExtra("soNuoc",detailPhongNuocChon.getSonuoc());
+                                intent.putExtra("soDau",detailPhongNuocChon.getSodau());
+                                intent.putExtra("soCuoi",detailPhongNuocChon.getSocuoi());
+                                intent.putExtra("donGia",detailPhongNuocChon.getDongia());
+                                intent.putExtra("ngayChot",detailPhongNuocChon.getNgaychot());
+                                intent.putExtra("thang",monthGet);
+                                intent.putExtra("nam",year);
+                                startActivity(intent);
                             }
 
                             @Override
@@ -256,7 +274,20 @@ public class TienNuoc extends AppCompatActivity {
                                             @Override
                                             public void onResponse(Call<TienNuocModel> call, Response<TienNuocModel> response) {
                                                 TienNuocModel detailPhongNuocTimKiem = response.body();
-                                                Log.d("chi tiet tim kiem",""+detailPhongNuocTimKiem);
+//                                                Log.d("chi tiet tim kiem",""+detailPhongNuocTimKiem);
+                                                Intent intent = new Intent(TienNuoc.this,TienNuocEdit.class);
+                                                intent.putExtra("tenKhach",detailPhongNuocTimKiem.getTenkhach());
+                                                intent.putExtra("idKhach",detailPhongNuocTimKiem.getKhach());
+                                                intent.putExtra("phongNuoc",detailPhongNuocTimKiem.getPhong());
+                                                intent.putExtra("tongTien",detailPhongNuocTimKiem.getTien());
+                                                intent.putExtra("soNuoc",detailPhongNuocTimKiem.getSonuoc());
+                                                intent.putExtra("soDau",detailPhongNuocTimKiem.getSodau());
+                                                intent.putExtra("soCuoi",detailPhongNuocTimKiem.getSocuoi());
+                                                intent.putExtra("donGia",detailPhongNuocTimKiem.getDongia());
+                                                intent.putExtra("ngayChot",detailPhongNuocTimKiem.getNgaychot());
+                                                intent.putExtra("thang",thangSend);
+                                                intent.putExtra("nam",namSend);
+                                                startActivity(intent);
                                             }
 
                                             @Override
