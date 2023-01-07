@@ -157,6 +157,11 @@ public interface Api {
     @FormUrlEncoded
     Call <List<LichSuNuocModel>> historyWater(@Field("phong") String ten, @Field("month") int month, @Field("year") int year);
 
+    //Cập nhật số nước
+    @POST("/nhatro/admin/api/tien-nuoc/update.php")
+    @FormUrlEncoded
+    Call <TienNuocModel> updateWater(@Field("phong") String ten, @Field("month") int month, @Field("year") int year,@Field("sodau") int sodau, @Field("socuoi") int socuoi);
+
     // Tiền điện lựa chọn
     @POST ("/nhatro/admin/api/tien-dien/choose_month.php")
     @FormUrlEncoded

@@ -32,7 +32,7 @@ import retrofit2.Response;
 public class TienNuocEdit extends AppCompatActivity {
     ImageView thoat, logo;
     SharedPreferences shp;
-    TextView tenPhongNuocEdit, daiDienPhongNuoc, infoTimePhongNuoc, tieuDeLichSuDungNuoc;
+    TextView tenPhongNuocEdit, daiDienPhongNuoc, infoTimePhongNuoc, tieuDeLichSuDungNuoc, btnUpdateWater;
     EditText soDauNuoc, soCuoiNuoc, soNuocSuDung, tienNuocSuDung, ngayDo;
     RecyclerView listWaterNumberUsed;
     @SuppressLint("MissingInflatedId")
@@ -133,10 +133,6 @@ public class TienNuocEdit extends AppCompatActivity {
         listWaterNumberUsed.hasFixedSize();
         listWaterNumberUsed.setNestedScrollingEnabled(false);
 
-        Log.d("phong",""+phong);
-        Log.d("thang",""+thang);
-        Log.d("nam",""+nam);
-
         Api.api.historyWater(phong,thang,nam).enqueue(new Callback<List<LichSuNuocModel>>() {
             @Override
             public void onResponse(Call<List<LichSuNuocModel>> call, Response<List<LichSuNuocModel>> response) {
@@ -148,6 +144,39 @@ public class TienNuocEdit extends AppCompatActivity {
             @Override
             public void onFailure(Call<List<LichSuNuocModel>> call, Throwable t) {
                 Log.d("err",""+t.toString());
+            }
+        });
+
+
+
+
+
+        btnUpdateWater = findViewById(R.id.btnUpdateWater);
+        btnUpdateWater.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View view) {
+                EditText soDauNuocEdit = findViewById(R.id.soDauNuoc);
+                EditText soCuoiNuocEdit = findViewById(R.id.soCuoiNuoc);
+
+                String soDauEdit = soDauNuocEdit.getText().toString();
+                String soCuoiEdit = soCuoiNuocEdit.getText().toString();
+                int soDauFormat = Integer.parseInt(soDauEdit);
+                int soCuoiFormat = Integer.parseInt(soCuoiEdit);
+
+                Api.api.updateWater(phong,thang,nam,soDauFormat,soCuoiFormat).enqueue(new Callback<TienNuocModel>() {
+                    @Override
+                    public void onResponse(Call<TienNuocModel> call, Response<TienNuocModel> response) {
+                        TienNuocModel phongNuoc = response.body();
+                        Intent intent = new Intent(TienNuocEdit.this,TienNuoc.class);
+                        startActivity(intent);
+                    }
+
+                    @Override
+                    public void onFailure(Call<TienNuocModel> call, Throwable t) {
+                        Log.d("err uodate nuoc",""+t.toString());
+                    }
+                });
             }
         });
     }
