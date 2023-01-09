@@ -9,6 +9,7 @@ import android.annotation.SuppressLint;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.icu.text.DecimalFormat;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -124,7 +125,12 @@ public class TienNuocEdit extends AppCompatActivity {
         soDauNuoc.setText(""+soDau);
         soCuoiNuoc.setText(""+soCuoi);
         soNuocSuDung.setText(""+soNuoc);
-        tienNuocSuDung.setText(""+tienNuoc);
+        DecimalFormat formatter = null;
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.N) {
+            formatter = new DecimalFormat("#,###,###");
+            String tienNuocFormat = formatter.format(tienNuoc);
+            tienNuocSuDung.setText(""+tienNuocFormat);
+        }
         ngayDo.setText(ngayChot);
         infoTimePhongNuoc.setText("Thông tin chi tiết tiền nước tháng "+thang+"/"+nam);
         tieuDeLichSuDungNuoc.setText("Lịch sử dùng nước phòng "+phong);
@@ -133,19 +139,19 @@ public class TienNuocEdit extends AppCompatActivity {
         listWaterNumberUsed.hasFixedSize();
         listWaterNumberUsed.setNestedScrollingEnabled(false);
 
-        Api.api.historyWater(phong,thang,nam).enqueue(new Callback<List<LichSuNuocModel>>() {
-            @Override
-            public void onResponse(Call<List<LichSuNuocModel>> call, Response<List<LichSuNuocModel>> response) {
-
-                List<LichSuNuocModel> phongNuocLichSu = response.body();
-                listWaterNumberUsed.setAdapter(new LichSuAdapter(TienNuocEdit.this,phongNuocLichSu));
-            }
-
-            @Override
-            public void onFailure(Call<List<LichSuNuocModel>> call, Throwable t) {
-                Log.d("err",""+t.toString());
-            }
-        });
+//        Api.api.historyWater(phong,thang,nam).enqueue(new Callback<List<LichSuNuocModel>>() {
+//            @Override
+//            public void onResponse(Call<List<LichSuNuocModel>> call, Response<List<LichSuNuocModel>> response) {
+//
+//                List<LichSuNuocModel> phongNuocLichSu = response.body();
+//                listWaterNumberUsed.setAdapter(new LichSuAdapter(TienNuocEdit.this,phongNuocLichSu));
+//            }
+//
+//            @Override
+//            public void onFailure(Call<List<LichSuNuocModel>> call, Throwable t) {
+//                Log.d("err",""+t.toString());
+//            }
+//        });
 
 
 
