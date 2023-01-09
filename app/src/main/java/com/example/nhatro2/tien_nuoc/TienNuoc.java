@@ -134,6 +134,8 @@ public class TienNuoc extends AppCompatActivity {
                                 Api.api.chooseTime(month,year).enqueue(new Callback<List<TienNuocModel>>() {
                                     @Override
                                     public void onResponse(Call<List<TienNuocModel>> call, Response<List<TienNuocModel>> response) {
+                                        Log.d("thang",""+month);
+                                        Log.d("nam",""+year);
                                         phongNuoc = response.body();
                                         danhSachPhongNuoc.setAdapter(new TienNuocAdapter(TienNuoc.this, phongNuoc, new NuocItemClick() {
                                             @Override
@@ -168,6 +170,7 @@ public class TienNuoc extends AppCompatActivity {
 
                                     @Override
                                     public void onFailure(Call<List<TienNuocModel>> call, Throwable t) {
+                                        Log.d("err",""+t.toString());
                                     }
                                 });
 
@@ -193,6 +196,8 @@ public class TienNuoc extends AppCompatActivity {
                 Calendar calendar = Calendar.getInstance();
                 int year = calendar.get(Calendar.YEAR);
                 int monthGet = Integer.parseInt(monthFormat.format(date));
+
+
                 chonThangNuoc.setText("Tháng "+monthFormat.format(date)+" - năm "+year);
                 danhSachPhongNuoc.setAdapter(new TienNuocAdapter(TienNuoc.this, phongNuoc, new NuocItemClick() {
                     @Override

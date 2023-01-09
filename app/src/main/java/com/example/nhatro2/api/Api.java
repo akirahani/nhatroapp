@@ -11,6 +11,8 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
 import java.util.List;
+
+import okhttp3.Credentials;
 import retrofit2.Call;
 import okhttp3.OkHttpClient;
 import retrofit2.Retrofit;

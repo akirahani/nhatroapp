@@ -20,21 +20,25 @@
             android:layout_weight="1"
             android:textColor="@color/black" />
 
-        <TextView
-            android:id="@+id/soNuoc"
+        <EditText
+            android:id="@+id/soDauNuoc"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:gravity="center"
-            android:textColor="@color/black" />
+            android:textSize="14sp"
+            android:textColor="@color/black"
+            android:background="@null"/>
 
-        <TextView
-            android:id="@+id/tienNuoc"
+        <EditText
+            android:id="@+id/soCuoiNuoc"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:gravity="center"
-            android:textColor="@color/black" />
+            android:textSize="14sp"
+            android:textColor="@color/black"
+            android:background="@null"/>
 
         <LinearLayout
             android:layout_width="0dp"
