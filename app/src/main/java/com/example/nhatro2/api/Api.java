@@ -36,35 +36,35 @@ public interface Api {
             .build()
             .create(Api.class);
 
-    @POST ("/nhatro2/admin/api/auth/login.php")
+    @POST ("/nhatro/admin/api/auth/login.php")
     @FormUrlEncoded
     Call <ThanhVienModel> postLogin(@Field("username") String username,
                                     @Field("password") String password);
 
     // Phòng trống
-    @GET ("/nhatro2/admin/api/phong/list.php")
+    @GET ("/nhatro/admin/api/phong/list.php")
     Call<List<PhongModel>> getPhongList();
     // Phòng đặt
-    @GET ("/nhatro2/admin/api/phong/book.php")
+    @GET ("/nhatro/admin/api/phong/book.php")
     Call<List<PhongModel>> getBookRoomList();
     // Phòng thuê
-    @GET ("/nhatro2/admin/api/phong/rent.php")
+    @GET ("/nhatro/admin/api/phong/rent.php")
     Call<List<PhongModel>> getRentRoomList();
     // Phòng chọn multi
-    @POST ("/nhatro2/admin/api/phong/multi_check.php")
+    @POST ("/nhatro/admin/api/phong/multi_check.php")
     @FormUrlEncoded
     Call<List<PhongModel>> phongChecked(@Field("idPhong") String idPhong);
     // Cọc phòng multi
-    @POST ("/nhatro2/admin/api/phong/coc_multi.php")
+    @POST ("/nhatro/admin/api/phong/coc_multi.php")
     @FormUrlEncoded
     Call<PhongMultiModel> datCocPhong(@Field("ten") String ten, @Field("dienthoai") String dienthoai, @Field("tiencoc") String  tiencoc, @Field("phong") String phong);
 
     // Khách thuê
-    @GET ("/nhatro2/admin/api/khach/list.php")
+    @GET ("/nhatro/admin/api/khach/list.php")
     Call<List<ThanhVienModel>> getKhachList();
 
     //Thêm khách
-    @POST ("/nhatro2/admin/api/khach/add.php")
+    @POST ("/nhatro/admin/api/khach/add.php")
     @FormUrlEncoded
     Call <ThanhVienModel> themKhach(@Field("fullname") String tenKhach,
                                     @Field("dienthoai") String dienthoai,
@@ -77,7 +77,7 @@ public interface Api {
                                     @Field("nhomtuoi") int nhomtuoi);
 
     //Cập nhật khách
-    @POST ("/nhatro2/admin/api/khach/edit.php")
+    @POST ("/nhatro/admin/api/khach/edit.php")
     @FormUrlEncoded
     Call <ThanhVienModel> updateKhach( @Field("id") int id,
                                        @Field("fullname") String tenKhach,
@@ -91,7 +91,7 @@ public interface Api {
                                        @Field("nhomtuoi") int nhomtuoi);
 
     //Tìm kiếm khách
-    @POST ("/nhatro2/admin/api/khach/search.php")
+    @POST ("/nhatro/admin/api/khach/search.php")
     @FormUrlEncoded
     Call <List<ThanhVienModel>> searchKhach( @Field("key") String key);
 
@@ -101,36 +101,36 @@ public interface Api {
 //                         @Field("trangthai") int trangthai,
 //                         @Field("vitri") int vitri);
 
-    @POST ("/nhatro2/admin/api/phong/edit.php")
+    @POST ("/nhatro/admin/api/phong/edit.php")
     @FormUrlEncoded
     Call <PhongModel> editPhong(@Field("id") int id,
                           @Field("trangthai") int trangthai, @Field("trangthaipost") int trangthaipost ,
                           @Field("daidien") String daidien,
                           @Field("dienthoai") String dienthoai);
     // Thêm hợp đồng
-    @POST ("/nhatro2/admin/api/hop-dong/phong.php")
+    @POST ("/nhatro/admin/api/hop-dong/phong.php")
         @FormUrlEncoded
         Call <PhongModel> hopDongPhong(@Field("id") int id);
 
     //Dịch vụ
-    @GET ("/nhatro2/admin/api/dichvu/list.php")
+    @GET ("/nhatro/admin/api/dichvu/list.php")
     Call<List<DichVuModel>> getDichVuList();
     //Thêm Dịch vụ
-    @POST("/nhatro2/admin/api/dichvu/add.php")
+    @POST("/nhatro/admin/api/dichvu/add.php")
     @FormUrlEncoded
     Call<DichVuModel> addThietBi(@Field("ten") String tenthietbi, @Field("gia") Integer giathietbi);
     // Get Thông tin dịch vụ
-    @POST ("/nhatro2/admin/api/dichvu/detail.php")
+    @POST ("/nhatro/admin/api/dichvu/detail.php")
     @FormUrlEncoded
     Call <DichVuModel> detailDichVu (@Field("id") int id);
     // Cập nhật Thông tin dịch vụ
-    @POST ("/nhatro2/admin/api/dichvu/edit.php")
+    @POST ("/nhatro/admin/api/dichvu/edit.php")
     @FormUrlEncoded
     Call <DichVuModel> editDichVu (@Field("id") int id,
                                    @Field("ten") String ten,
                                    @Field("gia") int gia);
     // Xóa dịch vụ
-    @POST ("/nhatro2/admin/api/dichvu/del.php")
+    @POST ("/nhatro/admin/api/dichvu/del.php")
     @FormUrlEncoded
     Call <DichVuModel> delDichVu (@Field("id") int id);
 
