@@ -134,8 +134,6 @@ public class TienNuoc extends AppCompatActivity {
                                 Api.api.chooseTime(month,year).enqueue(new Callback<List<TienNuocModel>>() {
                                     @Override
                                     public void onResponse(Call<List<TienNuocModel>> call, Response<List<TienNuocModel>> response) {
-                                        Log.d("thang",""+month);
-                                        Log.d("nam",""+year);
                                         phongNuoc = response.body();
                                         danhSachPhongNuoc.setAdapter(new TienNuocAdapter(TienNuoc.this, phongNuoc, new NuocItemClick() {
                                             @Override

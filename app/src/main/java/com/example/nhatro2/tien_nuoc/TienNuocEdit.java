@@ -31,7 +31,7 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class TienNuocEdit extends AppCompatActivity {
-    ImageView thoat, logo;
+    ImageView thoat, logo, closePhongNuocEdit;
     SharedPreferences shp;
     TextView tenPhongNuocEdit, daiDienPhongNuoc, infoTimePhongNuoc, tieuDeLichSuDungNuoc, btnUpdateWater;
     EditText soDauNuoc, soCuoiNuoc, soNuocSuDung, tienNuocSuDung, ngayDo;
@@ -139,23 +139,18 @@ public class TienNuocEdit extends AppCompatActivity {
         listWaterNumberUsed.hasFixedSize();
         listWaterNumberUsed.setNestedScrollingEnabled(false);
 
-//        Api.api.historyWater(phong,thang,nam).enqueue(new Callback<List<LichSuNuocModel>>() {
-//            @Override
-//            public void onResponse(Call<List<LichSuNuocModel>> call, Response<List<LichSuNuocModel>> response) {
-//
-//                List<LichSuNuocModel> phongNuocLichSu = response.body();
-//                listWaterNumberUsed.setAdapter(new LichSuAdapter(TienNuocEdit.this,phongNuocLichSu));
-//            }
-//
-//            @Override
-//            public void onFailure(Call<List<LichSuNuocModel>> call, Throwable t) {
-//                Log.d("err",""+t.toString());
-//            }
-//        });
+        Api.api.historyWater(phong,thang,nam).enqueue(new Callback<List<LichSuNuocModel>>() {
+            @Override
+            public void onResponse(Call<List<LichSuNuocModel>> call, Response<List<LichSuNuocModel>> response) {
+                List<LichSuNuocModel> phongNuocLichSu = response.body();
+                listWaterNumberUsed.setAdapter(new LichSuAdapter(TienNuocEdit.this,phongNuocLichSu));
+            }
 
-
-
-
+            @Override
+            public void onFailure(Call<List<LichSuNuocModel>> call, Throwable t) {
+                Log.d("err",""+t.toString());
+            }
+        });
 
         btnUpdateWater = findViewById(R.id.btnUpdateWater);
         btnUpdateWater.setOnClickListener(new View.OnClickListener() {
@@ -176,6 +171,7 @@ public class TienNuocEdit extends AppCompatActivity {
                         TienNuocModel phongNuoc = response.body();
                         Intent intent = new Intent(TienNuocEdit.this,TienNuoc.class);
                         startActivity(intent);
+                        finish();
                     }
 
                     @Override
@@ -183,6 +179,14 @@ public class TienNuocEdit extends AppCompatActivity {
                         Log.d("err uodate nuoc",""+t.toString());
                     }
                 });
+            }
+        });
+
+        closePhongNuocEdit = findViewById(R.id.closePhongNuocEdit);
+        closePhongNuocEdit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
             }
         });
     }
