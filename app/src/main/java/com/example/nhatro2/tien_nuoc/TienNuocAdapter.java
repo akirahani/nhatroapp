@@ -1,9 +1,11 @@
 package com.example.nhatro2.tien_nuoc;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -39,15 +41,12 @@ public class TienNuocAdapter extends RecyclerView.Adapter<TienNuocAdapter.TienNu
         TienNuocModel listPhongNuoc = phongNuoc.get(position);
 
         String tenPhong = listPhongNuoc.getPhong();
-        int soNuocText = listPhongNuoc.getSonuoc();
-        int tienNuocText = listPhongNuoc.getTien();
+        int soDauNuocText = listPhongNuoc.getSodau();
+        int soCuoiNuocText = listPhongNuoc.getSocuoi();
 
         holder.tenPhongNuoc.setText(tenPhong);
-        holder.soNuoc.setText("" + soNuocText);
-
-        DecimalFormat formatter = new DecimalFormat("#,###,###");
-        String tienNuocFormat = formatter.format(tienNuocText);
-        holder.tienNuoc.setText("" +tienNuocFormat );
+        holder.soDauNuoc.setText("" + soDauNuocText);
+        holder.soCuoiNuoc.setText("" +soCuoiNuocText );
 
         holder.tacVuPhongNuoc.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -61,16 +60,16 @@ public class TienNuocAdapter extends RecyclerView.Adapter<TienNuocAdapter.TienNu
     public int getItemCount() {
         return phongNuoc.size();
     }
-
     public class TienNuocViewHolder extends RecyclerView.ViewHolder {
-        TextView tenPhongNuoc, soNuoc, tienNuoc;
+        TextView tenPhongNuoc ;
+        EditText soDauNuoc, soCuoiNuoc;
         ImageView tacVuPhongNuoc;
 
         public TienNuocViewHolder(@NonNull View itemView) {
             super(itemView);
             tenPhongNuoc = itemView.findViewById(R.id.tenPhongNuoc);
-            soNuoc = itemView.findViewById(R.id.soNuoc);
-            tienNuoc = itemView.findViewById(R.id.tienNuoc);
+            soDauNuoc = itemView.findViewById(R.id.soDauNuoc);
+            soCuoiNuoc = itemView.findViewById(R.id.soCuoiNuoc);
             tacVuPhongNuoc = itemView.findViewById(R.id.tacVuPhongNuoc);
         }
     }

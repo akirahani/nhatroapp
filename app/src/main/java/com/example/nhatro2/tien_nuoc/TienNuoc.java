@@ -169,6 +169,7 @@ public class TienNuoc extends AppCompatActivity {
 
                                     @Override
                                     public void onFailure(Call<List<TienNuocModel>> call, Throwable t) {
+                                        Log.d("err",""+t.toString());
                                     }
                                 });
 
@@ -194,6 +195,8 @@ public class TienNuoc extends AppCompatActivity {
                 Calendar calendar = Calendar.getInstance();
                 int year = calendar.get(Calendar.YEAR);
                 int monthGet = Integer.parseInt(monthFormat.format(date));
+
+
                 chonThangNuoc.setText("Tháng "+monthFormat.format(date)+" - năm "+year);
                 danhSachPhongNuoc.setAdapter(new TienNuocAdapter(TienNuoc.this, phongNuoc, new NuocItemClick() {
                     @Override

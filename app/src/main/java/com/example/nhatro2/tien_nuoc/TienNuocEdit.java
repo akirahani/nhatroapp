@@ -9,6 +9,7 @@ import android.annotation.SuppressLint;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.icu.text.DecimalFormat;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -30,7 +31,7 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class TienNuocEdit extends AppCompatActivity {
-    ImageView thoat, logo;
+    ImageView thoat, logo, closePhongNuocEdit;
     SharedPreferences shp;
     TextView tenPhongNuocEdit, daiDienPhongNuoc, infoTimePhongNuoc, tieuDeLichSuDungNuoc, btnUpdateWater;
     EditText soDauNuoc, soCuoiNuoc, soNuocSuDung, tienNuocSuDung, ngayDo;
@@ -124,7 +125,12 @@ public class TienNuocEdit extends AppCompatActivity {
         soDauNuoc.setText(""+soDau);
         soCuoiNuoc.setText(""+soCuoi);
         soNuocSuDung.setText(""+soNuoc);
-        tienNuocSuDung.setText(""+tienNuoc);
+        DecimalFormat formatter = null;
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.N) {
+            formatter = new DecimalFormat("#,###,###");
+            String tienNuocFormat = formatter.format(tienNuoc);
+            tienNuocSuDung.setText(""+tienNuocFormat);
+        }
         ngayDo.setText(ngayChot);
         infoTimePhongNuoc.setText("Thông tin chi tiết tiền nước tháng "+thang+"/"+nam);
         tieuDeLichSuDungNuoc.setText("Lịch sử dùng nước phòng "+phong);
@@ -136,7 +142,6 @@ public class TienNuocEdit extends AppCompatActivity {
         Api.api.historyWater(phong,thang,nam).enqueue(new Callback<List<LichSuNuocModel>>() {
             @Override
             public void onResponse(Call<List<LichSuNuocModel>> call, Response<List<LichSuNuocModel>> response) {
-
                 List<LichSuNuocModel> phongNuocLichSu = response.body();
                 listWaterNumberUsed.setAdapter(new LichSuAdapter(TienNuocEdit.this,phongNuocLichSu));
             }
@@ -146,10 +151,6 @@ public class TienNuocEdit extends AppCompatActivity {
                 Log.d("err",""+t.toString());
             }
         });
-
-
-
-
 
         btnUpdateWater = findViewById(R.id.btnUpdateWater);
         btnUpdateWater.setOnClickListener(new View.OnClickListener() {
@@ -170,6 +171,7 @@ public class TienNuocEdit extends AppCompatActivity {
                         TienNuocModel phongNuoc = response.body();
                         Intent intent = new Intent(TienNuocEdit.this,TienNuoc.class);
                         startActivity(intent);
+                        finish();
                     }
 
                     @Override
@@ -177,6 +179,14 @@ public class TienNuocEdit extends AppCompatActivity {
                         Log.d("err update nuoc",""+t.toString());
                     }
                 });
+            }
+        });
+
+        closePhongNuocEdit = findViewById(R.id.closePhongNuocEdit);
+        closePhongNuocEdit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
             }
         });
     }
