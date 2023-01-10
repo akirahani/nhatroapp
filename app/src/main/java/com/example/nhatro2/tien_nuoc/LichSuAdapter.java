@@ -10,6 +10,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.nhatro2.R;
+
 import java.util.List;
 
 public class LichSuAdapter extends RecyclerView.Adapter<LichSuAdapter.LichSuTienNuocViewHolder> {
@@ -24,17 +25,17 @@ public class LichSuAdapter extends RecyclerView.Adapter<LichSuAdapter.LichSuTien
     @NonNull
     @Override
     public LichSuAdapter.LichSuTienNuocViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(context).inflate(R.layout.lich_su_su_dung_nuoc_item,parent,false);
+        View view = LayoutInflater.from(context).inflate(R.layout.lich_su_su_dung_nuoc_item, parent, false);
         return new LichSuTienNuocViewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(@NonNull LichSuAdapter.LichSuTienNuocViewHolder holder, int position) {
         LichSuNuocModel phongNuocItem = listPhongNuoc.get(position);
-        String thoiGianHienThi =  phongNuocItem.getTime();
+        String thoiGianHienThi = phongNuocItem.getTime();
         int soNuocSuDung = phongNuocItem.getSonuoc();
-        holder.numberWaterUseText.setText(""+soNuocSuDung);
-        holder.timeMonthDisplayHistory.setText("Số điện "+thoiGianHienThi);
+        holder.numberWaterUseText.setText("" + soNuocSuDung);
+        holder.timeMonthDisplayHistory.setText("Số điện " + thoiGianHienThi);
     }
 
     @Override
@@ -44,10 +45,11 @@ public class LichSuAdapter extends RecyclerView.Adapter<LichSuAdapter.LichSuTien
 
     public class LichSuTienNuocViewHolder extends RecyclerView.ViewHolder {
         TextView timeMonthDisplayHistory, numberWaterUseText;
+
         public LichSuTienNuocViewHolder(@NonNull View itemView) {
             super(itemView);
             timeMonthDisplayHistory = itemView.findViewById(R.id.timeMonthDisplayHistory);
-            numberWaterUseText =itemView.findViewById(R.id.numberWaterUseText);
+            numberWaterUseText = itemView.findViewById(R.id.numberWaterUseText);
         }
     }
 }
