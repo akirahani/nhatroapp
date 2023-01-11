@@ -189,11 +189,36 @@ public class TienDien extends AppCompatActivity {
                 Date date = new Date();
                 Calendar calendar = Calendar.getInstance();
                 int year = calendar.get(Calendar.YEAR);
+                int monthGet = Integer.parseInt(monthFormat.format(date));
                 chonThangDien.setText("Tháng "+monthFormat.format(date)+" - năm "+year);
                 danhSachPhongDien.setAdapter(new TienDienAdapter(TienDien.this, phongDien, new DienItemClick() {
                     @Override
                     public void itemOnClick(String idPhong) {
-                        Log.d("phong1",""+idPhong);
+
+                        Api.api.detailElectric(idPhong,monthGet,year).enqueue(new Callback<TienDienModel>() {
+                            @Override
+                            public void onResponse(Call<TienDienModel> call, Response<TienDienModel> response) {
+                                TienDienModel detailPhongDien = response.body();
+                                Intent intent = new Intent(TienDien.this, TienDienEdit.class);
+                                intent.putExtra("tenKhach",detailPhongDien.getTenkhach());
+                                intent.putExtra("idKhach",detailPhongDien.getKhach());
+                                intent.putExtra("phongDien",detailPhongDien.getPhong());
+                                intent.putExtra("tongTien",detailPhongDien.getTien());
+                                intent.putExtra("soDien",detailPhongDien.getSodien());
+                                intent.putExtra("soDau",detailPhongDien.getSodau());
+                                intent.putExtra("soCuoi",detailPhongDien.getSocuoi());
+                                intent.putExtra("donGia",detailPhongDien.getDongia());
+                                intent.putExtra("ngayChot",detailPhongDien.getNgaychot());
+                                intent.putExtra("thang",monthGet);
+                                intent.putExtra("nam",year);
+                                startActivity(intent);
+                            }
+
+                            @Override
+                            public void onFailure(Call<TienDienModel> call, Throwable t) {
+                                Log.d("err",""+t.toString());
+                            }
+                        });
                     }
                 }));
             }
@@ -244,7 +269,30 @@ public class TienDien extends AppCompatActivity {
                                 danhSachPhongDien.setAdapter(new TienDienAdapter(TienDien.this, phongCanTim, new DienItemClick() {
                                     @Override
                                     public void itemOnClick(String idPhong) {
-                                        Log.d("phong2",""+idPhong);
+                                        Api.api.detailElectric(idPhong,thangSend,namSend).enqueue(new Callback<TienDienModel>() {
+                                            @Override
+                                            public void onResponse(Call<TienDienModel> call, Response<TienDienModel> response) {
+                                                TienDienModel detailPhongDien = response.body();
+                                                Intent intent = new Intent(TienDien.this, TienDienEdit.class);
+                                                intent.putExtra("tenKhach",detailPhongDien.getTenkhach());
+                                                intent.putExtra("idKhach",detailPhongDien.getKhach());
+                                                intent.putExtra("phongDien",detailPhongDien.getPhong());
+                                                intent.putExtra("tongTien",detailPhongDien.getTien());
+                                                intent.putExtra("soDien",detailPhongDien.getSodien());
+                                                intent.putExtra("soDau",detailPhongDien.getSodau());
+                                                intent.putExtra("soCuoi",detailPhongDien.getSocuoi());
+                                                intent.putExtra("donGia",detailPhongDien.getDongia());
+                                                intent.putExtra("ngayChot",detailPhongDien.getNgaychot());
+                                                intent.putExtra("thang",thangSend);
+                                                intent.putExtra("nam",namSend);
+                                                startActivity(intent);
+                                            }
+
+                                            @Override
+                                            public void onFailure(Call<TienDienModel> call, Throwable t) {
+                                                Log.d("err",""+t.toString());
+                                            }
+                                        });
                                     }
                                 }));
                                 dialogSearch.dismiss();
