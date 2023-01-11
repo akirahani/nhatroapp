@@ -10,7 +10,6 @@ import com.example.nhatro2.tien_nuoc.TienNuocModel;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import okhttp3.Credentials;
@@ -26,7 +25,7 @@ import retrofit2.http.POST;
 
 public interface Api {
     String url = "http://172.16.1.71";
-//    String url = "http://192.168.1.190";
+//    String url = "http://192.168.0.105";
 //    String url = "http://192.168.1.9";
     //Init
     Gson gson = new GsonBuilder().setDateFormat("yyyy-MM-DD HH:mm:ss").create();

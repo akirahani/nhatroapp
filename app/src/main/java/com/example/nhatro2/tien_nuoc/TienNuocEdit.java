@@ -171,7 +171,6 @@ public class TienNuocEdit extends AppCompatActivity {
                         TienNuocModel phongNuoc = response.body();
                         Intent intent = new Intent(TienNuocEdit.this,TienNuoc.class);
                         startActivity(intent);
-                        finish();
                     }
 
                     @Override
