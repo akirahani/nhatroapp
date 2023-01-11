@@ -4,6 +4,7 @@ import com.example.nhatro2.dich_vu.DichVuModel;
 import com.example.nhatro2.phong.PhongMultiModel;
 import com.example.nhatro2.thanhvien.ThanhVienModel;
 import com.example.nhatro2.phong.PhongModel;
+import com.example.nhatro2.tien_dien.LichSuDienModel;
 import com.example.nhatro2.tien_dien.TienDienModel;
 import com.example.nhatro2.tien_nuoc.LichSuNuocModel;
 import com.example.nhatro2.tien_nuoc.TienNuocModel;
@@ -134,7 +135,7 @@ public interface Api {
     @POST ("/nhatro/admin/api/dichvu/del.php")
     @FormUrlEncoded
     Call <DichVuModel> delDichVu (@Field("id") int id);
-
+//
     // Tiền nước lựa chọn
     @POST ("/nhatro/admin/api/tien-nuoc/choose_month.php")
     @FormUrlEncoded
@@ -155,7 +156,7 @@ public interface Api {
     Call <TienNuocModel> detailWater (@Field("ten") String ten, @Field("month") int thang, @Field("year") int nam);
 
     // Danh sách lịch sử số nước dùng
-    @POST("/nhatro/admin/api/tien-nuoc/hisory.php")
+    @POST("/nhatro/admin/api/tien-nuoc/history.php")
     @FormUrlEncoded
     Call <List<LichSuNuocModel>> historyWater(@Field("phong") String ten, @Field("month") int month, @Field("year") int year);
 
@@ -163,7 +164,7 @@ public interface Api {
     @POST("/nhatro/admin/api/tien-nuoc/update.php")
     @FormUrlEncoded
     Call <TienNuocModel> updateWater(@Field("phong") String ten, @Field("month") int month, @Field("year") int year,@Field("sodau") int sodau, @Field("socuoi") int socuoi);
-
+//
     // Tiền điện lựa chọn
     @POST ("/nhatro/admin/api/tien-dien/choose_month.php")
     @FormUrlEncoded
@@ -181,7 +182,16 @@ public interface Api {
     // Tiền điện chi tiết
     @POST ("/nhatro/admin/api/tien-dien/detail.php")
     @FormUrlEncoded
-    Call <TienDienModel> detailElectric (@Field("ten") int ten, @Field("month") int thang, @Field("year") int nam);
+    Call <TienDienModel> detailElectric (@Field("ten") String ten, @Field("month") int thang, @Field("year") int nam);
 
 
+    // Danh sách lịch sử số nước dùng
+    @POST("/nhatro/admin/api/tien-dien/history.php")
+    @FormUrlEncoded
+    Call <List<LichSuDienModel>> historyElectric(@Field("phong") String ten, @Field("month") int month, @Field("year") int year);
+
+    //Cập nhật số nước
+    @POST("/nhatro/admin/api/tien-dien/update.php")
+    @FormUrlEncoded
+    Call <TienDienModel> updateElectric(@Field("phong") String ten, @Field("month") int month, @Field("year") int year,@Field("sodau") int sodau, @Field("socuoi") int socuoi);
 }

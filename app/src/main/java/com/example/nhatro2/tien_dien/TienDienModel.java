@@ -5,22 +5,33 @@ public class TienDienModel {
     private int sodau;
     private int socuoi;
     private String ngaychot;
+    private String tenkhach;
+
     private int khach;
     private int dongia;
     private int tien;
     private int sodien;
     private int sodu;
 
-    public TienDienModel(String phong, int sodau, int socuoi, String ngaychot, int khach, int dongia, int tien, int sodien, int sodu) {
+    public TienDienModel(String phong, int sodau, int socuoi, String ngaychot, String tenkhach, int khach, int dongia, int tien, int sodien, int sodu) {
         this.phong = phong;
         this.sodau = sodau;
         this.socuoi = socuoi;
         this.ngaychot = ngaychot;
+        this.tenkhach = tenkhach;
         this.khach = khach;
         this.dongia = dongia;
         this.tien = tien;
         this.sodien = sodien;
         this.sodu = sodu;
+    }
+
+    public String getTenkhach() {
+        return tenkhach;
+    }
+
+    public void setTenkhach(String tenkhach) {
+        this.tenkhach = tenkhach;
     }
 
     public String getPhong() {

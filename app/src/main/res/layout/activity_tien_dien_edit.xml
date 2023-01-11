@@ -4,8 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    tools:context=".tien_nuoc.TienNuocEdit">
+    tools:context=".tien_dien.TienDienEdit">
     <!--header-->
     <androidx.appcompat.widget.Toolbar xmlns:android="http://schemas.android.com/apk/res/android"
         android:id="@+id/header"
@@ -86,7 +85,7 @@
         android:orientation="horizontal">
 
         <LinearLayout
-            android:id="@+id/rowTitleWater"
+            android:id="@+id/rowTitleElectric"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:elevation="20dp"
@@ -97,7 +96,7 @@
                 android:layout_height="wrap_content">
 
                 <FrameLayout
-                    android:id="@+id/imageNuoc"
+                    android:id="@+id/imageDien"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content">
                     ></FrameLayout>
@@ -119,7 +118,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="20dp"
-            android:layout_below="@+id/rowTitleWater"
+            android:layout_below="@+id/rowTitleElectric"
             android:layout_marginTop="-15dp"
             android:background="@color/khungNgoai" />
 
@@ -131,7 +130,7 @@
         android:layout_below="@+id/tren">
 
         <LinearLayout
-            android:id="@+id/titleInfoWater"
+            android:id="@+id/titleInfoElectric"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
@@ -145,17 +144,17 @@
                 android:layout_weight="1">
 
                 <TextView
-                    android:id="@+id/tenPhongNuocEdit"
+                    android:id="@+id/tenPhongDienEdit"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textColor="@color/black"
                     android:textStyle="bold" />
 
                 <TextView
-                    android:id="@+id/daiDienPhongNuoc"
+                    android:id="@+id/daiDienPhongDien"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_below="@+id/tenPhongNuocEdit"
+                    android:layout_below="@+id/tenPhongDienEdit"
                     android:textColor="@color/black"
                     android:textStyle="bold" />
             </RelativeLayout>
@@ -169,7 +168,7 @@
                 android:gravity="right">
 
                 <ImageView
-                    android:id="@+id/closePhongNuocEdit"
+                    android:id="@+id/closePhongDienEdit"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:src="@drawable/closeroomedit" />
@@ -177,7 +176,7 @@
         </LinearLayout>
 
         <TextView
-            android:id="@+id/infoTimePhongNuoc"
+            android:id="@+id/infoTimePhongDien"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/titleInfoWater"
@@ -190,7 +189,7 @@
             android:id="@+id/firstNumber"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/infoTimePhongNuoc"
+            android:layout_below="@+id/infoTimePhongDien"
             android:layout_marginLeft="14dp"
             android:layout_marginTop="7dp"
             android:layout_marginRight="14dp"
@@ -216,7 +215,7 @@
                     android:textSize="14sp" />
 
                 <EditText
-                    android:id="@+id/soDauNuoc"
+                    android:id="@+id/soDauDien"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_toRightOf="@+id/titleSoDau"
@@ -256,7 +255,7 @@
                     android:textSize="14sp" />
 
                 <EditText
-                    android:id="@+id/soCuoiNuoc"
+                    android:id="@+id/soCuoiDien"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_toRightOf="@+id/titleSoCuoi"
@@ -268,7 +267,7 @@
         </androidx.cardview.widget.CardView>
 
         <androidx.cardview.widget.CardView
-            android:id="@+id/waterNumberUse"
+            android:id="@+id/electricNumberUse"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/lastNumber"
@@ -288,18 +287,18 @@
                 android:paddingBottom="8dp">
 
                 <TextView
-                    android:id="@+id/titleNuocDung"
+                    android:id="@+id/titleDienDung"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Số nước sử dụng: "
+                    android:text="Số điện sử dụng: "
                     android:textColor="@color/black"
                     android:textSize="14sp" />
 
                 <EditText
-                    android:id="@+id/soNuocSuDung"
+                    android:id="@+id/soDienSuDung"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_toRightOf="@+id/titleNuocDung"
+                    android:layout_toRightOf="@+id/titleDienDung"
                     android:background="@null"
                     android:paddingLeft="10dp"
                     android:textSize="14sp"
@@ -311,7 +310,7 @@
             android:id="@+id/payNumberUse"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/waterNumberUse"
+            android:layout_below="@+id/electricNumberUse"
             android:layout_marginLeft="14dp"
             android:layout_marginTop="4dp"
             android:layout_marginRight="14dp"
@@ -336,7 +335,7 @@
                     android:textSize="14sp" />
 
                 <EditText
-                    android:id="@+id/tienNuocSuDung"
+                    android:id="@+id/tienDienSuDung"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_toRightOf="@+id/titlePay"
@@ -348,7 +347,7 @@
         </androidx.cardview.widget.CardView>
 
         <androidx.cardview.widget.CardView
-            android:id="@+id/dateGetWaterNumber"
+            android:id="@+id/dateGetElectricNumber"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/payNumberUse"
@@ -368,7 +367,7 @@
                 android:paddingBottom="8dp">
 
                 <TextView
-                    android:id="@+id/dateCal"
+                    android:id="@+id/dateCalElectric"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Ngày đo: "
@@ -379,7 +378,7 @@
                     android:id="@+id/ngayDoDien"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_toRightOf="@+id/dateCal"
+                    android:layout_toRightOf="@+id/dateCalElectric"
                     android:background="@null"
                     android:paddingLeft="10dp"
                     android:textSize="14sp"
@@ -388,16 +387,16 @@
         </androidx.cardview.widget.CardView>
 
         <RelativeLayout
-            android:id="@+id/titleHistoryWater"
+            android:id="@+id/titleHistoryElectric"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/dateGetWaterNumber"
+            android:layout_below="@+id/dateGetElectricNumber"
             android:layout_marginLeft="14dp"
             android:layout_marginRight="14dp"
             android:orientation="horizontal">
 
             <ImageView
-                android:id="@+id/clickDownWater"
+                android:id="@+id/clickDownElectric"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
@@ -405,25 +404,25 @@
 
             <TextView
                 android:paddingLeft="6dp"
-                android:id="@+id/tieuDeLichSuDungNuoc"
+                android:id="@+id/tieuDeLichSuDungDien"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_toRightOf="@id/clickDownWater"
+                android:layout_toRightOf="@id/clickDownElectric"
                 android:textColor="@color/black"
                 android:textSize="14sp"
                 android:textStyle="bold" />
         </RelativeLayout>
 
         <androidx.cardview.widget.CardView
-            android:id="@+id/cardListHisToryWater"
+            android:id="@+id/cardListHisToryElectric"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="14dp"
             android:layout_marginRight="14dp"
             android:layout_marginTop="5dp"
-            android:layout_below="@+id/titleHistoryWater">
+            android:layout_below="@+id/titleHistoryElectric">
             <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/listWaterNumberUsed"
+                android:id="@+id/listElectricNumberUsed"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
             </androidx.recyclerview.widget.RecyclerView>
@@ -433,7 +432,7 @@
             android:layout_marginTop="24dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/cardListHisToryWater"
+            android:layout_below="@+id/cardListHisToryElectric"
             android:gravity="center">
 
             <androidx.cardview.widget.CardView
@@ -442,7 +441,7 @@
                 app:cardCornerRadius="6dp">
 
                 <TextView
-                    android:id="@+id/btnUpdateWater"
+                    android:id="@+id/btnUpdateElectric"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:background="@color/buttonDienNuoc"

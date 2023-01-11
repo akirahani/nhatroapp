@@ -20,20 +20,24 @@
             android:layout_weight="1"
             android:textColor="@color/black" />
 
-        <TextView
-            android:id="@+id/soDien"
+        <EditText
+            android:id="@+id/soDauDien"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:gravity="center"
+            android:singleLine="true"
+            android:background="@null"
             android:textColor="@color/black" />
 
-        <TextView
-            android:id="@+id/tienDien"
+        <EditText
+            android:id="@+id/soCuoiDien"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:gravity="center"
+            android:singleLine="true"
+            android:background="@null"
             android:textColor="@color/black" />
 
         <LinearLayout
