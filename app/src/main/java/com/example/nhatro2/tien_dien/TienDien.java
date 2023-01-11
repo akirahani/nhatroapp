@@ -32,6 +32,7 @@ import com.example.nhatro2.R;
 import com.example.nhatro2.api.Api;
 import com.example.nhatro2.tien_nuoc.TienNuoc;
 import com.example.nhatro2.tien_nuoc.TienNuocAdapter;
+import com.example.nhatro2.tien_nuoc.TienNuocEdit;
 import com.example.nhatro2.tien_nuoc.TienNuocModel;
 import com.kal.rackmonthpicker.RackMonthPicker;
 import com.kal.rackmonthpicker.listener.DateMonthDialogListener;
@@ -133,7 +134,35 @@ public class TienDien extends AppCompatActivity {
                                     @Override
                                     public void onResponse(Call<List<TienDienModel>> call, Response<List<TienDienModel>> response) {
                                         phongDien = response.body();
-                                        danhSachPhongDien.setAdapter(new TienDienAdapter(TienDien.this,phongDien));
+                                        danhSachPhongDien.setAdapter(new TienDienAdapter(TienDien.this, phongDien, new DienItemClick() {
+                                            @Override
+                                            public void itemOnClick(String idPhong) {
+                                                Api.api.detailElectric(idPhong,month,year).enqueue(new Callback<TienDienModel>() {
+                                                    @Override
+                                                    public void onResponse(Call<TienDienModel> call, Response<TienDienModel> response) {
+                                                        TienDienModel detailPhongDien = response.body();
+                                                        Intent intent = new Intent(TienDien.this, TienDienEdit.class);
+                                                        intent.putExtra("tenKhach",detailPhongDien.getTenkhach());
+                                                        intent.putExtra("idKhach",detailPhongDien.getKhach());
+                                                        intent.putExtra("phongDien",detailPhongDien.getPhong());
+                                                        intent.putExtra("tongTien",detailPhongDien.getTien());
+                                                        intent.putExtra("soDien",detailPhongDien.getSodien());
+                                                        intent.putExtra("soDau",detailPhongDien.getSodau());
+                                                        intent.putExtra("soCuoi",detailPhongDien.getSocuoi());
+                                                        intent.putExtra("donGia",detailPhongDien.getDongia());
+                                                        intent.putExtra("ngayChot",detailPhongDien.getNgaychot());
+                                                        intent.putExtra("thang",month);
+                                                        intent.putExtra("nam",year);
+                                                        startActivity(intent);
+                                                    }
+
+                                                    @Override
+                                                    public void onFailure(Call<TienDienModel> call, Throwable t) {
+                                                        Log.d("err",""+t.toString());
+                                                    }
+                                                });
+                                            }
+                                        }));
                                     }
 
                                     @Override
@@ -161,7 +190,12 @@ public class TienDien extends AppCompatActivity {
                 Calendar calendar = Calendar.getInstance();
                 int year = calendar.get(Calendar.YEAR);
                 chonThangDien.setText("Tháng "+monthFormat.format(date)+" - năm "+year);
-                danhSachPhongDien.setAdapter(new TienDienAdapter(TienDien.this,phongDien));
+                danhSachPhongDien.setAdapter(new TienDienAdapter(TienDien.this, phongDien, new DienItemClick() {
+                    @Override
+                    public void itemOnClick(String idPhong) {
+                        Log.d("phong1",""+idPhong);
+                    }
+                }));
             }
 
             @Override
@@ -207,7 +241,12 @@ public class TienDien extends AppCompatActivity {
                             @Override
                             public void onResponse(Call<List<TienDienModel>> call, Response<List<TienDienModel>> response) {
                                 List<TienDienModel> phongCanTim = response.body();
-                                danhSachPhongDien.setAdapter(new TienDienAdapter(TienDien.this, phongCanTim));
+                                danhSachPhongDien.setAdapter(new TienDienAdapter(TienDien.this, phongCanTim, new DienItemClick() {
+                                    @Override
+                                    public void itemOnClick(String idPhong) {
+                                        Log.d("phong2",""+idPhong);
+                                    }
+                                }));
                                 dialogSearch.dismiss();
                             }
 

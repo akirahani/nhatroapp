@@ -19,10 +19,12 @@ import java.util.List;
 public class TienDienAdapter extends RecyclerView.Adapter<TienDienAdapter.TienDienViewHolder> {
     Context context;
     List<TienDienModel> phongDien;
+    DienItemClick onlickPhongDien;
 
-    public TienDienAdapter(Context context, List<TienDienModel> phongDien) {
+    public TienDienAdapter(Context context, List<TienDienModel> phongDien, DienItemClick onlickPhongDien) {
         this.context = context;
         this.phongDien = phongDien;
+        this.onlickPhongDien = onlickPhongDien;
     }
 
     @NonNull
@@ -38,16 +40,19 @@ public class TienDienAdapter extends RecyclerView.Adapter<TienDienAdapter.TienDi
         TienDienModel listPhongDien = phongDien.get(position);
 
         String tenPhong = listPhongDien.getPhong();
-        int soDienText = listPhongDien.getSodien();
-        int tienDienText = listPhongDien.getTien();
+        int soDauDienText = listPhongDien.getSodau();
+        int soCuoiDienText = listPhongDien.getSocuoi();
 
         holder.tenPhongDien.setText(tenPhong);
-        holder.soDien.setText("" + soDienText);
+        holder.soDauDien.setText("" + soDauDienText);
+        holder.soCuoiDien.setText("" + soCuoiDienText);
 
-        DecimalFormat formatter = new DecimalFormat("#,###,###");
-        String tienDienFormat = formatter.format(tienDienText);
-
-        holder.tienDien.setText("" + tienDienFormat);
+        holder.tacVuPhongDien.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                onlickPhongDien.itemOnClick(tenPhong);
+            }
+        });
     }
 
     @Override
@@ -56,13 +61,13 @@ public class TienDienAdapter extends RecyclerView.Adapter<TienDienAdapter.TienDi
     }
 
     public class TienDienViewHolder extends RecyclerView.ViewHolder {
-        TextView tenPhongDien, soDien, tienDien;
+        TextView tenPhongDien, soDauDien, soCuoiDien;
         ImageView tacVuPhongDien;
         public TienDienViewHolder(@NonNull View itemView) {
             super(itemView);
             tenPhongDien = itemView.findViewById(R.id.tenPhongDien);
-            soDien = itemView.findViewById(R.id.soDien);
-            tienDien = itemView.findViewById(R.id.tienDien);
+            soDauDien = itemView.findViewById(R.id.soDauDien);
+            soCuoiDien = itemView.findViewById(R.id.soCuoiDien);
             tacVuPhongDien = itemView.findViewById(R.id.tacVuPhongDien);
         }
     }
