@@ -2,24 +2,26 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:paddingTop="8dp"
-    android:paddingBottom="8dp"
-    android:paddingLeft="10dp"
-    android:paddingRight="10dp"
     android:background="@color/khungNgoai"
-    android:orientation="horizontal">
+    android:orientation="horizontal"
+    android:paddingLeft="10dp"
+    android:paddingTop="8dp"
+    android:paddingRight="10dp"
+    android:paddingBottom="8dp">
+
     <TextView
-        android:id="@+id/timeMonthDisplayHistory"
+        android:id="@+id/timeMonthElectricDisplayHistory"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textColor="@color/black"
-        android:textStyle="bold"
-        android:textSize="14sp" />
-    <TextView
-        android:id="@+id/numberWaterUseText"
-        android:layout_toRightOf="@+id/timeMonthDisplayHistory"
         android:textSize="14sp"
-        android:paddingLeft="10dp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/numberElectricUseText"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@+id/timeMonthElectricDisplayHistory"
+        android:paddingLeft="10dp"
+        android:textSize="14sp" />
 </RelativeLayout>

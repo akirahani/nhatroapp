@@ -1,4 +1,4 @@
-package com.example.nhatro2.tien_nuoc;
+package com.example.nhatro2.tien_dien;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
@@ -24,29 +24,29 @@ import com.example.nhatro2.MainActivity;
 import com.example.nhatro2.R;
 import com.example.nhatro2.api.Api;
 
+
 import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class TienNuocEdit extends AppCompatActivity {
-    ImageView thoat, logo, closePhongNuocEdit;
+
+public class TienDienEdit extends AppCompatActivity {
+    ImageView thoat, logo, closePhongDienEdit;
     SharedPreferences shp;
-    TextView tenPhongNuocEdit, daiDienPhongNuoc, infoTimePhongNuoc, tieuDeLichSuDungNuoc, btnUpdateWater;
-    EditText soDauNuoc, soCuoiNuoc, soNuocSuDung, tienNuocSuDung, ngayDo;
-    RecyclerView listWaterNumberUsed;
-    @SuppressLint("MissingInflatedId")
+    TextView tenPhongDienEdit, daiDienPhongDien, infoTimePhongDien, tieuDeLichSuDungDien, btnUpdateElectric;
+    EditText soDauDien, soCuoiDien, soDienSuDung, tienDienSuDung, ngayDo;
+    RecyclerView listElectricNumberUsed;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_tien_nuoc_edit);
-
+        setContentView(R.layout.activity_tien_dien_edit);
         logo = findViewById(R.id.logo);
         logo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(TienNuocEdit.this, HomeActivity.class);
+                Intent intent = new Intent(TienDienEdit.this, HomeActivity.class);
                 startActivity(intent);
             }
         });
@@ -55,7 +55,7 @@ public class TienNuocEdit extends AppCompatActivity {
         thoat.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                AlertDialog.Builder builder = new AlertDialog.Builder(TienNuocEdit.this);
+                AlertDialog.Builder builder = new AlertDialog.Builder(TienDienEdit.this);
                 builder.setTitle("Confirm").setMessage("Bạn có thực sự muốn thoát ?");
                 builder.setCancelable(true);
                 builder.setIcon(R.drawable.alert_bottom);
@@ -63,8 +63,8 @@ public class TienNuocEdit extends AppCompatActivity {
                 builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
-                        Toast.makeText(TienNuocEdit.this, "Out", Toast.LENGTH_SHORT).show();
-                        Intent intent = new Intent(TienNuocEdit.this, MainActivity.class);
+                        Toast.makeText(TienDienEdit.this, "Out", Toast.LENGTH_SHORT).show();
+                        Intent intent = new Intent(TienDienEdit.this, MainActivity.class);
                         startActivity(intent);
                         shp = view.getContext().getSharedPreferences("user", MODE_PRIVATE);
                         shp.edit().clear().commit();
@@ -74,7 +74,7 @@ public class TienNuocEdit extends AppCompatActivity {
                 // NO
                 builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
-                        Toast.makeText(TienNuocEdit.this, "Stay", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(TienDienEdit.this, "Stay", Toast.LENGTH_SHORT).show();
                         //  Cancel
                         dialog.cancel();
                     }
@@ -85,22 +85,21 @@ public class TienNuocEdit extends AppCompatActivity {
             }
         });
 
-        // Xét vị trí tương đối
         @SuppressLint({"MissingInflatedId", "LocalSuppress"})
-        FrameLayout imageKhachTro = findViewById(R.id.imageNuoc);
+        FrameLayout imageKhachTro = findViewById(R.id.imageDien);
         ImageView iv = new ImageView(this);
-        iv.setBackgroundResource(R.drawable.nuoctitle);
+        iv.setBackgroundResource(R.drawable.dientitle);
         FrameLayout.LayoutParams params = new FrameLayout.LayoutParams(134, 134);
         params.leftMargin = 46;
         params.topMargin = 18;
         imageKhachTro.addView(iv, params);
-        
+
         Bundle bundle = getIntent().getExtras();
         String tenKhach = bundle.getString("tenKhach");
         int idKhach = bundle.getInt("idKhach");
-        String phong = bundle.getString("phongNuoc");
-        int tienNuoc = bundle.getInt("tongTien");
-        int soNuoc = bundle.getInt("soNuoc");
+        String phong = bundle.getString("phongDien");
+        int tienDien = bundle.getInt("tongTien");
+        int soDien = bundle.getInt("soDien");
         int soDau = bundle.getInt("soDau");
         int soCuoi = bundle.getInt("soCuoi");
         int donGia = bundle.getInt("donGia");
@@ -108,85 +107,86 @@ public class TienNuocEdit extends AppCompatActivity {
         int nam = bundle.getInt("nam");
         String ngayChot =  bundle.getString("ngayChot");
 
-        infoTimePhongNuoc = findViewById(R.id.infoTimePhongNuoc);
-        tenPhongNuocEdit = findViewById(R.id.tenPhongNuocEdit);
-        daiDienPhongNuoc = findViewById(R.id.daiDienPhongNuoc);
-        soDauNuoc = findViewById(R.id.soDauNuoc);
-        soCuoiNuoc = findViewById(R.id.soCuoiNuoc);
-        soNuocSuDung = findViewById(R.id.soNuocSuDung);
-        tienNuocSuDung = findViewById(R.id.tienNuocSuDung);
+        infoTimePhongDien = findViewById(R.id.infoTimePhongDien);
+        tenPhongDienEdit = findViewById(R.id.tenPhongDienEdit);
+        daiDienPhongDien = findViewById(R.id.daiDienPhongDien);
+        soDauDien = findViewById(R.id.soDauDien);
+        soCuoiDien = findViewById(R.id.soCuoiDien);
+        soDienSuDung = findViewById(R.id.soDienSuDung);
+        tienDienSuDung = findViewById(R.id.tienDienSuDung);
         ngayDo = findViewById(R.id.ngayDoDien);
-        tieuDeLichSuDungNuoc = findViewById(R.id.tieuDeLichSuDungNuoc);
-        listWaterNumberUsed = findViewById(R.id.listWaterNumberUsed);
+        tieuDeLichSuDungDien = findViewById(R.id.tieuDeLichSuDungDien);
+        listElectricNumberUsed = findViewById(R.id.listElectricNumberUsed);
 
-        tieuDeLichSuDungNuoc.setText("Lịch sử dùng nước phòng "+phong);
-        tenPhongNuocEdit.setText("Phòng "+phong);
-        daiDienPhongNuoc.setText("Đại diện: "+tenKhach);
-        soDauNuoc.setText(""+soDau);
-        soCuoiNuoc.setText(""+soCuoi);
-        soNuocSuDung.setText(""+soNuoc);
+        tieuDeLichSuDungDien.setText("Lịch sử dùng điện phòng "+phong);
+        tenPhongDienEdit.setText("Phòng "+phong);
+        daiDienPhongDien.setText("Đại diện: "+tenKhach);
+        soDauDien.setText(""+soDau);
+        soCuoiDien.setText(""+soCuoi);
+        soDienSuDung.setText(""+soDien);
         DecimalFormat formatter = null;
         if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.N) {
             formatter = new DecimalFormat("#,###,###");
-            String tienNuocFormat = formatter.format(tienNuoc);
-            tienNuocSuDung.setText(""+tienNuocFormat);
+            String tienDienFormat = formatter.format(tienDien);
+            tienDienSuDung.setText(""+tienDienFormat);
         }
         ngayDo.setText(ngayChot);
-        infoTimePhongNuoc.setText("Thông tin chi tiết tiền nước tháng "+thang+"/"+nam);
-        tieuDeLichSuDungNuoc.setText("Lịch sử dùng nước phòng "+phong);
+        infoTimePhongDien.setText("Thông tin chi tiết tiền nước tháng "+thang+"/"+nam);
+        tieuDeLichSuDungDien.setText("Lịch sử dùng nước phòng "+phong);
 
-        listWaterNumberUsed.setLayoutManager(new LinearLayoutManager(TienNuocEdit.this));
-        listWaterNumberUsed.hasFixedSize();
-        listWaterNumberUsed.setNestedScrollingEnabled(false);
+        listElectricNumberUsed.setLayoutManager(new LinearLayoutManager(TienDienEdit.this));
+        listElectricNumberUsed.hasFixedSize();
+        listElectricNumberUsed.setNestedScrollingEnabled(false);
 
-        Api.api.historyWater(phong,thang,nam).enqueue(new Callback<List<LichSuNuocModel>>() {
+        Api.api.historyElectric(phong,thang,nam).enqueue(new Callback<List<LichSuDienModel>>() {
             @Override
-            public void onResponse(Call<List<LichSuNuocModel>> call, Response<List<LichSuNuocModel>> response) {
-                List<LichSuNuocModel> phongNuocLichSu = response.body();
-                listWaterNumberUsed.setAdapter(new LichSuAdapter(TienNuocEdit.this,phongNuocLichSu));
+            public void onResponse(Call<List<LichSuDienModel>> call, Response<List<LichSuDienModel>> response) {
+                List<LichSuDienModel> phongDienLichSu = response.body();
+                listElectricNumberUsed.setAdapter(new LichSuDienAdapter(TienDienEdit.this,phongDienLichSu));
             }
 
             @Override
-            public void onFailure(Call<List<LichSuNuocModel>> call, Throwable t) {
+            public void onFailure(Call<List<LichSuDienModel>> call, Throwable t) {
                 Log.d("err",""+t.toString());
             }
         });
 
-        btnUpdateWater = findViewById(R.id.btnUpdateWater);
-        btnUpdateWater.setOnClickListener(new View.OnClickListener() {
+        btnUpdateElectric = findViewById(R.id.btnUpdateElectric);
+        btnUpdateElectric.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View view) {
-                EditText soDauNuocEdit = findViewById(R.id.soDauNuoc);
-                EditText soCuoiNuocEdit = findViewById(R.id.soCuoiNuoc);
+                EditText soDauDienEdit = findViewById(R.id.soDauDien);
+                EditText soCuoiDienEdit = findViewById(R.id.soCuoiDien);
 
-                String soDauEdit = soDauNuocEdit.getText().toString();
-                String soCuoiEdit = soCuoiNuocEdit.getText().toString();
+                String soDauEdit = soDauDienEdit.getText().toString();
+                String soCuoiEdit = soCuoiDienEdit.getText().toString();
                 int soDauFormat = Integer.parseInt(soDauEdit);
                 int soCuoiFormat = Integer.parseInt(soCuoiEdit);
 
-                Api.api.updateWater(phong,thang,nam,soDauFormat,soCuoiFormat).enqueue(new Callback<TienNuocModel>() {
+                Api.api.updateElectric(phong,thang,nam,soDauFormat,soCuoiFormat).enqueue(new Callback<TienDienModel>() {
                     @Override
-                    public void onResponse(Call<TienNuocModel> call, Response<TienNuocModel> response) {
-                        TienNuocModel phongNuoc = response.body();
-                        Intent intent = new Intent(TienNuocEdit.this,TienNuoc.class);
+                    public void onResponse(Call<TienDienModel> call, Response<TienDienModel> response) {
+                        TienDienModel phongDien = response.body();
+                        Intent intent = new Intent(TienDienEdit.this, TienDien.class);
                         startActivity(intent);
                     }
 
                     @Override
-                    public void onFailure(Call<TienNuocModel> call, Throwable t) {
-                        Log.d("err update nuoc",""+t.toString());
+                    public void onFailure(Call<TienDienModel> call, Throwable t) {
+                        Log.d("err uodate nuoc",""+t.toString());
                     }
                 });
             }
         });
 
-        closePhongNuocEdit = findViewById(R.id.closePhongNuocEdit);
-        closePhongNuocEdit.setOnClickListener(new View.OnClickListener() {
+        closePhongDienEdit = findViewById(R.id.closePhongDienEdit);
+        closePhongDienEdit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 finish();
             }
         });
+
     }
 }
