@@ -1,6 +1,7 @@
 package com.example.nhatro2.tien_nuoc;
 
 import android.content.Context;
+import android.icu.text.DecimalFormat;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,7 +15,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.nhatro2.R;
 
-import java.text.DecimalFormat;
 import java.util.List;
 
 public class TienNuocAdapter extends RecyclerView.Adapter<TienNuocAdapter.TienNuocViewHolder> {
@@ -43,7 +43,13 @@ public class TienNuocAdapter extends RecyclerView.Adapter<TienNuocAdapter.TienNu
         String tenPhong = listPhongNuoc.getPhong();
         int soDauNuocText = listPhongNuoc.getSodau();
         int soCuoiNuocText = listPhongNuoc.getSocuoi();
-
+        int tienNuoc = listPhongNuoc.getTien();
+        DecimalFormat formatter = null;
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.N) {
+            formatter = new DecimalFormat("#,###,###");
+            String tienNuocFormat = formatter.format(tienNuoc);
+            holder.thanhTienNuoc.setText(""+tienNuocFormat);
+        }
         holder.tenPhongNuoc.setText(tenPhong);
         holder.soDauNuoc.setText("" + soDauNuocText);
         holder.soCuoiNuoc.setText("" +soCuoiNuocText );
@@ -61,7 +67,7 @@ public class TienNuocAdapter extends RecyclerView.Adapter<TienNuocAdapter.TienNu
         return phongNuoc.size();
     }
     public class TienNuocViewHolder extends RecyclerView.ViewHolder {
-        TextView tenPhongNuoc ;
+        TextView tenPhongNuoc, thanhTienNuoc ;
         EditText soDauNuoc, soCuoiNuoc;
         ImageView tacVuPhongNuoc;
 
@@ -71,6 +77,7 @@ public class TienNuocAdapter extends RecyclerView.Adapter<TienNuocAdapter.TienNu
             soDauNuoc = itemView.findViewById(R.id.soDauNuoc);
             soCuoiNuoc = itemView.findViewById(R.id.soCuoiNuoc);
             tacVuPhongNuoc = itemView.findViewById(R.id.tacVuPhongNuoc);
+            thanhTienNuoc = itemView.findViewById(R.id.thanhTienNuoc);
         }
     }
 }
