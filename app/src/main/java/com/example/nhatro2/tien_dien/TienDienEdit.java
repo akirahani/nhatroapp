@@ -131,8 +131,8 @@ public class TienDienEdit extends AppCompatActivity {
             tienDienSuDung.setText(""+tienDienFormat);
         }
         ngayDo.setText(ngayChot);
-        infoTimePhongDien.setText("Thông tin chi tiết tiền nước tháng "+thang+"/"+nam);
-        tieuDeLichSuDungDien.setText("Lịch sử dùng nước phòng "+phong);
+        infoTimePhongDien.setText("Thông tin chi tiết tiền điện tháng "+thang+"/"+nam);
+        tieuDeLichSuDungDien.setText("Lịch sử dùng điện phòng "+phong);
 
         listElectricNumberUsed.setLayoutManager(new LinearLayoutManager(TienDienEdit.this));
         listElectricNumberUsed.hasFixedSize();
