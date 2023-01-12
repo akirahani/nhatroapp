@@ -43,6 +43,7 @@ import com.example.nhatro2.dich_vu.DichVuModel;
 import com.example.nhatro2.phong.PhongEdit;
 import com.example.nhatro2.phong.PhongModel;
 import com.example.nhatro2.thanhvien.ThanhVienModel;
+import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.tabs.TabLayout;
@@ -88,6 +89,9 @@ public class HopDongAdd extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(HopDongAdd.this, HomeActivity.class);
                 startActivity(intent);
+                SharedPreferences shpKhach = view.getContext().getSharedPreferences("khachChonHopDongAdd", MODE_PRIVATE);
+                SharedPreferences.Editor shpKhachEdit = shpKhach.edit();
+                shpKhachEdit.remove("idKhachChon");
             }
         });
         // Nút thoát
@@ -233,12 +237,13 @@ public class HopDongAdd extends AppCompatActivity {
         themNguoiThue.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                listKhachArr.add(new ThanhVienModel(0, "", "", "", 4, "", "", "", "", "", "", "", 0, 0));
-                if (listKhachArr.size() == 4) {
-                    themNguoiThue.setVisibility(View.GONE);
-                }
-
-                addAdapterKhach.notifyDataSetChanged();
+//                listKhachArr.add(new ThanhVienModel(0, "", "", "", 4, "", "", "", "", "", "", "", 0, 0));
+//                if (listKhachArr.size() == 4) {
+//                    themNguoiThue.setVisibility(View.GONE);
+//                }
+//                addAdapterKhach.notifyDataSetChanged();
+                BottomSheetThanhVienChon tonKho = new BottomSheetThanhVienChon();
+                tonKho.show(getSupportFragmentManager(), "ChonThanhVien");
             }
         });
 
@@ -251,6 +256,39 @@ public class HopDongAdd extends AppCompatActivity {
                 SharedPreferences shpThietBi = getSharedPreferences("idThietBiHopDong", Context.MODE_PRIVATE);
                 SharedPreferences.Editor thietBiEdit = shpThietBi.edit();
                 String listThietBiString = shpThietBi.getString("itemThietBi", "");
+
+                Log.d("thietbi",""+listThietBiString);
+                Log.d("ngayketthuc",""+ngayKetThuc.getText().toString());
+
+                SharedPreferences shpKhachThem = getSharedPreferences("thongTinKhach",Context.MODE_PRIVATE);
+                SharedPreferences.Editor khachEdit = shpKhachThem.edit();
+
+
+                String tenKhachLuu = shpKhachThem.getString("itemTenKhach", "");
+                String sdtKhachLuu = shpKhachThem.getString("itemDienThoai", "");
+
+                List<String> thanhVienPhong = new ArrayList<>();
+
+                if (listKhachArr.size() < 1) {
+                    Toast.makeText(HopDongAdd.this, "Chưa có khách ở phòng", Toast.LENGTH_SHORT).show();
+                }else{
+                    tenKhachText = findViewById(R.id.tenKhachAdd);
+                    sdtKhachText = findViewById(R.id.sdtKhachAdd);
+                    String nameCustomer = tenKhachText.getText().toString();
+                    String phone = sdtKhachText.getText().toString();
+                    thanhVienPhong.add(nameCustomer);
+                    String convertStringTenKhach = null;
+                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+                        convertStringTenKhach = thanhVienPhong.stream().map(String::valueOf).collect(Collectors.joining(","));
+                    }
+
+                    khachEdit.putString("itemTenKhach",convertStringTenKhach);
+                    khachEdit.commit();
+
+                    Log.d("tenKhach1",""+convertStringTenKhach);
+                    Log.d("tenKhach",""+tenKhachLuu);
+                }
+                
             }
         });
 
