@@ -1,6 +1,7 @@
 package com.example.nhatro2.api;
 
 import com.example.nhatro2.dich_vu.DichVuModel;
+import com.example.nhatro2.hop_dong.ListKhachChonModel;
 import com.example.nhatro2.phong.PhongMultiModel;
 import com.example.nhatro2.thanhvien.ThanhVienModel;
 import com.example.nhatro2.phong.PhongModel;
@@ -110,10 +111,19 @@ public interface Api {
                           @Field("trangthai") int trangthai, @Field("trangthaipost") int trangthaipost ,
                           @Field("daidien") String daidien,
                           @Field("dienthoai") String dienthoai);
+
+    // Thêm khách vào hợp đồng
+    @POST ("/nhatro/admin/api/hop-dong/them_khach.php")
+    @FormUrlEncoded
+    Call <List<ListKhachChonModel>> addKhachHopDong(@Field("id") String id);
+
+
     // Thêm hợp đồng
     @POST ("/nhatro/admin/api/hop-dong/phong.php")
         @FormUrlEncoded
         Call <PhongModel> hopDongPhong(@Field("id") int id);
+
+
 
     //Dịch vụ
     @GET ("/nhatro/admin/api/dichvu/list.php")

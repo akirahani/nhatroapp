@@ -2,14 +2,43 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:id="@+id/layoutBottomSheetKhachChon"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:paddingBottom="8dp"
     android:paddingTop="8dp">
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/listKhachClick"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-    </androidx.recyclerview.widget.RecyclerView>
+        <LinearLayout
+            android:id="@+id/barSearch"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="25dp"
+            android:layout_marginRight="25dp"
+            android:orientation="horizontal">
+            <EditText
+                android:layout_marginLeft="20dp"
+                android:id="@+id/keySearchKach"
+                android:layout_width="0dp"
+                android:layout_weight="6"
+                android:singleLine="true"
+                android:layout_height="wrap_content"
+                android:background="@null">
+            </EditText>
+            <ImageView
+                android:id="@+id/searchCustomerChon"
+                android:layout_width="0dp"
+                android:layout_weight="2"
+                android:layout_height="wrap_content"
+                android:src="@drawable/search">
+            </ImageView>
+        </LinearLayout>
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/listKhachClick"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="20dp"
+            android:layout_marginLeft="40dp"
+            android:layout_marginRight="40dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+        </androidx.recyclerview.widget.RecyclerView>
 </LinearLayout>

@@ -1,8 +1,6 @@
 package com.example.nhatro2.hop_dong;
 
 import android.content.Context;
-import android.content.SharedPreferences;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,9 +17,9 @@ import java.util.List;
 
 public class KhachAddAdapter extends RecyclerView.Adapter<KhachAddAdapter.KhachTroAddViewHolder> {
     Context context;
-    List<ThanhVienModel> khachTro;
+    List<ListKhachChonModel> khachTro;
 
-    public KhachAddAdapter(Context context, List<ThanhVienModel> khachTro) {
+    public KhachAddAdapter(Context context, List<ListKhachChonModel> khachTro) {
         this.context = context;
         this.khachTro = khachTro;
     }
@@ -35,7 +33,7 @@ public class KhachAddAdapter extends RecyclerView.Adapter<KhachAddAdapter.KhachT
 
     @Override
     public void onBindViewHolder(@NonNull KhachAddAdapter.KhachTroAddViewHolder holder, int position) {
-        ThanhVienModel khachThueItem = khachTro.get(position);
+        ListKhachChonModel khachThueItem = khachTro.get(position);
         String tenKhach = khachThueItem.getFullname();
         String canCuoc = khachThueItem.getCancuoc();
         String ngayCap = khachThueItem.getNgaycap();

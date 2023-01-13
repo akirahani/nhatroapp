@@ -11,6 +11,7 @@ import androidx.viewpager2.widget.ViewPager2;
 
 import android.annotation.SuppressLint;
 import android.app.DatePickerDialog;
+import android.bluetooth.BluetoothManager;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -49,6 +50,7 @@ import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.tabs.TabLayout;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Locale;
 import java.util.stream.Collectors;
@@ -71,10 +73,10 @@ public class HopDongAdd extends AppCompatActivity {
     DatePickerDialog.OnDateSetListener setListener;
 //    FloatingActionButton fab;
     List<ThanhVienModel> listKhachArr = new ArrayList<>();
-    KhachAddAdapter addAdapterKhach;
 
     EditText tenKhachAdd, canCuocKhachAdd, noiCapKhachAdd, sdtKhachAdd;
     TextView ngayCapKhachAdd,ngaySinhHopDongAddText,thuTuKhachTro;
+    KhachAddAdapter addAdapterKhach;
 
     @RequiresApi(api = Build.VERSION_CODES.N)
     @Override
@@ -92,6 +94,7 @@ public class HopDongAdd extends AppCompatActivity {
                 SharedPreferences shpKhach = view.getContext().getSharedPreferences("khachChonHopDongAdd", MODE_PRIVATE);
                 SharedPreferences.Editor shpKhachEdit = shpKhach.edit();
                 shpKhachEdit.remove("idKhachChon");
+                shpKhachEdit.apply();
             }
         });
         // Nút thoát
@@ -228,23 +231,35 @@ public class HopDongAdd extends AppCompatActivity {
         listKhachAdd.setLayoutManager(new LinearLayoutManager(HopDongAdd.this));
         listKhachAdd.hasFixedSize();
         listKhachAdd.setNestedScrollingEnabled(false);
-        addAdapterKhach = new KhachAddAdapter(HopDongAdd.this, listKhachArr);
-        listKhachAdd.setAdapter(addAdapterKhach);
+
+
+        SharedPreferences shpKhach = getApplicationContext().getSharedPreferences("khachChonHopDongAdd", MODE_PRIVATE);
+        String listKhachChooseString = shpKhach.getString("idKhachChon", "");
+
+        Api.api.addKhachHopDong(listKhachChooseString).enqueue(new Callback<List<ListKhachChonModel>>() {
+            @Override
+            public void onResponse(Call<List<ListKhachChonModel>> call, Response<List<ListKhachChonModel>> response) {
+                List<ListKhachChonModel> listKhachArr = response.body();
+                addAdapterKhach = new KhachAddAdapter(HopDongAdd.this, listKhachArr);
+                listKhachAdd.setAdapter(addAdapterKhach);
+            }
+
+            @Override
+            public void onFailure(Call<List<ListKhachChonModel>> call, Throwable t) {
+            }
+        });
 
         // Thêm khách thuê trọ
         themNguoiThue = findViewById(R.id.themNguoiThue);
         themNguoiThue.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-//                listKhachArr.add(new ThanhVienModel(0, "", "", "", 4, "", "", "", "", "", "", "", 0, 0));
-//                if (listKhachArr.size() == 4) {
-//                    themNguoiThue.setVisibility(View.GONE);
-//                }
-//                addAdapterKhach.notifyDataSetChanged();
                 BottomSheetThanhVienChon tonKho = new BottomSheetThanhVienChon();
                 tonKho.show(getSupportFragmentManager(), "ChonThanhVien");
             }
         });
+
+
 
 
         themHopDong = findViewById(R.id.themHopDong);
@@ -259,39 +274,21 @@ public class HopDongAdd extends AppCompatActivity {
                 Log.d("thietbi",""+listThietBiString);
                 Log.d("ngayketthuc",""+ngayKetThuc.getText().toString());
 
-                SharedPreferences shpKhachThem = getSharedPreferences("thongTinKhach",Context.MODE_PRIVATE);
-                SharedPreferences.Editor khachEdit = shpKhachThem.edit();
-
-
-                String tenKhachLuu = shpKhachThem.getString("itemTenKhach", "");
-                String sdtKhachLuu = shpKhachThem.getString("itemDienThoai", "");
-
-                List<String> thanhVienPhong = new ArrayList<>();
-
-                if (listKhachArr.size() < 1) {
-                    Toast.makeText(HopDongAdd.this, "Chưa có khách ở phòng", Toast.LENGTH_SHORT).show();
-                }else{
-                    tenKhachText = findViewById(R.id.tenKhachAdd);
-                    sdtKhachText = findViewById(R.id.sdtKhachAdd);
-                    String nameCustomer = tenKhachText.getText().toString();
-                    String phone = sdtKhachText.getText().toString();
-                    thanhVienPhong.add(nameCustomer);
-                    String convertStringTenKhach = null;
-                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
-                        convertStringTenKhach = thanhVienPhong.stream().map(String::valueOf).collect(Collectors.joining(","));
-                    }
-
-                    khachEdit.putString("itemTenKhach",convertStringTenKhach);
-                    khachEdit.commit();
-
-                    Log.d("tenKhach1",""+convertStringTenKhach);
-                    Log.d("tenKhach",""+tenKhachLuu);
-                }
-
-
-
+                String listKhachChooseString = shpKhach.getString("idKhachChon", "");
+                Log.d("khach dc them",""+listKhachChooseString);
             }
         });
 
     }
+
+    // Back button
+//    public void onBackPressed()
+//    {
+//        super.onBackPressed();
+//        SharedPreferences shpKhach = getApplicationContext().getSharedPreferences("khachChonHopDongAdd", MODE_PRIVATE);
+//        SharedPreferences.Editor shpKhachEdit = shpKhach.edit();
+//        shpKhachEdit.remove("idKhachChon");
+//        shpKhachEdit.apply();
+//    }
+
 }
