@@ -43,6 +43,7 @@ import com.example.nhatro2.dich_vu.DichVuModel;
 import com.example.nhatro2.phong.PhongEdit;
 import com.example.nhatro2.phong.PhongModel;
 import com.example.nhatro2.thanhvien.ThanhVienModel;
+import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.tabs.TabLayout;
@@ -88,6 +89,9 @@ public class HopDongAdd extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(HopDongAdd.this, HomeActivity.class);
                 startActivity(intent);
+                SharedPreferences shpKhach = view.getContext().getSharedPreferences("khachChonHopDongAdd", MODE_PRIVATE);
+                SharedPreferences.Editor shpKhachEdit = shpKhach.edit();
+                shpKhachEdit.remove("idKhachChon");
             }
         });
         // Nút thoát
@@ -232,12 +236,13 @@ public class HopDongAdd extends AppCompatActivity {
         themNguoiThue.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                listKhachArr.add(new ThanhVienModel(0, "", "", "", 4, "", "", "", "", "", "", "", 0, 0));
-                if (listKhachArr.size() == 4) {
-                    themNguoiThue.setVisibility(View.GONE);
-                }
-
-                addAdapterKhach.notifyDataSetChanged();
+//                listKhachArr.add(new ThanhVienModel(0, "", "", "", 4, "", "", "", "", "", "", "", 0, 0));
+//                if (listKhachArr.size() == 4) {
+//                    themNguoiThue.setVisibility(View.GONE);
+//                }
+//                addAdapterKhach.notifyDataSetChanged();
+                BottomSheetThanhVienChon tonKho = new BottomSheetThanhVienChon();
+                tonKho.show(getSupportFragmentManager(), "ChonThanhVien");
             }
         });
 
@@ -256,6 +261,8 @@ public class HopDongAdd extends AppCompatActivity {
 
                 SharedPreferences shpKhachThem = getSharedPreferences("thongTinKhach",Context.MODE_PRIVATE);
                 SharedPreferences.Editor khachEdit = shpKhachThem.edit();
+
+
                 String tenKhachLuu = shpKhachThem.getString("itemTenKhach", "");
                 String sdtKhachLuu = shpKhachThem.getString("itemDienThoai", "");
 
@@ -281,11 +288,8 @@ public class HopDongAdd extends AppCompatActivity {
                     Log.d("tenKhach",""+tenKhachLuu);
                 }
 
-                if(sdtKhachLuu.equals("")){
 
-                }else{
 
-                }
             }
         });
 
