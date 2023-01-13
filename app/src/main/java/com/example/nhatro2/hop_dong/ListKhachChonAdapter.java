@@ -1,6 +1,10 @@
 package com.example.nhatro2.hop_dong;
 
+import static android.content.Context.MODE_PRIVATE;
+
 import android.content.Context;
+import android.content.SharedPreferences;
+import android.graphics.Color;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,12 +17,16 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.nhatro2.R;
 import com.example.nhatro2.thanhvien.ThanhVienModel;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class ListKhachChonAdapter extends RecyclerView.Adapter<ListKhachChonAdapter.ListKhachChonViewHolder> {
     Context context;
     List<ThanhVienModel> listKhach;
     ClickKhachAddHopDong clickKhach;
+    String listKhachChooseString;
 
     public ListKhachChonAdapter(Context context, List<ThanhVienModel> listKhach, ClickKhachAddHopDong clickKhach) {
         this.context = context;
@@ -42,6 +50,34 @@ public class ListKhachChonAdapter extends RecyclerView.Adapter<ListKhachChonAdap
 
         holder.tenKhachChon.setText(tenKhach+" - ");
         holder.sdtKhachChon.setText(sdt);
+
+        SharedPreferences shpKhach = context.getSharedPreferences("khachChonHopDongAdd", MODE_PRIVATE);
+        SharedPreferences.Editor shpKhachEdit = shpKhach.edit();
+        listKhachChooseString = shpKhach.getString("idKhachChon", "");
+
+        List<Integer> arrKhachChon = new ArrayList<>();
+
+        if (listKhachChooseString.equals("")) {
+            if (arrKhachChon.contains(id)) {
+                holder.tenKhachChon.setTextColor(Color.rgb(46, 184, 75));
+                holder.sdtKhachChon.setTextColor(Color.rgb(46, 184, 75));
+            } else {
+                holder.tenKhachChon.setTextColor(Color.rgb(0, 0, 0));
+                holder.sdtKhachChon.setTextColor(Color.rgb(0, 0, 0));
+            }
+        }else{
+            if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.N) {
+                arrKhachChon = Arrays.stream(listKhachChooseString.split(",")).map(Integer::parseInt).collect(Collectors.toList());
+            }
+            if (arrKhachChon.contains(id)) {
+                holder.tenKhachChon.setTextColor(Color.rgb(46, 184, 75));
+                holder.sdtKhachChon.setTextColor(Color.rgb(46, 184, 75));
+            } else {
+                holder.tenKhachChon.setTextColor(Color.rgb(0, 0, 0));
+                holder.sdtKhachChon.setTextColor(Color.rgb(0, 0, 0));
+            }
+        }
+
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
