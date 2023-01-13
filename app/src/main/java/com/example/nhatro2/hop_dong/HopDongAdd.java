@@ -143,7 +143,6 @@ public class HopDongAdd extends AppCompatActivity {
         String dienThoai = bundle.getString("dienthoai");
         int tienCoc = bundle.getInt("datcoc");
 
-
         listThietBi = findViewById(R.id.thietbiCheck);
         listThietBi.setLayoutManager(new GridLayoutManager(HopDongAdd.this, 3));
         listThietBi.hasFixedSize();
