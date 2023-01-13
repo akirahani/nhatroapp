@@ -125,6 +125,7 @@ public class TienNuoc extends AppCompatActivity {
         chonThangNuoc.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
                 RackMonthPicker rackMonthPicker = new RackMonthPicker(TienNuoc.this);
                 rackMonthPicker.setLocale(Locale.ENGLISH)
                         .setPositiveButton(new DateMonthDialogListener() {

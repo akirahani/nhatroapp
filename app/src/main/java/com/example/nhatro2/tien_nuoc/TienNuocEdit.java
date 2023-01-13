@@ -175,7 +175,7 @@ public class TienNuocEdit extends AppCompatActivity {
 
                     @Override
                     public void onFailure(Call<TienNuocModel> call, Throwable t) {
-                        Log.d("err uodate nuoc",""+t.toString());
+                        Log.d("err update nuoc",""+t.toString());
                     }
                 });
             }

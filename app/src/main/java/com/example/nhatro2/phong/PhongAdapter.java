@@ -49,9 +49,7 @@ public class PhongAdapter extends RecyclerView.Adapter<PhongAdapter.PhongViewHol
     ViewGroup khungNgoai;
     ArrayList<Integer> listRoomChoose;
     String listRoom;
-
     boolean isUp;
-
     public PhongAdapter(Context context, List<PhongModel> phong, PhongTrongItemClick phongClick) {
         this.context = context;
         this.phong = phong;
