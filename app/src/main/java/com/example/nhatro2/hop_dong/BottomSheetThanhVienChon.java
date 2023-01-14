@@ -70,12 +70,12 @@ public class BottomSheetThanhVienChon extends BottomSheetDialogFragment {
                         List<ThanhVienModel> listKhachSearchChon = response.body();
                         listKhachClick.setAdapter(new ListKhachChonAdapter(view.getContext(),listKhachSearchChon, new ClickKhachAddHopDong() {
                             @Override
-                            public void clickKhachChon(int idKhach) {
+                            public void clickKhachChon(ThanhVienModel thanhvien) {
 
                                 List<Integer> arrKhachChon = new ArrayList<>();
 
                                 if (listKhachChooseString.equals("")) {
-                                    arrKhachChon.add(idKhach);
+                                    arrKhachChon.add(thanhvien.getId());
                                     String convertStringKhach = null;
                                     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
                                         convertStringKhach = arrKhachChon.stream().map(String::valueOf).collect(Collectors.joining(","));
@@ -89,8 +89,8 @@ public class BottomSheetThanhVienChon extends BottomSheetDialogFragment {
                                         arrKhachChon = Arrays.stream(listKhachChooseString.split(",")).map(Integer::parseInt).collect(Collectors.toList());
                                     }
 
-                                    if (arrKhachChon.contains(idKhach)) {
-                                        arrKhachChon.remove(Integer.valueOf(idKhach));
+                                    if (arrKhachChon.contains(thanhvien.getId())) {
+                                        arrKhachChon.remove(Integer.valueOf(thanhvien.getId()));
                                         String convertStringKhach = null;
                                         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
                                             convertStringKhach = arrKhachChon.stream().map(String::valueOf).collect(Collectors.joining(","));
@@ -99,7 +99,7 @@ public class BottomSheetThanhVienChon extends BottomSheetDialogFragment {
                                         shpKhachEdit.apply();
 
                                     } else {
-                                        arrKhachChon.add(idKhach);
+                                        arrKhachChon.add(thanhvien.getId());
                                         String convertStringKhach = null;
                                         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
                                             convertStringKhach = arrKhachChon.stream().map(String::valueOf).collect(Collectors.joining(","));
@@ -116,14 +116,13 @@ public class BottomSheetThanhVienChon extends BottomSheetDialogFragment {
 
                     @Override
                     public void onFailure(Call<List<ThanhVienModel>> call, Throwable t) {
-                        Log.d("click","err"+t.toString());
                     }
                 });
             }
         });
 
         shpKhach = view.getContext().getSharedPreferences("khachChonHopDongAdd", MODE_PRIVATE);
-        SharedPreferences.Editor shpKhachEdit = shpKhach.edit();
+        shpKhachEdit = shpKhach.edit();
         listKhachChooseString = shpKhach.getString("idKhachChon", "");
 
         Api.api.getKhachList().enqueue(new Callback<List<ThanhVienModel>>() {
@@ -132,10 +131,10 @@ public class BottomSheetThanhVienChon extends BottomSheetDialogFragment {
                 List<ThanhVienModel> infoListKhachChon = response.body();
                 listKhachClick.setAdapter(new ListKhachChonAdapter(view.getContext(), infoListKhachChon, new ClickKhachAddHopDong() {
                     @Override
-                    public void clickKhachChon(int idKhach) {
+                    public void clickKhachChon(ThanhVienModel thanhvien) {
                         List<Integer> arrKhachChon = new ArrayList<>();
                         if (listKhachChooseString.equals("")) {
-                            arrKhachChon.add(idKhach);
+                            arrKhachChon.add(thanhvien.getId());
                             String convertStringKhach = null;
                             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
                                 convertStringKhach = arrKhachChon.stream().map(String::valueOf).collect(Collectors.joining(","));
@@ -149,8 +148,8 @@ public class BottomSheetThanhVienChon extends BottomSheetDialogFragment {
                                 arrKhachChon = Arrays.stream(listKhachChooseString.split(",")).map(Integer::parseInt).collect(Collectors.toList());
                             }
 
-                            if (arrKhachChon.contains(idKhach)) {
-                                arrKhachChon.remove(Integer.valueOf(idKhach));
+                            if (arrKhachChon.contains(thanhvien.getId())) {
+                                arrKhachChon.remove(Integer.valueOf(thanhvien.getId()));
                                 String convertStringKhach = null;
                                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
                                     convertStringKhach = arrKhachChon.stream().map(String::valueOf).collect(Collectors.joining(","));
@@ -159,7 +158,7 @@ public class BottomSheetThanhVienChon extends BottomSheetDialogFragment {
                                 shpKhachEdit.apply();
 
                             } else {
-                                arrKhachChon.add(idKhach);
+                                arrKhachChon.add(thanhvien.getId());
                                 String convertStringKhach = null;
                                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
                                     convertStringKhach = arrKhachChon.stream().map(String::valueOf).collect(Collectors.joining(","));
@@ -174,19 +173,19 @@ public class BottomSheetThanhVienChon extends BottomSheetDialogFragment {
                         List<String> thanhVienPhong = new ArrayList<>();
                         String[] items = listKhachChooseString.split(",");
 
-                        Log.d("so"," "+items.length);
-                        if(items.length <= 3){
-                            for(int i=0; i < items.length; i++){
-                                thanhVienPhong.add(items[i]);
-                            }
-                        }else{
-                            thanhVienPhong.remove(Integer.valueOf(idKhach));
-                        }
-                        Log.d("arr",""+thanhVienPhong);
-
-                        if(thanhVienPhong.size() > 4){
-                            view.setVisibility(View.GONE);
-                        }
+//                        for(int i=0; i < items.length; i++){
+//                            if(items.length <= 3){
+//                                thanhVienPhong.add(items[i]);
+//                            }else{
+//                                thanhVienPhong.remove(items[i]);
+//                            }
+//                        }
+//
+//                        Log.d("arr",""+thanhVienPhong);
+//
+//                        if(thanhVienPhong.size() > 4){
+//                            view.setVisibility(View.GONE);
+//                        }
 
                     }
                 }));
