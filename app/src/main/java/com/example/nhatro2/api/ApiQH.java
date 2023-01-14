@@ -1,8 +1,12 @@
 package com.example.nhatro2.api;
 
+import com.example.nhatro2.hop_dong.HopDongModel;
 import com.example.nhatro2.thanhvien.ThanhVienModel;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import okhttp3.OkHttpClient;
 import retrofit2.Call;
@@ -31,4 +35,20 @@ public interface ApiQH {
     @FormUrlEncoded
     Call<ThanhVienModel> postLogin(@Field("username") String username,
                                    @Field("password") String password);
+
+    // Hợp đồng
+        //Thêm
+        @POST("/quanghieu/admin/api/hop-dong/add.php")
+        @FormUrlEncoded
+        Call<HopDongModel> addContract(@Field("thietbi") List<String> thietbi,
+                                       @Field("khach") int khach,
+                                       @Field("daidienophong") int idDaiDien,
+                                       @Field("ketthuc") String ketthuc,
+                                       @Field("ghichu") String ghichu,
+                                       @Field("coc") String coc,
+                                       @Field("phuongthuccoc") int phuongThuCcoc,
+                                       @Field("phong") String phong,
+                                       @Field("phuongthucphong") int phuongThuPhong,
+                                       @Field("person") List<String> person,
+                                       @Field("roomhd") String roomhd);
 }

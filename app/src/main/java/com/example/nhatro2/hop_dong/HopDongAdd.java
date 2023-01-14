@@ -38,6 +38,7 @@ import com.example.nhatro2.HomeActivity;
 import com.example.nhatro2.MainActivity;
 import com.example.nhatro2.R;
 import com.example.nhatro2.api.Api;
+import com.example.nhatro2.api.ApiQH;
 import com.example.nhatro2.dich_vu.DichVu;
 import com.example.nhatro2.dich_vu.DichVuAdapter;
 import com.example.nhatro2.dich_vu.DichVuModel;
@@ -64,17 +65,19 @@ public class HopDongAdd extends AppCompatActivity {
 
     ImageView thoat, logo, themNguoiThue;
     SharedPreferences shp;
+    SharedPreferences.Editor shpKhachEdit;
     RecyclerView listThietBi, listKhachAdd;
     ThietBiAddAdapter dichVuAdapter;
     List<DichVuModel> dichVu;
-    EditText tenDaiDienText, sdtDaiDienText;
-    TextView textNameRoom, ngayKetThuc,themHopDong;
-    private int mYear, mMonth, mDay;
+
+    EditText tienPhongHopDongAdd, tienCocHopDongAdd, tenDaiDienText, sdtDaiDienText, tenKhachText, sdtKhachText,tenKhachAdd, canCuocKhachAdd, noiCapKhachAdd, sdtKhachAdd;
+    TextView textNameRoom, ngayKetThuc,themHopDong, ghiChu;
+    private int mYear, mMonth, mDay, tienCocChecked, tienPhongChecked, idDaiDien, coOTaiPhongChecked;
+    RadioButton tienMatPhong, chuyenKhoanPhong,tienMatCoc, chuyenKhoanCoc, coTaiPhong, khongCoTaiPhong;
+
     DatePickerDialog.OnDateSetListener setListener;
 //    FloatingActionButton fab;
     List<ThanhVienModel> listKhachArr = new ArrayList<>();
-
-    EditText tenKhachAdd, canCuocKhachAdd, noiCapKhachAdd, sdtKhachAdd;
     TextView ngayCapKhachAdd,ngaySinhHopDongAddText,thuTuKhachTro;
     KhachAddAdapter addAdapterKhach;
 
@@ -92,7 +95,7 @@ public class HopDongAdd extends AppCompatActivity {
                 Intent intent = new Intent(HopDongAdd.this, HomeActivity.class);
                 startActivity(intent);
                 SharedPreferences shpKhach = view.getContext().getSharedPreferences("khachChonHopDongAdd", MODE_PRIVATE);
-                SharedPreferences.Editor shpKhachEdit = shpKhach.edit();
+                shpKhachEdit = shpKhach.edit();
                 shpKhachEdit.remove("idKhachChon");
                 shpKhachEdit.apply();
             }
@@ -158,7 +161,8 @@ public class HopDongAdd extends AppCompatActivity {
         tenDaiDienText = findViewById(R.id.tenDaiDienText);
         sdtDaiDienText = findViewById(R.id.sdtDaiDienText);
         textNameRoom = findViewById(R.id.textNameRoom);
-        //
+
+        // Lấy ra thông tin phòng thuê
         Api.api.hopDongPhong(idPhong).enqueue(new Callback<PhongModel>() {
             @Override
             public void onResponse(Call<PhongModel> call, Response<PhongModel> response) {
@@ -166,6 +170,8 @@ public class HopDongAdd extends AppCompatActivity {
                 tenDaiDienText.setText(phongHopDong.getDaidien());
                 sdtDaiDienText.setText(phongHopDong.getDienthoai());
                 textNameRoom.setText("Phòng thuê " + phongHopDong.getTen());
+                idDaiDien = phongHopDong.getKhach();
+
             }
 
             @Override
@@ -173,6 +179,7 @@ public class HopDongAdd extends AppCompatActivity {
 
             }
         });
+
         // Thiết bị
         Api.api.getDichVuList().enqueue(new Callback<List<DichVuModel>>() {
             @Override
@@ -225,23 +232,25 @@ public class HopDongAdd extends AppCompatActivity {
                 ngayKetThuc.setText(date);
             }
         };
-        //
 
+        // Hiển thị list khách được chọn lên hợp đồng được thêm
         listKhachAdd = findViewById(R.id.listKhachAdd);
         listKhachAdd.setLayoutManager(new LinearLayoutManager(HopDongAdd.this));
         listKhachAdd.hasFixedSize();
         listKhachAdd.setNestedScrollingEnabled(false);
 
-
+        // Mảng lưu id khách trọ
         SharedPreferences shpKhach = getApplicationContext().getSharedPreferences("khachChonHopDongAdd", MODE_PRIVATE);
         String listKhachChooseString = shpKhach.getString("idKhachChon", "");
 
+        //
         Api.api.addKhachHopDong(listKhachChooseString).enqueue(new Callback<List<ListKhachChonModel>>() {
             @Override
             public void onResponse(Call<List<ListKhachChonModel>> call, Response<List<ListKhachChonModel>> response) {
                 List<ListKhachChonModel> listKhachArr = response.body();
                 addAdapterKhach = new KhachAddAdapter(HopDongAdd.this, listKhachArr);
                 listKhachAdd.setAdapter(addAdapterKhach);
+                addAdapterKhach.notifyDataSetChanged();
             }
 
             @Override
@@ -259,24 +268,128 @@ public class HopDongAdd extends AppCompatActivity {
             }
         });
 
-
-
-
         themHopDong = findViewById(R.id.themHopDong);
         // Thêm hợp đồng
         themHopDong.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                // Thiết bị thêm trong hợp đồng
                 SharedPreferences shpThietBi = getSharedPreferences("idThietBiHopDong", Context.MODE_PRIVATE);
                 SharedPreferences.Editor thietBiEdit = shpThietBi.edit();
                 String listThietBiString = shpThietBi.getString("itemThietBi", "");
+                List<String> thietBiPhong = new ArrayList<>();
+                String[] thietBiArr = listThietBiString.split(",");
+                for (int i =0; i<thietBiArr.length; i++){
+                    thietBiPhong.add(thietBiArr[i]);
+                }
+                Log.d("thietbi",""+thietBiPhong);
 
-                Log.d("thietbi",""+listThietBiString);
-                Log.d("ngayketthuc",""+ngayKetThuc.getText().toString());
+                // Ngày kết thúc hợp đồng
+                String ngayKetThucHopDong = ngayKetThuc.getText().toString();
+                Log.d("ngayketthuc",""+ngayKetThucHopDong);
 
+                // Thông tin người đại diện
+                Log.d("id người đại diện",""+idDaiDien);
+                //  Xét xem người đại diện có ở trong phòng hay không
+                // Ánh xạ
+                coTaiPhong = findViewById(R.id.coTaiPhong);
+                khongCoTaiPhong = findViewById(R.id.khongCoTaiPhong);
+                List<String> thanhVienPhong = new ArrayList<>();
+                String[] khachArr = listKhachChooseString.split(",");
+                for (int i =0; i<khachArr.length; i++){
+                    thanhVienPhong.add(khachArr[i]);
+                }
+                if(coTaiPhong.isChecked()){
+                    coOTaiPhongChecked = 1;
+                    thanhVienPhong.add(String.valueOf(idDaiDien));
+                }else if(khongCoTaiPhong.isChecked()){
+                    coOTaiPhongChecked = 0;
+                    if(thanhVienPhong.contains(idDaiDien)){
+                        thanhVienPhong.remove(idDaiDien);
+                    }
+                }
+                String idThanhVienConvert = null;
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+                    idThanhVienConvert = thanhVienPhong.stream().map(String::valueOf).collect(Collectors.joining(","));
+                }
+                shpKhachEdit = shpKhach.edit();
+                shpKhachEdit.putString("idKhachChon",idThanhVienConvert);
+                shpKhachEdit.commit();
 
+                // Khách ở được thêm trong hợp đồng
                 String listKhachChooseString = shpKhach.getString("idKhachChon", "");
-                Log.d("khach dc them",""+listKhachChooseString);
+                Log.d("khach dc them",""+thanhVienPhong);
+
+                // Tiền phòng
+                tienPhongHopDongAdd = findViewById(R.id.tienPhongHopDongAdd);
+                String tienPhongDong = tienPhongHopDongAdd.getText().toString();
+//                int tienPhongDongFinal = 0;
+                String tienPhongDongFinal = "";
+                if(tienPhongDong.equals("")){
+//                    tienPhongDongFinal = 0;
+                    tienPhongDongFinal = "";
+                }else{
+//                    tienPhongDongFinal = Integer.parseInt(tienPhongDong);
+                    tienPhongDongFinal = tienPhongDong;
+                }
+                Log.d("tien phong dong",""+tienPhongDongFinal);
+
+
+                // Tiền cọc
+                tienCocHopDongAdd = findViewById(R.id.tienCocHopDongAdd);
+                String tienCocDong = tienCocHopDongAdd.getText().toString();
+//                int tienCocDongFinal = 0;
+                String tienCocDongFinal = "";
+                if(tienCocDong.equals("")){
+//                    tienCocDongFinal = 0;
+                    tienCocDongFinal = "";
+
+                }else{
+//                    tienCocDongFinal = Integer.parseInt(tienCocDong);
+                    tienCocDongFinal = tienCocDong;
+
+                };
+                Log.d("tien coc dong",""+tienCocDongFinal);
+
+                // Phương thức tiền phòng hợp đồng
+                tienMatPhong = findViewById(R.id.tienMatTienPhong);
+                chuyenKhoanPhong = findViewById(R.id.chuyenKhoanTienPhong);
+
+                // xét checked tiền phòng hợp đồng
+                if(tienMatPhong.isChecked()){
+                    tienPhongChecked = 1;
+                }else if(chuyenKhoanPhong.isChecked()){
+                    tienPhongChecked = 2;
+                }
+                Log.d("phuong thức tiền phòng",""+tienPhongChecked);
+
+                // Phương thức tiền cọc hợp đồng
+                tienMatCoc = findViewById(R.id.tienMatTienCoc);
+                chuyenKhoanCoc = findViewById(R.id.chuyenKhoanTienCoc);
+
+                // xét checked tiền cọc hợp đồng
+                if(tienMatCoc.isChecked()){
+                    tienCocChecked = 1;
+                }else if(chuyenKhoanCoc.isChecked()){
+                    tienCocChecked = 2;
+                }
+                Log.d("phuong thức tiền cọc",""+tienCocChecked);
+
+                ghiChu = findViewById(R.id.ghiChu);
+                String ghiChuText = ghiChu.getText().toString();
+
+                ApiQH.apiQH.addContract(thietBiPhong,idDaiDien,coOTaiPhongChecked,ngayKetThucHopDong,ghiChuText,tienCocDongFinal,tienCocChecked,tienPhongDongFinal,tienPhongChecked,thanhVienPhong,tenPhong).enqueue(new Callback<HopDongModel>() {
+                    @Override
+                    public void onResponse(Call<HopDongModel> call, Response<HopDongModel> response) {
+                        HopDongModel detailHopDong = response.body();
+                        Log.d("thong tin","hop dong"+detailHopDong);
+                    }
+
+                    @Override
+                    public void onFailure(Call<HopDongModel> call, Throwable t) {
+                        Log.d("error hop dong",""+t.toString());
+                    }
+                });
 
             }
         });

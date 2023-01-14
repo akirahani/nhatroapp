@@ -81,7 +81,8 @@ public class ListKhachChonAdapter extends RecyclerView.Adapter<ListKhachChonAdap
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                clickKhach.clickKhachChon(id);
+                clickKhach.clickKhachChon(thanhVien);
+                notifyDataSetChanged();
             }
         });
     }
