@@ -1,8 +1,6 @@
 package com.example.nhatro2.hop_dong;
 
 import android.content.Context;
-import android.content.SharedPreferences;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,9 +17,9 @@ import java.util.List;
 
 public class KhachAddAdapter extends RecyclerView.Adapter<KhachAddAdapter.KhachTroAddViewHolder> {
     Context context;
-    List<ThanhVienModel> khachTro;
+    List<ListKhachChonModel> khachTro;
 
-    public KhachAddAdapter(Context context, List<ThanhVienModel> khachTro) {
+    public KhachAddAdapter(Context context, List<ListKhachChonModel> khachTro) {
         this.context = context;
         this.khachTro = khachTro;
     }
@@ -35,7 +33,8 @@ public class KhachAddAdapter extends RecyclerView.Adapter<KhachAddAdapter.KhachT
 
     @Override
     public void onBindViewHolder(@NonNull KhachAddAdapter.KhachTroAddViewHolder holder, int position) {
-        ThanhVienModel khachThueItem = khachTro.get(position);
+        ListKhachChonModel khachThueItem = khachTro.get(position);
+        int id = khachThueItem.getId();
         String tenKhach = khachThueItem.getFullname();
         String canCuoc = khachThueItem.getCancuoc();
         String ngayCap = khachThueItem.getNgaycap();
@@ -44,13 +43,14 @@ public class KhachAddAdapter extends RecyclerView.Adapter<KhachAddAdapter.KhachT
         String noicap = khachThueItem.getNoicap();
 
         holder.tenKhachAdd.setText(tenKhach);
-        holder.canCuocKhachAdd.setText(canCuoc);
-        holder.ngayCapKhachAdd.setText(ngayCap);
-        holder.ngaySinhHopDongAddText.setText(ngaySinh);
+//        holder.canCuocKhachAdd.setText(canCuoc);
+//        holder.ngayCapKhachAdd.setText(ngayCap);
+//        holder.ngaySinhHopDongAddText.setText(ngaySinh);
         holder.sdtKhachAdd.setText(dienThoai);
-        holder.noiCapKhachAdd.setText(noicap);
+//        holder.noiCapKhachAdd.setText(noicap);
         position++;
         holder.thuTuKhachTro.setText("Khách trọ "+position);
+
     }
 
     @Override
@@ -64,12 +64,13 @@ public class KhachAddAdapter extends RecyclerView.Adapter<KhachAddAdapter.KhachT
         public KhachTroAddViewHolder(@NonNull View itemView) {
             super(itemView);
             tenKhachAdd = itemView.findViewById(R.id.tenKhachAdd);
-            canCuocKhachAdd = itemView.findViewById(R.id.canCuocKhachAdd);
-            noiCapKhachAdd = itemView.findViewById(R.id.noiCapKhachAdd);
+//            canCuocKhachAdd = itemView.findViewById(R.id.canCuocKhachAdd);
+//            noiCapKhachAdd = itemView.findViewById(R.id.noiCapKhachAdd);
             sdtKhachAdd = itemView.findViewById(R.id.sdtKhachAdd);
-            ngayCapKhachAdd = itemView.findViewById(R.id.ngayCapKhachAdd);
-            ngaySinhHopDongAddText = itemView.findViewById(R.id.ngaySinhHopDongAddText);
+//            ngayCapKhachAdd = itemView.findViewById(R.id.ngayCapKhachAdd);
+//            ngaySinhHopDongAddText = itemView.findViewById(R.id.ngaySinhHopDongAddText);
             thuTuKhachTro = itemView.findViewById(R.id.thuTuKhachTro);
+
 
         }
     }
