@@ -29,6 +29,7 @@ public interface Api {
 
 //    String url = "http://172.16.1.71";
     String url = "http://192.168.1.190";
+//    String url = "http://192.168.0.108";
 
 
     //Init

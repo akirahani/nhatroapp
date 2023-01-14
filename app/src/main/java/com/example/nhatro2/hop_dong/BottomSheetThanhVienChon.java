@@ -123,7 +123,7 @@ public class BottomSheetThanhVienChon extends BottomSheetDialogFragment {
         });
 
         shpKhach = view.getContext().getSharedPreferences("khachChonHopDongAdd", MODE_PRIVATE);
-        SharedPreferences.Editor shpKhachEdit = shpKhach.edit();
+        shpKhachEdit = shpKhach.edit();
         listKhachChooseString = shpKhach.getString("idKhachChon", "");
 
         Api.api.getKhachList().enqueue(new Callback<List<ThanhVienModel>>() {
@@ -174,7 +174,6 @@ public class BottomSheetThanhVienChon extends BottomSheetDialogFragment {
                         List<String> thanhVienPhong = new ArrayList<>();
                         String[] items = listKhachChooseString.split(",");
 
-                        Log.d("so"," "+items.length);
                         if(items.length <= 3){
                             for(int i=0; i < items.length; i++){
                                 thanhVienPhong.add(items[i]);
@@ -182,7 +181,6 @@ public class BottomSheetThanhVienChon extends BottomSheetDialogFragment {
                         }else{
                             thanhVienPhong.remove(Integer.valueOf(idKhach));
                         }
-                        Log.d("arr",""+thanhVienPhong);
 
                         if(thanhVienPhong.size() > 4){
                             view.setVisibility(View.GONE);

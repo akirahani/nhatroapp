@@ -449,71 +449,71 @@
 
                     </androidx.recyclerview.widget.RecyclerView>
 
-<!--                    <androidx.cardview.widget.CardView-->
-<!--                        android:layout_width="match_parent"-->
-<!--                        android:layout_height="wrap_content"-->
-<!--                        android:layout_below="@+id/thietbiCheck"-->
-<!--                        android:layout_marginLeft="14dp"-->
-<!--                        android:layout_marginTop="16dp"-->
-<!--                        android:layout_marginRight="14dp"-->
-<!--                        app:cardCornerRadius="8dp">-->
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/thietbiCheck"
+                        android:layout_marginLeft="14dp"
+                        android:layout_marginTop="16dp"
+                        android:layout_marginRight="14dp"
+                        app:cardCornerRadius="8dp">
 
-<!--                        <LinearLayout-->
-<!--                            android:layout_width="match_parent"-->
-<!--                            android:layout_height="wrap_content"-->
-<!--                            android:background="@color/white"-->
-<!--                            android:orientation="horizontal"-->
-<!--                            android:paddingTop="8dp"-->
-<!--                            android:paddingBottom="8dp">-->
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@color/white"
+                            android:orientation="horizontal"
+                            android:paddingTop="8dp"
+                            android:paddingBottom="8dp">
 
-<!--                            <TextView-->
-<!--                                android:layout_width="wrap_content"-->
-<!--                                android:layout_height="wrap_content"-->
-<!--                                android:paddingLeft="6dp"-->
-<!--                                android:text="Giá phòng: "-->
-<!--                                android:textColor="@color/black"></TextView>-->
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:paddingLeft="6dp"
+                                android:text="Tiền phòng: "
+                                android:textColor="@color/black"></TextView>
 
-<!--                            <EditText-->
-<!--                                android:id="@+id/giaPhhong"-->
-<!--                                android:layout_width="match_parent"-->
-<!--                                android:layout_height="wrap_content"-->
-<!--                                android:background="@null"-->
-<!--                                android:inputType="number"></EditText>-->
-<!--                        </LinearLayout>-->
-<!--                    </androidx.cardview.widget.CardView>-->
+                            <EditText
+                                android:id="@+id/giaPhong"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:background="@null"
+                                android:inputType="number"></EditText>
+                        </LinearLayout>
+                    </androidx.cardview.widget.CardView>
 
-<!--                    <androidx.cardview.widget.CardView-->
-<!--                        android:layout_width="match_parent"-->
-<!--                        android:layout_height="wrap_content"-->
-<!--                        android:layout_below="@+id/tenDichVuAdd"-->
-<!--                        android:layout_marginLeft="14dp"-->
-<!--                        android:layout_marginTop="8dp"-->
-<!--                        android:layout_marginRight="14dp"-->
-<!--                        app:cardCornerRadius="8dp">-->
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/tenDichVuAdd"
+                        android:layout_marginLeft="14dp"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginRight="14dp"
+                        app:cardCornerRadius="8dp">
 
-<!--                        <LinearLayout-->
-<!--                            android:layout_width="match_parent"-->
-<!--                            android:layout_height="wrap_content"-->
-<!--                            android:background="@color/white"-->
-<!--                            android:orientation="horizontal"-->
-<!--                            android:paddingTop="8dp"-->
-<!--                            android:paddingBottom="8dp">-->
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@color/white"
+                            android:orientation="horizontal"
+                            android:paddingTop="8dp"
+                            android:paddingBottom="8dp">
 
-<!--                            <TextView-->
-<!--                                android:layout_width="wrap_content"-->
-<!--                                android:layout_height="wrap_content"-->
-<!--                                android:paddingLeft="6dp"-->
-<!--                                android:text="Tiền cọc: "-->
-<!--                                android:textColor="@color/black"></TextView>-->
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:paddingLeft="6dp"
+                                android:text="Tiền cọc: "
+                                android:textColor="@color/black"></TextView>
 
-<!--                            <EditText-->
-<!--                                android:id="@+id/tienCocHopDongAdd"-->
-<!--                                android:layout_width="match_parent"-->
-<!--                                android:layout_height="wrap_content"-->
-<!--                                android:background="@null"-->
-<!--                                android:inputType="number"></EditText>-->
-<!--                        </LinearLayout>-->
-<!--                    </androidx.cardview.widget.CardView>-->
+                            <EditText
+                                android:id="@+id/tienCocHopDongAdd"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:background="@null"
+                                android:inputType="number"></EditText>
+                        </LinearLayout>
+                    </androidx.cardview.widget.CardView>
 
 
                     <RelativeLayout

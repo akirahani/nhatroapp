@@ -67,7 +67,7 @@ public class HopDongAdd extends AppCompatActivity {
     RecyclerView listThietBi, listKhachAdd;
     ThietBiAddAdapter dichVuAdapter;
     List<DichVuModel> dichVu;
-    EditText tenDaiDienText, sdtDaiDienText, tenKhachText, sdtKhachText;
+    EditText tenDaiDienText, sdtDaiDienText;
     TextView textNameRoom, ngayKetThuc,themHopDong;
     private int mYear, mMonth, mDay;
     DatePickerDialog.OnDateSetListener setListener;
@@ -284,13 +284,13 @@ public class HopDongAdd extends AppCompatActivity {
     }
 
     // Back button
-//    public void onBackPressed()
-//    {
-//        super.onBackPressed();
-//        SharedPreferences shpKhach = getApplicationContext().getSharedPreferences("khachChonHopDongAdd", MODE_PRIVATE);
-//        SharedPreferences.Editor shpKhachEdit = shpKhach.edit();
-//        shpKhachEdit.remove("idKhachChon");
-//        shpKhachEdit.apply();
-//    }
+    public void onBackPressed()
+    {
+        super.onBackPressed();
+        SharedPreferences shpKhach = getApplicationContext().getSharedPreferences("khachChonHopDongAdd", MODE_PRIVATE);
+        SharedPreferences.Editor shpKhachEdit = shpKhach.edit();
+        shpKhachEdit.remove("idKhachChon");
+        shpKhachEdit.apply();
+    }
 
 }
