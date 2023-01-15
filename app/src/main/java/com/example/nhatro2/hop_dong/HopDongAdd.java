@@ -69,10 +69,12 @@ public class HopDongAdd extends AppCompatActivity {
     RecyclerView listThietBi, listKhachAdd;
     ThietBiAddAdapter dichVuAdapter;
     List<DichVuModel> dichVu;
+
     EditText tienPhongHopDongAdd, tienCocHopDongAdd, tenDaiDienText, sdtDaiDienText, tenKhachText, sdtKhachText,tenKhachAdd, canCuocKhachAdd, noiCapKhachAdd, sdtKhachAdd;
     TextView textNameRoom, ngayKetThuc,themHopDong, ghiChu;
     private int mYear, mMonth, mDay, tienCocChecked, tienPhongChecked, idDaiDien, coOTaiPhongChecked;
     RadioButton tienMatPhong, chuyenKhoanPhong,tienMatCoc, chuyenKhoanCoc, coTaiPhong, khongCoTaiPhong;
+
     DatePickerDialog.OnDateSetListener setListener;
 //    FloatingActionButton fab;
     List<ThanhVienModel> listKhachArr = new ArrayList<>();
@@ -169,7 +171,7 @@ public class HopDongAdd extends AppCompatActivity {
                 sdtDaiDienText.setText(phongHopDong.getDienthoai());
                 textNameRoom.setText("Phòng thuê " + phongHopDong.getTen());
                 idDaiDien = phongHopDong.getKhach();
-
+                Log.d("dai dien",""+idDaiDien);
             }
 
             @Override
@@ -179,7 +181,7 @@ public class HopDongAdd extends AppCompatActivity {
         });
 
         // Thiết bị
-        Api.api.getDichVuList().enqueue(new Callback<List<DichVuModel>>() {
+        ApiQH.apiQH.getDichVuList().enqueue(new Callback<List<DichVuModel>>() {
             @Override
             public void onResponse(Call<List<DichVuModel>> call, Response<List<DichVuModel>> response) {
                 if (!response.isSuccessful()) {
@@ -332,6 +334,7 @@ public class HopDongAdd extends AppCompatActivity {
                 }
                 Log.d("tien phong dong",""+tienPhongDongFinal);
 
+
                 // Tiền cọc
                 tienCocHopDongAdd = findViewById(R.id.tienCocHopDongAdd);
                 String tienCocDong = tienCocHopDongAdd.getText().toString();
@@ -387,19 +390,20 @@ public class HopDongAdd extends AppCompatActivity {
                         Log.d("error hop dong",""+t.toString());
                     }
                 });
+
             }
         });
 
     }
 
     // Back button
-//    public void onBackPressed()
-//    {
-//        super.onBackPressed();
-//        SharedPreferences shpKhach = getApplicationContext().getSharedPreferences("khachChonHopDongAdd", MODE_PRIVATE);
-//        SharedPreferences.Editor shpKhachEdit = shpKhach.edit();
-//        shpKhachEdit.remove("idKhachChon");
-//        shpKhachEdit.apply();
-//    }
+    public void onBackPressed()
+    {
+        super.onBackPressed();
+        SharedPreferences shpKhach = getApplicationContext().getSharedPreferences("khachChonHopDongAdd", MODE_PRIVATE);
+        SharedPreferences.Editor shpKhachEdit = shpKhach.edit();
+        shpKhachEdit.remove("idKhachChon");
+        shpKhachEdit.apply();
+    }
 
 }

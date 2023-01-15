@@ -46,6 +46,4 @@ dependencies {
     implementation 'com.android.support:design:28.0.0'
     implementation 'com.github.kal72:RackMonthPicker:1.6.1'
 
-
-
 }

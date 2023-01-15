@@ -23,6 +23,7 @@ import com.example.nhatro2.HomeActivity;
 import com.example.nhatro2.MainActivity;
 import com.example.nhatro2.R;
 import com.example.nhatro2.api.Api;
+import com.example.nhatro2.api.ApiQH;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -101,7 +102,7 @@ public class DichVuEdit extends AppCompatActivity {
         else
         {
             int idDichVu = bundle.getInt("idDichVu");
-            Api.api.detailDichVu(idDichVu).enqueue(new Callback<DichVuModel>() {
+            ApiQH.apiQH.detailDichVu(idDichVu).enqueue(new Callback<DichVuModel>() {
                 @Override
                 public void onResponse(Call<DichVuModel> call, Response<DichVuModel> response) {
                     DichVuModel dichVuModel = response.body();
@@ -117,6 +118,7 @@ public class DichVuEdit extends AppCompatActivity {
                 @Override
                 public void onFailure(Call<DichVuModel> call, Throwable t) {
                     Toast.makeText(DichVuEdit.this,"Có lỗi hiển thị dịch vụ",Toast.LENGTH_SHORT).show();
+                    Log.d("err thiet bi",""+t.toString());
                 }
             });
         }
@@ -126,9 +128,15 @@ public class DichVuEdit extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 int id_send = id_update;
-                int giaCapNhat = Integer.parseInt(giaTB.getText().toString());
+                String giaThietBiText = giaTB.getText().toString();
+                int giaCapNhat = 0;
+                if(giaThietBiText.equals("")){
+                    giaCapNhat = 0;
+                }else{
+                    giaCapNhat = Integer.parseInt(giaThietBiText);
+                }
                 String tenCapNhat = tenTB.getText().toString();
-                Api.api.editDichVu(id_update,tenCapNhat,giaCapNhat).enqueue(new Callback<DichVuModel>() {
+                ApiQH.apiQH.editDichVu(id_update,tenCapNhat,giaCapNhat).enqueue(new Callback<DichVuModel>() {
                     @Override
                     public void onResponse(Call<DichVuModel> call, Response<DichVuModel> response) {
                         DichVuModel dichVuModel = response.body();

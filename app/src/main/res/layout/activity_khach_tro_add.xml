@@ -189,6 +189,7 @@
                                 android:textStyle="bold"></TextView>
 
                             <EditText
+                                android:singleLine="true"
                                 android:id="@+id/tenKhachAdd"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
@@ -222,6 +223,7 @@
                                 android:textStyle="bold"></TextView>
 
                             <EditText
+                                android:singleLine="true"
                                 android:id="@+id/sdtKhachAddText"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
@@ -256,6 +258,7 @@
                                 android:textStyle="bold"></TextView>
 
                             <EditText
+                                android:singleLine="true"
                                 android:id="@+id/soCanCuocAddText"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
@@ -290,6 +293,7 @@
                                 android:textStyle="bold"></TextView>
 
                             <EditText
+                                android:singleLine="true"
                                 android:id="@+id/diaChiKhachAddText"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
@@ -356,6 +360,7 @@
                                 android:textStyle="bold"></TextView>
 
                             <EditText
+                                android:singleLine="true"
                                 android:id="@+id/quocTichText"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"

@@ -23,6 +23,7 @@ import com.example.nhatro2.HomeActivity;
 import com.example.nhatro2.MainActivity;
 import com.example.nhatro2.R;
 import com.example.nhatro2.api.Api;
+import com.example.nhatro2.api.ApiQH;
 import com.example.nhatro2.thanhvien.ThanhVienModel;
 
 import java.util.List;
@@ -109,7 +110,7 @@ public class DichVuAdd extends AppCompatActivity {
                     String giaText  = gia.getText().toString();
                     int giaThietBi =Integer.parseInt(giaText);
                     if(!tenThietBi.equals("") && !giaText.equals("")){
-                        Api.api.addThietBi(tenThietBi,giaThietBi).enqueue(new Callback<DichVuModel>() {
+                        ApiQH.apiQH.addThietBi(tenThietBi,giaThietBi).enqueue(new Callback<DichVuModel>() {
                             @Override
                             public void onResponse(Call<DichVuModel> call, Response<DichVuModel> response) {
                                 DichVuModel dichvu = response.body();

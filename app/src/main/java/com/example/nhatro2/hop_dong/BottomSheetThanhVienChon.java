@@ -173,6 +173,7 @@ public class BottomSheetThanhVienChon extends BottomSheetDialogFragment {
                         List<String> thanhVienPhong = new ArrayList<>();
                         String[] items = listKhachChooseString.split(",");
 
+
 //                        for(int i=0; i < items.length; i++){
 //                            if(items.length <= 3){
 //                                thanhVienPhong.add(items[i]);
@@ -186,6 +187,7 @@ public class BottomSheetThanhVienChon extends BottomSheetDialogFragment {
 //                        if(thanhVienPhong.size() > 4){
 //                            view.setVisibility(View.GONE);
 //                        }
+
 
                     }
                 }));

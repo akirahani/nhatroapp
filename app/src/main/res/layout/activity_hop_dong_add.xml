@@ -472,6 +472,7 @@
 
                     </androidx.recyclerview.widget.RecyclerView>
 
+
                     <LinearLayout
                         android:id="@+id/rowTienPhongHopDongAdd"
                         android:layout_width="match_parent"
