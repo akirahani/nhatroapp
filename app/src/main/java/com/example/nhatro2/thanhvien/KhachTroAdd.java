@@ -216,12 +216,13 @@ public class KhachTroAdd extends AppCompatActivity {
                 String diaChi = diaChiKhachAddText.getText().toString();
                 String quocTich = quocTichText.getText().toString();
 
-                Api.api.themKhach(tenKhachPost, sdtKhachPost,canCuoc,diaChi,ngayCap,ngaySinh,quocTich,gioiTinh,doiTuong).enqueue(new Callback<ThanhVienModel>() {
+                ApiQH.apiQH.themKhach(tenKhachPost, sdtKhachPost,canCuoc,diaChi,ngayCap,ngaySinh,quocTich,gioiTinh).enqueue(new Callback<ThanhVienModel>() {
                     @Override
                     public void onResponse(Call<ThanhVienModel> call, Response<ThanhVienModel> response) {
                         ThanhVienModel khachThue = response.body();
                         Intent intent = new Intent(KhachTroAdd.this, KhachTro.class);
                         startActivity(intent);
+                        Log.d("vai ca","");
                     }
 
                     @Override

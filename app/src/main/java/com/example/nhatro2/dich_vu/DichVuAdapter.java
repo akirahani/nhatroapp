@@ -19,6 +19,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.nhatro2.R;
 import com.example.nhatro2.api.Api;
+import com.example.nhatro2.api.ApiQH;
 
 import java.text.DecimalFormat;
 import java.util.List;
@@ -79,7 +80,7 @@ public class DichVuAdapter extends RecyclerView.Adapter<DichVuAdapter.DichVuView
                     @Override
                     public void onClick(DialogInterface dialogInterface, int id) {
                         id = dataDV.getId();
-                        Api.api.delDichVu(id).enqueue(new Callback<DichVuModel>() {
+                        ApiQH.apiQH.delDichVu(id).enqueue(new Callback<DichVuModel>() {
                             @Override
                             public void onResponse(Call <DichVuModel> call, Response <DichVuModel> response){
                                 DichVuModel dichVu = response.body();

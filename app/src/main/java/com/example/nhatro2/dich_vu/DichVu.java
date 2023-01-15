@@ -25,6 +25,7 @@ import com.example.nhatro2.HomeActivity;
 import com.example.nhatro2.MainActivity;
 import com.example.nhatro2.R;
 import com.example.nhatro2.api.Api;
+import com.example.nhatro2.api.ApiQH;
 
 import org.w3c.dom.Text;
 
@@ -98,7 +99,7 @@ public class DichVu extends AppCompatActivity {
         listThietBi.hasFixedSize();
         listThietBi.setNestedScrollingEnabled(false);
 
-        Api.api.getDichVuList().enqueue(new Callback<List<DichVuModel>>() {
+        ApiQH.apiQH.getDichVuList().enqueue(new Callback<List<DichVuModel>>() {
             @Override
             public void onResponse(Call<List<DichVuModel>> call, Response<List<DichVuModel>> response) {
                 if (!response.isSuccessful()) {

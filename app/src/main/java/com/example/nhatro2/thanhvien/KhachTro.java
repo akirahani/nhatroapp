@@ -29,6 +29,7 @@ import com.example.nhatro2.HomeActivity;
 import com.example.nhatro2.MainActivity;
 import com.example.nhatro2.R;
 import com.example.nhatro2.api.Api;
+import com.example.nhatro2.api.ApiQH;
 import com.example.nhatro2.dich_vu.DichVu;
 import com.example.nhatro2.dich_vu.DichVuAdapter;
 import com.example.nhatro2.dich_vu.DichVuAdd;
@@ -110,7 +111,7 @@ public class KhachTro extends AppCompatActivity {
         listKhachThue.setLayoutManager(new LinearLayoutManager(KhachTro.this));
         listKhachThue.hasFixedSize();
         listKhachThue.setNestedScrollingEnabled(false);
-        Api.api.getKhachList().enqueue(new Callback<List<ThanhVienModel>>() {
+        ApiQH.apiQH.getKhachList().enqueue(new Callback<List<ThanhVienModel>>() {
             @Override
             public void onResponse(Call<List<ThanhVienModel>> call, Response<List<ThanhVienModel>> response) {
                 List<ThanhVienModel> listKhachTro = response.body();
@@ -165,7 +166,7 @@ public class KhachTro extends AppCompatActivity {
                     public void onClick(View view) {
                         keySearch = dialogSearch.findViewById(R.id.keySearch);
                         String keyTimKiem = keySearch.getText().toString();
-                        Api.api.searchKhach(keyTimKiem).enqueue(new Callback<List<ThanhVienModel>>() {
+                        ApiQH.apiQH.searchKhach(keyTimKiem).enqueue(new Callback<List<ThanhVienModel>>() {
                             @Override
                             public void onResponse(Call<List<ThanhVienModel>> call, Response<List<ThanhVienModel>> response) {
                                 List<ThanhVienModel> khachCanTim = response.body();

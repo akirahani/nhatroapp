@@ -25,6 +25,7 @@ import com.example.nhatro2.HomeActivity;
 import com.example.nhatro2.MainActivity;
 import com.example.nhatro2.R;
 import com.example.nhatro2.api.Api;
+import com.example.nhatro2.api.ApiQH;
 
 import java.util.Calendar;
 import java.util.Locale;
@@ -246,6 +247,7 @@ public class KhachTroEdit extends AppCompatActivity {
         capNhatKhach.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
                 String tenKhachPost = tenKhachEditText.getText().toString();
                 String sdtKhachPost = sdtKhachEditText.getText().toString();
                 String ngayCap = ngayCapEditText.getText().toString();
@@ -265,7 +267,6 @@ public class KhachTroEdit extends AppCompatActivity {
                     gioiTinhSent = 3;
                 }
 
-
                 // Chọn đối tượng
                 // Ánh xạ
                 nguoiLonEdit = findViewById(R.id.nguoiLonEdit);
@@ -277,8 +278,16 @@ public class KhachTroEdit extends AppCompatActivity {
                     doiTuong = 2;
                 }
                 int idKhachUpdate = idKhach;
-
-                Api.api.updateKhach(idKhachUpdate,tenKhachPost, sdtKhachPost,canCuoc,diaChi,ngayCap,ngaySinh,quocTich,gioiTinhSent,doiTuong).enqueue(new Callback<ThanhVienModel>() {
+                Log.d("idK",""+idKhachUpdate);
+                Log.d("tenK",""+tenKhachPost);
+                Log.d("sdtK",""+sdtKhachPost);
+                Log.d("cancuocK",""+canCuoc);
+                Log.d("diachiK",""+diaChi);
+                Log.d("ngaycapK",""+ngayCap);
+                Log.d("ngaysinhK",""+ngaySinh);
+                Log.d("quoctichK",""+quocTich);
+                Log.d("gioitinhK",""+gioiTinhSent);
+                ApiQH.apiQH.updateKhach(idKhachUpdate,tenKhachPost, sdtKhachPost,canCuoc,diaChi,ngayCap,ngaySinh,quocTich,gioiTinhSent).enqueue(new Callback<ThanhVienModel>() {
                     @Override
                     public void onResponse(Call<ThanhVienModel> call, Response<ThanhVienModel> response) {
                         ThanhVienModel khachUpdate = response.body();
@@ -290,6 +299,7 @@ public class KhachTroEdit extends AppCompatActivity {
                     @Override
                     public void onFailure(Call<ThanhVienModel> call, Throwable t) {
                         Toast.makeText(KhachTroEdit.this,"Lỗi cập nhật khách", Toast.LENGTH_SHORT).show();
+                        Log.d("err","lỗi khách cập nhật"+t.toString());
                     }
                 });
 

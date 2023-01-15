@@ -65,41 +65,41 @@ public interface Api {
     @FormUrlEncoded
     Call<PhongMultiModel> datCocPhong(@Field("ten") String ten, @Field("dienthoai") String dienthoai, @Field("tiencoc") String  tiencoc, @Field("phong") String phong);
 
-    // Khách thuê
-    @GET ("/nhatro/admin/api/khach/list.php")
-    Call<List<ThanhVienModel>> getKhachList();
-
-    //Thêm khách
-    @POST ("/nhatro/admin/api/khach/add.php")
-    @FormUrlEncoded
-    Call <ThanhVienModel> themKhach(@Field("fullname") String tenKhach,
-                                    @Field("dienthoai") String dienthoai,
-                                    @Field("cancuoc") String cancuoc,
-                                    @Field("diachi") String diachi,
-                                    @Field("ngaycap") String ngaycap,
-                                    @Field("ngaysinh") String ngaysinh,
-                                    @Field("quoctich") String quoctich,
-                                    @Field("gioitinh") int gioitinh,
-                                    @Field("nhomtuoi") int nhomtuoi);
-
-    //Cập nhật khách
-    @POST ("/nhatro/admin/api/khach/edit.php")
-    @FormUrlEncoded
-    Call <ThanhVienModel> updateKhach( @Field("id") int id,
-                                       @Field("fullname") String tenKhach,
-                                       @Field("dienthoai") String dienthoai,
-                                       @Field("cancuoc") String cancuoc,
-                                       @Field("diachi") String diachi,
-                                       @Field("ngaycap") String ngaycap,
-                                       @Field("ngaysinh") String ngaysinh,
-                                       @Field("quoctich") String quoctich,
-                                       @Field("gioitinh") int gioitinh,
-                                       @Field("nhomtuoi") int nhomtuoi);
-
-    //Tìm kiếm khách
-    @POST ("/nhatro/admin/api/khach/search.php")
-    @FormUrlEncoded
-    Call <List<ThanhVienModel>> searchKhach( @Field("key") String key);
+//    // Khách thuê
+//    @GET ("/nhatro/admin/api/khach/list.php")
+//    Call<List<ThanhVienModel>> getKhachList();
+//
+//    //Thêm khách
+//    @POST ("/nhatro/admin/api/khach/add.php")
+//    @FormUrlEncoded
+//    Call <ThanhVienModel> themKhach(@Field("fullname") String tenKhach,
+//                                    @Field("dienthoai") String dienthoai,
+//                                    @Field("cancuoc") String cancuoc,
+//                                    @Field("diachi") String diachi,
+//                                    @Field("ngaycap") String ngaycap,
+//                                    @Field("ngaysinh") String ngaysinh,
+//                                    @Field("quoctich") String quoctich,
+//                                    @Field("gioitinh") int gioitinh,
+//                                    @Field("nhomtuoi") int nhomtuoi);
+//
+//    //Cập nhật khách
+//    @POST ("/nhatro/admin/api/khach/edit.php")
+//    @FormUrlEncoded
+//    Call <ThanhVienModel> updateKhach( @Field("id") int id,
+//                                       @Field("fullname") String tenKhach,
+//                                       @Field("dienthoai") String dienthoai,
+//                                       @Field("cancuoc") String cancuoc,
+//                                       @Field("diachi") String diachi,
+//                                       @Field("ngaycap") String ngaycap,
+//                                       @Field("ngaysinh") String ngaysinh,
+//                                       @Field("quoctich") String quoctich,
+//                                       @Field("gioitinh") int gioitinh,
+//                                       @Field("nhomtuoi") int nhomtuoi);
+//
+//    //Tìm kiếm khách
+//    @POST ("/nhatro/admin/api/khach/search.php")
+//    @FormUrlEncoded
+//    Call <List<ThanhVienModel>> searchKhach( @Field("key") String key);
 
 //    @POST ("/nhatro/admin/api/phong/add.php")
 //    @FormUrlEncoded
@@ -127,27 +127,27 @@ public interface Api {
 
 
 
-    //Dịch vụ
-    @GET ("/nhatro/admin/api/dichvu/list.php")
-    Call<List<DichVuModel>> getDichVuList();
-    //Thêm Dịch vụ
-    @POST("/nhatro/admin/api/dichvu/add.php")
-    @FormUrlEncoded
-    Call<DichVuModel> addThietBi(@Field("ten") String tenthietbi, @Field("gia") Integer giathietbi);
-    // Get Thông tin dịch vụ
-    @POST ("/nhatro/admin/api/dichvu/detail.php")
-    @FormUrlEncoded
-    Call <DichVuModel> detailDichVu (@Field("id") int id);
-    // Cập nhật Thông tin dịch vụ
-    @POST ("/nhatro/admin/api/dichvu/edit.php")
-    @FormUrlEncoded
-    Call <DichVuModel> editDichVu (@Field("id") int id,
-                                   @Field("ten") String ten,
-                                   @Field("gia") int gia);
-    // Xóa dịch vụ
-    @POST ("/nhatro/admin/api/dichvu/del.php")
-    @FormUrlEncoded
-    Call <DichVuModel> delDichVu (@Field("id") int id);
+//    //Dịch vụ
+//    @GET ("/nhatro/admin/api/dichvu/list.php")
+//    Call<List<DichVuModel>> getDichVuList();
+//    //Thêm Dịch vụ
+//    @POST("/nhatro/admin/api/dichvu/add.php")
+//    @FormUrlEncoded
+//    Call<DichVuModel> addThietBi(@Field("ten") String tenthietbi, @Field("gia") Integer giathietbi);
+//    // Get Thông tin dịch vụ
+//    @POST ("/nhatro/admin/api/dichvu/detail.php")
+//    @FormUrlEncoded
+//    Call <DichVuModel> detailDichVu (@Field("id") int id);
+//    // Cập nhật Thông tin dịch vụ
+//    @POST ("/nhatro/admin/api/dichvu/edit.php")
+//    @FormUrlEncoded
+//    Call <DichVuModel> editDichVu (@Field("id") int id,
+//                                   @Field("ten") String ten,
+//                                   @Field("gia") int gia);
+//    // Xóa dịch vụ
+//    @POST ("/nhatro/admin/api/dichvu/del.php")
+//    @FormUrlEncoded
+//    Call <DichVuModel> delDichVu (@Field("id") int id);
 //
     // Tiền nước lựa chọn
     @POST ("/nhatro/admin/api/tien-nuoc/choose_month.php")

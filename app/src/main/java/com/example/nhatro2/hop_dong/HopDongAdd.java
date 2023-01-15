@@ -171,7 +171,7 @@ public class HopDongAdd extends AppCompatActivity {
                 sdtDaiDienText.setText(phongHopDong.getDienthoai());
                 textNameRoom.setText("Phòng thuê " + phongHopDong.getTen());
                 idDaiDien = phongHopDong.getKhach();
-
+                Log.d("dai dien",""+idDaiDien);
             }
 
             @Override
@@ -181,7 +181,7 @@ public class HopDongAdd extends AppCompatActivity {
         });
 
         // Thiết bị
-        Api.api.getDichVuList().enqueue(new Callback<List<DichVuModel>>() {
+        ApiQH.apiQH.getDichVuList().enqueue(new Callback<List<DichVuModel>>() {
             @Override
             public void onResponse(Call<List<DichVuModel>> call, Response<List<DichVuModel>> response) {
                 if (!response.isSuccessful()) {
