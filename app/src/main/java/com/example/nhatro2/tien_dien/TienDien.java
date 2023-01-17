@@ -30,6 +30,7 @@ import com.example.nhatro2.HomeActivity;
 import com.example.nhatro2.MainActivity;
 import com.example.nhatro2.R;
 import com.example.nhatro2.api.Api;
+import com.example.nhatro2.api.ApiQH;
 import com.example.nhatro2.tien_nuoc.TienNuoc;
 import com.example.nhatro2.tien_nuoc.TienNuocAdapter;
 import com.example.nhatro2.tien_nuoc.TienNuocEdit;
@@ -130,14 +131,14 @@ public class TienDien extends AppCompatActivity {
                             @Override
                             public void onDateMonth(int month, int startDate, int endDate, int year, String monthLabel) {
                                 chonThangDien.setText("Tháng "+month+" - năm "+year);
-                                Api.api.chooseTimeElectric(month,year).enqueue(new Callback<List<TienDienModel>>() {
+                                ApiQH.apiQH.chooseTimeElectric(month,year).enqueue(new Callback<List<TienDienModel>>() {
                                     @Override
                                     public void onResponse(Call<List<TienDienModel>> call, Response<List<TienDienModel>> response) {
                                         phongDien = response.body();
                                         danhSachPhongDien.setAdapter(new TienDienAdapter(TienDien.this, phongDien, new DienItemClick() {
                                             @Override
                                             public void itemOnClick(String idPhong) {
-                                                Api.api.detailElectric(idPhong,month,year).enqueue(new Callback<TienDienModel>() {
+                                                ApiQH.apiQH.detailElectric(idPhong,month,year).enqueue(new Callback<TienDienModel>() {
                                                     @Override
                                                     public void onResponse(Call<TienDienModel> call, Response<TienDienModel> response) {
                                                         TienDienModel detailPhongDien = response.body();
@@ -181,7 +182,7 @@ public class TienDien extends AppCompatActivity {
             }
         });
 
-        Api.api.getTienDien().enqueue(new Callback<List<TienDienModel>>() {
+        ApiQH.apiQH.getTienDien().enqueue(new Callback<List<TienDienModel>>() {
             @Override
             public void onResponse(Call<List<TienDienModel>> call, Response<List<TienDienModel>> response) {
                 phongDien = response.body();
@@ -195,7 +196,7 @@ public class TienDien extends AppCompatActivity {
                     @Override
                     public void itemOnClick(String idPhong) {
 
-                        Api.api.detailElectric(idPhong,monthGet,year).enqueue(new Callback<TienDienModel>() {
+                        ApiQH.apiQH.detailElectric(idPhong,monthGet,year).enqueue(new Callback<TienDienModel>() {
                             @Override
                             public void onResponse(Call<TienDienModel> call, Response<TienDienModel> response) {
                                 TienDienModel detailPhongDien = response.body();
@@ -212,6 +213,7 @@ public class TienDien extends AppCompatActivity {
                                 intent.putExtra("thang",monthGet);
                                 intent.putExtra("nam",year);
                                 startActivity(intent);
+
                             }
 
                             @Override
@@ -262,14 +264,14 @@ public class TienDien extends AppCompatActivity {
                         String[] elementTime = timeChoose.split(" ");
                         int thangSend =  Integer.parseInt(elementTime[1]);
                         int namSend = Integer.parseInt(elementTime[4]);
-                        Api.api.searchElectric(keyTimKiem,thangSend,namSend).enqueue(new Callback<List<TienDienModel>>() {
+                        ApiQH.apiQH.searchElectric(keyTimKiem,thangSend,namSend).enqueue(new Callback<List<TienDienModel>>() {
                             @Override
                             public void onResponse(Call<List<TienDienModel>> call, Response<List<TienDienModel>> response) {
                                 List<TienDienModel> phongCanTim = response.body();
                                 danhSachPhongDien.setAdapter(new TienDienAdapter(TienDien.this, phongCanTim, new DienItemClick() {
                                     @Override
                                     public void itemOnClick(String idPhong) {
-                                        Api.api.detailElectric(idPhong,thangSend,namSend).enqueue(new Callback<TienDienModel>() {
+                                        ApiQH.apiQH.detailElectric(idPhong,thangSend,namSend).enqueue(new Callback<TienDienModel>() {
                                             @Override
                                             public void onResponse(Call<TienDienModel> call, Response<TienDienModel> response) {
                                                 TienDienModel detailPhongDien = response.body();

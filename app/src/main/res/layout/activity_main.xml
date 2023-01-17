@@ -37,6 +37,7 @@
                 android:layout_height="wrap_content"
                 app:boxBackgroundMode="none">
                 <com.google.android.material.textfield.TextInputEditText
+                    android:singleLine="true"
                     android:id="@+id/username"
                     android:paddingBottom="15dp"
                     android:paddingTop="15dp"
@@ -64,6 +65,7 @@
                 app:passwordToggleEnabled="true">
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/password"
+                    android:singleLine="true"
                     android:layout_marginStart="30dp"
                     android:layout_marginEnd="30dp"
                     android:paddingBottom="15dp"

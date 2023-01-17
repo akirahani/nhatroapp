@@ -1,8 +1,14 @@
 package com.example.nhatro2.api;
 
+import com.example.nhatro2.bat_bien.BatBienModel;
 import com.example.nhatro2.dich_vu.DichVuModel;
 import com.example.nhatro2.hop_dong.HopDongModel;
+import com.example.nhatro2.kha_bien.KhaBienModel;
 import com.example.nhatro2.thanhvien.ThanhVienModel;
+import com.example.nhatro2.tien_dien.LichSuDienModel;
+import com.example.nhatro2.tien_dien.TienDienModel;
+import com.example.nhatro2.tien_nuoc.LichSuNuocModel;
+import com.example.nhatro2.tien_nuoc.TienNuocModel;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
@@ -20,7 +26,8 @@ import retrofit2.http.POST;
 
 public interface ApiQH {
 //    String url = "http://172.16.1.71";
-    String url = "http://192.168.1.190";;
+//    String url = "http://172.16.1.155";
+    String url = "http://192.168.1.190";
     //Init
     Gson gson = new GsonBuilder().setDateFormat("yyyy-MM-DD HH:mm:ss").create();
     OkHttpClient okHttpClient = new OkHttpClient.Builder().build();
@@ -107,6 +114,90 @@ public interface ApiQH {
         @POST ("/quanghieu/admin/api/khach/search.php")
         @FormUrlEncoded
         Call <List<ThanhVienModel>> searchKhach( @Field("key") String key);
-    // Quản lí phòng
+    // Quản lý phòng
+    // Quản lý hợp đồng
+    // Chi phí
+        // Bất biến
+            // Danh sách tháng hiện tại
+            @GET ("/quanghieu/admin/api/chi-phi/bat-bien/list.php")
+            Call <List<BatBienModel>> getBatBien();
+            // Chọn tháng hiển thị danh sách
+            @POST ("quanghieu/admin/api/chi-phi/bat-bien/choose-month.php")
+            @FormUrlEncoded
+            Call <List<BatBienModel>> chooseTimeBatBien(@Field("month") int month, @Field("year") int year);
+            // Thêm chi phí bất biến
+            @POST ("quanghieu/admin/api/chi-phi/bat-bien/add.php")
+            @FormUrlEncoded
+            Call <BatBienModel> addBatBien(@Field("lydo") String lydo, @Field("tien") int tien, @Field("hinhthuc") int hinhthuc);
+        // Khả biến
+            // Danh sách tháng hiện tại
+            @GET ("/quanghieu/admin/api/chi-phi/kha-bien/list.php")
+            Call <List<KhaBienModel>> getKhaBien();
+            // Chọn tháng hiển thị danh sách
+            @POST ("quanghieu/admin/api/chi-phi/kha-bien/choose-month.php")
+            @FormUrlEncoded
+            Call <List<KhaBienModel>> chooseTimeKhaBien(@Field("month") int month, @Field("year") int year);
+            // Thêm chi phí khả biến
+            @POST ("quanghieu/admin/api/chi-phi/kha-bien/add.php")
+            @FormUrlEncoded
+            Call <KhaBienModel> addKhaBien(@Field("lydo") String lydo, @Field("tien") int tien, @Field("hinhthuc") int hinhthuc);
+    // Tiền điện
+        // Tiền điện lựa chọn
+        @POST ("/quanghieu/admin/api/tien-dien/choose_month.php")
+        @FormUrlEncoded
+        Call <List<TienDienModel>> chooseTimeElectric (@Field("month") int thang, @Field("year") int nam);
 
+        // Tiền điện tháng hiện tại
+        @GET ("/quanghieu/admin/api/tien-dien/list.php")
+        Call<List<TienDienModel>> getTienDien();
+
+        // Tìm kiếm phòng điện
+        @POST ("/quanghieu/admin/api/tien-dien/search.php")
+        @FormUrlEncoded
+        Call <List<TienDienModel>> searchElectric (@Field("key") String keyElectric,@Field("month") int thang, @Field("year") int nam);
+
+        // Tiền điện chi tiết
+        @POST ("/quanghieu/admin/api/tien-dien/detail.php")
+        @FormUrlEncoded
+        Call <TienDienModel> detailElectric (@Field("ten") String ten, @Field("month") int thang, @Field("year") int nam);
+
+
+        // Danh sách lịch sử số nước dùng
+        @POST("/quanghieu/admin/api/tien-dien/history.php")
+        @FormUrlEncoded
+        Call <List<LichSuDienModel>> historyElectric(@Field("phong") String ten, @Field("month") int month, @Field("year") int year);
+
+        //Cập nhật số nước
+        @POST("/quanghieu/admin/api/tien-dien/update.php")
+        @FormUrlEncoded
+        Call <TienDienModel> updateElectric(@Field("phong") String ten, @Field("month") int month, @Field("year") int year,@Field("sodau") int sodau, @Field("socuoi") int socuoi);
+    // Tiền nước
+        // Tiền nước lựa chọn
+        @POST ("/quanghieu/admin/api/tien-nuoc/choose_month.php")
+        @FormUrlEncoded
+        Call <List<TienNuocModel>> chooseTime (@Field("month") int thang, @Field("year") int nam);
+
+        // Tiền nước tháng hiện tại
+        @GET ("/quanghieu/admin/api/tien-nuoc/list.php")
+        Call<List<TienNuocModel>> getTienNuoc();
+
+        // Tìm kiếm phòng nước
+        @POST ("/quanghieu/admin/api/tien-nuoc/search.php")
+        @FormUrlEncoded
+        Call <List<TienNuocModel>> searchWater (@Field("key") String keyWater,@Field("month") int thang, @Field("year") int nam);
+
+        // Tiền nước chi tiết
+        @POST ("/quanghieu/admin/api/tien-nuoc/detail.php")
+        @FormUrlEncoded
+        Call <TienNuocModel> detailWater (@Field("ten") String ten, @Field("month") int thang, @Field("year") int nam);
+
+        // Danh sách lịch sử số nước dùng
+        @POST("/quanghieu/admin/api/tien-nuoc/history.php")
+        @FormUrlEncoded
+        Call <List<LichSuNuocModel>> historyWater(@Field("phong") String ten, @Field("month") int month, @Field("year") int year);
+
+        //Cập nhật số nước
+        @POST("/quanghieu/admin/api/tien-nuoc/update.php")
+        @FormUrlEncoded
+        Call <TienNuocModel> updateWater(@Field("phong") String ten, @Field("month") int month, @Field("year") int year,@Field("sodau") int sodau, @Field("socuoi") int socuoi);
 }

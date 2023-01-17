@@ -123,23 +123,20 @@
                     android:layout_marginTop="20dp"
                     android:layout_marginRight="10dp"
                     >
+
                     <ImageView
                         android:id="@+id/addCustomer"
                         android:layout_width="18dp"
                         android:layout_height="18dp"
-                        android:src="@drawable/them"
-                        android:layout_toLeftOf="@+id/searchCustomer"
                         android:layout_marginRight="5dp"
-                        >
-                    </ImageView>
+                        android:layout_toLeftOf="@+id/searchCustomer"
+                        android:src="@drawable/them" />
                     <ImageView
                         android:id="@+id/searchCustomer"
                         android:layout_width="20dp"
                         android:layout_height="20dp"
                         android:src="@drawable/search"
-                        android:layout_alignParentEnd="true"
-                        >
-                    </ImageView>
+                        android:layout_alignParentEnd="true" />
                 </RelativeLayout>
             </LinearLayout>
 

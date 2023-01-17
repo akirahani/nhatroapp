@@ -28,6 +28,7 @@ import retrofit2.http.POST;
 public interface Api {
 
 //    String url = "http://172.16.1.71";
+//    String url = "http://172.16.1.155";
     String url = "http://192.168.1.190";
 //    String url = "http://192.168.0.108";
 
@@ -42,10 +43,10 @@ public interface Api {
             .build()
             .create(Api.class);
 
-    @POST ("/nhatro/admin/api/auth/login.php")
-    @FormUrlEncoded
-    Call <ThanhVienModel> postLogin(@Field("username") String username,
-                                    @Field("password") String password);
+//    @POST ("/nhatro/admin/api/auth/login.php")
+//    @FormUrlEncoded
+//    Call <ThanhVienModel> postLogin(@Field("username") String username,
+//                                    @Field("password") String password);
 
     // Phòng trống
     @GET ("/nhatro/admin/api/phong/list.php")
