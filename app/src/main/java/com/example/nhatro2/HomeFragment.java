@@ -3,6 +3,7 @@ package com.example.nhatro2;
 import static android.content.Context.MODE_PRIVATE;
 
 import android.annotation.SuppressLint;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -26,6 +27,8 @@ import android.widget.Toast;
 import android.widget.Toolbar;
 
 import com.example.nhatro2.api.Api;
+import com.example.nhatro2.bat_bien.BatBien;
+import com.example.nhatro2.kha_bien.KhaBien;
 import com.example.nhatro2.phong.PhongAdapter;
 import com.example.nhatro2.phong.PhongModel;
 import com.example.nhatro2.quanlychung.ChungAdapter;
@@ -49,11 +52,12 @@ public class HomeFragment extends Fragment {
     List<ChungModel> chung = new ArrayList<>();
     List<TaiKhoanModel> taiKhoan = new ArrayList<>();
     RecyclerView quanLyChung,quanLyThanhVien;
-    TextView tenThanhVien;
+    TextView tenThanhVien,tenUser;
     Toolbar header;
     ImageView thoat;
-    RelativeLayout rowWater, rowElectric;
+    RelativeLayout rowWater, rowElectric, rowBatBien, rowKhaBien;
     SharedPreferences shp;
+    SharedPreferences.Editor shpEdit;
     public HomeFragment() {
         // Required empty public constructor
     }
@@ -73,6 +77,11 @@ public class HomeFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_home, container, false);
+        // Tên người đăng nhập
+        tenUser = view.findViewById(R.id.tenUser);
+        shp = getContext().getSharedPreferences("user", Context.MODE_PRIVATE);
+        String tenUserText =shp.getString("tenThanhVien","");
+        tenUser.setText(tenUserText);
         // Nút thoát
         thoat = view.findViewById(R.id.thoat);
         thoat.setOnClickListener(new View.OnClickListener() {
@@ -119,21 +128,21 @@ public class HomeFragment extends Fragment {
         chung.add(new ChungModel(R.drawable.hopdong,"Hợp đồng", "hopdong"));
         chung.add(new ChungModel(R.drawable.quytien,"Quỹ tiền", "quytien"));
         chung.add(new ChungModel(R.drawable.tiencoc,"Tiền cọc", "tiencoc"));
-        chung.add(new ChungModel(R.drawable.khoanthuchi,"Khoản thu chi", "khoanthuchi"));
+        chung.add(new ChungModel(R.drawable.khoanthuchi,"Thu tiền phòng", "khoanthuchi"));
 
         quanLyChung.setAdapter(new ChungAdapter(getContext(),chung));
 
         //QL Thanh vien
-        taiKhoan.add(new TaiKhoanModel(R.drawable.nhom,"Nhóm","nhom"));
-        taiKhoan.add(new TaiKhoanModel(R.drawable.thanhvien,"Thành viên","thanhvien"));
-        taiKhoan.add(new TaiKhoanModel(R.drawable.phanquyen,"Phân quyền","phanquyen"));
-        taiKhoan.add(new TaiKhoanModel(R.drawable.trang,"Trang","trang"));
+//        taiKhoan.add(new TaiKhoanModel(R.drawable.nhom,"Nhóm","nhom"));
+//        taiKhoan.add(new TaiKhoanModel(R.drawable.thanhvien,"Thành viên","thanhvien"));
+//        taiKhoan.add(new TaiKhoanModel(R.drawable.phanquyen,"Phân quyền","phanquyen"));
+//        taiKhoan.add(new TaiKhoanModel(R.drawable.trang,"Trang","trang"));
 
-        quanLyThanhVien = view.findViewById(R.id.quanLyTaiKhoan);
-        quanLyThanhVien.setLayoutManager(new GridLayoutManager(getContext(),4));
-        quanLyThanhVien.hasFixedSize();
-        quanLyThanhVien.setNestedScrollingEnabled(false);
-        quanLyThanhVien.setAdapter(new TaiKhoanAdapter(getContext(),taiKhoan));
+//        quanLyThanhVien = view.findViewById(R.id.quanLyTaiKhoan);
+//        quanLyThanhVien.setLayoutManager(new GridLayoutManager(getContext(),4));
+//        quanLyThanhVien.hasFixedSize();
+//        quanLyThanhVien.setNestedScrollingEnabled(false);
+//        quanLyThanhVien.setAdapter(new TaiKhoanAdapter(getContext(),taiKhoan));
 
         rowWater = view.findViewById(R.id.rowWater);
         rowElectric = view.findViewById(R.id.rowElectric);
@@ -154,6 +163,25 @@ public class HomeFragment extends Fragment {
             }
         });
 
+        // Khoản chi
+        rowBatBien = view.findViewById(R.id.rowBatBien);
+        rowKhaBien = view.findViewById(R.id.rowKhaBien);
+          // Bất biến
+            rowBatBien.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Intent intent = new Intent(getContext(), BatBien.class);
+                    startActivity(intent);
+                }
+            });
+          // Khả biến
+          rowKhaBien.setOnClickListener(new View.OnClickListener() {
+              @Override
+              public void onClick(View view) {
+                  Intent intent = new Intent(getContext(), KhaBien.class);
+                  startActivity(intent);
+              }
+          });
         return view;
     }
 }

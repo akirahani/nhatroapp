@@ -102,9 +102,7 @@
                     android:layout_centerHorizontal="true"
                     android:textSize="18dp"
                     android:textAllCaps="true"
-                    android:paddingLeft="14dp"
-
-                    android:text="Đặng Hoàng Minh" />
+                    android:paddingLeft="14dp" />
                 <ImageView
                     android:id="@+id/nextUser"
                     android:layout_marginTop="8dp"
@@ -270,29 +268,6 @@
                             android:paddingTop="10dp"
                             android:paddingLeft="14dp"
                             android:layout_height="wrap_content">
-                            <!-- Thanh toán-->
-                            <RelativeLayout
-                                android:id="@+id/rowPay"
-                                android:layout_width="match_parent"
-                                android:gravity="center"
-                                android:layout_marginBottom="10dp"
-                                android:layout_height="wrap_content">
-                                <ImageView
-                                    android:id="@+id/imagePay"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:background="@drawable/thuchi">
-                                </ImageView>
-                                <TextView
-                                    android:id="@+id/pay"
-                                    android:paddingLeft="10dp"
-                                    android:paddingTop="5dp"
-                                    android:layout_toRightOf="@+id/imagePay"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:text="Thanh toán"/>
-                            </RelativeLayout>
-
 
                             <RelativeLayout
                                 android:id="@+id/rowBudget"
@@ -378,7 +353,6 @@
                         android:layout_height="wrap_content">
                         <ImageView
                             android:id="@+id/khoanchi"
-
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:background="@drawable/demuc" />
@@ -427,39 +401,16 @@
                                     android:layout_height="wrap_content"
                                     android:background="@drawable/thuchi">
                                 </ImageView>
+
                                 <TextView
                                     android:id="@+id/BatBien"
-                                    android:paddingLeft="10dp"
-                                    android:paddingTop="5dp"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
                                     android:layout_toRightOf="@+id/imageBatBien"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:text="Chi phí bất biến"/>
-                            </RelativeLayout>
-
-
-                            <RelativeLayout
-                                android:id="@+id/rowNoiDungBatBien"
-                                android:layout_width="match_parent"
-                                android:gravity="center"
-                                android:layout_marginBottom="10dp"
-                                android:layout_height="wrap_content">
-                                <ImageView
-                                    android:id="@+id/imageNoiDungBatBien"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:background="@drawable/thuchi">
-                                </ImageView>
-                                <TextView
-                                    android:id="@+id/NoiDungBatBien"
                                     android:paddingLeft="10dp"
                                     android:paddingTop="5dp"
-                                    android:layout_toRightOf="@+id/imageNoiDungBatBien"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:text="Nội dung bất biến"/>
+                                    android:text="Chi phí bất biến" />
                             </RelativeLayout>
-
 
                             <RelativeLayout
                                 android:id="@+id/rowKhaBien"
@@ -487,44 +438,45 @@
                 </LinearLayout>
 
                 <!-- Quản lý phân quyền-->
-                <LinearLayout
-                    android:id="@+id/khungTaiKhoan"
-                    android:layout_width="match_parent"
-                    android:orientation="vertical"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="12dp"
-                    android:background="@color/white">
-                    <RelativeLayout
-                        android:id="@+id/tieuDeTaiKhoan"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content">
-                        <ImageView
-                            android:id="@+id/anhTaiKhoan"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:background="@drawable/demuc" />
-                        <TextView
-                            android:id="@+id/textTaiKhoan"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Tài khoản"
-                            android:textAllCaps="true"
-                            android:paddingTop="3dp"
-                            android:paddingLeft="14dp"
-                            android:paddingBottom="6dp"
-                            android:gravity="center"
-                            android:textColor="@color/white"
-                            android:fontFamily="sans-serif-black"
-                            android:textSize="16dp"
-                            android:lineHeight="19dp" />
-                    </RelativeLayout>
-                    <androidx.recyclerview.widget.RecyclerView
-                        android:id="@+id/quanLyTaiKhoan"
-                        android:layout_width="match_parent"
-                        android:background="@color/white"
-                        android:layout_height="wrap_content">
-                    </androidx.recyclerview.widget.RecyclerView>
-                </LinearLayout>
+<!--                <LinearLayout-->
+<!--                    android:id="@+id/khungTaiKhoan"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:orientation="vertical"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_marginBottom="12dp"-->
+<!--                    android:background="@color/white">-->
+<!--                    <RelativeLayout-->
+<!--                        android:id="@+id/tieuDeTaiKhoan"-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content">-->
+
+<!--                        <ImageView-->
+<!--                            android:id="@+id/anhTaiKhoan"-->
+<!--                            android:layout_width="wrap_content"-->
+<!--                            android:layout_height="wrap_content"-->
+<!--                            android:background="@drawable/demuc" />-->
+<!--                        <TextView-->
+<!--                            android:id="@+id/textTaiKhoan"-->
+<!--                            android:layout_width="wrap_content"-->
+<!--                            android:layout_height="wrap_content"-->
+<!--                            android:text="Tài khoản"-->
+<!--                            android:textAllCaps="true"-->
+<!--                            android:paddingTop="3dp"-->
+<!--                            android:paddingLeft="14dp"-->
+<!--                            android:paddingBottom="6dp"-->
+<!--                            android:gravity="center"-->
+<!--                            android:textColor="@color/white"-->
+<!--                            android:fontFamily="sans-serif-black"-->
+<!--                            android:textSize="16dp"-->
+<!--                            android:lineHeight="19dp" />-->
+<!--                    </RelativeLayout>-->
+<!--                    <androidx.recyclerview.widget.RecyclerView-->
+<!--                        android:id="@+id/quanLyTaiKhoan"-->
+<!--                        android:layout_width="match_parent"-->
+<!--                        android:background="@color/white"-->
+<!--                        android:layout_height="wrap_content">-->
+<!--                    </androidx.recyclerview.widget.RecyclerView>-->
+<!--                </LinearLayout>-->
             </LinearLayout>
         </LinearLayout>
     </ScrollView>

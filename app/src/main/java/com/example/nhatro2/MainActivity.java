@@ -14,6 +14,7 @@ import android.widget.Toast;
 
 import com.example.nhatro2.HomeActivity;
 import com.example.nhatro2.api.Api;
+import com.example.nhatro2.api.ApiQH;
 import com.example.nhatro2.thanhvien.ThanhVienModel;
 
 import retrofit2.Call;
@@ -51,7 +52,7 @@ public class MainActivity extends AppCompatActivity {
                 String passd = password.getText().toString();
 
                 if(!user.equals("") && !passd.equals("")) {
-                    Api.api.postLogin(user, passd).enqueue(new Callback<ThanhVienModel>() {
+                    ApiQH.apiQH.postLogin(user, passd).enqueue(new Callback<ThanhVienModel>() {
                         @Override
                         public void onResponse(Call<ThanhVienModel> call, Response<ThanhVienModel> response) {
                             ThanhVienModel thanhvien = response.body();
@@ -75,6 +76,7 @@ public class MainActivity extends AppCompatActivity {
                         @Override
                         public void onFailure(Call<ThanhVienModel> call, Throwable t) {
                             Toast.makeText(MainActivity.this, "failed", Toast.LENGTH_SHORT).show();
+                            Log.d("err dang nhap",""+t.toString());
                         }
 
 

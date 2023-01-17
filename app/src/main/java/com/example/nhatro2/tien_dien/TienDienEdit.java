@@ -23,6 +23,7 @@ import com.example.nhatro2.HomeActivity;
 import com.example.nhatro2.MainActivity;
 import com.example.nhatro2.R;
 import com.example.nhatro2.api.Api;
+import com.example.nhatro2.api.ApiQH;
 
 
 import java.util.List;
@@ -138,7 +139,7 @@ public class TienDienEdit extends AppCompatActivity {
         listElectricNumberUsed.hasFixedSize();
         listElectricNumberUsed.setNestedScrollingEnabled(false);
 
-        Api.api.historyElectric(phong,thang,nam).enqueue(new Callback<List<LichSuDienModel>>() {
+        ApiQH.apiQH.historyElectric(phong,thang,nam).enqueue(new Callback<List<LichSuDienModel>>() {
             @Override
             public void onResponse(Call<List<LichSuDienModel>> call, Response<List<LichSuDienModel>> response) {
                 List<LichSuDienModel> phongDienLichSu = response.body();
@@ -164,7 +165,7 @@ public class TienDienEdit extends AppCompatActivity {
                 int soDauFormat = Integer.parseInt(soDauEdit);
                 int soCuoiFormat = Integer.parseInt(soCuoiEdit);
 
-                Api.api.updateElectric(phong,thang,nam,soDauFormat,soCuoiFormat).enqueue(new Callback<TienDienModel>() {
+                ApiQH.apiQH.updateElectric(phong,thang,nam,soDauFormat,soCuoiFormat).enqueue(new Callback<TienDienModel>() {
                     @Override
                     public void onResponse(Call<TienDienModel> call, Response<TienDienModel> response) {
                         TienDienModel phongDien = response.body();

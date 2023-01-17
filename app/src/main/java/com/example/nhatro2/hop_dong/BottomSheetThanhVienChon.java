@@ -20,6 +20,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.nhatro2.R;
 import com.example.nhatro2.api.Api;
+import com.example.nhatro2.api.ApiQH;
 import com.example.nhatro2.thanhvien.ThanhVienModel;
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
 
@@ -64,7 +65,7 @@ public class BottomSheetThanhVienChon extends BottomSheetDialogFragment {
             @Override
             public void onClick(View view) {
                 String keyKhach = keySearchKach.getText().toString();
-                Api.api.searchKhach(keyKhach).enqueue(new Callback<List<ThanhVienModel>>() {
+                ApiQH.apiQH.searchKhach(keyKhach).enqueue(new Callback<List<ThanhVienModel>>() {
                     @Override
                     public void onResponse(Call<List<ThanhVienModel>> call, Response<List<ThanhVienModel>> response) {
                         List<ThanhVienModel> listKhachSearchChon = response.body();
@@ -125,7 +126,7 @@ public class BottomSheetThanhVienChon extends BottomSheetDialogFragment {
         shpKhachEdit = shpKhach.edit();
         listKhachChooseString = shpKhach.getString("idKhachChon", "");
 
-        Api.api.getKhachList().enqueue(new Callback<List<ThanhVienModel>>() {
+        ApiQH.apiQH.getKhachList().enqueue(new Callback<List<ThanhVienModel>>() {
             @Override
             public void onResponse(Call<List<ThanhVienModel>> call, Response<List<ThanhVienModel>> response) {
                 List<ThanhVienModel> infoListKhachChon = response.body();

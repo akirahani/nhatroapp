@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="10dp"
+    android:layout_marginLeft="14dp"
+    android:layout_marginRight="14dp"
+    android:background="@drawable/bg_all_search_customer">
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:padding="12dp"
+        android:textSize="16sp"
+        android:textColor="@color/white"
+        android:textStyle="bold"
+        android:background="@drawable/back_title_search_customer"
+        android:text="Thêm chi phí bất biến"/>
+
+    <EditText
+        android:id="@+id/lyDoBatBienText"
+        android:layout_marginTop="12dp"
+        android:layout_marginLeft="12dp"
+        android:layout_marginRight="12dp"
+        android:layout_width="match_parent"
+        android:layout_height="35dp"
+        android:hint="Nhập lý do chi"
+        android:paddingLeft="15dp"
+        android:background="@null"
+        android:singleLine="true"/>
+
+    <EditText
+        android:id="@+id/tienBatBienText"
+        android:layout_marginTop="12dp"
+        android:layout_marginLeft="12dp"
+        android:layout_marginRight="12dp"
+        android:layout_width="match_parent"
+        android:layout_height="35dp"
+        android:hint="Số tiền phải chi"
+        android:paddingLeft="15dp"
+        android:background="@null"
+        android:singleLine="true"/>
+
+    <RadioGroup
+        android:id="@+id/hinhThucBatBien"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="12dp"
+        android:layout_marginLeft="12dp">
+        <RadioButton
+            android:text="Tiền mặt"
+            android:id="@+id/tienMatBatBien"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+        <RadioButton
+            android:layout_marginLeft="15dp"
+            android:text="Chuyển khoản"
+            android:id="@+id/chuyenKhoanBatBien"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+    </RadioGroup>
+
+    <LinearLayout
+        android:layout_marginTop="12dp"
+        android:layout_marginBottom="12dp"
+        android:layout_marginRight="12dp"
+        android:layout_marginLeft="12dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <TextView
+            android:id="@+id/batBienClose"
+            android:textColor="@color/white"
+            android:padding="12dp"
+            android:textStyle="bold"
+            android:textSize="16sp"
+            android:gravity="center"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="5dp"
+            android:background="@drawable/back_close_search"
+            android:text="Đóng"/>
+        <TextView
+            android:id="@+id/batBienAdd"
+            android:textColor="@color/white"
+            android:background="@drawable/back_search_button"
+            android:padding="12dp"
+            android:textStyle="bold"
+            android:textSize="16sp"
+            android:gravity="center"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:text="Thêm"/>
+    </LinearLayout>
+
+</LinearLayout>
