@@ -13,6 +13,7 @@ import android.view.ViewGroup;
 
 import com.example.nhatro2.R;
 import com.example.nhatro2.api.Api;
+import com.example.nhatro2.api.ApiQH;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -45,7 +46,7 @@ public class DangThueFragment extends Fragment {
         listRentRoom.hasFixedSize();
         listRentRoom.setNestedScrollingEnabled(false);
 
-        Api.api.getRentRoomList().enqueue(new Callback<List<PhongModel>>() {
+        ApiQH.apiQH.getRentRoomList().enqueue(new Callback<List<PhongModel>>() {
             @Override
             public void onResponse(Call<List<PhongModel>> call, Response<List<PhongModel>> response) {
                 phongThue = response.body();

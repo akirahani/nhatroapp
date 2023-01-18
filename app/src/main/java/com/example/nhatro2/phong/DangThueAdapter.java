@@ -42,14 +42,14 @@ public class DangThueAdapter extends RecyclerView.Adapter<DangThueAdapter.DangTh
         PhongModel data = phongThue.get(position);
         int idPhong = data.getId();
         String ten = data.getTen();
-        String day = data.getDay();
+        String day = data.getKhu();
         int tang = data.getTang();
         int trangthai = data.getTrangthai();
-        String dichvu = data.getDichvu();
+//        String dichvu = data.getDichvu();
         int datcoc = data.getDatcoc();
-        int gia = data.getGia();
-        int khach = data.getKhach();
-        String daidien = data.getDaidien();
+        int gia = data.getGiaphong();
+        int khach = data.getChuphong();
+//        String daidien = data.getDaidien();
         String dienthoai = data.getDienthoai();
 
         holder.ten.setText(ten);
@@ -65,7 +65,7 @@ public class DangThueAdapter extends RecyclerView.Adapter<DangThueAdapter.DangTh
                 intent.putExtra("tang",tang);
                 intent.putExtra("trangthai",trangthai);
                 intent.putExtra("gia",gia);
-                intent.putExtra("daidien",daidien);
+                intent.putExtra("daidien",khach);
                 intent.putExtra("dienthoai",dienthoai);
                 intent.putExtra("datcoc",datcoc);
                 context.startActivity(intent);

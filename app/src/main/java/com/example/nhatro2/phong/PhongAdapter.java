@@ -26,6 +26,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.nhatro2.R;
 import com.example.nhatro2.api.Api;
+import com.example.nhatro2.api.ApiQH;
 import com.example.nhatro2.hop_dong.HopDongAdd;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
@@ -70,16 +71,16 @@ public class PhongAdapter extends RecyclerView.Adapter<PhongAdapter.PhongViewHol
         PhongModel data = phong.get(position);
         int idPhong = data.getId();
         String ten = data.getTen();
-        String day = data.getDay();
+        String khu = data.getKhu();
         int tang = data.getTang();
         int trangthai = data.getTrangthai();
-        String dichvu = data.getDichvu();
+//        String dichvu = data.getDichvu();
         int datcoc = data.getDatcoc();
-        int khach = data.getKhach();
-        int gia = data.getGia();
+        int chuphong = data.getChuphong();
+        int gia = data.getGiaphong();
 
         holder.ten.setText(ten);
-        holder.day.setText(day);
+        holder.day.setText(khu);
         holder.tang.setText("-" + tang);
 
         SharedPreferences sharedPhong = context.getSharedPreferences("idPhong", Context.MODE_PRIVATE);
@@ -116,7 +117,7 @@ public class PhongAdapter extends RecyclerView.Adapter<PhongAdapter.PhongViewHol
                 Intent intent = new Intent(context.getApplicationContext(), PhongEdit.class);
                 intent.putExtra("idPhong", idPhong);
                 intent.putExtra("tenPhong", ten);
-                intent.putExtra("day", day);
+                intent.putExtra("day", khu);
                 intent.putExtra("tang", tang);
                 intent.putExtra("trangthai", trangthai);
                 intent.putExtra("gia", gia);
@@ -174,7 +175,7 @@ public class PhongAdapter extends RecyclerView.Adapter<PhongAdapter.PhongViewHol
                 listRoom = sharedPhong.getString("items", "");
                 phongClick.itemOnClick(arrInt.size());
 
-                Api.api.phongChecked(listRoom).enqueue(new Callback<List<PhongModel>>() {
+                ApiQH.apiQH.phongChecked(listRoom).enqueue(new Callback<List<PhongModel>>() {
                     @Override
                     public void onResponse(Call<List<PhongModel>> call, Response<List<PhongModel>> response) {
                         Log.d("", "" + response.body());
@@ -182,7 +183,7 @@ public class PhongAdapter extends RecyclerView.Adapter<PhongAdapter.PhongViewHol
 
                     @Override
                     public void onFailure(Call<List<PhongModel>> call, Throwable t) {
-
+                        Log.d("err","loi phong hien thi");
                     }
                 });
 

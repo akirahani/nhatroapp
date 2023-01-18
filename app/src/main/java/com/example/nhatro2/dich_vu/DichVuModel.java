@@ -1,6 +1,6 @@
 package com.example.nhatro2.dich_vu;
 
-public class DichVuModel {
+public class    DichVuModel {
     private int id;
     private String ten;
     private int loai;

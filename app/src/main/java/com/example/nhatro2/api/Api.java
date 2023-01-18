@@ -28,8 +28,8 @@ import retrofit2.http.POST;
 public interface Api {
 
 //    String url = "http://172.16.1.71";
-//    String url = "http://172.16.1.155";
-    String url = "http://192.168.1.190";
+    String url = "http://172.16.1.155";
+//    String url = "http://192.168.1.190";
 //    String url = "http://192.168.0.108";
 
 
@@ -151,61 +151,61 @@ public interface Api {
 //    Call <DichVuModel> delDichVu (@Field("id") int id);
 //
     // Tiền nước lựa chọn
-    @POST ("/nhatro/admin/api/tien-nuoc/choose_month.php")
-    @FormUrlEncoded
-    Call <List<TienNuocModel>> chooseTime (@Field("month") int thang, @Field("year") int nam);
-
-    // Tiền nước tháng hiện tại
-    @GET ("/nhatro/admin/api/tien-nuoc/list.php")
-    Call<List<TienNuocModel>> getTienNuoc();
-
-    // Tìm kiếm phòng nước
-    @POST ("/nhatro/admin/api/tien-nuoc/search.php")
-    @FormUrlEncoded
-    Call <List<TienNuocModel>> searchWater (@Field("key") String keyWater,@Field("month") int thang, @Field("year") int nam);
-
-    // Tiền nước chi tiết
-    @POST ("/nhatro/admin/api/tien-nuoc/detail.php")
-    @FormUrlEncoded
-    Call <TienNuocModel> detailWater (@Field("ten") String ten, @Field("month") int thang, @Field("year") int nam);
-
-    // Danh sách lịch sử số nước dùng
-    @POST("/nhatro/admin/api/tien-nuoc/history.php")
-    @FormUrlEncoded
-    Call <List<LichSuNuocModel>> historyWater(@Field("phong") String ten, @Field("month") int month, @Field("year") int year);
-
-    //Cập nhật số nước
-    @POST("/nhatro/admin/api/tien-nuoc/update.php")
-    @FormUrlEncoded
-    Call <TienNuocModel> updateWater(@Field("phong") String ten, @Field("month") int month, @Field("year") int year,@Field("sodau") int sodau, @Field("socuoi") int socuoi);
+//    @POST ("/nhatro/admin/api/tien-nuoc/choose_month.php")
+//    @FormUrlEncoded
+//    Call <List<TienNuocModel>> chooseTime (@Field("month") int thang, @Field("year") int nam);
 //
-    // Tiền điện lựa chọn
-    @POST ("/nhatro/admin/api/tien-dien/choose_month.php")
-    @FormUrlEncoded
-    Call <List<TienDienModel>> chooseTimeElectric (@Field("month") int thang, @Field("year") int nam);
-
-    // Tiền điện tháng hiện tại
-    @GET ("/nhatro/admin/api/tien-dien/list.php")
-    Call<List<TienDienModel>> getTienDien();
-
-    // Tìm kiếm phòng điện
-    @POST ("/nhatro/admin/api/tien-dien/search.php")
-    @FormUrlEncoded
-    Call <List<TienDienModel>> searchElectric (@Field("key") String keyElectric,@Field("month") int thang, @Field("year") int nam);
-
-    // Tiền điện chi tiết
-    @POST ("/nhatro/admin/api/tien-dien/detail.php")
-    @FormUrlEncoded
-    Call <TienDienModel> detailElectric (@Field("ten") String ten, @Field("month") int thang, @Field("year") int nam);
-
-
-    // Danh sách lịch sử số nước dùng
-    @POST("/nhatro/admin/api/tien-dien/history.php")
-    @FormUrlEncoded
-    Call <List<LichSuDienModel>> historyElectric(@Field("phong") String ten, @Field("month") int month, @Field("year") int year);
-
-    //Cập nhật số nước
-    @POST("/nhatro/admin/api/tien-dien/update.php")
-    @FormUrlEncoded
-    Call <TienDienModel> updateElectric(@Field("phong") String ten, @Field("month") int month, @Field("year") int year,@Field("sodau") int sodau, @Field("socuoi") int socuoi);
+//    // Tiền nước tháng hiện tại
+//    @GET ("/nhatro/admin/api/tien-nuoc/list.php")
+//    Call<List<TienNuocModel>> getTienNuoc();
+//
+//    // Tìm kiếm phòng nước
+//    @POST ("/nhatro/admin/api/tien-nuoc/search.php")
+//    @FormUrlEncoded
+//    Call <List<TienNuocModel>> searchWater (@Field("key") String keyWater,@Field("month") int thang, @Field("year") int nam);
+//
+//    // Tiền nước chi tiết
+//    @POST ("/nhatro/admin/api/tien-nuoc/detail.php")
+//    @FormUrlEncoded
+//    Call <TienNuocModel> detailWater (@Field("ten") String ten, @Field("month") int thang, @Field("year") int nam);
+//
+//    // Danh sách lịch sử số nước dùng
+//    @POST("/nhatro/admin/api/tien-nuoc/history.php")
+//    @FormUrlEncoded
+//    Call <List<LichSuNuocModel>> historyWater(@Field("phong") String ten, @Field("month") int month, @Field("year") int year);
+//
+//    //Cập nhật số nước
+//    @POST("/nhatro/admin/api/tien-nuoc/update.php")
+//    @FormUrlEncoded
+//    Call <TienNuocModel> updateWater(@Field("phong") String ten, @Field("month") int month, @Field("year") int year,@Field("sodau") int sodau, @Field("socuoi") int socuoi);
+////
+//    // Tiền điện lựa chọn
+//    @POST ("/nhatro/admin/api/tien-dien/choose_month.php")
+//    @FormUrlEncoded
+//    Call <List<TienDienModel>> chooseTimeElectric (@Field("month") int thang, @Field("year") int nam);
+//
+//    // Tiền điện tháng hiện tại
+//    @GET ("/nhatro/admin/api/tien-dien/list.php")
+//    Call<List<TienDienModel>> getTienDien();
+//
+//    // Tìm kiếm phòng điện
+//    @POST ("/nhatro/admin/api/tien-dien/search.php")
+//    @FormUrlEncoded
+//    Call <List<TienDienModel>> searchElectric (@Field("key") String keyElectric,@Field("month") int thang, @Field("year") int nam);
+//
+//    // Tiền điện chi tiết
+//    @POST ("/nhatro/admin/api/tien-dien/detail.php")
+//    @FormUrlEncoded
+//    Call <TienDienModel> detailElectric (@Field("ten") String ten, @Field("month") int thang, @Field("year") int nam);
+//
+//
+//    // Danh sách lịch sử số nước dùng
+//    @POST("/nhatro/admin/api/tien-dien/history.php")
+//    @FormUrlEncoded
+//    Call <List<LichSuDienModel>> historyElectric(@Field("phong") String ten, @Field("month") int month, @Field("year") int year);
+//
+//    //Cập nhật số nước
+//    @POST("/nhatro/admin/api/tien-dien/update.php")
+//    @FormUrlEncoded
+//    Call <TienDienModel> updateElectric(@Field("phong") String ten, @Field("month") int month, @Field("year") int year,@Field("sodau") int sodau, @Field("socuoi") int socuoi);
 }

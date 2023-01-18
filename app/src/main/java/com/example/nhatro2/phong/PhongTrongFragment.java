@@ -34,6 +34,7 @@ import com.example.nhatro2.MenuFragment;
 import com.example.nhatro2.NotificationFragment;
 import com.example.nhatro2.R;
 import com.example.nhatro2.api.Api;
+import com.example.nhatro2.api.ApiQH;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
 
@@ -73,7 +74,7 @@ public class PhongTrongFragment extends Fragment {
         listEmptyRoom.setLayoutManager(new LinearLayoutManager(view.getContext()));
         listEmptyRoom.hasFixedSize();
         listEmptyRoom.setNestedScrollingEnabled(false);
-        Api.api.getPhongList().enqueue(new Callback<List<PhongModel>>() {
+        ApiQH.apiQH.getPhongList().enqueue(new Callback<List<PhongModel>>() {
             @Override
             public void onResponse(Call<List<PhongModel>> call, Response<List<PhongModel>> response) {
                 roomEmpty = response.body();
@@ -97,7 +98,7 @@ public class PhongTrongFragment extends Fragment {
 
             @Override
             public void onFailure(Call<List<PhongModel>> call, Throwable t) {
-
+                Log.d("err","loi phong trong"+t.toString());
             }
         });
 

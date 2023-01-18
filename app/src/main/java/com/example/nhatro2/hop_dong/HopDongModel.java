@@ -8,20 +8,20 @@ import java.util.List;
 
 public class HopDongModel {
     private int id;
-    private  int chuphong;
-    private int phong;
+    private  String chuphong;
+    private String phong;
     private  int tienphong;
     private  int phuongthuctienphong;
     private  int tiencoc;
     private  int phuongthuctiencoc;
-    private List<ThanhVienModel> khach;
-    private List<DichVuModel> thietbi;
+    private List<String> khach;
+    private List<String> thietbi;
     private String ngayketthuc;
     private String ngaybatdau;
     private String ghichu;
     private int trangthai;
 
-    public HopDongModel(int id, int chuphong, int phong, int tienphong, int phuongthuctienphong, int tiencoc, int phuongthuctiencoc, List<ThanhVienModel> khach, List<DichVuModel> thietbi, String ngayketthuc, String ngaybatdau, String ghichu, int trangthai) {
+    public HopDongModel(int id, String chuphong, String phong, int tienphong, int phuongthuctienphong, int tiencoc, int phuongthuctiencoc, List<String> khach, List<String> thietbi, String ngayketthuc, String ngaybatdau, String ghichu, int trangthai) {
         this.id = id;
         this.chuphong = chuphong;
         this.phong = phong;
@@ -37,6 +37,22 @@ public class HopDongModel {
         this.trangthai = trangthai;
     }
 
+    public List<String> getKhach() {
+        return khach;
+    }
+
+    public void setKhach(List<String> khach) {
+        this.khach = khach;
+    }
+
+    public List<String> getThietbi() {
+        return thietbi;
+    }
+
+    public void setThietbi(List<String> thietbi) {
+        this.thietbi = thietbi;
+    }
+
     public int getId() {
         return id;
     }
@@ -45,20 +61,21 @@ public class HopDongModel {
         this.id = id;
     }
 
-    public int getChuphong() {
-        return chuphong;
-    }
 
-    public void setChuphong(int chuphong) {
-        this.chuphong = chuphong;
-    }
-
-    public int getPhong() {
+    public String getPhong() {
         return phong;
     }
 
-    public void setPhong(int phong) {
+    public void setPhong(String phong) {
         this.phong = phong;
+    }
+
+    public String getChuphong() {
+        return chuphong;
+    }
+
+    public void setChuphong(String chuphong) {
+        this.chuphong = chuphong;
     }
 
     public int getTienphong() {
@@ -93,21 +110,6 @@ public class HopDongModel {
         this.phuongthuctiencoc = phuongthuctiencoc;
     }
 
-    public List<ThanhVienModel> getKhach() {
-        return khach;
-    }
-
-    public void setKhach(List<ThanhVienModel> khach) {
-        this.khach = khach;
-    }
-
-    public List<DichVuModel> getThietbi() {
-        return thietbi;
-    }
-
-    public void setThietbi(List<DichVuModel> thietbi) {
-        this.thietbi = thietbi;
-    }
 
     public String getNgayketthuc() {
         return ngayketthuc;

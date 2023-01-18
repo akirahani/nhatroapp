@@ -16,6 +16,9 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
+            android:name=".dong_tien.DongTien"
+            android:exported="false" />
+        <activity
             android:name=".bat_bien.BatBien"
             android:exported="false" />
         <activity

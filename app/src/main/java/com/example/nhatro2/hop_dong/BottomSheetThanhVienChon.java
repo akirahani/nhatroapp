@@ -3,6 +3,7 @@ package com.example.nhatro2.hop_dong;
 import static android.content.Context.MODE_PRIVATE;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Build;
@@ -61,22 +62,29 @@ public class BottomSheetThanhVienChon extends BottomSheetDialogFragment {
         keySearchKach = view.findViewById(R.id.keySearchKach);
         searchCustomerChon = view.findViewById(R.id.searchCustomerChon);
 
+        int chuPhong = 0;
+        Bundle bundle = this.getArguments();
+        if (bundle != null) {
+            chuPhong = bundle.getInt("daiDienPHong", 0);
+        }
+
+        int finalChuPhong = chuPhong;
         searchCustomerChon.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 String keyKhach = keySearchKach.getText().toString();
-                ApiQH.apiQH.searchKhach(keyKhach).enqueue(new Callback<List<ThanhVienModel>>() {
+                ApiQH.apiQH.searchKhachChon(keyKhach, finalChuPhong).enqueue(new Callback<List<ThanhVienModel>>() {
                     @Override
                     public void onResponse(Call<List<ThanhVienModel>> call, Response<List<ThanhVienModel>> response) {
                         List<ThanhVienModel> listKhachSearchChon = response.body();
                         listKhachClick.setAdapter(new ListKhachChonAdapter(view.getContext(),listKhachSearchChon, new ClickKhachAddHopDong() {
                             @Override
-                            public void clickKhachChon(ThanhVienModel thanhvien) {
+                            public void clickKhachChon(int thanhvien) {
 
                                 List<Integer> arrKhachChon = new ArrayList<>();
 
                                 if (listKhachChooseString.equals("")) {
-                                    arrKhachChon.add(thanhvien.getId());
+                                    arrKhachChon.add(thanhvien);
                                     String convertStringKhach = null;
                                     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
                                         convertStringKhach = arrKhachChon.stream().map(String::valueOf).collect(Collectors.joining(","));
@@ -90,8 +98,8 @@ public class BottomSheetThanhVienChon extends BottomSheetDialogFragment {
                                         arrKhachChon = Arrays.stream(listKhachChooseString.split(",")).map(Integer::parseInt).collect(Collectors.toList());
                                     }
 
-                                    if (arrKhachChon.contains(thanhvien.getId())) {
-                                        arrKhachChon.remove(Integer.valueOf(thanhvien.getId()));
+                                    if (arrKhachChon.contains(thanhvien)) {
+                                        arrKhachChon.remove(Integer.valueOf(thanhvien));
                                         String convertStringKhach = null;
                                         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
                                             convertStringKhach = arrKhachChon.stream().map(String::valueOf).collect(Collectors.joining(","));
@@ -100,7 +108,7 @@ public class BottomSheetThanhVienChon extends BottomSheetDialogFragment {
                                         shpKhachEdit.apply();
 
                                     } else {
-                                        arrKhachChon.add(thanhvien.getId());
+                                        arrKhachChon.add(thanhvien);
                                         String convertStringKhach = null;
                                         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
                                             convertStringKhach = arrKhachChon.stream().map(String::valueOf).collect(Collectors.joining(","));
@@ -126,22 +134,23 @@ public class BottomSheetThanhVienChon extends BottomSheetDialogFragment {
         shpKhachEdit = shpKhach.edit();
         listKhachChooseString = shpKhach.getString("idKhachChon", "");
 
-        ApiQH.apiQH.getKhachList().enqueue(new Callback<List<ThanhVienModel>>() {
+
+        ApiQH.apiQH.getKhachListHopDongChon(chuPhong).enqueue(new Callback<List<ThanhVienModel>>() {
             @Override
             public void onResponse(Call<List<ThanhVienModel>> call, Response<List<ThanhVienModel>> response) {
                 List<ThanhVienModel> infoListKhachChon = response.body();
                 listKhachClick.setAdapter(new ListKhachChonAdapter(view.getContext(), infoListKhachChon, new ClickKhachAddHopDong() {
                     @Override
-                    public void clickKhachChon(ThanhVienModel thanhvien) {
+                    public void clickKhachChon(int thanhvien) {
                         List<Integer> arrKhachChon = new ArrayList<>();
                         if (listKhachChooseString.equals("")) {
-                            arrKhachChon.add(thanhvien.getId());
+                            arrKhachChon.add(thanhvien);
                             String convertStringKhach = null;
                             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
                                 convertStringKhach = arrKhachChon.stream().map(String::valueOf).collect(Collectors.joining(","));
                             }
                             shpKhachEdit.putString("idKhachChon", convertStringKhach);
-                            shpKhachEdit.apply();
+                            shpKhachEdit.commit();
 
                         } else {
 
@@ -149,23 +158,23 @@ public class BottomSheetThanhVienChon extends BottomSheetDialogFragment {
                                 arrKhachChon = Arrays.stream(listKhachChooseString.split(",")).map(Integer::parseInt).collect(Collectors.toList());
                             }
 
-                            if (arrKhachChon.contains(thanhvien.getId())) {
-                                arrKhachChon.remove(Integer.valueOf(thanhvien.getId()));
+                            if (arrKhachChon.contains(thanhvien)) {
+                                arrKhachChon.remove(Integer.valueOf(thanhvien));
                                 String convertStringKhach = null;
                                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
                                     convertStringKhach = arrKhachChon.stream().map(String::valueOf).collect(Collectors.joining(","));
                                 }
                                 shpKhachEdit.putString("idKhachChon", convertStringKhach);
-                                shpKhachEdit.apply();
+                                shpKhachEdit.commit();
 
                             } else {
-                                arrKhachChon.add(thanhvien.getId());
+                                arrKhachChon.add(thanhvien);
                                 String convertStringKhach = null;
                                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
                                     convertStringKhach = arrKhachChon.stream().map(String::valueOf).collect(Collectors.joining(","));
                                 }
                                 shpKhachEdit.putString("idKhachChon", convertStringKhach);
-                                shpKhachEdit.apply();
+                                shpKhachEdit.commit();
                             }
                         }
                         listKhachChooseString = shpKhach.getString("idKhachChon", "");
@@ -196,6 +205,7 @@ public class BottomSheetThanhVienChon extends BottomSheetDialogFragment {
 
             @Override
             public void onFailure(Call<List<ThanhVienModel>> call, Throwable t) {
+                Log.d("err",""+t.toString());
             }
         });
         return view;

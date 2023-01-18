@@ -45,18 +45,18 @@ public class BanGiaoAdapter extends RecyclerView.Adapter<BanGiaoAdapter.BanGiaoV
         PhongModel data = phongBanGiao.get(position);
         int idPhong = data.getId();
         String ten = data.getTen();
-        String day = data.getDay();
+        String khu = data.getKhu();
         int tang = data.getTang();
         int trangthai = data.getTrangthai();
-        String dichvu = data.getDichvu();
+//        String dichvu = data.getDichvu();
         int datcoc = data.getDatcoc();
-        int gia = data.getGia();
-        int khach = data.getKhach();
-        String daidien = data.getDaidien();
+        int gia = data.getGiaphong();
+        int khach = data.getChuphong();
+//        String daidien = data.getDaidien();
         String dienthoai = data.getDienthoai();
 
         holder.ten.setText(ten);
-        holder.day.setText(day);
+        holder.day.setText(khu);
         holder.tang.setText("-"+tang);
 
         tacVuBanGiao.setOnClickListener(new View.OnClickListener() {
@@ -65,11 +65,11 @@ public class BanGiaoAdapter extends RecyclerView.Adapter<BanGiaoAdapter.BanGiaoV
                 Intent intent = new Intent(context.getApplicationContext(),PhongEdit.class);
                 intent.putExtra("idPhong",idPhong);
                 intent.putExtra("tenPhong",ten);
-                intent.putExtra("day",day);
+                intent.putExtra("day",khu);
                 intent.putExtra("tang",tang);
                 intent.putExtra("gia",gia);
                 intent.putExtra("trangthai",trangthai);
-                intent.putExtra("daidien",daidien);
+                intent.putExtra("daidien",khach);
                 intent.putExtra("dienthoai",dienthoai);
                 intent.putExtra("datcoc",datcoc);
                 context.startActivity(intent);
@@ -83,7 +83,7 @@ public class BanGiaoAdapter extends RecyclerView.Adapter<BanGiaoAdapter.BanGiaoV
                 intent.putExtra("idPhong",idPhong);
                 intent.putExtra("tenPhong",ten);
                 intent.putExtra("gia",gia);
-                intent.putExtra("daidien",daidien);
+                intent.putExtra("daidien",khach);
                 intent.putExtra("dienthoai",dienthoai);
                 intent.putExtra("datcoc",datcoc);
                 // Khai báo mảng dữ liệu thiết bị
