@@ -4,23 +4,38 @@ public class PhongModel {
     private int id;
     private String ten;
     private int trangthai;
-    private int vitri;
-    private String dichvu;
-    private int datcoc;
-    private int khach;
-    private String day;
+    private String khu;
     private int tang;
-    private String daidien;
+    private int thietbi;
+    private int datcoc;
+    private int sodu;
+    private int chuphong;
+    private String tenkhach;
+    private int giaphong;
     private String dienthoai;
-    private int gia;
 
-    public String getDaidien() {
-        return daidien;
+    public PhongModel(int id, String ten, int trangthai, String khu, int tang, int thietbi, int datcoc, int sodu, int chuphong, String tenkhach, int giaphong, String dienthoai) {
+        this.id = id;
+        this.ten = ten;
+        this.trangthai = trangthai;
+        this.khu = khu;
+        this.tang = tang;
+        this.thietbi = thietbi;
+        this.datcoc = datcoc;
+        this.sodu = sodu;
+        this.chuphong = chuphong;
+        this.tenkhach = tenkhach;
+        this.giaphong = giaphong;
+        this.dienthoai = dienthoai;
+    }
+    public String getTenkhach() {
+        return tenkhach;
     }
 
-    public void setDaidien(String daidien) {
-        this.daidien = daidien;
+    public void setTenkhach(String tenkhach) {
+        this.tenkhach = tenkhach;
     }
+
 
     public String getDienthoai() {
         return dienthoai;
@@ -30,20 +45,44 @@ public class PhongModel {
         this.dienthoai = dienthoai;
     }
 
-    public int getGia() {
-        return gia;
+    public int getGiaphong() {
+        return giaphong;
     }
 
-    public void setGia(int gia) {
-        this.gia = gia;
+    public void setGiaphong(int giaphong) {
+        this.giaphong = giaphong;
     }
 
-    public String getDay() {
-        return day;
+    public int getId() {
+        return id;
     }
 
-    public void setDay(String day) {
-        this.day = day;
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getTen() {
+        return ten;
+    }
+
+    public void setTen(String ten) {
+        this.ten = ten;
+    }
+
+    public int getTrangthai() {
+        return trangthai;
+    }
+
+    public void setTrangthai(int trangthai) {
+        this.trangthai = trangthai;
+    }
+
+    public String getKhu() {
+        return khu;
+    }
+
+    public void setKhu(String khu) {
+        this.khu = khu;
     }
 
     public int getTang() {
@@ -54,77 +93,39 @@ public class PhongModel {
         this.tang = tang;
     }
 
-    //contrucstor
-    public PhongModel(int id, String ten, int trangthai, int vitri, String dichvu, int datcoc, int khach, String day, int tang, String daidien, String dienthoai, int gia) {
-        this.id = id;
-        this.ten = ten;
-        this.trangthai = trangthai;
-        this.vitri = vitri;
-        this.dichvu = dichvu;
-        this.datcoc = datcoc;
-        this.khach = khach;
-        this.day = day;
-        this.tang = tang;
-        this.daidien = daidien;
-        this.dienthoai = dienthoai;
-        this.gia = gia;
+    public int getThietbi() {
+        return thietbi;
     }
 
-    // setter
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public void setTen(String ten) {
-        this.ten = ten;
-    }
-
-    public void setTrangthai(int trangtai) {
-        this.trangthai = trangthai;
-    }
-
-    public void setVitri(int vitri) {
-        this.vitri = vitri;
-    }
-
-    public void setDichvu(String dichvu) {
-        this.dichvu = dichvu;
-    }
-
-    public void setDatcoc(int datcoc) {
-        this.datcoc = datcoc;
-    }
-
-    public void setKhach(int khach) {
-        this.khach = khach;
-    }
-
-    //    getter
-    public int getId() {
-        return id;
-    }
-
-    public String getTen() {
-        return ten;
-    }
-
-    public int getTrangthai() {
-        return trangthai;
-    }
-
-    public int getVitri() {
-        return vitri;
-    }
-
-    public String getDichvu() {
-        return dichvu;
+    public void setThietbi(int thietbi) {
+        this.thietbi = thietbi;
     }
 
     public int getDatcoc() {
         return datcoc;
     }
 
-    public int getKhach() {
-        return khach;
+    public void setDatcoc(int datcoc) {
+        this.datcoc = datcoc;
     }
+
+    public int getSodu() {
+        return sodu;
+    }
+
+    public void setSodu(int sodu) {
+        this.sodu = sodu;
+    }
+
+    public int getChuphong() {
+        return chuphong;
+    }
+
+    public void setChuphong(int chuphong) {
+        this.chuphong = chuphong;
+    }
+//    private String daidien;
+//    private String dienthoai;
+
+
 }

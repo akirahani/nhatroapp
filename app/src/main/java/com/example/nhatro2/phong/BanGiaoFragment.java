@@ -14,6 +14,7 @@ import android.view.ViewGroup;
 
 import com.example.nhatro2.R;
 import com.example.nhatro2.api.Api;
+import com.example.nhatro2.api.ApiQH;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -48,7 +49,7 @@ public class BanGiaoFragment extends Fragment {
         listBookRoom.hasFixedSize();
         listBookRoom.setNestedScrollingEnabled(false);
 
-        Api.api.getBookRoomList().enqueue(new Callback<List<PhongModel>>() {
+        ApiQH.apiQH.getBookRoomList().enqueue(new Callback<List<PhongModel>>() {
             @Override
             public void onResponse(Call<List<PhongModel>> call, Response<List<PhongModel>> response) {
                 phongBanGiao = response.body();

@@ -29,6 +29,7 @@ import com.example.nhatro2.HomeActivity;
 import com.example.nhatro2.MainActivity;
 import com.example.nhatro2.R;
 import com.example.nhatro2.api.Api;
+import com.example.nhatro2.api.ApiQH;
 import com.kal.rackmonthpicker.RackMonthPicker;
 import com.kal.rackmonthpicker.listener.DateMonthDialogListener;
 import com.kal.rackmonthpicker.listener.OnCancelMonthDialogListener;
@@ -132,14 +133,14 @@ public class TienNuoc extends AppCompatActivity {
                             @Override
                             public void onDateMonth(int month, int startDate, int endDate, int year, String monthLabel) {
                                 chonThangNuoc.setText("Tháng "+month+" - năm "+year);
-                                Api.api.chooseTime(month,year).enqueue(new Callback<List<TienNuocModel>>() {
+                                ApiQH.apiQH.chooseTime(month,year).enqueue(new Callback<List<TienNuocModel>>() {
                                     @Override
                                     public void onResponse(Call<List<TienNuocModel>> call, Response<List<TienNuocModel>> response) {
                                         phongNuoc = response.body();
                                         danhSachPhongNuoc.setAdapter(new TienNuocAdapter(TienNuoc.this, phongNuoc, new NuocItemClick() {
                                             @Override
                                             public void itemOnClick(String idPhong) {
-                                                Api.api.detailWater(idPhong,month,year).enqueue(new Callback<TienNuocModel>() {
+                                                ApiQH.apiQH.detailWater(idPhong,month,year).enqueue(new Callback<TienNuocModel>() {
                                                     @Override
                                                     public void onResponse(Call<TienNuocModel> call, Response<TienNuocModel> response) {
                                                         TienNuocModel detailPhongNuoc = response.body();
@@ -186,7 +187,7 @@ public class TienNuoc extends AppCompatActivity {
         });
 
         // Lấy ra dữ liệu phòng nước theo tháng
-        Api.api.getTienNuoc().enqueue(new Callback<List<TienNuocModel>>() {
+        ApiQH.apiQH.getTienNuoc().enqueue(new Callback<List<TienNuocModel>>() {
             @Override
             public void onResponse(Call<List<TienNuocModel>> call, Response<List<TienNuocModel>> response) {
                 phongNuoc = response.body();
@@ -201,7 +202,7 @@ public class TienNuoc extends AppCompatActivity {
                 danhSachPhongNuoc.setAdapter(new TienNuocAdapter(TienNuoc.this, phongNuoc, new NuocItemClick() {
                     @Override
                     public void itemOnClick(String idPhong) {
-                        Api.api.detailWater(idPhong,monthGet,year).enqueue(new Callback<TienNuocModel>() {
+                        ApiQH.apiQH.detailWater(idPhong,monthGet,year).enqueue(new Callback<TienNuocModel>() {
                             @Override
                             public void onResponse(Call<TienNuocModel> call, Response<TienNuocModel> response) {
                                 TienNuocModel detailPhongNuocChon = response.body();
@@ -267,14 +268,14 @@ public class TienNuoc extends AppCompatActivity {
                         String[] elementTime = timeChoose.split(" ");
                         int thangSend =  Integer.parseInt(elementTime[1]);
                         int namSend = Integer.parseInt(elementTime[4]);
-                        Api.api.searchWater(keyTimKiem,thangSend,namSend).enqueue(new Callback<List<TienNuocModel>>() {
+                        ApiQH.apiQH.searchWater(keyTimKiem,thangSend,namSend).enqueue(new Callback<List<TienNuocModel>>() {
                             @Override
                             public void onResponse(Call<List<TienNuocModel>> call, Response<List<TienNuocModel>> response) {
                                 List<TienNuocModel> phongCanTim = response.body();
                                 danhSachPhongNuoc.setAdapter(new TienNuocAdapter(TienNuoc.this, phongCanTim, new NuocItemClick() {
                                     @Override
                                     public void itemOnClick(String idPhong) {
-                                        Api.api.detailWater(idPhong,thangSend,namSend).enqueue(new Callback<TienNuocModel>() {
+                                        ApiQH.apiQH.detailWater(idPhong,thangSend,namSend).enqueue(new Callback<TienNuocModel>() {
                                             @Override
                                             public void onResponse(Call<TienNuocModel> call, Response<TienNuocModel> response) {
                                                 TienNuocModel detailPhongNuocTimKiem = response.body();

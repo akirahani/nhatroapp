@@ -23,6 +23,7 @@ import com.example.nhatro2.HomeActivity;
 import com.example.nhatro2.MainActivity;
 import com.example.nhatro2.R;
 import com.example.nhatro2.api.Api;
+import com.example.nhatro2.api.ApiQH;
 
 import java.util.List;
 
@@ -139,7 +140,7 @@ public class TienNuocEdit extends AppCompatActivity {
         listWaterNumberUsed.hasFixedSize();
         listWaterNumberUsed.setNestedScrollingEnabled(false);
 
-        Api.api.historyWater(phong,thang,nam).enqueue(new Callback<List<LichSuNuocModel>>() {
+        ApiQH.apiQH.historyWater(phong,thang,nam).enqueue(new Callback<List<LichSuNuocModel>>() {
             @Override
             public void onResponse(Call<List<LichSuNuocModel>> call, Response<List<LichSuNuocModel>> response) {
                 List<LichSuNuocModel> phongNuocLichSu = response.body();
@@ -165,7 +166,7 @@ public class TienNuocEdit extends AppCompatActivity {
                 int soDauFormat = Integer.parseInt(soDauEdit);
                 int soCuoiFormat = Integer.parseInt(soCuoiEdit);
 
-                Api.api.updateWater(phong,thang,nam,soDauFormat,soCuoiFormat).enqueue(new Callback<TienNuocModel>() {
+                ApiQH.apiQH.updateWater(phong,thang,nam,soDauFormat,soCuoiFormat).enqueue(new Callback<TienNuocModel>() {
                     @Override
                     public void onResponse(Call<TienNuocModel> call, Response<TienNuocModel> response) {
                         TienNuocModel phongNuoc = response.body();

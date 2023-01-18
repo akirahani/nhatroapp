@@ -149,7 +149,7 @@ public class HopDongAdd extends AppCompatActivity {
         int idPhong = bundle.getInt("idPhong");
         String tenPhong = bundle.getString("tenPhong");
         int giaPhong = bundle.getInt("gia");
-        String daiDien = bundle.getString("daidien");
+        int daiDien = bundle.getInt("daidien");
         String dienThoai = bundle.getString("dienthoai");
         int tienCoc = bundle.getInt("datcoc");
 
@@ -163,15 +163,14 @@ public class HopDongAdd extends AppCompatActivity {
         textNameRoom = findViewById(R.id.textNameRoom);
 
         // Lấy ra thông tin phòng thuê
-        Api.api.hopDongPhong(idPhong).enqueue(new Callback<PhongModel>() {
+        ApiQH.apiQH.hopDongPhong(idPhong).enqueue(new Callback<PhongModel>() {
             @Override
             public void onResponse(Call<PhongModel> call, Response<PhongModel> response) {
                 PhongModel phongHopDong = response.body();
-                tenDaiDienText.setText(phongHopDong.getDaidien());
+                tenDaiDienText.setText(phongHopDong.getTenkhach());
                 sdtDaiDienText.setText(phongHopDong.getDienthoai());
                 textNameRoom.setText("Phòng thuê " + phongHopDong.getTen());
-                idDaiDien = phongHopDong.getKhach();
-                Log.d("dai dien",""+idDaiDien);
+                idDaiDien = phongHopDong.getChuphong();
             }
 
             @Override
@@ -264,6 +263,9 @@ public class HopDongAdd extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 BottomSheetThanhVienChon tonKho = new BottomSheetThanhVienChon();
+                Bundle bundle = new Bundle();
+                bundle.putInt("daiDienPHong",daiDien);
+                tonKho.setArguments(bundle);
                 tonKho.show(getSupportFragmentManager(), "ChonThanhVien");
             }
         });
@@ -282,14 +284,10 @@ public class HopDongAdd extends AppCompatActivity {
                 for (int i =0; i<thietBiArr.length; i++){
                     thietBiPhong.add(thietBiArr[i]);
                 }
-                Log.d("thietbi",""+thietBiPhong);
 
                 // Ngày kết thúc hợp đồng
                 String ngayKetThucHopDong = ngayKetThuc.getText().toString();
-                Log.d("ngayketthuc",""+ngayKetThucHopDong);
 
-                // Thông tin người đại diện
-                Log.d("id người đại diện",""+idDaiDien);
                 //  Xét xem người đại diện có ở trong phòng hay không
                 // Ánh xạ
                 coTaiPhong = findViewById(R.id.coTaiPhong);
@@ -299,15 +297,24 @@ public class HopDongAdd extends AppCompatActivity {
                 for (int i =0; i<khachArr.length; i++){
                     thanhVienPhong.add(khachArr[i]);
                 }
+
+
                 if(coTaiPhong.isChecked()){
                     coOTaiPhongChecked = 1;
-                    thanhVienPhong.add(String.valueOf(idDaiDien));
+
+                    if(thanhVienPhong.contains(idDaiDien)){
+                        thanhVienPhong.remove(idDaiDien);
+                    }else{
+                        thanhVienPhong.add(String.valueOf(idDaiDien));
+                    }
                 }else if(khongCoTaiPhong.isChecked()){
                     coOTaiPhongChecked = 0;
                     if(thanhVienPhong.contains(idDaiDien)){
                         thanhVienPhong.remove(idDaiDien);
                     }
                 }
+
+
                 String idThanhVienConvert = null;
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
                     idThanhVienConvert = thanhVienPhong.stream().map(String::valueOf).collect(Collectors.joining(","));
@@ -318,6 +325,7 @@ public class HopDongAdd extends AppCompatActivity {
 
                 // Khách ở được thêm trong hợp đồng
                 String listKhachChooseString = shpKhach.getString("idKhachChon", "");
+                Log.d("","String Khach them"+listKhachChooseString);
                 Log.d("khach dc them",""+thanhVienPhong);
 
                 // Tiền phòng
@@ -332,8 +340,6 @@ public class HopDongAdd extends AppCompatActivity {
 //                    tienPhongDongFinal = Integer.parseInt(tienPhongDong);
                     tienPhongDongFinal = tienPhongDong;
                 }
-                Log.d("tien phong dong",""+tienPhongDongFinal);
-
 
                 // Tiền cọc
                 tienCocHopDongAdd = findViewById(R.id.tienCocHopDongAdd);
@@ -347,9 +353,7 @@ public class HopDongAdd extends AppCompatActivity {
                 }else{
 //                    tienCocDongFinal = Integer.parseInt(tienCocDong);
                     tienCocDongFinal = tienCocDong;
-
                 };
-                Log.d("tien coc dong",""+tienCocDongFinal);
 
                 // Phương thức tiền phòng hợp đồng
                 tienMatPhong = findViewById(R.id.tienMatTienPhong);
@@ -361,7 +365,6 @@ public class HopDongAdd extends AppCompatActivity {
                 }else if(chuyenKhoanPhong.isChecked()){
                     tienPhongChecked = 2;
                 }
-                Log.d("phuong thức tiền phòng",""+tienPhongChecked);
 
                 // Phương thức tiền cọc hợp đồng
                 tienMatCoc = findViewById(R.id.tienMatTienCoc);
@@ -373,11 +376,20 @@ public class HopDongAdd extends AppCompatActivity {
                 }else if(chuyenKhoanCoc.isChecked()){
                     tienCocChecked = 2;
                 }
-                Log.d("phuong thức tiền cọc",""+tienCocChecked);
 
                 ghiChu = findViewById(R.id.ghiChu);
                 String ghiChuText = ghiChu.getText().toString();
-
+                Log.d("thietbi",""+thietBiPhong);
+                Log.d("chuphong",""+idDaiDien);
+                Log.d("o phong",""+coOTaiPhongChecked);
+                Log.d("ket thuc",""+ngayKetThucHopDong);
+                Log.d("ghiChuText",""+ghiChuText);
+                Log.d("tienCocDongFinal",""+tienCocDongFinal);
+                Log.d("tienCocChecked",""+tienCocChecked);
+                Log.d("tienPhongDongFinal",""+tienPhongDongFinal);
+                Log.d("tienPhongChecked",""+tienPhongChecked);
+                Log.d("thanhVienPhong",""+thanhVienPhong);
+                Log.d("tenPhong",""+tenPhong);
                 ApiQH.apiQH.addContract(thietBiPhong,idDaiDien,coOTaiPhongChecked,ngayKetThucHopDong,ghiChuText,tienCocDongFinal,tienCocChecked,tienPhongDongFinal,tienPhongChecked,thanhVienPhong,tenPhong).enqueue(new Callback<HopDongModel>() {
                     @Override
                     public void onResponse(Call<HopDongModel> call, Response<HopDongModel> response) {
@@ -397,13 +409,13 @@ public class HopDongAdd extends AppCompatActivity {
     }
 
     // Back button
-    public void onBackPressed()
-    {
-        super.onBackPressed();
-        SharedPreferences shpKhach = getApplicationContext().getSharedPreferences("khachChonHopDongAdd", MODE_PRIVATE);
-        SharedPreferences.Editor shpKhachEdit = shpKhach.edit();
-        shpKhachEdit.remove("idKhachChon");
-        shpKhachEdit.apply();
-    }
+//    public void onBackPressed()
+//    {
+//        super.onBackPressed();
+//        SharedPreferences shpKhach = getApplicationContext().getSharedPreferences("khachChonHopDongAdd", MODE_PRIVATE);
+//        SharedPreferences.Editor shpKhachEdit = shpKhach.edit();
+//        shpKhachEdit.remove("idKhachChon");
+//        shpKhachEdit.apply();
+//    }
 
 }

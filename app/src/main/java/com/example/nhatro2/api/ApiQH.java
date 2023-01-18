@@ -3,7 +3,10 @@ package com.example.nhatro2.api;
 import com.example.nhatro2.bat_bien.BatBienModel;
 import com.example.nhatro2.dich_vu.DichVuModel;
 import com.example.nhatro2.hop_dong.HopDongModel;
+import com.example.nhatro2.hop_dong.ListKhachChonModel;
 import com.example.nhatro2.kha_bien.KhaBienModel;
+import com.example.nhatro2.phong.PhongModel;
+import com.example.nhatro2.phong.PhongMultiModel;
 import com.example.nhatro2.thanhvien.ThanhVienModel;
 import com.example.nhatro2.tien_dien.LichSuDienModel;
 import com.example.nhatro2.tien_dien.TienDienModel;
@@ -26,8 +29,8 @@ import retrofit2.http.POST;
 
 public interface ApiQH {
 //    String url = "http://172.16.1.71";
-//    String url = "http://172.16.1.155";
-    String url = "http://192.168.1.190";
+//   String url = "http://172.16.1.155";
+   String url = "http://192.168.1.194";
     //Init
     Gson gson = new GsonBuilder().setDateFormat("yyyy-MM-DD HH:mm:ss").create();
     OkHttpClient okHttpClient = new OkHttpClient.Builder().build();
@@ -44,6 +47,20 @@ public interface ApiQH {
                                    @Field("password") String password);
 
     // Hợp đồng
+        // Tìm kiếm khách
+        @POST ("/quanghieu/admin/api/hop-dong/search_khach.php")
+        @FormUrlEncoded
+        Call <List<ThanhVienModel>> searchKhachChon( @Field("key") String key,@Field("daidien") int daidien );
+        //
+        @POST("/quanghieu/admin/api/hop-dong/khach_list.php")
+        @FormUrlEncoded
+        Call<List<ThanhVienModel>> getKhachListHopDongChon(@Field("daidien") int idDaiDien);
+        // List còn hiệu lực
+        @GET("/quanghieu/admin/api/hop-dong/con-hieu-luc.php")
+        Call<List<HopDongModel>> getConHieuLuc();
+        // List hết hiệu lực
+        @GET("/quanghieu/admin/api/hop-dong/het-hieu-luc.php")
+        Call<List<HopDongModel>> getHetHieuLuc();
         //Thêm
         @POST("/quanghieu/admin/api/hop-dong/add.php")
         @FormUrlEncoded
@@ -58,6 +75,15 @@ public interface ApiQH {
                                        @Field("phuongthucphong") int phuongThuPhong,
                                        @Field("person") List<String> person,
                                        @Field("roomhd") String roomhd);
+        // Chi tiết
+            // thiết bị
+            @POST("/quanghieu/admin/api/hop-dong/thiet-bi-detail.php")
+            @FormUrlEncoded
+            Call <List<DichVuModel>> getListEquipmentDetail(@Field("thietbi") String thietbi);
+            // người thuê
+            @POST("/quanghieu/admin/api/hop-dong/khach-detail.php")
+            @FormUrlEncoded
+            Call <List<ThanhVienModel>> getListKhachDetail(@Field("khach") String khach);
     // Thiết bị
         // Danh sách
         @GET("/quanghieu/admin/api/thiet-bi/list.php")
@@ -115,7 +141,44 @@ public interface ApiQH {
         @FormUrlEncoded
         Call <List<ThanhVienModel>> searchKhach( @Field("key") String key);
     // Quản lý phòng
+        // Phòng trống
+        @GET ("/quanghieu/admin/api/phong/list.php")
+        Call<List<PhongModel>> getPhongList();
+        // Phòng đặt
+        @GET ("/quanghieu/admin/api/phong/book.php")
+        Call<List<PhongModel>> getBookRoomList();
+        // Phòng thuê
+        @GET ("/quanghieu/admin/api/phong/rent.php")
+        Call<List<PhongModel>> getRentRoomList();
+        // Phòng chọn multi
+        @POST ("/quanghieu/admin/api/phong/multi_check.php")
+        @FormUrlEncoded
+        Call<List<PhongModel>> phongChecked(@Field("idPhong") String idPhong);
+        // Cọc phòng multi
+        @POST ("/quanghieu/admin/api/phong/coc_multi.php")
+        @FormUrlEncoded
+        Call<PhongMultiModel> datCocPhong(@Field("ten") String ten,
+                                          @Field("dienthoai") String dienthoai,
+                                          @Field("tiencoc") String  tiencoc,
+                                          @Field("phong") String phong);
+        // Sua phong
+        @POST ("/quanghieu/admin/api/phong/edit.php")
+        @FormUrlEncoded
+        Call <PhongModel> editPhong(@Field("id") int id,
+                                    @Field("trangthai") int trangthai, @Field("trangthaipost") int trangthaipost ,
+                                    @Field("daidien") String daidien,
+                                    @Field("dienthoai") String dienthoai);
     // Quản lý hợp đồng
+        // Thêm khách vào hợp đồng
+        @POST ("/quanghieu/admin/api/hop-dong/them_khach.php")
+        @FormUrlEncoded
+        Call <List<ListKhachChonModel>> addKhachHopDong(@Field("id") String id);
+
+
+        // Thêm hợp đồng
+        @POST ("/quanghieu/admin/api/hop-dong/phong.php")
+        @FormUrlEncoded
+        Call <PhongModel> hopDongPhong(@Field("id") int id);
     // Chi phí
         // Bất biến
             // Danh sách tháng hiện tại

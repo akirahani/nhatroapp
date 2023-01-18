@@ -28,7 +28,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:background="@drawable/ic_back"
-                    android:backgroundTint="@color/white"></ImageView>
+                    android:backgroundTint="@color/white" />
 
                 <TextView
                     android:id="@+id/ten"
@@ -37,7 +37,7 @@
                     android:layout_toRightOf="@+id/thoat"
                     android:paddingLeft="5dp"
                     android:text="Thoát"
-                    android:textColor="@color/white"></TextView>
+                    android:textColor="@color/white" />
             </LinearLayout>
 
             <LinearLayout
@@ -91,9 +91,9 @@
             android:orientation="horizontal">
 
             <FrameLayout
-                android:id="@+id/imageServiceEdit"
+                android:id="@+id/imageHopDongDetail"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"></FrameLayout>
+                android:layout_height="wrap_content" />
 
             <TextView
                 android:id="@+id/textDichVuAdd"
@@ -115,21 +115,25 @@
             android:layout_marginTop="-10dp"
             android:background="@color/khungNgoai" />
     </RelativeLayout>
-
-    <TextView
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:id="@+id/tieuDeHopDongChiTiet"
-        android:layout_width="173dp"
-        android:layout_height="33dp"
-        android:layout_below="@+id/tieuDeHopDong"
-        android:background="@drawable/title_card"
-        android:backgroundTint="@color/tabActive"
-        android:gravity="center"
-        android:paddingLeft="23dp"
-        android:paddingTop="8dp"
-        android:paddingRight="23dp"
-        android:paddingBottom="8dp"
-        android:text="Chi tiết hợp đồng"
-        android:textColor="@color/white"></TextView>
+        android:background="@color/khungNgoai"
+        android:layout_below="@+id/tieuDeHopDong">
+        <TextView
+            android:layout_width="173dp"
+            android:layout_height="33dp"
+            android:background="@drawable/title_card"
+            android:backgroundTint="@color/tabActive"
+            android:gravity="center"
+            android:paddingLeft="23dp"
+            android:paddingTop="8dp"
+            android:paddingRight="23dp"
+            android:paddingBottom="8dp"
+            android:text="Chi tiết hợp đồng"
+            android:textColor="@color/white" />
+    </LinearLayout>
     <!-- danh sách thiết bị -->
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
@@ -151,8 +155,18 @@
                 android:layout_below="@+id/tieuDeThietBi"
                 android:layout_marginLeft="25dp"
                 android:layout_marginTop="12dp"
-                android:layout_marginRight="25dp"></RelativeLayout>
-
+                android:layout_marginRight="25dp" />
+            <TextView
+                android:id="@+id/maHopDong"
+                android:textAllCaps="true"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingLeft="9dp"
+                android:paddingTop="11dp"
+                android:paddingBottom="11dp"
+                android:gravity="center"
+                android:textColor="@color/black"
+                android:textStyle="bold" />
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -176,7 +190,7 @@
                         android:paddingTop="11dp"
                         android:text="Người đại diện"
                         android:textColor="@color/black"
-                        android:textStyle="bold"></TextView>
+                        android:textStyle="bold" />
 
                     <androidx.cardview.widget.CardView
                         android:layout_width="match_parent"
@@ -200,13 +214,13 @@
                                 android:layout_height="wrap_content"
                                 android:paddingLeft="6dp"
                                 android:text="Họ và tên: "
-                                android:textColor="@color/black"></TextView>
+                                android:textColor="@color/black" />
 
                             <EditText
-                                android:id="@+id/tenDaiDienText"
+                                android:id="@+id/tenDaiDienTextDetail"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:background="@null"></EditText>
+                                android:background="@null" />
                         </LinearLayout>
                     </androidx.cardview.widget.CardView>
 
@@ -232,14 +246,14 @@
                                 android:layout_height="wrap_content"
                                 android:paddingLeft="6dp"
                                 android:text="Số CCCD/CMND: "
-                                android:textColor="@color/black"></TextView>
+                                android:textColor="@color/black" />
 
                             <EditText
                                 android:id="@+id/canCuocDaiDienText"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:background="@null"
-                                android:inputType="number"></EditText>
+                                android:inputType="number" />
                         </LinearLayout>
                     </androidx.cardview.widget.CardView>
 
@@ -265,7 +279,7 @@
                                 android:layout_height="wrap_content"
                                 android:paddingLeft="6dp"
                                 android:text="Ngày cấp: "
-                                android:textColor="@color/black"></TextView>
+                                android:textColor="@color/black" />
 
                             <TextView
                                 android:id="@+id/ngayCapDaiDienText"
@@ -297,14 +311,14 @@
                                 android:layout_height="wrap_content"
                                 android:paddingLeft="6dp"
                                 android:text="Nơi cấp: "
-                                android:textColor="@color/black"></TextView>
+                                android:textColor="@color/black" />
 
                             <EditText
                                 android:id="@+id/noiCapDaiDienText"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:background="@null"
-                                android:inputType="number"></EditText>
+                                android:inputType="number" />
                         </LinearLayout>
                     </androidx.cardview.widget.CardView>
 
@@ -330,7 +344,7 @@
                                 android:layout_height="wrap_content"
                                 android:paddingLeft="6dp"
                                 android:text="Ngày sinh: "
-                                android:textColor="@color/black"></TextView>
+                                android:textColor="@color/black" />
 
                             <TextView
                                 android:id="@+id/ngaySinhDaiDienText"
@@ -362,14 +376,14 @@
                                 android:layout_height="wrap_content"
                                 android:paddingLeft="6dp"
                                 android:text="Số điện thoại: "
-                                android:textColor="@color/black"></TextView>
+                                android:textColor="@color/black" />
 
                             <EditText
                                 android:id="@+id/sdtDaiDienText"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:background="@null"
-                                android:inputType="number"></EditText>
+                                android:inputType="number" />
                         </LinearLayout>
                     </androidx.cardview.widget.CardView>
 
@@ -379,10 +393,11 @@
                         android:orientation="vertical">
 
                         <androidx.recyclerview.widget.RecyclerView
-                            android:id="@+id/listKhachAdd"
+                            android:id="@+id/listKhachDetail"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:layout_marginTop="8dp"></androidx.recyclerview.widget.RecyclerView>
+                            android:layout_marginTop="8dp"
+                            android:layout_marginBottom="10dp" />
 
                     </LinearLayout>
 
@@ -406,13 +421,13 @@
                     android:orientation="vertical">
 
                     <TextView
-                        android:id="@+id/textNameRoom"
+                        android:id="@+id/textNameRoomDetail"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:paddingLeft="9dp"
                         android:paddingTop="11dp"
                         android:textColor="@color/black"
-                        android:textStyle="bold"></TextView>
+                        android:textStyle="bold" />
 
                     <TextView
                         android:layout_width="match_parent"
@@ -420,10 +435,10 @@
                         android:paddingLeft="9dp"
                         android:paddingTop="11dp"
                         android:text="Thiết bị: "
-                        android:textColor="@color/black"></TextView>
+                        android:textColor="@color/black" />
 
                     <androidx.recyclerview.widget.RecyclerView
-                        android:id="@+id/thietbiCheck"
+                        android:id="@+id/thietBiListDetail"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="8dp"
@@ -431,133 +446,6 @@
                         android:layout_marginRight="8dp">
 
                     </androidx.recyclerview.widget.RecyclerView>
-
-
-                    <LinearLayout
-                        android:id="@+id/rowTienPhongHopDongAdd"
-                        android:layout_width="match_parent"
-                        android:orientation="horizontal"
-                        android:layout_below="@+id/thietbiCheck"
-                        android:layout_height="wrap_content">
-                        <androidx.cardview.widget.CardView
-                            android:id="@+id/giaPhongDetailHDA"
-                            android:layout_width="0dp"
-                            android:layout_weight="4"
-                            android:layout_height="wrap_content"
-                            android:layout_marginLeft="14dp"
-                            android:layout_marginTop="16dp"
-                            android:layout_marginRight="14dp"
-                            app:cardCornerRadius="8dp">
-                            <LinearLayout
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:background="@color/white"
-                                android:orientation="horizontal"
-                                android:paddingTop="8dp"
-                                android:paddingBottom="8dp">
-
-                                <TextView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:paddingLeft="6dp"
-                                    android:text="Tiền phòng: "
-                                    android:textColor="@color/black"></TextView>
-
-                                <EditText
-                                    android:id="@+id/tienPhongHopDongAdd"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:background="@null"
-                                    android:inputType="number"></EditText>
-                            </LinearLayout>
-                        </androidx.cardview.widget.CardView>
-
-                        <RadioGroup
-                            android:id="@+id/phuongThucThanhToanTienPhong"
-                            android:layout_width="0dp"
-                            android:layout_weight="3"
-                            android:layout_marginTop="12dp"
-                            android:layout_height="wrap_content"
-                            android:orientation="vertical">
-                            <RadioButton
-                                android:text="Tiền mặt"
-                                android:id="@+id/tienMatTienPhong"
-                                android:layout_width="wrap_content"
-                                android:layout_height="25dp">
-
-                            </RadioButton>
-                            <RadioButton
-                                android:text="Chuyển khoản"
-                                android:id="@+id/chuyenKhoanTienPhong"
-                                android:layout_below="@+id/tienMatTienPhong"
-                                android:layout_width="wrap_content"
-                                android:layout_height="25dp" />
-                        </RadioGroup>
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:id="@+id/rowTienCocHopDongAdd"
-                        android:layout_width="match_parent"
-                        android:orientation="horizontal"
-                        android:layout_below="@+id/thietbiCheck"
-                        android:layout_height="wrap_content">
-                        <androidx.cardview.widget.CardView
-                            android:layout_width="0dp"
-                            android:layout_weight="4"
-                            android:layout_height="wrap_content"
-                            android:layout_below="@+id/tenDichVuAdd"
-                            android:layout_marginLeft="14dp"
-                            android:layout_marginTop="16dp"
-                            android:layout_marginRight="14dp"
-                            app:cardCornerRadius="8dp">
-
-                            <LinearLayout
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:background="@color/white"
-                                android:orientation="horizontal"
-                                android:paddingTop="8dp"
-                                android:paddingBottom="8dp">
-
-                                <TextView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:paddingLeft="6dp"
-                                    android:text="Tiền cọc: "
-                                    android:textColor="@color/black"></TextView>
-
-                                <EditText
-                                    android:id="@+id/tienCocHopDongAdd"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:background="@null"
-                                    android:inputType="number"></EditText>
-                            </LinearLayout>
-                        </androidx.cardview.widget.CardView>
-                        <RadioGroup
-                            android:id="@+id/phuongThucThanhToanTienCoc"
-                            android:layout_width="0dp"
-                            android:layout_weight="3"
-                            android:layout_marginTop="12dp"
-                            android:layout_height="wrap_content"
-                            android:orientation="vertical">
-                            <RadioButton
-                                android:text="Tiền mặt"
-                                android:id="@+id/tienMatTienCoc"
-                                android:layout_width="wrap_content"
-                                android:layout_height="25dp">
-
-                            </RadioButton>
-                            <RadioButton
-                                android:text="Chuyển khoản"
-                                android:id="@+id/chuyenKhoanTienCoc"
-                                android:layout_below="@+id/tienMatTienPhong"
-                                android:layout_width="wrap_content"
-                                android:layout_height="25dp" />
-                        </RadioGroup>
-
-                    </LinearLayout>
-
 
                     <RelativeLayout
                         android:layout_width="match_parent"
@@ -622,10 +510,9 @@
                                 android:textColor="@color/black" />
 
                             <TextView
-                                android:id="@+id/ngayBatDau"
+                                android:id="@+id/ngayBatDauDetail"
                                 android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:text="dd-mm-yyyy" />
+                                android:layout_height="wrap_content" />
                         </LinearLayout>
                     </androidx.cardview.widget.CardView>
 
@@ -651,13 +538,12 @@
                                 android:layout_height="wrap_content"
                                 android:paddingLeft="6dp"
                                 android:text="Ngày kết thúc: "
-                                android:textColor="@color/black"></TextView>
+                                android:textColor="@color/black" />
 
                             <TextView
-                                android:id="@+id/ngayKetThuc"
+                                android:id="@+id/ngayKetThucDetail"
                                 android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:text="dd-mm-yyyy" />
+                                android:layout_height="wrap_content" />
                         </LinearLayout>
                     </androidx.cardview.widget.CardView>
 
@@ -683,7 +569,7 @@
                                 android:layout_height="wrap_content"
                                 android:paddingLeft="6dp"
                                 android:text="Ghi chú: "
-                                android:textColor="@color/black"></TextView>
+                                android:textColor="@color/black" />
 
                             <EditText
                                 android:id="@+id/ghiChu"

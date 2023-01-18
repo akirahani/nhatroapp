@@ -26,7 +26,6 @@ public class ListKhachChonAdapter extends RecyclerView.Adapter<ListKhachChonAdap
     Context context;
     List<ThanhVienModel> listKhach;
     ClickKhachAddHopDong clickKhach;
-    String listKhachChooseString;
 
     public ListKhachChonAdapter(Context context, List<ThanhVienModel> listKhach, ClickKhachAddHopDong clickKhach) {
         this.context = context;
@@ -53,7 +52,7 @@ public class ListKhachChonAdapter extends RecyclerView.Adapter<ListKhachChonAdap
 
         SharedPreferences shpKhach = context.getSharedPreferences("khachChonHopDongAdd", MODE_PRIVATE);
         SharedPreferences.Editor shpKhachEdit = shpKhach.edit();
-        listKhachChooseString = shpKhach.getString("idKhachChon", "");
+        String listKhachChooseString = shpKhach.getString("idKhachChon", "");
 
         List<Integer> arrKhachChon = new ArrayList<>();
 
@@ -81,7 +80,7 @@ public class ListKhachChonAdapter extends RecyclerView.Adapter<ListKhachChonAdap
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                clickKhach.clickKhachChon(thanhVien);
+                clickKhach.clickKhachChon(id);
                 notifyDataSetChanged();
             }
         });

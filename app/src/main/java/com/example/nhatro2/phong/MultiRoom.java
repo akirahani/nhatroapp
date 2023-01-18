@@ -24,6 +24,7 @@ import com.example.nhatro2.HomeActivity;
 import com.example.nhatro2.MainActivity;
 import com.example.nhatro2.R;
 import com.example.nhatro2.api.Api;
+import com.example.nhatro2.api.ApiQH;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -104,7 +105,7 @@ public class MultiRoom extends AppCompatActivity {
         phongList.hasFixedSize();
         phongList.setNestedScrollingEnabled(false);
 
-        Api.api.phongChecked(listRoom).enqueue(new Callback<List<PhongModel>>() {
+        ApiQH.apiQH.phongChecked(listRoom).enqueue(new Callback<List<PhongModel>>() {
             @Override
             public void onResponse(Call<List<PhongModel>> call, Response<List<PhongModel>> response) {
                 List<PhongModel> phongCheck = response.body();
@@ -133,7 +134,7 @@ public class MultiRoom extends AppCompatActivity {
                 String tenKhach = tenDaiDien.getText().toString();
                 String tienCoc = tiencoc.getText().toString();
                 String dienThoai  = dienThoaiDaiDien.getText().toString();
-                Api.api.datCocPhong(tenKhach,dienThoai,tienCoc,listRoom).enqueue(new Callback<PhongMultiModel>() {
+                ApiQH.apiQH.datCocPhong(tenKhach,dienThoai,tienCoc,listRoom).enqueue(new Callback<PhongMultiModel>() {
                     @Override
                     public void onResponse(Call<PhongMultiModel> call, Response<PhongMultiModel> response) {
                         PhongMultiModel phongChecked = response.body();
