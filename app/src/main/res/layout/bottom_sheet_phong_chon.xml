@@ -1,40 +1,50 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:id="@+id/layoutBottomSheetPhongChon"
-    android:layout_height="wrap_content">
-    <LinearLayout
-        android:id="@+id/barSearchPhongChon"
+    android:layout_height="wrap_content"
+    android:background="@drawable/back_bottom_sheet">
+    <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        app:cardCornerRadius="20dp"
         android:layout_marginTop="10dp"
-        android:layout_marginLeft="25dp"
-        android:layout_marginRight="25dp"
-        android:orientation="horizontal">
-        <EditText
-            android:layout_marginLeft="20dp"
-            android:id="@+id/keySearchPhong"
-            android:layout_width="0dp"
-            android:layout_weight="6"
-            android:singleLine="true"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp">
+        <LinearLayout
+            android:paddingTop="5dp"
+            android:paddingBottom="5dp"
+            android:background="@color/white"
+            android:id="@+id/barSearch"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@null">
-        </EditText>
-        <ImageView
-            android:id="@+id/searchPhongChon"
-            android:layout_width="0dp"
-            android:layout_weight="2"
-            android:layout_height="wrap_content"
-            android:src="@drawable/search">
-        </ImageView>
-    </LinearLayout>
+            android:orientation="horizontal">
+            <EditText
+                android:layout_marginLeft="20dp"
+                android:id="@+id/keySearchPhong"
+                android:layout_width="0dp"
+                android:layout_weight="14"
+                android:singleLine="true"
+                android:layout_height="wrap_content"
+                android:background="@null">
+            </EditText>
+            <ImageView
+                android:id="@+id/searchPhongChon"
+                android:layout_width="0dp"
+                android:layout_weight="2"
+                android:layout_height="wrap_content"
+                android:src="@drawable/search">
+            </ImageView>
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/listKhachClick"
         android:layout_marginTop="10dp"
         android:layout_marginBottom="20dp"
-        android:layout_marginLeft="40dp"
-        android:layout_marginRight="40dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
     </androidx.recyclerview.widget.RecyclerView>

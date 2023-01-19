@@ -128,7 +128,7 @@ public class HomeFragment extends Fragment {
         chung.add(new ChungModel(R.drawable.hopdong,"Hợp đồng", "hopdong"));
         chung.add(new ChungModel(R.drawable.quytien,"Quỹ tiền", "quytien"));
         chung.add(new ChungModel(R.drawable.tiencoc,"Tiền cọc", "tiencoc"));
-        chung.add(new ChungModel(R.drawable.khoanthuchi,"Thu tiền phòng", "khoanthuchi"));
+        chung.add(new ChungModel(R.drawable.khoanthuchi,"Tiền phòng", "khoanthuchi"));
 
         quanLyChung.setAdapter(new ChungAdapter(getContext(),chung));
 

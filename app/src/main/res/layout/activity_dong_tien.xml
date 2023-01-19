@@ -28,7 +28,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:background="@drawable/ic_back"
-                    android:backgroundTint="@color/white"></ImageView>
+                    android:backgroundTint="@color/white" />
 
                 <TextView
                     android:id="@+id/ten"
@@ -37,7 +37,7 @@
                     android:layout_toRightOf="@+id/thoat"
                     android:paddingLeft="5dp"
                     android:text="Thoát"
-                    android:textColor="@color/white"></TextView>
+                    android:textColor="@color/white" />
             </LinearLayout>
 
             <LinearLayout
@@ -273,16 +273,29 @@
                         android:textStyle="bold"
                         android:textColor="@color/tieuDePhongDongTien"
                         android:textSize="16sp" />
-                    <TextView
-                        android:paddingLeft="15dp"
-                        android:paddingTop="10dp"
-                        android:paddingBottom="10dp"
+                    <RelativeLayout
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="Tiền phải thu: 2,180,000 VNĐ"
-                        android:textStyle="bold"
-                        android:textColor="@color/phaiTraTien"
-                        android:textSize="14sp" />
+                        android:layout_height="wrap_content">
+                        <TextView
+                            android:id="@+id/tenNopPhong"
+                            android:paddingLeft="15dp"
+                            android:paddingTop="10dp"
+                            android:paddingBottom="10dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textStyle="bold"
+                            android:textSize="14sp" />
+                        <TextView
+                            android:layout_toRightOf="@+id/tenNopPhong"
+                            android:id="@+id/tienPhongCanTra"
+                            android:paddingLeft="2dp"
+                            android:paddingTop="10dp"
+                            android:paddingBottom="10dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textStyle="bold"
+                            android:textSize="14sp" />
+                    </RelativeLayout>
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
             <!--  khung thứ 3 - cọc  -->

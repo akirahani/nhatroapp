@@ -29,4 +29,5 @@
     <color name="tenPhongColor">#138013</color>
     <color  name="phaiTraTien">#f03838</color>
     <color  name="tieuDePhongDongTien">#3498db</color>
+    <color name="colorTextPhong">#95BAF7</color>
 </resources>

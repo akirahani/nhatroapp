@@ -58,7 +58,7 @@ public class ConHieuLucFragment extends Fragment {
 
             @Override
             public void onFailure(Call<List<HopDongModel>> call, Throwable t) {
-
+                Log.d("err hop dong","co hieu luc"+t.toString());
             }
         });
 
