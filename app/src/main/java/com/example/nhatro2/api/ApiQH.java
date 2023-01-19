@@ -2,6 +2,7 @@ package com.example.nhatro2.api;
 
 import com.example.nhatro2.bat_bien.BatBienModel;
 import com.example.nhatro2.dich_vu.DichVuModel;
+import com.example.nhatro2.dong_tien.ChonPhongModel;
 import com.example.nhatro2.hop_dong.HopDongModel;
 import com.example.nhatro2.hop_dong.ListKhachChonModel;
 import com.example.nhatro2.kha_bien.KhaBienModel;
@@ -28,9 +29,9 @@ import retrofit2.http.GET;
 import retrofit2.http.POST;
 
 public interface ApiQH {
-//    String url = "http://172.16.1.71";
+    String url = "http://172.16.1.71";
 //   String url = "http://172.16.1.155";
-   String url = "http://192.168.1.194";
+//   String url = "http://192.168.1.194";
     //Init
     Gson gson = new GsonBuilder().setDateFormat("yyyy-MM-DD HH:mm:ss").create();
     OkHttpClient okHttpClient = new OkHttpClient.Builder().build();
@@ -263,4 +264,14 @@ public interface ApiQH {
         @POST("/quanghieu/admin/api/tien-nuoc/update.php")
         @FormUrlEncoded
         Call <TienNuocModel> updateWater(@Field("phong") String ten, @Field("month") int month, @Field("year") int year,@Field("sodau") int sodau, @Field("socuoi") int socuoi);
+
+    // Thu tien phong
+        @GET("/quanghieu/admin/api/thu-tien/list_phong.php")
+        Call <List<PhongModel>> listPhongTien();
+        // Chọn phòng lấy thông tin đóng tiền
+        @POST("/quanghieu/admin/api/thu-tien/choose_room.php")
+        @FormUrlEncoded
+        Call <ChonPhongModel> getTienDongList(@Field("phong") int phong);
+
+
 }

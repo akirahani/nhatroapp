@@ -8,20 +8,28 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.nhatro2.HomeActivity;
 import com.example.nhatro2.MainActivity;
 import com.example.nhatro2.R;
+import com.example.nhatro2.api.ApiQH;
 import com.example.nhatro2.hop_dong.BottomSheetThanhVienChon;
 import com.example.nhatro2.hop_dong.HopDongAdd;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class DongTien extends AppCompatActivity {
     ImageView logo, thoat, timInfoPhongChiTiet;
     SharedPreferences shp;
+    TextView nameRoomSearch, tienPhongCanTra, tenNopPhong;
     SharedPreferences.Editor shpKhachEdit;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -90,9 +98,48 @@ public class DongTien extends AppCompatActivity {
         timInfoPhongChiTiet.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-//                BottomSheetThanhVienChon tonKho = new BottomSheetThanhVienChon();
-//                tonKho.show(getSupportFragmentManager(), "ChonThanhVien");
+                BottomSheetChonPhongTien chonPhongTien= new BottomSheetChonPhongTien();
+                chonPhongTien.show(getSupportFragmentManager(), "ChonPhongTien");
             }
         });
+
+        SharedPreferences shpPhongChon = getApplicationContext().getSharedPreferences("phongChon", MODE_PRIVATE);
+        String tenPhong = shpPhongChon.getString("idPhongChon","");
+        int maPhongChon = shpPhongChon.getInt("maPhongChon",0);
+
+        //Tên phòng tìm
+        nameRoomSearch = findViewById(R.id.nameRoomSearch);
+        nameRoomSearch.setText("Phòng "+tenPhong);
+
+        // Ánh xạ tiền phòng
+        tienPhongCanTra = findViewById(R.id.tienPhongCanTra);
+        tenNopPhong = findViewById(R.id.tenNopPhong);
+
+        ApiQH.apiQH.getTienDongList(maPhongChon).enqueue(new Callback<ChonPhongModel>() {
+            @SuppressLint("ResourceAsColor")
+            @Override
+            public void onResponse(Call<ChonPhongModel> call, Response<ChonPhongModel> response) {
+                ChonPhongModel thongTinDongTienPhong = response.body();
+                if(thongTinDongTienPhong.getDutienphong() < 0){
+                    tenNopPhong.setTextColor(R.color.tabThue);
+                    tienPhongCanTra.setTextColor(R.color.tabThue);
+                }else{
+                    tenNopPhong.setTextColor(R.color.tenPhongColor);
+                    tienPhongCanTra.setTextColor(R.color.tenPhongColor);
+                }
+
+                tenNopPhong.setText(thongTinDongTienPhong.getTennopphong()+": ");
+                tienPhongCanTra.setText(thongTinDongTienPhong.getDutienphongformat()+" VNĐ");
+
+                Log.d("infoRoom","thong tin dong tien phong"+thongTinDongTienPhong);
+            }
+
+            @Override
+            public void onFailure(Call<ChonPhongModel> call, Throwable t) {
+                Log.d("errRoom","Loi info phong"+t.toString());
+            }
+        });
+
+
     }
 }
