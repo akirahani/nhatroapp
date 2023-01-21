@@ -301,9 +301,8 @@ public class HopDongAdd extends AppCompatActivity {
 
                 if(coTaiPhong.isChecked()){
                     coOTaiPhongChecked = 1;
-
                     if(thanhVienPhong.contains(idDaiDien)){
-                        thanhVienPhong.remove(idDaiDien);
+                        thanhVienPhong.remove(String.valueOf(idDaiDien));
                     }else{
                         thanhVienPhong.add(String.valueOf(idDaiDien));
                     }
