@@ -191,6 +191,7 @@
                     </TextView>
                     <EditText
                         android:id="@+id/tenThietBiAdd"
+                        android:singleLine="true"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:background="@null">
@@ -223,6 +224,7 @@
                     </TextView>
                     <EditText
                         android:id="@+id/giaThietBiAdd"
+                        android:singleLine="true"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:inputType="number"
