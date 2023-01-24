@@ -29,7 +29,7 @@ import retrofit2.Response;
 public class DongTien extends AppCompatActivity {
     ImageView logo, thoat, timInfoPhongChiTiet;
     SharedPreferences shp;
-    TextView nameRoomSearch, tienPhongCanTra, tenNopPhong;
+    TextView nameRoomSearch, tienPhongCanTra, tenNopPhong, tienCocDaTra, tienCocCanTra, tenchuphong,dienthoaichuphong;
     SharedPreferences.Editor shpKhachEdit;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -115,6 +115,12 @@ public class DongTien extends AppCompatActivity {
         tienPhongCanTra = findViewById(R.id.tienPhongCanTra);
         tenNopPhong = findViewById(R.id.tenNopPhong);
 
+        tienCocCanTra =  findViewById(R.id.tienCocCanTra);
+        tienCocDaTra = findViewById(R.id.tienCocDaTra);
+
+        tenchuphong = findViewById(R.id.tenchuphong);
+        dienthoaichuphong = findViewById(R.id.dienthoaichuphong);
+
         ApiQH.apiQH.getTienDongList(maPhongChon).enqueue(new Callback<ChonPhongModel>() {
             @SuppressLint("ResourceAsColor")
             @Override
@@ -131,6 +137,11 @@ public class DongTien extends AppCompatActivity {
                 tenNopPhong.setText(thongTinDongTienPhong.getTennopphong()+": ");
                 tienPhongCanTra.setText(thongTinDongTienPhong.getDutienphongformat()+" VNĐ");
 
+                tienCocCanTra.setText(""+thongTinDongTienPhong.getTencoc()+":"+thongTinDongTienPhong.getTiencocthuthemformat());
+                tienCocDaTra.setText(""+thongTinDongTienPhong.getDacoc());
+
+                tenchuphong.setText(thongTinDongTienPhong.getTenchuphong());
+                dienthoaichuphong.setText(thongTinDongTienPhong.getDienthoaichuphong());
                 Log.d("infoRoom","thong tin dong tien phong"+thongTinDongTienPhong);
             }
 
