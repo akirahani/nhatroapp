@@ -6,6 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".dong_tien.DongTien">
+
     <androidx.appcompat.widget.Toolbar xmlns:android="http://schemas.android.com/apk/res/android"
         android:id="@+id/header"
         android:layout_width="match_parent"
@@ -116,10 +117,12 @@
             android:background="@color/khungNgoai" />
 
     </RelativeLayout>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/khungNgoai">
+
         <TextView
             android:id="@+id/tieuDeKhachDongTienPhong"
             android:layout_width="193dp"
@@ -139,18 +142,19 @@
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
             <!-- khung đầu đóng tiền-->
             <androidx.cardview.widget.CardView
-                android:layout_marginTop="10dp"
+                android:id="@+id/khungDongTien"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/tHead"
-                android:id="@+id/khungDongTien"
                 android:layout_marginLeft="14dp"
+                android:layout_marginTop="10dp"
                 android:layout_marginRight="14dp"
                 android:layout_marginBottom="13dp"
                 app:cardCornerRadius="10dp">
@@ -160,39 +164,42 @@
                     android:layout_height="wrap_content"
                     android:background="@color/cardThietBi"
                     android:orientation="vertical">
+
                     <LinearLayout
-                        android:paddingLeft="15dp"
-                        android:paddingTop="10dp"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
+                        android:layout_height="wrap_content"
+                        android:paddingLeft="15dp"
+                        android:paddingTop="10dp">
+
                         <TextView
                             android:id="@+id/nameRoomSearch"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="Phòng A102"
-                            android:textStyle="bold"
                             android:textColor="@color/tenPhongColor"
                             android:textSize="20sp"
-                            />
+                            android:textStyle="bold" />
+
                         <ImageView
-                            android:layout_marginLeft="5dp"
-                            android:layout_gravity="center"
                             android:id="@+id/timInfoPhongChiTiet"
-                            android:layout_toRightOf="@+id/nameRoomSearch"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:src="@drawable/search"/>
+                            android:layout_gravity="center"
+                            android:layout_marginLeft="5dp"
+                            android:layout_toRightOf="@+id/nameRoomSearch"
+                            android:src="@drawable/search" />
                     </LinearLayout>
+
                     <TextView
-                        android:paddingLeft="15dp"
-                        android:paddingTop="5dp"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:paddingLeft="15dp"
+                        android:paddingTop="5dp"
                         android:text="Tiền phải thu: 2,180,000 VNĐ"
-                        android:textStyle="bold"
                         android:textColor="@color/phaiTraTien"
                         android:textSize="18sp"
-                        />
+                        android:textStyle="bold" />
+
                     <androidx.cardview.widget.CardView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -200,6 +207,7 @@
                         android:layout_marginTop="10dp"
                         android:layout_marginRight="14dp"
                         app:cardCornerRadius="15dp">
+
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
@@ -207,54 +215,59 @@
                             android:orientation="horizontal"
                             android:paddingTop="8dp"
                             android:paddingBottom="8dp">
+
                             <EditText
-                                android:singleLine="true"
-                                android:layout_gravity="center"
-                                android:paddingLeft="5dp"
                                 android:id="@+id/tienThanhToanText"
                                 android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
                                 android:layout_weight="5"
-                                android:layout_height="wrap_content"
+                                android:background="@null"
                                 android:hint="Số tiền thanh toán"
-                                android:background="@null" />
+                                android:paddingLeft="5dp"
+                                android:singleLine="true" />
+
                             <ImageView
-                                android:layout_width="0dp"
-                                android:layout_weight="1"
                                 android:id="@+id/themNguoiThue"
+                                android:layout_width="0dp"
                                 android:layout_height="wrap_content"
+                                android:layout_weight="1"
                                 android:src="@drawable/addicon"
                                 android:textAllCaps="true" />
                         </LinearLayout>
                     </androidx.cardview.widget.CardView>
+
                     <RadioGroup
                         android:id="@+id/hinhThucDongTien"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:orientation="horizontal"
+                        android:layout_marginLeft="12dp"
                         android:layout_marginTop="10dp"
-                        android:layout_marginLeft="12dp">
+                        android:orientation="horizontal">
+
                         <RadioButton
-                            android:text="Tiền mặt"
                             android:id="@+id/tienMatDongTien"
                             android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"/>
+                            android:layout_height="wrap_content"
+                            android:text="Tiền mặt" />
+
                         <RadioButton
-                            android:layout_marginLeft="15dp"
-                            android:text="Chuyển khoản"
                             android:id="@+id/chuyenKhoanDongTien"
                             android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"/>
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="15dp"
+                            android:text="Chuyển khoản" />
                     </RadioGroup>
 
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
             <!--  khung thứ 2 - phòng   -->
             <androidx.cardview.widget.CardView
-                android:layout_marginTop="10dp"
+                android:id="@+id/tienPhongPhaiDong"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/tienPhongPhaiDong"
                 android:layout_marginLeft="14dp"
+                android:layout_marginTop="10dp"
                 android:layout_marginRight="14dp"
                 android:layout_marginBottom="13dp"
                 app:cardCornerRadius="10dp">
@@ -264,37 +277,41 @@
                     android:layout_height="wrap_content"
                     android:background="@color/cardThietBi"
                     android:orientation="vertical">
+
                     <TextView
-                        android:paddingLeft="15dp"
-                        android:paddingTop="10dp"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:paddingLeft="15dp"
+                        android:paddingTop="10dp"
                         android:text="Tiền phòng tháng"
-                        android:textStyle="bold"
                         android:textColor="@color/tieuDePhongDongTien"
-                        android:textSize="16sp" />
+                        android:textSize="16sp"
+                        android:textStyle="bold" />
+
                     <RelativeLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content">
+
                         <TextView
                             android:id="@+id/tenNopPhong"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
                             android:paddingLeft="15dp"
                             android:paddingTop="10dp"
                             android:paddingBottom="10dp"
+                            android:textSize="14sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/tienPhongCanTra"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:textStyle="bold"
-                            android:textSize="14sp" />
-                        <TextView
                             android:layout_toRightOf="@+id/tenNopPhong"
-                            android:id="@+id/tienPhongCanTra"
                             android:paddingLeft="2dp"
                             android:paddingTop="10dp"
                             android:paddingBottom="10dp"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:textStyle="bold"
-                            android:textSize="14sp" />
+                            android:textSize="14sp"
+                            android:textStyle="bold" />
                     </RelativeLayout>
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
@@ -307,11 +324,145 @@
                 android:orientation="horizontal">
                 <!--  khung thứ 3 - cọc  -->
                 <androidx.cardview.widget.CardView
+                    android:id="@+id/tienCocPhaiDong"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginBottom="13dp"
+                    android:layout_weight="1"
+                    app:cardCornerRadius="10dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@color/cardThietBi"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:paddingLeft="15dp"
+                            android:paddingTop="10dp"
+                            android:text="Tiền cọc"
+                            android:textColor="@color/tieuDePhongDongTien"
+                            android:textSize="16sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/tienCocCanTra"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:paddingLeft="15dp"
+                            android:paddingTop="10dp"
+                            android:paddingBottom="10dp"
+                            android:textColor="@color/phaiTraTien"
+                            android:textSize="14sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/tienCocDaTra"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:paddingLeft="15dp"
+                            android:paddingTop="5dp"
+                            android:paddingBottom="10dp"
+                            android:textColor="@color/tenPhongColor"
+                            android:textSize="14sp"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+                <!--  khung thứ 4 người đại diên  -->
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/daiDienDongTien"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="13dp"
+                    android:layout_weight="1"
+                    app:cardCornerRadius="10dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@color/cardThietBi"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:paddingLeft="15dp"
+                            android:paddingTop="10dp"
+                            android:text="Người đại diện"
+                            android:textColor="@color/tieuDePhongDongTien"
+                            android:textSize="16sp"
+                            android:textStyle="bold" />
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+
+                            <ImageView
+                                android:layout_centerVertical="true"
+                                android:id="@+id/tenKhachThue"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="15dp"
+                                android:layout_marginTop="7dp"
+                                android:src="@drawable/ic_user" />
+                            <TextView
+                                android:layout_toRightOf="@id/tenKhachThue"
+                                android:id="@+id/tenchuphong"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:paddingLeft="15dp"
+                                android:paddingTop="10dp"
+                                android:paddingBottom="10dp"
+                                android:textColor="@color/nguoiDaiDienDongTien"
+                                android:textSize="14sp"
+                                android:textStyle="bold" />
+                        </RelativeLayout>
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+
+                            <ImageView
+                                android:id="@+id/dienThoaiDaiDien"
+                                android:layout_centerVertical="true"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="7dp"
+                                android:layout_marginLeft="15dp"
+                                android:src="@drawable/ic_phonekhach" />
+                            <TextView
+                                android:id="@+id/dienthoaichuphong"
+                                android:layout_toRightOf="@+id/dienThoaiDaiDien"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:paddingLeft="15dp"
+                                android:paddingTop="5dp"
+                                android:paddingBottom="10dp"
+                                android:textColor="@color/nguoiDaiDienDongTien"
+                                android:textSize="14sp"
+                                android:textStyle="bold" />
+                        </RelativeLayout>
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="14dp"
+                android:layout_marginRight="14dp"
+                android:orientation="horizontal">
+                <!--  khung thứ 5 thành viên  -->
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/thanhVienDongTien"
                     android:layout_width="0dp"
                     android:layout_weight="1"
                     android:layout_height="wrap_content"
-                    android:id="@+id/tienCocPhaiDong"
+                    android:layout_marginTop="10dp"
                     android:layout_marginRight="10dp"
                     android:layout_marginBottom="13dp"
                     app:cardCornerRadius="10dp">
@@ -321,44 +472,36 @@
                         android:layout_height="wrap_content"
                         android:background="@color/cardThietBi"
                         android:orientation="vertical">
+
                         <TextView
-                            android:paddingLeft="15dp"
-                            android:paddingTop="10dp"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="Tiền cọc"
-                            android:textStyle="bold"
+                            android:paddingLeft="15dp"
+                            android:paddingTop="10dp"
+                            android:text="Thành viên phòng"
                             android:textColor="@color/tieuDePhongDongTien"
-                            android:textSize="16sp" />
+                            android:textSize="16sp"
+                            android:textStyle="bold" />
+
                         <TextView
-                            android:id="@+id/tienCocCanTra"
+                            android:id="@+id/listThanhVienPhong"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
                             android:paddingLeft="15dp"
                             android:paddingTop="10dp"
                             android:paddingBottom="10dp"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:textStyle="bold"
-                            android:textColor="@color/phaiTraTien"
-                            android:textSize="14sp" />
-                        <TextView
-                            android:id="@+id/tienCocDaTra"
-                            android:paddingLeft="15dp"
-                            android:paddingTop="10dp"
-                            android:paddingBottom="10dp"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:textStyle="bold"
-                            android:textColor="@color/tenPhongColor"
-                            android:textSize="14sp" />
+                            android:textColor="@color/loginButton"
+                            android:textSize="14sp"
+                            android:textStyle="bold" />
                     </LinearLayout>
                 </androidx.cardview.widget.CardView>
-                <!--  khung thứ 4 người đại diên  -->
+                <!--  khung thứ 6 tniết bị  -->
                 <androidx.cardview.widget.CardView
-                    android:layout_marginTop="10dp"
+                    android:id="@+id/thietBiDongTien"
                     android:layout_width="0dp"
                     android:layout_weight="1"
                     android:layout_height="wrap_content"
-                    android:id="@+id/daiDienDongTien"
+                    android:layout_marginTop="10dp"
                     android:layout_marginLeft="10dp"
                     android:layout_marginBottom="13dp"
                     app:cardCornerRadius="10dp">
@@ -368,194 +511,160 @@
                         android:layout_height="wrap_content"
                         android:background="@color/cardThietBi"
                         android:orientation="vertical">
+
                         <TextView
-                            android:paddingLeft="15dp"
-                            android:paddingTop="10dp"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="Người đại diện"
-                            android:textStyle="bold"
+                            android:paddingLeft="15dp"
+                            android:paddingTop="10dp"
+                            android:text="Thiết bị sử dụng"
                             android:textColor="@color/tieuDePhongDongTien"
-                            android:textSize="16sp" />
+                            android:textSize="16sp"
+                            android:textStyle="bold" />
+
                         <TextView
-                            android:id="@+id/tenchuphong"
+                            android:id="@+id/listThietBiSuDung"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
                             android:paddingLeft="15dp"
                             android:paddingTop="10dp"
                             android:paddingBottom="10dp"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:textStyle="bold"
                             android:textColor="@color/loginButton"
-                            android:textSize="14sp" />
-                        <TextView
-                            android:id="@+id/dienthoaichuphong"
-                            android:paddingLeft="15dp"
-                            android:paddingTop="10dp"
-                            android:paddingBottom="10dp"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:textStyle="bold"
-                            android:textColor="@color/loginButton"
-                            android:textSize="14sp" />
+                            android:textSize="14sp"
+                            android:textStyle="bold" />
                     </LinearLayout>
                 </androidx.cardview.widget.CardView>
             </LinearLayout>
 
-            <!--  khung thứ 5 thành viên  -->
-            <androidx.cardview.widget.CardView
-                android:layout_marginTop="10dp"
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/thanhVienDongTien"
                 android:layout_marginLeft="14dp"
                 android:layout_marginRight="14dp"
-                android:layout_marginBottom="13dp"
-                app:cardCornerRadius="10dp">
-
-                <LinearLayout
-                    android:layout_width="match_parent"
+                android:orientation="horizontal">
+                <!--  khung thứ 7 điện  -->
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/dongTienDien"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
                     android:layout_height="wrap_content"
-                    android:background="@color/cardThietBi"
-                    android:orientation="vertical">
-                    <TextView
-                        android:paddingLeft="15dp"
-                        android:paddingTop="10dp"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="Thành viên phòng"
-                        android:textStyle="bold"
-                        android:textColor="@color/tieuDePhongDongTien"
-                        android:textSize="16sp" />
-                    <TextView
-                        android:paddingLeft="15dp"
-                        android:paddingTop="10dp"
-                        android:paddingBottom="10dp"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="Tên: Giang còi"
-                        android:textStyle="bold"
-                        android:textColor="@color/loginButton"
-                        android:textSize="14sp" />
-                </LinearLayout>
-            </androidx.cardview.widget.CardView>
-            <!--  khung thứ 6 tniết bị  -->
-            <androidx.cardview.widget.CardView
-                android:layout_marginTop="10dp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/thietBiDongTien"
-                android:layout_marginLeft="14dp"
-                android:layout_marginRight="14dp"
-                android:layout_marginBottom="13dp"
-                app:cardCornerRadius="10dp">
+                    android:layout_marginTop="10dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginBottom="13dp"
+                    app:cardCornerRadius="10dp">
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="@color/cardThietBi"
-                    android:orientation="vertical">
-                    <TextView
-                        android:paddingLeft="15dp"
-                        android:paddingTop="10dp"
+                    <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Thiết bị sử dụng"
-                        android:textStyle="bold"
-                        android:textColor="@color/tieuDePhongDongTien"
-                        android:textSize="16sp" />
-                    <TextView
-                        android:paddingLeft="15dp"
-                        android:paddingTop="10dp"
-                        android:paddingBottom="10dp"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="Tên: Giang còi"
-                        android:textStyle="bold"
-                        android:textColor="@color/loginButton"
-                        android:textSize="14sp" />
-                </LinearLayout>
-            </androidx.cardview.widget.CardView>
-            <!--  khung thứ 7 điện  -->
-            <androidx.cardview.widget.CardView
-                android:layout_marginTop="10dp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/dongTienDien"
-                android:layout_marginLeft="14dp"
-                android:layout_marginRight="14dp"
-                android:layout_marginBottom="13dp"
-                app:cardCornerRadius="10dp">
+                        android:background="@color/cardThietBi"
+                        android:orientation="vertical">
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="@color/cardThietBi"
-                    android:orientation="vertical">
-                    <TextView
-                        android:paddingLeft="15dp"
-                        android:paddingTop="10dp"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="Tiền điện"
-                        android:textStyle="bold"
-                        android:textColor="@color/tieuDePhongDongTien"
-                        android:textSize="16sp" />
-                    <TextView
-                        android:paddingLeft="15dp"
-                        android:paddingTop="10dp"
-                        android:paddingBottom="10dp"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="Tên: Giang còi"
-                        android:textStyle="bold"
-                        android:textColor="@color/loginButton"
-                        android:textSize="14sp" />
-                </LinearLayout>
-            </androidx.cardview.widget.CardView>
-            <!--  khung thứ 8 nước  -->
-            <androidx.cardview.widget.CardView
-                android:layout_marginTop="10dp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/dongTienNuoc"
-                android:layout_marginLeft="14dp"
-                android:layout_marginRight="14dp"
-                android:layout_marginBottom="13dp"
-                app:cardCornerRadius="10dp">
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:paddingLeft="15dp"
+                            android:paddingTop="10dp"
+                            android:text="Tiền điện"
+                            android:textColor="@color/tieuDePhongDongTien"
+                            android:textSize="16sp"
+                            android:textStyle="bold" />
 
-                <LinearLayout
-                    android:layout_width="match_parent"
+                        <TextView
+                            android:id="@+id/soDienSuDungText"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:paddingTop="5dp"
+                            android:paddingLeft="15dp"
+                            android:paddingBottom="10dp"
+                            android:textColor="@color/loginButton"
+                            android:textSize="14sp"
+                            android:textStyle="bold" />
+                        <TextView
+                            android:id="@+id/tienDienPhaiThu"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:paddingLeft="15dp"
+                            android:paddingBottom="10dp"
+                            android:textColor="@color/tabThue"
+                            android:textSize="14sp"
+                            android:textStyle="bold" />
+                        <TextView
+                            android:id="@+id/tienDienDaThu"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:paddingLeft="15dp"
+                            android:paddingBottom="10dp"
+                            android:textColor="@color/tenPhongColor"
+                            android:textSize="14sp"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+                <!--  khung thứ 8 nước  -->
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/dongTienNuoc"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
                     android:layout_height="wrap_content"
-                    android:background="@color/cardThietBi"
-                    android:orientation="vertical">
-                    <TextView
-                        android:paddingLeft="15dp"
-                        android:paddingTop="10dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginBottom="13dp"
+                    app:cardCornerRadius="10dp">
+
+                    <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Tiền nước"
-                        android:textStyle="bold"
-                        android:textColor="@color/tieuDePhongDongTien"
-                        android:textSize="16sp" />
-                    <TextView
-                        android:paddingLeft="15dp"
-                        android:paddingTop="10dp"
-                        android:paddingBottom="10dp"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="Tên: Giang còi"
-                        android:textStyle="bold"
-                        android:textColor="@color/loginButton"
-                        android:textSize="14sp" />
-                </LinearLayout>
-            </androidx.cardview.widget.CardView>
+                        android:background="@color/cardThietBi"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:paddingLeft="15dp"
+                            android:paddingTop="10dp"
+                            android:text="Tiền nước"
+                            android:textColor="@color/tieuDePhongDongTien"
+                            android:textSize="16sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/soNuocSuDungText"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:paddingTop="5dp"
+                            android:paddingLeft="15dp"
+                            android:paddingBottom="10dp"
+                            android:textColor="@color/loginButton"
+                            android:textSize="14sp"
+                            android:textStyle="bold" />
+                        <TextView
+                            android:id="@+id/tienNuocPhaiThu"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:paddingLeft="15dp"
+                            android:paddingBottom="10dp"
+                            android:textColor="@color/tabThue"
+                            android:textSize="14sp"
+                            android:textStyle="bold" />
+                        <TextView
+                            android:id="@+id/tienNuocDaThu"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:paddingLeft="15dp"
+                            android:paddingBottom="10dp"
+                            android:textColor="@color/tenPhongColor"
+                            android:textSize="14sp"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+            </LinearLayout>
+
             <!--  khung thứ 9 lịch sử thu  -->
             <androidx.cardview.widget.CardView
-                android:layout_marginTop="10dp"
+                android:id="@+id/lichSuDongTien"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/lichSuDongTien"
                 android:layout_marginLeft="14dp"
+                android:layout_marginTop="10dp"
                 android:layout_marginRight="14dp"
                 android:layout_marginBottom="13dp"
                 app:cardCornerRadius="10dp">
@@ -565,25 +674,26 @@
                     android:layout_height="wrap_content"
                     android:background="@color/cardThietBi"
                     android:orientation="vertical">
+
                     <TextView
-                        android:paddingLeft="15dp"
-                        android:paddingTop="10dp"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:paddingLeft="15dp"
+                        android:paddingTop="10dp"
                         android:text="Lịch sử đóng tiền"
-                        android:textStyle="bold"
                         android:textColor="@color/tieuDePhongDongTien"
-                        android:textSize="16sp" />
+                        android:textSize="16sp"
+                        android:textStyle="bold" />
+
                     <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
                         android:paddingLeft="15dp"
                         android:paddingTop="10dp"
                         android:paddingBottom="10dp"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="Tên: Giang còi"
-                        android:textStyle="bold"
                         android:textColor="@color/loginButton"
-                        android:textSize="14sp" />
+                        android:textSize="14sp"
+                        android:textStyle="bold" />
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
         </LinearLayout>

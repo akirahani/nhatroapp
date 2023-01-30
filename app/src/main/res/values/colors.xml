@@ -30,4 +30,5 @@
     <color  name="phaiTraTien">#f03838</color>
     <color  name="tieuDePhongDongTien">#3498db</color>
     <color name="colorTextPhong">#95BAF7</color>
+    <color  name="nguoiDaiDienDongTien">#6f98b4</color>
 </resources>
