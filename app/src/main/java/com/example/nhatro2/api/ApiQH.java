@@ -16,7 +16,6 @@ import com.example.nhatro2.tien_nuoc.TienNuocModel;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import okhttp3.OkHttpClient;
@@ -29,9 +28,9 @@ import retrofit2.http.GET;
 import retrofit2.http.POST;
 
 public interface ApiQH {
-//    String url = "http://172.16.1.71";
+    String url = "http://172.16.1.71";
 //   String url = "http://172.16.1.155";
-   String url = "http://192.168.1.192";
+//   String url = "http://192.168.1.192";
 //   String url = "http://192.168.0.104";
     //Init
 
@@ -275,6 +274,10 @@ public interface ApiQH {
         @POST("/quanghieu/admin/api/thu-tien/choose_room.php")
         @FormUrlEncoded
         Call <ChonPhongModel> getTienDongList(@Field("phong") int phong);
+        // Lấy thông tin khách thuê phòng
+        @POST("/quanghieu/admin/api/thu-tien/list_khach.php")
+        @FormUrlEncoded
+        Call <List<ThanhVienModel>> getKhachPhongTien(@Field("idKhach") String idKhach);
 
 
 }
