@@ -3,6 +3,7 @@ package com.example.nhatro2.api;
 import com.example.nhatro2.bat_bien.BatBienModel;
 import com.example.nhatro2.dich_vu.DichVuModel;
 import com.example.nhatro2.dong_tien.ChonPhongModel;
+import com.example.nhatro2.dong_tien.LichSuDongTienModel;
 import com.example.nhatro2.hop_dong.HopDongModel;
 import com.example.nhatro2.hop_dong.ListKhachChonModel;
 import com.example.nhatro2.kha_bien.KhaBienModel;
@@ -278,6 +279,13 @@ public interface ApiQH {
         @POST("/quanghieu/admin/api/thu-tien/list_khach.php")
         @FormUrlEncoded
         Call <List<ThanhVienModel>> getKhachPhongTien(@Field("idKhach") String idKhach);
-
+        // Lấy thông tin thiết bị được thuê
+        @POST("/quanghieu/admin/api/thu-tien/list_thiet_bi.php")
+        @FormUrlEncoded
+        Call <List<DichVuModel>> getThietBiPhongTien(@Field("idThietBi") String idThietBi);
+        // Lịch sử nộp tiền phòng
+        @POST("/quanghieu/admin/api/thu-tien/lich_su.php")
+        @FormUrlEncoded
+        Call <List<LichSuDongTienModel>> getHistoryPay(@Field("idHistory") String idHistory);
 
 }

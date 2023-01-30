@@ -23,6 +23,7 @@ import com.example.nhatro2.HomeActivity;
 import com.example.nhatro2.MainActivity;
 import com.example.nhatro2.R;
 import com.example.nhatro2.api.ApiQH;
+import com.example.nhatro2.dich_vu.DichVuModel;
 import com.example.nhatro2.hop_dong.BottomSheetThanhVienChon;
 import com.example.nhatro2.hop_dong.HopDongAdd;
 import com.example.nhatro2.thanhvien.ThanhVienModel;
@@ -42,7 +43,7 @@ public class DongTien extends AppCompatActivity {
     ImageView logo, thoat, timInfoPhongChiTiet;
     SharedPreferences shp;
     TextView nameRoomSearch, tienPhongCanTra, tenNopPhong, tienCocDaTra, tienCocCanTra, tenchuphong,dienthoaichuphong, soDienSuDungText, soNuocSuDungText, tienNuocPhaiThu, tienNuocDaThu, tienDienPhaiThu, tienDienDaThu, phaiTraTien ;
-    RecyclerView listThietBiSuDung, listThanhVienPhong;
+    RecyclerView listThietBiSuDung, listThanhVienPhong, lichSuThuTienPhong;
     SharedPreferences.Editor shpKhachEdit;
     LinearLayout thongTinChungDongTien, dongTienPhongText;
     RadioGroup hinhThucDongTien;
@@ -152,6 +153,7 @@ public class DongTien extends AppCompatActivity {
         dongTienPhongText = findViewById(R.id.dongTienPhongText);
 
         phaiTraTien = findViewById(R.id.soTienPhaiTra);
+        lichSuThuTienPhong = findViewById(R.id.lichSuThuTienPhong);
 
         ApiQH.apiQH.getTienDongList(maPhongChon).enqueue(new Callback<ChonPhongModel>() {
             @SuppressLint("ResourceAsColor")
@@ -191,6 +193,14 @@ public class DongTien extends AppCompatActivity {
                     listThanhVienPhong.hasFixedSize();
                     listThanhVienPhong.setNestedScrollingEnabled(false);
 
+                    listThietBiSuDung.setLayoutManager(new LinearLayoutManager(DongTien.this));
+                    listThietBiSuDung.hasFixedSize();
+                    listThietBiSuDung.setNestedScrollingEnabled(false);
+
+                    lichSuThuTienPhong.setLayoutManager(new LinearLayoutManager(DongTien.this));
+                    lichSuThuTienPhong.hasFixedSize();
+                    lichSuThuTienPhong.setNestedScrollingEnabled(false);
+                    // Khách hiện đang thuê phòng
                     ApiQH.apiQH.getKhachPhongTien(thongTinDongTienPhong.getDanhsachthanhvien()).enqueue(new Callback<List<ThanhVienModel>>() {
                         @Override
                         public void onResponse(Call<List<ThanhVienModel>> call, Response<List<ThanhVienModel>> response) {
@@ -203,14 +213,40 @@ public class DongTien extends AppCompatActivity {
 
                         }
                     });
-//                    Log.e("arr",""+thongTinDongTienPhong.getDanhsachthanhvien());
-//
-//                    Log.e("arr","tb"+thongTinDongTienPhong.getTenthietbisudung());
+                    // Thiết bị sử dụng
+                    ApiQH.apiQH.getThietBiPhongTien(thongTinDongTienPhong.getTenthietbisudung()).enqueue(new Callback<List<DichVuModel>>() {
+                        @Override
+                        public void onResponse(Call<List<DichVuModel>> call, Response<List<DichVuModel>> response) {
+                            List<DichVuModel> listThietBi = response.body();
+                            listThietBiSuDung.setAdapter(new ThietBiPhongTienAdapter(DongTien.this,listThietBi) );
+                        }
+
+                        @Override
+                        public void onFailure(Call<List<DichVuModel>> call, Throwable t) {
+
+                        }
+                    });
+                    // Lịch sử đóng tiền phòng
+                    ApiQH.apiQH.getHistoryPay(thongTinDongTienPhong.getLichsunopphong()).enqueue(new Callback<List<LichSuDongTienModel>>() {
+                        @Override
+                        public void onResponse(Call<List<LichSuDongTienModel>> call, Response<List<LichSuDongTienModel>> response) {
+                            List<LichSuDongTienModel> lichSuDongTien = response.body();
+                            lichSuThuTienPhong.setAdapter(new LichSuNopTienAdapter(DongTien.this,lichSuDongTien) );
+                        }
+
+                        @Override
+                        public void onFailure(Call<List<LichSuDongTienModel>> call, Throwable t) {
+
+                        }
+                    });
+
+
                 }else{
                     thongTinChungDongTien.setVisibility(View.GONE);
                     dongTienPhongText.setVisibility(View.GONE);
                     hinhThucDongTien.setVisibility(View.GONE);
                     phaiTraTien.setText("Phòng trống");
+                    lichSuThuTienPhong.setVisibility(View.GONE);
                 }
 
             }
