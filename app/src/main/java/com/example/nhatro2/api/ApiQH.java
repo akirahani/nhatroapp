@@ -31,7 +31,7 @@ import retrofit2.http.POST;
 public interface ApiQH {
 //    String url = "http://172.16.1.71";
 //   String url = "http://172.16.1.155";
-   String url = "http://192.168.1.190";
+   String url = "http://192.168.1.192";
 //   String url = "http://192.168.0.104";
     //Init
 

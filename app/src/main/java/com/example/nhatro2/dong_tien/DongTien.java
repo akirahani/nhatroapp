@@ -22,6 +22,13 @@ import com.example.nhatro2.api.ApiQH;
 import com.example.nhatro2.hop_dong.BottomSheetThanhVienChon;
 import com.example.nhatro2.hop_dong.HopDongAdd;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -29,7 +36,7 @@ import retrofit2.Response;
 public class DongTien extends AppCompatActivity {
     ImageView logo, thoat, timInfoPhongChiTiet;
     SharedPreferences shp;
-    TextView nameRoomSearch, tienPhongCanTra, tenNopPhong, tienCocDaTra, tienCocCanTra, tenchuphong,dienthoaichuphong;
+    TextView nameRoomSearch, tienPhongCanTra, tenNopPhong, tienCocDaTra, tienCocCanTra, tenchuphong,dienthoaichuphong, soDienSuDungText, soNuocSuDungText, tienNuocPhaiThu, tienNuocDaThu, tienDienPhaiThu, tienDienDaThu, listThietBiSuDung, listThanhVienPhong ;
     SharedPreferences.Editor shpKhachEdit;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -121,6 +128,16 @@ public class DongTien extends AppCompatActivity {
         tenchuphong = findViewById(R.id.tenchuphong);
         dienthoaichuphong = findViewById(R.id.dienthoaichuphong);
 
+        soDienSuDungText = findViewById(R.id.soDienSuDungText);
+        soNuocSuDungText = findViewById(R.id.soNuocSuDungText);
+        tienNuocPhaiThu  = findViewById(R.id.tienNuocPhaiThu);
+        tienNuocDaThu = findViewById(R.id.tienNuocDaThu);
+        tienDienPhaiThu  = findViewById(R.id.tienDienPhaiThu);
+        tienDienDaThu  = findViewById(R.id.tienDienDaThu);
+
+        listThietBiSuDung = findViewById(R.id.listThietBiSuDung);
+        listThanhVienPhong = findViewById(R.id.listThanhVienPhong);
+
         ApiQH.apiQH.getTienDongList(maPhongChon).enqueue(new Callback<ChonPhongModel>() {
             @SuppressLint("ResourceAsColor")
             @Override
@@ -138,11 +155,22 @@ public class DongTien extends AppCompatActivity {
                 tienPhongCanTra.setText(thongTinDongTienPhong.getDutienphongformat()+" VNĐ");
 
                 tienCocCanTra.setText(""+thongTinDongTienPhong.getTencoc()+":"+thongTinDongTienPhong.getTiencocthuthemformat());
-                tienCocDaTra.setText(""+thongTinDongTienPhong.getDacoc());
+                tienCocDaTra.setText("Đã cọc: "+thongTinDongTienPhong.getDacoc()+"đ");
 
                 tenchuphong.setText(thongTinDongTienPhong.getTenchuphong());
                 dienthoaichuphong.setText(thongTinDongTienPhong.getDienthoaichuphong());
-                Log.d("infoRoom","thong tin dong tien phong"+thongTinDongTienPhong);
+
+                soDienSuDungText.setText("Số điện: "+thongTinDongTienPhong.getSodiensudung());
+                tienDienPhaiThu.setText("Phải thu: "+thongTinDongTienPhong.getTiendiensudung()+"đ");
+                tienDienDaThu.setText("Đã thu: "+thongTinDongTienPhong.getSodienphaithu()+"đ");
+
+                soNuocSuDungText.setText("Số nước: "+thongTinDongTienPhong.getSonuocsudung());
+                tienNuocPhaiThu.setText("Phải thu: "+thongTinDongTienPhong.getTiennuocsudung()+"đ");
+                tienNuocDaThu.setText("Đã thu: "+thongTinDongTienPhong.getSonuocphaithu()+"đ");
+
+//                listThanhVienPhong.setText("+"+);
+
+                Log.d("arr","khach"+thongTinDongTienPhong.getDanhsachthanhvien());
             }
 
             @Override
