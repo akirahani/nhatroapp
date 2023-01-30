@@ -2,6 +2,8 @@ package com.example.nhatro2.dong_tien;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.annotation.SuppressLint;
 import android.content.DialogInterface;
@@ -12,6 +14,8 @@ import android.util.Log;
 import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -19,8 +23,10 @@ import com.example.nhatro2.HomeActivity;
 import com.example.nhatro2.MainActivity;
 import com.example.nhatro2.R;
 import com.example.nhatro2.api.ApiQH;
+import com.example.nhatro2.dich_vu.DichVuModel;
 import com.example.nhatro2.hop_dong.BottomSheetThanhVienChon;
 import com.example.nhatro2.hop_dong.HopDongAdd;
+import com.example.nhatro2.thanhvien.ThanhVienModel;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -36,8 +42,12 @@ import retrofit2.Response;
 public class DongTien extends AppCompatActivity {
     ImageView logo, thoat, timInfoPhongChiTiet;
     SharedPreferences shp;
-    TextView nameRoomSearch, tienPhongCanTra, tenNopPhong, tienCocDaTra, tienCocCanTra, tenchuphong,dienthoaichuphong, soDienSuDungText, soNuocSuDungText, tienNuocPhaiThu, tienNuocDaThu, tienDienPhaiThu, tienDienDaThu, listThietBiSuDung, listThanhVienPhong ;
+    TextView nameRoomSearch, tienPhongCanTra, tenNopPhong, tienCocDaTra, tienCocCanTra, tenchuphong,dienthoaichuphong, soDienSuDungText, soNuocSuDungText, tienNuocPhaiThu, tienNuocDaThu, tienDienPhaiThu, tienDienDaThu, phaiTraTien ;
+    RecyclerView listThietBiSuDung, listThanhVienPhong, lichSuThuTienPhong;
     SharedPreferences.Editor shpKhachEdit;
+    LinearLayout thongTinChungDongTien, dongTienPhongText;
+    RadioGroup hinhThucDongTien;
+    @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -138,39 +148,107 @@ public class DongTien extends AppCompatActivity {
         listThietBiSuDung = findViewById(R.id.listThietBiSuDung);
         listThanhVienPhong = findViewById(R.id.listThanhVienPhong);
 
+        thongTinChungDongTien = findViewById(R.id.thongTinChungDongTien);
+        hinhThucDongTien = findViewById(R.id.hinhThucDongTien);
+        dongTienPhongText = findViewById(R.id.dongTienPhongText);
+
+        phaiTraTien = findViewById(R.id.soTienPhaiTra);
+        lichSuThuTienPhong = findViewById(R.id.lichSuThuTienPhong);
+
         ApiQH.apiQH.getTienDongList(maPhongChon).enqueue(new Callback<ChonPhongModel>() {
             @SuppressLint("ResourceAsColor")
             @Override
             public void onResponse(Call<ChonPhongModel> call, Response<ChonPhongModel> response) {
                 ChonPhongModel thongTinDongTienPhong = response.body();
-                if(thongTinDongTienPhong.getDutienphong() < 0){
-                    tenNopPhong.setTextColor(R.color.tabThue);
-                    tienPhongCanTra.setTextColor(R.color.tabThue);
+
+                if(thongTinDongTienPhong.getIdchuphong() != 0){
+                    if(thongTinDongTienPhong.getDutienphong() < 0){
+                        tenNopPhong.setTextColor(R.color.tabThue);
+                        tienPhongCanTra.setTextColor(R.color.tabThue);
+                    }else{
+                        tenNopPhong.setTextColor(R.color.tenPhongColor);
+                        tienPhongCanTra.setTextColor(R.color.tenPhongColor);
+                    }
+
+                    tenNopPhong.setText(thongTinDongTienPhong.getTennopphong()+": ");
+                    tienPhongCanTra.setText(thongTinDongTienPhong.getDutienphongformat()+"đ");
+
+                    tienCocCanTra.setText(""+thongTinDongTienPhong.getTencoc()+":"+thongTinDongTienPhong.getTiencocthuthemformat());
+                    tienCocDaTra.setText("Đã cọc: "+thongTinDongTienPhong.getDacoc()+"đ");
+
+                    tenchuphong.setText(thongTinDongTienPhong.getTenchuphong());
+                    dienthoaichuphong.setText(thongTinDongTienPhong.getDienthoaichuphong());
+
+                    soDienSuDungText.setText("Số điện: "+thongTinDongTienPhong.getSodiensudung());
+                    tienDienPhaiThu.setText("Phải thu: "+thongTinDongTienPhong.getTiendiensudung()+"đ");
+                    tienDienDaThu.setText("Đã thu: "+thongTinDongTienPhong.getSodienphaithu()+"đ");
+
+                    soNuocSuDungText.setText("Số nước: "+thongTinDongTienPhong.getSonuocsudung());
+                    tienNuocPhaiThu.setText("Phải thu: "+thongTinDongTienPhong.getTiennuocsudung()+"đ");
+                    tienNuocDaThu.setText("Đã thu: "+thongTinDongTienPhong.getSonuocphaithu()+"đ");
+
+                    phaiTraTien.setText("Tiền phải thu: "+thongTinDongTienPhong.getTongthuformat()+"đ");
+
+                    listThanhVienPhong.setLayoutManager(new LinearLayoutManager(DongTien.this));
+                    listThanhVienPhong.hasFixedSize();
+                    listThanhVienPhong.setNestedScrollingEnabled(false);
+
+                    listThietBiSuDung.setLayoutManager(new LinearLayoutManager(DongTien.this));
+                    listThietBiSuDung.hasFixedSize();
+                    listThietBiSuDung.setNestedScrollingEnabled(false);
+
+                    lichSuThuTienPhong.setLayoutManager(new LinearLayoutManager(DongTien.this));
+                    lichSuThuTienPhong.hasFixedSize();
+                    lichSuThuTienPhong.setNestedScrollingEnabled(false);
+                    // Khách hiện đang thuê phòng
+                    ApiQH.apiQH.getKhachPhongTien(thongTinDongTienPhong.getDanhsachthanhvien()).enqueue(new Callback<List<ThanhVienModel>>() {
+                        @Override
+                        public void onResponse(Call<List<ThanhVienModel>> call, Response<List<ThanhVienModel>> response) {
+                            List<ThanhVienModel> listKhach = response.body();
+                            listThanhVienPhong.setAdapter(new KhachPhongTienAdapter (DongTien.this,listKhach) );
+                        }
+
+                        @Override
+                        public void onFailure(Call<List<ThanhVienModel>> call, Throwable t) {
+
+                        }
+                    });
+                    // Thiết bị sử dụng
+                    ApiQH.apiQH.getThietBiPhongTien(thongTinDongTienPhong.getTenthietbisudung()).enqueue(new Callback<List<DichVuModel>>() {
+                        @Override
+                        public void onResponse(Call<List<DichVuModel>> call, Response<List<DichVuModel>> response) {
+                            List<DichVuModel> listThietBi = response.body();
+                            listThietBiSuDung.setAdapter(new ThietBiPhongTienAdapter(DongTien.this,listThietBi) );
+                        }
+
+                        @Override
+                        public void onFailure(Call<List<DichVuModel>> call, Throwable t) {
+
+                        }
+                    });
+                    // Lịch sử đóng tiền phòng
+                    ApiQH.apiQH.getHistoryPay(thongTinDongTienPhong.getLichsunopphong()).enqueue(new Callback<List<LichSuDongTienModel>>() {
+                        @Override
+                        public void onResponse(Call<List<LichSuDongTienModel>> call, Response<List<LichSuDongTienModel>> response) {
+                            List<LichSuDongTienModel> lichSuDongTien = response.body();
+                            lichSuThuTienPhong.setAdapter(new LichSuNopTienAdapter(DongTien.this,lichSuDongTien) );
+                        }
+
+                        @Override
+                        public void onFailure(Call<List<LichSuDongTienModel>> call, Throwable t) {
+
+                        }
+                    });
+
+
                 }else{
-                    tenNopPhong.setTextColor(R.color.tenPhongColor);
-                    tienPhongCanTra.setTextColor(R.color.tenPhongColor);
+                    thongTinChungDongTien.setVisibility(View.GONE);
+                    dongTienPhongText.setVisibility(View.GONE);
+                    hinhThucDongTien.setVisibility(View.GONE);
+                    phaiTraTien.setText("Phòng trống");
+                    lichSuThuTienPhong.setVisibility(View.GONE);
                 }
 
-                tenNopPhong.setText(thongTinDongTienPhong.getTennopphong()+": ");
-                tienPhongCanTra.setText(thongTinDongTienPhong.getDutienphongformat()+" VNĐ");
-
-                tienCocCanTra.setText(""+thongTinDongTienPhong.getTencoc()+":"+thongTinDongTienPhong.getTiencocthuthemformat());
-                tienCocDaTra.setText("Đã cọc: "+thongTinDongTienPhong.getDacoc()+"đ");
-
-                tenchuphong.setText(thongTinDongTienPhong.getTenchuphong());
-                dienthoaichuphong.setText(thongTinDongTienPhong.getDienthoaichuphong());
-
-                soDienSuDungText.setText("Số điện: "+thongTinDongTienPhong.getSodiensudung());
-                tienDienPhaiThu.setText("Phải thu: "+thongTinDongTienPhong.getTiendiensudung()+"đ");
-                tienDienDaThu.setText("Đã thu: "+thongTinDongTienPhong.getSodienphaithu()+"đ");
-
-                soNuocSuDungText.setText("Số nước: "+thongTinDongTienPhong.getSonuocsudung());
-                tienNuocPhaiThu.setText("Phải thu: "+thongTinDongTienPhong.getTiennuocsudung()+"đ");
-                tienNuocDaThu.setText("Đã thu: "+thongTinDongTienPhong.getSonuocphaithu()+"đ");
-
-//                listThanhVienPhong.setText("+"+);
-
-                Log.d("arr","khach"+thongTinDongTienPhong.getDanhsachthanhvien());
             }
 
             @Override

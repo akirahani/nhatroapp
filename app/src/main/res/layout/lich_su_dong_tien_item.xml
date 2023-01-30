@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="3dp">
+    <RelativeLayout
+        android:layout_width="0dp"
+        android:layout_weight="2"
+        android:layout_height="wrap_content">
+        <ImageView
+            android:layout_centerVertical="true"
+            android:id="@+id/payMoney"
+            android:layout_gravity="center"
+            android:src="@drawable/pay_money"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <TextView
+            android:layout_centerVertical="true"
+            android:layout_toRightOf="@+id/payMoney"
+            android:paddingLeft="2dp"
+            android:textSize="14sp"
+            android:layout_width="wrap_content"
+            android:id="@+id/tienKhachTra"
+            android:textColor="@color/tieuDePhongDongTien"
+            android:layout_height="wrap_content" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="0dp"
+        android:layout_weight="3"
+        android:layout_height="wrap_content">
+        <ImageView
+            android:layout_centerVertical="true"
+            android:id="@+id/imgHistory"
+            android:layout_gravity="center"
+            android:src="@drawable/history_pay"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <TextView
+            android:layout_centerVertical="true"
+            android:layout_toRightOf="@+id/imgHistory"
+            android:paddingLeft="2dp"
+            android:textSize="14sp"
+            android:id="@+id/thoiGianTraTien"
+            android:layout_width="wrap_content"
+            android:textColor="@color/tieuDePhongDongTien"
+            android:layout_height="wrap_content" />
+    </RelativeLayout>
+</LinearLayout>
