@@ -5,33 +5,21 @@ import static android.content.Context.MODE_PRIVATE;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.os.Build;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.EditText;
-import android.widget.ImageView;
 
-import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.nhatro2.R;
 import com.example.nhatro2.api.ApiQH;
-import com.example.nhatro2.hop_dong.BottomSheetThanhVienChon;
-import com.example.nhatro2.hop_dong.ClickKhachAddHopDong;
-import com.example.nhatro2.hop_dong.ListKhachChonAdapter;
-import com.example.nhatro2.phong.PhongModel;
-import com.example.nhatro2.thanhvien.ThanhVienModel;
+import com.example.nhatro2.nhom.phong.PhongModel;
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
 
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
-import java.util.stream.Collectors;
 
 import retrofit2.Call;
 import retrofit2.Callback;

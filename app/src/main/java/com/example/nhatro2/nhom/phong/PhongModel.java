@@ -1,4 +1,4 @@
-package com.example.nhatro2.phong;
+package com.example.nhatro2.nhom.phong;
 
 public class PhongModel {
     private int id;

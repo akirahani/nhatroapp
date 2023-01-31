@@ -98,25 +98,26 @@
                 <FrameLayout
                     android:id="@+id/imageNuoc"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content">
-                    ></FrameLayout>
-
-                <TextView
-                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:paddingLeft="8dp"
-                    android:paddingTop="18dp"
-                    android:text="Thông tin tiền nước"
-                    android:textAllCaps="true"
-                    android:textColor="@color/textQuanLyChung"
-                    android:textSize="18dp"
-                    android:textStyle="bold" />
+                    android:layout_gravity="center">
+                </FrameLayout>
             </LinearLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:paddingLeft="8dp"
+                android:text="Thông tin tiền nước"
+                android:textAllCaps="true"
+                android:textColor="@color/textQuanLyChung"
+                android:textSize="18dp"
+                android:textStyle="bold" />
 
             <RelativeLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
+                android:layout_gravity="center"
                 android:layout_marginRight="10dp">
 
                 <ImageView
@@ -124,7 +125,7 @@
                     android:layout_width="20dp"
                     android:layout_height="20dp"
                     android:layout_alignParentEnd="true"
-                    android:src="@drawable/search"></ImageView>
+                    android:src="@drawable/search" />
             </RelativeLayout>
         </LinearLayout>
 
@@ -152,13 +153,14 @@
             android:layout_height="wrap_content"
             android:background="@color/tabActive"
             android:orientation="horizontal">
+
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@drawable/choosemonth"
+                android:layout_marginLeft="8dp"
                 android:layout_marginTop="8dp"
                 android:layout_marginBottom="8dp"
-                android:layout_marginLeft="8dp"/>
+                android:src="@drawable/choosemonth" />
 
             <TextView
                 android:id="@+id/chonThangNuoc"
@@ -219,9 +221,9 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/danhSachPhongNuoc"
-        android:layout_marginLeft="14dp"
-        android:layout_marginRight="14dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/tieuDeListNuoc" />
+        android:layout_below="@+id/tieuDeListNuoc"
+        android:layout_marginLeft="14dp"
+        android:layout_marginRight="14dp" />
 </RelativeLayout>

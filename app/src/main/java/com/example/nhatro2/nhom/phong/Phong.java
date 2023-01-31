@@ -1,11 +1,10 @@
-package com.example.nhatro2.phong;
+package com.example.nhatro2.nhom.phong;
 
 import android.annotation.SuppressLint;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
@@ -17,24 +16,14 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager2.widget.ViewPager2;
 
 import com.example.nhatro2.HomeActivity;
 import com.example.nhatro2.MainActivity;
 import com.example.nhatro2.R;
-import com.example.nhatro2.api.Api;
-import com.example.nhatro2.dich_vu.DichVu;
-import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.tabs.TabLayout;
 import com.google.android.material.tabs.TabLayoutMediator;
-
-import java.util.List;
-
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
 
 public class Phong extends AppCompatActivity {
     RecyclerView listRoom;

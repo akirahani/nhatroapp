@@ -1,9 +1,5 @@
 package com.example.nhatro2.hop_dong;
 
-import com.example.nhatro2.dich_vu.DichVuModel;
-import com.example.nhatro2.phong.PhongModel;
-import com.example.nhatro2.thanhvien.ThanhVienModel;
-
 import java.util.List;
 
 public class HopDongModel {

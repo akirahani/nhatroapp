@@ -12,9 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.nhatro2.R;
 import com.example.nhatro2.api.ApiQH;
-import com.example.nhatro2.phong.BanGiaoAdapter;
-import com.example.nhatro2.phong.BanGiaoFragment;
-import com.example.nhatro2.phong.PhongModel;
+import com.example.nhatro2.nhom.phong.BanGiaoFragment;
 
 import java.util.ArrayList;
 import java.util.List;

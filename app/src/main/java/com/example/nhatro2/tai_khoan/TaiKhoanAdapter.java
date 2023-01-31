@@ -15,7 +15,6 @@ import com.example.nhatro2.R;
 import com.example.nhatro2.nhom.Nhom;
 import com.example.nhatro2.phan_quyen.PhanQuyen;
 import com.example.nhatro2.thanhvien.ThanhVien;
-import com.example.nhatro2.trang.Trang;
 
 import java.util.List;
 
@@ -60,10 +59,10 @@ public class TaiKhoanAdapter extends RecyclerView.Adapter<TaiKhoanAdapter.TaiKho
                         Intent phanquyen = new Intent(context, PhanQuyen.class);
                         context.startActivity(phanquyen);
                         break;
-                    case "trang":
-                        Intent trang = new Intent(context, Trang.class);
-                        context.startActivity(trang);
-                        break;
+//                    case "trang":
+//                        Intent trang = new Intent(context, Trang.class);
+//                        context.startActivity(trang);
+//                        break;
                 }
 
             }

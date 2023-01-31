@@ -12,7 +12,7 @@
         android:layout_height="match_parent"
         android:background="@color/khungNgoai"
         android:orientation="vertical"
-        tools:context=".phong.Phong">
+        tools:context=".nhom.phong.Phong">
         <!--header-->
         <androidx.appcompat.widget.Toolbar xmlns:android="http://schemas.android.com/apk/res/android"
             android:id="@+id/header"
@@ -102,15 +102,16 @@
 
                 <FrameLayout
                     android:id="@+id/tieuDePhongTro"
+                    android:layout_gravity="center"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content">
                     ></FrameLayout>
 
                 <TextView
+                    android:layout_gravity="center"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:paddingLeft="8dp"
-                    android:paddingTop="18dp"
                     android:text="quản lí phòng trọ"
                     android:textAllCaps="true"
                     android:textColor="@color/textQuanLyChung"

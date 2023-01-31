@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="@color/white"
-    tools:context=".phong.PhongTrongFragment">
+    tools:context=".nhom.phong.PhongTrongFragment">
 
     <RelativeLayout
         android:id="@+id/tHeadEmptyRoom"

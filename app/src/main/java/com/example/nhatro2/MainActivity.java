@@ -25,9 +25,10 @@ import retrofit2.http.Tag;
 
 public class MainActivity extends AppCompatActivity {
     TextView btnLogin;
-    EditText username,password;
-    SharedPreferences shp ;
+    EditText username, password;
+    SharedPreferences shp;
     SharedPreferences.Editor shpEdit;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,10 +37,10 @@ public class MainActivity extends AppCompatActivity {
         btnLogin = findViewById(R.id.dangnhap);
         username = findViewById(R.id.username);
         password = findViewById(R.id.password);
-        shp = getSharedPreferences("user",MODE_PRIVATE);
+        shp = getSharedPreferences("user", MODE_PRIVATE);
 
-        int idUser = shp.getInt("idThanhVien",0);
-        if(idUser != 0){
+        int idUser = shp.getInt("idThanhVien", 0);
+        if (idUser != 0) {
             Intent intent = new Intent(MainActivity.this, HomeActivity.class);
             startActivity(intent);
             finish();
@@ -51,13 +52,12 @@ public class MainActivity extends AppCompatActivity {
                 String user = username.getText().toString();
                 String passd = password.getText().toString();
 
-                if(!user.equals("") && !passd.equals("")) {
+                if (!user.equals("") && !passd.equals("")) {
                     ApiQH.apiQH.postLogin(user, passd).enqueue(new Callback<ThanhVienModel>() {
                         @Override
                         public void onResponse(Call<ThanhVienModel> call, Response<ThanhVienModel> response) {
                             ThanhVienModel thanhvien = response.body();
-                            if(thanhvien.getId() > 0)
-                            {
+                            if (thanhvien.getId() > 0) {
                                 shpEdit = shp.edit();
                                 shpEdit.putInt("idThanhVien", thanhvien.getId());
                                 shpEdit.putString("tenThanhVien", thanhvien.getFullname());
@@ -68,7 +68,7 @@ public class MainActivity extends AppCompatActivity {
                                 startActivity(intent);
                                 Toast.makeText(MainActivity.this, "success", Toast.LENGTH_SHORT).show();
                                 finish();
-                            }else{
+                            } else {
                                 Toast.makeText(MainActivity.this, "Lỗi đăng nhập", Toast.LENGTH_SHORT).show();
                             }
                         }
@@ -76,15 +76,10 @@ public class MainActivity extends AppCompatActivity {
                         @Override
                         public void onFailure(Call<ThanhVienModel> call, Throwable t) {
                             Toast.makeText(MainActivity.this, "failed", Toast.LENGTH_SHORT).show();
-                            Log.d("err dang nhap",""+t.toString());
                         }
-
-
                     });
                 }
             }
         });
     }
-
-
 }

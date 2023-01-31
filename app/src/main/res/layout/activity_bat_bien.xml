@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".bat_bien.BatBien">
+
     <androidx.appcompat.widget.Toolbar xmlns:android="http://schemas.android.com/apk/res/android"
         android:id="@+id/header"
         android:layout_width="match_parent"
@@ -97,41 +98,36 @@
                 <FrameLayout
                     android:id="@+id/imageBatBien"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content">
-                    ></FrameLayout>
-
-                <TextView
-                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:paddingLeft="8dp"
-                    android:paddingTop="18dp"
-                    android:text="Chi phí bất biến"
-                    android:textAllCaps="true"
-                    android:textColor="@color/textQuanLyChung"
-                    android:textSize="18dp"
-                    android:textStyle="bold" />
+                    android:layout_gravity="center" />
             </LinearLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:paddingLeft="8dp"
+                android:text="Chi phí bất biến"
+                android:textAllCaps="true"
+                android:textColor="@color/textQuanLyChung"
+                android:textSize="18dp"
+                android:textStyle="bold" />
 
             <RelativeLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
+                android:layout_gravity="center"
                 android:layout_marginRight="10dp">
 
                 <ImageView
                     android:id="@+id/addBatBien"
                     android:layout_width="18dp"
                     android:layout_height="18dp"
-                    android:layout_marginRight="5dp"
-                    android:layout_toLeftOf="@+id/searchBatBien"
-                    android:src="@drawable/them"></ImageView>
-
-                <ImageView
-                    android:id="@+id/searchBatBien"
-                    android:layout_width="20dp"
-                    android:layout_height="20dp"
                     android:layout_alignParentRight="true"
-                    android:src="@drawable/search" />
+                    android:layout_gravity="center"
+                    android:layout_marginRight="5dp"
+                    android:src="@drawable/them" />
+
             </RelativeLayout>
         </LinearLayout>
 
@@ -159,13 +155,14 @@
             android:layout_height="wrap_content"
             android:background="@color/tabActive"
             android:orientation="horizontal">
+
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@drawable/choosemonth"
+                android:layout_marginLeft="8dp"
                 android:layout_marginTop="8dp"
                 android:layout_marginBottom="8dp"
-                android:layout_marginLeft="8dp"/>
+                android:src="@drawable/choosemonth" />
 
             <TextView
                 android:id="@+id/chonThangBatBien"
@@ -183,10 +180,10 @@
         android:id="@+id/tieuDeListBatBien"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginRight="14dp"
-        android:layout_marginLeft="14dp"
         android:layout_below="@+id/cardMonthBatBien"
+        android:layout_marginLeft="14dp"
         android:layout_marginTop="12dp"
+        android:layout_marginRight="14dp"
         android:layout_marginBottom="9dp">
 
         <TextView

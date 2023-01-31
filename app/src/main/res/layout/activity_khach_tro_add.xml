@@ -94,6 +94,7 @@
 
             <FrameLayout
                 android:id="@+id/imageCustomerAdd"
+                android:layout_gravity="center"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"></FrameLayout>
 
@@ -101,8 +102,8 @@
                 android:id="@+id/textDichVuAdd"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center"
                 android:paddingLeft="8dp"
-                android:paddingTop="18dp"
                 android:text="quản lí khách trọ"
                 android:textAllCaps="true"
                 android:textColor="@color/textQuanLyChung"

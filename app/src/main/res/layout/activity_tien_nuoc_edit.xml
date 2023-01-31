@@ -98,22 +98,21 @@
 
                 <FrameLayout
                     android:id="@+id/imageNuoc"
+                    android:layout_gravity="center"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content">
-                    ></FrameLayout>
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:paddingLeft="8dp"
-                    android:paddingTop="18dp"
-                    android:text="Thông tin tiền nước"
-                    android:textAllCaps="true"
-                    android:textColor="@color/textQuanLyChung"
-                    android:textSize="18dp"
-                    android:textStyle="bold" />
+                </FrameLayout>
             </LinearLayout>
-
+            <TextView
+                android:layout_gravity="center"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingLeft="8dp"
+                android:text="Thông tin tiền nước"
+                android:textAllCaps="true"
+                android:textColor="@color/textQuanLyChung"
+                android:textSize="18dp"
+                android:textStyle="bold" />
         </LinearLayout>
 
         <TextView

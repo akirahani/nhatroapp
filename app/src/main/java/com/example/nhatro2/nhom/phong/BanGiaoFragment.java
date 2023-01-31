@@ -1,19 +1,16 @@
-package com.example.nhatro2.phong;
+package com.example.nhatro2.nhom.phong;
 
-import android.content.Context;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.nhatro2.R;
-import com.example.nhatro2.api.Api;
 import com.example.nhatro2.api.ApiQH;
 
 import java.util.ArrayList;

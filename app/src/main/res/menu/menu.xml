@@ -8,8 +8,8 @@
     </item>
     <item
         android:id="@+id/menualert"
-        android:title="Thông báo"
-        android:icon="@drawable/alert_bottom"
+        android:title="Danh mục"
+        android:icon="@drawable/bar"
         >
     </item>
     <item

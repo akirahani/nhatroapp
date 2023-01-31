@@ -1,4 +1,4 @@
-package com.example.nhatro2.phong;
+package com.example.nhatro2.nhom.phong;
 
 import android.content.Context;
 import android.view.LayoutInflater;
