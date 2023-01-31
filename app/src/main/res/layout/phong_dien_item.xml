@@ -23,6 +23,7 @@
         <EditText
             android:id="@+id/soDauDien"
             android:layout_width="0dp"
+            android:textSize="14sp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:gravity="center"
@@ -33,6 +34,7 @@
         <EditText
             android:id="@+id/soCuoiDien"
             android:layout_width="0dp"
+            android:textSize="14sp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:gravity="center"

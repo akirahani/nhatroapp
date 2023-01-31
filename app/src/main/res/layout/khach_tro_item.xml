@@ -17,26 +17,28 @@
         android:padding="16dp">
 
         <TextView
-            android:gravity="left"
             android:id="@+id/tenKhach"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_alignParentStart="true"
             android:layout_weight="1"
+            android:gravity="left"
             android:textColor="@color/black" />
 
         <TextView
-            android:gravity="center"
             android:id="@+id/sdtKhach"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:gravity="center"
             android:textColor="@color/black" />
+
         <LinearLayout
             android:layout_width="0dp"
+            android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:gravity="right"
-            android:layout_height="wrap_content">
+            android:gravity="right">
+
             <ImageView
                 android:id="@+id/suaKhachThue"
                 android:layout_width="wrap_content"
@@ -44,7 +46,8 @@
                 android:layout_marginRight="14dp"
                 android:layout_toRightOf="@+id/giaDichVu"
                 android:background="@drawable/sua" />
+        </LinearLayout>
     </LinearLayout>
-</LinearLayout></androidx.cardview.widget.CardView>
+</androidx.cardview.widget.CardView>
 
 

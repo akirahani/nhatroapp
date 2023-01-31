@@ -243,7 +243,7 @@ public class HopDongAdd extends AppCompatActivity {
         String listKhachChooseString = shpKhach.getString("idKhachChon", "");
 
         //
-        Api.api.addKhachHopDong(listKhachChooseString).enqueue(new Callback<List<ListKhachChonModel>>() {
+        ApiQH.apiQH.addKhachHopDong(listKhachChooseString).enqueue(new Callback<List<ListKhachChonModel>>() {
             @Override
             public void onResponse(Call<List<ListKhachChonModel>> call, Response<List<ListKhachChonModel>> response) {
                 List<ListKhachChonModel> listKhachArr = response.body();
