@@ -3,8 +3,16 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/nhatro/app/src/main/res/drawable/bg_all_search_customer.xml" value="0.1" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/nhatro/app/src/main/res/drawable/bg_info_user.xml" value="0.1" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/nhatro/app/src/main/res/drawable/border_bottom_user.xml" value="0.142" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/nhatro/app/src/main/res/drawable/ic_changepassd.xml" value="0.1" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/nhatro/app/src/main/res/drawable/ic_logout.xml" value="0.1" />
         <entry key="..\:/Users/Admin/AndroidStudioProjects/nhatro/app/src/main/res/drawable/ic_phonekhach.xml" value="0.157" />
         <entry key="..\:/Users/Admin/AndroidStudioProjects/nhatro/app/src/main/res/drawable/ic_user.xml" value="0.1" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/nhatro/app/src/main/res/drawable/ic_userinfo.xml" value="0.1" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/nhatro/app/src/main/res/drawable/sua.xml" value="0.1" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/nhatro/app/src/main/res/drawable/xoa.xml" value="0.1" />
         <entry key="..\:/Users/Admin/AndroidStudioProjects/nhatro/app/src/main/res/layout/activity_bat_bien.xml" value="0.23854166666666668" />
         <entry key="..\:/Users/Admin/AndroidStudioProjects/nhatro/app/src/main/res/layout/activity_dong_tien.xml" value="0.1" />
         <entry key="..\:/Users/Admin/AndroidStudioProjects/nhatro/app/src/main/res/layout/activity_hop_dong.xml" value="0.23854166666666668" />
@@ -41,7 +49,7 @@
         <entry key="..\:/Users/Admin/AndroidStudioProjects/nhatro/app/src/main/res/layout/layout_dialog_them_phi_kha_bien.xml" value="0.253125" />
         <entry key="..\:/Users/Admin/AndroidStudioProjects/nhatro/app/src/main/res/layout/menu_fragment.xml" value="0.2115036231884058" />
         <entry key="..\:/Users/Admin/AndroidStudioProjects/nhatro/app/src/main/res/layout/multi_room.xml" value="0.14635416666666667" />
-        <entry key="..\:/Users/Admin/AndroidStudioProjects/nhatro/app/src/main/res/layout/notification_fragment.xml" value="0.2" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/nhatro/app/src/main/res/layout/notification_fragment.xml" value="0.1" />
         <entry key="..\:/Users/Admin/AndroidStudioProjects/nhatro/app/src/main/res/layout/phong_dien_item.xml" value="0.1956521739130435" />
         <entry key="..\:/Users/Admin/AndroidStudioProjects/nhatro/app/src/main/res/layout/phong_item.xml" value="0.22644927536231885" />
         <entry key="..\:/Users/Admin/AndroidStudioProjects/nhatro/app/src/main/res/layout/phong_nuoc_item.xml" value="0.1956521739130435" />
