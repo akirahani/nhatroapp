@@ -55,7 +55,7 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class BatBien extends AppCompatActivity {
-    ImageView thoat, logo, addBatBien, searchBatBien;
+    ImageView thoat, logo, addBatBien;
     SharedPreferences shp;
     RecyclerView listBatBien;
     List<BatBienModel> listBatBienGet = new ArrayList<>();
@@ -181,7 +181,6 @@ public class BatBien extends AppCompatActivity {
         });
 
         addBatBien = findViewById(R.id.addBatBien);
-        searchBatBien = findViewById(R.id.searchBatBien);
 
         addBatBien.setOnClickListener(new View.OnClickListener() {
             @Override

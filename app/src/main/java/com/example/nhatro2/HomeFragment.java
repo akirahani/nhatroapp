@@ -12,41 +12,27 @@ import android.os.Bundle;
 import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
-import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Adapter;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.Toolbar;
 
-import com.example.nhatro2.api.Api;
 import com.example.nhatro2.bat_bien.BatBien;
 import com.example.nhatro2.kha_bien.KhaBien;
-import com.example.nhatro2.phong.PhongAdapter;
-import com.example.nhatro2.phong.PhongModel;
 import com.example.nhatro2.quanlychung.ChungAdapter;
 import com.example.nhatro2.quanlychung.ChungModel;
-import com.example.nhatro2.tai_khoan.TaiKhoanAdapter;
 import com.example.nhatro2.tai_khoan.TaiKhoanModel;
-import com.example.nhatro2.thanhvien.ThanhVienAdapter;
-import com.example.nhatro2.thanhvien.ThanhVienModel;
 import com.example.nhatro2.tien_dien.TienDien;
 import com.example.nhatro2.tien_nuoc.TienNuoc;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
-import retrofit2.http.Tag;
 
 public class HomeFragment extends Fragment {
     List<ChungModel> chung = new ArrayList<>();

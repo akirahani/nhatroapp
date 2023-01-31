@@ -1,34 +1,23 @@
-package com.example.nhatro2.phong;
+package com.example.nhatro2.nhom.phong;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
-import android.transition.Slide;
-import android.transition.Transition;
-import android.transition.TransitionManager;
 import android.util.Log;
-import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.animation.TranslateAnimation;
 import android.widget.CheckBox;
-import android.widget.CompoundButton;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.nhatro2.R;
-import com.example.nhatro2.api.Api;
 import com.example.nhatro2.api.ApiQH;
-import com.example.nhatro2.hop_dong.HopDongAdd;
-import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -38,7 +27,6 @@ import java.util.stream.Collectors;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
-import retrofit2.http.POST;
 
 public class PhongAdapter extends RecyclerView.Adapter<PhongAdapter.PhongViewHolder> {
 

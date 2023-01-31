@@ -1,73 +1,74 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.core.widget.NestedScrollView
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/khungNgoai">
+
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
         tools:context=".dich_vu.DichVu">
-        <androidx.appcompat.widget.Toolbar
+
+        <androidx.appcompat.widget.Toolbar xmlns:android="http://schemas.android.com/apk/res/android"
             android:id="@+id/header"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@drawable/gradient_header"
-            xmlns:android="http://schemas.android.com/apk/res/android">
+            android:background="@drawable/gradient_header">
+
             <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                >
+                android:layout_height="wrap_content">
+
                 <LinearLayout
                     android:id="@+id/rightToolbar"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentLeft="true"
-                    android:layout_centerVertical="true"
-                    >
+                    android:layout_centerVertical="true">
+
                     <ImageView
-                        android:backgroundTint="@color/white"
+                        android:id="@+id/thoat"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:background="@drawable/ic_back"
-                        android:id="@+id/thoat">
-                    </ImageView>
+                        android:backgroundTint="@color/white"></ImageView>
+
                     <TextView
-                        android:textColor="@color/white"
-                        android:layout_toRightOf="@+id/thoat"
+                        android:id="@+id/ten"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:id="@+id/ten"
+                        android:layout_toRightOf="@+id/thoat"
+                        android:paddingLeft="5dp"
                         android:text="Thoát"
-                        android:paddingLeft="5dp">
-                    </TextView>
+                        android:textColor="@color/white"></TextView>
                 </LinearLayout>
+
                 <LinearLayout
                     android:id="@+id/centerToolbar"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_centerVertical="true"
                     android:layout_centerInParent="true"
+                    android:layout_centerVertical="true"
                     android:paddingRight="10dp">
                     >
+
                     <ImageView
                         android:id="@+id/logo"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:background="@drawable/ic_logo"
-                        android:backgroundTint="@color/white"
-                        />
+                        android:backgroundTint="@color/white" />
                 </LinearLayout>
 
                 <LinearLayout
                     android:id="@+id/leftToolbar"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_centerVertical="true"
-                    android:layout_alignParentRight="true">
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true">
                     >
 
                     <ImageView
@@ -83,138 +84,136 @@
         <!-- Tiêu đề dịch vụ  -->
         <RelativeLayout
             android:id="@+id/tieuDeDichVu"
-            android:layout_below="@+id/header"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/white"
-            android:gravity="center"
-            >
+            android:layout_below="@+id/header"
+            android:background="@color/white">
 
             <LinearLayout
                 android:id="@+id/rowTitleService"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_alignParentBottom="true"
-                android:elevation="20dp"
-                android:layout_centerHorizontal="true">
+                android:elevation="20dp">
 
                 <FrameLayout
                     android:id="@+id/imageDichVu"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    />
+                    android:layout_gravity="center" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_gravity="center"
                     android:paddingLeft="8dp"
-                    android:paddingTop="15dp"
                     android:text="quản lí dịch vụ nhà trọ"
                     android:textAllCaps="true"
-                    android:gravity="center"
                     android:textColor="@color/textQuanLyChung"
                     android:textSize="18dp"
                     android:textStyle="bold" />
             </LinearLayout>
+
             <TextView
-                android:layout_below="@id/rowTitleService"
                 android:layout_width="match_parent"
                 android:layout_height="20dp"
-                android:background="@color/khungNgoai"
+                android:layout_below="@id/rowTitleService"
                 android:layout_marginTop="-10dp"
-                >
-            </TextView>
+                android:background="@color/khungNgoai" />
         </RelativeLayout>
 
         <!-- mục thiết bị   -->
         <RelativeLayout
             android:id="@+id/tieuDeThietBi"
-            android:layout_marginTop="9dp"
-            android:layout_below="@+id/tieuDeDichVu"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tieuDeDichVu"
+            android:layout_marginTop="9dp">
+
             <ImageView
                 android:id="@+id/khoanthu"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="@drawable/demuc" />
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:fontFamily="sans-serif-black"
+                android:gravity="center"
+                android:lineHeight="19dp"
+                android:paddingLeft="14dp"
+                android:paddingTop="3dp"
+                android:paddingBottom="6dp"
                 android:text="Thiết bị"
                 android:textAllCaps="true"
-                android:paddingTop="3dp"
-                android:paddingLeft="14dp"
-                android:paddingBottom="6dp"
-                android:gravity="center"
                 android:textColor="@color/white"
-                android:fontFamily="sans-serif-black"
-                android:textSize="16dp"
-                android:lineHeight="19dp" />
+                android:textSize="16dp" />
         </RelativeLayout>
         <!-- danh sách thiết bị -->
         <LinearLayout
             android:id="@+id/listService"
-            android:layout_below="@+id/tieuDeThietBi"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:background="@color/white">
+            android:layout_below="@+id/tieuDeThietBi"
+            android:background="@color/white"
+            android:orientation="vertical">
+
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="12dp"
                 android:layout_marginLeft="25dp"
+                android:layout_marginTop="12dp"
                 android:layout_marginRight="25dp">
-                <TextView
-                    android:id="@+id/tieuDeTenThietBi"
-                    android:text="Tên"
-                    android:textColor="@color/black"
-                    android:textStyle="bold"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content">
-                </TextView>
-                <TextView
-                    android:layout_centerHorizontal="true"
-                    android:id="@+id/tieuDeGiaThietBi"
-                    android:text="Giá"
-                    android:textColor="@color/black"
-                    android:textStyle="bold"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content">
-                </TextView>
 
                 <TextView
-                    android:layout_alignParentRight="true"
+                    android:id="@+id/tieuDeTenThietBi"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Tên"
+                    android:textColor="@color/black"
+                    android:textStyle="bold"></TextView>
+
+                <TextView
+                    android:id="@+id/tieuDeGiaThietBi"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:text="Giá"
+                    android:textColor="@color/black"
+                    android:textStyle="bold"></TextView>
+
+                <TextView
                     android:id="@+id/tacVuThietBi"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
                     android:paddingRight="10dp"
                     android:text="Tác vụ"
                     android:textColor="@color/black"
-                    android:textStyle="bold"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content">
-                </TextView>
+                    android:textStyle="bold"></TextView>
             </RelativeLayout>
+
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/listThietBi"
-                android:layout_marginTop="4dp"
-                android:layout_below="@+id/tieuDeThietBi"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tieuDeThietBi"
+                android:layout_marginTop="4dp">
 
             </androidx.recyclerview.widget.RecyclerView>
-        <ImageView
-            android:layout_below="@+id/listThietBi"
-            android:id="@+id/themDichVu"
-            android:layout_gravity="center"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="12dp"
-            android:layout_marginBottom="14dp"
-            android:layout_centerHorizontal="true"
-            android:background="@drawable/them">
 
-        </ImageView>
+            <ImageView
+                android:id="@+id/themDichVu"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/listThietBi"
+                android:layout_centerHorizontal="true"
+                android:layout_gravity="center"
+                android:layout_marginTop="12dp"
+                android:layout_marginBottom="14dp"
+                android:background="@drawable/them">
+
+            </ImageView>
         </LinearLayout>
     </RelativeLayout>
 </androidx.core.widget.NestedScrollView>

@@ -92,15 +92,16 @@
 
             <FrameLayout
                 android:id="@+id/imageHopDongDetail"
+                android:layout_gravity="center"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
 
             <TextView
                 android:id="@+id/textDichVuAdd"
+                android:layout_gravity="center"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:paddingLeft="8dp"
-                android:paddingTop="18dp"
                 android:text="quản lí hợp đồng nhà trọ"
                 android:textAllCaps="true"
                 android:textColor="@color/textQuanLyChung"

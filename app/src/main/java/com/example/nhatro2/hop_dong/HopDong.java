@@ -3,7 +3,6 @@ package com.example.nhatro2.hop_dong;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager2.widget.ViewPager2;
 
 import android.annotation.SuppressLint;
@@ -20,13 +19,8 @@ import android.widget.Toast;
 import com.example.nhatro2.HomeActivity;
 import com.example.nhatro2.MainActivity;
 import com.example.nhatro2.R;
-import com.example.nhatro2.dich_vu.DichVuModel;
-import com.example.nhatro2.phong.Phong;
-import com.example.nhatro2.phong.TabPhongAdapter;
 import com.google.android.material.tabs.TabLayout;
 import com.google.android.material.tabs.TabLayoutMediator;
-
-import java.util.List;
 
 public class HopDong extends AppCompatActivity {
     ImageView thoat, logo, themNguoiThue;

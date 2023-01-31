@@ -55,7 +55,7 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class KhaBien extends AppCompatActivity {
-    ImageView thoat, logo, addKhaBien, searchKhaBien;
+    ImageView thoat, logo, addKhaBien;
     SharedPreferences shp;
     RecyclerView listKhaBien;
     List<KhaBienModel> listKhaBienGet = new ArrayList<>();
@@ -180,7 +180,6 @@ public class KhaBien extends AppCompatActivity {
         });
 
         addKhaBien = findViewById(R.id.addKhaBien);
-        searchKhaBien = findViewById(R.id.searchKhaBien);
 
         addKhaBien.setOnClickListener(new View.OnClickListener() {
             @Override

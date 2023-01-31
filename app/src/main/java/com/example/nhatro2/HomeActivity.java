@@ -1,41 +1,18 @@
 package com.example.nhatro2;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
-import android.content.DialogInterface;
-import android.content.Intent;
 import android.content.SharedPreferences;
-import android.graphics.Color;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.ImageView;
-import android.widget.Toast;
 
-import com.example.nhatro2.api.Api;
-
-import java.util.List;
-
-import retrofit2.Callback;
-
-import com.example.nhatro2.phong.PhongAdapter;
-import com.example.nhatro2.phong.PhongModel;
-import com.example.nhatro2.thanhvien.ThanhVienModel;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
-
-import retrofit2.Call;
-import retrofit2.Response;
 
 public class HomeActivity extends AppCompatActivity {
     BottomNavigationView navigation;

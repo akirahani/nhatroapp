@@ -6,6 +6,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.annotation.SuppressLint;
+import android.app.Activity;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -47,7 +48,7 @@ public class DongTien extends AppCompatActivity {
     TextView nameRoomSearch, tienPhongCanTra, tenNopPhong, tienCocDaTra, tienCocCanTra, tenchuphong,dienthoaichuphong, soDienSuDungText, soNuocSuDungText, tienNuocPhaiThu, tienNuocDaThu, tienDienPhaiThu, tienDienDaThu, phaiTraTien ;
     RecyclerView listThietBiSuDung, listThanhVienPhong, lichSuThuTienPhong;
     SharedPreferences.Editor shpKhachEdit;
-    LinearLayout thongTinChungDongTien, dongTienPhongText;
+    LinearLayout thongTinChungDongTien, dongTienPhongText, khungLichSuDongTien;
     RadioGroup hinhThucDongTien;
     EditText tienThanhToanText;
     ImageView thanhToanTienButton;
@@ -160,6 +161,7 @@ public class DongTien extends AppCompatActivity {
 
         phaiTraTien = findViewById(R.id.soTienPhaiTra);
         lichSuThuTienPhong = findViewById(R.id.lichSuThuTienPhong);
+        khungLichSuDongTien = findViewById(R.id.khungLichSuDongTien);
 
         thanhToanTienButton = findViewById(R.id.thanhToanTienButton);
         tienThanhToanText = findViewById(R.id.tienThanhToanText);
@@ -171,6 +173,9 @@ public class DongTien extends AppCompatActivity {
                 ChonPhongModel thongTinDongTienPhong = response.body();
                 int idChuPhong = thongTinDongTienPhong.getIdchuphong();
 
+                Log.d("chu phong",""+thongTinDongTienPhong.getIdchuphong());
+                Log.d("phong",""+thongTinDongTienPhong.getPhong());
+                Log.d("tien tong tru coc",""+thongTinDongTienPhong.getTongthuformat());
                 if(idChuPhong != 0){
                     if(thongTinDongTienPhong.getDutienphong() < 0){
                         tenNopPhong.setTextColor(R.color.tabThue);
@@ -201,6 +206,9 @@ public class DongTien extends AppCompatActivity {
                                     @Override
                                     public void onResponse(Call<ChonPhongModel> call, Response<ChonPhongModel> response) {
                                         ChonPhongModel tienSauDong = response.body();
+                                        Intent intent = new Intent(DongTien.this,DongTien.class);
+                                        startActivity(intent);
+                                        finish();
                                         Log.d("dong tien thanh cong",""+tienSauDong.getTongthuformat());
                                     }
 
@@ -289,7 +297,7 @@ public class DongTien extends AppCompatActivity {
                     dongTienPhongText.setVisibility(View.GONE);
                     hinhThucDongTien.setVisibility(View.GONE);
                     phaiTraTien.setText("Phòng trống");
-                    lichSuThuTienPhong.setVisibility(View.GONE);
+                    khungLichSuDongTien.setVisibility(View.GONE);
                 }
 
             }
