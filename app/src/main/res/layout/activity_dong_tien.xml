@@ -232,7 +232,7 @@
                                 />
 
                             <ImageView
-                                android:id="@+id/themNguoiThue"
+                                android:id="@+id/thanhToanTienButton"
                                 android:layout_width="0dp"
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
@@ -365,8 +365,7 @@
                                 android:layout_height="wrap_content"
                                 android:paddingLeft="15dp"
                                 android:paddingTop="10dp"
-                                android:textColor="@color/phaiTraTien"
-                                android:textSize="14sp"
+                                android:textColor="@color/tieuDePhongDongTien"                                android:textSize="14sp"
                                 android:textStyle="bold" />
 
                             <TextView
@@ -375,7 +374,7 @@
                                 android:layout_height="wrap_content"
                                 android:paddingLeft="15dp"
                                 android:paddingTop="10dp"
-                                android:textColor="@color/tenPhongColor"
+                                android:textColor="@color/tieuDePhongDongTien"
                                 android:textSize="14sp"
                                 android:textStyle="bold" />
                         </LinearLayout>
@@ -589,8 +588,7 @@
                                 android:layout_height="wrap_content"
                                 android:paddingLeft="15dp"
                                 android:paddingTop="10dp"
-                                android:textColor="@color/phaiTraTien"
-                                android:textSize="14sp"
+                                android:textColor="@color/tieuDePhongDongTien"                                android:textSize="14sp"
                                 android:textStyle="bold" />
                             <TextView
                                 android:id="@+id/tienDienDaThu"
@@ -598,8 +596,7 @@
                                 android:layout_height="wrap_content"
                                 android:paddingLeft="15dp"
                                 android:paddingTop="10dp"
-                                android:textColor="@color/tenPhongColor"
-                                android:textSize="14sp"
+                                android:textColor="@color/tieuDePhongDongTien"                                android:textSize="14sp"
                                 android:textStyle="bold" />
                         </LinearLayout>
                     </androidx.cardview.widget.CardView>
@@ -652,8 +649,7 @@
                                 android:layout_height="wrap_content"
                                 android:paddingLeft="15dp"
                                 android:paddingTop="10dp"
-                                android:textColor="@color/tabThue"
-                                android:textSize="14sp"
+                                android:textColor="@color/tieuDePhongDongTien"                                android:textSize="14sp"
                                 android:textStyle="bold" />
                             <TextView
                                 android:id="@+id/tienNuocDaThu"
@@ -661,7 +657,7 @@
                                 android:layout_height="wrap_content"
                                 android:paddingLeft="15dp"
                                 android:paddingTop="10dp"
-                                android:textColor="@color/tenPhongColor"
+                                android:textColor="@color/tieuDePhongDongTien"
                                 android:textSize="14sp"
                                 android:textStyle="bold" />
                         </LinearLayout>

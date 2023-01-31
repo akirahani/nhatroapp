@@ -12,9 +12,11 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -47,6 +49,10 @@ public class DongTien extends AppCompatActivity {
     SharedPreferences.Editor shpKhachEdit;
     LinearLayout thongTinChungDongTien, dongTienPhongText;
     RadioGroup hinhThucDongTien;
+    EditText tienThanhToanText;
+    ImageView thanhToanTienButton;
+    RadioButton tienMatDongTien,chuyenKhoanDongTien;
+    int phuongThucThanhToan;
     @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -155,13 +161,17 @@ public class DongTien extends AppCompatActivity {
         phaiTraTien = findViewById(R.id.soTienPhaiTra);
         lichSuThuTienPhong = findViewById(R.id.lichSuThuTienPhong);
 
+        thanhToanTienButton = findViewById(R.id.thanhToanTienButton);
+        tienThanhToanText = findViewById(R.id.tienThanhToanText);
+
         ApiQH.apiQH.getTienDongList(maPhongChon).enqueue(new Callback<ChonPhongModel>() {
             @SuppressLint("ResourceAsColor")
             @Override
             public void onResponse(Call<ChonPhongModel> call, Response<ChonPhongModel> response) {
                 ChonPhongModel thongTinDongTienPhong = response.body();
+                int idChuPhong = thongTinDongTienPhong.getIdchuphong();
 
-                if(thongTinDongTienPhong.getIdchuphong() != 0){
+                if(idChuPhong != 0){
                     if(thongTinDongTienPhong.getDutienphong() < 0){
                         tenNopPhong.setTextColor(R.color.tabThue);
                         tienPhongCanTra.setTextColor(R.color.tabThue);
@@ -169,6 +179,39 @@ public class DongTien extends AppCompatActivity {
                         tenNopPhong.setTextColor(R.color.tenPhongColor);
                         tienPhongCanTra.setTextColor(R.color.tenPhongColor);
                     }
+
+                    thanhToanTienButton.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            String tienThanhToan =  tienThanhToanText.getText().toString();
+                            shp = view.getContext().getSharedPreferences("user", MODE_PRIVATE);
+                            int khuTroId = shp.getInt("idThanhVien",0);
+                            tienMatDongTien = findViewById(R.id.tienMatDongTien);
+                            chuyenKhoanDongTien = findViewById(R.id.chuyenKhoanDongTien);
+                            if(tienMatDongTien.isChecked()){
+                                phuongThucThanhToan = 1;
+                            }else if(chuyenKhoanDongTien.isChecked()){
+                                phuongThucThanhToan = 2;
+                            }
+
+                            if(tienThanhToan.equals("")){
+                                Toast.makeText(getApplicationContext(),"Vui lòng nhập số tiền thanh toán !",Toast.LENGTH_SHORT).show();
+                            }else{
+                                ApiQH.apiQH.postMoney(khuTroId,idChuPhong,tenPhong,phuongThucThanhToan,tienThanhToan).enqueue(new Callback<ChonPhongModel>() {
+                                    @Override
+                                    public void onResponse(Call<ChonPhongModel> call, Response<ChonPhongModel> response) {
+                                        ChonPhongModel tienSauDong = response.body();
+                                        Log.d("dong tien thanh cong",""+tienSauDong.getTongthuformat());
+                                    }
+
+                                    @Override
+                                    public void onFailure(Call<ChonPhongModel> call, Throwable t) {
+                                        Log.d("Err dong tien",""+t.toString());
+                                    }
+                                });
+                            }
+                        }
+                    });
 
                     tenNopPhong.setText(thongTinDongTienPhong.getTennopphong()+": ");
                     tienPhongCanTra.setText(thongTinDongTienPhong.getDutienphongformat()+"đ");
@@ -256,7 +299,6 @@ public class DongTien extends AppCompatActivity {
                 Log.d("errRoom","Loi info phong"+t.toString());
             }
         });
-
 
     }
 }
