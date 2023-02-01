@@ -1,9 +1,10 @@
-package com.example.nhatro2.nhom.phong;
+package com.example.nhatro2.phong;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,6 +16,8 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.nhatro2.R;
 import com.example.nhatro2.hop_dong.HopDongAdd;
+import com.example.nhatro2.phong.PhongEdit;
+import com.example.nhatro2.phong.PhongModel;
 
 import java.util.List;
 
@@ -60,7 +63,7 @@ public class BanGiaoAdapter extends RecyclerView.Adapter<BanGiaoAdapter.BanGiaoV
         tacVuBanGiao.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(context.getApplicationContext(),PhongEdit.class);
+                Intent intent = new Intent(context.getApplicationContext(), PhongEdit.class);
                 intent.putExtra("idPhong",idPhong);
                 intent.putExtra("tenPhong",ten);
                 intent.putExtra("day",khu);

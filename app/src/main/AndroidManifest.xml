@@ -77,7 +77,7 @@
                 android:value="" />
         </activity>
         <activity
-            android:name=".nhom.phong.MultiRoom"
+            android:name=".phong.MultiRoom"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
@@ -151,8 +151,9 @@
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
+
         <activity
-            android:name=".trang.Trang"
+            android:name=".phong.Phong"
             android:exported="false"
             android:screenOrientation="portrait"
             tools:ignore="LockedOrientationActivity">
@@ -161,16 +162,7 @@
                 android:value="" />
         </activity>
         <activity
-            android:name=".nhom.phong.Phong"
-            android:exported="false"
-            android:screenOrientation="portrait"
-            tools:ignore="LockedOrientationActivity">
-            <meta-data
-                android:name="android.app.lib_name"
-                android:value="" />
-        </activity>
-        <activity
-            android:name=".nhom.phong.PhongEdit"
+            android:name=".phong.PhongEdit"
             android:exported="false"
             android:screenOrientation="portrait"
             tools:ignore="LockedOrientationActivity">

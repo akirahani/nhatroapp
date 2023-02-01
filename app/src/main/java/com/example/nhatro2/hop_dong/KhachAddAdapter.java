@@ -35,7 +35,7 @@ public class KhachAddAdapter extends RecyclerView.Adapter<KhachAddAdapter.KhachT
     @NonNull
     @Override
     public KhachAddAdapter.KhachTroAddViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(context).inflate(R.layout.khach_hop_dong_add_item,parent,false);
+        View view = LayoutInflater.from(context).inflate(R.layout.khach_hop_dong_add_item, parent, false);
         return new KhachTroAddViewHolder(view);
     }
 
@@ -59,13 +59,12 @@ public class KhachAddAdapter extends RecyclerView.Adapter<KhachAddAdapter.KhachT
 
         position++;
 
-        SharedPreferences shpKhachThem = context.getSharedPreferences("thongTinKhach",Context.MODE_PRIVATE);
+        SharedPreferences shpKhachThem = context.getSharedPreferences("thongTinKhach", Context.MODE_PRIVATE);
         SharedPreferences.Editor khachEdit = shpKhachThem.edit();
         String tenKhachLuu = shpKhachThem.getString("itemTenKhach", "");
         String sdtKhachLuu = shpKhachThem.getString("itemDienThoai", "");
 
         List<String> thanhVienPhong = new ArrayList<>();
-
 
 //            tenKhachText = findViewById(R.id.tenKhachAdd);
 //            sdtKhachText = findViewById(R.id.sdtKhachAdd);
@@ -79,26 +78,20 @@ public class KhachAddAdapter extends RecyclerView.Adapter<KhachAddAdapter.KhachT
 //
 //            khachEdit.putString("itemTenKhach",convertStringTenKhach);
 //            khachEdit.commit();
-//
-//
+
 //            Log.d("tenKhach1",""+convertStringTenKhach);
 
 
-
-
-        if(position<=khachTro.size()-1){
+        if (position <= khachTro.size() - 1) {
             holder.tenKhachAdd.setText(khachTro.get(position).getFullname());
-            holder.canCuocKhachAdd.setText(khachTro.get(position).getCancuoc());
-            holder.ngayCapKhachAdd.setText(khachTro.get(position).getNgaycap());
-            holder.ngaySinhHopDongAddText.setText(khachTro.get(position).getNgaysinh());
+//            holder.canCuocKhachAdd.setText(khachTro.get(position).getCancuoc());
+//            holder.ngayCapKhachAdd.setText(khachTro.get(position).getNgaycap());
+//            holder.ngaySinhHopDongAddText.setText(khachTro.get(position).getNgaysinh());
             holder.sdtKhachAdd.setText(khachTro.get(position).getDienthoai());
-            holder.noiCapKhachAdd.setText(khachTro.get(position).getNoicap());
+//            holder.noiCapKhachAdd.setText(khachTro.get(position).getNoicap());
 
         }
-
-
-
-        holder.thuTuKhachTro.setText("Khách trọ "+position);
+        holder.thuTuKhachTro.setText("Khách trọ " + position);
 
     }
 
@@ -109,7 +102,8 @@ public class KhachAddAdapter extends RecyclerView.Adapter<KhachAddAdapter.KhachT
 
     public class KhachTroAddViewHolder extends RecyclerView.ViewHolder {
         EditText tenKhachAdd, canCuocKhachAdd, noiCapKhachAdd, sdtKhachAdd;
-        TextView ngayCapKhachAdd,ngaySinhHopDongAddText,thuTuKhachTro;
+        TextView ngayCapKhachAdd, ngaySinhHopDongAddText, thuTuKhachTro;
+
         public KhachTroAddViewHolder(@NonNull View itemView) {
             super(itemView);
             tenKhachAdd = itemView.findViewById(R.id.tenKhachAdd);

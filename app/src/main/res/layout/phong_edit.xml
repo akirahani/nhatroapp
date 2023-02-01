@@ -6,7 +6,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
     android:background="@color/khungNgoai"
-    tools:context=".nhom.phong.PhongEdit">
+    tools:context="phong.PhongEdit">
 
     <androidx.appcompat.widget.Toolbar xmlns:android="http://schemas.android.com/apk/res/android"
         android:id="@+id/header"
@@ -256,14 +256,15 @@
                             android:paddingLeft="6dp"
                             android:text="Đặt cọc: "
                             android:textColor="@color/black"
-                            android:textStyle="bold"></TextView>
+                            android:textStyle="bold" />
 
                         <EditText
                             android:id="@+id/tienCoc"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:maxHeight="28dp"
-                            android:background="@null"></EditText>
+                            android:textSize="14sp"
+                            android:background="@null" />
                     </LinearLayout>
                 </androidx.cardview.widget.CardView>
                 <androidx.cardview.widget.CardView
@@ -289,14 +290,15 @@
                         android:paddingLeft="6dp"
                         android:text="Tiền phòng: "
                         android:textColor="@color/black"
-                        android:textStyle="bold"></TextView>
+                        android:textStyle="bold" />
 
                     <EditText
                         android:id="@+id/tienPhong"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:maxHeight="28dp"
-                        android:background="@null"></EditText>
+                        android:background="@null"
+                        android:textSize="14sp"/>
                 </LinearLayout>
                 </androidx.cardview.widget.CardView>
                 <androidx.cardview.widget.CardView
@@ -324,14 +326,15 @@
                             android:paddingLeft="6dp"
                             android:text="Người đại diện: "
                             android:textColor="@color/black"
-                            android:textStyle="bold"></TextView>
+                            android:textStyle="bold" />
 
                         <EditText
                             android:id="@+id/daiDien"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:maxHeight="28dp"
-                            android:background="@null"></EditText>
+                            android:background="@null"
+                            android:textSize="14sp"/>
                     </LinearLayout>
                 </androidx.cardview.widget.CardView>
                 <androidx.cardview.widget.CardView
@@ -357,14 +360,15 @@
                             android:paddingLeft="6dp"
                             android:text="Điện thoại: "
                             android:textColor="@color/black"
-                            android:textStyle="bold"></TextView>
+                            android:textStyle="bold" />
 
                         <EditText
                             android:id="@+id/dienThoai"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:maxHeight="28dp"
-                            android:background="@null"></EditText>
+                            android:background="@null"
+                            android:textSize="14sp"/>
                 </LinearLayout>
                 </androidx.cardview.widget.CardView>
 
@@ -389,7 +393,7 @@
                     android:text="Cập nhật"
                     android:textAllCaps="true"
                     android:textColor="@color/white"
-                    android:textStyle="bold"></TextView>
+                    android:textStyle="bold" />
             </androidx.cardview.widget.CardView>
         </LinearLayout>
 
