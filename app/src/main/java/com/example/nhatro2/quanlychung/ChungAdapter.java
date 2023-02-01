@@ -15,7 +15,7 @@ import com.example.nhatro2.R;
 import com.example.nhatro2.dich_vu.DichVu;
 import com.example.nhatro2.dong_tien.DongTien;
 import com.example.nhatro2.hop_dong.HopDong;
-import com.example.nhatro2.nhom.phong.Phong;
+import com.example.nhatro2.phong.Phong;
 import com.example.nhatro2.thanhvien.KhachTro;
 
 import java.util.List;

@@ -10,7 +10,8 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.nhatro2.R;
-import com.example.nhatro2.nhom.phong.PhongModel;
+import com.example.nhatro2.phong.PhongModel;
+import com.example.nhatro2.phong.PhongModel;
 
 import java.util.List;
 
@@ -25,6 +26,7 @@ public class ChonPhongTienAdapter extends RecyclerView.Adapter<ChonPhongTienAdap
         this.listPhong = listPhong;
         this.clickPhongId = clickPhongId;
     }
+
 
     @NonNull
     @Override

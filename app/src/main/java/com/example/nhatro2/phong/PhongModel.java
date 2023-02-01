@@ -1,4 +1,4 @@
-package com.example.nhatro2.nhom.phong;
+package com.example.nhatro2.phong;
 
 public class PhongModel {
     private int id;
@@ -125,7 +125,4 @@ public class PhongModel {
         this.chuphong = chuphong;
     }
 //    private String daidien;
-//    private String dienthoai;
-
-
 }

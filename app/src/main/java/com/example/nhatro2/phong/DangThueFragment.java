@@ -1,4 +1,4 @@
-package com.example.nhatro2.nhom.phong;
+package com.example.nhatro2.phong;
 
 import android.os.Bundle;
 
@@ -20,37 +20,35 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class BanGiaoFragment extends Fragment {
-    RecyclerView listBookRoom;
-    List<PhongModel> phongBanGiao = new ArrayList<>();
-    public BanGiaoFragment() {
-
+public class DangThueFragment extends Fragment {
+    RecyclerView listRentRoom;
+    List<PhongModel> phongThue = new ArrayList<>();
+    public DangThueFragment() {
     }
 
-    public static BanGiaoFragment newInstance(String param1, String param2) {
-        BanGiaoFragment fragment = new BanGiaoFragment();
+    public static DangThueFragment newInstance(String param1, String param2) {
+        DangThueFragment fragment = new DangThueFragment();
         return fragment;
     }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_ban_giao,container,false);
-        listBookRoom = view.findViewById(R.id.listBookRoom);
-        listBookRoom.setLayoutManager(new LinearLayoutManager(view.getContext()));
-        listBookRoom.hasFixedSize();
-        listBookRoom.setNestedScrollingEnabled(false);
+        View view = inflater.inflate(R.layout.fragment_dang_thue,container,false);
+        listRentRoom = view.findViewById(R.id.listStayRoom);
+        listRentRoom.setLayoutManager(new LinearLayoutManager(view.getContext()));
+        listRentRoom.hasFixedSize();
+        listRentRoom.setNestedScrollingEnabled(false);
 
-        ApiQH.apiQH.getBookRoomList().enqueue(new Callback<List<PhongModel>>() {
+        ApiQH.apiQH.getRentRoomList().enqueue(new Callback<List<PhongModel>>() {
             @Override
             public void onResponse(Call<List<PhongModel>> call, Response<List<PhongModel>> response) {
-                phongBanGiao = response.body();
-                listBookRoom.setAdapter(new BanGiaoAdapter(view.getContext(),phongBanGiao));
+                phongThue = response.body();
+                listRentRoom.setAdapter(new DangThueAdapter(view.getContext(),phongThue));
             }
 
             @Override

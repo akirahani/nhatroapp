@@ -1,4 +1,4 @@
-package com.example.nhatro2.nhom.phong;
+package com.example.nhatro2.phong;
 
 import android.annotation.SuppressLint;
 import android.content.Context;

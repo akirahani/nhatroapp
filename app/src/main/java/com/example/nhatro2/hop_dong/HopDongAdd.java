@@ -33,7 +33,7 @@ import com.example.nhatro2.MainActivity;
 import com.example.nhatro2.R;
 import com.example.nhatro2.api.ApiQH;
 import com.example.nhatro2.dich_vu.DichVuModel;
-import com.example.nhatro2.nhom.phong.PhongModel;
+import com.example.nhatro2.phong.PhongModel;
 import com.example.nhatro2.thanhvien.ThanhVienModel;
 
 import java.util.ArrayList;
@@ -137,6 +137,7 @@ public class HopDongAdd extends AppCompatActivity {
         String dienThoai = bundle.getString("dienthoai");
         int tienCoc = bundle.getInt("datcoc");
 
+        
         listThietBi = findViewById(R.id.thietbiCheck);
         listThietBi.setLayoutManager(new GridLayoutManager(HopDongAdd.this, 3));
         listThietBi.hasFixedSize();
@@ -254,8 +255,8 @@ public class HopDongAdd extends AppCompatActivity {
             }
         });
 
-        themHopDong = findViewById(R.id.themHopDong);
         // Thêm hợp đồng
+        themHopDong = findViewById(R.id.themHopDong);
         themHopDong.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

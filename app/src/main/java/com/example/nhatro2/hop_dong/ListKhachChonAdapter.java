@@ -3,6 +3,7 @@ package com.example.nhatro2.hop_dong;
 import static android.content.Context.MODE_PRIVATE;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.util.Log;
@@ -81,6 +82,8 @@ public class ListKhachChonAdapter extends RecyclerView.Adapter<ListKhachChonAdap
             @Override
             public void onClick(View view) {
                 clickKhach.clickKhachChon(id);
+//                Intent intent = new Intent(context,HopDongAdd.class);
+//                context.startActivity(intent);
                 notifyDataSetChanged();
             }
         });

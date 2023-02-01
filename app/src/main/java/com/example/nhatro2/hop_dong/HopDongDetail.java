@@ -11,6 +11,8 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.FrameLayout;
@@ -36,10 +38,11 @@ public class HopDongDetail extends AppCompatActivity {
     ImageView thoat, logo, themNguoiThue;
     SharedPreferences shp;
     SharedPreferences.Editor shpKhachEdit;
-    TextView maHopDongRoomDetail, ngayBatDauDetail,ngayKetThucDetail;
+    TextView maHopDongRoomDetail, ngayBatDauDetail, ngayKetThucDetail;
     EditText tenDaiDienTextDetail;
     RecyclerView listKhachDetail, thietBiListDetail;
     LinearLayout khungThietBiHopDong;
+
     @SuppressLint({"WrongViewCast", "MissingInflatedId"})
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -114,7 +117,7 @@ public class HopDongDetail extends AppCompatActivity {
         String chuphong = bundle.getString("chuphong");
 
         maHopDongRoomDetail = findViewById(R.id.maHopDongRoomDetail);
-        maHopDongRoomDetail.setText("Hợp đồng số "+idHopDong+" - Phòng "+tenPhong);
+        maHopDongRoomDetail.setText("Hợp đồng số " + idHopDong + " - Phòng " + tenPhong);
 
         tenDaiDienTextDetail = findViewById(R.id.tenDaiDienTextDetail);
         tenDaiDienTextDetail.setText(chuphong);
@@ -131,7 +134,7 @@ public class HopDongDetail extends AppCompatActivity {
         listKhachDetail.hasFixedSize();
 
         thietBiListDetail = findViewById(R.id.thietBiListDetail);
-        thietBiListDetail.setLayoutManager(new GridLayoutManager(HopDongDetail.this,3));
+        thietBiListDetail.setLayoutManager(new GridLayoutManager(HopDongDetail.this, 3));
         thietBiListDetail.setNestedScrollingEnabled(false);
         thietBiListDetail.hasFixedSize();
 
@@ -147,17 +150,17 @@ public class HopDongDetail extends AppCompatActivity {
 
             }
         });
+        khungThietBiHopDong = findViewById(R.id.khungThietBiHopDong);
+
+        if(thietbi == null){
+            khungThietBiHopDong.setVisibility(View.GONE);
+        }
+
         ApiQH.apiQH.getListEquipmentDetail(thietbi).enqueue(new Callback<List<DichVuModel>>() {
             @Override
             public void onResponse(Call<List<DichVuModel>> call, Response<List<DichVuModel>> response) {
                 List<DichVuModel> listDichVuThueHopDongDetail = response.body();
-                if(listDichVuThueHopDongDetail.size() > 0){
-                    thietBiListDetail.setAdapter(new ThietBiHopDongDetailAdapter(HopDongDetail.this, listDichVuThueHopDongDetail));
-                }else{
-                    khungThietBiHopDong = findViewById(R.id.khungThietBiHopDong);
-                    khungThietBiHopDong.setVisibility(View.GONE);
-                }
-
+                thietBiListDetail.setAdapter(new ThietBiHopDongDetailAdapter(HopDongDetail.this, listDichVuThueHopDongDetail));
             }
 
             @Override

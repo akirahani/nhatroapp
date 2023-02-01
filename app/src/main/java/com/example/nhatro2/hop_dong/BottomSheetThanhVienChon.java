@@ -69,6 +69,8 @@ public class BottomSheetThanhVienChon extends BottomSheetDialogFragment {
         }
 
         int finalChuPhong = chuPhong;
+
+        // Tìm kiếm khách
         searchCustomerChon.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -178,7 +180,8 @@ public class BottomSheetThanhVienChon extends BottomSheetDialogFragment {
                             }
                         }
                         listKhachChooseString = shpKhach.getString("idKhachChon", "");
-
+//                        Intent intent = new Intent(getContext(),HopDongAdd.class);
+//                        startActivity(intent);
                         // Nếu đủ 4 người thì sẽ clear add Customer button
                         List<String> thanhVienPhong = new ArrayList<>();
                         String[] items = listKhachChooseString.split(",");

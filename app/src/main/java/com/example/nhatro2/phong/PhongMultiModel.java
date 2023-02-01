@@ -1,4 +1,4 @@
-package com.example.nhatro2.nhom.phong;
+package com.example.nhatro2.phong;
 
 import java.util.List;
 
