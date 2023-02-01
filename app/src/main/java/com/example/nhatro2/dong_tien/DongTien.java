@@ -172,10 +172,6 @@ public class DongTien extends AppCompatActivity {
             public void onResponse(Call<ChonPhongModel> call, Response<ChonPhongModel> response) {
                 ChonPhongModel thongTinDongTienPhong = response.body();
                 int idChuPhong = thongTinDongTienPhong.getIdchuphong();
-
-                Log.d("chu phong",""+thongTinDongTienPhong.getIdchuphong());
-                Log.d("phong",""+thongTinDongTienPhong.getPhong());
-                Log.d("tien tong tru coc",""+thongTinDongTienPhong.getTongthuformat());
                 if(idChuPhong != 0){
                     if(thongTinDongTienPhong.getDutienphong() < 0){
                         tenNopPhong.setTextColor(R.color.tabThue);
@@ -202,19 +198,17 @@ public class DongTien extends AppCompatActivity {
                             if(tienThanhToan.equals("")){
                                 Toast.makeText(getApplicationContext(),"Vui lòng nhập số tiền thanh toán !",Toast.LENGTH_SHORT).show();
                             }else{
-                                ApiQH.apiQH.postMoney(khuTroId,idChuPhong,tenPhong,phuongThucThanhToan,tienThanhToan).enqueue(new Callback<ChonPhongModel>() {
+                                ApiQH.apiQH.postMoney(khuTroId,idChuPhong,tenPhong,phuongThucThanhToan,tienThanhToan).enqueue(new Callback<ThanhToanModel>() {
                                     @Override
-                                    public void onResponse(Call<ChonPhongModel> call, Response<ChonPhongModel> response) {
-                                        ChonPhongModel tienSauDong = response.body();
+                                    public void onResponse(Call<ThanhToanModel> call, Response<ThanhToanModel> response) {
+                                        ThanhToanModel tienSauDong = response.body();
                                         Intent intent = new Intent(DongTien.this,DongTien.class);
                                         startActivity(intent);
                                         finish();
-                                        Log.d("dong tien thanh cong",""+tienSauDong.getTongthuformat());
                                     }
 
                                     @Override
-                                    public void onFailure(Call<ChonPhongModel> call, Throwable t) {
-                                        Log.d("Err dong tien",""+t.toString());
+                                    public void onFailure(Call<ThanhToanModel> call, Throwable t) {
                                     }
                                 });
                             }

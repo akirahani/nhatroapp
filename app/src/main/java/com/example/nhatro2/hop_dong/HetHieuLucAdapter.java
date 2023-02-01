@@ -49,8 +49,8 @@ public class HetHieuLucAdapter extends RecyclerView.Adapter<HetHieuLucAdapter.He
                 Intent intent = new Intent(context.getApplicationContext(),HopDongDetail.class);
                 String ngayBatDauText = hetHieuLucSingle.getNgaybatdau();
                 String ngayKetThucText  = hetHieuLucSingle.getNgayketthuc();
-                String strThietBi = TextUtils.join(",", hetHieuLucSingle.getThietbi());
-                String strKhach = TextUtils.join(",", hetHieuLucSingle.getKhach());
+                String strThietBi = hetHieuLucSingle.getThietbi();
+                String strKhach =  hetHieuLucSingle.getKhach();
                 intent.putExtra("thietbi",strThietBi);
                 intent.putExtra("khachthue",strKhach);
                 intent.putExtra("ketthuc",ngayKetThucText);

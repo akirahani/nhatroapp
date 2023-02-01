@@ -226,6 +226,9 @@ public class BatBien extends AppCompatActivity {
                             @Override
                             public void onResponse(Call<BatBienModel> call, Response<BatBienModel> response) {
                                 BatBienModel khaBatThem = response.body();
+                                Intent intent = new Intent(BatBien.this, BatBien.class);
+                                startActivity(intent);
+                                finish();
                                 batBienAdapter = new BatBienAdapter(BatBien.this, listBatBienGet);
                                 dialogBatBien.dismiss();
                             }

@@ -10,14 +10,14 @@ public class HopDongModel {
     private  int phuongthuctienphong;
     private  int tiencoc;
     private  int phuongthuctiencoc;
-    private List<String> khach;
-    private List<String> thietbi;
+    private String khach;
+    private String thietbi;
     private String ngayketthuc;
     private String ngaybatdau;
     private String ghichu;
     private int trangthai;
 
-    public HopDongModel(int id, String chuphong, String phong, int tienphong, int phuongthuctienphong, int tiencoc, int phuongthuctiencoc, List<String> khach, List<String> thietbi, String ngayketthuc, String ngaybatdau, String ghichu, int trangthai) {
+    public HopDongModel(int id, String chuphong, String phong, int tienphong, int phuongthuctienphong, int tiencoc, int phuongthuctiencoc, String khach, String thietbi, String ngayketthuc, String ngaybatdau, String ghichu, int trangthai) {
         this.id = id;
         this.chuphong = chuphong;
         this.phong = phong;
@@ -33,21 +33,22 @@ public class HopDongModel {
         this.trangthai = trangthai;
     }
 
-    public List<String> getKhach() {
+    public String getKhach() {
         return khach;
     }
 
-    public void setKhach(List<String> khach) {
+    public void setKhach(String khach) {
         this.khach = khach;
     }
 
-    public List<String> getThietbi() {
+    public String getThietbi() {
         return thietbi;
     }
 
-    public void setThietbi(List<String> thietbi) {
+    public void setThietbi(String thietbi) {
         this.thietbi = thietbi;
     }
+
 
     public int getId() {
         return id;

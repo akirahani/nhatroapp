@@ -225,6 +225,9 @@ public class KhaBien extends AppCompatActivity {
                             public void onResponse(Call<KhaBienModel> call, Response<KhaBienModel> response) {
                                 KhaBienModel khaBienThem = response.body();
                                 listKhaBien.setAdapter(new KhaBienAdapter(KhaBien.this, listKhaBienGet));
+                                Intent intent = new Intent(KhaBien.this, KhaBien.class);
+                                startActivity(intent);
+                                finish();
                                 dialogKhaBien.dismiss();
                             }
 
