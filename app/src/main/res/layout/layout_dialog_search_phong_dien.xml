@@ -23,6 +23,7 @@
         android:layout_marginRight="12dp"
         android:layout_width="match_parent"
         android:layout_height="35dp"
+        android:singleLine="true"
         android:hint="Nhập phòng muốn tìm"
         android:gravity="center"
         android:background="@null"/>

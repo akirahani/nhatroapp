@@ -4,6 +4,7 @@ import com.example.nhatro2.bat_bien.BatBienModel;
 import com.example.nhatro2.dich_vu.DichVuModel;
 import com.example.nhatro2.dong_tien.ChonPhongModel;
 import com.example.nhatro2.dong_tien.LichSuDongTienModel;
+import com.example.nhatro2.dong_tien.ThanhToanModel;
 import com.example.nhatro2.hop_dong.HopDongModel;
 import com.example.nhatro2.hop_dong.ListKhachChonModel;
 import com.example.nhatro2.kha_bien.KhaBienModel;
@@ -29,7 +30,8 @@ import retrofit2.http.GET;
 import retrofit2.http.POST;
 
 public interface ApiQH {
-    String url = "http://192.168.1.190";
+//    String url = "http://192.168.1.190";
+    String url = "http://172.16.1.71";
     Gson gson = new GsonBuilder().setDateFormat("yyyy-MM-DD HH:mm:ss").create();
     OkHttpClient okHttpClient = new OkHttpClient.Builder().build();
     ApiQH apiQH = new Retrofit.Builder()
@@ -284,9 +286,9 @@ public interface ApiQH {
         // Thanh toán
         @POST("/quanghieu/admin/api/thu-tien/thanh_toan.php")
         @FormUrlEncoded
-        Call <ChonPhongModel> postMoney(@Field("khutroid") int khuTroId,
-                                     @Field("chuphong") int chuPhong,
-                                     @Field("phong") String tenPhong,
-                                     @Field("phuongthuc") int phuongThuc,
-                                     @Field("thanhtoan") String thanhToan);
+        Call <ThanhToanModel> postMoney(@Field("khutroid") int khuTroId,
+                                        @Field("chuphong") int chuPhong,
+                                        @Field("phong") String tenPhong,
+                                        @Field("phuongthuc") int phuongThuc,
+                                        @Field("thanhtoan") String thanhToan);
 }

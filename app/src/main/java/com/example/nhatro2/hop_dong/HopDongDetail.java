@@ -11,11 +11,11 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -36,10 +36,11 @@ public class HopDongDetail extends AppCompatActivity {
     ImageView thoat, logo, themNguoiThue;
     SharedPreferences shp;
     SharedPreferences.Editor shpKhachEdit;
-    TextView maHopDong, textNameRoomDetail, ngayBatDauDetail,ngayKetThucDetail;
+    TextView maHopDongRoomDetail, ngayBatDauDetail,ngayKetThucDetail;
     EditText tenDaiDienTextDetail;
     RecyclerView listKhachDetail, thietBiListDetail;
-    @SuppressLint("WrongViewCast")
+    LinearLayout khungThietBiHopDong;
+    @SuppressLint({"WrongViewCast", "MissingInflatedId"})
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -112,8 +113,8 @@ public class HopDongDetail extends AppCompatActivity {
         String batdau = bundle.getString("batdau");
         String chuphong = bundle.getString("chuphong");
 
-        maHopDong = findViewById(R.id.maHopDong);
-        maHopDong.setText("Hợp đồng số "+idHopDong);
+        maHopDongRoomDetail = findViewById(R.id.maHopDongRoomDetail);
+        maHopDongRoomDetail.setText("Hợp đồng số "+idHopDong+" - Phòng "+tenPhong);
 
         tenDaiDienTextDetail = findViewById(R.id.tenDaiDienTextDetail);
         tenDaiDienTextDetail.setText(chuphong);
@@ -123,8 +124,6 @@ public class HopDongDetail extends AppCompatActivity {
         ngayBatDauDetail.setText(batdau);
         ngayKetThucDetail.setText(ketthuc);
 
-        textNameRoomDetail = findViewById(R.id.textNameRoomDetail);
-        textNameRoomDetail.setText("Phòng "+tenPhong);
 
         listKhachDetail = findViewById(R.id.listKhachDetail);
         listKhachDetail.setLayoutManager(new LinearLayoutManager(HopDongDetail.this));
@@ -152,7 +151,13 @@ public class HopDongDetail extends AppCompatActivity {
             @Override
             public void onResponse(Call<List<DichVuModel>> call, Response<List<DichVuModel>> response) {
                 List<DichVuModel> listDichVuThueHopDongDetail = response.body();
-                thietBiListDetail.setAdapter(new ThietBiHopDongDetailAdapter(HopDongDetail.this, listDichVuThueHopDongDetail));
+                if(listDichVuThueHopDongDetail.size() > 0){
+                    thietBiListDetail.setAdapter(new ThietBiHopDongDetailAdapter(HopDongDetail.this, listDichVuThueHopDongDetail));
+                }else{
+                    khungThietBiHopDong = findViewById(R.id.khungThietBiHopDong);
+                    khungThietBiHopDong.setVisibility(View.GONE);
+                }
+
             }
 
             @Override

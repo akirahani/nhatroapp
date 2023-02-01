@@ -47,8 +47,9 @@ public class ConHieuLucAdapter  extends RecyclerView.Adapter<ConHieuLucAdapter.C
             public void onClick(View view) {
                 String ngayBatDauText = hopDongSingle.getNgaybatdau();
                 String ngayKetThucText  = hopDongSingle.getNgayketthuc();
-                String strThietBi = TextUtils.join(",", hopDongSingle.getThietbi());
-                String strKhach = TextUtils.join(",", hopDongSingle.getKhach());
+                String strThietBi = hopDongSingle.getThietbi();
+                String strKhach = hopDongSingle.getKhach();
+
                 Intent intent = new Intent(context.getApplicationContext(),HopDongDetail.class);
                 intent.putExtra("thietbi",strThietBi);
                 intent.putExtra("khachthue",strKhach);
