@@ -6,7 +6,6 @@
     android:orientation="vertical"
     android:background="@color/backTaiKhoan">
 
-
     <LinearLayout
         android:id="@+id/tenDangNhap"
         android:orientation="vertical"
@@ -73,6 +72,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
     </LinearLayout>
+
     <LinearLayout
         android:id="@+id/dangXuatTaiKhoan"
         android:layout_width="match_parent"

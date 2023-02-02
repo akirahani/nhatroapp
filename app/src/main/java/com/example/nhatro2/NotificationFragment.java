@@ -19,7 +19,6 @@ public class NotificationFragment extends Fragment {
         // Required empty public constructor
     }
 
-
     public static NotificationFragment newInstance() {
         NotificationFragment fragment = new NotificationFragment();
         return fragment;
