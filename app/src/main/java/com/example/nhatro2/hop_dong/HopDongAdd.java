@@ -33,6 +33,7 @@ import com.example.nhatro2.MainActivity;
 import com.example.nhatro2.R;
 import com.example.nhatro2.api.ApiQH;
 import com.example.nhatro2.dich_vu.DichVuModel;
+import com.example.nhatro2.phong.DangThueFragment;
 import com.example.nhatro2.phong.PhongModel;
 import com.example.nhatro2.thanhvien.ThanhVienModel;
 
@@ -146,6 +147,7 @@ public class HopDongAdd extends AppCompatActivity {
         tenDaiDienText = findViewById(R.id.tenDaiDienText);
         sdtDaiDienText = findViewById(R.id.sdtDaiDienText);
         textNameRoom = findViewById(R.id.textNameRoom);
+
 
         // Lấy ra thông tin phòng thuê
         ApiQH.apiQH.hopDongPhong(idPhong).enqueue(new Callback<PhongModel>() {
@@ -286,16 +288,16 @@ public class HopDongAdd extends AppCompatActivity {
 
                 if(coTaiPhong.isChecked()){
                     coOTaiPhongChecked = 1;
-                    if(thanhVienPhong.contains(idDaiDien)){
-                        thanhVienPhong.remove(String.valueOf(idDaiDien));
-                    }else{
-                        thanhVienPhong.add(String.valueOf(idDaiDien));
-                    }
+//                    if(thanhVienPhong.contains(idDaiDien)){
+//                        thanhVienPhong.remove(String.valueOf(idDaiDien));
+//                    }else{
+//                        thanhVienPhong.add(String.valueOf(idDaiDien));
+//                    }
                 }else if(khongCoTaiPhong.isChecked()){
                     coOTaiPhongChecked = 0;
-                    if(thanhVienPhong.contains(idDaiDien)){
-                        thanhVienPhong.remove(idDaiDien);
-                    }
+//                    if(thanhVienPhong.contains(idDaiDien)){
+//                        thanhVienPhong.remove(idDaiDien);
+//                    }
                 }
 
 
@@ -307,10 +309,15 @@ public class HopDongAdd extends AppCompatActivity {
                 shpKhachEdit.putString("idKhachChon",idThanhVienConvert);
                 shpKhachEdit.commit();
 
+                String thietBiSentFinal = null;
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+                    thietBiSentFinal = thietBiPhong.stream().map(String::valueOf).collect(Collectors.joining(","));
+                }
+
+
                 // Khách ở được thêm trong hợp đồng
                 String listKhachChooseString = shpKhach.getString("idKhachChon", "");
-                Log.d("","String Khach them"+listKhachChooseString);
-                Log.d("khach dc them",""+thanhVienPhong);
+                Log.d("","String Khach them: "+listKhachChooseString);
 
                 // Tiền phòng
                 tienPhongHopDongAdd = findViewById(R.id.tienPhongHopDongAdd);
@@ -363,7 +370,7 @@ public class HopDongAdd extends AppCompatActivity {
 
                 ghiChu = findViewById(R.id.ghiChu);
                 String ghiChuText = ghiChu.getText().toString();
-                Log.i("thietbi",""+thietBiPhong);
+                Log.i("thietbi",""+thietBiSentFinal);
                 Log.d("chuphong",""+idDaiDien);
                 Log.d("o phong",""+coOTaiPhongChecked);
                 Log.d("ket thuc",""+ngayKetThucHopDong);
@@ -372,12 +379,13 @@ public class HopDongAdd extends AppCompatActivity {
                 Log.d("tienCocChecked",""+tienCocChecked);
                 Log.d("tienPhongDongFinal",""+tienPhongDongFinal);
                 Log.d("tienPhongChecked",""+tienPhongChecked);
-                Log.d("thanhVienPhong",""+thanhVienPhong);
                 Log.d("tenPhong",""+tenPhong);
-                ApiQH.apiQH.addContract(thietBiPhong,idDaiDien,coOTaiPhongChecked,ngayKetThucHopDong,ghiChuText,tienCocDongFinal,tienCocChecked,tienPhongDongFinal,tienPhongChecked,thanhVienPhong,tenPhong).enqueue(new Callback<HopDongModel>() {
+                ApiQH.apiQH.addContract(thietBiSentFinal,idDaiDien,coOTaiPhongChecked,ngayKetThucHopDong,ghiChuText,tienCocDongFinal,tienCocChecked,tienPhongDongFinal,tienPhongChecked,listKhachChooseString,tenPhong).enqueue(new Callback<HopDongModel>() {
                     @Override
                     public void onResponse(Call<HopDongModel> call, Response<HopDongModel> response) {
                         HopDongModel detailHopDong = response.body();
+                        Intent intent = new Intent(HopDongAdd.this, DangThueFragment.class);
+                        startActivity(intent);
                         Log.d("thong tin","hop dong"+detailHopDong);
                     }
 
