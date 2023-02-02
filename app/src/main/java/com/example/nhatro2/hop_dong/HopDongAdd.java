@@ -363,7 +363,7 @@ public class HopDongAdd extends AppCompatActivity {
 
                 ghiChu = findViewById(R.id.ghiChu);
                 String ghiChuText = ghiChu.getText().toString();
-                Log.d("thietbi",""+thietBiPhong);
+                Log.i("thietbi",""+thietBiPhong);
                 Log.d("chuphong",""+idDaiDien);
                 Log.d("o phong",""+coOTaiPhongChecked);
                 Log.d("ket thuc",""+ngayKetThucHopDong);
