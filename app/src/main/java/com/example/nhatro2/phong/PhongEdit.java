@@ -7,6 +7,8 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.text.Html;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.FrameLayout;
@@ -76,11 +78,11 @@ public class PhongEdit extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 AlertDialog.Builder builder = new AlertDialog.Builder(PhongEdit.this);
-                builder.setTitle("Confirm").setMessage("Bạn có thực sự muốn thoát ?");
+                builder.setTitle(Html.fromHtml("<font color='#71a6d5'>Thông báo!</font>")).setMessage(Html.fromHtml("<font color='#71a6d5'>Bạn có thực sự muốn thoát ?</font>"));
                 builder.setCancelable(true);
                 builder.setIcon(R.drawable.alert_bottom);
                 //check
-                builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                builder.setPositiveButton(Html.fromHtml("<font color='#71a6d5'>Yes</font>"), new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
                         Toast.makeText(PhongEdit.this, "Out", Toast.LENGTH_SHORT).show();
@@ -92,7 +94,7 @@ public class PhongEdit extends AppCompatActivity {
                     }
                 });
                 // NO
-                builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
+                builder.setNegativeButton(Html.fromHtml("<font color='#71a6d5'>No</font>"), new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
                         Toast.makeText(PhongEdit.this, "Stay", Toast.LENGTH_SHORT).show();
                         //  Cancel
@@ -140,6 +142,18 @@ public class PhongEdit extends AppCompatActivity {
         String daiDien = bundle.getString("daidien");
         String dienThoai = bundle.getString("dienthoai");
         int datcoc = bundle.getInt("datcoc");
+
+        Log.d("nguoi dai dien",""+daiDien);
+        Log.d("idPhong",""+idPhong);
+        Log.d("tang",""+tang);
+        Log.d("trangthai",""+trangthai);
+        Log.d("giaphong",""+giaPhong);
+        Log.d("tenPhong",""+tenPhong);
+        Log.d("dayPhong",""+dayPhong);
+        Log.d("dienthoai",""+dienThoai);
+        Log.d("datcoc",""+datcoc);
+
+
         if (bundle == null) {
             Toast.makeText(this, "Có lỗi !", Toast.LENGTH_SHORT).show();
         } else {

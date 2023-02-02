@@ -7,6 +7,7 @@ import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
+import android.text.Html;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
@@ -55,11 +56,11 @@ public class DichVuEdit extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 AlertDialog.Builder builder = new AlertDialog.Builder(DichVuEdit.this);
-                builder.setTitle("Confirm").setMessage("Bạn có thực sự muốn thoát ?");
+                builder.setTitle(Html.fromHtml("<font color='#71a6d5'>Thông báo!</font>")).setMessage(Html.fromHtml("<font color='#71a6d5'>Bạn có thực sự muốn thoát ?</font>"));
                 builder.setCancelable(true);
                 builder.setIcon(R.drawable.alert_bottom);
                 //check
-                builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                builder.setPositiveButton(Html.fromHtml("<font color='#71a6d5'>Yes</font>"), new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
                         Toast.makeText(DichVuEdit.this,"Out", Toast.LENGTH_SHORT).show();
@@ -70,7 +71,7 @@ public class DichVuEdit extends AppCompatActivity {
                     }
                 });
                 // NO
-                builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
+                builder.setNegativeButton(Html.fromHtml("<font color='#71a6d5'>No</font>"), new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
                         Toast.makeText(DichVuEdit.this,"Stay", Toast.LENGTH_SHORT).show();
                         //  Cancel

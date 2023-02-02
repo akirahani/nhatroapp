@@ -2,6 +2,7 @@ package com.example.nhatro2.phong;
 
 import android.content.Context;
 import android.content.Intent;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -38,6 +39,7 @@ public class DangThueAdapter extends RecyclerView.Adapter<DangThueAdapter.DangTh
     @Override
     public void onBindViewHolder(@NonNull DangThueAdapter.DangThueViewHolder holder, int position) {
         PhongModel data = phongThue.get(position);
+
         int idPhong = data.getId();
         String ten = data.getTen();
         String day = data.getKhu();
@@ -66,7 +68,15 @@ public class DangThueAdapter extends RecyclerView.Adapter<DangThueAdapter.DangTh
                 intent.putExtra("daidien",khach);
                 intent.putExtra("dienthoai",dienthoai);
                 intent.putExtra("datcoc",datcoc);
-                context.startActivity(intent);
+
+
+                Log.d("phong A101","ten phong"+data.getTen());
+                Log.d("phong A101","dien thoai"+data.getDienthoai());
+                Log.d("phong A101","dat coc"+data.getDatcoc());
+                Log.d("phong A101","ten khach"+data.getTenkhach());
+                Log.d("phong A101","chu phong"+data.getChuphong());
+                Log.d("phong A101","Trang thai"+data.getTrangthai());
+//                context.startActivity(intent);
             }
         });
     }

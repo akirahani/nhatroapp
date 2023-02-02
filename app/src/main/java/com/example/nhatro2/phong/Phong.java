@@ -5,6 +5,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.text.Html;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
@@ -53,11 +54,11 @@ public class Phong extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 AlertDialog.Builder builder = new AlertDialog.Builder(Phong.this);
-                builder.setTitle("Confirm").setMessage("Bạn có thực sự muốn thoát ?");
+                builder.setTitle(Html.fromHtml("<font color='#71a6d5'>Confirm</font>")).setMessage(Html.fromHtml("<font color='#71a6d5'>Bạn có thực sự muốn thoát ?</font>"));
                 builder.setCancelable(true);
                 builder.setIcon(R.drawable.alert_bottom);
                 //check
-                builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                builder.setPositiveButton(Html.fromHtml("<font color='#71a6d5'>Yes</font>"), new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
                         Toast.makeText(Phong.this,"Out", Toast.LENGTH_SHORT).show();
@@ -69,7 +70,7 @@ public class Phong extends AppCompatActivity {
                     }
                 });
                 // NO
-                builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
+                builder.setNegativeButton(Html.fromHtml("<font color='#71a6d5'>No</font>"), new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
                         Toast.makeText(Phong.this,"Stay", Toast.LENGTH_SHORT).show();
                         //  Cancel
