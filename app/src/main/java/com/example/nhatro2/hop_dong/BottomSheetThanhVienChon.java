@@ -82,9 +82,7 @@ public class BottomSheetThanhVienChon extends BottomSheetDialogFragment {
                         listKhachClick.setAdapter(new ListKhachChonAdapter(view.getContext(),listKhachSearchChon, new ClickKhachAddHopDong() {
                             @Override
                             public void clickKhachChon(int thanhvien) {
-
                                 List<Integer> arrKhachChon = new ArrayList<>();
-
                                 if (listKhachChooseString.equals("")) {
                                     arrKhachChon.add(thanhvien);
                                     String convertStringKhach = null;
