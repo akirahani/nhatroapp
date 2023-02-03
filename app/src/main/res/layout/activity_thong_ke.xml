@@ -121,4 +121,29 @@
 
 
     </androidx.cardview.widget.CardView>
+
+    <com.highsoft.highcharts.core.HIChartView
+        android:id="@+id/tongQuanChart"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <com.highsoft.highcharts.core.HIChartView
+        android:id="@+id/doanhThuChart"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <com.highsoft.highcharts.core.HIChartView
+        android:id="@+id/tienDienChart"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <com.highsoft.highcharts.core.HIChartView
+        android:id="@+id/tienNuocChart"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <com.highsoft.highcharts.core.HIChartView
+        android:id="@+id/thietBiChart"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
 </LinearLayout>
