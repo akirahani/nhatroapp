@@ -10,6 +10,7 @@ import android.app.Activity;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.text.Html;
 import android.util.Log;
@@ -175,11 +176,11 @@ public class DongTien extends AppCompatActivity {
                 int idChuPhong = thongTinDongTienPhong.getIdchuphong();
                 if(idChuPhong != 0){
                     if(thongTinDongTienPhong.getDutienphong() < 0){
-                        tenNopPhong.setTextColor(R.color.tabThue);
-                        tienPhongCanTra.setTextColor(R.color.tabThue);
+                        tenNopPhong.setTextColor(Color.RED);
+                        tienPhongCanTra.setTextColor(Color.RED);
                     }else{
-                        tenNopPhong.setTextColor(R.color.tenPhongColor);
-                        tienPhongCanTra.setTextColor(R.color.tenPhongColor);
+                        tenNopPhong.setTextColor(Color.rgb(0,128,0));
+                        tienPhongCanTra.setTextColor(Color.rgb(0,128,0));
                     }
 
                     thanhToanTienButton.setOnClickListener(new View.OnClickListener() {
@@ -233,7 +234,17 @@ public class DongTien extends AppCompatActivity {
                     tienNuocPhaiThu.setText("Phải thu: "+thongTinDongTienPhong.getTiennuocsudung()+"đ");
                     tienNuocDaThu.setText("Đã thu: "+thongTinDongTienPhong.getSonuocphaithu()+"đ");
 
-                    phaiTraTien.setText("Tiền phải thu: "+thongTinDongTienPhong.getTongthuformat()+"đ");
+
+                    if(thongTinDongTienPhong.getTongthu() < 0){
+                        phaiTraTien.setText("Tiền phải thu: "+thongTinDongTienPhong.getTongthuformat()+"đ");
+                        phaiTraTien.setTextColor(Color.RED);
+
+                    }
+                    else{
+                        phaiTraTien.setText("Tiền còn dư: "+thongTinDongTienPhong.getTongthuformat()+"đ");
+                        phaiTraTien.setTextColor(Color.rgb(0,128,0));
+                    }
+
 
                     listThanhVienPhong.setLayoutManager(new LinearLayoutManager(DongTien.this));
                     listThanhVienPhong.hasFixedSize();
@@ -292,6 +303,7 @@ public class DongTien extends AppCompatActivity {
                     dongTienPhongText.setVisibility(View.GONE);
                     hinhThucDongTien.setVisibility(View.GONE);
                     phaiTraTien.setText("Phòng trống");
+                    phaiTraTien.setTextColor(Color.RED);
                     khungLichSuDongTien.setVisibility(View.GONE);
                 }
 

@@ -92,22 +92,36 @@
             android:orientation="horizontal">
 
             <FrameLayout
-                android:layout_gravity="center"
                 android:id="@+id/imageDongTien"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:layout_gravity="center" />
 
             <TextView
                 android:id="@+id/textDongTien"
-                android:layout_gravity="center"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center"
                 android:paddingLeft="8dp"
                 android:text="Thu tiền phòng"
                 android:textAllCaps="true"
                 android:textColor="@color/textQuanLyChung"
                 android:textSize="18dp"
                 android:textStyle="bold" />
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginRight="10dp">
+
+                <ImageView
+                    android:id="@+id/timInfoPhongChiTiet"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:src="@drawable/search" />
+            </RelativeLayout>
         </LinearLayout>
 
         <TextView
@@ -148,6 +162,31 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:paddingLeft="15dp"
+                android:paddingTop="10dp">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/phong_tieu_de_thu_tien" />
+
+                <TextView
+                    android:id="@+id/nameRoomSearch"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/tieuDePhongDongTien"
+                    android:textSize="18sp"
+                    android:paddingLeft="5dp"
+                    android:textStyle="bold" />
+
+
+            </LinearLayout>
             <!-- khung đầu đóng tiền-->
             <androidx.cardview.widget.CardView
                 android:id="@+id/khungDongTien"
@@ -163,44 +202,18 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="@color/cardThietBi"
+                    android:background="@color/khungConLayoutDongTien"
                     android:orientation="vertical">
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:paddingLeft="15dp"
-                        android:paddingTop="10dp">
-
-                        <TextView
-                            android:id="@+id/nameRoomSearch"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Phòng A102"
-                            android:textColor="@color/tenPhongColor"
-                            android:textSize="20sp"
-                            android:textStyle="bold" />
-
-                        <ImageView
-                            android:id="@+id/timInfoPhongChiTiet"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-                            android:layout_marginLeft="5dp"
-                            android:layout_toRightOf="@+id/nameRoomSearch"
-                            android:src="@drawable/search" />
-                    </LinearLayout>
 
                     <TextView
                         android:id="@+id/soTienPhaiTra"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:paddingLeft="15dp"
-                        android:paddingTop="5dp"
-                        android:textColor="@color/phaiTraTien"
+                        android:paddingTop="10dp"
                         android:textSize="18sp"
                         android:textStyle="bold" />
-
+                    <!--  Tiền đóng-->
                     <androidx.cardview.widget.CardView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -219,18 +232,17 @@
                             android:paddingBottom="8dp">
 
                             <EditText
-                                android:inputType="number"
                                 android:id="@+id/tienThanhToanText"
                                 android:layout_width="0dp"
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="center"
                                 android:layout_weight="5"
                                 android:background="@null"
-                                android:textColor="@color/tieuDePhongDongTien"
                                 android:hint="Số tiền thanh toán"
+                                android:inputType="number"
                                 android:paddingLeft="10dp"
                                 android:singleLine="true"
-                                />
+                                android:textColor="@color/tieuDePhongDongTien" />
 
                             <ImageView
                                 android:id="@+id/thanhToanTienButton"
@@ -241,7 +253,7 @@
                                 android:textAllCaps="true" />
                         </LinearLayout>
                     </androidx.cardview.widget.CardView>
-
+                    <!-- Phương thức thanh toán -->
                     <RadioGroup
                         android:id="@+id/hinhThucDongTien"
                         android:layout_width="match_parent"
@@ -266,6 +278,7 @@
 
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
+
             <LinearLayout
                 android:id="@+id/thongTinChungDongTien"
                 android:layout_width="match_parent"
@@ -285,7 +298,7 @@
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:background="@color/cardThietBi"
+                        android:background="@color/khungConLayoutDongTien"
                         android:orientation="vertical">
 
                         <TextView
@@ -344,12 +357,12 @@
                         app:cardCornerRadius="10dp">
 
                         <LinearLayout
-                            android:paddingTop="10dp"
-                            android:paddingBottom="10dp"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:background="@color/cardThietBi"
-                            android:orientation="vertical">
+                            android:background="@color/khungConLayoutDongTien"
+                            android:orientation="vertical"
+                            android:paddingTop="10dp"
+                            android:paddingBottom="10dp">
 
                             <TextView
                                 android:layout_width="match_parent"
@@ -366,7 +379,8 @@
                                 android:layout_height="wrap_content"
                                 android:paddingLeft="15dp"
                                 android:paddingTop="10dp"
-                                android:textColor="@color/tieuDePhongDongTien"                                android:textSize="14sp"
+                                android:textColor="@color/tieuDePhongDongTien"
+                                android:textSize="14sp"
                                 android:textStyle="bold" />
 
                             <TextView
@@ -392,12 +406,12 @@
                         app:cardCornerRadius="10dp">
 
                         <LinearLayout
-                            android:paddingTop="10dp"
-                            android:paddingBottom="10dp"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:background="@color/cardThietBi"
-                            android:orientation="vertical">
+                            android:background="@color/khungConLayoutDongTien"
+                            android:orientation="vertical"
+                            android:paddingTop="10dp"
+                            android:paddingBottom="10dp">
 
                             <TextView
                                 android:layout_width="match_parent"
@@ -407,42 +421,48 @@
                                 android:textColor="@color/tieuDePhongDongTien"
                                 android:textSize="16sp"
                                 android:textStyle="bold" />
+
                             <RelativeLayout
-                                android:layout_marginTop="10dp"
                                 android:layout_width="match_parent"
-                                android:layout_height="wrap_content">
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="10dp">
+
                                 <ImageView
-                                    android:layout_centerVertical="true"
                                     android:id="@+id/tenKhachThue"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
+                                    android:layout_centerVertical="true"
                                     android:layout_marginLeft="15dp"
                                     android:src="@drawable/ic_user" />
+
                                 <TextView
-                                    android:layout_toRightOf="@id/tenKhachThue"
                                     android:id="@+id/tenchuphong"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
+                                    android:layout_toRightOf="@id/tenKhachThue"
                                     android:paddingLeft="10dp"
                                     android:textColor="@color/tieuDePhongDongTien"
                                     android:textSize="14sp" />
                             </RelativeLayout>
+
                             <RelativeLayout
-                                android:layout_marginTop="10dp"
                                 android:layout_width="match_parent"
-                                android:layout_height="wrap_content">
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="10dp">
+
                                 <ImageView
                                     android:id="@+id/dienThoaiDaiDien"
-                                    android:layout_centerVertical="true"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
+                                    android:layout_centerVertical="true"
                                     android:layout_marginLeft="15dp"
                                     android:src="@drawable/ic_phonekhach" />
+
                                 <TextView
                                     android:id="@+id/dienthoaichuphong"
-                                    android:layout_toRightOf="@+id/dienThoaiDaiDien"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
+                                    android:layout_toRightOf="@+id/dienThoaiDaiDien"
                                     android:paddingLeft="10dp"
                                     android:textColor="@color/tieuDePhongDongTien"
                                     android:textSize="14sp" />
@@ -461,17 +481,17 @@
                     <androidx.cardview.widget.CardView
                         android:id="@+id/thanhVienDongTien"
                         android:layout_width="0dp"
-                        android:layout_weight="1"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="10dp"
                         android:layout_marginRight="10dp"
                         android:layout_marginBottom="13dp"
+                        android:layout_weight="1"
                         app:cardCornerRadius="10dp">
 
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:background="@color/cardThietBi"
+                            android:background="@color/khungConLayoutDongTien"
                             android:orientation="vertical">
 
                             <TextView
@@ -500,17 +520,17 @@
                     <androidx.cardview.widget.CardView
                         android:id="@+id/thietBiDongTien"
                         android:layout_width="0dp"
-                        android:layout_weight="1"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="10dp"
                         android:layout_marginLeft="10dp"
+                        android:layout_marginTop="10dp"
                         android:layout_marginBottom="13dp"
+                        android:layout_weight="1"
                         app:cardCornerRadius="10dp">
 
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:background="@color/cardThietBi"
+                            android:background="@color/khungConLayoutDongTien"
                             android:orientation="vertical">
 
                             <TextView
@@ -547,36 +567,39 @@
                     <androidx.cardview.widget.CardView
                         android:id="@+id/dongTienDien"
                         android:layout_width="0dp"
-                        android:layout_weight="1"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="10dp"
                         android:layout_marginRight="10dp"
                         android:layout_marginBottom="13dp"
+                        android:layout_weight="1"
                         app:cardCornerRadius="10dp">
 
                         <LinearLayout
-                            android:paddingTop="10dp"
-                            android:paddingBottom="10dp"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:background="@color/cardThietBi"
-                            android:orientation="vertical">
+                            android:background="@color/khungConLayoutDongTien"
+                            android:orientation="vertical"
+                            android:paddingTop="10dp"
+                            android:paddingBottom="10dp">
+
                             <RelativeLayout
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content">
+
                                 <ImageView
-                                    android:layout_centerVertical="true"
                                     android:id="@+id/imgDien"
-                                    android:layout_marginLeft="15dp"
-                                    android:src="@drawable/dong_tien_dien"
                                     android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content" />
+                                    android:layout_height="wrap_content"
+                                    android:layout_centerVertical="true"
+                                    android:layout_marginLeft="15dp"
+                                    android:src="@drawable/dong_tien_dien" />
+
                                 <TextView
-                                    android:layout_toRightOf="@+id/imgDien"
                                     android:id="@+id/soDienSuDungText"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_centerVertical="true"
+                                    android:layout_toRightOf="@+id/imgDien"
                                     android:paddingLeft="5dp"
                                     android:textColor="@color/tieuDePhongDongTien"
                                     android:textSize="14sp"
@@ -589,15 +612,18 @@
                                 android:layout_height="wrap_content"
                                 android:paddingLeft="15dp"
                                 android:paddingTop="10dp"
-                                android:textColor="@color/tieuDePhongDongTien"                                android:textSize="14sp"
+                                android:textColor="@color/tieuDePhongDongTien"
+                                android:textSize="14sp"
                                 android:textStyle="bold" />
+
                             <TextView
                                 android:id="@+id/tienDienDaThu"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:paddingLeft="15dp"
                                 android:paddingTop="10dp"
-                                android:textColor="@color/tieuDePhongDongTien"                                android:textSize="14sp"
+                                android:textColor="@color/tieuDePhongDongTien"
+                                android:textSize="14sp"
                                 android:textStyle="bold" />
                         </LinearLayout>
                     </androidx.cardview.widget.CardView>
@@ -605,38 +631,40 @@
                     <androidx.cardview.widget.CardView
                         android:id="@+id/dongTienNuoc"
                         android:layout_width="0dp"
-                        android:layout_weight="1"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="10dp"
                         android:layout_marginLeft="10dp"
+                        android:layout_marginTop="10dp"
                         android:layout_marginBottom="13dp"
+                        android:layout_weight="1"
                         app:cardCornerRadius="10dp">
 
                         <LinearLayout
-                            android:paddingTop="10dp"
-                            android:paddingBottom="10dp"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:background="@color/cardThietBi"
-                            android:orientation="vertical">
+                            android:background="@color/khungConLayoutDongTien"
+                            android:orientation="vertical"
+                            android:paddingTop="10dp"
+                            android:paddingBottom="10dp">
 
                             <RelativeLayout
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content">
-                                <ImageView
-                                    android:layout_centerVertical="true"
-                                    android:id="@+id/imgNuoc"
-                                    android:layout_marginLeft="15dp"
 
-                                    android:src="@drawable/dong_tien_nuoc"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content" />
-                                <TextView
-                                    android:layout_centerVertical="true"
-                                    android:id="@+id/soNuocSuDungText"
-                                    android:layout_toRightOf="@+id/imgNuoc"
+                                <ImageView
+                                    android:id="@+id/imgNuoc"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
+
+                                    android:layout_centerVertical="true"
+                                    android:layout_marginLeft="15dp"
+                                    android:src="@drawable/dong_tien_nuoc" />
+
+                                <TextView
+                                    android:id="@+id/soNuocSuDungText"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_centerVertical="true"
+                                    android:layout_toRightOf="@+id/imgNuoc"
                                     android:paddingLeft="5dp"
                                     android:textColor="@color/tieuDePhongDongTien"
                                     android:textSize="14sp"
@@ -650,8 +678,10 @@
                                 android:layout_height="wrap_content"
                                 android:paddingLeft="15dp"
                                 android:paddingTop="10dp"
-                                android:textColor="@color/tieuDePhongDongTien"                                android:textSize="14sp"
+                                android:textColor="@color/tieuDePhongDongTien"
+                                android:textSize="14sp"
                                 android:textStyle="bold" />
+
                             <TextView
                                 android:id="@+id/tienNuocDaThu"
                                 android:layout_width="match_parent"
@@ -680,7 +710,7 @@
                     android:id="@+id/khungLichSuDongTien"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="@color/cardThietBi"
+                    android:background="@color/khungConLayoutDongTien"
                     android:orientation="vertical">
 
                     <TextView
