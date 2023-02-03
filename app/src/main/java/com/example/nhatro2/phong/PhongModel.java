@@ -13,6 +13,7 @@ public class PhongModel {
     private String tenkhach;
     private int giaphong;
     private String dienthoai;
+    //    private String daidien;
 
     public PhongModel(int id, String ten, int trangthai, String khu, int tang, int thietbi, int datcoc, int sodu, int chuphong, String tenkhach, int giaphong, String dienthoai) {
         this.id = id;
@@ -124,5 +125,5 @@ public class PhongModel {
     public void setChuphong(int chuphong) {
         this.chuphong = chuphong;
     }
-//    private String daidien;
+
 }
