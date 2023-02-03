@@ -41,7 +41,8 @@
         android:hint="Số tiền phải chi"
         android:paddingLeft="15dp"
         android:background="@null"
-        android:singleLine="true"/>
+        android:singleLine="true"
+        android:inputType="number"/>
     <RadioGroup
         android:id="@+id/hinhThucKhaBien"
         android:layout_width="match_parent"

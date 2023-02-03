@@ -29,6 +29,7 @@ import com.example.nhatro2.kha_bien.KhaBien;
 import com.example.nhatro2.quanlychung.ChungAdapter;
 import com.example.nhatro2.quanlychung.ChungModel;
 import com.example.nhatro2.tai_khoan.TaiKhoanModel;
+import com.example.nhatro2.thong_ke.ThongKe;
 import com.example.nhatro2.tien_dien.TienDien;
 import com.example.nhatro2.tien_nuoc.TienNuoc;
 
@@ -39,7 +40,7 @@ public class HomeFragment extends Fragment {
     List<ChungModel> chung = new ArrayList<>();
     List<TaiKhoanModel> taiKhoan = new ArrayList<>();
     RecyclerView quanLyChung,quanLyThanhVien;
-    TextView tenThanhVien,tenUser;
+    TextView tenThanhVien,tenUser,xemThongKe;
     Toolbar header;
     ImageView thoat;
     RelativeLayout rowWater, rowElectric, rowBatBien, rowKhaBien;
@@ -169,6 +170,15 @@ public class HomeFragment extends Fragment {
                   startActivity(intent);
               }
           });
+
+        xemThongKe = view.findViewById(R.id.xemThongKe);
+        xemThongKe.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getContext(), ThongKe.class);
+                startActivity(intent);
+            }
+        });
         return view;
     }
 }

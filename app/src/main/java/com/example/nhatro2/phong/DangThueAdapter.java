@@ -51,6 +51,7 @@ public class DangThueAdapter extends RecyclerView.Adapter<DangThueAdapter.DangTh
         int khach = data.getChuphong();
 //        String daidien = data.getDaidien();
         String dienthoai = data.getDienthoai();
+        String tenKhach = data.getTenkhach();
 
         holder.ten.setText(ten);
         holder.day.setText(day);
@@ -65,18 +66,10 @@ public class DangThueAdapter extends RecyclerView.Adapter<DangThueAdapter.DangTh
                 intent.putExtra("tang",tang);
                 intent.putExtra("trangthai",trangthai);
                 intent.putExtra("gia",gia);
-                intent.putExtra("daidien",khach);
+                intent.putExtra("daidien",tenKhach);
                 intent.putExtra("dienthoai",dienthoai);
                 intent.putExtra("datcoc",datcoc);
-
-
-                Log.d("phong A101","ten phong"+data.getTen());
-                Log.d("phong A101","dien thoai"+data.getDienthoai());
-                Log.d("phong A101","dat coc"+data.getDatcoc());
-                Log.d("phong A101","ten khach"+data.getTenkhach());
-                Log.d("phong A101","chu phong"+data.getChuphong());
-                Log.d("phong A101","Trang thai"+data.getTrangthai());
-//                context.startActivity(intent);
+                context.startActivity(intent);
             }
         });
     }

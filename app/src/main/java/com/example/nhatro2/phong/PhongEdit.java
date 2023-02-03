@@ -143,17 +143,6 @@ public class PhongEdit extends AppCompatActivity {
         String dienThoai = bundle.getString("dienthoai");
         int datcoc = bundle.getInt("datcoc");
 
-        Log.d("nguoi dai dien",""+daiDien);
-        Log.d("idPhong",""+idPhong);
-        Log.d("tang",""+tang);
-        Log.d("trangthai",""+trangthai);
-        Log.d("giaphong",""+giaPhong);
-        Log.d("tenPhong",""+tenPhong);
-        Log.d("dayPhong",""+dayPhong);
-        Log.d("dienthoai",""+dienThoai);
-        Log.d("datcoc",""+datcoc);
-
-
         if (bundle == null) {
             Toast.makeText(this, "Có lỗi !", Toast.LENGTH_SHORT).show();
         } else {

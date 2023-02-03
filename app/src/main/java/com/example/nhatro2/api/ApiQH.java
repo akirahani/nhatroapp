@@ -13,6 +13,7 @@ import com.example.nhatro2.phong.PhongMultiModel;
 import com.example.nhatro2.phong.PhongModel;
 import com.example.nhatro2.phong.PhongMultiModel;
 import com.example.nhatro2.thanhvien.ThanhVienModel;
+import com.example.nhatro2.thong_ke.TongQuanChartModel;
 import com.example.nhatro2.tien_dien.LichSuDienModel;
 import com.example.nhatro2.tien_dien.TienDienModel;
 import com.example.nhatro2.tien_nuoc.LichSuNuocModel;
@@ -293,4 +294,8 @@ public interface ApiQH {
                                         @Field("phong") String tenPhong,
                                         @Field("phuongthuc") int phuongThuc,
                                         @Field("thanhtoan") String thanhToan);
+    // Thống kê
+        // Tổng quan
+        @GET("/quanghieu/admin/api/thong-ke/tong-quan.php")
+        Call <TongQuanChartModel> getTongQuan();
 }
