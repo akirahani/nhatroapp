@@ -20,7 +20,8 @@
         app:menu="@menu/menu"
         android:layout_alignParentBottom="true"
         android:background="@color/white"
-        app:itemTextColor="@color/black"
+        app:itemTextColor="@drawable/bottom_navigation_selector_checked"
+        app:itemIconTint="@drawable/bottom_navigation_selector_checked"
         android:id="@+id/menu">
     </com.google.android.material.bottomnavigation.BottomNavigationView>
 
