@@ -67,11 +67,11 @@
                 >
 
                 <ImageView
-                    android:id="@+id/thongbao"
+                    android:id="@+id/menuDanhMuc"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginRight="15dp"
-                    android:background="@drawable/ic_alert"
+                    android:background="@drawable/bar"
                     android:backgroundTint="@color/white" />
             </LinearLayout>
         </RelativeLayout>
@@ -123,9 +123,12 @@
     </androidx.cardview.widget.CardView>
 
     <com.highsoft.highcharts.core.HIChartView
+        android:layout_marginLeft="14dp"
+        android:layout_marginRight="14dp"
         android:id="@+id/tongQuanChart"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
+
 
     <com.highsoft.highcharts.core.HIChartView
         android:id="@+id/doanhThuChart"

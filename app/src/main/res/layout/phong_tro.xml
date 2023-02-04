@@ -74,11 +74,11 @@
                     >
 
                     <ImageView
-                        android:id="@+id/thongbao"
+                        android:id="@+id/menuDanhMuc"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginRight="15dp"
-                        android:background="@drawable/ic_alert"
+                        android:background="@drawable/bar"
                         android:backgroundTint="@color/white" />
                 </LinearLayout>
             </RelativeLayout>
@@ -90,7 +90,6 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/header"
             android:background="@color/white"
-
             android:orientation="horizontal">
 
             <LinearLayout

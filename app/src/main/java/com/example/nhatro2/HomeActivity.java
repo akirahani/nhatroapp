@@ -10,6 +10,7 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.widget.ImageView;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
@@ -19,10 +20,13 @@ public class HomeActivity extends AppCompatActivity {
     private int mMenuId;
     Context context;
     SharedPreferences shp;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
+
+
         //Menu
         getSupportFragmentManager().beginTransaction().replace(R.id.fragContainer,new HomeFragment()).commit();
         navigation = findViewById(R.id.menu);
@@ -30,6 +34,7 @@ public class HomeActivity extends AppCompatActivity {
             @SuppressLint("NonConstantResourceId")
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+
                 switch (item.getItemId())
                 {
                     case R.id.menuhome:

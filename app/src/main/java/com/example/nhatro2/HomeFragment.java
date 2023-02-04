@@ -7,9 +7,11 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.media.Image;
 import android.os.Bundle;
 
 import androidx.appcompat.app.AlertDialog;
+import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -32,6 +34,7 @@ import com.example.nhatro2.tai_khoan.TaiKhoanModel;
 import com.example.nhatro2.thong_ke.ThongKe;
 import com.example.nhatro2.tien_dien.TienDien;
 import com.example.nhatro2.tien_nuoc.TienNuoc;
+import com.google.android.material.navigation.NavigationView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -65,6 +68,14 @@ public class HomeFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_home, container, false);
+        ImageView menuDanhMuc = view.findViewById(R.id.menuDanhMuc);
+        menuDanhMuc.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+            }
+        });
+
         // Tên người đăng nhập
         tenUser = view.findViewById(R.id.tenUser);
         shp = getContext().getSharedPreferences("user", Context.MODE_PRIVATE);

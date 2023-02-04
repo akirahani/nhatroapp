@@ -14,6 +14,7 @@ import android.widget.Toast;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+
 import com.example.nhatro2.HomeActivity;
 import com.example.nhatro2.MainActivity;
 import com.example.nhatro2.R;
@@ -24,13 +25,19 @@ import com.highsoft.highcharts.common.hichartsclasses.HIChart;
 import com.highsoft.highcharts.common.hichartsclasses.HIColumn;
 import com.highsoft.highcharts.common.hichartsclasses.HIOptions;
 import com.highsoft.highcharts.common.hichartsclasses.HIPie;
+import com.highsoft.highcharts.common.hichartsclasses.HIPlotOptions;
 import com.highsoft.highcharts.common.hichartsclasses.HISeries;
+import com.highsoft.highcharts.common.hichartsclasses.HISubtitle;
 import com.highsoft.highcharts.common.hichartsclasses.HITitle;
+import com.highsoft.highcharts.common.hichartsclasses.HITooltip;
+import com.highsoft.highcharts.common.hichartsclasses.HIXAxis;
+import com.highsoft.highcharts.common.hichartsclasses.HIYAxis;
 import com.highsoft.highcharts.core.*;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
+import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -39,7 +46,6 @@ import retrofit2.Response;
 public class ThongKe extends AppCompatActivity {
     ImageView thoat, logo;
     SharedPreferences shp;
-
     @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -91,9 +97,8 @@ public class ThongKe extends AppCompatActivity {
             }
         });
 
-        // Biểu đồ tròn (pie chart)
+        // Biểu đồ cột: tổng quan(bar chart)
         HIChartView chartView = (HIChartView) findViewById(R.id.tongQuanChart);
-
         HIOptions options = new HIOptions();
 
         HIChart chart = new HIChart();
@@ -103,35 +108,74 @@ public class ThongKe extends AppCompatActivity {
         HITitle title = new HITitle();
         title.setText("Tổng quan");
         options.setTitle(title);
+
+        final HIYAxis hiyAxis = new HIYAxis();
+        hiyAxis.setMin(0);
+        hiyAxis.setTitle(new HITitle());
+        hiyAxis.getTitle().setText("");
+        options.setYAxis(new ArrayList() {{
+            add(hiyAxis);
+        }});
+//
+//        final HIXAxis hixAxis = new HIXAxis();
+//        ArrayList categories = new ArrayList<>();
+//        categories.add("Goals");
+//        categories.add("Assists");
+//        categories.add("Shots On Goal");
+//
+//        hixAxis.setCategories(categories);
+//        options.setXAxis(new ArrayList() {{
+//            add(hixAxis);
+//        }});
+
         HIColumn phongTrongColumn = new HIColumn();
+        HIColumn phongThueColumn = new HIColumn();
+        HIColumn khachThueColumn = new HIColumn();
+
+        phongTrongColumn.setName("Phòng trống");
         ArrayList phongTrongColumnData = new ArrayList<>();
 
-        ApiQH.apiQH.getTongQuan().enqueue(new Callback<TongQuanChartModel>() {
-            @Override
-            public void onResponse(Call<TongQuanChartModel> call, Response<TongQuanChartModel> response) {
-                TongQuanChartModel tongQuanDetail = response.body();
-                int soPhongTrong = tongQuanDetail.getPhongthue();
-                int soPhongThue = tongQuanDetail.getPhongthue();
-                int soKhachThue = tongQuanDetail.getPhongthue();
+        phongThueColumn.setName("Phòng đang thuê");
+        ArrayList phongThueColumnData = new ArrayList<>();
 
-                phongTrongColumnData.add(soPhongTrong);
-                Log.d("ket qua cuoi cung",""+soPhongTrong);
-            }
+        khachThueColumn.setName("Khách trọ");
+        ArrayList khachThueColumnData = new ArrayList<>();
 
-            @Override
-            public void onFailure(Call<TongQuanChartModel> call, Throwable t) {
-                Log.d("err tong quan",""+t.toString());
-            }
-        });
 
-        Log.d("kq",""+phongTrongColumnData);
+//        ApiQH.apiQH.getTongQuan().enqueue(new Callback<TongQuanChartModel>() {
+//            @Override
+//            public void onResponse(Call<TongQuanChartModel> call, Response<TongQuanChartModel> response) {
+//                TongQuanChartModel tongQuanDetail = response.body();
+//                int soPhongTrong = tongQuanDetail.getPhongtrong();
+//                int soPhongThue = tongQuanDetail.getPhongthue();
+//                int soKhachThue = tongQuanDetail.getThanhvien();
+//
+//                Log.d("trong day",""+soPhongTrong);
+//                Log.d("thue day",""+soPhongThue);
+//                Log.d("khach day",""+soKhachThue);
+//            }
+//            @Override
+//            public void onFailure(Call<TongQuanChartModel> call, Throwable t) {
+//            }
+//        });
+
+        phongThueColumnData.add(100);
+        phongThueColumnData.add(15);
+        khachThueColumnData.add(11);
+
         phongTrongColumn.setData(phongTrongColumnData);
+        phongThueColumn.setData(phongThueColumnData);
+        khachThueColumn.setData(khachThueColumnData);
+
+
         ArrayList series = new ArrayList<>();
+
+        series.add(phongThueColumn);
         series.add(phongTrongColumn);
+        series.add(khachThueColumn);
 
         options.setSeries(series);
         chartView.setOptions(options);
-
 
     }
 
