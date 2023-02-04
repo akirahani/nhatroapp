@@ -2,17 +2,21 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
         android:id="@+id/menuhome"
+        android:state_checked="true"
+        android:color="@android:color/darker_gray"
         android:title="Tổng quan"
         android:icon="@drawable/home"
         >
     </item>
     <item
+        android:color="@color/black"
         android:id="@+id/menualert"
-        android:title="Danh mục"
-        android:icon="@drawable/bar"
+        android:title="Thông báo"
+        android:icon="@drawable/ic_alert"
         >
     </item>
     <item
+        android:color="@color/black"
         android:id="@+id/menunoti"
         android:title="Tài khoản"
         android:icon="@drawable/user"

@@ -4,7 +4,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="@color/backTaiKhoan">
+    android:background="@color/backTaiKhoan"
+    >
 
 
     <LinearLayout
@@ -16,7 +17,7 @@
         android:paddingBottom="5dp"
         android:background="@drawable/bg_info_user">
         <TextView
-            android:textColor="@color/black"
+            android:textColor="@color/textTaiKhoan"
             android:id="@+id/nameUser"
             android:textSize="18sp"
             android:textStyle="bold"
@@ -24,7 +25,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
         <TextView
-            android:textColor="@color/black"
+            android:textColor="@color/textTaiKhoan"
             android:id="@+id/phoneUser"
             android:textSize="14sp"
             android:textStyle="normal"
@@ -34,63 +35,78 @@
     </LinearLayout>
 
     <LinearLayout
-        android:id="@+id/infoUser"
-        android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@color/white"
         android:layout_marginTop="10dp"
-        android:paddingTop="10dp"
-        android:paddingBottom="10dp"
-        android:paddingLeft="10dp"
-        android:background="@drawable/border_bottom_user">
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@drawable/ic_userinfo"/>
-        <TextView
-            android:paddingLeft="10dp"
-            android:text="Thông tin tài khoản"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
-    </LinearLayout>
+        android:orientation="vertical">
 
-    <LinearLayout
-        android:id="@+id/changePassd"
-        android:orientation="horizontal"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:paddingTop="10dp"
-        android:paddingBottom="10dp"
-        android:paddingLeft="10dp"
-        android:background="@drawable/border_bottom_user">
-        <ImageView
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:id="@+id/infoUser"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@drawable/ic_changepassd"/>
-        <TextView
-            android:paddingLeft="10dp"
-            android:text="Đổi mật khẩu"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
-    </LinearLayout>
-    <LinearLayout
-        android:id="@+id/dangXuatTaiKhoan"
-        android:layout_width="match_parent"
-        android:orientation="horizontal"
-        android:layout_height="wrap_content"
-        android:paddingTop="10dp"
-        android:paddingBottom="10dp"
-        android:paddingLeft="10dp"
-        android:background="@drawable/border_bottom_user">
-        <ImageView
-            android:layout_width="wrap_content"
+            android:paddingTop="12dp"
+            android:paddingBottom="12dp"
+            android:paddingLeft="10dp">
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/ic_userinfo"/>
+            <TextView
+                android:layout_gravity="center"
+                android:textSize="16sp"
+                android:textColor="@color/textTaiKhoan"
+                android:paddingLeft="10dp"
+                android:text="Thông tin tài khoản"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/changePassd"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@drawable/ic_logout"/>
-        <TextView
-            android:paddingLeft="10dp"
-            android:text="Đăng xuất"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:paddingTop="12dp"
+            android:paddingBottom="12dp"
+            android:paddingLeft="10dp">
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/ic_changepassd"/>
+            <TextView
+                android:layout_gravity="center"
+                android:textSize="16sp"
+                android:textColor="@color/textTaiKhoan"
+                android:paddingLeft="10dp"
+                android:text="Đổi mật khẩu"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/dangXuatTaiKhoan"
+            android:layout_width="match_parent"
+            android:orientation="horizontal"
+            android:layout_height="wrap_content"
+            android:paddingTop="12dp"
+            android:paddingBottom="12dp"
+            android:paddingLeft="10dp">
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/ic_logout"/>
+            <TextView
+                android:layout_gravity="center"
+                android:textSize="16sp"
+                android:textColor="@color/textTaiKhoan"
+                android:paddingLeft="10dp"
+                android:text="Đăng xuất"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+
     </LinearLayout>
 
 

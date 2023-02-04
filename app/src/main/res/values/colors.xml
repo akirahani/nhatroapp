@@ -23,7 +23,7 @@
     <color name="phongBanGiao">#FFF9DE</color>
     <color name="tabBanGiao">#FFB21C</color>
     <color name="tabThue">#B71616</color>
-    <color name="loginButton">#354B9C</color>
+    <color name="loginButton">#354B9C</color>\
     <color name="inputLogin">#F9F9FA</color>
     <color name="buttonDienNuoc">#3252C5</color>
     <color name="tenPhongColor">#138013</color>
@@ -31,7 +31,8 @@
     <color  name="tieuDePhongDongTien">#3498db</color>
     <color name="colorTextPhong">#95BAF7</color>
     <color  name="nguoiDaiDienDongTien">#6f98b4</color>
-    <color  name="backTaiKhoan">#D3D1D1</color>
+    <color  name="backTaiKhoan">#F4F4F4</color>
     <color  name="khungConLayoutDongTien">#F3F6FF</color>
+    <color  name="textTaiKhoan">#606060</color>
 
 </resources>
