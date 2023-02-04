@@ -14,23 +14,20 @@ import android.widget.Toast;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import com.anychart.AnyChart;
+import com.anychart.AnyChartView;
+import com.anychart.chart.common.dataentry.DataEntry;
+import com.anychart.chart.common.dataentry.ValueDataEntry;
+import com.anychart.charts.Pie;
 import com.example.nhatro2.HomeActivity;
 import com.example.nhatro2.MainActivity;
 import com.example.nhatro2.R;
 
 import com.example.nhatro2.api.ApiQH;
-import com.highsoft.highcharts.common.hichartsclasses.HIBar;
-import com.highsoft.highcharts.common.hichartsclasses.HIChart;
-import com.highsoft.highcharts.common.hichartsclasses.HIColumn;
-import com.highsoft.highcharts.common.hichartsclasses.HIOptions;
-import com.highsoft.highcharts.common.hichartsclasses.HIPie;
-import com.highsoft.highcharts.common.hichartsclasses.HISeries;
-import com.highsoft.highcharts.common.hichartsclasses.HITitle;
-import com.highsoft.highcharts.core.*;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -39,7 +36,8 @@ import retrofit2.Response;
 public class ThongKe extends AppCompatActivity {
     ImageView thoat, logo;
     SharedPreferences shp;
-
+    int soPhongTrong ,soPhongThue ,soKhachThue;
+    AnyChartView anyChartTongQuan;
     @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -92,30 +90,13 @@ public class ThongKe extends AppCompatActivity {
         });
 
         // Biểu đồ tròn (pie chart)
-        HIChartView chartView = (HIChartView) findViewById(R.id.tongQuanChart);
-
-        HIOptions options = new HIOptions();
-
-        HIChart chart = new HIChart();
-        chart.setType("column");
-        options.setChart(chart);
-
-        HITitle title = new HITitle();
-        title.setText("Tổng quan");
-        options.setTitle(title);
-        HIColumn phongTrongColumn = new HIColumn();
-        ArrayList phongTrongColumnData = new ArrayList<>();
-
         ApiQH.apiQH.getTongQuan().enqueue(new Callback<TongQuanChartModel>() {
             @Override
             public void onResponse(Call<TongQuanChartModel> call, Response<TongQuanChartModel> response) {
                 TongQuanChartModel tongQuanDetail = response.body();
-                int soPhongTrong = tongQuanDetail.getPhongthue();
-                int soPhongThue = tongQuanDetail.getPhongthue();
-                int soKhachThue = tongQuanDetail.getPhongthue();
-
-                phongTrongColumnData.add(soPhongTrong);
-                Log.d("ket qua cuoi cung",""+soPhongTrong);
+                soPhongTrong = tongQuanDetail.getPhongthue();
+                soPhongThue = tongQuanDetail.getPhongthue();
+                soKhachThue = tongQuanDetail.getPhongthue();
             }
 
             @Override
@@ -124,14 +105,14 @@ public class ThongKe extends AppCompatActivity {
             }
         });
 
-        Log.d("kq",""+phongTrongColumnData);
-        phongTrongColumn.setData(phongTrongColumnData);
-        ArrayList series = new ArrayList<>();
-        series.add(phongTrongColumn);
+        anyChartTongQuan = findViewById(R.id.tongQuanChart);
+        Pie pie = AnyChart.pie();
+        List<DataEntry> data = new ArrayList<>();
+        data.add(new ValueDataEntry("John", 10000));
+        data.add(new ValueDataEntry("Jake", 12000));
+        data.add(new ValueDataEntry("Peter", 18000));
 
-        options.setSeries(series);
-        chartView.setOptions(options);
-
+        anyChartTongQuan.setChart(pie);
 
     }
 

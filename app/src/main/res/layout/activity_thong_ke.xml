@@ -122,7 +122,7 @@
 
     </androidx.cardview.widget.CardView>
 
-    <com.highsoft.highcharts.core.HIChartView
+    <com.anychart.AnyChartView
         android:id="@+id/tongQuanChart"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
