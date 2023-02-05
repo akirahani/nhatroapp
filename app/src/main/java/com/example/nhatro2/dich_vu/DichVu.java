@@ -1,7 +1,10 @@
 package com.example.nhatro2.dich_vu;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.view.GravityCompat;
+import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -14,6 +17,7 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.Html;
 import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
@@ -27,6 +31,12 @@ import com.example.nhatro2.MainActivity;
 import com.example.nhatro2.R;
 import com.example.nhatro2.api.Api;
 import com.example.nhatro2.api.ApiQH;
+import com.example.nhatro2.dong_tien.DongTien;
+import com.example.nhatro2.hop_dong.HopDong;
+import com.example.nhatro2.quy_tien_mat.QuyTienMat;
+import com.example.nhatro2.thanhvien.KhachTro;
+import com.example.nhatro2.tien_coc.TienCoc;
+import com.google.android.material.navigation.NavigationView;
 
 import org.w3c.dom.Text;
 
@@ -37,13 +47,14 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class DichVu extends AppCompatActivity {
-    ImageView thoat, them, logo, imageDichVu;
+    ImageView thoat, them, logo, imageDichVu, menuDanhMuc;
     SharedPreferences shp;
     RelativeLayout tieuDeDichVu;
     RecyclerView listThietBi;
     TextView tenThietBi, giaThietBi, tacVu;
     List<DichVuModel> dichVu;
     DichVuAdapter dichVuAdapter;
+    DrawerLayout mDrawerLayout;
 
     @SuppressLint("MissingInflatedId")
     @Override
@@ -136,5 +147,42 @@ public class DichVu extends AppCompatActivity {
         params.leftMargin = 46;
         params.topMargin = 18;
         imageFrame.addView(iv, params);
+
+        menuDanhMuc = findViewById(R.id.menuDanhMuc);
+        mDrawerLayout = findViewById(R.id.drawer_layout_dich_vu);
+
+        menuDanhMuc.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                mDrawerLayout.openDrawer(GravityCompat.START);
+            }
+        });
+        NavigationView navigationView = findViewById(R.id.nav_view);
+        navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                switch (item.getItemId()){
+                    case R.id.khach_tro:
+                        Intent khachTro = new Intent(DichVu.this, KhachTro.class);
+                        startActivity(khachTro);
+                        return true;
+                    case R.id.dat_coc:
+                        Intent datCoc = new Intent(DichVu.this, TienCoc.class);
+                        startActivity(datCoc);
+                        return true;
+                    case R.id.thanh_toan:
+                        Intent thanhToan = new Intent(DichVu.this, DongTien.class);
+                        startActivity(thanhToan);
+                        return true;
+                    case R.id.hop_dong:
+                        Intent hopDong = new Intent(DichVu.this, HopDong.class);
+                        startActivity(hopDong);
+                        return true;
+
+
+                }
+                return true;
+            }
+        });
     }
 }

@@ -34,5 +34,6 @@
     <color  name="backTaiKhoan">#F4F4F4</color>
     <color  name="khungConLayoutDongTien">#F3F6FF</color>
     <color  name="textTaiKhoan">#606060</color>
+    <color  name="nutDongTien">#8091CE</color>
 
 </resources>

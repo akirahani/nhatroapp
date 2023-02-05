@@ -1,226 +1,242 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.drawerlayout.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/drawer_layout_kha_bien"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".kha_bien.KhaBien">
 
-    <androidx.appcompat.widget.Toolbar
-        android:id="@+id/header"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@drawable/gradient_header">
-
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-            <LinearLayout
-                android:id="@+id/rightToolbar"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentLeft="true"
-                android:layout_centerVertical="true">
-
-                <ImageView
-                    android:id="@+id/thoat"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/ic_back"
-                    android:backgroundTint="@color/white"></ImageView>
-
-                <TextView
-                    android:id="@+id/ten"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_toRightOf="@+id/thoat"
-                    android:paddingLeft="5dp"
-                    android:text="Thoát"
-                    android:textColor="@color/white"></TextView>
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/centerToolbar"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerInParent="true"
-                android:layout_centerVertical="true"
-                android:paddingRight="10dp">
-                >
-
-                <ImageView
-                    android:id="@+id/logo"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/ic_logo"
-                    android:backgroundTint="@color/white" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/leftToolbar"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentRight="true"
-                android:layout_centerVertical="true">
-                >
-
-                <ImageView
-                    android:id="@+id/menuDanhMuc"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginRight="15dp"
-                    android:background="@drawable/bar"
-                    android:backgroundTint="@color/white" />
-            </LinearLayout>
-        </RelativeLayout>
-    </androidx.appcompat.widget.Toolbar>
-    <!-- title -->
     <RelativeLayout
-        android:id="@+id/tren"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/header"
-        android:background="@color/white"
-        android:orientation="horizontal">
+        android:layout_height="match_parent">
 
-        <LinearLayout
-            android:id="@+id/rowTitleKhaBien"
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/header"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:elevation="20dp"
+            android:background="@drawable/gradient_header">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <LinearLayout
+                    android:id="@+id/rightToolbar"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_centerVertical="true">
+
+                    <ImageView
+                        android:id="@+id/thoat"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/ic_back"
+                        android:backgroundTint="@color/white"></ImageView>
+
+                    <TextView
+                        android:id="@+id/ten"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_toRightOf="@+id/thoat"
+                        android:paddingLeft="5dp"
+                        android:text="Thoát"
+                        android:textColor="@color/white"></TextView>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/centerToolbar"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:layout_centerVertical="true"
+                    android:paddingRight="10dp">
+                    >
+
+                    <ImageView
+                        android:id="@+id/logo"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/ic_logo"
+                        android:backgroundTint="@color/white" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/leftToolbar"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true">
+                    >
+
+                    <ImageView
+                        android:id="@+id/menuDanhMuc"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="15dp"
+                        android:background="@drawable/bar"
+                        android:backgroundTint="@color/white" />
+                </LinearLayout>
+            </RelativeLayout>
+        </androidx.appcompat.widget.Toolbar>
+        <!-- title -->
+        <RelativeLayout
+            android:id="@+id/tren"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/header"
+            android:background="@color/white"
             android:orientation="horizontal">
 
             <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
+                android:id="@+id/rowTitleKhaBien"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:elevation="20dp"
+                android:orientation="horizontal">
 
-                <FrameLayout
-                    android:id="@+id/imageKhaBien"
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+
+                    <FrameLayout
+                        android:id="@+id/imageKhaBien"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"></FrameLayout>
+
+
+                </LinearLayout>
+
+                <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center"></FrameLayout>
+                    android:layout_gravity="center"
+                    android:paddingLeft="8dp"
+                    android:text="Chi phí khả biến"
+                    android:textAllCaps="true"
+                    android:textColor="@color/textQuanLyChung"
+                    android:textSize="18dp"
+                    android:textStyle="bold" />
 
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginRight="10dp">
 
+                    <ImageView
+                        android:id="@+id/addKhaBien"
+                        android:layout_width="18dp"
+                        android:layout_height="18dp"
+                        android:layout_alignParentRight="true"
+                        android:layout_gravity="center"
+                        android:layout_marginRight="5dp"
+                        android:src="@drawable/them" />
+
+                </RelativeLayout>
             </LinearLayout>
 
             <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:paddingLeft="8dp"
-                android:text="Chi phí khả biến"
-                android:textAllCaps="true"
-                android:textColor="@color/textQuanLyChung"
-                android:textSize="18dp"
-                android:textStyle="bold" />
+                android:layout_width="match_parent"
+                android:layout_height="20dp"
+                android:layout_below="@+id/rowTitleKhaBien"
+                android:layout_marginTop="-15dp"
+                android:background="@color/khungNgoai" />
 
-            <RelativeLayout
-                android:layout_width="wrap_content"
+        </RelativeLayout>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardMonthKhaBien"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tren"
+            android:layout_marginLeft="14dp"
+            android:layout_marginTop="13dp"
+            android:layout_marginRight="14dp"
+            app:cardCornerRadius="5dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginRight="10dp">
+                android:background="@color/tabActive"
+                android:orientation="horizontal">
 
                 <ImageView
-                    android:id="@+id/addKhaBien"
-                    android:layout_width="18dp"
-                    android:layout_height="18dp"
-                    android:layout_alignParentRight="true"
-                    android:layout_gravity="center"
-                    android:layout_marginRight="5dp"
-                    android:src="@drawable/them" />
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginBottom="8dp"
+                    android:src="@drawable/choosemonth" />
 
-            </RelativeLayout>
+                <TextView
+                    android:id="@+id/chonThangKhaBien"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:paddingTop="5dp"
+                    android:paddingBottom="5dp"
+                    android:textColor="@color/white"
+                    android:textStyle="bold" />
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+        <LinearLayout
+            android:id="@+id/tieuDeKhaBien"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/cardMonthKhaBien"
+            android:layout_marginLeft="14dp"
+            android:layout_marginTop="12dp"
+            android:layout_marginRight="14dp"
+            android:layout_marginBottom="9dp">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="30dp"
+                android:layout_weight="1"
+                android:gravity="left"
+                android:text="Tiền chi"
+                android:textColor="@color/black"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="30dp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="Lý do"
+                android:textColor="@color/black"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="30dp"
+                android:layout_weight="1"
+                android:gravity="right"
+                android:text="Thời gian"
+                android:textColor="@color/black"
+                android:textStyle="bold" />
         </LinearLayout>
 
-        <TextView
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/listKhaBien"
             android:layout_width="match_parent"
-            android:layout_height="20dp"
-            android:layout_below="@+id/rowTitleKhaBien"
-            android:layout_marginTop="-15dp"
-            android:background="@color/khungNgoai" />
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tieuDeKhaBien"
+            android:layout_marginLeft="14dp"
+            android:layout_marginRight="14dp" />
 
     </RelativeLayout>
 
-    <androidx.cardview.widget.CardView
-        android:id="@+id/cardMonthKhaBien"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/tren"
-        android:layout_marginLeft="14dp"
-        android:layout_marginTop="13dp"
-        android:layout_marginRight="14dp"
-        app:cardCornerRadius="5dp">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/tabActive"
-            android:orientation="horizontal">
-
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="8dp"
-                android:layout_marginTop="8dp"
-                android:layout_marginBottom="8dp"
-                android:src="@drawable/choosemonth" />
-
-            <TextView
-                android:id="@+id/chonThangKhaBien"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:paddingTop="5dp"
-                android:paddingBottom="5dp"
-                android:textColor="@color/white"
-                android:textStyle="bold" />
-        </LinearLayout>
-    </androidx.cardview.widget.CardView>
-
-    <LinearLayout
-        android:id="@+id/tieuDeKhaBien"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/cardMonthKhaBien"
-        android:layout_marginLeft="14dp"
-        android:layout_marginTop="12dp"
-        android:layout_marginRight="14dp"
-        android:layout_marginBottom="9dp">
-
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="30dp"
-            android:layout_weight="1"
-            android:gravity="left"
-            android:text="Tiền chi"
-            android:textColor="@color/black"
-            android:textStyle="bold" />
-
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="30dp"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:text="Lý do"
-            android:textColor="@color/black"
-            android:textStyle="bold" />
-
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="30dp"
-            android:layout_weight="1"
-            android:gravity="right"
-            android:text="Thời gian"
-            android:textColor="@color/black"
-            android:textStyle="bold" />
-    </LinearLayout>
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/listKhaBien"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/tieuDeKhaBien"
-        android:layout_marginLeft="14dp"
-        android:layout_marginRight="14dp" />
-</RelativeLayout>
+    <com.google.android.material.navigation.NavigationView
+        android:id="@+id/nav_view"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_gravity="start"
+        android:fitsSystemWindows="true"
+        app:headerLayout="@layout/drawer_header_layout"
+        app:menu="@menu/drawer_view" />
+</androidx.drawerlayout.widget.DrawerLayout>

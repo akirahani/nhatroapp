@@ -1,7 +1,10 @@
 package com.example.nhatro2.thanhvien;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.view.GravityCompat;
+import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -16,6 +19,7 @@ import android.os.Bundle;
 import android.text.Html;
 import android.util.Log;
 import android.view.Gravity;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
@@ -35,6 +39,11 @@ import com.example.nhatro2.dich_vu.DichVu;
 import com.example.nhatro2.dich_vu.DichVuAdapter;
 import com.example.nhatro2.dich_vu.DichVuAdd;
 import com.example.nhatro2.dich_vu.DichVuModel;
+import com.example.nhatro2.dong_tien.DongTien;
+import com.example.nhatro2.hop_dong.HopDong;
+import com.example.nhatro2.phong.Phong;
+import com.example.nhatro2.tien_coc.TienCoc;
+import com.google.android.material.navigation.NavigationView;
 
 import java.util.List;
 
@@ -43,12 +52,12 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class KhachTro extends AppCompatActivity {
-    ImageView thoat, logo, addCustomer, searchCustomer;
+    ImageView thoat, logo, addCustomer, searchCustomer, menuDanhMuc;
     SharedPreferences shp;
     RecyclerView listKhachThue;
     TextView searchClose, searchClick;
     EditText keySearch;
-
+    DrawerLayout mDrawerLayout;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -194,5 +203,41 @@ public class KhachTro extends AppCompatActivity {
             }
         });
 
+        menuDanhMuc = findViewById(R.id.menuDanhMuc);
+        mDrawerLayout = findViewById(R.id.drawer_layout_phong_khach_tro);
+
+        menuDanhMuc.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                mDrawerLayout.openDrawer(GravityCompat.START);
+            }
+        });
+        NavigationView navigationView = findViewById(R.id.nav_view);
+        navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                switch (item.getItemId()){
+                    case R.id.khach_tro:
+                        Intent khachTro = new Intent(KhachTro.this, KhachTro.class);
+                        startActivity(khachTro);
+                        return true;
+                    case R.id.dat_coc:
+                        Intent datCoc = new Intent(KhachTro.this, TienCoc.class);
+                        startActivity(datCoc);
+                        return true;
+                    case R.id.thanh_toan:
+                        Intent thanhToan = new Intent(KhachTro.this, DongTien.class);
+                        startActivity(thanhToan);
+                        return true;
+                    case R.id.hop_dong:
+                        Intent hopDong = new Intent(KhachTro.this, HopDong.class);
+                        startActivity(hopDong);
+                        return true;
+
+
+                }
+                return true;
+            }
+        });
     }
 }

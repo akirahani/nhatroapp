@@ -1,7 +1,10 @@
 package com.example.nhatro2.thanhvien;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.view.GravityCompat;
+import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.annotation.SuppressLint;
@@ -14,6 +17,7 @@ import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.text.Html;
 import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.DatePicker;
 import android.widget.EditText;
@@ -28,6 +32,11 @@ import com.example.nhatro2.MainActivity;
 import com.example.nhatro2.R;
 import com.example.nhatro2.api.Api;
 import com.example.nhatro2.api.ApiQH;
+import com.example.nhatro2.dong_tien.DongTien;
+import com.example.nhatro2.hop_dong.HopDong;
+import com.example.nhatro2.phong.Phong;
+import com.example.nhatro2.tien_coc.TienCoc;
+import com.google.android.material.navigation.NavigationView;
 
 import java.util.Calendar;
 import java.util.Locale;
@@ -37,14 +46,14 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class KhachTroAdd extends AppCompatActivity {
-    ImageView thoat, logo, addCustomer;
+    ImageView thoat, logo, addCustomer, menuDanhMuc;
     SharedPreferences shp;
     TextView backKhachList, themKhach, ngayCapAddText, ngaySinhAddText;
     EditText tenKhachAdd, sdtKhachAddText, soCanCuocAddText, diaChiKhachAddText, quocTichText;
     RadioButton nam, nu, khac, nguoiLon, treEm;
     DatePickerDialog.OnDateSetListener setListener, setNgayCap;
     private int mYear, mMonth, mDay, mYearCap, mMonthCap, mDayCap, gioiTinh, doiTuong;
-
+    DrawerLayout mDrawerLayout;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -235,5 +244,41 @@ public class KhachTroAdd extends AppCompatActivity {
             }
         });
 
+        menuDanhMuc = findViewById(R.id.menuDanhMuc);
+        mDrawerLayout = findViewById(R.id.drawer_layout_phong_khach_add);
+
+        menuDanhMuc.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                mDrawerLayout.openDrawer(GravityCompat.START);
+            }
+        });
+        NavigationView navigationView = findViewById(R.id.nav_view);
+        navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                switch (item.getItemId()){
+                    case R.id.khach_tro:
+                        Intent khachTro = new Intent(KhachTroAdd.this, KhachTro.class);
+                        startActivity(khachTro);
+                        return true;
+                    case R.id.dat_coc:
+                        Intent datCoc = new Intent(KhachTroAdd.this, TienCoc.class);
+                        startActivity(datCoc);
+                        return true;
+                    case R.id.thanh_toan:
+                        Intent thanhToan = new Intent(KhachTroAdd.this, DongTien.class);
+                        startActivity(thanhToan);
+                        return true;
+                    case R.id.hop_dong:
+                        Intent hopDong = new Intent(KhachTroAdd.this, HopDong.class);
+                        startActivity(hopDong);
+                        return true;
+
+
+                }
+                return true;
+            }
+        });
     }
 }

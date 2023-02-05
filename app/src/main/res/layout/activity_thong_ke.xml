@@ -1,152 +1,168 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.drawerlayout.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/drawer_layout_thong_ke"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".thong_ke.ThongKe">
-    <!--header-->
-    <androidx.appcompat.widget.Toolbar xmlns:android="http://schemas.android.com/apk/res/android"
-        android:id="@+id/header"
+
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@drawable/gradient_header">
-
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-            <LinearLayout
-                android:id="@+id/rightToolbar"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentLeft="true"
-                android:layout_centerVertical="true">
-
-                <ImageView
-                    android:id="@+id/thoat"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/ic_back"
-                    android:backgroundTint="@color/white" />
-
-                <TextView
-                    android:id="@+id/ten"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_toRightOf="@+id/thoat"
-                    android:paddingLeft="5dp"
-                    android:text="Thoát"
-                    android:textColor="@color/white" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/centerToolbar"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerInParent="true"
-                android:layout_centerVertical="true"
-                android:paddingRight="10dp">
-                >
-
-                <ImageView
-                    android:id="@+id/logo"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/ic_logo"
-                    android:backgroundTint="@color/white" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/leftToolbar"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentRight="true"
-                android:layout_centerVertical="true">
-                >
-
-                <ImageView
-                    android:id="@+id/menuDanhMuc"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginRight="15dp"
-                    android:background="@drawable/bar"
-                    android:backgroundTint="@color/white" />
-            </LinearLayout>
-        </RelativeLayout>
-    </androidx.appcompat.widget.Toolbar>
-    <!-- Thông tin doanh thu -->
-    <androidx.cardview.widget.CardView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="14dp"
-        android:layout_marginTop="14dp"
-        android:layout_marginRight="14dp"
-        android:layout_marginBottom="13dp"
-        app:cardCornerRadius="10dp"
-        app:cardElevation="15dp"
-        app:contentPadding="16dp">
-
-        <RelativeLayout
-            android:id="@+id/khungTrongCardView"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+        <!--header-->
+        <androidx.appcompat.widget.Toolbar xmlns:android="http://schemas.android.com/apk/res/android"
+            android:id="@+id/header"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/white">
+            android:background="@drawable/gradient_header">
 
-            <LinearLayout
-                android:id="@+id/thucdat"
-                android:layout_width="wrap_content"
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <LinearLayout
+                    android:id="@+id/rightToolbar"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_centerVertical="true">
+
+                    <ImageView
+                        android:id="@+id/thoat"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/ic_back"
+                        android:backgroundTint="@color/white" />
+
+                    <TextView
+                        android:id="@+id/ten"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_toRightOf="@+id/thoat"
+                        android:paddingLeft="5dp"
+                        android:text="Thoát"
+                        android:textColor="@color/white" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/centerToolbar"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:layout_centerVertical="true"
+                    android:paddingRight="10dp">
+                    >
+
+                    <ImageView
+                        android:id="@+id/logo"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/ic_logo"
+                        android:backgroundTint="@color/white" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/leftToolbar"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true">
+                    >
+
+                    <ImageView
+                        android:id="@+id/menuDanhMuc"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="15dp"
+                        android:background="@drawable/bar"
+                        android:backgroundTint="@color/white" />
+                </LinearLayout>
+            </RelativeLayout>
+        </androidx.appcompat.widget.Toolbar>
+        <!-- Thông tin doanh thu -->
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="14dp"
+            android:layout_marginTop="14dp"
+            android:layout_marginRight="14dp"
+            android:layout_marginBottom="13dp"
+            app:cardCornerRadius="10dp"
+            app:cardElevation="15dp"
+            app:contentPadding="16dp">
+
+            <RelativeLayout
+                android:id="@+id/khungTrongCardView"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical">
+                android:background="@color/white">
 
-                <TextView
-                    android:layout_width="match_parent"
+                <LinearLayout
+                    android:id="@+id/thucdat"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Doanh thu tháng này"
-                    android:textAllCaps="true"
-                    android:textColor="@color/doanhThuThang"
-                    android:textSize="15sp" />
+                    android:orientation="vertical">
 
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="70.000.000 VNĐ"
-                    android:textColor="@color/black"
-                    android:textSize="20sp"
-                    android:textStyle="bold" />
-            </LinearLayout>
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Doanh thu tháng này"
+                        android:textAllCaps="true"
+                        android:textColor="@color/doanhThuThang"
+                        android:textSize="15sp" />
 
-        </RelativeLayout>
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="70.000.000 VNĐ"
+                        android:textColor="@color/black"
+                        android:textSize="20sp"
+                        android:textStyle="bold" />
+                </LinearLayout>
 
-
-    </androidx.cardview.widget.CardView>
-
-    <com.highsoft.highcharts.core.HIChartView
-        android:id="@+id/tongQuanChart"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="14dp"
-        android:layout_marginRight="14dp" />
+            </RelativeLayout>
 
 
-    <com.highsoft.highcharts.core.HIChartView
-        android:id="@+id/doanhThuChart"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        </androidx.cardview.widget.CardView>
 
-    <com.highsoft.highcharts.core.HIChartView
-        android:id="@+id/tienDienChart"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        <com.highsoft.highcharts.core.HIChartView
+            android:id="@+id/tongQuanChart"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="14dp"
+            android:layout_marginRight="14dp" />
 
-    <com.highsoft.highcharts.core.HIChartView
-        android:id="@+id/tienNuocChart"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
 
-    <com.highsoft.highcharts.core.HIChartView
-        android:id="@+id/thietBiChart"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
-</LinearLayout>
+        <com.highsoft.highcharts.core.HIChartView
+            android:id="@+id/doanhThuChart"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <com.highsoft.highcharts.core.HIChartView
+            android:id="@+id/tienDienChart"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <com.highsoft.highcharts.core.HIChartView
+            android:id="@+id/tienNuocChart"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <com.highsoft.highcharts.core.HIChartView
+            android:id="@+id/thietBiChart"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+
+    <com.google.android.material.navigation.NavigationView
+        android:id="@+id/nav_view"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_gravity="start"
+        android:fitsSystemWindows="true"
+        app:headerLayout="@layout/drawer_header_layout"
+        app:menu="@menu/drawer_view" />
+</androidx.drawerlayout.widget.DrawerLayout>

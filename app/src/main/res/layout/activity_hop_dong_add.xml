@@ -1,498 +1,200 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.drawerlayout.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/drawer_layout_hop_dong_add"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/khungNgoai"
     android:orientation="vertical"
     tools:context=".hop_dong.HopDongAdd">
 
-    <androidx.appcompat.widget.Toolbar xmlns:android="http://schemas.android.com/apk/res/android"
-        android:id="@+id/header"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@drawable/gradient_header">
-
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-            <LinearLayout
-                android:id="@+id/rightToolbar"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentLeft="true"
-                android:layout_centerVertical="true">
-
-                <ImageView
-                    android:id="@+id/thoat"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/ic_back"
-                    android:backgroundTint="@color/white"></ImageView>
-
-                <TextView
-                    android:id="@+id/ten"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_toRightOf="@+id/thoat"
-                    android:paddingLeft="5dp"
-                    android:text="Thoát"
-                    android:textColor="@color/white"></TextView>
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/centerToolbar"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerInParent="true"
-                android:layout_centerVertical="true"
-                android:paddingRight="10dp">
-                >
-
-                <ImageView
-                    android:id="@+id/logo"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/ic_logo"
-                    android:backgroundTint="@color/white" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/leftToolbar"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentRight="true"
-                android:layout_centerVertical="true">
-                >
-                <ImageView
-                    android:id="@+id/menuDanhMuc"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginRight="15dp"
-                    android:background="@drawable/bar"
-                    android:backgroundTint="@color/white" />
-            </LinearLayout>
-        </RelativeLayout>
-    </androidx.appcompat.widget.Toolbar>
-    <!-- Tiêu đề hợp đồng  -->
     <RelativeLayout
-        android:id="@+id/tieuDeHopDong"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/header"
-        android:background="@color/white">
+        android:layout_height="match_parent">
 
-        <LinearLayout
-            android:id="@+id/rowServiceEdit"
+        <androidx.appcompat.widget.Toolbar xmlns:android="http://schemas.android.com/apk/res/android"
+            android:id="@+id/header"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:elevation="20dp"
-            android:orientation="horizontal">
-
-            <FrameLayout
-                android:id="@+id/imageServiceEdit"
-                android:layout_gravity="center"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
-
-            <TextView
-                android:id="@+id/textDichVuAdd"
-                android:layout_gravity="center"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:paddingLeft="8dp"
-                android:text="quản lí hợp đồng nhà trọ"
-                android:textAllCaps="true"
-                android:textColor="@color/textQuanLyChung"
-                android:textSize="18dp"
-                android:textStyle="bold" />
-        </LinearLayout>
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="20dp"
-            android:layout_below="@+id/rowServiceEdit"
-            android:layout_marginTop="-10dp"
-            android:background="@color/khungNgoai" />
-    </RelativeLayout>
-
-    <TextView
-        android:id="@+id/tieuDeThemHopDong"
-        android:layout_width="173dp"
-        android:layout_height="33dp"
-        android:layout_below="@+id/tieuDeHopDong"
-        android:background="@drawable/title_card"
-        android:backgroundTint="@color/tabActive"
-        android:gravity="center"
-        android:paddingLeft="23dp"
-        android:paddingTop="8dp"
-        android:paddingRight="23dp"
-        android:paddingBottom="8dp"
-        android:text="Thêm hợp đồng"
-        android:textColor="@color/white"></TextView>
-    <!-- danh sách thiết bị -->
-    <androidx.core.widget.NestedScrollView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/tieuDeThemHopDong">
-
-        <LinearLayout
-            android:id="@+id/formCapNhat"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_below="@+id/tieuDeHopDong"
-            android:background="@color/white"
-            android:orientation="vertical">
+            android:background="@drawable/gradient_header">
 
             <RelativeLayout
-                android:id="@+id/tHead"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/tieuDeThietBi"
-                android:layout_marginLeft="25dp"
-                android:layout_marginTop="12dp"
-                android:layout_marginRight="25dp"></RelativeLayout>
-
-            <androidx.cardview.widget.CardView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/tHead"
-                android:layout_marginLeft="14dp"
-                android:layout_marginTop="4dp"
-                android:layout_marginRight="14dp"
-                android:layout_marginBottom="13dp"
-                app:cardCornerRadius="10dp">
+                android:layout_height="wrap_content">
 
                 <LinearLayout
-                    android:layout_width="match_parent"
+                    android:id="@+id/rightToolbar"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:background="@color/cardThietBi"
-                    android:orientation="vertical">
+                    android:layout_alignParentLeft="true"
+                    android:layout_centerVertical="true">
+
+                    <ImageView
+                        android:id="@+id/thoat"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/ic_back"
+                        android:backgroundTint="@color/white"></ImageView>
 
                     <TextView
-                        android:layout_width="match_parent"
+                        android:id="@+id/ten"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:paddingLeft="9dp"
-                        android:paddingTop="11dp"
-                        android:text="Người đại diện"
-                        android:textColor="@color/black"
-                        android:textStyle="bold"></TextView>
+                        android:layout_toRightOf="@+id/thoat"
+                        android:paddingLeft="5dp"
+                        android:text="Thoát"
+                        android:textColor="@color/white"></TextView>
+                </LinearLayout>
 
-                    <androidx.cardview.widget.CardView
-                        android:layout_width="match_parent"
+                <LinearLayout
+                    android:id="@+id/centerToolbar"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:layout_centerVertical="true"
+                    android:paddingRight="10dp">
+                    >
+
+                    <ImageView
+                        android:id="@+id/logo"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_below="@+id/tenDaiDien"
-                        android:layout_marginLeft="14dp"
-                        android:layout_marginTop="16dp"
-                        android:layout_marginRight="14dp"
-                        app:cardCornerRadius="8dp">
+                        android:background="@drawable/ic_logo"
+                        android:backgroundTint="@color/white" />
+                </LinearLayout>
 
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:background="@color/white"
-                            android:orientation="horizontal"
-                            android:paddingTop="8dp"
-                            android:paddingBottom="8dp">
+                <LinearLayout
+                    android:id="@+id/leftToolbar"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true">
+                    >
 
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:paddingLeft="6dp"
-                                android:text="Họ và tên: "
-                                android:textColor="@color/black" />
-
-                            <EditText
-                                android:id="@+id/tenDaiDienText"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:background="@null"
-                                android:textSize="14sp"/>
-                        </LinearLayout>
-                    </androidx.cardview.widget.CardView>
-
-                    <androidx.cardview.widget.CardView
-                        android:layout_width="match_parent"
+                    <ImageView
+                        android:id="@+id/menuDanhMuc"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_below="@+id/canCuocDaiDien"
-                        android:layout_marginLeft="14dp"
-                        android:layout_marginTop="8dp"
-                        android:layout_marginRight="14dp"
-                        app:cardCornerRadius="8dp">
+                        android:layout_marginRight="15dp"
+                        android:background="@drawable/bar"
+                        android:backgroundTint="@color/white" />
+                </LinearLayout>
+            </RelativeLayout>
+        </androidx.appcompat.widget.Toolbar>
+        <!-- Tiêu đề hợp đồng  -->
+        <RelativeLayout
+            android:id="@+id/tieuDeHopDong"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/header"
+            android:background="@color/white">
 
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:background="@color/white"
-                            android:orientation="horizontal"
-                            android:paddingTop="8dp"
-                            android:paddingBottom="8dp">
+            <LinearLayout
+                android:id="@+id/rowServiceEdit"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:elevation="20dp"
+                android:orientation="horizontal">
 
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:paddingLeft="6dp"
-                                android:text="Số CCCD/CMND: "
-                                android:textColor="@color/black" />
+                <FrameLayout
+                    android:id="@+id/imageServiceEdit"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center" />
 
-                            <EditText
-                                android:id="@+id/canCuocDaiDienText"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:background="@null"
-                                android:inputType="number"
-                                android:textSize="14sp"/>
-                        </LinearLayout>
-                    </androidx.cardview.widget.CardView>
+                <TextView
+                    android:id="@+id/textDichVuAdd"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:paddingLeft="8dp"
+                    android:text="quản lí hợp đồng nhà trọ"
+                    android:textAllCaps="true"
+                    android:textColor="@color/textQuanLyChung"
+                    android:textSize="18dp"
+                    android:textStyle="bold" />
+            </LinearLayout>
 
-                    <androidx.cardview.widget.CardView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_below="@+id/ngayCapDaiDien"
-                        android:layout_marginLeft="14dp"
-                        android:layout_marginTop="8dp"
-                        android:layout_marginRight="14dp"
-                        app:cardCornerRadius="8dp">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="20dp"
+                android:layout_below="@+id/rowServiceEdit"
+                android:layout_marginTop="-10dp"
+                android:background="@color/khungNgoai" />
+        </RelativeLayout>
 
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:background="@color/white"
-                            android:orientation="horizontal"
-                            android:paddingTop="8dp"
-                            android:paddingBottom="8dp">
+        <TextView
+            android:id="@+id/tieuDeThemHopDong"
+            android:layout_width="173dp"
+            android:layout_height="33dp"
+            android:layout_below="@+id/tieuDeHopDong"
+            android:background="@drawable/title_card"
+            android:backgroundTint="@color/tabActive"
+            android:gravity="center"
+            android:paddingLeft="23dp"
+            android:paddingTop="8dp"
+            android:paddingRight="23dp"
+            android:paddingBottom="8dp"
+            android:text="Thêm hợp đồng"
+            android:textColor="@color/white" />
+        <!-- danh sách thiết bị -->
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tieuDeThemHopDong">
 
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:paddingLeft="6dp"
-                                android:text="Ngày cấp: "
-                                android:textColor="@color/black" />
+            <LinearLayout
+                android:id="@+id/formCapNhat"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_below="@+id/tieuDeHopDong"
+                android:background="@color/white"
+                android:orientation="vertical">
 
-                            <TextView
-                                android:id="@+id/ngayCapDaiDienText"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:textSize="14sp"
-                                android:text="dd-mm-yyyy" />
-                        </LinearLayout>
-                    </androidx.cardview.widget.CardView>
+                <RelativeLayout
+                    android:id="@+id/tHead"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/tieuDeThietBi"
+                    android:layout_marginLeft="25dp"
+                    android:layout_marginTop="12dp"
+                    android:layout_marginRight="25dp"></RelativeLayout>
 
-                    <androidx.cardview.widget.CardView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_below="@+id/noiCapDaiDien"
-                        android:layout_marginLeft="14dp"
-                        android:layout_marginTop="8dp"
-                        android:layout_marginRight="14dp"
-                        app:cardCornerRadius="8dp">
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:background="@color/white"
-                            android:orientation="horizontal"
-                            android:paddingTop="8dp"
-                            android:paddingBottom="8dp">
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:paddingLeft="6dp"
-                                android:text="Nơi cấp: "
-                                android:textColor="@color/black" />
-
-                            <EditText
-                                android:id="@+id/noiCapDaiDienText"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:background="@null"
-                                android:textSize="14sp"/>
-                        </LinearLayout>
-                    </androidx.cardview.widget.CardView>
-
-                    <androidx.cardview.widget.CardView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_below="@+id/ngaySinhDaiDien"
-                        android:layout_marginLeft="14dp"
-                        android:layout_marginTop="8dp"
-                        android:layout_marginRight="14dp"
-                        app:cardCornerRadius="8dp">
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:background="@color/white"
-                            android:orientation="horizontal"
-                            android:paddingTop="8dp"
-                            android:paddingBottom="8dp">
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:paddingLeft="6dp"
-                                android:text="Ngày sinh: "
-                                android:textColor="@color/black" />
-
-                            <TextView
-                                android:id="@+id/ngaySinhDaiDienText"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:textSize="14sp"
-                                android:text="dd-mm-yyyy" />
-                        </LinearLayout>
-                    </androidx.cardview.widget.CardView>
-
-                    <androidx.cardview.widget.CardView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_below="@+id/sdtDaiDien"
-                        android:layout_marginLeft="14dp"
-                        android:layout_marginTop="8dp"
-                        android:layout_marginRight="14dp"
-                        app:cardCornerRadius="8dp">
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:background="@color/white"
-                            android:orientation="horizontal"
-                            android:paddingTop="8dp"
-                            android:paddingBottom="8dp">
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:paddingLeft="6dp"
-                                android:text="Số điện thoại: "
-                                android:textColor="@color/black" />
-
-                            <EditText
-                                android:id="@+id/sdtDaiDienText"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:background="@null"
-                                android:inputType="number"
-                                android:textSize="14sp"/>
-                        </LinearLayout>
-                    </androidx.cardview.widget.CardView>
-
-                    <RadioGroup
-                        android:id="@+id/chonNguoiDaiDienO"
-                        android:layout_width="match_parent"
-                        android:layout_marginTop="12dp"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal">
-                        <RadioButton
-                            android:layout_marginLeft="12dp"
-                            android:text="Có ở"
-                            android:id="@+id/coTaiPhong"
-                            android:layout_width="wrap_content"
-                            android:layout_height="25dp">
-
-                        </RadioButton>
-                        <RadioButton
-                            android:layout_marginLeft="12dp"
-                            android:text="Không ở"
-                            android:id="@+id/khongCoTaiPhong"
-                            android:layout_width="wrap_content"
-                            android:layout_height="25dp" />
-                    </RadioGroup>
-
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/tHead"
+                    android:layout_marginLeft="14dp"
+                    android:layout_marginTop="4dp"
+                    android:layout_marginRight="14dp"
+                    android:layout_marginBottom="13dp"
+                    app:cardCornerRadius="10dp">
 
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:background="@color/cardThietBi"
                         android:orientation="vertical">
 
-                        <androidx.recyclerview.widget.RecyclerView
-                            android:id="@+id/listKhachAdd"
+                        <TextView
                             android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:layout_marginTop="8dp" />
-
-                        <RelativeLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:layout_marginTop="15dp"
-                            android:layout_marginBottom="19dp"
-                            android:gravity="center">
-
-                            <ImageView
-                                android:id="@+id/themNguoiThue"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:src="@drawable/addicon"
-                                android:textAllCaps="true" />
-
-                        </RelativeLayout>
-                    </LinearLayout>
-
-                </LinearLayout>
-            </androidx.cardview.widget.CardView>
-
-            <androidx.cardview.widget.CardView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/tHead"
-                android:layout_marginLeft="14dp"
-                android:layout_marginTop="4dp"
-                android:layout_marginRight="14dp"
-                android:layout_marginBottom="13dp"
-                app:cardCornerRadius="10dp">
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="@color/cardThietBi"
-                    android:orientation="vertical">
-
-                    <TextView
-                        android:id="@+id/textNameRoom"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:paddingLeft="9dp"
-                        android:paddingTop="11dp"
-                        android:textColor="@color/black"
-                        android:textStyle="bold" />
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:paddingLeft="9dp"
-                        android:paddingTop="11dp"
-                        android:text="Thiết bị: "
-                        android:textColor="@color/black" />
-
-                    <androidx.recyclerview.widget.RecyclerView
-                        android:id="@+id/thietbiCheck"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="8dp"
-                        android:layout_marginTop="6dp"
-                        android:layout_marginRight="8dp">
-
-                    </androidx.recyclerview.widget.RecyclerView>
-
-
-                    <LinearLayout
-                        android:id="@+id/rowTienPhongHopDongAdd"
-                        android:layout_width="match_parent"
-                        android:orientation="horizontal"
-                        android:layout_below="@+id/thietbiCheck"
-                        android:layout_height="wrap_content">
-                        <androidx.cardview.widget.CardView
-                            android:id="@+id/giaPhongDetailHDA"
-                            android:layout_width="0dp"
-                            android:layout_weight="4"
                             android:layout_height="wrap_content"
+                            android:paddingLeft="9dp"
+                            android:paddingTop="11dp"
+                            android:text="Người đại diện"
+                            android:textColor="@color/black"
+                            android:textStyle="bold"></TextView>
+
+                        <androidx.cardview.widget.CardView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/tenDaiDien"
                             android:layout_marginLeft="14dp"
                             android:layout_marginTop="16dp"
                             android:layout_marginRight="14dp"
                             app:cardCornerRadius="8dp">
+
                             <LinearLayout
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
@@ -505,55 +207,24 @@
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:paddingLeft="6dp"
-                                    android:text="Tiền phòng: "
+                                    android:text="Họ và tên: "
                                     android:textColor="@color/black" />
 
                                 <EditText
-                                    android:id="@+id/tienPhongHopDongAdd"
+                                    android:id="@+id/tenDaiDienText"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:background="@null"
-                                    android:inputType="number"
-                                    android:textSize="14sp"/>
+                                    android:textSize="14sp" />
                             </LinearLayout>
                         </androidx.cardview.widget.CardView>
 
-                        <RadioGroup
-                            android:id="@+id/phuongThucThanhToanTienPhong"
-                            android:layout_width="0dp"
-                            android:layout_weight="3"
-                            android:layout_marginTop="12dp"
-                            android:layout_height="wrap_content"
-                            android:orientation="vertical">
-                            <RadioButton
-                                android:text="Tiền mặt"
-                                android:id="@+id/tienMatTienPhong"
-                                android:layout_width="wrap_content"
-                                android:layout_height="25dp">
-
-                            </RadioButton>
-                            <RadioButton
-                                android:text="Chuyển khoản"
-                                android:id="@+id/chuyenKhoanTienPhong"
-                                android:layout_below="@+id/tienMatTienPhong"
-                                android:layout_width="wrap_content"
-                                android:layout_height="25dp" />
-                        </RadioGroup>
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:id="@+id/rowTienCocHopDongAdd"
-                        android:layout_width="match_parent"
-                        android:orientation="horizontal"
-                        android:layout_below="@+id/thietbiCheck"
-                        android:layout_height="wrap_content">
                         <androidx.cardview.widget.CardView
-                            android:layout_width="0dp"
-                            android:layout_weight="4"
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_below="@+id/tenDichVuAdd"
+                            android:layout_below="@+id/canCuocDaiDien"
                             android:layout_marginLeft="14dp"
-                            android:layout_marginTop="16dp"
+                            android:layout_marginTop="8dp"
                             android:layout_marginRight="14dp"
                             app:cardCornerRadius="8dp">
 
@@ -569,11 +240,11 @@
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:paddingLeft="6dp"
-                                    android:text="Tiền cọc: "
+                                    android:text="Số CCCD/CMND: "
                                     android:textColor="@color/black" />
 
                                 <EditText
-                                    android:id="@+id/tienCocHopDongAdd"
+                                    android:id="@+id/canCuocDaiDienText"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:background="@null"
@@ -581,180 +252,534 @@
                                     android:textSize="14sp" />
                             </LinearLayout>
                         </androidx.cardview.widget.CardView>
-                        <RadioGroup
-                            android:id="@+id/phuongThucThanhToanTienCoc"
-                            android:layout_width="0dp"
-                            android:layout_weight="3"
-                            android:layout_marginTop="12dp"
+
+                        <androidx.cardview.widget.CardView
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:orientation="vertical">
+                            android:layout_below="@+id/ngayCapDaiDien"
+                            android:layout_marginLeft="14dp"
+                            android:layout_marginTop="8dp"
+                            android:layout_marginRight="14dp"
+                            app:cardCornerRadius="8dp">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:background="@color/white"
+                                android:orientation="horizontal"
+                                android:paddingTop="8dp"
+                                android:paddingBottom="8dp">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:paddingLeft="6dp"
+                                    android:text="Ngày cấp: "
+                                    android:textColor="@color/black" />
+
+                                <TextView
+                                    android:id="@+id/ngayCapDaiDienText"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:text="dd-mm-yyyy"
+                                    android:textSize="14sp" />
+                            </LinearLayout>
+                        </androidx.cardview.widget.CardView>
+
+                        <androidx.cardview.widget.CardView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/noiCapDaiDien"
+                            android:layout_marginLeft="14dp"
+                            android:layout_marginTop="8dp"
+                            android:layout_marginRight="14dp"
+                            app:cardCornerRadius="8dp">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:background="@color/white"
+                                android:orientation="horizontal"
+                                android:paddingTop="8dp"
+                                android:paddingBottom="8dp">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:paddingLeft="6dp"
+                                    android:text="Nơi cấp: "
+                                    android:textColor="@color/black" />
+
+                                <EditText
+                                    android:id="@+id/noiCapDaiDienText"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:background="@null"
+                                    android:textSize="14sp" />
+                            </LinearLayout>
+                        </androidx.cardview.widget.CardView>
+
+                        <androidx.cardview.widget.CardView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/ngaySinhDaiDien"
+                            android:layout_marginLeft="14dp"
+                            android:layout_marginTop="8dp"
+                            android:layout_marginRight="14dp"
+                            app:cardCornerRadius="8dp">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:background="@color/white"
+                                android:orientation="horizontal"
+                                android:paddingTop="8dp"
+                                android:paddingBottom="8dp">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:paddingLeft="6dp"
+                                    android:text="Ngày sinh: "
+                                    android:textColor="@color/black" />
+
+                                <TextView
+                                    android:id="@+id/ngaySinhDaiDienText"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:text="dd-mm-yyyy"
+                                    android:textSize="14sp" />
+                            </LinearLayout>
+                        </androidx.cardview.widget.CardView>
+
+                        <androidx.cardview.widget.CardView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/sdtDaiDien"
+                            android:layout_marginLeft="14dp"
+                            android:layout_marginTop="8dp"
+                            android:layout_marginRight="14dp"
+                            app:cardCornerRadius="8dp">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:background="@color/white"
+                                android:orientation="horizontal"
+                                android:paddingTop="8dp"
+                                android:paddingBottom="8dp">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:paddingLeft="6dp"
+                                    android:text="Số điện thoại: "
+                                    android:textColor="@color/black" />
+
+                                <EditText
+                                    android:id="@+id/sdtDaiDienText"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:background="@null"
+                                    android:inputType="number"
+                                    android:textSize="14sp" />
+                            </LinearLayout>
+                        </androidx.cardview.widget.CardView>
+
+                        <RadioGroup
+                            android:id="@+id/chonNguoiDaiDienO"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="12dp"
+                            android:orientation="horizontal">
+
                             <RadioButton
-                                android:text="Tiền mặt"
-                                android:id="@+id/tienMatTienCoc"
+                                android:id="@+id/coTaiPhong"
                                 android:layout_width="wrap_content"
-                                android:layout_height="25dp">
+                                android:layout_height="25dp"
+                                android:layout_marginLeft="12dp"
+                                android:text="Có ở">
 
                             </RadioButton>
+
                             <RadioButton
-                                android:text="Chuyển khoản"
-                                android:id="@+id/chuyenKhoanTienCoc"
-                                android:layout_below="@+id/tienMatTienPhong"
+                                android:id="@+id/khongCoTaiPhong"
                                 android:layout_width="wrap_content"
-                                android:layout_height="25dp" />
+                                android:layout_height="25dp"
+                                android:layout_marginLeft="12dp"
+                                android:text="Không ở" />
                         </RadioGroup>
 
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
+
+                            <androidx.recyclerview.widget.RecyclerView
+                                android:id="@+id/listKhachAdd"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_marginTop="8dp" />
+
+                            <RelativeLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_marginTop="15dp"
+                                android:layout_marginBottom="19dp"
+                                android:gravity="center">
+
+                                <ImageView
+                                    android:id="@+id/themNguoiThue"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:src="@drawable/addicon"
+                                    android:textAllCaps="true" />
+
+                            </RelativeLayout>
+                        </LinearLayout>
+
                     </LinearLayout>
-
-
-                    <RelativeLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_below="@+id/giaThietBiEdit"
-                        android:layout_marginTop="15dp"
-                        android:layout_marginBottom="19dp"
-                        android:gravity="center">
-
-                    </RelativeLayout>
-
-                </LinearLayout>
-            </androidx.cardview.widget.CardView>
-
-            <androidx.cardview.widget.CardView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/tHead"
-                android:layout_marginLeft="14dp"
-                android:layout_marginTop="4dp"
-                android:layout_marginRight="14dp"
-                android:layout_marginBottom="13dp"
-                app:cardCornerRadius="10dp">
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="@color/cardThietBi"
-                    android:orientation="vertical">
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:paddingLeft="9dp"
-                        android:paddingTop="11dp"
-                        android:text="Thông tin hiệu lực hợp đồng"
-                        android:textColor="@color/black"
-                        android:textStyle="bold" />
-
-
-                    <androidx.cardview.widget.CardView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_below="@+id/endAgreement"
-                        android:layout_marginLeft="14dp"
-                        android:layout_marginTop="8dp"
-                        android:layout_marginRight="14dp"
-                        app:cardCornerRadius="8dp">
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:background="@color/white"
-                            android:orientation="horizontal"
-                            android:paddingTop="8dp"
-                            android:paddingBottom="8dp">
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:paddingLeft="6dp"
-                                android:text="Ngày kết thúc: "
-                                android:textColor="@color/black" />
-
-                            <TextView
-                                android:id="@+id/ngayKetThuc"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:text="dd-mm-yyyy" />
-                        </LinearLayout>
-                    </androidx.cardview.widget.CardView>
-
-                    <androidx.cardview.widget.CardView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_below="@+id/endAgreement"
-                        android:layout_marginLeft="14dp"
-                        android:layout_marginTop="8dp"
-                        android:layout_marginRight="14dp"
-                        app:cardCornerRadius="8dp">
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:background="@color/white"
-                            android:orientation="horizontal"
-                            android:paddingTop="8dp"
-                            android:paddingBottom="8dp">
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:paddingLeft="6dp"
-                                android:text="Ghi chú: "
-                                android:textColor="@color/black" />
-
-                            <EditText
-                                android:id="@+id/ghiChu"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:textSize="14sp"
-                                android:background="@null" />
-                        </LinearLayout>
-                    </androidx.cardview.widget.CardView>
-
-                    <RelativeLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_below="@+id/giaThietBiEdit"
-                        android:layout_marginTop="15dp"
-                        android:layout_marginBottom="19dp"
-                        android:gravity="center">
-
-                    </RelativeLayout>
-
-                </LinearLayout>
-            </androidx.cardview.widget.CardView>
-
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/giaThietBiEdit"
-                android:layout_marginLeft="25dp"
-                android:layout_marginRight="25dp"
-                android:layout_marginBottom="21dp"
-                android:gravity="center">
-
+                </androidx.cardview.widget.CardView>
 
                 <androidx.cardview.widget.CardView
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_alignParentRight="true"
-                    app:cardCornerRadius="6dp">
+                    android:layout_below="@+id/tHead"
+                    android:layout_marginLeft="14dp"
+                    android:layout_marginTop="4dp"
+                    android:layout_marginRight="14dp"
+                    android:layout_marginBottom="13dp"
+                    app:cardCornerRadius="10dp">
 
-                    <TextView
-                        android:id="@+id/themHopDong"
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@color/cardThietBi"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/textNameRoom"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:paddingLeft="9dp"
+                            android:paddingTop="11dp"
+                            android:textColor="@color/black"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:paddingLeft="9dp"
+                            android:paddingTop="11dp"
+                            android:text="Thiết bị: "
+                            android:textColor="@color/black" />
+
+                        <androidx.recyclerview.widget.RecyclerView
+                            android:id="@+id/thietbiCheck"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="8dp"
+                            android:layout_marginTop="6dp"
+                            android:layout_marginRight="8dp">
+
+                        </androidx.recyclerview.widget.RecyclerView>
+
+
+                        <LinearLayout
+                            android:id="@+id/rowTienPhongHopDongAdd"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/thietbiCheck"
+                            android:orientation="horizontal">
+
+                            <androidx.cardview.widget.CardView
+                                android:id="@+id/giaPhongDetailHDA"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="14dp"
+                                android:layout_marginTop="16dp"
+                                android:layout_marginRight="14dp"
+                                android:layout_weight="4"
+                                app:cardCornerRadius="8dp">
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:background="@color/white"
+                                    android:orientation="horizontal"
+                                    android:paddingTop="8dp"
+                                    android:paddingBottom="8dp">
+
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:paddingLeft="6dp"
+                                        android:text="Tiền phòng: "
+                                        android:textColor="@color/black" />
+
+                                    <EditText
+                                        android:id="@+id/tienPhongHopDongAdd"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:background="@null"
+                                        android:inputType="number"
+                                        android:textSize="14sp" />
+                                </LinearLayout>
+                            </androidx.cardview.widget.CardView>
+
+                            <RadioGroup
+                                android:id="@+id/phuongThucThanhToanTienPhong"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="12dp"
+                                android:layout_weight="3"
+                                android:orientation="vertical">
+
+                                <RadioButton
+                                    android:id="@+id/tienMatTienPhong"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="25dp"
+                                    android:text="Tiền mặt">
+
+                                </RadioButton>
+
+                                <RadioButton
+                                    android:id="@+id/chuyenKhoanTienPhong"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="25dp"
+                                    android:layout_below="@+id/tienMatTienPhong"
+                                    android:text="Chuyển khoản" />
+                            </RadioGroup>
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:id="@+id/rowTienCocHopDongAdd"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/thietbiCheck"
+                            android:orientation="horizontal">
+
+                            <androidx.cardview.widget.CardView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@+id/tenDichVuAdd"
+                                android:layout_marginLeft="14dp"
+                                android:layout_marginTop="16dp"
+                                android:layout_marginRight="14dp"
+                                android:layout_weight="4"
+                                app:cardCornerRadius="8dp">
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:background="@color/white"
+                                    android:orientation="horizontal"
+                                    android:paddingTop="8dp"
+                                    android:paddingBottom="8dp">
+
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:paddingLeft="6dp"
+                                        android:text="Tiền cọc: "
+                                        android:textColor="@color/black" />
+
+                                    <EditText
+                                        android:id="@+id/tienCocHopDongAdd"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:background="@null"
+                                        android:inputType="number"
+                                        android:textSize="14sp" />
+                                </LinearLayout>
+                            </androidx.cardview.widget.CardView>
+
+                            <RadioGroup
+                                android:id="@+id/phuongThucThanhToanTienCoc"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="12dp"
+                                android:layout_weight="3"
+                                android:orientation="vertical">
+
+                                <RadioButton
+                                    android:id="@+id/tienMatTienCoc"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="25dp"
+                                    android:text="Tiền mặt">
+
+                                </RadioButton>
+
+                                <RadioButton
+                                    android:id="@+id/chuyenKhoanTienCoc"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="25dp"
+                                    android:layout_below="@+id/tienMatTienPhong"
+                                    android:text="Chuyển khoản" />
+                            </RadioGroup>
+
+                        </LinearLayout>
+
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/giaThietBiEdit"
+                            android:layout_marginTop="15dp"
+                            android:layout_marginBottom="19dp"
+                            android:gravity="center">
+
+                        </RelativeLayout>
+
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/tHead"
+                    android:layout_marginLeft="14dp"
+                    android:layout_marginTop="4dp"
+                    android:layout_marginRight="14dp"
+                    android:layout_marginBottom="13dp"
+                    app:cardCornerRadius="10dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@color/cardThietBi"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:paddingLeft="9dp"
+                            android:paddingTop="11dp"
+                            android:text="Thông tin hiệu lực hợp đồng"
+                            android:textColor="@color/black"
+                            android:textStyle="bold" />
+
+
+                        <androidx.cardview.widget.CardView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/endAgreement"
+                            android:layout_marginLeft="14dp"
+                            android:layout_marginTop="8dp"
+                            android:layout_marginRight="14dp"
+                            app:cardCornerRadius="8dp">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:background="@color/white"
+                                android:orientation="horizontal"
+                                android:paddingTop="8dp"
+                                android:paddingBottom="8dp">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:paddingLeft="6dp"
+                                    android:text="Ngày kết thúc: "
+                                    android:textColor="@color/black" />
+
+                                <TextView
+                                    android:id="@+id/ngayKetThuc"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:text="dd-mm-yyyy" />
+                            </LinearLayout>
+                        </androidx.cardview.widget.CardView>
+
+                        <androidx.cardview.widget.CardView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/endAgreement"
+                            android:layout_marginLeft="14dp"
+                            android:layout_marginTop="8dp"
+                            android:layout_marginRight="14dp"
+                            app:cardCornerRadius="8dp">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:background="@color/white"
+                                android:orientation="horizontal"
+                                android:paddingTop="8dp"
+                                android:paddingBottom="8dp">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:paddingLeft="6dp"
+                                    android:text="Ghi chú: "
+                                    android:textColor="@color/black" />
+
+                                <EditText
+                                    android:id="@+id/ghiChu"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:background="@null"
+                                    android:textSize="14sp" />
+                            </LinearLayout>
+                        </androidx.cardview.widget.CardView>
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/giaThietBiEdit"
+                            android:layout_marginTop="15dp"
+                            android:layout_marginBottom="19dp"
+                            android:gravity="center">
+
+                        </RelativeLayout>
+
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/giaThietBiEdit"
+                    android:layout_marginLeft="25dp"
+                    android:layout_marginRight="25dp"
+                    android:layout_marginBottom="21dp"
+                    android:gravity="center">
+
+
+                    <androidx.cardview.widget.CardView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:background="@drawable/gradient_add"
-                        android:paddingLeft="35dp"
-                        android:paddingTop="5dp"
-                        android:paddingRight="35dp"
-                        android:paddingBottom="5dp"
-                        android:text="Thêm mới"
-                        android:textAllCaps="true"
-                        android:textColor="@color/white"
-                        android:textStyle="bold" />
-                </androidx.cardview.widget.CardView>
-            </RelativeLayout>
-        </LinearLayout>
-    </androidx.core.widget.NestedScrollView>
-\
-</RelativeLayout>
+                        android:layout_alignParentRight="true"
+                        app:cardCornerRadius="6dp">
+
+                        <TextView
+                            android:id="@+id/themHopDong"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/gradient_add"
+                            android:paddingLeft="35dp"
+                            android:paddingTop="5dp"
+                            android:paddingRight="35dp"
+                            android:paddingBottom="5dp"
+                            android:text="Thêm mới"
+                            android:textAllCaps="true"
+                            android:textColor="@color/white"
+                            android:textStyle="bold" />
+                    </androidx.cardview.widget.CardView>
+                </RelativeLayout>
+            </LinearLayout>
+        </androidx.core.widget.NestedScrollView>
+    </RelativeLayout>
+
+    <com.google.android.material.navigation.NavigationView
+        android:id="@+id/nav_view"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_gravity="start"
+        android:fitsSystemWindows="true"
+        app:headerLayout="@layout/drawer_header_layout"
+        app:menu="@menu/drawer_view" />
+</androidx.drawerlayout.widget.DrawerLayout>

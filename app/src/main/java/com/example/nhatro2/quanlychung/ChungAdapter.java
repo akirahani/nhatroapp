@@ -16,7 +16,9 @@ import com.example.nhatro2.dich_vu.DichVu;
 import com.example.nhatro2.dong_tien.DongTien;
 import com.example.nhatro2.hop_dong.HopDong;
 import com.example.nhatro2.phong.Phong;
+import com.example.nhatro2.quy_tien_mat.QuyTienMat;
 import com.example.nhatro2.thanhvien.KhachTro;
+import com.example.nhatro2.tien_coc.TienCoc;
 
 import java.util.List;
 
@@ -70,6 +72,14 @@ public class ChungAdapter extends RecyclerView.Adapter<ChungAdapter.ChungViewHol
                     case "khoanthuchi" :
                         Intent khoanthuchi = new Intent(context, DongTien.class);
                         context.startActivity(khoanthuchi);
+                        break;
+                    case "tiencoc" :
+                        Intent tiencoc = new Intent(context, TienCoc.class);
+                        context.startActivity(tiencoc);
+                        break;
+                    case "quytien" :
+                        Intent quytien = new Intent(context, QuyTienMat.class);
+                        context.startActivity(quytien);
                         break;
                 }
             }
