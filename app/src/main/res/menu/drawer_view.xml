@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/khach_tro"
+            android:icon="@drawable/nav_khach"
+            android:title="Khách trọ" />
+        <item
+            android:id="@+id/dat_coc"
+            android:icon="@drawable/nav_dat_coc"
+            android:title="Đặt cọc"
+            />
+        <item
+            android:id="@+id/thanh_toan"
+            android:icon="@drawable/nav_payment"
+            android:title="Thanh toán" />
+        <item
+            android:id="@+id/hop_dong"
+            android:icon="@drawable/nav_hop_dong"
+            android:title="Hợp đồng" />
+    </group>
+</menu>

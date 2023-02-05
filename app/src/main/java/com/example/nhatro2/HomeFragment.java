@@ -10,7 +10,9 @@ import android.content.SharedPreferences;
 import android.media.Image;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
+import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
@@ -18,6 +20,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.text.Html;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
@@ -27,11 +30,16 @@ import android.widget.Toast;
 import android.widget.Toolbar;
 
 import com.example.nhatro2.bat_bien.BatBien;
+import com.example.nhatro2.dong_tien.DongTien;
+import com.example.nhatro2.hop_dong.HopDong;
 import com.example.nhatro2.kha_bien.KhaBien;
+import com.example.nhatro2.phong.Phong;
 import com.example.nhatro2.quanlychung.ChungAdapter;
 import com.example.nhatro2.quanlychung.ChungModel;
 import com.example.nhatro2.tai_khoan.TaiKhoanModel;
+import com.example.nhatro2.thanhvien.KhachTro;
 import com.example.nhatro2.thong_ke.ThongKe;
+import com.example.nhatro2.tien_coc.TienCoc;
 import com.example.nhatro2.tien_dien.TienDien;
 import com.example.nhatro2.tien_nuoc.TienNuoc;
 import com.google.android.material.navigation.NavigationView;
@@ -45,10 +53,12 @@ public class HomeFragment extends Fragment {
     RecyclerView quanLyChung,quanLyThanhVien;
     TextView tenThanhVien,tenUser,xemThongKe;
     Toolbar header;
-    ImageView thoat;
+    ImageView thoat, menuDanhMuc;
     RelativeLayout rowWater, rowElectric, rowBatBien, rowKhaBien;
     SharedPreferences shp;
     SharedPreferences.Editor shpEdit;
+    DrawerLayout mDrawerLayout;
+
     public HomeFragment() {
         // Required empty public constructor
     }
@@ -188,6 +198,43 @@ public class HomeFragment extends Fragment {
             public void onClick(View view) {
                 Intent intent = new Intent(getContext(), ThongKe.class);
                 startActivity(intent);
+            }
+        });
+
+        menuDanhMuc = view.findViewById(R.id.menuDanhMuc);
+        mDrawerLayout = view.findViewById(R.id.drawer_layout_home_fragment);
+
+        menuDanhMuc.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                mDrawerLayout.openDrawer(GravityCompat.START);
+            }
+        });
+        NavigationView navigationView = view.findViewById(R.id.nav_view);
+        navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                switch (item.getItemId()){
+                    case R.id.khach_tro:
+                        Intent khachTro = new Intent(view.getContext(), KhachTro.class);
+                        startActivity(khachTro);
+                        return true;
+                    case R.id.dat_coc:
+                        Intent datCoc = new Intent(view.getContext(), TienCoc.class);
+                        startActivity(datCoc);
+                        return true;
+                    case R.id.thanh_toan:
+                        Intent thanhToan = new Intent(view.getContext(), DongTien.class);
+                        startActivity(thanhToan);
+                        return true;
+                    case R.id.hop_dong:
+                        Intent hopDong = new Intent(view.getContext(), HopDong.class);
+                        startActivity(hopDong);
+                        return true;
+
+
+                }
+                return true;
             }
         });
         return view;

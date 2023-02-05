@@ -1,8 +1,11 @@
 package com.example.nhatro2.hop_dong;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.view.GravityCompat;
+import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -20,6 +23,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.text.Html;
 import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.DatePicker;
 import android.widget.EditText;
@@ -33,11 +37,16 @@ import com.example.nhatro2.HomeActivity;
 import com.example.nhatro2.MainActivity;
 import com.example.nhatro2.R;
 import com.example.nhatro2.api.ApiQH;
+import com.example.nhatro2.bat_bien.BatBien;
 import com.example.nhatro2.dich_vu.DichVuModel;
+import com.example.nhatro2.dong_tien.DongTien;
 import com.example.nhatro2.phong.DangThueFragment;
 import com.example.nhatro2.phong.Phong;
 import com.example.nhatro2.phong.PhongModel;
+import com.example.nhatro2.thanhvien.KhachTro;
 import com.example.nhatro2.thanhvien.ThanhVienModel;
+import com.example.nhatro2.tien_coc.TienCoc;
+import com.google.android.material.navigation.NavigationView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -50,7 +59,7 @@ import retrofit2.Response;
 
 public class HopDongAdd extends AppCompatActivity {
 
-    ImageView thoat, logo, themNguoiThue;
+    ImageView thoat, logo, themNguoiThue ,menuDanhMuc;
     SharedPreferences shp;
     SharedPreferences.Editor shpKhachEdit;
     RecyclerView listThietBi, listKhachAdd;
@@ -67,6 +76,7 @@ public class HopDongAdd extends AppCompatActivity {
     List<ThanhVienModel> listKhachArr = new ArrayList<>();
     TextView ngayCapKhachAdd,ngaySinhHopDongAddText,thuTuKhachTro;
     KhachAddAdapter addAdapterKhach;
+    DrawerLayout mDrawerLayout;
 
     @RequiresApi(api = Build.VERSION_CODES.N)
     @Override
@@ -398,6 +408,43 @@ public class HopDongAdd extends AppCompatActivity {
                     }
                 });
 
+            }
+        });
+
+        menuDanhMuc = findViewById(R.id.menuDanhMuc);
+        mDrawerLayout = findViewById(R.id.drawer_layout_hop_dong_add);
+
+        menuDanhMuc.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                mDrawerLayout.openDrawer(GravityCompat.START);
+            }
+        });
+        NavigationView navigationView = findViewById(R.id.nav_view);
+        navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                switch (item.getItemId()){
+                    case R.id.khach_tro:
+                        Intent khachTro = new Intent(HopDongAdd.this, KhachTro.class);
+                        startActivity(khachTro);
+                        return true;
+                    case R.id.dat_coc:
+                        Intent datCoc = new Intent(HopDongAdd.this, TienCoc.class);
+                        startActivity(datCoc);
+                        return true;
+                    case R.id.thanh_toan:
+                        Intent thanhToan = new Intent(HopDongAdd.this, DongTien.class);
+                        startActivity(thanhToan);
+                        return true;
+                    case R.id.hop_dong:
+                        Intent hopDong = new Intent(HopDongAdd.this, HopDong.class);
+                        startActivity(hopDong);
+                        return true;
+
+
+                }
+                return true;
             }
         });
 

@@ -1,463 +1,479 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.drawerlayout.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/drawer_layout_dien_edit"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".tien_dien.TienDienEdit">
-    <!--header-->
-    <androidx.appcompat.widget.Toolbar xmlns:android="http://schemas.android.com/apk/res/android"
-        android:id="@+id/header"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@drawable/gradient_header">
 
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-            <LinearLayout
-                android:id="@+id/rightToolbar"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentLeft="true"
-                android:layout_centerVertical="true">
-
-                <ImageView
-                    android:id="@+id/thoat"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/ic_back"
-                    android:backgroundTint="@color/white"></ImageView>
-
-                <TextView
-                    android:id="@+id/ten"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_toRightOf="@+id/thoat"
-                    android:paddingLeft="5dp"
-                    android:text="Thoát"
-                    android:textColor="@color/white"></TextView>
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/centerToolbar"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerInParent="true"
-                android:layout_centerVertical="true"
-                android:paddingRight="10dp">
-                >
-
-                <ImageView
-                    android:id="@+id/logo"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/ic_logo"
-                    android:backgroundTint="@color/white" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/leftToolbar"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentRight="true"
-                android:layout_centerVertical="true">
-                >
-
-                <ImageView
-                    android:id="@+id/menuDanhMuc"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginRight="15dp"
-                    android:background="@drawable/bar"
-                    android:backgroundTint="@color/white" />
-            </LinearLayout>
-        </RelativeLayout>
-    </androidx.appcompat.widget.Toolbar>
-    <!-- title -->
     <RelativeLayout
-        android:id="@+id/tren"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/header"
-        android:background="@color/white"
-        android:orientation="horizontal">
-
-        <LinearLayout
-            android:id="@+id/rowTitleElectric"
+        android:layout_height="match_parent">
+        <!--header-->
+        <androidx.appcompat.widget.Toolbar xmlns:android="http://schemas.android.com/apk/res/android"
+            android:id="@+id/header"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:elevation="20dp"
+            android:background="@drawable/gradient_header">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <LinearLayout
+                    android:id="@+id/rightToolbar"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_centerVertical="true">
+
+                    <ImageView
+                        android:id="@+id/thoat"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/ic_back"
+                        android:backgroundTint="@color/white"></ImageView>
+
+                    <TextView
+                        android:id="@+id/ten"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_toRightOf="@+id/thoat"
+                        android:paddingLeft="5dp"
+                        android:text="Thoát"
+                        android:textColor="@color/white"></TextView>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/centerToolbar"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:layout_centerVertical="true"
+                    android:paddingRight="10dp">
+                    >
+
+                    <ImageView
+                        android:id="@+id/logo"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/ic_logo"
+                        android:backgroundTint="@color/white" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/leftToolbar"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true">
+                    >
+
+                    <ImageView
+                        android:id="@+id/menuDanhMuc"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="15dp"
+                        android:background="@drawable/bar"
+                        android:backgroundTint="@color/white" />
+                </LinearLayout>
+            </RelativeLayout>
+        </androidx.appcompat.widget.Toolbar>
+        <!-- title -->
+        <RelativeLayout
+            android:id="@+id/tren"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/header"
+            android:background="@color/white"
             android:orientation="horizontal">
 
             <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
+                android:id="@+id/rowTitleElectric"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:elevation="20dp"
+                android:orientation="horizontal">
 
-                <FrameLayout
-                    android:id="@+id/imageDien"
-                    android:layout_gravity="center"
+                <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content">
-                    ></FrameLayout>
 
+                    <FrameLayout
+                        android:id="@+id/imageDien"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center">
+                        >
+                    </FrameLayout>
+
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:paddingLeft="8dp"
+                    android:text="Thông tin tiền điện"
+                    android:textAllCaps="true"
+                    android:textColor="@color/textQuanLyChung"
+                    android:textSize="18dp"
+                    android:textStyle="bold" />
             </LinearLayout>
 
             <TextView
-                android:layout_gravity="center"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:paddingLeft="8dp"
-                android:text="Thông tin tiền điện"
-                android:textAllCaps="true"
-                android:textColor="@color/textQuanLyChung"
-                android:textSize="18dp"
-                android:textStyle="bold" />
-        </LinearLayout>
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="20dp"
-            android:layout_below="@+id/rowTitleElectric"
-            android:layout_marginTop="-15dp"
-            android:background="@color/khungNgoai" />
-
-    </RelativeLayout>
-
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/tren">
-
-        <LinearLayout
-            android:id="@+id/titleInfoElectric"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <RelativeLayout
-                android:id="@+id/thongTinCoBan"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="14dp"
-                android:layout_marginTop="15dp"
-                android:layout_weight="1">
-
-                <TextView
-                    android:id="@+id/tenPhongDienEdit"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:textColor="@color/black"
-                    android:textStyle="bold" />
-
-                <TextView
-                    android:id="@+id/daiDienPhongDien"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/tenPhongDienEdit"
-                    android:textColor="@color/black"
-                    android:textStyle="bold" />
-            </RelativeLayout>
-
-            <RelativeLayout
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="12dp"
-                android:layout_marginRight="19dp"
-                android:layout_weight="1"
-                android:gravity="right">
-
-                <ImageView
-                    android:id="@+id/closePhongDienEdit"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/closeroomedit" />
-            </RelativeLayout>
-        </LinearLayout>
-
-        <TextView
-            android:id="@+id/infoTimePhongDien"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/titleInfoElectric"
-            android:layout_marginLeft="14dp"
-            android:layout_marginRight="14dp"
-            android:textColor="@color/loginButton"
-            android:textStyle="bold" />
-
-        <androidx.cardview.widget.CardView
-            android:id="@+id/firstNumber"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/infoTimePhongDien"
-            android:layout_marginLeft="14dp"
-            android:layout_marginTop="7dp"
-            android:layout_marginRight="14dp"
-            android:layout_marginBottom="4dp"
-            app:cardCornerRadius="5dp">
-
-            <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@color/cardThietBiAdd"
-                android:orientation="horizontal"
-                android:paddingLeft="10dp"
-                android:paddingTop="8dp"
-                android:paddingRight="10dp"
-                android:paddingBottom="8dp">
+                android:layout_height="20dp"
+                android:layout_below="@+id/rowTitleElectric"
+                android:layout_marginTop="-15dp"
+                android:background="@color/khungNgoai" />
 
-                <TextView
-                    android:id="@+id/titleSoDau"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Số đầu: "
-                    android:textColor="@color/black"
-                    android:textSize="14sp" />
-
-                <EditText
-                    android:id="@+id/soDauDien"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_toRightOf="@+id/titleSoDau"
-                    android:background="@null"
-                    android:paddingLeft="10dp"
-                    android:singleLine="true"
-                    android:textSize="14sp" />
-            </RelativeLayout>
-        </androidx.cardview.widget.CardView>
-
-        <androidx.cardview.widget.CardView
-            android:id="@+id/lastNumber"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/firstNumber"
-            android:layout_marginLeft="14dp"
-            android:layout_marginTop="4dp"
-            android:layout_marginRight="14dp"
-            android:layout_marginBottom="4dp">
-
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@color/cardThietBiAdd"
-                android:orientation="horizontal"
-                android:paddingLeft="10dp"
-                android:paddingTop="8dp"
-                android:paddingRight="10dp"
-                android:paddingBottom="8dp">
-
-                <TextView
-                    android:id="@+id/titleSoCuoi"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Số cuối: "
-                    android:textColor="@color/black"
-                    android:textSize="14sp" />
-
-                <EditText
-                    android:id="@+id/soCuoiDien"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_toRightOf="@+id/titleSoCuoi"
-                    android:background="@null"
-                    android:paddingLeft="10dp"
-                    android:textSize="14sp"
-                    android:singleLine="true"/>
-            </RelativeLayout>
-        </androidx.cardview.widget.CardView>
-
-        <androidx.cardview.widget.CardView
-            android:id="@+id/electricNumberUse"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/lastNumber"
-            android:layout_marginLeft="14dp"
-            android:layout_marginTop="4dp"
-            android:layout_marginRight="14dp"
-            android:layout_marginBottom="4dp">
-
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@color/cardThietBiAdd"
-                android:orientation="horizontal"
-                android:paddingLeft="10dp"
-                android:paddingTop="8dp"
-                android:paddingRight="10dp"
-                android:paddingBottom="8dp">
-
-                <TextView
-                    android:id="@+id/titleDienDung"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Số điện sử dụng: "
-                    android:textColor="@color/black"
-                    android:textSize="14sp" />
-
-                <EditText
-                    android:id="@+id/soDienSuDung"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_toRightOf="@+id/titleDienDung"
-                    android:background="@null"
-                    android:paddingLeft="10dp"
-                    android:textSize="14sp"
-                    android:singleLine="true"/>
-            </RelativeLayout>
-        </androidx.cardview.widget.CardView>
-
-        <androidx.cardview.widget.CardView
-            android:id="@+id/payNumberUse"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/electricNumberUse"
-            android:layout_marginLeft="14dp"
-            android:layout_marginTop="4dp"
-            android:layout_marginRight="14dp"
-            android:layout_marginBottom="4dp">
-
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@color/cardThietBiAdd"
-                android:orientation="horizontal"
-                android:paddingLeft="10dp"
-                android:paddingTop="8dp"
-                android:paddingRight="10dp"
-                android:paddingBottom="8dp">
-
-                <TextView
-                    android:id="@+id/titlePay"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Thành tiền: "
-                    android:textColor="@color/black"
-                    android:textSize="14sp" />
-
-                <EditText
-                    android:id="@+id/tienDienSuDung"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_toRightOf="@+id/titlePay"
-                    android:background="@null"
-                    android:paddingLeft="10dp"
-                    android:textSize="14sp"
-                    android:singleLine="true"/>
-            </RelativeLayout>
-        </androidx.cardview.widget.CardView>
-
-        <androidx.cardview.widget.CardView
-            android:id="@+id/dateGetElectricNumber"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/payNumberUse"
-            android:layout_marginLeft="14dp"
-            android:layout_marginTop="4dp"
-            android:layout_marginRight="14dp"
-            android:layout_marginBottom="18dp">
-
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@color/cardThietBiAdd"
-                android:orientation="horizontal"
-                android:paddingLeft="10dp"
-                android:paddingTop="8dp"
-                android:paddingRight="10dp"
-                android:paddingBottom="8dp">
-
-                <TextView
-                    android:id="@+id/dateCalElectric"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Ngày đo: "
-                    android:textColor="@color/black"
-                    android:textSize="14sp" />
-
-                <EditText
-                    android:id="@+id/ngayDoDien"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_toRightOf="@+id/dateCalElectric"
-                    android:background="@null"
-                    android:paddingLeft="10dp"
-                    android:textSize="14sp"
-                    android:singleLine="true"/>
-            </RelativeLayout>
-        </androidx.cardview.widget.CardView>
-
-        <RelativeLayout
-            android:id="@+id/titleHistoryElectric"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/dateGetElectricNumber"
-            android:layout_marginLeft="14dp"
-            android:layout_marginRight="14dp"
-            android:orientation="horizontal">
-
-            <ImageView
-                android:id="@+id/clickDownElectric"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerVertical="true"
-                android:src="@drawable/downclick" />
-
-            <TextView
-                android:paddingLeft="6dp"
-                android:id="@+id/tieuDeLichSuDungDien"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_toRightOf="@id/clickDownElectric"
-                android:textColor="@color/black"
-                android:textSize="14sp"
-                android:textStyle="bold" />
         </RelativeLayout>
 
-        <androidx.cardview.widget.CardView
-            android:id="@+id/cardListHisToryElectric"
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="14dp"
-            android:layout_marginRight="14dp"
-            android:layout_marginTop="5dp"
-            android:layout_below="@+id/titleHistoryElectric">
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/listElectricNumberUsed"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-            </androidx.recyclerview.widget.RecyclerView>
-        </androidx.cardview.widget.CardView>
+            android:layout_below="@+id/tren">
 
-        <LinearLayout
-            android:layout_marginTop="24dp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/cardListHisToryElectric"
-            android:gravity="center">
+            <LinearLayout
+                android:id="@+id/titleInfoElectric"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <RelativeLayout
+                    android:id="@+id/thongTinCoBan"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="14dp"
+                    android:layout_marginTop="15dp"
+                    android:layout_weight="1">
+
+                    <TextView
+                        android:id="@+id/tenPhongDienEdit"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/black"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/daiDienPhongDien"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/tenPhongDienEdit"
+                        android:textColor="@color/black"
+                        android:textStyle="bold" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:layout_marginRight="19dp"
+                    android:layout_weight="1"
+                    android:gravity="right">
+
+                    <ImageView
+                        android:id="@+id/closePhongDienEdit"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/closeroomedit" />
+                </RelativeLayout>
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/infoTimePhongDien"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/titleInfoElectric"
+                android:layout_marginLeft="14dp"
+                android:layout_marginRight="14dp"
+                android:textColor="@color/loginButton"
+                android:textStyle="bold" />
 
             <androidx.cardview.widget.CardView
-                android:layout_width="wrap_content"
+                android:id="@+id/firstNumber"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:cardCornerRadius="6dp">
+                android:layout_below="@+id/infoTimePhongDien"
+                android:layout_marginLeft="14dp"
+                android:layout_marginTop="7dp"
+                android:layout_marginRight="14dp"
+                android:layout_marginBottom="4dp"
+                app:cardCornerRadius="5dp">
 
-                <TextView
-                    android:id="@+id/btnUpdateElectric"
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/cardThietBiAdd"
+                    android:orientation="horizontal"
+                    android:paddingLeft="10dp"
+                    android:paddingTop="8dp"
+                    android:paddingRight="10dp"
+                    android:paddingBottom="8dp">
+
+                    <TextView
+                        android:id="@+id/titleSoDau"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Số đầu: "
+                        android:textColor="@color/black"
+                        android:textSize="14sp" />
+
+                    <EditText
+                        android:id="@+id/soDauDien"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_toRightOf="@+id/titleSoDau"
+                        android:background="@null"
+                        android:paddingLeft="10dp"
+                        android:singleLine="true"
+                        android:textSize="14sp" />
+                </RelativeLayout>
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/lastNumber"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/firstNumber"
+                android:layout_marginLeft="14dp"
+                android:layout_marginTop="4dp"
+                android:layout_marginRight="14dp"
+                android:layout_marginBottom="4dp">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/cardThietBiAdd"
+                    android:orientation="horizontal"
+                    android:paddingLeft="10dp"
+                    android:paddingTop="8dp"
+                    android:paddingRight="10dp"
+                    android:paddingBottom="8dp">
+
+                    <TextView
+                        android:id="@+id/titleSoCuoi"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Số cuối: "
+                        android:textColor="@color/black"
+                        android:textSize="14sp" />
+
+                    <EditText
+                        android:id="@+id/soCuoiDien"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_toRightOf="@+id/titleSoCuoi"
+                        android:background="@null"
+                        android:paddingLeft="10dp"
+                        android:singleLine="true"
+                        android:textSize="14sp" />
+                </RelativeLayout>
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/electricNumberUse"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/lastNumber"
+                android:layout_marginLeft="14dp"
+                android:layout_marginTop="4dp"
+                android:layout_marginRight="14dp"
+                android:layout_marginBottom="4dp">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/cardThietBiAdd"
+                    android:orientation="horizontal"
+                    android:paddingLeft="10dp"
+                    android:paddingTop="8dp"
+                    android:paddingRight="10dp"
+                    android:paddingBottom="8dp">
+
+                    <TextView
+                        android:id="@+id/titleDienDung"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Số điện sử dụng: "
+                        android:textColor="@color/black"
+                        android:textSize="14sp" />
+
+                    <EditText
+                        android:id="@+id/soDienSuDung"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_toRightOf="@+id/titleDienDung"
+                        android:background="@null"
+                        android:paddingLeft="10dp"
+                        android:singleLine="true"
+                        android:textSize="14sp" />
+                </RelativeLayout>
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/payNumberUse"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/electricNumberUse"
+                android:layout_marginLeft="14dp"
+                android:layout_marginTop="4dp"
+                android:layout_marginRight="14dp"
+                android:layout_marginBottom="4dp">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/cardThietBiAdd"
+                    android:orientation="horizontal"
+                    android:paddingLeft="10dp"
+                    android:paddingTop="8dp"
+                    android:paddingRight="10dp"
+                    android:paddingBottom="8dp">
+
+                    <TextView
+                        android:id="@+id/titlePay"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Thành tiền: "
+                        android:textColor="@color/black"
+                        android:textSize="14sp" />
+
+                    <EditText
+                        android:id="@+id/tienDienSuDung"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_toRightOf="@+id/titlePay"
+                        android:background="@null"
+                        android:paddingLeft="10dp"
+                        android:singleLine="true"
+                        android:textSize="14sp" />
+                </RelativeLayout>
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/dateGetElectricNumber"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/payNumberUse"
+                android:layout_marginLeft="14dp"
+                android:layout_marginTop="4dp"
+                android:layout_marginRight="14dp"
+                android:layout_marginBottom="18dp">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/cardThietBiAdd"
+                    android:orientation="horizontal"
+                    android:paddingLeft="10dp"
+                    android:paddingTop="8dp"
+                    android:paddingRight="10dp"
+                    android:paddingBottom="8dp">
+
+                    <TextView
+                        android:id="@+id/dateCalElectric"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Ngày đo: "
+                        android:textColor="@color/black"
+                        android:textSize="14sp" />
+
+                    <EditText
+                        android:id="@+id/ngayDoDien"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_toRightOf="@+id/dateCalElectric"
+                        android:background="@null"
+                        android:paddingLeft="10dp"
+                        android:singleLine="true"
+                        android:textSize="14sp" />
+                </RelativeLayout>
+            </androidx.cardview.widget.CardView>
+
+            <RelativeLayout
+                android:id="@+id/titleHistoryElectric"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/dateGetElectricNumber"
+                android:layout_marginLeft="14dp"
+                android:layout_marginRight="14dp"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:id="@+id/clickDownElectric"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:background="@color/buttonDienNuoc"
-                    android:paddingLeft="16dp"
-                    android:paddingTop="6dp"
-                    android:paddingRight="16dp"
-                    android:paddingBottom="6dp"
-                    android:textStyle="bold"
-                    android:text="Cập nhật thông tin"
-                    android:textColor="@color/white"
-                    android:textSize="18sp" />
+                    android:layout_centerVertical="true"
+                    android:src="@drawable/downclick" />
 
+                <TextView
+                    android:id="@+id/tieuDeLichSuDungDien"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toRightOf="@id/clickDownElectric"
+                    android:paddingLeft="6dp"
+                    android:textColor="@color/black"
+                    android:textSize="14sp"
+                    android:textStyle="bold" />
+            </RelativeLayout>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cardListHisToryElectric"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/titleHistoryElectric"
+                android:layout_marginLeft="14dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginRight="14dp">
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/listElectricNumberUsed"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"></androidx.recyclerview.widget.RecyclerView>
             </androidx.cardview.widget.CardView>
-        </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/cardListHisToryElectric"
+                android:layout_marginTop="24dp"
+                android:gravity="center">
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:cardCornerRadius="6dp">
+
+                    <TextView
+                        android:id="@+id/btnUpdateElectric"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@color/buttonDienNuoc"
+                        android:paddingLeft="16dp"
+                        android:paddingTop="6dp"
+                        android:paddingRight="16dp"
+                        android:paddingBottom="6dp"
+                        android:text="Cập nhật thông tin"
+                        android:textColor="@color/white"
+                        android:textSize="18sp"
+                        android:textStyle="bold" />
+
+                </androidx.cardview.widget.CardView>
+            </LinearLayout>
 
 
+        </RelativeLayout>
     </RelativeLayout>
-</RelativeLayout>
+
+    <com.google.android.material.navigation.NavigationView
+        android:id="@+id/nav_view"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_gravity="start"
+        android:fitsSystemWindows="true"
+        app:headerLayout="@layout/drawer_header_layout"
+        app:menu="@menu/drawer_view" />
+</androidx.drawerlayout.widget.DrawerLayout>

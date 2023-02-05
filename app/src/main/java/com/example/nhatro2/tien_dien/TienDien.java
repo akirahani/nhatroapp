@@ -1,7 +1,10 @@
 package com.example.nhatro2.tien_dien;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.view.GravityCompat;
+import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -17,6 +20,7 @@ import android.os.Bundle;
 import android.text.Html;
 import android.util.Log;
 import android.view.Gravity;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
@@ -32,10 +36,16 @@ import com.example.nhatro2.MainActivity;
 import com.example.nhatro2.R;
 import com.example.nhatro2.api.Api;
 import com.example.nhatro2.api.ApiQH;
+import com.example.nhatro2.dong_tien.DongTien;
+import com.example.nhatro2.hop_dong.HopDong;
+import com.example.nhatro2.phong.Phong;
+import com.example.nhatro2.thanhvien.KhachTro;
+import com.example.nhatro2.tien_coc.TienCoc;
 import com.example.nhatro2.tien_nuoc.TienNuoc;
 import com.example.nhatro2.tien_nuoc.TienNuocAdapter;
 import com.example.nhatro2.tien_nuoc.TienNuocEdit;
 import com.example.nhatro2.tien_nuoc.TienNuocModel;
+import com.google.android.material.navigation.NavigationView;
 import com.kal.rackmonthpicker.RackMonthPicker;
 import com.kal.rackmonthpicker.listener.DateMonthDialogListener;
 import com.kal.rackmonthpicker.listener.OnCancelMonthDialogListener;
@@ -54,12 +64,13 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class TienDien extends AppCompatActivity {
-    ImageView thoat, logo, searchDien;
+    ImageView thoat, logo, searchDien, menuDanhMuc;
     SharedPreferences shp;
     TextView chonThangDien, searchElectricClick, searchElectricClose;
     List<TienDienModel> phongDien = new ArrayList<>();
     RecyclerView danhSachPhongDien;
     EditText keyElectricRoom;
+    DrawerLayout mDrawerLayout;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -317,6 +328,43 @@ public class TienDien extends AppCompatActivity {
                 });
 
                 dialogSearch.show();
+            }
+        });
+
+        menuDanhMuc = findViewById(R.id.menuDanhMuc);
+        mDrawerLayout = findViewById(R.id.drawer_layout_dien);
+
+        menuDanhMuc.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                mDrawerLayout.openDrawer(GravityCompat.START);
+            }
+        });
+        NavigationView navigationView = findViewById(R.id.nav_view);
+        navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                switch (item.getItemId()){
+                    case R.id.khach_tro:
+                        Intent khachTro = new Intent(TienDien.this, KhachTro.class);
+                        startActivity(khachTro);
+                        return true;
+                    case R.id.dat_coc:
+                        Intent datCoc = new Intent(TienDien.this, TienCoc.class);
+                        startActivity(datCoc);
+                        return true;
+                    case R.id.thanh_toan:
+                        Intent thanhToan = new Intent(TienDien.this, DongTien.class);
+                        startActivity(thanhToan);
+                        return true;
+                    case R.id.hop_dong:
+                        Intent hopDong = new Intent(TienDien.this, HopDong.class);
+                        startActivity(hopDong);
+                        return true;
+
+
+                }
+                return true;
             }
         });
     }

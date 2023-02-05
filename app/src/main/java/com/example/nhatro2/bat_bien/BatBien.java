@@ -1,7 +1,10 @@
 package com.example.nhatro2.bat_bien;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.view.GravityCompat;
+import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -16,6 +19,7 @@ import android.os.Bundle;
 import android.text.Html;
 import android.util.Log;
 import android.view.Gravity;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
@@ -31,14 +35,19 @@ import com.example.nhatro2.MainActivity;
 import com.example.nhatro2.R;
 import com.example.nhatro2.api.Api;
 import com.example.nhatro2.api.ApiQH;
+import com.example.nhatro2.dong_tien.DongTien;
+import com.example.nhatro2.hop_dong.HopDong;
 import com.example.nhatro2.kha_bien.KhaBien;
 import com.example.nhatro2.kha_bien.KhaBienModel;
+import com.example.nhatro2.quy_tien_mat.QuyTienMat;
 import com.example.nhatro2.thanhvien.KhachTro;
+import com.example.nhatro2.tien_coc.TienCoc;
 import com.example.nhatro2.tien_nuoc.NuocItemClick;
 import com.example.nhatro2.tien_nuoc.TienNuoc;
 import com.example.nhatro2.tien_nuoc.TienNuocAdapter;
 import com.example.nhatro2.tien_nuoc.TienNuocEdit;
 import com.example.nhatro2.tien_nuoc.TienNuocModel;
+import com.google.android.material.navigation.NavigationView;
 import com.kal.rackmonthpicker.RackMonthPicker;
 import com.kal.rackmonthpicker.listener.DateMonthDialogListener;
 import com.kal.rackmonthpicker.listener.OnCancelMonthDialogListener;
@@ -56,7 +65,7 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class BatBien extends AppCompatActivity {
-    ImageView thoat, logo, addBatBien;
+    ImageView thoat, logo, addBatBien, menuDanhMuc;
     SharedPreferences shp;
     RecyclerView listBatBien;
     List<BatBienModel> listBatBienGet = new ArrayList<>();
@@ -64,6 +73,7 @@ public class BatBien extends AppCompatActivity {
     RadioButton tienMatBatBien, chuyenKhoanBatBien;
     EditText lyDoBatBien, tienBatBien;
     BatBienAdapter batBienAdapter;
+    DrawerLayout mDrawerLayout;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -93,6 +103,7 @@ public class BatBien extends AppCompatActivity {
                         Intent intent = new Intent(BatBien.this, MainActivity.class);
                         startActivity(intent);
                         shp = view.getContext().getSharedPreferences("user", MODE_PRIVATE);
+                        shp.getInt("idThanhVien",0);
                         shp.edit().clear().commit();
 //                        view.getContext();
                     }
@@ -223,7 +234,9 @@ public class BatBien extends AppCompatActivity {
                         String tienBatBienText = tienBatBien.getText().toString();
                         int giaTienBatBienFinal = Integer.parseInt(tienBatBienText);
 
-                        ApiQH.apiQH.addBatBien(lyDoBatBienText,giaTienBatBienFinal,hinhThucThanhToan).enqueue(new Callback<BatBienModel>() {
+                        shp = view.getContext().getSharedPreferences("user", MODE_PRIVATE);
+                        int idThanhVienQuanLy = shp.getInt("idThanhVien",0);
+                        ApiQH.apiQH.addBatBien(idThanhVienQuanLy,lyDoBatBienText,giaTienBatBienFinal,hinhThucThanhToan).enqueue(new Callback<BatBienModel>() {
                             @Override
                             public void onResponse(Call<BatBienModel> call, Response<BatBienModel> response) {
                                 BatBienModel khaBatThem = response.body();
@@ -253,5 +266,41 @@ public class BatBien extends AppCompatActivity {
             }
         });
 
+        menuDanhMuc = findViewById(R.id.menuDanhMuc);
+        mDrawerLayout = findViewById(R.id.drawer_layout_bat_bien);
+
+        menuDanhMuc.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                mDrawerLayout.openDrawer(GravityCompat.START);
+            }
+        });
+        NavigationView navigationView = findViewById(R.id.nav_view);
+        navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                switch (item.getItemId()){
+                    case R.id.khach_tro:
+                        Intent khachTro = new Intent(BatBien.this, KhachTro.class);
+                        startActivity(khachTro);
+                        return true;
+                    case R.id.dat_coc:
+                        Intent datCoc = new Intent(BatBien.this, TienCoc.class);
+                        startActivity(datCoc);
+                        return true;
+                    case R.id.thanh_toan:
+                        Intent thanhToan = new Intent(BatBien.this, DongTien.class);
+                        startActivity(thanhToan);
+                        return true;
+                    case R.id.hop_dong:
+                        Intent hopDong = new Intent(BatBien.this, HopDong.class);
+                        startActivity(hopDong);
+                        return true;
+
+
+                }
+                return true;
+            }
+        });
     }
 }

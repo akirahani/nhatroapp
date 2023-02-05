@@ -1,7 +1,10 @@
 package com.example.nhatro2.phong;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.view.GravityCompat;
+import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -12,6 +15,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.Html;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -22,6 +26,12 @@ import com.example.nhatro2.HomeActivity;
 import com.example.nhatro2.MainActivity;
 import com.example.nhatro2.R;
 import com.example.nhatro2.api.ApiQH;
+import com.example.nhatro2.dong_tien.DongTien;
+import com.example.nhatro2.hop_dong.HopDong;
+import com.example.nhatro2.kha_bien.KhaBien;
+import com.example.nhatro2.thanhvien.KhachTro;
+import com.example.nhatro2.tien_coc.TienCoc;
+import com.google.android.material.navigation.NavigationView;
 
 import java.util.List;
 
@@ -30,14 +40,14 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class MultiRoom extends AppCompatActivity {
-    ImageView thoat,logo;
+    ImageView thoat,logo,menuDanhMuc;
     SharedPreferences shp;
     String listRoom, tenPhongchecked;
     List<PhongModel> phongCheckedList;
     TextView nameRoomChecked,capNhatMulti;
     RecyclerView phongList;
     EditText tenDaiDien, tiencoc, dienThoaiDaiDien;
-
+    DrawerLayout mDrawerLayout;
     @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -141,6 +151,42 @@ public class MultiRoom extends AppCompatActivity {
                         Toast.makeText(MultiRoom.this, "Đặt cọc cho nhiều phòng thất bại",Toast.LENGTH_SHORT);
                     }
                 });
+            }
+        });
+        menuDanhMuc = findViewById(R.id.menuDanhMuc);
+        mDrawerLayout = findViewById(R.id.drawer_layout_nhieu_phong);
+
+        menuDanhMuc.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                mDrawerLayout.openDrawer(GravityCompat.START);
+            }
+        });
+        NavigationView navigationView = findViewById(R.id.nav_view);
+        navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                switch (item.getItemId()){
+                    case R.id.khach_tro:
+                        Intent khachTro = new Intent(MultiRoom.this, KhachTro.class);
+                        startActivity(khachTro);
+                        return true;
+                    case R.id.dat_coc:
+                        Intent datCoc = new Intent(MultiRoom.this, TienCoc.class);
+                        startActivity(datCoc);
+                        return true;
+                    case R.id.thanh_toan:
+                        Intent thanhToan = new Intent(MultiRoom.this, DongTien.class);
+                        startActivity(thanhToan);
+                        return true;
+                    case R.id.hop_dong:
+                        Intent hopDong = new Intent(MultiRoom.this, HopDong.class);
+                        startActivity(hopDong);
+                        return true;
+
+
+                }
+                return true;
             }
         });
     }

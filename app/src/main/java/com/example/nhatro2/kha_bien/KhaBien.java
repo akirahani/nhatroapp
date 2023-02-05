@@ -1,7 +1,10 @@
 package com.example.nhatro2.kha_bien;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.view.GravityCompat;
+import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -16,6 +19,7 @@ import android.os.Bundle;
 import android.text.Html;
 import android.util.Log;
 import android.view.Gravity;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
@@ -34,11 +38,16 @@ import com.example.nhatro2.api.ApiQH;
 import com.example.nhatro2.bat_bien.BatBien;
 import com.example.nhatro2.bat_bien.BatBienAdapter;
 import com.example.nhatro2.bat_bien.BatBienModel;
+import com.example.nhatro2.dong_tien.DongTien;
+import com.example.nhatro2.hop_dong.HopDong;
+import com.example.nhatro2.thanhvien.KhachTro;
+import com.example.nhatro2.tien_coc.TienCoc;
 import com.example.nhatro2.tien_nuoc.NuocItemClick;
 import com.example.nhatro2.tien_nuoc.TienNuoc;
 import com.example.nhatro2.tien_nuoc.TienNuocAdapter;
 import com.example.nhatro2.tien_nuoc.TienNuocEdit;
 import com.example.nhatro2.tien_nuoc.TienNuocModel;
+import com.google.android.material.navigation.NavigationView;
 import com.kal.rackmonthpicker.RackMonthPicker;
 import com.kal.rackmonthpicker.listener.DateMonthDialogListener;
 import com.kal.rackmonthpicker.listener.OnCancelMonthDialogListener;
@@ -56,13 +65,14 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class KhaBien extends AppCompatActivity {
-    ImageView thoat, logo, addKhaBien;
+    ImageView thoat, logo, addKhaBien ,menuDanhMuc;
     SharedPreferences shp;
     RecyclerView listKhaBien;
     List<KhaBienModel> listKhaBienGet = new ArrayList<>();
     TextView chonThangKhaBien, khaBienAdd, khaBienClose;
     EditText lyDoKhaBien, tienKhaBien;
     RadioButton tienMatKhaBien, chuyenKhoanKhaBien;
+    DrawerLayout mDrawerLayout;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -221,7 +231,10 @@ public class KhaBien extends AppCompatActivity {
                         String lyDoKhaBienText = lyDoKhaBien.getText().toString();
                         String tienKhaBienText = tienKhaBien.getText().toString();
                         int giaTienKhaBienFinal = Integer.parseInt(tienKhaBienText);
-                        ApiQH.apiQH.addKhaBien(lyDoKhaBienText,giaTienKhaBienFinal,hinhThucThanhToan).enqueue(new Callback<KhaBienModel>() {
+
+                        shp = view.getContext().getSharedPreferences("user", MODE_PRIVATE);
+                        int idThanhVienQuanLy = shp.getInt("idThanhVien",0);
+                        ApiQH.apiQH.addKhaBien(idThanhVienQuanLy,lyDoKhaBienText,giaTienKhaBienFinal,hinhThucThanhToan).enqueue(new Callback<KhaBienModel>() {
                             @Override
                             public void onResponse(Call<KhaBienModel> call, Response<KhaBienModel> response) {
                                 KhaBienModel khaBienThem = response.body();
@@ -248,6 +261,43 @@ public class KhaBien extends AppCompatActivity {
                 });
 
                 dialogKhaBien.show();
+            }
+        });
+
+        menuDanhMuc = findViewById(R.id.menuDanhMuc);
+        mDrawerLayout = findViewById(R.id.drawer_layout_kha_bien);
+
+        menuDanhMuc.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                mDrawerLayout.openDrawer(GravityCompat.START);
+            }
+        });
+        NavigationView navigationView = findViewById(R.id.nav_view);
+        navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                switch (item.getItemId()){
+                    case R.id.khach_tro:
+                        Intent khachTro = new Intent(KhaBien.this, KhachTro.class);
+                        startActivity(khachTro);
+                        return true;
+                    case R.id.dat_coc:
+                        Intent datCoc = new Intent(KhaBien.this, TienCoc.class);
+                        startActivity(datCoc);
+                        return true;
+                    case R.id.thanh_toan:
+                        Intent thanhToan = new Intent(KhaBien.this, DongTien.class);
+                        startActivity(thanhToan);
+                        return true;
+                    case R.id.hop_dong:
+                        Intent hopDong = new Intent(KhaBien.this, HopDong.class);
+                        startActivity(hopDong);
+                        return true;
+
+
+                }
+                return true;
             }
         });
     }

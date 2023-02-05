@@ -1,151 +1,164 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.drawerlayout.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/drawer_layout_phong"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/khungNgoai">
 
     <RelativeLayout
-        android:id="@+id/khungNgoai"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@color/khungNgoai"
-        android:orientation="vertical"
-        tools:context=".phong.Phong">
-        <!--header-->
-        <androidx.appcompat.widget.Toolbar xmlns:android="http://schemas.android.com/apk/res/android"
-            android:id="@+id/header"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/gradient_header">
-
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <LinearLayout
-                    android:id="@+id/rightToolbar"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentLeft="true"
-                    android:layout_centerVertical="true">
-
-                    <ImageView
-                        android:id="@+id/thoat"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:background="@drawable/ic_back"
-                        android:backgroundTint="@color/white"></ImageView>
-
-                    <TextView
-                        android:id="@+id/ten"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_toRightOf="@+id/thoat"
-                        android:paddingLeft="5dp"
-                        android:text="Thoát"
-                        android:textColor="@color/white"></TextView>
-                </LinearLayout>
-
-                <LinearLayout
-                    android:id="@+id/centerToolbar"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerInParent="true"
-                    android:layout_centerVertical="true"
-                    android:paddingRight="10dp">
-                    >
-
-                    <ImageView
-                        android:id="@+id/logo"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:background="@drawable/ic_logo"
-                        android:backgroundTint="@color/white" />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:id="@+id/leftToolbar"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentRight="true"
-                    android:layout_centerVertical="true">
-                    >
-
-                    <ImageView
-                        android:id="@+id/menuDanhMuc"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginRight="15dp"
-                        android:background="@drawable/bar"
-                        android:backgroundTint="@color/white" />
-                </LinearLayout>
-            </RelativeLayout>
-        </androidx.appcompat.widget.Toolbar>
-        <!-- title -->
+        android:layout_height="match_parent">
         <RelativeLayout
-            android:id="@+id/tren"
+            android:id="@+id/khungNgoai"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/header"
-            android:background="@color/white"
-            android:orientation="horizontal">
-
-            <LinearLayout
-                android:id="@+id/rowTitleRoom"
+            android:layout_height="match_parent"
+            android:background="@color/khungNgoai"
+            android:orientation="vertical"
+            tools:context=".phong.Phong">
+            <!--header-->
+            <androidx.appcompat.widget.Toolbar xmlns:android="http://schemas.android.com/apk/res/android"
+                android:id="@+id/header"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:elevation="20dp"
+                android:background="@drawable/gradient_header">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <LinearLayout
+                        android:id="@+id/rightToolbar"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentLeft="true"
+                        android:layout_centerVertical="true">
+
+                        <ImageView
+                            android:id="@+id/thoat"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/ic_back"
+                            android:backgroundTint="@color/white"></ImageView>
+
+                        <TextView
+                            android:id="@+id/ten"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_toRightOf="@+id/thoat"
+                            android:paddingLeft="5dp"
+                            android:text="Thoát"
+                            android:textColor="@color/white"></TextView>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/centerToolbar"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:layout_centerVertical="true"
+                        android:paddingRight="10dp">
+                        >
+
+                        <ImageView
+                            android:id="@+id/logo"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/ic_logo"
+                            android:backgroundTint="@color/white" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/leftToolbar"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true">
+                        >
+
+                        <ImageView
+                            android:id="@+id/menuDanhMuc"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginRight="15dp"
+                            android:background="@drawable/bar"
+                            android:backgroundTint="@color/white" />
+                    </LinearLayout>
+                </RelativeLayout>
+            </androidx.appcompat.widget.Toolbar>
+            <!-- title -->
+            <RelativeLayout
+                android:id="@+id/tren"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/header"
+                android:background="@color/white"
                 android:orientation="horizontal">
 
-                <FrameLayout
-                    android:id="@+id/tieuDePhongTro"
-                    android:layout_gravity="center"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content">
-                    ></FrameLayout>
+                <LinearLayout
+                    android:id="@+id/rowTitleRoom"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:elevation="20dp"
+                    android:orientation="horizontal">
+
+                    <FrameLayout
+                        android:id="@+id/tieuDePhongTro"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center">
+                        ></FrameLayout>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:paddingLeft="8dp"
+                        android:text="quản lí phòng trọ"
+                        android:textAllCaps="true"
+                        android:textColor="@color/textQuanLyChung"
+                        android:textSize="18dp"
+                        android:textStyle="bold" />
+                </LinearLayout>
 
                 <TextView
-                    android:layout_gravity="center"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:paddingLeft="8dp"
-                    android:text="quản lí phòng trọ"
-                    android:textAllCaps="true"
-                    android:textColor="@color/textQuanLyChung"
-                    android:textSize="18dp"
-                    android:textStyle="bold" />
-            </LinearLayout>
+                    android:layout_width="match_parent"
+                    android:layout_height="30dp"
+                    android:layout_below="@+id/rowTitleRoom"
+                    android:layout_marginTop="-15dp"
+                    android:background="@color/khungNgoai" />
 
-            <TextView
+            </RelativeLayout>
+            <!-- tab room -->
+            <com.google.android.material.tabs.TabLayout
+                android:id="@+id/tabRoom"
                 android:layout_width="match_parent"
-                android:layout_height="30dp"
-                android:layout_below="@+id/rowTitleRoom"
-                android:layout_marginTop="-15dp"
-                android:background="@color/khungNgoai" />
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tren"
+                android:layout_marginTop="-10dp"
+                android:layout_marginBottom="-15dp"
+                android:background="@color/khungNgoai"
+                app:tabBackground="@drawable/tab_selector"
+                app:tabIndicatorHeight="0dp"
+                app:tabTextColor="@color/white"></com.google.android.material.tabs.TabLayout>
 
+            <androidx.viewpager2.widget.ViewPager2
+                android:id="@+id/tabContentViewRoom"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tabRoom">
+
+            </androidx.viewpager2.widget.ViewPager2>
         </RelativeLayout>
-        <!-- tab room -->
-        <com.google.android.material.tabs.TabLayout
-            android:id="@+id/tabRoom"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/tren"
-            android:layout_marginTop="-10dp"
-            android:layout_marginBottom="-15dp"
-            android:background="@color/khungNgoai"
-            app:tabBackground="@drawable/tab_selector"
-            app:tabIndicatorHeight="0dp"
-            app:tabTextColor="@color/white"></com.google.android.material.tabs.TabLayout>
-
-        <androidx.viewpager2.widget.ViewPager2
-            android:id="@+id/tabContentViewRoom"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/tabRoom">
-
-        </androidx.viewpager2.widget.ViewPager2>
     </RelativeLayout>
 
-</RelativeLayout>
+    <com.google.android.material.navigation.NavigationView
+        android:id="@+id/nav_view"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_gravity="start"
+        android:fitsSystemWindows="true"
+        app:headerLayout="@layout/drawer_header_layout"
+        app:menu="@menu/drawer_view" />
+</androidx.drawerlayout.widget.DrawerLayout>
