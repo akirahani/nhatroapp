@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "824050917107",
+    "project_id": "nhatroquanghieu-eb321",
+    "storage_bucket": "nhatroquanghieu-eb321.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:824050917107:android:112dad159f1de87b3c2186",
+        "android_client_info": {
+          "package_name": "com.example.nhatro2"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "824050917107-ased5tqk0ecdrk2flrvg2jeopu05ei4i.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBl2UjQyD9BMRFn4HYWOHHcl5CDbRhW57A"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "824050917107-ased5tqk0ecdrk2flrvg2jeopu05ei4i.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

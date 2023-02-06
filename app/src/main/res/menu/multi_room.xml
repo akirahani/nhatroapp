@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android">
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
+        android:iconTint="@color/lite_blue"
         android:id="@+id/multiroom"
-        android:title="Choose multi room"
-        android:icon="@drawable/alert_bottom"
-        >
-    </item>
+        android:title="Chọn nhiều phòng"
+        app:showAsAction="always"
+        android:icon="@drawable/multiroom" />
+
 </menu>

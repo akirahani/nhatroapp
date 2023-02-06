@@ -16,9 +16,11 @@ import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.text.Html;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
@@ -29,6 +31,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.Toolbar;
 
+import com.example.nhatro2.api.ApiQH;
 import com.example.nhatro2.bat_bien.BatBien;
 import com.example.nhatro2.dong_tien.DongTien;
 import com.example.nhatro2.hop_dong.HopDong;
@@ -36,6 +39,9 @@ import com.example.nhatro2.kha_bien.KhaBien;
 import com.example.nhatro2.phong.Phong;
 import com.example.nhatro2.quanlychung.ChungAdapter;
 import com.example.nhatro2.quanlychung.ChungModel;
+import com.example.nhatro2.quy_tien_mat.QuyThuAdapter;
+import com.example.nhatro2.quy_tien_mat.QuyThuModel;
+import com.example.nhatro2.quy_tien_mat.QuyTienMat;
 import com.example.nhatro2.tai_khoan.TaiKhoanModel;
 import com.example.nhatro2.thanhvien.KhachTro;
 import com.example.nhatro2.thong_ke.ThongKe;
@@ -46,6 +52,10 @@ import com.google.android.material.navigation.NavigationView;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class HomeFragment extends Fragment {
     List<ChungModel> chung = new ArrayList<>();
@@ -78,14 +88,7 @@ public class HomeFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_home, container, false);
-        ImageView menuDanhMuc = view.findViewById(R.id.menuDanhMuc);
-        menuDanhMuc.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-            }
-        });
-
+        TextView doanhThuThangHienTai;
         // Tên người đăng nhập
         tenUser = view.findViewById(R.id.tenUser);
         shp = getContext().getSharedPreferences("user", Context.MODE_PRIVATE);
@@ -237,6 +240,28 @@ public class HomeFragment extends Fragment {
                 return true;
             }
         });
+
+        doanhThuThangHienTai = view.findViewById(R.id.doanhThuThangHienTai);
+        ApiQH.apiQH.getQuyThu().enqueue(new Callback<List<QuyThuModel>>() {
+            @Override
+            public void onResponse(Call<List<QuyThuModel>> call, Response<List<QuyThuModel>> response) {
+                List<QuyThuModel> listQuyThuFinal = response.body();
+
+                ArrayList<Integer> arrGiaTri = new ArrayList<>();
+                for(int i = listQuyThuFinal.size() -1; i >= 0 ;i--){
+                    arrGiaTri.add(i);
+                }
+                String doanhThuHienTaiText = listQuyThuFinal.get(arrGiaTri.get(0)).getTien();
+                doanhThuThangHienTai.setText(doanhThuHienTaiText+"đ");
+            }
+
+            @Override
+            public void onFailure(Call<List<QuyThuModel>> call, Throwable t) {
+
+            }
+        });
+
+
         return view;
     }
 }
