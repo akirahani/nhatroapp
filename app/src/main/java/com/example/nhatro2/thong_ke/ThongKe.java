@@ -10,6 +10,7 @@ import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -27,6 +28,7 @@ import com.example.nhatro2.api.ApiQH;
 import com.example.nhatro2.dong_tien.DongTien;
 import com.example.nhatro2.hop_dong.HopDong;
 import com.example.nhatro2.phong.Phong;
+import com.example.nhatro2.quy_tien_mat.QuyThuModel;
 import com.example.nhatro2.thanhvien.KhachTro;
 import com.example.nhatro2.tien_coc.TienCoc;
 import com.google.android.material.navigation.NavigationView;
@@ -43,6 +45,8 @@ import com.highsoft.highcharts.common.hichartsclasses.HITooltip;
 import com.highsoft.highcharts.common.hichartsclasses.HIXAxis;
 import com.highsoft.highcharts.common.hichartsclasses.HIYAxis;
 import com.highsoft.highcharts.core.*;
+
+import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -223,6 +227,26 @@ public class ThongKe extends AppCompatActivity {
 
                 }
                 return true;
+            }
+        });
+
+        TextView doanhThuThangThongKe = findViewById(R.id.doanhThuThangThongKe);
+        ApiQH.apiQH.getQuyThu().enqueue(new Callback<List<QuyThuModel>>() {
+            @Override
+            public void onResponse(Call<List<QuyThuModel>> call, Response<List<QuyThuModel>> response) {
+                List<QuyThuModel> listQuyThuFinal = response.body();
+
+                ArrayList<Integer> arrGiaTri = new ArrayList<>();
+                for(int i = listQuyThuFinal.size() -1; i >= 0 ;i--){
+                    arrGiaTri.add(i);
+                }
+                String doanhThuHienTaiText = listQuyThuFinal.get(arrGiaTri.get(0)).getTien();
+                doanhThuThangThongKe.setText(doanhThuHienTaiText+"đ");
+            }
+
+            @Override
+            public void onFailure(Call<List<QuyThuModel>> call, Throwable t) {
+
             }
         });
     }

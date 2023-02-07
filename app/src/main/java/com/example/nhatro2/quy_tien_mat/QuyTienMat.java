@@ -156,13 +156,6 @@ public class QuyTienMat extends AppCompatActivity {
                 tienTongChi.setText(tienChiTong+"đ");
                 tienTongThu.setText(tienThuTong+"đ");
 
-//                List<String> arrTienChi = new ArrayList<>();
-//
-//                String[] tokens = listTienThu.split(",");
-//
-//                for (String a : tokens) {
-//                   Log.d("ele",""+a);
-//                }
             }
 
             @Override

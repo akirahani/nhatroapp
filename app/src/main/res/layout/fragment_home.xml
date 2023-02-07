@@ -158,9 +158,9 @@
                                     android:textSize="15sp" />
 
                                 <TextView
+                                    android:id="@+id/doanhThuThangHienTai"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
-                                    android:text="70.000.000 VNĐ"
                                     android:textColor="@color/black"
                                     android:textSize="20sp"
                                     android:textStyle="bold" />
