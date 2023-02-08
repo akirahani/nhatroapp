@@ -62,8 +62,6 @@ public class PhongAdapter extends RecyclerView.Adapter<PhongAdapter.PhongViewHol
         String khu = data.getKhu();
         int tang = data.getTang();
         int trangthai = data.getTrangthai();
-//        String dichvu = data.getDichvu();
-        int datcoc = data.getDatcoc();
         int chuphong = data.getChuphong();
         int gia = data.getGiaphong();
 

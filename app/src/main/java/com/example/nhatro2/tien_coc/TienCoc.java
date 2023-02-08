@@ -21,16 +21,20 @@ import android.widget.Toast;
 import com.example.nhatro2.HomeActivity;
 import com.example.nhatro2.MainActivity;
 import com.example.nhatro2.R;
+import com.example.nhatro2.dong_tien.BottomSheetChonPhongTien;
 import com.example.nhatro2.dong_tien.DongTien;
 import com.example.nhatro2.hop_dong.HopDong;
 import com.example.nhatro2.phong.Phong;
 import com.example.nhatro2.thanhvien.KhachTro;
 import com.example.nhatro2.tien_nuoc.TienNuoc;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.navigation.NavigationView;
+import com.google.android.material.snackbar.Snackbar;
 
 public class TienCoc extends AppCompatActivity {
     ImageView thoat, logo, menuDanhMuc ;
     SharedPreferences shp;
+    FloatingActionButton fab;
     DrawerLayout mDrawerLayout;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -124,6 +128,18 @@ public class TienCoc extends AppCompatActivity {
 
                 }
                 return true;
+            }
+        });
+
+        FloatingActionButton fab = findViewById(R.id.fab);
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                BottomSheetChonKhachCoc chonKhachCoc = new BottomSheetChonKhachCoc();
+                chonKhachCoc.show(getSupportFragmentManager(), "ChonKhachHoc");
+
+                Snackbar.make(view, "Chọn khách đặt cọc", Snackbar.LENGTH_LONG)
+                        .setAction("Action", null).show();
             }
         });
 

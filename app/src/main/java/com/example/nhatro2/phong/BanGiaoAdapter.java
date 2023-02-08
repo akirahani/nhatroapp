@@ -49,11 +49,8 @@ public class BanGiaoAdapter extends RecyclerView.Adapter<BanGiaoAdapter.BanGiaoV
         String khu = data.getKhu();
         int tang = data.getTang();
         int trangthai = data.getTrangthai();
-//        String dichvu = data.getDichvu();
-        int datcoc = data.getDatcoc();
         int gia = data.getGiaphong();
         int khach = data.getChuphong();
-//        String daidien = data.getDaidien();
         String dienthoai = data.getDienthoai();
 
         holder.ten.setText(ten);
@@ -72,7 +69,6 @@ public class BanGiaoAdapter extends RecyclerView.Adapter<BanGiaoAdapter.BanGiaoV
                 intent.putExtra("trangthai",trangthai);
                 intent.putExtra("daidien",khach);
                 intent.putExtra("dienthoai",dienthoai);
-                intent.putExtra("datcoc",datcoc);
                 context.startActivity(intent);
             }
         });
@@ -86,7 +82,6 @@ public class BanGiaoAdapter extends RecyclerView.Adapter<BanGiaoAdapter.BanGiaoV
                 intent.putExtra("gia",gia);
                 intent.putExtra("daidien",khach);
                 intent.putExtra("dienthoai",dienthoai);
-                intent.putExtra("datcoc",datcoc);
                 // Khai báo mảng dữ liệu thiết bị
                 SharedPreferences shpThietBi = context.getSharedPreferences("idThietBiHopDong",Context.MODE_PRIVATE);
                 SharedPreferences.Editor thietBiEdit = shpThietBi.edit();

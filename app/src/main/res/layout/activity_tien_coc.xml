@@ -198,12 +198,12 @@
                                     android:layout_height="wrap_content"
                                     android:layout_gravity="center"
                                     android:layout_weight="5"
-                                    android:textSize="14dp"
                                     android:background="@null"
                                     android:hint="Tên khách đặt cọc"
                                     android:paddingLeft="10dp"
                                     android:singleLine="true"
-                                    android:textColor="@color/tieuDePhongDongTien" />
+                                    android:textColor="@color/tieuDePhongDongTien"
+                                    android:textSize="14dp" />
 
                             </LinearLayout>
                         </androidx.cardview.widget.CardView>
@@ -231,13 +231,13 @@
                                     android:layout_height="wrap_content"
                                     android:layout_gravity="center"
                                     android:layout_weight="5"
-                                    android:textSize="14dp"
                                     android:background="@null"
                                     android:hint="Số điện thoại"
                                     android:inputType="number"
                                     android:paddingLeft="10dp"
                                     android:singleLine="true"
-                                    android:textColor="@color/tieuDePhongDongTien" />
+                                    android:textColor="@color/tieuDePhongDongTien"
+                                    android:textSize="14dp" />
 
                             </LinearLayout>
                         </androidx.cardview.widget.CardView>
@@ -266,13 +266,13 @@
                                     android:layout_height="wrap_content"
                                     android:layout_gravity="center"
                                     android:layout_weight="5"
-                                    android:textSize="14dp"
                                     android:background="@null"
                                     android:hint="Số tiền đặt cọc"
                                     android:inputType="number"
                                     android:paddingLeft="10dp"
                                     android:singleLine="true"
-                                    android:textColor="@color/tieuDePhongDongTien" />
+                                    android:textColor="@color/tieuDePhongDongTien"
+                                    android:textSize="14dp" />
 
                             </LinearLayout>
                         </androidx.cardview.widget.CardView>
@@ -332,7 +332,25 @@
 
             </LinearLayout>
         </ScrollView>
+
+
     </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
+            android:id="@+id/fab"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end|bottom"
+            android:layout_margin="16dp"
+            android:contentDescription="@string/submit"
+            android:src="@drawable/search_customer" />
+    </RelativeLayout>
+
 
     <com.google.android.material.navigation.NavigationView
         android:id="@+id/nav_view"
