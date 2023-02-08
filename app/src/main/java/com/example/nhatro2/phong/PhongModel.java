@@ -7,23 +7,19 @@ public class PhongModel {
     private String khu;
     private int tang;
     private int thietbi;
-    private int datcoc;
-    private int sodu;
     private int chuphong;
     private String tenkhach;
     private int giaphong;
     private String dienthoai;
     //    private String daidien;
 
-    public PhongModel(int id, String ten, int trangthai, String khu, int tang, int thietbi, int datcoc, int sodu, int chuphong, String tenkhach, int giaphong, String dienthoai) {
+    public PhongModel(int id, String ten, int trangthai, String khu, int tang, int thietbi, int chuphong, String tenkhach, int giaphong, String dienthoai) {
         this.id = id;
         this.ten = ten;
         this.trangthai = trangthai;
         this.khu = khu;
         this.tang = tang;
         this.thietbi = thietbi;
-        this.datcoc = datcoc;
-        this.sodu = sodu;
         this.chuphong = chuphong;
         this.tenkhach = tenkhach;
         this.giaphong = giaphong;
@@ -100,22 +96,6 @@ public class PhongModel {
 
     public void setThietbi(int thietbi) {
         this.thietbi = thietbi;
-    }
-
-    public int getDatcoc() {
-        return datcoc;
-    }
-
-    public void setDatcoc(int datcoc) {
-        this.datcoc = datcoc;
-    }
-
-    public int getSodu() {
-        return sodu;
-    }
-
-    public void setSodu(int sodu) {
-        this.sodu = sodu;
     }
 
     public int getChuphong() {

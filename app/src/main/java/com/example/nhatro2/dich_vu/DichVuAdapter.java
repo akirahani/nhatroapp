@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.media.Image;
+import android.text.Html;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -72,11 +73,11 @@ public class DichVuAdapter extends RecyclerView.Adapter<DichVuAdapter.DichVuView
             @Override
             public void onClick(View view) {
                 AlertDialog.Builder builder  = new AlertDialog.Builder(view.getContext());
-                builder.setTitle("Confirm").setMessage("Bạn có thực sự muốn xóa ?");
+                builder.setTitle(Html.fromHtml("<font color='#71a6d5'>Thông báo!</font>")).setMessage(Html.fromHtml("<font color='#71a6d5'>Bạn có thực sự muốn xóa ?</font>"));
                 builder.setCancelable(true);
                 builder.setIcon(R.drawable.alert_bottom);
                 // Yes
-                builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                builder.setPositiveButton(Html.fromHtml("<font color='#71a6d5'>Yes</font>"), new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int id) {
                         id = dataDV.getId();
@@ -97,7 +98,7 @@ public class DichVuAdapter extends RecyclerView.Adapter<DichVuAdapter.DichVuView
                 });
 
                 // No
-                builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
+                builder.setNegativeButton(Html.fromHtml("<font color='#71a6d5'>No</font>"), new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int id) {
                         Toast.makeText(view.getContext(), "Xóa thất bại", Toast.LENGTH_SHORT).show();
