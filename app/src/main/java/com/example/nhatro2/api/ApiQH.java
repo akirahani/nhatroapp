@@ -308,6 +308,14 @@ public interface ApiQH {
     Call <List<QuyThuModel>> getQuyThu();
 
     // Tiền cọc
+    //
+    @POST("/quanghieu/admin/api/tien-coc/search_khach.php")
+    @FormUrlEncoded
+    Call <List<ThanhVienModel>> searchKhachCocChon(@Field("khach") String khach);
+    //
+    @GET("/quanghieu/admin/api/tien-coc/list_khach.php")
+    Call<List<ThanhVienModel>> getKhachCocList();
+
     // Thống kê
     // Tổng quan
     @GET("/quanghieu/admin/api/thong-ke/tong-quan.php")
