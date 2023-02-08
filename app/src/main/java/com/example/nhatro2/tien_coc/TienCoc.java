@@ -12,10 +12,13 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.Html;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import com.example.nhatro2.HomeActivity;
@@ -32,10 +35,13 @@ import com.google.android.material.navigation.NavigationView;
 import com.google.android.material.snackbar.Snackbar;
 
 public class TienCoc extends AppCompatActivity {
+    LinearLayout idNguoiCoc;
     ImageView thoat, logo, menuDanhMuc ;
     SharedPreferences shp;
     FloatingActionButton fab;
     DrawerLayout mDrawerLayout;
+    EditText nguoiDongCocText, soDienThoaiNguoiCocText, idNguoiCocText;
+    @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -136,12 +142,26 @@ public class TienCoc extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 BottomSheetChonKhachCoc chonKhachCoc = new BottomSheetChonKhachCoc();
-                chonKhachCoc.show(getSupportFragmentManager(), "ChonKhachHoc");
-
-                Snackbar.make(view, "Chọn khách đặt cọc", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+                chonKhachCoc.show(getSupportFragmentManager(), "ChonKhachCoc");
             }
         });
 
+        SharedPreferences shpKhachCoc = getApplicationContext().getSharedPreferences("khachCocChon", MODE_PRIVATE);
+
+        String tenKhachCoc = shpKhachCoc.getString("tenKhach","");
+        String sdtKhachCoc = shpKhachCoc.getString("sdtKhach","");
+        int idKhachCoc = shpKhachCoc.getInt("idKhach",0);
+
+        nguoiDongCocText = findViewById(R.id.nguoiDongCocText);
+        soDienThoaiNguoiCocText = findViewById(R.id.soDienThoaiNguoiCocText);
+        idNguoiCocText = findViewById(R.id.idNguoiCocText);
+        idNguoiCoc = findViewById(R.id.idNguoiCoc);
+        idNguoiCoc.setVisibility(View.GONE);
+
+        nguoiDongCocText.setText(tenKhachCoc);
+        soDienThoaiNguoiCocText.setText(sdtKhachCoc);
+        idNguoiCocText.setText(""+idKhachCoc);
+
+//        Log.d("id khach",""+idKhachCoc);
     }
 }

@@ -33,7 +33,7 @@ public class LichSuNopTienAdapter extends RecyclerView.Adapter<LichSuNopTienAdap
     public void onBindViewHolder(@NonNull LichSuNopTienAdapter.LichSuNopTienViewHolder holder, int position) {
         LichSuDongTienModel dongTienItem = lichSuKhachDongTien.get(position);
         holder.thoiGianTraTien.setText(dongTienItem.getNgay()+" - "+dongTienItem.getGio());
-        holder.tienKhachTra.setText(dongTienItem.getKhachtratien()+"đ");
+        holder.tienKhachTra.setText(dongTienItem.getTien()+"đ");
     }
 
     @Override

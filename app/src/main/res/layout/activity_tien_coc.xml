@@ -184,6 +184,39 @@
                             app:cardCornerRadius="5dp">
 
                             <LinearLayout
+                                android:id="@+id/idNguoiCoc"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:background="@color/white"
+                                android:orientation="horizontal"
+                                android:paddingTop="8dp"
+                                android:paddingBottom="8dp">
+
+                                <EditText
+                                    android:id="@+id/idNguoiCocText"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:layout_weight="5"
+                                    android:background="@null"
+                                    android:inputType="number"
+                                    android:paddingLeft="10dp"
+                                    android:singleLine="true"
+                                    android:textColor="@color/tieuDePhongDongTien"
+                                    android:textSize="14dp" />
+
+                            </LinearLayout>
+                        </androidx.cardview.widget.CardView>
+
+                        <androidx.cardview.widget.CardView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="14dp"
+                            android:layout_marginTop="10dp"
+                            android:layout_marginRight="14dp"
+                            app:cardCornerRadius="5dp">
+
+                            <LinearLayout
                                 android:id="@+id/nguoiDongCoc"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
@@ -276,6 +309,39 @@
 
                             </LinearLayout>
                         </androidx.cardview.widget.CardView>
+                        <!-- Ghi chú-->
+                        <androidx.cardview.widget.CardView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="14dp"
+                            android:layout_marginTop="10dp"
+                            android:layout_marginRight="14dp"
+                            app:cardCornerRadius="5dp">
+
+                            <LinearLayout
+                                android:id="@+id/ghiChuPhongCoc"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:background="@color/white"
+                                android:orientation="horizontal"
+                                android:paddingTop="8dp"
+                                android:paddingBottom="8dp">
+
+                                <EditText
+                                    android:id="@+id/ghiChuPhongCocText"
+                                    android:paddingLeft="10dp"
+                                    android:layout_width="match_parent"
+                                    android:hint="Ghi chú"
+                                    android:textColor="@color/tieuDePhongDongTien"
+                                    android:textSize="14dp"
+                                    android:background="@null"
+                                    android:layout_height="150dp"
+                                    android:inputType="text|textMultiLine"
+                                    android:gravity="top"/>
+
+                            </LinearLayout>
+                        </androidx.cardview.widget.CardView>
+
                         <!-- Phương thức thanh toán -->
                         <RadioGroup
                             android:id="@+id/hinhThucDongCoc"
