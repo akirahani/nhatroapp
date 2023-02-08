@@ -228,7 +228,7 @@ public class DongTien extends AppCompatActivity {
                         }
                     });
 
-                    tenNopPhong.setText(thongTinDongTienPhong.getTennopphong()+": ");
+                    tenNopPhong.setText("Tiền phòng tháng: ");
                     tienPhongCanTra.setText(thongTinDongTienPhong.getDutienphongformat()+"đ");
 
                     tienCocCanTra.setText(""+thongTinDongTienPhong.getTencoc()+":"+thongTinDongTienPhong.getTiencocthuthemformat());
@@ -238,21 +238,17 @@ public class DongTien extends AppCompatActivity {
                     dienthoaichuphong.setText(thongTinDongTienPhong.getDienthoaichuphong());
 
                     soDienSuDungText.setText("Số điện: "+thongTinDongTienPhong.getSodiensudung());
-                    tienDienPhaiThu.setText("Phải thu: "+thongTinDongTienPhong.getTiendiensudung()+"đ");
-                    tienDienDaThu.setText("Đã thu: "+thongTinDongTienPhong.getSodienphaithu()+"đ");
+                    tienDienPhaiThu.setText("Thành tiền: "+thongTinDongTienPhong.getTiendiensudung()+"đ");
 
                     soNuocSuDungText.setText("Số nước: "+thongTinDongTienPhong.getSonuocsudung());
-                    tienNuocPhaiThu.setText("Phải thu: "+thongTinDongTienPhong.getTiennuocsudung()+"đ");
-                    tienNuocDaThu.setText("Đã thu: "+thongTinDongTienPhong.getSonuocphaithu()+"đ");
+                    tienNuocPhaiThu.setText("Thành tiền: "+thongTinDongTienPhong.getTiennuocsudung()+"đ");
 
+                    phaiTraTien.setText(thongTinDongTienPhong.getTennopphong()+": "+thongTinDongTienPhong.getTongthuformat()+"đ");
 
                     if(thongTinDongTienPhong.getTongthu() < 0){
-                        phaiTraTien.setText("Tiền phải thu: "+thongTinDongTienPhong.getTongthuformat()+"đ");
                         phaiTraTien.setTextColor(Color.RED);
-
                     }
                     else{
-                        phaiTraTien.setText("Tiền còn dư: "+thongTinDongTienPhong.getTongthuformat()+"đ");
                         phaiTraTien.setTextColor(Color.rgb(0,128,0));
                     }
 
