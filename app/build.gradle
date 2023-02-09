@@ -51,6 +51,6 @@ dependencies {
     implementation 'androidx.cardview:cardview:1.0.0'
     //noinspection GradleCompatible,GradleCompatible
     implementation 'com.android.support:design:28.0.0'
-    implementation 'com.github.kal72:RackMonthPicker:1.6.1'
+    implementation 'com.github.lutvie72:rackmonthpicker:1.6.2'
     implementation 'com.github.highcharts:highcharts-android:10.2.0'
 }

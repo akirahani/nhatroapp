@@ -4,14 +4,18 @@ import java.util.List;
 
 public class ChonPhongModel {
     private String phongtrangthai;
+
     private int phithanhvien;
     private String thuthemthanhvien;
     private int	songuoio;
     private String danhsachthanhvien;
+    private String tienthanhvienthang;
 
     private int phithietbi;
     private String tienthietbiphaithu;
     private String tenthietbisudung;
+    private String landongthietbi;
+    private String tienthietbithang;
 
     private	int tiencocthuthem;
     private	String tiencocthuthemformat;
@@ -48,15 +52,18 @@ public class ChonPhongModel {
     private	String uudai;
     private	int hopdong;
 
-    public ChonPhongModel(String phongtrangthai, int phithanhvien, String thuthemthanhvien, int songuoio, String danhsachthanhvien, int phithietbi, String tienthietbiphaithu, String tenthietbisudung, int tiencocthuthem, String tiencocthuthemformat, String dacoc, String tencoc, int tienphongcanthu, String tennopphong, String phong, int dutienphong, String dutienphongformat, String lichsunopphong, String tenchuphong, String dienthoaichuphong, int idchuphong, int idphong, int sodiendau, int sodiencuoi, int sodiensudung, String tiendiensudung, String sodienphaithu, int sonuocdau, int sonuoccuoi, int sonuocsudung, String tiennuocsudung, String sonuocphaithu, int tongthu, String tongthuformat, String uudai, int hopdong) {
+    public ChonPhongModel(String phongtrangthai, int phithanhvien, String thuthemthanhvien, int songuoio, String danhsachthanhvien, String tienthanhvienthang, int phithietbi, String tienthietbiphaithu, String tenthietbisudung, String landongthietbi, String tienthietbithang, int tiencocthuthem, String tiencocthuthemformat, String dacoc, String tencoc, int tienphongcanthu, String tennopphong, String phong, int dutienphong, String dutienphongformat, String lichsunopphong, String tenchuphong, String dienthoaichuphong, int idchuphong, int idphong, int sodiendau, int sodiencuoi, int sodiensudung, String tiendiensudung, String sodienphaithu, int sonuocdau, int sonuoccuoi, int sonuocsudung, String tiennuocsudung, String sonuocphaithu, int tongthu, String tongthuformat, String uudai, int hopdong) {
         this.phongtrangthai = phongtrangthai;
         this.phithanhvien = phithanhvien;
         this.thuthemthanhvien = thuthemthanhvien;
         this.songuoio = songuoio;
         this.danhsachthanhvien = danhsachthanhvien;
+        this.tienthanhvienthang = tienthanhvienthang;
         this.phithietbi = phithietbi;
         this.tienthietbiphaithu = tienthietbiphaithu;
         this.tenthietbisudung = tenthietbisudung;
+        this.landongthietbi = landongthietbi;
+        this.tienthietbithang = tienthietbithang;
         this.tiencocthuthem = tiencocthuthem;
         this.tiencocthuthemformat = tiencocthuthemformat;
         this.dacoc = dacoc;
@@ -86,6 +93,7 @@ public class ChonPhongModel {
         this.uudai = uudai;
         this.hopdong = hopdong;
     }
+
 
     public String getPhongtrangthai() {
         return phongtrangthai;
@@ -119,7 +127,21 @@ public class ChonPhongModel {
         this.songuoio = songuoio;
     }
 
+    public String getDanhsachthanhvien() {
+        return danhsachthanhvien;
+    }
 
+    public void setDanhsachthanhvien(String danhsachthanhvien) {
+        this.danhsachthanhvien = danhsachthanhvien;
+    }
+
+    public String getTienthanhvienthang() {
+        return tienthanhvienthang;
+    }
+
+    public void setTienthanhvienthang(String tienthanhvienthang) {
+        this.tienthanhvienthang = tienthanhvienthang;
+    }
 
     public int getPhithietbi() {
         return phithietbi;
@@ -143,6 +165,22 @@ public class ChonPhongModel {
 
     public void setTenthietbisudung(String tenthietbisudung) {
         this.tenthietbisudung = tenthietbisudung;
+    }
+
+    public String getLandongthietbi() {
+        return landongthietbi;
+    }
+
+    public void setLandongthietbi(String landongthietbi) {
+        this.landongthietbi = landongthietbi;
+    }
+
+    public String getTienthietbithang() {
+        return tienthietbithang;
+    }
+
+    public void setTienthietbithang(String tienthietbithang) {
+        this.tienthietbithang = tienthietbithang;
     }
 
     public int getTiencocthuthem() {
@@ -368,13 +406,4 @@ public class ChonPhongModel {
     public void setHopdong(int hopdong) {
         this.hopdong = hopdong;
     }
-
-    public String getDanhsachthanhvien() {
-        return danhsachthanhvien;
-    }
-
-    public void setDanhsachthanhvien(String danhsachthanhvien) {
-        this.danhsachthanhvien = danhsachthanhvien;
-    }
-
 }

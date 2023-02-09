@@ -31,6 +31,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.Toolbar;
 
+import com.example.nhatro2.api.Api;
 import com.example.nhatro2.api.ApiQH;
 import com.example.nhatro2.bat_bien.BatBien;
 import com.example.nhatro2.dong_tien.DongTien;
@@ -42,9 +43,11 @@ import com.example.nhatro2.quanlychung.ChungModel;
 import com.example.nhatro2.quy_tien_mat.QuyThuAdapter;
 import com.example.nhatro2.quy_tien_mat.QuyThuModel;
 import com.example.nhatro2.quy_tien_mat.QuyTienMat;
+import com.example.nhatro2.quy_tien_mat.QuyTienModel;
 import com.example.nhatro2.tai_khoan.TaiKhoanModel;
 import com.example.nhatro2.thanhvien.KhachTro;
 import com.example.nhatro2.thong_ke.ThongKe;
+import com.example.nhatro2.thu_khac.ThuKhac;
 import com.example.nhatro2.tien_coc.TienCoc;
 import com.example.nhatro2.tien_dien.TienDien;
 import com.example.nhatro2.tien_nuoc.TienNuoc;
@@ -64,7 +67,7 @@ public class HomeFragment extends Fragment {
     TextView tenThanhVien,tenUser,xemThongKe;
     Toolbar header;
     ImageView thoat, menuDanhMuc;
-    RelativeLayout rowWater, rowElectric, rowBatBien, rowKhaBien;
+    RelativeLayout rowWater, rowElectric, rowBatBien, rowKhaBien, rowThuKhac;
     SharedPreferences shp;
     SharedPreferences.Editor shpEdit;
     DrawerLayout mDrawerLayout;
@@ -141,7 +144,7 @@ public class HomeFragment extends Fragment {
         chung.add(new ChungModel(R.drawable.quytien,"Quỹ tiền", "quytien"));
         chung.add(new ChungModel(R.drawable.tiencoc,"Tiền cọc", "tiencoc"));
         chung.add(new ChungModel(R.drawable.khoanthuchi,"Tiền phòng", "khoanthuchi"));
-        chung.add(new ChungModel(R.drawable.thu_khac,"Thu khác", "thukhac"));
+        chung.add(new ChungModel(R.drawable.coupons,"Ưu đãi", "uudai"));
 
         quanLyChung.setAdapter(new ChungAdapter(getContext(),chung));
 
@@ -159,6 +162,7 @@ public class HomeFragment extends Fragment {
 
         rowWater = view.findViewById(R.id.rowWater);
         rowElectric = view.findViewById(R.id.rowElectric);
+        rowThuKhac = view.findViewById(R.id.rowThuKhac);
 
         rowWater.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -172,6 +176,14 @@ public class HomeFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getContext(), TienDien.class);
+                startActivity(intent);
+            }
+        });
+
+        rowThuKhac.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getContext(), ThuKhac.class);
                 startActivity(intent);
             }
         });
@@ -243,21 +255,35 @@ public class HomeFragment extends Fragment {
         });
 
         doanhThuThangHienTai = view.findViewById(R.id.doanhThuThangHienTai);
-        ApiQH.apiQH.getQuyThu().enqueue(new Callback<List<QuyThuModel>>() {
-            @Override
-            public void onResponse(Call<List<QuyThuModel>> call, Response<List<QuyThuModel>> response) {
-                List<QuyThuModel> listQuyThuFinal = response.body();
+//        ApiQH.apiQH.getQuyThu().enqueue(new Callback<List<QuyThuModel>>() {
+//            @Override
+//            public void onResponse(Call<List<QuyThuModel>> call, Response<List<QuyThuModel>> response) {
+//                List<QuyThuModel> listQuyThuFinal = response.body();
+//
+//                ArrayList<Integer> arrGiaTri = new ArrayList<>();
+//                for(int i = listQuyThuFinal.size() -1; i >= 0 ;i--){
+//                    arrGiaTri.add(i);
+//                }
+//                String doanhThuHienTaiText = listQuyThuFinal.get(arrGiaTri.get(0)).getTien();
+//                doanhThuThangHienTai.setText(doanhThuHienTaiText+"đ");
+//            }
+//
+//            @Override
+//            public void onFailure(Call<List<QuyThuModel>> call, Throwable t) {
+//
+//            }
+//        });
 
-                ArrayList<Integer> arrGiaTri = new ArrayList<>();
-                for(int i = listQuyThuFinal.size() -1; i >= 0 ;i--){
-                    arrGiaTri.add(i);
-                }
-                String doanhThuHienTaiText = listQuyThuFinal.get(arrGiaTri.get(0)).getTien();
+        ApiQH.apiQH.getQuyTien().enqueue(new Callback<QuyTienModel>() {
+            @Override
+            public void onResponse(Call<QuyTienModel> call, Response<QuyTienModel> response) {
+                QuyTienModel listQuyTien = response.body();
+                String doanhThuHienTaiText = listQuyTien.getDoanhthu();
                 doanhThuThangHienTai.setText(doanhThuHienTaiText+"đ");
             }
 
             @Override
-            public void onFailure(Call<List<QuyThuModel>> call, Throwable t) {
+            public void onFailure(Call<QuyTienModel> call, Throwable t) {
 
             }
         });

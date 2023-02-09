@@ -17,10 +17,12 @@ import com.example.nhatro2.quy_tien_mat.QuyThuModel;
 import com.example.nhatro2.quy_tien_mat.QuyTienModel;
 import com.example.nhatro2.thanhvien.ThanhVienModel;
 import com.example.nhatro2.thong_ke.TongQuanChartModel;
+import com.example.nhatro2.thu_khac.ThuKhacModel;
 import com.example.nhatro2.tien_dien.LichSuDienModel;
 import com.example.nhatro2.tien_dien.TienDienModel;
 import com.example.nhatro2.tien_nuoc.LichSuNuocModel;
 import com.example.nhatro2.tien_nuoc.TienNuocModel;
+import com.example.nhatro2.uu_dai.UuDaiModel;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
@@ -38,7 +40,6 @@ import retrofit2.http.POST;
 public interface ApiQH {
         String url = "http://192.168.1.190";
 //    String url = "http://172.16.1.71";
-
     //    String url = "https://nhatroquanghieu.com";
     Gson gson = new GsonBuilder().setDateFormat("yyyy-MM-DD HH:mm:ss").create();
     OkHttpClient okHttpClient = new OkHttpClient.Builder().build();
@@ -315,6 +316,37 @@ public interface ApiQH {
     //
     @GET("/quanghieu/admin/api/tien-coc/list_khach.php")
     Call<List<ThanhVienModel>> getKhachCocList();
+
+    // Ưu đãi
+    @GET ("/quanghieu/admin/api/uu-dai/list.php")
+    Call <List<UuDaiModel>> getUuDai();
+    // Thêm ưu đãi
+    @POST("/quanghieu/admin/api/uu-dai/add.php")
+    @FormUrlEncoded
+    Call <UuDaiModel> addUuDai(@Field("idThanhVien") int idThanhVienQuanLy,
+                               @Field("tenUuDai") String tenUuDaiText,
+                               @Field("soNgayUuDai") int soNgayUuDai,
+                               @Field("apDung") int apDung);
+    // Chi tiet, sua uu dai
+    @POST("/quanghieu/admin/api/uu-dai/edit.php")
+    @FormUrlEncoded
+    Call <UuDaiModel> editUuDai(@Field("idThanhVien") int idThanhVienQuanLy,
+                                @Field("idUuDai") int idUuDai,
+                                @Field("tenUuDai") String tenUuDaiText,
+                                @Field("soNgayUuDai") int soNgayUuDai,
+                                @Field("apDung") int apDung);
+
+    // Thu khác
+    @GET("/quanghieu/admin/api/thu-khac/list.php")
+    Call <List<ThuKhacModel>> getThuKhac();
+    // Chọn time lấy danh sách thu ngoài
+    @POST("/quanghieu/admin/api/thu-khac/choose_month.php")
+    @FormUrlEncoded
+    Call <List<ThuKhacModel>> getThuKhacMonth();
+    // Thêm thu khác
+    @POST("/quanghieu/admin/api/thu-khac/add.php")
+    @FormUrlEncoded
+    Call <ThuKhacModel> postThuKhacMonth();
 
     // Thống kê
     // Tổng quan

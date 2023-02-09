@@ -41,6 +41,7 @@ import com.example.nhatro2.phong.Phong;
 import com.example.nhatro2.thanhvien.KhachTro;
 import com.example.nhatro2.tien_coc.TienCoc;
 import com.google.android.material.navigation.NavigationView;
+import com.kal.rackmonthpicker.MonthType;
 import com.kal.rackmonthpicker.RackMonthPicker;
 import com.kal.rackmonthpicker.listener.DateMonthDialogListener;
 import com.kal.rackmonthpicker.listener.OnCancelMonthDialogListener;
@@ -137,9 +138,15 @@ public class TienNuoc extends AppCompatActivity {
         chonThangNuoc.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                DateFormat monthFormat = new SimpleDateFormat("MM");
+                Date date = new Date();
                 RackMonthPicker rackMonthPicker = new RackMonthPicker(TienNuoc.this);
                 rackMonthPicker.setLocale(Locale.ENGLISH)
+                        .setNegativeText("Đóng")
+                        .setPositiveText("Chọn")
+                        .setMonthType(MonthType.NUMBER)
+                        .setSelectedMonth(Integer.parseInt(monthFormat.format(date)))
+                        .setColorTheme(R.color.tenPhongColor)
                         .setPositiveButton(new DateMonthDialogListener() {
                             @Override
                             public void onDateMonth(int month, int startDate, int endDate, int year, String monthLabel) {

@@ -50,6 +50,12 @@ public class TienCoc extends AppCompatActivity {
         logo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                SharedPreferences shpKhachCoc = getApplicationContext().getSharedPreferences("khachCocChon", MODE_PRIVATE);
+                SharedPreferences.Editor shpKhachCocEdit = shpKhachCoc.edit();
+                shpKhachCocEdit.remove("tenKhach");
+                shpKhachCocEdit.remove("sdtKhach");
+                shpKhachCocEdit.remove("idKhach");
+                shpKhachCocEdit.apply();
                 Intent intent = new Intent(TienCoc.this, HomeActivity.class);
                 startActivity(intent);
             }
@@ -162,6 +168,21 @@ public class TienCoc extends AppCompatActivity {
         soDienThoaiNguoiCocText.setText(sdtKhachCoc);
         idNguoiCocText.setText(""+idKhachCoc);
 
-//        Log.d("id khach",""+idKhachCoc);
     }
+
+    // Back button
+    public void onBackPressed()
+    {
+        super.onBackPressed();
+        SharedPreferences shpKhachCoc = getApplicationContext().getSharedPreferences("khachCocChon", MODE_PRIVATE);
+        SharedPreferences.Editor shpKhachCocEdit = shpKhachCoc.edit();
+        shpKhachCocEdit.remove("tenKhach");
+        shpKhachCocEdit.remove("sdtKhach");
+        shpKhachCocEdit.remove("idKhach");
+        shpKhachCocEdit.apply();
+        Intent intent = new Intent(TienCoc.this, HomeActivity.class);
+        startActivity(intent);
+//        finish();
+    }
+
 }

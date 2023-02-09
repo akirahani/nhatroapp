@@ -54,7 +54,6 @@ public class DangThueFragment extends Fragment {
 
             @Override
             public void onFailure(Call<List<PhongModel>> call, Throwable t) {
-                Log.d("loi phong thue",""+t.toString());
             }
         });
 
