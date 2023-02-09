@@ -320,6 +320,21 @@ public interface ApiQH {
     // Ưu đãi
     @GET ("/quanghieu/admin/api/uu-dai/list.php")
     Call <List<UuDaiModel>> getUuDai();
+    // Thêm ưu đãi
+    @POST("/quanghieu/admin/api/uu-dai/add.php")
+    @FormUrlEncoded
+    Call <UuDaiModel> addUuDai(@Field("idThanhVien") int idThanhVienQuanLy,
+                               @Field("tenUuDai") String tenUuDaiText,
+                               @Field("soNgayUuDai") int soNgayUuDai,
+                               @Field("apDung") int apDung);
+    // Chi tiet, sua uu dai
+    @POST("/quanghieu/admin/api/uu-dai/edit.php")
+    @FormUrlEncoded
+    Call <UuDaiModel> editUuDai(@Field("idThanhVien") int idThanhVienQuanLy,
+                                @Field("idUuDai") int idUuDai,
+                                @Field("tenUuDai") String tenUuDaiText,
+                                @Field("soNgayUuDai") int soNgayUuDai,
+                                @Field("apDung") int apDung);
 
     // Thống kê
     // Tổng quan

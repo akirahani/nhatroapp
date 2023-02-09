@@ -1,14 +1,24 @@
 package com.example.nhatro2.uu_dai;
 
 public class UuDaiModel {
+    private int id;
     private String ten;
     private int so;
     private int apdung;
 
-    public UuDaiModel(String ten, int so, int apdung) {
+    public UuDaiModel(int id, String ten, int so, int apdung) {
+        this.id = id;
         this.ten = ten;
         this.so = so;
         this.apdung = apdung;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getTen() {

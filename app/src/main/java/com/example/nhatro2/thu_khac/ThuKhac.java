@@ -3,6 +3,7 @@ package com.example.nhatro2.thu_khac;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.AppCompatButton;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -14,6 +15,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.Html;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
@@ -26,20 +28,41 @@ import android.widget.Toast;
 import com.example.nhatro2.HomeActivity;
 import com.example.nhatro2.MainActivity;
 import com.example.nhatro2.R;
+import com.example.nhatro2.api.ApiQH;
 import com.example.nhatro2.dong_tien.DongTien;
 import com.example.nhatro2.hop_dong.HopDong;
 import com.example.nhatro2.thanhvien.KhachTro;
 import com.example.nhatro2.tien_coc.TienCoc;
+import com.example.nhatro2.tien_dien.DienItemClick;
+import com.example.nhatro2.tien_dien.TienDien;
+import com.example.nhatro2.tien_dien.TienDienAdapter;
+import com.example.nhatro2.tien_dien.TienDienEdit;
+import com.example.nhatro2.tien_dien.TienDienModel;
 import com.example.nhatro2.uu_dai.UuDai;
 import com.google.android.material.navigation.NavigationView;
+import com.kal.rackmonthpicker.RackMonthPicker;
+import com.kal.rackmonthpicker.listener.DateMonthDialogListener;
+import com.kal.rackmonthpicker.listener.OnCancelMonthDialogListener;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
+import java.util.Locale;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class ThuKhac extends AppCompatActivity {
     ImageView thoat, logo, menuDanhMuc;
     SharedPreferences shp;
     DrawerLayout mDrawerLayout;
+    TextView chonThangThuKhac;
+    RecyclerView danhSachThuKhac;
+    @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -133,5 +156,85 @@ public class ThuKhac extends AppCompatActivity {
                 return true;
             }
         });
+
+        danhSachThuKhac = findViewById(R.id.danhSachThuKhac);
+        danhSachThuKhac.setLayoutManager(new LinearLayoutManager(ThuKhac.this));
+        danhSachThuKhac.hasFixedSize();
+        danhSachThuKhac.setNestedScrollingEnabled(false);
+
+
+
+        chonThangThuKhac = findViewById(R.id.chonThangThuKhac);
+        chonThangThuKhac.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                RackMonthPicker rackMonthPicker = new RackMonthPicker(ThuKhac.this);
+                rackMonthPicker.setNegativeText("Đóng");
+//                rackMonthPicker.setNegativeButton();
+                rackMonthPicker.setPositiveText("Chọn");
+                rackMonthPicker.setLocale(Locale.ENGLISH)
+                        .setPositiveButton(new DateMonthDialogListener() {
+                            @Override
+                            public void onDateMonth(int month, int startDate, int endDate, int year, String monthLabel) {
+                                chonThangThuKhac.setText("Tháng "+month+" - năm "+year);
+                            }
+                        })
+                        .setNegativeButton(new OnCancelMonthDialogListener() {
+                            @Override
+                            public void onCancel(AlertDialog dialog) {
+                                rackMonthPicker.dismiss();
+                            }
+                        }).show();
+            }
+        });
+
+//        ApiQH.apiQH.getTienDien().enqueue(new Callback<List<TienDienModel>>() {
+//            @Override
+//            public void onResponse(Call<List<TienDienModel>> call, Response<List<TienDienModel>> response) {
+//                phongDien = response.body();
+//                DateFormat monthFormat = new SimpleDateFormat("MM");
+//                Date date = new Date();
+//                Calendar calendar = Calendar.getInstance();
+//                int year = calendar.get(Calendar.YEAR);
+//                int monthGet = Integer.parseInt(monthFormat.format(date));
+//                chonThangDien.setText("Tháng "+monthFormat.format(date)+" - năm "+year);
+//                danhSachPhongDien.setAdapter(new TienDienAdapter(TienDien.this, phongDien, new DienItemClick() {
+//                    @Override
+//                    public void itemOnClick(String idPhong) {
+//
+//                        ApiQH.apiQH.detailElectric(idPhong,monthGet,year).enqueue(new Callback<TienDienModel>() {
+//                            @Override
+//                            public void onResponse(Call<TienDienModel> call, Response<TienDienModel> response) {
+//                                TienDienModel detailPhongDien = response.body();
+//                                Intent intent = new Intent(TienDien.this, TienDienEdit.class);
+//                                intent.putExtra("tenKhach",detailPhongDien.getTenkhach());
+//                                intent.putExtra("idKhach",detailPhongDien.getKhach());
+//                                intent.putExtra("phongDien",detailPhongDien.getPhong());
+//                                intent.putExtra("tongTien",detailPhongDien.getTien());
+//                                intent.putExtra("soDien",detailPhongDien.getSodien());
+//                                intent.putExtra("soDau",detailPhongDien.getSodau());
+//                                intent.putExtra("soCuoi",detailPhongDien.getSocuoi());
+//                                intent.putExtra("donGia",detailPhongDien.getDongia());
+//                                intent.putExtra("ngayChot",detailPhongDien.getNgaychot());
+//                                intent.putExtra("thang",monthGet);
+//                                intent.putExtra("nam",year);
+//                                startActivity(intent);
+//
+//                            }
+//
+//                            @Override
+//                            public void onFailure(Call<TienDienModel> call, Throwable t) {
+//                                Log.d("err",""+t.toString());
+//                            }
+//                        });
+//                    }
+//                }));
+//            }
+//
+//            @Override
+//            public void onFailure(Call<List<TienDienModel>> call, Throwable t) {
+//
+//            }
+//        });
     }
 }

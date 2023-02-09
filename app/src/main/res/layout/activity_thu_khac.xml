@@ -103,7 +103,7 @@
                         android:id="@+id/imageThuKhac"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_gravity="center"></FrameLayout>
+                        android:layout_gravity="center" />
 
 
                 </LinearLayout>
@@ -150,7 +150,6 @@
             android:id="@+id/cardMonthWater"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/tren"
             android:layout_marginLeft="14dp"
             android:layout_marginTop="13dp"
             android:layout_marginRight="14dp"
@@ -171,7 +170,7 @@
                     android:src="@drawable/choosemonth" />
 
                 <TextView
-                    android:id="@+id/chonThangNuoc"
+                    android:id="@+id/chonThangThuKhac"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center"
@@ -181,6 +180,11 @@
                     android:textStyle="bold" />
             </LinearLayout>
         </androidx.cardview.widget.CardView>
+        <!-- Danh sách thu khác -->
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/danhSachThuKhac"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
     </LinearLayout>
 
     <com.google.android.material.navigation.NavigationView

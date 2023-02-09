@@ -19,10 +19,12 @@ import java.util.List;
 public class UuDaiAdapter extends RecyclerView.Adapter<UuDaiAdapter.UuDaiViewHolder> {
     Context context;
     List<UuDaiModel> listUuDai;
+    idUuDaiEditClick clickIdCouponsEdit;
 
-    public UuDaiAdapter(Context context, List<UuDaiModel> listUuDai) {
+    public UuDaiAdapter(Context context, List<UuDaiModel> listUuDai, idUuDaiEditClick clickIdCouponsEdit) {
         this.context = context;
         this.listUuDai = listUuDai;
+        this.clickIdCouponsEdit = clickIdCouponsEdit;
     }
 
     @NonNull
@@ -35,6 +37,11 @@ public class UuDaiAdapter extends RecyclerView.Adapter<UuDaiAdapter.UuDaiViewHol
     @Override
     public void onBindViewHolder(@NonNull UuDaiAdapter.UuDaiViewHolder holder, int position) {
         UuDaiModel uuDaiItem = listUuDai.get(position);
+        int idCoupons = uuDaiItem.getId();
+        String tenUuDai = uuDaiItem.getTen();
+        int soNgayUuDai = uuDaiItem.getSo();
+        int apDung = uuDaiItem.getApdung();
+
         holder.tenUuDai.setText(uuDaiItem.getTen());
         if(uuDaiItem.getApdung() == 1){
             holder.statusUuDai.setText(Html.fromHtml("<font color='#71a6d5'>Áp dụng!</font>"));
@@ -43,6 +50,12 @@ public class UuDaiAdapter extends RecyclerView.Adapter<UuDaiAdapter.UuDaiViewHol
         }
 
         holder.tenUuDai.setText(uuDaiItem.getTen());
+        holder.tacVuUuDai.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                clickIdCouponsEdit.editCouponsClick(idCoupons,tenUuDai,soNgayUuDai,apDung);
+            }
+        });
     }
 
     @Override
