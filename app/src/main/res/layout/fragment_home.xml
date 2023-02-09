@@ -295,27 +295,27 @@
                                     android:paddingLeft="14dp"
                                     android:paddingTop="10dp">
 
-                                    <RelativeLayout
-                                        android:id="@+id/rowBudget"
+                                     <RelativeLayout
+                                        android:id="@+id/rowThuKhac"
                                         android:layout_width="match_parent"
                                         android:layout_height="wrap_content"
                                         android:layout_marginBottom="10dp"
                                         android:gravity="center">
 
                                         <ImageView
-                                            android:id="@+id/imageBudget"
+                                            android:id="@+id/imageThuKhac"
                                             android:layout_width="wrap_content"
                                             android:layout_height="wrap_content"
-                                            android:background="@drawable/thuchi"></ImageView>
+                                            android:background="@drawable/thukhac"></ImageView>
 
                                         <TextView
-                                            android:id="@+id/budget"
+                                            android:id="@+id/thuKhac"
                                             android:layout_width="match_parent"
                                             android:layout_height="wrap_content"
-                                            android:layout_toRightOf="@+id/imageBudget"
+                                            android:layout_toRightOf="@+id/imageThuKhac"
                                             android:paddingLeft="10dp"
                                             android:paddingTop="5dp"
-                                            android:text="Doanh thu" />
+                                            android:text="Thu khác" />
                                     </RelativeLayout>
 
 
