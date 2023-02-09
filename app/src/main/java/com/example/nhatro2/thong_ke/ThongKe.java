@@ -29,6 +29,7 @@ import com.example.nhatro2.dong_tien.DongTien;
 import com.example.nhatro2.hop_dong.HopDong;
 import com.example.nhatro2.phong.Phong;
 import com.example.nhatro2.quy_tien_mat.QuyThuModel;
+import com.example.nhatro2.quy_tien_mat.QuyTienModel;
 import com.example.nhatro2.thanhvien.KhachTro;
 import com.example.nhatro2.tien_coc.TienCoc;
 import com.google.android.material.navigation.NavigationView;
@@ -231,21 +232,16 @@ public class ThongKe extends AppCompatActivity {
         });
 
         TextView doanhThuThangThongKe = findViewById(R.id.doanhThuThangThongKe);
-        ApiQH.apiQH.getQuyThu().enqueue(new Callback<List<QuyThuModel>>() {
+        ApiQH.apiQH.getQuyTien().enqueue(new Callback<QuyTienModel>() {
             @Override
-            public void onResponse(Call<List<QuyThuModel>> call, Response<List<QuyThuModel>> response) {
-                List<QuyThuModel> listQuyThuFinal = response.body();
-
-                ArrayList<Integer> arrGiaTri = new ArrayList<>();
-                for(int i = listQuyThuFinal.size() -1; i >= 0 ;i--){
-                    arrGiaTri.add(i);
-                }
-                String doanhThuHienTaiText = listQuyThuFinal.get(arrGiaTri.get(0)).getTien();
+            public void onResponse(Call<QuyTienModel> call, Response<QuyTienModel> response) {
+                QuyTienModel listQuyTien = response.body();
+                String doanhThuHienTaiText = listQuyTien.getDoanhthu();
                 doanhThuThangThongKe.setText(doanhThuHienTaiText+"đ");
             }
 
             @Override
-            public void onFailure(Call<List<QuyThuModel>> call, Throwable t) {
+            public void onFailure(Call<QuyTienModel> call, Throwable t) {
 
             }
         });
