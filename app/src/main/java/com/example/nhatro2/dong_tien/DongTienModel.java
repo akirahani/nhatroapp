@@ -4,7 +4,6 @@ public class DongTienModel {
     private int chuphong;
     private String phong;
     private int tien;
-    private int sodu;
     private int khachtratien;
     private int phuongthuc;
     private String ngay;
@@ -12,11 +11,10 @@ public class DongTienModel {
     private String ghichu;
     private int tienphongthang;
 
-    public DongTienModel(int chuphong, String phong, int tien, int sodu, int khachtratien, int phuongthuc, String ngay, String gio, String ghichu, int tienphongthang) {
+    public DongTienModel(int chuphong, String phong, int tien, int khachtratien, int phuongthuc, String ngay, String gio, String ghichu, int tienphongthang) {
         this.chuphong = chuphong;
         this.phong = phong;
         this.tien = tien;
-        this.sodu = sodu;
         this.khachtratien = khachtratien;
         this.phuongthuc = phuongthuc;
         this.ngay = ngay;
@@ -24,7 +22,6 @@ public class DongTienModel {
         this.ghichu = ghichu;
         this.tienphongthang = tienphongthang;
     }
-
 
     public int getChuphong() {
         return chuphong;
@@ -50,13 +47,6 @@ public class DongTienModel {
         this.tien = tien;
     }
 
-    public int getSodu() {
-        return sodu;
-    }
-
-    public void setSodu(int sodu) {
-        this.sodu = sodu;
-    }
 
     public int getKhachtratien() {
         return khachtratien;
