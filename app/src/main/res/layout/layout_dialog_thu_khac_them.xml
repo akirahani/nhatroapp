@@ -2,12 +2,11 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     android:layout_marginTop="10dp"
     android:layout_marginLeft="14dp"
     android:layout_marginRight="14dp"
     android:background="@drawable/bg_all_search_customer">
-
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -17,55 +16,82 @@
         android:textColor="@color/white"
         android:textStyle="bold"
         android:background="@drawable/back_title_search_customer"
-        android:text="Thêm chi phí khả biến"/>
+        android:text="Thêm khoản thu khác"/>
 
     <EditText
-        android:id="@+id/lyDoKhaBienText"
+        android:id="@+id/lyDoThuKhacText"
         android:layout_marginTop="12dp"
         android:layout_marginLeft="12dp"
         android:layout_marginRight="12dp"
         android:layout_width="match_parent"
         android:layout_height="35dp"
-        android:hint="Nhập lý do chi"
         android:textSize="16sp"
+        android:hint="Nhập lý do"
         android:paddingLeft="15dp"
         android:background="@null"
         android:singleLine="true"/>
 
     <EditText
-        android:id="@+id/tienKhaBienText"
+        android:id="@+id/tienThuKhacText"
         android:layout_marginTop="12dp"
         android:layout_marginLeft="12dp"
         android:layout_marginRight="12dp"
         android:layout_width="match_parent"
         android:layout_height="35dp"
-        android:hint="Số tiền phải chi"
-        android:paddingLeft="15dp"
         android:textSize="16sp"
+        android:hint="Tiền thu"
+        android:paddingLeft="15dp"
         android:background="@null"
         android:singleLine="true"
         android:inputType="number"/>
     <RadioGroup
-        android:id="@+id/hinhThucKhaBien"
+        android:id="@+id/checkTienThuKhac"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:layout_marginTop="12dp"
         android:layout_marginLeft="12dp">
         <RadioButton
+            android:checked="true"
+            android:layout_marginLeft="15dp"
+            android:text="Thừa tiền"
             android:textSize="14sp"
-            android:text="Tiền mặt"
-            android:id="@+id/tienMatKhaBien"
+            android:id="@+id/thuaTienThuKhac"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
         <RadioButton
+            android:text="Thiếu tiền"
+            android:id="@+id/thieuTienThuKhac"
             android:textSize="14sp"
-            android:layout_marginLeft="15dp"
-            android:text="Chuyển khoản"
-            android:id="@+id/chuyenKhoanKhaBien"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
+
     </RadioGroup>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:orientation="horizontal"
+        android:layout_marginLeft="12dp"
+        android:layout_marginRight="12dp">
+        <EditText
+            android:paddingLeft="12dp"
+            android:layout_weight="4"
+            android:layout_width="0dp"
+            android:textSize="16sp"
+            android:hint="Phòng"
+            android:id="@+id/phongThuKhac"
+            android:background="@null"
+            android:layout_height="35dp" />
+        <ImageView
+            android:id="@+id/chonPhongThuKhac"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:src="@drawable/multiroom"/>
+    </LinearLayout>
 
     <LinearLayout
         android:layout_marginTop="12dp"
@@ -76,7 +102,7 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal">
         <TextView
-            android:id="@+id/khaBienClose"
+            android:id="@+id/thuKhacAddClose"
             android:textColor="@color/white"
             android:padding="12dp"
             android:textStyle="bold"
@@ -89,7 +115,7 @@
             android:background="@drawable/back_close_search"
             android:text="Đóng"/>
         <TextView
-            android:id="@+id/khaBienAdd"
+            android:id="@+id/thuKhacAddButton"
             android:textColor="@color/white"
             android:background="@drawable/back_search_button"
             android:padding="12dp"

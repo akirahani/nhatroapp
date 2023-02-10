@@ -27,6 +27,7 @@
         android:layout_marginRight="12dp"
         android:layout_width="match_parent"
         android:layout_height="35dp"
+        android:textSize="16sp"
         android:hint="Nhập lý do chi"
         android:paddingLeft="15dp"
         android:background="@null"
@@ -39,6 +40,7 @@
         android:layout_marginRight="12dp"
         android:layout_width="match_parent"
         android:layout_height="35dp"
+        android:textSize="16sp"
         android:hint="Số tiền phải chi"
         android:paddingLeft="15dp"
         android:background="@null"
@@ -53,11 +55,13 @@
         android:layout_marginTop="12dp"
         android:layout_marginLeft="12dp">
         <RadioButton
+            android:textSize="14sp"
             android:text="Tiền mặt"
             android:id="@+id/tienMatBatBien"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
         <RadioButton
+            android:textSize="14sp"
             android:layout_marginLeft="15dp"
             android:text="Chuyển khoản"
             android:id="@+id/chuyenKhoanBatBien"

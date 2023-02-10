@@ -38,8 +38,8 @@ import retrofit2.http.GET;
 import retrofit2.http.POST;
 
 public interface ApiQH {
-        String url = "http://192.168.1.190";
-//    String url = "http://172.16.1.71";
+//        String url = "http://192.168.1.190";
+    String url = "http://172.16.1.71";
     //    String url = "https://nhatroquanghieu.com";
     Gson gson = new GsonBuilder().setDateFormat("yyyy-MM-DD HH:mm:ss").create();
     OkHttpClient okHttpClient = new OkHttpClient.Builder().build();
@@ -342,11 +342,15 @@ public interface ApiQH {
     // Chọn time lấy danh sách thu ngoài
     @POST("/quanghieu/admin/api/thu-khac/choose_month.php")
     @FormUrlEncoded
-    Call <List<ThuKhacModel>> getThuKhacMonth();
+    Call <List<ThuKhacModel>> getThuKhacMonth(@Field("thang") int thang, @Field("nam") int nam);
     // Thêm thu khác
     @POST("/quanghieu/admin/api/thu-khac/add.php")
     @FormUrlEncoded
-    Call <ThuKhacModel> postThuKhacMonth();
+    Call <ThuKhacModel> addThuKhac(@Field("idThanhVien") int idThanhVien,
+                                   @Field("lydo") String lyDo,
+                                   @Field("tien") int tien,
+                                   @Field("checktien") int checkTien,
+                                   @Field("phong") int phong);
 
     // Thống kê
     // Tổng quan
