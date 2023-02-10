@@ -2,19 +2,27 @@ package com.example.nhatro2.thu_khac;
 
 public class ThuKhacModel {
     private int id;
-    private int tien;
     private String lydo;
     private String ngay;
     private String gio;
-    private int phong;
+    private int tien;
+    private String phong;
 
-    public ThuKhacModel(int id, int tien, String lydo, String ngay, String gio, int phong) {
+    public ThuKhacModel(int id, String lydo, String ngay, String gio, int tien, String phong) {
         this.id = id;
-        this.tien = tien;
         this.lydo = lydo;
         this.ngay = ngay;
         this.gio = gio;
+        this.tien = tien;
         this.phong = phong;
+    }
+
+    public int getTien() {
+        return tien;
+    }
+
+    public void setTien(int tien) {
+        this.tien = tien;
     }
 
     public int getId() {
@@ -25,12 +33,12 @@ public class ThuKhacModel {
         this.id = id;
     }
 
-    public int getTien() {
-        return tien;
+    public String getPhong() {
+        return phong;
     }
 
-    public void setTien(int tien) {
-        this.tien = tien;
+    public void setPhong(String phong) {
+        this.phong = phong;
     }
 
     public String getLydo() {
@@ -57,12 +65,5 @@ public class ThuKhacModel {
         this.gio = gio;
     }
 
-    public int getPhong() {
-        return phong;
-    }
-
-    public void setPhong(int phong) {
-        this.phong = phong;
-    }
 
 }

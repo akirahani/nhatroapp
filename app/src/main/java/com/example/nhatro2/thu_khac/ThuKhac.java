@@ -10,15 +10,20 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.annotation.SuppressLint;
+import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.text.Html;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.EditText;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
@@ -30,6 +35,7 @@ import com.example.nhatro2.HomeActivity;
 import com.example.nhatro2.MainActivity;
 import com.example.nhatro2.R;
 import com.example.nhatro2.api.ApiQH;
+import com.example.nhatro2.dong_tien.BottomSheetChonPhongTien;
 import com.example.nhatro2.dong_tien.DongTien;
 import com.example.nhatro2.hop_dong.HopDong;
 import com.example.nhatro2.thanhvien.KhachTro;
@@ -40,6 +46,9 @@ import com.example.nhatro2.tien_dien.TienDienAdapter;
 import com.example.nhatro2.tien_dien.TienDienEdit;
 import com.example.nhatro2.tien_dien.TienDienModel;
 import com.example.nhatro2.uu_dai.UuDai;
+import com.example.nhatro2.uu_dai.UuDaiAdapter;
+import com.example.nhatro2.uu_dai.UuDaiModel;
+import com.example.nhatro2.uu_dai.idUuDaiEditClick;
 import com.google.android.material.navigation.NavigationView;
 import com.kal.rackmonthpicker.MonthAdapter;
 import com.kal.rackmonthpicker.MonthType;
@@ -63,9 +72,14 @@ public class ThuKhac extends AppCompatActivity {
     ImageView thoat, logo, menuDanhMuc;
     SharedPreferences shp;
     DrawerLayout mDrawerLayout;
-    TextView chonThangThuKhac;
+    TextView chonThangThuKhac, thuKhacAddButton, thuKhacAddClose;
     RecyclerView danhSachThuKhac;
     List<ThuKhacModel> thuKhacList;
+    ImageView addThuKhac, chonPhongThuKhac;
+    EditText lyDoThuKhacText, tienThuKhacText, phongThuKhacDialog;
+    RadioButton thuaTienThuKhac, thieuTienThuKhac;
+    int checkTien, idPhongThuKhac;
+    Dialog dialogThuKhacAdd;
     @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -171,20 +185,28 @@ public class ThuKhac extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 RackMonthPicker rackMonthPicker = new RackMonthPicker(ThuKhac.this);
-
-                DateFormat dateFormat = new SimpleDateFormat("MM");
-                Date date = new Date();
                 rackMonthPicker.setLocale(Locale.ENGLISH)
                         .setNegativeText("Đóng")
                         .setPositiveText("Chọn")
                         .setMonthType(MonthType.NUMBER)
-                        .setSelectedMonth(Integer.parseInt(dateFormat.format(date)))
                         .setColorTheme(R.color.tenPhongColor)
                         .setPositiveButton(new DateMonthDialogListener() {
-
                             @Override
                             public void onDateMonth(int month, int startDate, int endDate, int year, String monthLabel) {
                                 chonThangThuKhac.setText("Tháng "+month+" - năm "+year);
+                                ApiQH.apiQH.getThuKhacMonth(month,year).enqueue(new Callback<List<ThuKhacModel>>() {
+                                    @Override
+                                    public void onResponse(Call<List<ThuKhacModel>> call, Response<List<ThuKhacModel>> response) {
+                                        thuKhacList = response.body();
+                                        danhSachThuKhac.setAdapter(new ThuKhacAdapter(ThuKhac.this, thuKhacList));
+
+                                    }
+
+                                    @Override
+                                    public void onFailure(Call<List<ThuKhacModel>> call, Throwable t) {
+
+                                    }
+                                });
                             }
                         })
                         .setNegativeButton(new OnCancelMonthDialogListener() {
@@ -196,23 +218,116 @@ public class ThuKhac extends AppCompatActivity {
             }
         });
 
+        DateFormat monthFormat = new SimpleDateFormat("MM");
+        Date date = new Date();
+        Calendar calendar = Calendar.getInstance();
+        int year = calendar.get(Calendar.YEAR);
+        int monthGet = Integer.parseInt(monthFormat.format(date));
+        chonThangThuKhac.setText("Tháng "+monthFormat.format(date)+" - năm "+year);
+
         ApiQH.apiQH.getThuKhac().enqueue(new Callback<List<ThuKhacModel>>() {
             @Override
             public void onResponse(Call<List<ThuKhacModel>> call, Response<List<ThuKhacModel>> response) {
                 thuKhacList = response.body();
-                DateFormat monthFormat = new SimpleDateFormat("MM");
-                Date date = new Date();
-                Calendar calendar = Calendar.getInstance();
-                int year = calendar.get(Calendar.YEAR);
-                int monthGet = Integer.parseInt(monthFormat.format(date));
-                chonThangThuKhac.setText("Tháng "+monthFormat.format(date)+" - năm "+year);
                 danhSachThuKhac.setAdapter(new ThuKhacAdapter(ThuKhac.this, thuKhacList));
             }
 
             @Override
             public void onFailure(Call<List<ThuKhacModel>> call, Throwable t) {
-
             }
         });
+
+        addThuKhac = findViewById(R.id.addThuKhac);
+        addThuKhac.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+//                dialogThuKhacAdd = new Dialog(ThuKhac.this);
+//                dialogThuKhacAdd.requestWindowFeature(Window.FEATURE_NO_TITLE);
+//                dialogThuKhacAdd.setContentView(R.layout.layout_dialog_thu_khac_them);
+//
+//                Window window = dialogThuKhacAdd.getWindow();
+//                if (window == null) {
+//                    return;
+//                }
+//
+//                window.setLayout(WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.WRAP_CONTENT);
+//                window.setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+//
+//                WindowManager.LayoutParams windowAttr = window.getAttributes();
+//                windowAttr.gravity = Gravity.CENTER;
+//                window.setAttributes(windowAttr);
+//
+//                thuKhacAddButton = dialogThuKhacAdd.findViewById(R.id.thuKhacAddButton);
+//                thuKhacAddClose = dialogThuKhacAdd.findViewById(R.id.thuKhacAddClose);
+//
+//                chonPhongThuKhac = dialogThuKhacAdd.findViewById(R.id.chonPhongThuKhac);
+//                chonPhongThuKhac.setOnClickListener(new View.OnClickListener() {
+//                    @Override
+//                    public void onClick(View view) {
+//                        BottomSheetChonPhongThuKhac chonPhongThuKhacTien = new BottomSheetChonPhongThuKhac();
+//                        chonPhongThuKhacTien.show(getSupportFragmentManager(), "ChonPhongThuKhac");
+//                    }
+//                });
+//
+//
+//
+//                SharedPreferences shpPhongThuKhacChon = getApplicationContext().getSharedPreferences("phongThuKhacChon", MODE_PRIVATE);
+//                String phongThuKhac = shpPhongThuKhacChon.getString("idPhongThuKhacChon","");
+//                idPhongThuKhac = shpPhongThuKhacChon.getInt("maPhongThuKhacChon",0);
+//                phongThuKhacDialog = dialogThuKhacAdd.findViewById(R.id.phongThuKhacDialog);
+//                phongThuKhacDialog.setText(phongThuKhac);
+//
+//
+//                thuKhacAddButton.setOnClickListener(new View.OnClickListener() {
+//                    @Override
+//                    public void onClick(View view) {
+//
+//                        lyDoThuKhacText = dialogThuKhacAdd.findViewById(R.id.lyDoThuKhacText);
+//                        tienThuKhacText = dialogThuKhacAdd.findViewById(R.id.tienThuKhacText);
+//                        String lyDoThuKhacTextFinal = lyDoThuKhacText.getText().toString();
+//
+//                        String tienThuKhacTextProcess = tienThuKhacText.getText().toString();
+//
+//                        int tienThuKhacTextFinal = Integer.parseInt(tienThuKhacTextProcess);
+//
+//                        thuaTienThuKhac = dialogThuKhacAdd.findViewById(R.id.thuaTienThuKhac);
+//                        thieuTienThuKhac = dialogThuKhacAdd.findViewById(R.id.thieuTienThuKhac);
+//
+//                        if (thuaTienThuKhac.isChecked()){
+//                            checkTien = 1;
+//                        }else if(thieuTienThuKhac.isChecked()){
+//                            checkTien = 0;
+//                        }
+//                        shp = view.getContext().getSharedPreferences("user", MODE_PRIVATE);
+//                        int idThanhVienQuanLy = shp.getInt("idThanhVien",0);
+//
+//
+////                        ApiQH.apiQH.addThuKhac(idThanhVienQuanLy,lyDoThuKhacTextFinal,tienThuKhacTextFinal,checkTien, phongThuKhac ).enqueue(new Callback<ThuKhacModel>() {
+////                            @Override
+////                            public void onResponse(Call<ThuKhacModel> call, Response<ThuKhacModel> response) {
+////
+////                            }
+////
+////                            @Override
+////                            public void onFailure(Call<ThuKhacModel> call, Throwable t) {
+////
+////                            }
+////                        });
+//                    }
+//                });
+//
+//                thuKhacAddClose.setOnClickListener(new View.OnClickListener() {
+//                    @Override
+//                    public void onClick(View view) {
+//                        dialogThuKhacAdd.dismiss();
+//                    }
+//                });
+//
+//                dialogThuKhacAdd.show();
+            }
+        });
+
     }
+
 }

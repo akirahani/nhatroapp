@@ -48,6 +48,7 @@ import com.example.nhatro2.tien_nuoc.TienNuocAdapter;
 import com.example.nhatro2.tien_nuoc.TienNuocEdit;
 import com.example.nhatro2.tien_nuoc.TienNuocModel;
 import com.google.android.material.navigation.NavigationView;
+import com.kal.rackmonthpicker.MonthType;
 import com.kal.rackmonthpicker.RackMonthPicker;
 import com.kal.rackmonthpicker.listener.DateMonthDialogListener;
 import com.kal.rackmonthpicker.listener.OnCancelMonthDialogListener;
@@ -163,7 +164,12 @@ public class KhaBien extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 RackMonthPicker rackMonthPicker = new RackMonthPicker(KhaBien.this);
-                rackMonthPicker.setLocale(Locale.ENGLISH).setPositiveButton(new DateMonthDialogListener() {
+                rackMonthPicker.setLocale(Locale.ENGLISH)
+                        .setNegativeText("Đóng")
+                        .setPositiveText("Chọn")
+                        .setMonthType(MonthType.NUMBER)
+                        .setColorTheme(R.color.tenPhongColor)
+                        .setPositiveButton(new DateMonthDialogListener() {
                     @Override
                     public void onDateMonth(int month, int startDate, int endDate, int year, String monthLabel) {
                         chonThangKhaBien.setText("Tháng "+month+" - năm "+year);

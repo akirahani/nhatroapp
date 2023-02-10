@@ -180,9 +180,56 @@
                     android:textStyle="bold" />
             </LinearLayout>
         </androidx.cardview.widget.CardView>
+        <!-- Tiêu đề thu khác  -->
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp">
+
+            <TextView
+                android:text="Tiền"
+                android:gravity="center"
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:textColor="@color/black"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                android:layout_height="wrap_content" />
+            <TextView
+                android:text="Lý do"
+                android:gravity="center"
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:textColor="@color/black"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                android:layout_height="wrap_content" />
+            <TextView
+                android:text="Phòng"
+                android:gravity="center"
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:textColor="@color/black"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                android:layout_height="wrap_content" />
+            <TextView
+                android:text="Chi tiết"
+                android:gravity="center"
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:textColor="@color/black"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
         <!-- Danh sách thu khác -->
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/danhSachThuKhac"
+            android:layout_marginLeft="14dp"
+            android:layout_marginTop="13dp"
+            android:layout_marginRight="14dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
     </LinearLayout>
