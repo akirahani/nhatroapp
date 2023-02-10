@@ -18,6 +18,30 @@
         android:background="@drawable/back_title_search_customer"
         android:text="Thêm khoản thu khác"/>
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:orientation="horizontal"
+        android:layout_marginLeft="12dp"
+        android:layout_marginRight="12dp">
+        <EditText
+            android:paddingLeft="12dp"
+            android:layout_weight="4"
+            android:layout_width="0dp"
+            android:textSize="16sp"
+            android:hint="Phòng"
+            android:id="@+id/phongThuKhacDialog"
+            android:background="@null"
+            android:layout_height="35dp" />
+        <ImageView
+            android:id="@+id/chonPhongThuKhac"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:src="@drawable/multiroom"/>
+    </LinearLayout>
     <EditText
         android:id="@+id/lyDoThuKhacText"
         android:layout_marginTop="12dp"
@@ -67,31 +91,6 @@
             android:layout_height="wrap_content"/>
 
     </RadioGroup>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
-        android:orientation="horizontal"
-        android:layout_marginLeft="12dp"
-        android:layout_marginRight="12dp">
-        <EditText
-            android:paddingLeft="12dp"
-            android:layout_weight="4"
-            android:layout_width="0dp"
-            android:textSize="16sp"
-            android:hint="Phòng"
-            android:id="@+id/phongThuKhac"
-            android:background="@null"
-            android:layout_height="35dp" />
-        <ImageView
-            android:id="@+id/chonPhongThuKhac"
-            android:layout_gravity="center"
-            android:layout_weight="1"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:src="@drawable/multiroom"/>
-    </LinearLayout>
 
     <LinearLayout
         android:layout_marginTop="12dp"

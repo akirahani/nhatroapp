@@ -35,6 +35,7 @@ import com.example.nhatro2.HomeActivity;
 import com.example.nhatro2.MainActivity;
 import com.example.nhatro2.R;
 import com.example.nhatro2.api.ApiQH;
+import com.example.nhatro2.dong_tien.BottomSheetChonPhongTien;
 import com.example.nhatro2.dong_tien.DongTien;
 import com.example.nhatro2.hop_dong.HopDong;
 import com.example.nhatro2.thanhvien.KhachTro;
@@ -75,9 +76,10 @@ public class ThuKhac extends AppCompatActivity {
     RecyclerView danhSachThuKhac;
     List<ThuKhacModel> thuKhacList;
     ImageView addThuKhac, chonPhongThuKhac;
-    EditText lyDoThuKhacText, tienThuKhacText;
+    EditText lyDoThuKhacText, tienThuKhacText, phongThuKhacDialog;
     RadioButton thuaTienThuKhac, thieuTienThuKhac;
-    int checkTien;
+    int checkTien, idPhongThuKhac;
+    Dialog dialogThuKhacAdd;
     @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -239,80 +241,93 @@ public class ThuKhac extends AppCompatActivity {
         addThuKhac.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Dialog dialogThuKhacAdd = new Dialog(ThuKhac.this);
-                dialogThuKhacAdd.requestWindowFeature(Window.FEATURE_NO_TITLE);
-                dialogThuKhacAdd.setContentView(R.layout.layout_dialog_thu_khac_them);
 
-                Window window = dialogThuKhacAdd.getWindow();
-                if (window == null) {
-                    return;
-                }
-
-                window.setLayout(WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.WRAP_CONTENT);
-                window.setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-
-                WindowManager.LayoutParams windowAttr = window.getAttributes();
-                windowAttr.gravity = Gravity.CENTER;
-                window.setAttributes(windowAttr);
-
-                thuKhacAddButton = dialogThuKhacAdd.findViewById(R.id.thuKhacAddButton);
-                thuKhacAddClose = dialogThuKhacAdd.findViewById(R.id.thuKhacAddClose);
-
-                chonPhongThuKhac = findViewById(R.id.chonPhongThuKhac);
-                chonPhongThuKhac.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-
-                    }
-                });
-
-                thuKhacAddButton.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-
-                        lyDoThuKhacText = dialogThuKhacAdd.findViewById(R.id.lyDoThuKhacText);
-                        tienThuKhacText = dialogThuKhacAdd.findViewById(R.id.tienThuKhacText);
-                        String lyDoThuKhacTextFinal = lyDoThuKhacText.getText().toString();
-
-                        String tienThuKhacTextProcess = tienThuKhacText.getText().toString();
-
-                        int tienThuKhacTextFinal = Integer.parseInt(tienThuKhacTextProcess);
-
-                        thuaTienThuKhac = dialogThuKhacAdd.findViewById(R.id.thuaTienThuKhac);
-                        thieuTienThuKhac = dialogThuKhacAdd.findViewById(R.id.thieuTienThuKhac);
-
-                        if (thuaTienThuKhac.isChecked()){
-                            checkTien = 1;
-                        }else if(thieuTienThuKhac.isChecked()){
-                            checkTien = 0;
-                        }
-                        shp = view.getContext().getSharedPreferences("user", MODE_PRIVATE);
-                        int idThanhVienQuanLy = shp.getInt("idThanhVien",0);
-
-//                        ApiQH.apiQH.addThuKhac(idThanhVienQuanLy,lyDoThuKhacTextFinal,tienThuKhacTextFinal,checkTien, phongThuKhac ).enqueue(new Callback<ThuKhacModel>() {
-//                            @Override
-//                            public void onResponse(Call<ThuKhacModel> call, Response<ThuKhacModel> response) {
+//                dialogThuKhacAdd = new Dialog(ThuKhac.this);
+//                dialogThuKhacAdd.requestWindowFeature(Window.FEATURE_NO_TITLE);
+//                dialogThuKhacAdd.setContentView(R.layout.layout_dialog_thu_khac_them);
 //
-//                            }
+//                Window window = dialogThuKhacAdd.getWindow();
+//                if (window == null) {
+//                    return;
+//                }
 //
-//                            @Override
-//                            public void onFailure(Call<ThuKhacModel> call, Throwable t) {
+//                window.setLayout(WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.WRAP_CONTENT);
+//                window.setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
 //
-//                            }
-//                        });
-                    }
-                });
-
-                thuKhacAddClose.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        dialogThuKhacAdd.dismiss();
-                    }
-                });
-
-                dialogThuKhacAdd.show();
+//                WindowManager.LayoutParams windowAttr = window.getAttributes();
+//                windowAttr.gravity = Gravity.CENTER;
+//                window.setAttributes(windowAttr);
+//
+//                thuKhacAddButton = dialogThuKhacAdd.findViewById(R.id.thuKhacAddButton);
+//                thuKhacAddClose = dialogThuKhacAdd.findViewById(R.id.thuKhacAddClose);
+//
+//                chonPhongThuKhac = dialogThuKhacAdd.findViewById(R.id.chonPhongThuKhac);
+//                chonPhongThuKhac.setOnClickListener(new View.OnClickListener() {
+//                    @Override
+//                    public void onClick(View view) {
+//                        BottomSheetChonPhongThuKhac chonPhongThuKhacTien = new BottomSheetChonPhongThuKhac();
+//                        chonPhongThuKhacTien.show(getSupportFragmentManager(), "ChonPhongThuKhac");
+//                    }
+//                });
+//
+//
+//
+//                SharedPreferences shpPhongThuKhacChon = getApplicationContext().getSharedPreferences("phongThuKhacChon", MODE_PRIVATE);
+//                String phongThuKhac = shpPhongThuKhacChon.getString("idPhongThuKhacChon","");
+//                idPhongThuKhac = shpPhongThuKhacChon.getInt("maPhongThuKhacChon",0);
+//                phongThuKhacDialog = dialogThuKhacAdd.findViewById(R.id.phongThuKhacDialog);
+//                phongThuKhacDialog.setText(phongThuKhac);
+//
+//
+//                thuKhacAddButton.setOnClickListener(new View.OnClickListener() {
+//                    @Override
+//                    public void onClick(View view) {
+//
+//                        lyDoThuKhacText = dialogThuKhacAdd.findViewById(R.id.lyDoThuKhacText);
+//                        tienThuKhacText = dialogThuKhacAdd.findViewById(R.id.tienThuKhacText);
+//                        String lyDoThuKhacTextFinal = lyDoThuKhacText.getText().toString();
+//
+//                        String tienThuKhacTextProcess = tienThuKhacText.getText().toString();
+//
+//                        int tienThuKhacTextFinal = Integer.parseInt(tienThuKhacTextProcess);
+//
+//                        thuaTienThuKhac = dialogThuKhacAdd.findViewById(R.id.thuaTienThuKhac);
+//                        thieuTienThuKhac = dialogThuKhacAdd.findViewById(R.id.thieuTienThuKhac);
+//
+//                        if (thuaTienThuKhac.isChecked()){
+//                            checkTien = 1;
+//                        }else if(thieuTienThuKhac.isChecked()){
+//                            checkTien = 0;
+//                        }
+//                        shp = view.getContext().getSharedPreferences("user", MODE_PRIVATE);
+//                        int idThanhVienQuanLy = shp.getInt("idThanhVien",0);
+//
+//
+////                        ApiQH.apiQH.addThuKhac(idThanhVienQuanLy,lyDoThuKhacTextFinal,tienThuKhacTextFinal,checkTien, phongThuKhac ).enqueue(new Callback<ThuKhacModel>() {
+////                            @Override
+////                            public void onResponse(Call<ThuKhacModel> call, Response<ThuKhacModel> response) {
+////
+////                            }
+////
+////                            @Override
+////                            public void onFailure(Call<ThuKhacModel> call, Throwable t) {
+////
+////                            }
+////                        });
+//                    }
+//                });
+//
+//                thuKhacAddClose.setOnClickListener(new View.OnClickListener() {
+//                    @Override
+//                    public void onClick(View view) {
+//                        dialogThuKhacAdd.dismiss();
+//                    }
+//                });
+//
+//                dialogThuKhacAdd.show();
             }
         });
 
     }
+
 }
