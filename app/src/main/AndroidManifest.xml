@@ -16,7 +16,7 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
-            android:name=".ThuKhacAdd"
+            android:name=".thu_khac.ThuKhacAdd"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
@@ -69,14 +69,14 @@
                 android:value="" />
         </activity>
         <activity
-            android:name=".tien_nuoc.TienNuocEdit"
+            android:name=".tien_dien.tien_nuoc.TienNuocEdit"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name=".tien_nuoc.TienNuoc"
+            android:name=".tien_dien.tien_nuoc.TienNuoc"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"

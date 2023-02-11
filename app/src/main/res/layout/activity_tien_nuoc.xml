@@ -5,7 +5,7 @@
     android:id="@+id/drawer_layout_nuoc"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".tien_nuoc.TienNuoc">
+    tools:context=".tien_dien.tien_nuoc.TienNuoc">
 
     <RelativeLayout
         android:layout_width="match_parent"

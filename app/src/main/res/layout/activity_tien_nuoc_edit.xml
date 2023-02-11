@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".tien_nuoc.TienNuocEdit">
+    tools:context=".tien_dien.tien_nuoc.TienNuocEdit">
 
     <RelativeLayout
         android:layout_width="match_parent"

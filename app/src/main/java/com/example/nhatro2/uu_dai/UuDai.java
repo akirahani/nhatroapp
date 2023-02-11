@@ -373,6 +373,7 @@ public class UuDai extends AppCompatActivity {
                                                     public void onResponse(Call<UuDaiModel> call, Response<UuDaiModel> response) {
                                                         Intent intent = new Intent(UuDai.this, UuDai.class);
                                                         startActivity(intent);
+                                                        finish();
                                                     }
 
                                                     @Override

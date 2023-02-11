@@ -10,18 +10,17 @@ import com.example.nhatro2.hop_dong.ListKhachChonModel;
 import com.example.nhatro2.kha_bien.KhaBienModel;
 import com.example.nhatro2.phong.PhongModel;
 import com.example.nhatro2.phong.PhongMultiModel;
-import com.example.nhatro2.phong.PhongModel;
-import com.example.nhatro2.phong.PhongMultiModel;
 import com.example.nhatro2.quy_tien_mat.QuyChiModel;
 import com.example.nhatro2.quy_tien_mat.QuyThuModel;
 import com.example.nhatro2.quy_tien_mat.QuyTienModel;
 import com.example.nhatro2.thanhvien.ThanhVienModel;
 import com.example.nhatro2.thong_ke.TongQuanChartModel;
 import com.example.nhatro2.thu_khac.ThuKhacModel;
+import com.example.nhatro2.tien_coc.TienCocModel;
 import com.example.nhatro2.tien_dien.LichSuDienModel;
 import com.example.nhatro2.tien_dien.TienDienModel;
-import com.example.nhatro2.tien_nuoc.LichSuNuocModel;
-import com.example.nhatro2.tien_nuoc.TienNuocModel;
+import com.example.nhatro2.tien_dien.tien_nuoc.LichSuNuocModel;
+import com.example.nhatro2.tien_dien.tien_nuoc.TienNuocModel;
 import com.example.nhatro2.uu_dai.UuDaiModel;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -309,6 +308,19 @@ public interface ApiQH {
     Call <List<QuyThuModel>> getQuyThu();
 
     // Tiền cọc
+    //
+    @GET ("/quanghieu/admin/api/tien-coc/list.php")
+    Call <List<TienCocModel>> listCoc();
+    //
+    @POST ("/quanghieu/admin/api/tien-coc/coc.php")
+    @FormUrlEncoded
+    Call <TienCocModel> themCoc(@Field("thanhvienid") int idThanhVien,
+                                @Field("khach") int idKhach,
+                                @Field("tenkhach") String tenKhach,
+                                @Field("dienthoai") String dienthoai,
+                                @Field("tiencoc") int tiencoc,
+                                @Field("ghichu") String ghichu,
+                                @Field("phuongthuccoc") int phuongthuc);
     //
     @POST("/quanghieu/admin/api/tien-coc/search_khach.php")
     @FormUrlEncoded

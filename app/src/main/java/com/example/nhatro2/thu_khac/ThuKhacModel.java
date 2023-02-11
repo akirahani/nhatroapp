@@ -6,23 +6,18 @@ public class ThuKhacModel {
     private String ngay;
     private String gio;
     private int tien;
+    private String tienformat;
     private String phong;
 
-    public ThuKhacModel(int id, String lydo, String ngay, String gio, int tien, String phong) {
+
+    public ThuKhacModel(int id, String lydo, String ngay, String gio, int tien, String tienformat, String phong) {
         this.id = id;
         this.lydo = lydo;
         this.ngay = ngay;
         this.gio = gio;
         this.tien = tien;
+        this.tienformat = tienformat;
         this.phong = phong;
-    }
-
-    public int getTien() {
-        return tien;
-    }
-
-    public void setTien(int tien) {
-        this.tien = tien;
     }
 
     public int getId() {
@@ -31,14 +26,6 @@ public class ThuKhacModel {
 
     public void setId(int id) {
         this.id = id;
-    }
-
-    public String getPhong() {
-        return phong;
-    }
-
-    public void setPhong(String phong) {
-        this.phong = phong;
     }
 
     public String getLydo() {
@@ -65,5 +52,27 @@ public class ThuKhacModel {
         this.gio = gio;
     }
 
+    public int getTien() {
+        return tien;
+    }
 
+    public void setTien(int tien) {
+        this.tien = tien;
+    }
+
+    public String getTienformat() {
+        return tienformat;
+    }
+
+    public void setTienformat(String tienformat) {
+        this.tienformat = tienformat;
+    }
+
+    public String getPhong() {
+        return phong;
+    }
+
+    public void setPhong(String phong) {
+        this.phong = phong;
+    }
 }
