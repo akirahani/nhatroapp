@@ -17,7 +17,7 @@ import org.w3c.dom.Text;
 
 import java.util.List;
 
-public class ThuKhacAdapter extends RecyclerView.Adapter<ThuKhacAdapter.ThuKhacViewHolder> {
+public class ThuKhacAdapter extends RecyclerView.Adapter<ThuKhacAdapter.ThuKhacViewHolder>{
     Context context;
     List<ThuKhacModel> listThuKhac;
 
