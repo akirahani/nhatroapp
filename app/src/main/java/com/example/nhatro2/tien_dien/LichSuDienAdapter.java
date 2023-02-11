@@ -10,7 +10,6 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.nhatro2.R;
-import com.example.nhatro2.tien_nuoc.LichSuNuocModel;
 
 import java.util.List;
 

@@ -433,7 +433,7 @@
                                             android:id="@+id/imageBatBien"
                                             android:layout_width="wrap_content"
                                             android:layout_height="wrap_content"
-                                            android:background="@drawable/thuchi"></ImageView>
+                                            android:background="@drawable/batbien"></ImageView>
 
                                         <TextView
                                             android:id="@+id/BatBien"
@@ -456,7 +456,7 @@
                                             android:id="@+id/imageKhaBien"
                                             android:layout_width="wrap_content"
                                             android:layout_height="wrap_content"
-                                            android:background="@drawable/thuchi"></ImageView>
+                                            android:background="@drawable/khabien" />
 
                                         <TextView
                                             android:id="@+id/khaBien"

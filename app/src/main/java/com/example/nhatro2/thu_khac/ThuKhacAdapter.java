@@ -20,10 +20,12 @@ import java.util.List;
 public class ThuKhacAdapter extends RecyclerView.Adapter<ThuKhacAdapter.ThuKhacViewHolder>{
     Context context;
     List<ThuKhacModel> listThuKhac;
+    DetailThuKhac clickIdThuKhac;
 
-    public ThuKhacAdapter(Context context, List<ThuKhacModel> listThuKhac) {
+    public ThuKhacAdapter(Context context, List<ThuKhacModel> listThuKhac, DetailThuKhac clickIdThuKhac) {
         this.context = context;
         this.listThuKhac = listThuKhac;
+        this.clickIdThuKhac = clickIdThuKhac;
     }
 
     @NonNull
@@ -36,13 +38,19 @@ public class ThuKhacAdapter extends RecyclerView.Adapter<ThuKhacAdapter.ThuKhacV
     @Override
     public void onBindViewHolder(@NonNull ThuKhacAdapter.ThuKhacViewHolder holder, int position) {
         ThuKhacModel thuKhacItem = listThuKhac.get(position);
-        holder.tienThuKhac.setText(thuKhacItem.getTien());
-        holder.lyDoThuKhac.setText(thuKhacItem.getLydo());
-        holder.phongThuKhac.setText(thuKhacItem.getPhong());
+        int idPhongThuKhac = thuKhacItem.getId();
+        String tenPhongThuKhac = thuKhacItem.getPhong();
+        String lyDoThuKhac = thuKhacItem.getLydo();
+        String tienThuKhacFormat = thuKhacItem.getTienformat();
+        int tienThuKhac = thuKhacItem.getTien();
+        String time = thuKhacItem.getNgay()+" - "+thuKhacItem.getGio();
+        holder.tienThuKhac.setText(tienThuKhacFormat);
+        holder.lyDoThuKhac.setText(lyDoThuKhac);
+        holder.phongThuKhac.setText(tenPhongThuKhac);
         holder.detailThuKhac.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                clickIdThuKhac.clickIdThuKhac(idPhongThuKhac, tenPhongThuKhac, lyDoThuKhac, tienThuKhacFormat, tienThuKhac, time);
             }
         });
     }

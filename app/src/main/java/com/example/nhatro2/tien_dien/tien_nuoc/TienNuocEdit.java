@@ -1,4 +1,4 @@
-package com.example.nhatro2.tien_nuoc;
+package com.example.nhatro2.tien_dien.tien_nuoc;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
@@ -27,11 +27,9 @@ import android.widget.Toast;
 import com.example.nhatro2.HomeActivity;
 import com.example.nhatro2.MainActivity;
 import com.example.nhatro2.R;
-import com.example.nhatro2.api.Api;
 import com.example.nhatro2.api.ApiQH;
 import com.example.nhatro2.dong_tien.DongTien;
 import com.example.nhatro2.hop_dong.HopDong;
-import com.example.nhatro2.phong.Phong;
 import com.example.nhatro2.thanhvien.KhachTro;
 import com.example.nhatro2.tien_coc.TienCoc;
 import com.google.android.material.navigation.NavigationView;

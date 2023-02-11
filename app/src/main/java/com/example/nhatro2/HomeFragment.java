@@ -7,7 +7,6 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.media.Image;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -16,11 +15,9 @@ import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
-import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.text.Html;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
@@ -31,18 +28,13 @@ import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.Toolbar;
 
-import com.example.nhatro2.api.Api;
 import com.example.nhatro2.api.ApiQH;
 import com.example.nhatro2.bat_bien.BatBien;
 import com.example.nhatro2.dong_tien.DongTien;
 import com.example.nhatro2.hop_dong.HopDong;
 import com.example.nhatro2.kha_bien.KhaBien;
-import com.example.nhatro2.phong.Phong;
 import com.example.nhatro2.quanlychung.ChungAdapter;
 import com.example.nhatro2.quanlychung.ChungModel;
-import com.example.nhatro2.quy_tien_mat.QuyThuAdapter;
-import com.example.nhatro2.quy_tien_mat.QuyThuModel;
-import com.example.nhatro2.quy_tien_mat.QuyTienMat;
 import com.example.nhatro2.quy_tien_mat.QuyTienModel;
 import com.example.nhatro2.tai_khoan.TaiKhoanModel;
 import com.example.nhatro2.thanhvien.KhachTro;
@@ -50,7 +42,7 @@ import com.example.nhatro2.thong_ke.ThongKe;
 import com.example.nhatro2.thu_khac.ThuKhac;
 import com.example.nhatro2.tien_coc.TienCoc;
 import com.example.nhatro2.tien_dien.TienDien;
-import com.example.nhatro2.tien_nuoc.TienNuoc;
+import com.example.nhatro2.tien_dien.tien_nuoc.TienNuoc;
 import com.google.android.material.navigation.NavigationView;
 
 import java.util.ArrayList;

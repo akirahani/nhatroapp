@@ -1,8 +1,6 @@
-package com.example.nhatro2.tien_nuoc;
+package com.example.nhatro2.tien_dien.tien_nuoc;
 
 import android.content.Context;
-import android.icu.text.DecimalFormat;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;

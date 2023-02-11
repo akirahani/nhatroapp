@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginLeft="14dp"
+    android:layout_marginTop="10dp"
+    android:layout_marginRight="14dp"
+    android:background="@drawable/bg_all_search_customer"
+    android:orientation="vertical"
+    android:paddingBottom="15dp">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/back_title_search_customer"
+        android:gravity="center"
+        android:padding="12dp"
+        android:text="Chi tiết khoản thu khác"
+        android:textColor="@color/white"
+        android:textSize="16sp"
+        android:textStyle="bold" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="12dp"
+        android:layout_marginTop="12dp"
+        android:layout_marginRight="12dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_weight="2"
+            android:layout_height="wrap_content"
+            android:text="Tên phòng: "
+            android:textColor="@color/black"
+            android:textSize="14sp"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/phongThuKhacDetailDialog"
+            android:layout_width="0dp"
+            android:layout_weight="5"
+            android:layout_height="35dp"
+            android:background="@null"
+            android:paddingLeft="12dp"
+            android:textSize="16sp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="12dp"
+        android:layout_marginTop="12dp"
+        android:layout_marginRight="12dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_height="wrap_content"
+            android:text="Lý do: "
+            android:layout_width="0dp"
+            android:layout_weight="2"
+            android:textColor="@color/black"
+            android:textSize="14sp"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/lyDoThuKhacDetailText"
+            android:layout_width="0dp"
+            android:layout_weight="5"
+            android:layout_height="35dp"
+            android:background="@null"
+            android:paddingLeft="15dp"
+            android:singleLine="true"
+            android:textSize="16sp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="12dp"
+        android:layout_marginTop="12dp"
+        android:layout_marginRight="12dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_gravity="center"
+            android:layout_width="0dp"
+            android:layout_weight="2"
+            android:layout_height="wrap_content"
+            android:text="Tiền: "
+            android:textSize="14sp"
+            android:textColor="@color/black"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/tienThuKhacDetailText"
+            android:layout_width="0dp"
+            android:layout_weight="5"
+            android:layout_height="35dp"
+
+            android:background="@null"
+            android:inputType="number"
+            android:paddingLeft="15dp"
+            android:singleLine="true"
+            android:textSize="16sp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="12dp"
+        android:layout_marginTop="12dp"
+        android:layout_marginRight="12dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_gravity="center"
+            android:layout_width="0dp"
+            android:layout_weight="2"
+            android:layout_height="wrap_content"
+            android:text="Thời gian: "
+            android:textSize="14sp"
+            android:textColor="@color/black"
+            android:textStyle="bold" />
+
+        <EditText
+            android:layout_gravity="center"
+            android:id="@+id/timeThuKhacDetailText"
+            android:layout_width="0dp"
+            android:layout_weight="5"
+            android:layout_height="35dp"
+            android:inputType="datetime"
+            android:paddingLeft="15dp"
+            android:singleLine="true"
+            android:background="@null"
+            android:textSize="16sp" />
+    </LinearLayout>
+</LinearLayout>

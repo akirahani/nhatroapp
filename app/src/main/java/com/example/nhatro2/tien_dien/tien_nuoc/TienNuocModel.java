@@ -1,4 +1,4 @@
-package com.example.nhatro2.tien_nuoc;
+package com.example.nhatro2.tien_dien.tien_nuoc;
 
 public class TienNuocModel {
     private String phong;

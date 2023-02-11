@@ -1,9 +1,289 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".thu_khac.ThuKhacAdd">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/header"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/gradient_header">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:id="@+id/rightToolbar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_centerVertical="true">
+
+                <ImageView
+                    android:id="@+id/thoat"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/ic_back"
+                    android:backgroundTint="@color/white"></ImageView>
+
+                <TextView
+                    android:id="@+id/ten"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toRightOf="@+id/thoat"
+                    android:paddingLeft="5dp"
+                    android:text="Thoát"
+                    android:textColor="@color/white"></TextView>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/centerToolbar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:layout_centerVertical="true"
+                android:paddingRight="10dp">
+                >
+
+                <ImageView
+                    android:id="@+id/logo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/ic_logo"
+                    android:backgroundTint="@color/white" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/leftToolbar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true">
+                >
+
+                <ImageView
+                    android:id="@+id/menuDanhMuc"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="15dp"
+                    android:background="@drawable/bar"
+                    android:backgroundTint="@color/white" />
+            </LinearLayout>
+        </RelativeLayout>
+    </androidx.appcompat.widget.Toolbar>
+    <!-- title -->
+    <RelativeLayout
+        android:id="@+id/tren"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/header"
+        android:background="@color/white"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:id="@+id/rowTitleThuKhac"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:elevation="20dp"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <FrameLayout
+                    android:id="@+id/imageThuKhacAdd"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center" />
+
+
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:paddingLeft="8dp"
+                android:text="Thu khác"
+                android:textAllCaps="true"
+                android:textColor="@color/textQuanLyChung"
+                android:textSize="18dp"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="20dp"
+            android:layout_below="@+id/rowTitleThuKhac"
+            android:layout_marginTop="-15dp"
+            android:background="@color/khungNgoai" />
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/khungNgoai">
+
+        <TextView
+            android:id="@+id/tieuDeKhachDatCoc"
+            android:layout_width="193dp"
+            android:layout_height="33dp"
+            android:layout_below="@+id/tieuDeDongTien"
+            android:background="@drawable/title_card"
+            android:backgroundTint="@color/tabActive"
+            android:gravity="center"
+            android:paddingLeft="23dp"
+            android:paddingTop="8dp"
+            android:paddingRight="23dp"
+            android:paddingBottom="8dp"
+            android:text="Thêm khoản thu khác "
+            android:textColor="@color/white" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="12dp"
+            android:layout_marginTop="12dp"
+            android:layout_marginRight="12dp"
+            android:orientation="horizontal">
+
+            <EditText
+                android:id="@+id/phongThuKhacDialog"
+                android:layout_width="0dp"
+                android:layout_height="35dp"
+                android:layout_weight="4"
+                android:background="@null"
+                android:hint="Phòng"
+                android:paddingLeft="12dp"
+                android:textSize="16sp" />
+
+            <ImageView
+                android:id="@+id/chonPhongThuKhac"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                android:src="@drawable/multiroom" />
+        </LinearLayout>
+
+        <EditText
+            android:id="@+id/lyDoThuKhacText"
+            android:layout_width="match_parent"
+            android:layout_height="35dp"
+            android:layout_marginLeft="12dp"
+            android:layout_marginTop="12dp"
+            android:layout_marginRight="12dp"
+            android:background="@null"
+            android:hint="Nhập lý do"
+            android:paddingLeft="15dp"
+            android:singleLine="true"
+            android:textSize="16sp" />
+
+        <EditText
+            android:id="@+id/tienThuKhacText"
+            android:layout_width="match_parent"
+            android:layout_height="35dp"
+            android:layout_marginLeft="12dp"
+            android:layout_marginTop="12dp"
+            android:layout_marginRight="12dp"
+            android:background="@null"
+            android:hint="Tiền thu"
+            android:inputType="number"
+            android:paddingLeft="15dp"
+            android:singleLine="true"
+            android:textSize="16sp" />
+
+        <RadioGroup
+            android:id="@+id/checkTienThuKhac"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="12dp"
+            android:layout_marginTop="12dp"
+            android:orientation="horizontal">
+
+            <RadioButton
+                android:id="@+id/thuaTienThuKhac"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15dp"
+                android:checked="true"
+                android:text="Thừa tiền"
+                android:textSize="14sp" />
+
+            <RadioButton
+                android:id="@+id/thieuTienThuKhac"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Thiếu tiền"
+                android:textSize="14sp" />
+
+        </RadioGroup>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="12dp"
+            android:layout_marginTop="12dp"
+            android:layout_marginRight="12dp"
+            android:layout_marginBottom="12dp">
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                app:cardCornerRadius="6dp">
+
+                <TextView
+                    android:id="@+id/thuKhacAddClose"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:background="@drawable/gradient_back"
+                    android:paddingLeft="35dp"
+                    android:paddingTop="5dp"
+                    android:paddingRight="35dp"
+                    android:paddingBottom="5dp"
+                    android:text="Quay lại"
+                    android:textAllCaps="true"
+                    android:textColor="@color/white"
+                    android:textStyle="bold" />
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                app:cardCornerRadius="6dp">
+
+                <TextView
+                    android:id="@+id/thuKhacAddButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/gradient_add"
+                    android:paddingLeft="35dp"
+                    android:paddingTop="5dp"
+                    android:paddingRight="35dp"
+                    android:paddingBottom="5dp"
+                    android:text="Thêm Mới"
+                    android:textAllCaps="true"
+                    android:textColor="@color/white"
+                    android:textStyle="bold" />
+            </androidx.cardview.widget.CardView>
+        </RelativeLayout>
+
+    </LinearLayout>
+</LinearLayout>

@@ -66,6 +66,8 @@ public class BottomSheetChonPhongThuKhac extends BottomSheetDialogFragment {
                         shpPhongThuKhacChonEdit.putString("idPhongThuKhacChon",tenPhong);
                         shpPhongThuKhacChonEdit.putInt("maPhongThuKhacChon",idPhong);
                         shpPhongThuKhacChonEdit.commit();
+                        Intent intent = new Intent(view.getContext(),ThuKhacAdd.class);
+                        startActivity(intent);
                         getDialog().dismiss();
                     }
                 }));
