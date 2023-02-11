@@ -229,7 +229,7 @@ public class ThuKhac extends AppCompatActivity {
             @Override
             public void onResponse(Call<List<ThuKhacModel>> call, Response<List<ThuKhacModel>> response) {
                 thuKhacList = response.body();
-                danhSachThuKhac.setAdapter(new ThuKhacAdapter(ThuKhac.this, thuKhacList));
+                danhSachThuKhac.setAdapter(new ThuKhacAdapter(ThuKhac.this,thuKhacList));
             }
 
             @Override
