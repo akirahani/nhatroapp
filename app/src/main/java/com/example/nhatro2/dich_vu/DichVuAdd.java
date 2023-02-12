@@ -1,13 +1,11 @@
 package com.example.nhatro2.dich_vu;
 
 import android.annotation.SuppressLint;
-import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.Html;
-import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
@@ -22,27 +20,20 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
-import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.nhatro2.HomeActivity;
 import com.example.nhatro2.MainActivity;
 import com.example.nhatro2.R;
-import com.example.nhatro2.api.Api;
 import com.example.nhatro2.api.ApiQH;
 import com.example.nhatro2.dong_tien.DongTien;
 import com.example.nhatro2.hop_dong.HopDong;
-import com.example.nhatro2.phong.Phong;
 import com.example.nhatro2.thanhvien.KhachTro;
-import com.example.nhatro2.thanhvien.ThanhVienModel;
-import com.example.nhatro2.tien_coc.TienCoc;
+import com.example.nhatro2.tien_coc.TienCocAdd;
 import com.google.android.material.navigation.NavigationView;
-
-import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
-import retrofit2.http.POST;
 
 public class DichVuAdd extends AppCompatActivity {
     ImageView thoat,them,logo,menuDanhMuc;
@@ -167,7 +158,7 @@ public class DichVuAdd extends AppCompatActivity {
                         startActivity(khachTro);
                         return true;
                     case R.id.dat_coc:
-                        Intent datCoc = new Intent(DichVuAdd.this, TienCoc.class);
+                        Intent datCoc = new Intent(DichVuAdd.this, TienCocAdd.class);
                         startActivity(datCoc);
                         return true;
                     case R.id.thanh_toan:

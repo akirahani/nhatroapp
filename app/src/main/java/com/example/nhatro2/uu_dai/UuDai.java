@@ -1,7 +1,5 @@
 package com.example.nhatro2.uu_dai;
 
-import static com.example.nhatro2.R.id.listUuDai;
-
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
@@ -19,7 +17,6 @@ import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.text.Html;
-import android.util.Log;
 import android.view.Gravity;
 import android.view.MenuItem;
 import android.view.View;
@@ -28,7 +25,6 @@ import android.view.WindowManager;
 import android.widget.EditText;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -37,15 +33,10 @@ import com.example.nhatro2.HomeActivity;
 import com.example.nhatro2.MainActivity;
 import com.example.nhatro2.R;
 import com.example.nhatro2.api.ApiQH;
-import com.example.nhatro2.bat_bien.BatBienModel;
 import com.example.nhatro2.dong_tien.DongTien;
 import com.example.nhatro2.hop_dong.HopDong;
-import com.example.nhatro2.kha_bien.KhaBien;
-import com.example.nhatro2.kha_bien.KhaBienAdapter;
-import com.example.nhatro2.kha_bien.KhaBienModel;
 import com.example.nhatro2.thanhvien.KhachTro;
-import com.example.nhatro2.tien_coc.TienCoc;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.example.nhatro2.tien_coc.TienCocAdd;
 import com.google.android.material.navigation.NavigationView;
 
 import java.util.ArrayList;
@@ -144,7 +135,7 @@ public class UuDai extends AppCompatActivity {
                         startActivity(khachTro);
                         return true;
                     case R.id.dat_coc:
-                        Intent datCoc = new Intent(UuDai.this, TienCoc.class);
+                        Intent datCoc = new Intent(UuDai.this, TienCocAdd.class);
                         startActivity(datCoc);
                         return true;
                     case R.id.thanh_toan:

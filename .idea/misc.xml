@@ -40,6 +40,7 @@
         <entry key="..\:/Users/Admin/AndroidStudioProjects/nhatro/app/src/main/res/layout/activity_thong_ke.xml" value="0.264" />
         <entry key="..\:/Users/Admin/AndroidStudioProjects/nhatro/app/src/main/res/layout/activity_thu_khac.xml" value="0.19972826086956522" />
         <entry key="..\:/Users/Admin/AndroidStudioProjects/nhatro/app/src/main/res/layout/activity_tien_coc.xml" value="0.22826086956521738" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/nhatro/app/src/main/res/layout/activity_tien_coc_add.xml" value="0.12183383991894631" />
         <entry key="..\:/Users/Admin/AndroidStudioProjects/nhatro/app/src/main/res/layout/activity_tien_dien.xml" value="0.20471014492753623" />
         <entry key="..\:/Users/Admin/AndroidStudioProjects/nhatro/app/src/main/res/layout/activity_tien_dien_edit.xml" value="0.23854166666666668" />
         <entry key="..\:/Users/Admin/AndroidStudioProjects/nhatro/app/src/main/res/layout/activity_tien_nuoc.xml" value="0.1" />
@@ -93,6 +94,7 @@
         <entry key="..\:/Users/Admin/AndroidStudioProjects/nhatro/app/src/main/res/layout/thiet_bi_hop_dong_detail_item.xml" value="0.22916666666666666" />
         <entry key="..\:/Users/Admin/AndroidStudioProjects/nhatro/app/src/main/res/layout/thiet_bi_hop_dong_item.xml" value="0.22916666666666666" />
         <entry key="..\:/Users/Admin/AndroidStudioProjects/nhatro/app/src/main/res/layout/thu_khac_item.xml" value="0.22010869565217392" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/nhatro/app/src/main/res/layout/tien_coc_item.xml" value="0.264" />
         <entry key="..\:/Users/Admin/AndroidStudioProjects/nhatro/app/src/main/res/menu/drawer_view.xml" value="0.24947916666666667" />
       </map>
     </option>

@@ -23,10 +23,9 @@ import android.widget.Toast;
 import com.example.nhatro2.HomeActivity;
 import com.example.nhatro2.MainActivity;
 import com.example.nhatro2.R;
-import com.example.nhatro2.bat_bien.BatBien;
 import com.example.nhatro2.dong_tien.DongTien;
 import com.example.nhatro2.thanhvien.KhachTro;
-import com.example.nhatro2.tien_coc.TienCoc;
+import com.example.nhatro2.tien_coc.TienCocAdd;
 import com.google.android.material.navigation.NavigationView;
 import com.google.android.material.tabs.TabLayout;
 import com.google.android.material.tabs.TabLayoutMediator;
@@ -152,7 +151,7 @@ public class HopDong extends AppCompatActivity {
                         startActivity(khachTro);
                         return true;
                     case R.id.dat_coc:
-                        Intent datCoc = new Intent(HopDong.this, TienCoc.class);
+                        Intent datCoc = new Intent(HopDong.this, TienCocAdd.class);
                         startActivity(datCoc);
                         return true;
                     case R.id.thanh_toan:

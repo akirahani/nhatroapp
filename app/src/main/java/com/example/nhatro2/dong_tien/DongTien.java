@@ -9,7 +9,6 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.annotation.SuppressLint;
-import android.app.Activity;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -32,21 +31,13 @@ import com.example.nhatro2.HomeActivity;
 import com.example.nhatro2.MainActivity;
 import com.example.nhatro2.R;
 import com.example.nhatro2.api.ApiQH;
-import com.example.nhatro2.bat_bien.BatBien;
 import com.example.nhatro2.dich_vu.DichVuModel;
-import com.example.nhatro2.hop_dong.BottomSheetThanhVienChon;
 import com.example.nhatro2.hop_dong.HopDong;
-import com.example.nhatro2.hop_dong.HopDongAdd;
 import com.example.nhatro2.thanhvien.KhachTro;
 import com.example.nhatro2.thanhvien.ThanhVienModel;
-import com.example.nhatro2.tien_coc.TienCoc;
+import com.example.nhatro2.tien_coc.TienCocAdd;
 import com.google.android.material.navigation.NavigationView;
 
-import org.json.JSONArray;
-import org.json.JSONException;
-
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 import retrofit2.Call;
@@ -341,7 +332,7 @@ public class DongTien extends AppCompatActivity {
                         startActivity(khachTro);
                         return true;
                     case R.id.dat_coc:
-                        Intent datCoc = new Intent(DongTien.this, TienCoc.class);
+                        Intent datCoc = new Intent(DongTien.this, TienCocAdd.class);
                         startActivity(datCoc);
                         return true;
                     case R.id.thanh_toan:

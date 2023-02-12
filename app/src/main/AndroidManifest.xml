@@ -16,6 +16,9 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
+            android:name=".tien_coc.TienCoc"
+            android:exported="false" />
+        <activity
             android:name=".thu_khac.ThuKhacAdd"
             android:exported="false">
             <meta-data
@@ -40,7 +43,7 @@
             android:name=".quy_tien_mat.QuyTienMat"
             android:exported="false" />
         <activity
-            android:name=".tien_coc.TienCoc"
+            android:name=".tien_coc.TienCocAdd"
             android:exported="false" />
         <activity
             android:name=".thong_ke.ThongKe"

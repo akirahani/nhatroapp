@@ -40,7 +40,7 @@ import com.example.nhatro2.tai_khoan.TaiKhoanModel;
 import com.example.nhatro2.thanhvien.KhachTro;
 import com.example.nhatro2.thong_ke.ThongKe;
 import com.example.nhatro2.thu_khac.ThuKhac;
-import com.example.nhatro2.tien_coc.TienCoc;
+import com.example.nhatro2.tien_coc.TienCocAdd;
 import com.example.nhatro2.tien_dien.TienDien;
 import com.example.nhatro2.tien_dien.tien_nuoc.TienNuoc;
 import com.google.android.material.navigation.NavigationView;
@@ -228,7 +228,7 @@ public class HomeFragment extends Fragment {
                         startActivity(khachTro);
                         return true;
                     case R.id.dat_coc:
-                        Intent datCoc = new Intent(view.getContext(), TienCoc.class);
+                        Intent datCoc = new Intent(view.getContext(), TienCocAdd.class);
                         startActivity(datCoc);
                         return true;
                     case R.id.thanh_toan:

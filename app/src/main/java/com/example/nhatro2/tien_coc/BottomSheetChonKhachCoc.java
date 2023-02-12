@@ -4,9 +4,7 @@ import static android.content.Context.MODE_PRIVATE;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.os.Build;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,15 +18,10 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.nhatro2.R;
 import com.example.nhatro2.api.ApiQH;
-import com.example.nhatro2.hop_dong.ClickKhachAddHopDong;
-import com.example.nhatro2.hop_dong.ListKhachChonAdapter;
 import com.example.nhatro2.thanhvien.ThanhVienModel;
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
 
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
-import java.util.stream.Collectors;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -85,7 +78,7 @@ public class BottomSheetChonKhachCoc extends BottomSheetDialogFragment {
                         listKhachCocClick.setAdapter(new KhachCocAdapter(view.getContext(),listKhachSearchChon, new ChonKhachCocIdClick() {
                             @Override
                             public void clickKhachCocChon(int thanhvien, String tenKhach, String phoneKhach) {
-                                Intent intent = new Intent(view.getContext(), TienCoc.class);
+                                Intent intent = new Intent(view.getContext(), TienCocAdd.class);
 
                                 shpKhachCocEdit.putString("sdtKhach",phoneKhach);
                                 shpKhachCocEdit.putString("tenKhach",tenKhach);
@@ -113,7 +106,7 @@ public class BottomSheetChonKhachCoc extends BottomSheetDialogFragment {
                 listKhachCocClick.setAdapter(new KhachCocAdapter(view.getContext(),listKhachSearchChon, new ChonKhachCocIdClick() {
                     @Override
                     public void clickKhachCocChon(int thanhvien, String tenKhach, String phoneKhach) {
-                        Intent intent = new Intent(view.getContext(), TienCoc.class);
+                        Intent intent = new Intent(view.getContext(), TienCocAdd.class);
 
                         shpKhachCocEdit.putString("sdtKhach",phoneKhach);
                         shpKhachCocEdit.putString("tenKhach",tenKhach);
