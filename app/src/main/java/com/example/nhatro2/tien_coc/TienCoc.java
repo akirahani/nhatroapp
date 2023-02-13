@@ -9,16 +9,23 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.annotation.SuppressLint;
+import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.text.Html;
+import android.view.Gravity;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.nhatro2.HomeActivity;
@@ -28,6 +35,10 @@ import com.example.nhatro2.api.ApiQH;
 import com.example.nhatro2.dong_tien.DongTien;
 import com.example.nhatro2.hop_dong.HopDong;
 import com.example.nhatro2.thanhvien.KhachTro;
+import com.example.nhatro2.thu_khac.DetailThuKhac;
+import com.example.nhatro2.thu_khac.ThuKhac;
+import com.example.nhatro2.thu_khac.ThuKhacAdapter;
+import com.example.nhatro2.thu_khac.ThuKhacModel;
 import com.google.android.material.navigation.NavigationView;
 
 import java.util.List;
@@ -43,6 +54,7 @@ public class TienCoc extends AppCompatActivity {
     DrawerLayout mDrawerLayout;
     RecyclerView listKhachCoc;
     List<TienCocModel> listTienCoc;
+    TextView tenKhachDetailDialog, tienCocDetailText, thoiGianCocDetailText, trangThaiCocDetailText;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -153,7 +165,79 @@ public class TienCoc extends AppCompatActivity {
             @Override
             public void onResponse(Call<List<TienCocModel>> call, Response<List<TienCocModel>> response) {
                 listTienCoc = response.body();
-                listKhachCoc.setAdapter(new TienCocAdapter(TienCoc.this,listTienCoc));
+                listKhachCoc.setAdapter(new TienCocAdapter(TienCoc.this, listTienCoc, new DetailClickCoc() {
+                    @Override
+                    public void clickCocDetail(int id, String tenChuPhong, String tienFormat, String ngayCoc, String gioCoc, int trangThaiXyLy) {
+                        Dialog dialogCocDetail = new Dialog(TienCoc.this);
+                        dialogCocDetail.requestWindowFeature(Window.FEATURE_NO_TITLE);
+                        dialogCocDetail.setContentView(R.layout.layout_dialog_tien_coc_detail);
+
+                        Window window = dialogCocDetail.getWindow();
+                        if (window == null) {
+                            return;
+                        }
+
+                        window.setLayout(WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.WRAP_CONTENT);
+                        window.setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+
+                        WindowManager.LayoutParams windowAttr = window.getAttributes();
+                        windowAttr.gravity = Gravity.CENTER;
+                        window.setAttributes(windowAttr);
+
+                        tenKhachDetailDialog = dialogCocDetail.findViewById(R.id.tenKhachDetailDialog);
+                        tienCocDetailText = dialogCocDetail.findViewById(R.id.tienCocDetailText);
+                        thoiGianCocDetailText = dialogCocDetail.findViewById(R.id.thoiGianCocDetailText);
+                        trangThaiCocDetailText = dialogCocDetail.findViewById(R.id.trangThaiCocDetailText);
+
+                        tenKhachDetailDialog.setText(tenChuPhong);
+                        tienCocDetailText.setText(tienFormat + "đ");
+                        thoiGianCocDetailText.setText(ngayCoc + " - " + gioCoc);
+                        if (trangThaiXyLy == 1) {
+                            trangThaiCocDetailText.setText("Đã xử lý");
+                        } else {
+                            trangThaiCocDetailText.setText("Chưa xử lý");
+                        }
+                        dialogCocDetail.show();
+                    }
+                }, new XuLiCoc() {
+                    @Override
+                    public void clickXoaCoc(int idCoc) {
+                        AlertDialog.Builder builder = new AlertDialog.Builder(TienCoc.this);
+                        builder.setTitle(Html.fromHtml("<font color='#71a6d5'>Thông báo!</font>")).setMessage(Html.fromHtml("<font color='#71a6d5'>Bạn thực sự muốn xử lí cọc ?</font>"));
+                        builder.setCancelable(true);
+                        builder.setIcon(R.drawable.alert_bottom);
+                        //check
+                        builder.setPositiveButton(Html.fromHtml("<font color='#71a6d5'>Có</font>"), new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialogInterface, int i) {
+                                Toast.makeText(TienCoc.this, "Xử lý cọc thành công", Toast.LENGTH_SHORT).show();
+                                Intent intent = new Intent(TienCoc.this, TienCoc.class);
+                                startActivity(intent);
+                            }
+                        });
+                        // NO
+                        builder.setNegativeButton(Html.fromHtml("<font color='#71a6d5'>Không</font>"), new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+                                //  Cancel
+                                dialog.cancel();
+                            }
+                        });
+                        // show alert
+                        AlertDialog alert = builder.create();
+                        alert.show();
+                        ApiQH.apiQH.xoaCoc(idCoc).enqueue(new Callback<TienCocModel>() {
+                            @Override
+                            public void onResponse(Call<TienCocModel> call, Response<TienCocModel> response) {
+
+                            }
+
+                            @Override
+                            public void onFailure(Call<TienCocModel> call, Throwable t) {
+
+                            }
+                        });
+                    }
+                }));
             }
 
             @Override
@@ -161,6 +245,7 @@ public class TienCoc extends AppCompatActivity {
 
             }
         });
+
 
         addTienCoc = findViewById(R.id.addTienCoc);
         addTienCoc.setOnClickListener(new View.OnClickListener() {

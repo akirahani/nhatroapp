@@ -19,8 +19,8 @@ import com.example.nhatro2.thu_khac.ThuKhacModel;
 import com.example.nhatro2.tien_coc.TienCocModel;
 import com.example.nhatro2.tien_dien.LichSuDienModel;
 import com.example.nhatro2.tien_dien.TienDienModel;
-import com.example.nhatro2.tien_dien.tien_nuoc.LichSuNuocModel;
-import com.example.nhatro2.tien_dien.tien_nuoc.TienNuocModel;
+import com.example.nhatro2.tien_nuoc.LichSuNuocModel;
+import com.example.nhatro2.tien_nuoc.TienNuocModel;
 import com.example.nhatro2.uu_dai.UuDaiModel;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -37,9 +37,10 @@ import retrofit2.http.GET;
 import retrofit2.http.POST;
 
 public interface ApiQH {
-//    String url = "http://192.168.1.190";
-    //    String url = "http://172.16.1.71";
-        String url = "https://nhatroquanghieu.com";
+
+//  String url = "http://192.168.1.190";
+    String url = "http://172.16.1.71";
+    //    String url = "https://nhatroquanghieu.com";
     Gson gson = new GsonBuilder().setDateFormat("yyyy-MM-DD HH:mm:ss").create();
     OkHttpClient okHttpClient = new OkHttpClient.Builder().build();
     ApiQH apiQH = new Retrofit.Builder()
@@ -321,6 +322,10 @@ public interface ApiQH {
                                 @Field("tiencoc") int tiencoc,
                                 @Field("ghichu") String ghichu,
                                 @Field("phuongthuccoc") int phuongthuc);
+    // Chi tiết cọc
+    @POST ("/quanghieu/admin/api/tien-coc/xoa_coc.php")
+    @FormUrlEncoded
+    Call <TienCocModel> xoaCoc(@Field("id") int id);
     //
     @POST("/admin/api/tien-coc/search_khach.php")
     @FormUrlEncoded

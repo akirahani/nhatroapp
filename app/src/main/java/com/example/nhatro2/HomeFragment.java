@@ -42,7 +42,7 @@ import com.example.nhatro2.thong_ke.ThongKe;
 import com.example.nhatro2.thu_khac.ThuKhac;
 import com.example.nhatro2.tien_coc.TienCocAdd;
 import com.example.nhatro2.tien_dien.TienDien;
-import com.example.nhatro2.tien_dien.tien_nuoc.TienNuoc;
+import com.example.nhatro2.tien_nuoc.TienNuoc;
 import com.google.android.material.navigation.NavigationView;
 
 import java.util.ArrayList;

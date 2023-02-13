@@ -1,4 +1,4 @@
-package com.example.nhatro2.tien_dien.tien_nuoc;
+package com.example.nhatro2.tien_nuoc;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
@@ -232,8 +232,6 @@ public class TienNuocEdit extends AppCompatActivity {
                         Intent hopDong = new Intent(TienNuocEdit.this, HopDong.class);
                         startActivity(hopDong);
                         return true;
-
-
                 }
                 return true;
             }
