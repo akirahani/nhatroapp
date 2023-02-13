@@ -232,8 +232,6 @@ public class TienNuocEdit extends AppCompatActivity {
                         Intent hopDong = new Intent(TienNuocEdit.this, HopDong.class);
                         startActivity(hopDong);
                         return true;
-
-
                 }
                 return true;
             }

@@ -2,27 +2,27 @@ package com.example.nhatro2.tien_nuoc;
 
 public class TienNuocModel {
     private String phong;
-    private int sodau;
-    private int socuoi;
-    private String ngaychot;
     private int khach;
     private String tenkhach;
+    private int sodau;
+    private int socuoi;
+    private String ngay;
+    private String gio;
     private int dongia;
     private int tien;
     private int sonuoc;
-    private int sodu;
 
-    public TienNuocModel(String phong, int sodau, int socuoi, String ngaychot, int khach, String tenkhach, int dongia, int tien, int sonuoc, int sodu) {
+    public TienNuocModel(String phong, int khach, String tenkhach, int sodau, int socuoi, String ngay, String gio, int dongia, int tien, int sonuoc) {
         this.phong = phong;
-        this.sodau = sodau;
-        this.socuoi = socuoi;
-        this.ngaychot = ngaychot;
         this.khach = khach;
         this.tenkhach = tenkhach;
+        this.sodau = sodau;
+        this.socuoi = socuoi;
+        this.ngay = ngay;
+        this.gio = gio;
         this.dongia = dongia;
         this.tien = tien;
         this.sonuoc = sonuoc;
-        this.sodu = sodu;
     }
 
     public String getPhong() {
@@ -31,30 +31,6 @@ public class TienNuocModel {
 
     public void setPhong(String phong) {
         this.phong = phong;
-    }
-
-    public int getSodau() {
-        return sodau;
-    }
-
-    public void setSodau(int sodau) {
-        this.sodau = sodau;
-    }
-
-    public int getSocuoi() {
-        return socuoi;
-    }
-
-    public void setSocuoi(int socuoi) {
-        this.socuoi = socuoi;
-    }
-
-    public String getNgaychot() {
-        return ngaychot;
-    }
-
-    public void setNgaychot(String ngaychot) {
-        this.ngaychot = ngaychot;
     }
 
     public int getKhach() {
@@ -73,6 +49,37 @@ public class TienNuocModel {
         this.tenkhach = tenkhach;
     }
 
+    public int getSodau() {
+        return sodau;
+    }
+
+    public void setSodau(int sodau) {
+        this.sodau = sodau;
+    }
+
+    public int getSocuoi() {
+        return socuoi;
+    }
+
+    public void setSocuoi(int socuoi) {
+        this.socuoi = socuoi;
+    }
+
+    public String getNgay() {
+        return ngay;
+    }
+
+    public void setNgay(String ngay) {
+        this.ngay = ngay;
+    }
+
+    public String getGio() {
+        return gio;
+    }
+
+    public void setGio(String gio) {
+        this.gio = gio;
+    }
 
     public int getDongia() {
         return dongia;
@@ -97,13 +104,4 @@ public class TienNuocModel {
     public void setSonuoc(int sonuoc) {
         this.sonuoc = sonuoc;
     }
-
-    public int getSodu() {
-        return sodu;
-    }
-
-    public void setSodu(int sodu) {
-        this.sodu = sodu;
-    }
-
 }
