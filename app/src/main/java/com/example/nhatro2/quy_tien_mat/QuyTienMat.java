@@ -14,7 +14,6 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.Html;
-import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.FrameLayout;
@@ -29,10 +28,9 @@ import com.example.nhatro2.api.ApiQH;
 import com.example.nhatro2.dong_tien.DongTien;
 import com.example.nhatro2.hop_dong.HopDong;
 import com.example.nhatro2.thanhvien.KhachTro;
-import com.example.nhatro2.tien_coc.TienCoc;
+import com.example.nhatro2.tien_coc.TienCocAdd;
 import com.google.android.material.navigation.NavigationView;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import retrofit2.Call;
@@ -121,7 +119,7 @@ public class QuyTienMat extends AppCompatActivity {
                         startActivity(khachTro);
                         return true;
                     case R.id.dat_coc:
-                        Intent datCoc = new Intent(QuyTienMat.this, TienCoc.class);
+                        Intent datCoc = new Intent(QuyTienMat.this, TienCocAdd.class);
                         startActivity(datCoc);
                         return true;
                     case R.id.thanh_toan:

@@ -5,6 +5,8 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.annotation.SuppressLint;
 import android.content.DialogInterface;
@@ -12,15 +14,11 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.Html;
-import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.EditText;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.RadioButton;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.nhatro2.HomeActivity;
@@ -30,10 +28,9 @@ import com.example.nhatro2.api.ApiQH;
 import com.example.nhatro2.dong_tien.DongTien;
 import com.example.nhatro2.hop_dong.HopDong;
 import com.example.nhatro2.thanhvien.KhachTro;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.navigation.NavigationView;
 
-import org.w3c.dom.Text;
+import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -41,16 +38,11 @@ import retrofit2.Response;
 
 public class TienCoc extends AppCompatActivity {
     LinearLayout idNguoiCoc;
-    ImageView thoat, logo, menuDanhMuc ;
+    ImageView thoat, logo, menuDanhMuc, addTienCoc;
     SharedPreferences shp;
-    FloatingActionButton fab;
     DrawerLayout mDrawerLayout;
-    TextView datCocButton;
-    EditText nguoiDongCocText, soDienThoaiNguoiCocText, idNguoiCocText, tienThanhToanText, ghiChuPhongCocText;
-    RadioButton tienMatDongCoc, chuyenKhoanDongCoc;
-    int checkTienCoc;
-    String tenKhachCocFinal, sdtKhachCocFinal, ghiChuCocFinal, tienThanhCocToanText;
-    @SuppressLint("MissingInflatedId")
+    RecyclerView listKhachCoc;
+    List<TienCocModel> listTienCoc;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -134,7 +126,7 @@ public class TienCoc extends AppCompatActivity {
                         startActivity(khachTro);
                         return true;
                     case R.id.dat_coc:
-                        Intent datCoc = new Intent(TienCoc.this, TienCoc.class);
+                        Intent datCoc = new Intent(TienCoc.this, TienCocAdd.class);
                         startActivity(datCoc);
                         return true;
                     case R.id.thanh_toan:
@@ -152,92 +144,31 @@ public class TienCoc extends AppCompatActivity {
             }
         });
 
-        FloatingActionButton fab = findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
+        listKhachCoc = findViewById(R.id.listKhachCoc);
+        listKhachCoc.setLayoutManager(new LinearLayoutManager(TienCoc.this));
+        listKhachCoc.hasFixedSize();
+        listKhachCoc.setNestedScrollingEnabled(false);
+
+        ApiQH.apiQH.listCoc().enqueue(new Callback<List<TienCocModel>>() {
             @Override
-            public void onClick(View view) {
-                BottomSheetChonKhachCoc chonKhachCoc = new BottomSheetChonKhachCoc();
-                chonKhachCoc.show(getSupportFragmentManager(), "ChonKhachCoc");
+            public void onResponse(Call<List<TienCocModel>> call, Response<List<TienCocModel>> response) {
+                listTienCoc = response.body();
+                listKhachCoc.setAdapter(new TienCocAdapter(TienCoc.this,listTienCoc));
+            }
+
+            @Override
+            public void onFailure(Call<List<TienCocModel>> call, Throwable t) {
+
             }
         });
 
-        SharedPreferences shpKhachCoc = getApplicationContext().getSharedPreferences("khachCocChon", MODE_PRIVATE);
-
-        String tenKhachCoc = shpKhachCoc.getString("tenKhach","");
-        String sdtKhachCoc = shpKhachCoc.getString("sdtKhach","");
-        int idKhachCoc = shpKhachCoc.getInt("idKhach",0);
-
-        idNguoiCocText = findViewById(R.id.idNguoiCocText);
-        nguoiDongCocText = findViewById(R.id.nguoiDongCocText);
-        soDienThoaiNguoiCocText = findViewById(R.id.soDienThoaiNguoiCocText);
-
-
-        tienThanhToanText = findViewById(R.id.tienThanhToanText);
-        ghiChuPhongCocText = findViewById(R.id.ghiChuPhongCocText);
-        tienMatDongCoc = findViewById(R.id.tienMatDongCoc);
-        chuyenKhoanDongCoc = findViewById(R.id.chuyenKhoanDongCoc);
-
-        nguoiDongCocText.setText(tenKhachCoc);
-        soDienThoaiNguoiCocText.setText(sdtKhachCoc);
-        idNguoiCocText.setText(""+idKhachCoc);
-
-        idNguoiCoc = findViewById(R.id.idNguoiCoc);
-        idNguoiCoc.setVisibility(View.GONE);
-
-        datCocButton = findViewById(R.id.datCocButton);
-        datCocButton.setOnClickListener(new View.OnClickListener() {
+        addTienCoc = findViewById(R.id.addTienCoc);
+        addTienCoc.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
-                shp = getApplicationContext().getSharedPreferences("user", MODE_PRIVATE);
-                int idThanhVien = shp.getInt("idThanhVien", 0);
-                tenKhachCocFinal =  nguoiDongCocText.getText().toString();
-                sdtKhachCocFinal =  soDienThoaiNguoiCocText.getText().toString();
-                ghiChuCocFinal =  ghiChuPhongCocText.getText().toString();
-                tienThanhCocToanText =  tienThanhToanText.getText().toString();
-                int tienThanhCocToanFinal = Integer.parseInt(tienThanhCocToanText);
-                if(tienMatDongCoc.isChecked()){
-                    checkTienCoc = 1;
-                }else if (chuyenKhoanDongCoc.isChecked()){
-                    checkTienCoc = 2;
-                }
-
-
-                ApiQH.apiQH.themCoc(idThanhVien,idKhachCoc,tenKhachCocFinal,sdtKhachCocFinal,tienThanhCocToanFinal,ghiChuCocFinal,checkTienCoc).enqueue(new Callback<TienCocModel>() {
-                    @Override
-                    public void onResponse(Call<TienCocModel> call, Response<TienCocModel> response) {
-                        TienCocModel tienCocAdd = response.body();
-                        Intent intent = new Intent(TienCoc.this,TienCoc.class);
-                        startActivity(intent);
-                        SharedPreferences shpKhachCoc = getApplicationContext().getSharedPreferences("khachCocChon", MODE_PRIVATE);
-                        SharedPreferences.Editor shpKhachCocEdit = shpKhachCoc.edit();
-                        shpKhachCocEdit.remove("tenKhach");
-                        shpKhachCocEdit.remove("sdtKhach");
-                        shpKhachCocEdit.remove("idKhach");
-                        shpKhachCocEdit.apply();
-                    }
-
-                    @Override
-                    public void onFailure(Call<TienCocModel> call, Throwable t) {
-                    }
-                });
+                Intent intent = new Intent(TienCoc.this,TienCocAdd.class);
+                startActivity(intent);
             }
         });
     }
-
-    // Back button
-    public void onBackPressed()
-    {
-        super.onBackPressed();
-        SharedPreferences shpKhachCoc = getApplicationContext().getSharedPreferences("khachCocChon", MODE_PRIVATE);
-        SharedPreferences.Editor shpKhachCocEdit = shpKhachCoc.edit();
-        shpKhachCocEdit.remove("tenKhach");
-        shpKhachCocEdit.remove("sdtKhach");
-        shpKhachCocEdit.remove("idKhach");
-        shpKhachCocEdit.apply();
-        Intent intent = new Intent(TienCoc.this, HomeActivity.class);
-        startActivity(intent);
-//        finish();
-    }
-
 }

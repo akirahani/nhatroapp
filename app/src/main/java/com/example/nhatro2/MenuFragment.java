@@ -24,7 +24,7 @@ import androidx.fragment.app.Fragment;
 import com.example.nhatro2.dong_tien.DongTien;
 import com.example.nhatro2.hop_dong.HopDong;
 import com.example.nhatro2.thanhvien.KhachTro;
-import com.example.nhatro2.tien_coc.TienCoc;
+import com.example.nhatro2.tien_coc.TienCocAdd;
 import com.google.android.material.navigation.NavigationView;
 
 public class MenuFragment extends Fragment {
@@ -112,7 +112,7 @@ public class MenuFragment extends Fragment {
                         startActivity(khachTro);
                         return true;
                     case R.id.dat_coc:
-                        Intent datCoc = new Intent(itemView.getContext(), TienCoc.class);
+                        Intent datCoc = new Intent(itemView.getContext(), TienCocAdd.class);
                         startActivity(datCoc);
                         return true;
                     case R.id.thanh_toan:

@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginLeft="14dp"
+    android:layout_marginTop="10dp"
+    android:layout_marginRight="14dp"
+    android:background="@color/cardThietBi"
+    app:cardCornerRadius="10dp">
+
+    <LinearLayout
+        android:id="@+id/checkCocItem"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="10dp">
+
+        <TextView
+            android:id="@+id/tenKhachCoc"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="left"
+            android:textColor="@color/black"
+            android:textStyle="normal" />
+
+        <TextView
+            android:id="@+id/tienCocDong"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:textColor="@color/black"
+            android:textStyle="normal" />
+
+
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center">
+            <ImageView
+                android:layout_marginLeft="25dp"
+                android:id="@+id/xuLyCoc"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                 />
+            <ImageView
+                android:layout_marginLeft="15dp"
+                android:layout_toRightOf="@id/xuLyCoc"
+                android:id="@+id/chiTietCoc"
+                android:src="@drawable/eye_solid"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                />
+        </RelativeLayout>
+    </LinearLayout>
+</androidx.cardview.widget.CardView>

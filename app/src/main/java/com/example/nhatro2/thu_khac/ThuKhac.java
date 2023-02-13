@@ -37,7 +37,7 @@ import com.example.nhatro2.api.ApiQH;
 import com.example.nhatro2.dong_tien.DongTien;
 import com.example.nhatro2.hop_dong.HopDong;
 import com.example.nhatro2.thanhvien.KhachTro;
-import com.example.nhatro2.tien_coc.TienCoc;
+import com.example.nhatro2.tien_coc.TienCocAdd;
 import com.google.android.material.navigation.NavigationView;
 import com.kal.rackmonthpicker.MonthType;
 import com.kal.rackmonthpicker.RackMonthPicker;
@@ -147,7 +147,7 @@ public class ThuKhac extends AppCompatActivity {
                         startActivity(khachTro);
                         return true;
                     case R.id.dat_coc:
-                        Intent datCoc = new Intent(ThuKhac.this, TienCoc.class);
+                        Intent datCoc = new Intent(ThuKhac.this, TienCocAdd.class);
                         startActivity(datCoc);
                         return true;
                     case R.id.thanh_toan:

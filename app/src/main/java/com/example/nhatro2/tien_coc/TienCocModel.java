@@ -2,6 +2,7 @@ package com.example.nhatro2.tien_coc;
 
 public class TienCocModel {
     private int chuphong;
+    private String tenchuphong;
     private String status;
     private String mes;
     private String tienformat;
@@ -13,8 +14,9 @@ public class TienCocModel {
     private int phuongthuc;
     private int daxuly;
 
-    public TienCocModel(int chuphong, String status, String mes, String tienformat, int last, int tien, String ngay, String gio, String ghichu, int phuongthuc, int daxuly) {
+    public TienCocModel(int chuphong, String tenchuphong, String status, String mes, String tienformat, int last, int tien, String ngay, String gio, String ghichu, int phuongthuc, int daxuly) {
         this.chuphong = chuphong;
+        this.tenchuphong = tenchuphong;
         this.status = status;
         this.mes = mes;
         this.tienformat = tienformat;
@@ -25,6 +27,14 @@ public class TienCocModel {
         this.ghichu = ghichu;
         this.phuongthuc = phuongthuc;
         this.daxuly = daxuly;
+    }
+
+    public String getTenchuphong() {
+        return tenchuphong;
+    }
+
+    public void setTenchuphong(String tenchuphong) {
+        this.tenchuphong = tenchuphong;
     }
 
     public int getChuphong() {
