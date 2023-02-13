@@ -1,4 +1,4 @@
-package com.example.nhatro2.tien_dien.tien_nuoc;
+package com.example.nhatro2.tien_nuoc;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;

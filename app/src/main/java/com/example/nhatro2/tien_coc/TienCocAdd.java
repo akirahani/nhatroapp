@@ -204,7 +204,7 @@ public class TienCocAdd extends AppCompatActivity {
                     @Override
                     public void onResponse(Call<TienCocModel> call, Response<TienCocModel> response) {
                         TienCocModel tienCocAdd = response.body();
-                        Intent intent = new Intent(TienCocAdd.this, TienCocAdd.class);
+                        Intent intent = new Intent(TienCocAdd.this, TienCoc.class);
                         startActivity(intent);
                         SharedPreferences shpKhachCoc = getApplicationContext().getSharedPreferences("khachCocChon", MODE_PRIVATE);
                         SharedPreferences.Editor shpKhachCocEdit = shpKhachCoc.edit();

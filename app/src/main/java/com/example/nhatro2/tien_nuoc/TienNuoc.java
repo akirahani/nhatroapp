@@ -1,4 +1,4 @@
-package com.example.nhatro2.tien_dien.tien_nuoc;
+package com.example.nhatro2.tien_nuoc;
 
 import android.annotation.SuppressLint;
 import android.app.DatePickerDialog;
@@ -177,7 +177,7 @@ public class TienNuoc extends AppCompatActivity {
 
                                                     @Override
                                                     public void onFailure(Call<TienNuocModel> call, Throwable t) {
-                                                        Log.d("err",""+t.toString());
+
                                                     }
                                                 });
                                             }

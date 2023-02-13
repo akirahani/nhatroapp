@@ -15,7 +15,7 @@
         android:background="@drawable/back_title_search_customer"
         android:gravity="center"
         android:padding="12dp"
-        android:text="Chi tiết khoản thu khác"
+        android:text="Chi tiết đóng cọc"
         android:textColor="@color/white"
         android:textSize="16sp"
         android:textStyle="bold" />
@@ -32,17 +32,19 @@
             android:layout_width="0dp"
             android:layout_weight="2"
             android:layout_height="wrap_content"
-            android:text="Tên phòng: "
+            android:text="Tên khách: "
             android:textColor="@color/black"
             android:textSize="16sp"
             android:textStyle="bold" />
 
-        <EditText
-            android:id="@+id/phongThuKhacDetailDialog"
+        <TextView
+            android:layout_gravity="center"
+            android:id="@+id/tenKhachDetailDialog"
             android:layout_width="0dp"
             android:layout_weight="5"
             android:layout_height="35dp"
             android:background="@null"
+            android:textColor="@color/black"
             android:paddingLeft="12dp"
             android:textSize="16sp" />
     </LinearLayout>
@@ -57,19 +59,21 @@
 
         <TextView
             android:layout_height="wrap_content"
-            android:text="Lý do: "
+            android:text="Tiền cọc: "
             android:layout_width="0dp"
             android:layout_weight="2"
             android:textColor="@color/black"
             android:textSize="16sp"
             android:textStyle="bold" />
 
-        <EditText
-            android:id="@+id/lyDoThuKhacDetailText"
+        <TextView
+            android:layout_gravity="center"
+            android:id="@+id/tienCocDetailText"
             android:layout_width="0dp"
             android:layout_weight="5"
             android:layout_height="35dp"
             android:background="@null"
+            android:textColor="@color/black"
             android:paddingLeft="15dp"
             android:singleLine="true"
             android:textSize="16sp" />
@@ -84,22 +88,23 @@
         android:orientation="horizontal">
 
         <TextView
-            android:layout_gravity="center"
             android:layout_width="0dp"
             android:layout_weight="2"
             android:layout_height="wrap_content"
-            android:text="Tiền: "
+            android:text="Ngày cọc: "
             android:textSize="16sp"
             android:textColor="@color/black"
             android:textStyle="bold" />
 
-        <EditText
-            android:id="@+id/tienThuKhacDetailText"
+        <TextView
+            android:layout_gravity="center"
+            android:id="@+id/thoiGianCocDetailText"
             android:layout_width="0dp"
             android:layout_weight="5"
             android:layout_height="35dp"
             android:background="@null"
-            android:inputType="number"
+            android:textColor="@color/black"
+            android:inputType="datetime"
             android:paddingLeft="15dp"
             android:singleLine="true"
             android:textSize="16sp" />
@@ -114,21 +119,21 @@
         android:orientation="horizontal">
 
         <TextView
-            android:layout_gravity="center"
             android:layout_width="0dp"
             android:layout_weight="2"
             android:layout_height="wrap_content"
-            android:text="Thời gian: "
+            android:text="Trạng thái: "
             android:textSize="16sp"
             android:textColor="@color/black"
             android:textStyle="bold" />
 
-        <EditText
+        <TextView
             android:layout_gravity="center"
-            android:id="@+id/timeThuKhacDetailText"
+            android:id="@+id/trangThaiCocDetailText"
             android:layout_width="0dp"
             android:layout_weight="5"
             android:layout_height="35dp"
+            android:textColor="@color/black"
             android:inputType="datetime"
             android:paddingLeft="15dp"
             android:singleLine="true"
