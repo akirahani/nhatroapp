@@ -28,6 +28,7 @@
             android:layout_weight="1"
             android:gravity="center"
             android:singleLine="true"
+            android:inputType="number"
             android:background="@null"
             android:textColor="@color/black" />
 
@@ -39,6 +40,7 @@
             android:layout_weight="1"
             android:gravity="center"
             android:singleLine="true"
+            android:inputType="number"
             android:background="@null"
             android:textColor="@color/black" />
 

@@ -292,15 +292,15 @@
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:orientation="vertical"
-                                    android:paddingLeft="14dp"
                                     android:paddingTop="10dp">
 
                                      <RelativeLayout
+                                         android:paddingLeft="14dp"
+                                         android:paddingRight="14dp"
                                         android:id="@+id/rowThuKhac"
                                         android:layout_width="match_parent"
                                         android:layout_height="wrap_content"
-                                        android:layout_marginBottom="10dp"
-                                        android:gravity="center">
+                                        android:layout_marginBottom="10dp">
 
                                         <ImageView
                                             android:id="@+id/imageThuKhac"
@@ -318,13 +318,18 @@
                                             android:text="Thu khác" />
                                     </RelativeLayout>
 
+                                    <View android:layout_width="match_parent"
+                                        android:layout_height="1dip"
+                                        android:background="@color/khungNgoai" />
 
                                     <RelativeLayout
+                                        android:layout_marginTop="10dp"
+                                        android:paddingLeft="14dp"
+                                        android:paddingRight="14dp"
                                         android:id="@+id/rowElectric"
                                         android:layout_width="match_parent"
                                         android:layout_height="wrap_content"
-                                        android:layout_marginBottom="10dp"
-                                        android:gravity="center">
+                                        android:layout_marginBottom="10dp">
 
                                         <ImageView
                                             android:id="@+id/imageElectric"
@@ -342,12 +347,18 @@
                                             android:text="Tiền điện" />
                                     </RelativeLayout>
 
+                                    <View android:layout_width="match_parent"
+                                        android:layout_height="1dip"
+                                        android:background="@color/khungNgoai" />
+
                                     <RelativeLayout
                                         android:id="@+id/rowWater"
+                                        android:layout_marginTop="10dp"
+                                        android:paddingLeft="14dp"
+                                        android:paddingRight="14dp"
                                         android:layout_width="match_parent"
                                         android:layout_height="wrap_content"
-                                        android:layout_marginBottom="10dp"
-                                        android:gravity="center">
+                                        android:layout_marginBottom="10dp">
 
                                         <ImageView
                                             android:id="@+id/imageWater"
@@ -419,11 +430,13 @@
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:orientation="vertical"
-                                    android:paddingLeft="14dp"
+
                                     android:paddingTop="10dp">
                                     <!-- Bất biến-->
                                     <RelativeLayout
                                         android:id="@+id/rowBatBien"
+                                        android:paddingLeft="14dp"
+                                        android:paddingRight="14dp"
                                         android:layout_width="match_parent"
                                         android:layout_height="wrap_content"
                                         android:layout_marginBottom="10dp"
@@ -445,8 +458,15 @@
                                             android:text="Chi phí bất biến" />
                                     </RelativeLayout>
 
+                                    <View android:layout_width="match_parent"
+                                        android:layout_height="1dip"
+                                        android:background="@color/khungNgoai" />
+
                                     <RelativeLayout
                                         android:id="@+id/rowKhaBien"
+                                        android:layout_marginTop="10dp"
+                                        android:paddingLeft="14dp"
+                                        android:paddingRight="14dp"
                                         android:layout_width="match_parent"
                                         android:layout_height="wrap_content"
                                         android:layout_marginBottom="10dp"

@@ -69,10 +69,10 @@ public class MenuFragment extends Fragment {
                 builder.setCancelable(true);
                 builder.setIcon(R.drawable.alert_bottom);
                 //check
-                builder.setPositiveButton(Html.fromHtml("<font color='#71a6d5'>Yes</font>"), new DialogInterface.OnClickListener() {
+                builder.setPositiveButton(Html.fromHtml("<font color='#71a6d5'>Có</font>"), new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
-                        Toast.makeText(itemView.getContext(), "Out", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(itemView.getContext(), "Thoát", Toast.LENGTH_SHORT).show();
                         Intent intent = new Intent(itemView.getContext(), MainActivity.class);
                         startActivity(intent);
                         SharedPreferences shp = itemView.getContext().getSharedPreferences("user", MODE_PRIVATE);
@@ -81,9 +81,9 @@ public class MenuFragment extends Fragment {
                     }
                 });
                 // NO
-                builder.setNegativeButton(Html.fromHtml("<font color='#71a6d5'>No</font>"), new DialogInterface.OnClickListener() {
+                builder.setNegativeButton(Html.fromHtml("<font color='#71a6d5'>Không</font>"), new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
-                        Toast.makeText(itemView.getContext(), "Stay", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(itemView.getContext(), "Ở lại", Toast.LENGTH_SHORT).show();
                         //  Cancel
                         dialog.cancel();
                     }

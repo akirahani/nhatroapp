@@ -18,6 +18,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -26,6 +27,7 @@ import com.example.nhatro2.HomeActivity;
 import com.example.nhatro2.MainActivity;
 import com.example.nhatro2.R;
 import com.example.nhatro2.api.ApiQH;
+import com.example.nhatro2.bat_bien.BatBien;
 import com.example.nhatro2.dong_tien.DongTien;
 import com.example.nhatro2.hop_dong.HopDong;
 import com.example.nhatro2.thanhvien.KhachTro;
@@ -41,6 +43,7 @@ import retrofit2.Response;
 public class DichVu extends AppCompatActivity {
     ImageView thoat, them, logo, imageDichVu, menuDanhMuc;
     SharedPreferences shp;
+    LinearLayout quayLai;
     RelativeLayout tieuDeDichVu;
     RecyclerView listThietBi;
     TextView tenThietBi, giaThietBi, tacVu;
@@ -63,37 +66,11 @@ public class DichVu extends AppCompatActivity {
             }
         });
         // Nút thoát
-        thoat = findViewById(R.id.thoat);
-        thoat.setOnClickListener(new View.OnClickListener() {
+        quayLai = findViewById(R.id.quayLai);
+        quayLai.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                AlertDialog.Builder builder = new AlertDialog.Builder(DichVu.this);
-                builder.setTitle(Html.fromHtml("<font color='#71a6d5'>Thông báo!</font>")).setMessage(Html.fromHtml("<font color='#71a6d5'>Bạn có thực sự muốn thoát ?</font>"));
-                builder.setCancelable(true);
-                builder.setIcon(R.drawable.alert_bottom);
-                //check
-                builder.setPositiveButton(Html.fromHtml("<font color='#71a6d5'>Yes</font>"), new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {
-                        Toast.makeText(DichVu.this, "Out", Toast.LENGTH_SHORT).show();
-                        Intent intent = new Intent(DichVu.this, MainActivity.class);
-                        startActivity(intent);
-                        shp = view.getContext().getSharedPreferences("user", MODE_PRIVATE);
-                        shp.edit().clear().commit();
-//                        view.getContext();
-                    }
-                });
-                // NO
-                builder.setNegativeButton(Html.fromHtml("<font color='#71a6d5'>No</font>"), new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int id) {
-                        Toast.makeText(DichVu.this, "Stay", Toast.LENGTH_SHORT).show();
-                        //  Cancel
-                        dialog.cancel();
-                    }
-                });
-                // show alert
-                AlertDialog alert = builder.create();
-                alert.show();
+                DichVu.super.onBackPressed();
             }
         });
 
