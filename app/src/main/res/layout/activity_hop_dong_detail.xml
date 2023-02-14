@@ -20,7 +20,7 @@
                 android:layout_height="wrap_content">
 
                 <LinearLayout
-                    android:id="@+id/rightToolbar"
+                    android:id="@+id/quayLai"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentLeft="true"
@@ -28,10 +28,11 @@
 
                     <ImageView
                         android:id="@+id/thoat"
+                        android:layout_gravity="center"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:background="@drawable/ic_back"
-                        android:backgroundTint="@color/white" />
+                        android:background="@drawable/quaylaitrang"
+                        android:backgroundTint="@color/white"></ImageView>
 
                     <TextView
                         android:id="@+id/ten"
@@ -39,8 +40,8 @@
                         android:layout_height="wrap_content"
                         android:layout_toRightOf="@+id/thoat"
                         android:paddingLeft="5dp"
-                        android:text="Thoát"
-                        android:textColor="@color/white" />
+                        android:text="Quay lại"
+                        android:textColor="@color/white"></TextView>
                 </LinearLayout>
 
                 <LinearLayout
@@ -126,10 +127,11 @@
             android:background="@color/khungNgoai"
             android:layout_below="@+id/tieuDeHopDong">
             <TextView
+                android:id="@+id/titleChiTietHD"
                 android:layout_width="173dp"
                 android:layout_height="33dp"
+                android:textStyle="bold"
                 android:background="@drawable/title_card"
-                android:backgroundTint="@color/tabActive"
                 android:gravity="center"
                 android:paddingLeft="23dp"
                 android:paddingTop="8dp"
@@ -170,7 +172,6 @@
                     android:paddingBottom="11dp"
                     android:gravity="center"
                     android:textSize="14sp"
-                    android:textColor="@color/black"
                     android:textStyle="bold" />
                 <androidx.cardview.widget.CardView
                     android:layout_width="match_parent"
@@ -183,9 +184,9 @@
                     app:cardCornerRadius="10dp">
 
                     <LinearLayout
+                        android:id="@+id/infoListNguoiThue"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:background="@color/cardThietBi"
                         android:orientation="vertical">
 
                         <TextView
@@ -436,7 +437,6 @@
                         android:id="@+id/khungThietBiHopDong"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:background="@color/cardThietBi"
                         android:paddingBottom="10dp"
                         android:orientation="vertical">
 
@@ -473,9 +473,9 @@
                     app:cardCornerRadius="10dp">
 
                     <LinearLayout
+                        android:id="@+id/infoHieuLuc"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:background="@color/cardThietBi"
                         android:orientation="vertical">
 
                         <TextView

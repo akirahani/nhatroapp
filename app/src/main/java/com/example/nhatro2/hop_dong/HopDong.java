@@ -18,11 +18,14 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import com.example.nhatro2.HomeActivity;
 import com.example.nhatro2.MainActivity;
 import com.example.nhatro2.R;
+import com.example.nhatro2.dich_vu.DichVu;
+import com.example.nhatro2.dich_vu.DichVuEdit;
 import com.example.nhatro2.dong_tien.DongTien;
 import com.example.nhatro2.thanhvien.KhachTro;
 import com.example.nhatro2.tien_coc.TienCocAdd;
@@ -33,10 +36,12 @@ import com.google.android.material.tabs.TabLayoutMediator;
 public class HopDong extends AppCompatActivity {
     ImageView thoat, logo, themNguoiThue, menuDanhMuc;
     SharedPreferences shp;
+    LinearLayout quayLai;
     SharedPreferences.Editor shpKhachEdit;
     TabLayout tabRoomHopDong;
     ViewPager2 tabContentViewRoomHopDong;
     DrawerLayout mDrawerLayout;
+    @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -56,40 +61,13 @@ public class HopDong extends AppCompatActivity {
             }
         });
         // Nút thoát
-        thoat = findViewById(R.id.thoat);
-        thoat.setOnClickListener(new View.OnClickListener() {
+        quayLai = findViewById(R.id.quayLai);
+        quayLai.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                AlertDialog.Builder builder = new AlertDialog.Builder(HopDong.this);
-                builder.setTitle(Html.fromHtml("<font color='#71a6d5'>Thông báo!</font>")).setMessage(Html.fromHtml("<font color='#71a6d5'>Bạn có thực sự muốn thoát ?</font>"));
-                builder.setCancelable(true);
-                builder.setIcon(R.drawable.alert_bottom);
-                //check
-                builder.setPositiveButton(Html.fromHtml("<font color='#71a6d5'>Yes</font>"), new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {
-                        Toast.makeText(HopDong.this, "Out", Toast.LENGTH_SHORT).show();
-                        Intent intent = new Intent(HopDong.this, MainActivity.class);
-                        startActivity(intent);
-                        shp = view.getContext().getSharedPreferences("user", MODE_PRIVATE);
-                        shp.edit().clear().commit();
-//                        view.getContext();
-                    }
-                });
-                // NO
-                builder.setNegativeButton(Html.fromHtml("<font color='#71a6d5'>No</font>"), new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int id) {
-                        Toast.makeText(HopDong.this, "Stay", Toast.LENGTH_SHORT).show();
-                        //  Cancel
-                        dialog.cancel();
-                    }
-                });
-                // show alert
-                AlertDialog alert = builder.create();
-                alert.show();
+                HopDong.super.onBackPressed();
             }
         });
-
         //tab room
         tabRoomHopDong = findViewById(R.id.tabRoomHopDong);
         tabContentViewRoomHopDong = findViewById(R.id.tabContentViewRoomHopDong);

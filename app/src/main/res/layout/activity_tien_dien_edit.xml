@@ -22,7 +22,7 @@
                 android:layout_height="wrap_content">
 
                 <LinearLayout
-                    android:id="@+id/rightToolbar"
+                    android:id="@+id/quayLai"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentLeft="true"
@@ -30,10 +30,11 @@
 
                     <ImageView
                         android:id="@+id/thoat"
+                        android:layout_gravity="center"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:background="@drawable/ic_back"
-                        android:backgroundTint="@color/white"></ImageView>
+                        android:background="@drawable/quaylaitrang"
+                        android:backgroundTint="@color/white" />
 
                     <TextView
                         android:id="@+id/ten"
@@ -41,8 +42,8 @@
                         android:layout_height="wrap_content"
                         android:layout_toRightOf="@+id/thoat"
                         android:paddingLeft="5dp"
-                        android:text="Thoát"
-                        android:textColor="@color/white"></TextView>
+                        android:text="Quay lại"
+                        android:textColor="@color/white" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -228,6 +229,7 @@
                         android:layout_toRightOf="@+id/titleSoDau"
                         android:background="@null"
                         android:paddingLeft="10dp"
+                        android:inputType="number"
                         android:singleLine="true"
                         android:textSize="14sp" />
                 </RelativeLayout>
@@ -268,6 +270,7 @@
                         android:layout_toRightOf="@+id/titleSoCuoi"
                         android:background="@null"
                         android:paddingLeft="10dp"
+                        android:inputType="number"
                         android:singleLine="true"
                         android:textSize="14sp" />
                 </RelativeLayout>
@@ -308,6 +311,7 @@
                         android:layout_toRightOf="@+id/titleDienDung"
                         android:background="@null"
                         android:paddingLeft="10dp"
+                        android:inputType="number"
                         android:singleLine="true"
                         android:textSize="14sp" />
                 </RelativeLayout>

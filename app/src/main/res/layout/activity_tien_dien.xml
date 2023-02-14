@@ -22,7 +22,7 @@
                 android:layout_height="wrap_content">
 
                 <LinearLayout
-                    android:id="@+id/rightToolbar"
+                    android:id="@+id/quayLai"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentLeft="true"
@@ -30,9 +30,10 @@
 
                     <ImageView
                         android:id="@+id/thoat"
+                        android:layout_gravity="center"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:background="@drawable/ic_back"
+                        android:background="@drawable/quaylaitrang"
                         android:backgroundTint="@color/white" />
 
                     <TextView
@@ -41,7 +42,7 @@
                         android:layout_height="wrap_content"
                         android:layout_toRightOf="@+id/thoat"
                         android:paddingLeft="5dp"
-                        android:text="Thoát"
+                        android:text="Quay lại"
                         android:textColor="@color/white" />
                 </LinearLayout>
 

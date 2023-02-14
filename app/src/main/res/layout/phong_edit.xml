@@ -24,7 +24,7 @@
                 android:layout_height="wrap_content">
 
                 <LinearLayout
-                    android:id="@+id/rightToolbar"
+                    android:id="@+id/quayLai"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentLeft="true"
@@ -34,8 +34,9 @@
                         android:id="@+id/thoat"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:background="@drawable/ic_back"
-                        android:backgroundTint="@color/white"></ImageView>
+                        android:layout_gravity="center"
+                        android:background="@drawable/quaylaitrang"
+                        android:backgroundTint="@color/white" />
 
                     <TextView
                         android:id="@+id/ten"
@@ -43,8 +44,8 @@
                         android:layout_height="wrap_content"
                         android:layout_toRightOf="@+id/thoat"
                         android:paddingLeft="5dp"
-                        android:text="Thoát"
-                        android:textColor="@color/white"></TextView>
+                        android:text="Quay lại"
+                        android:textColor="@color/white" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -416,6 +417,7 @@
 
         </androidx.cardview.widget.CardView>
     </RelativeLayout>
+
     <com.google.android.material.navigation.NavigationView
         android:id="@+id/nav_view"
         android:layout_width="wrap_content"

@@ -3,6 +3,7 @@ package com.example.nhatro2.hop_dong;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.recyclerview.widget.GridLayoutManager;
@@ -13,8 +14,10 @@ import android.annotation.SuppressLint;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.text.Html;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
@@ -28,6 +31,8 @@ import com.example.nhatro2.HomeActivity;
 import com.example.nhatro2.MainActivity;
 import com.example.nhatro2.R;
 import com.example.nhatro2.api.ApiQH;
+import com.example.nhatro2.dich_vu.DichVu;
+import com.example.nhatro2.dich_vu.DichVuEdit;
 import com.example.nhatro2.dich_vu.DichVuModel;
 import com.example.nhatro2.dong_tien.DongTien;
 import com.example.nhatro2.thanhvien.KhachTro;
@@ -44,14 +49,15 @@ import retrofit2.Response;
 public class HopDongDetail extends AppCompatActivity {
     ImageView thoat, logo, themNguoiThue ,menuDanhMuc;
     SharedPreferences shp;
+    LinearLayout quayLai;
     SharedPreferences.Editor shpKhachEdit;
-    TextView maHopDongRoomDetail, ngayBatDauDetail, ngayKetThucDetail;
+    TextView maHopDongRoomDetail, ngayBatDauDetail, ngayKetThucDetail, titleChiTietHD;
     EditText tenDaiDienTextDetail;
     RecyclerView listKhachDetail, thietBiListDetail;
-    LinearLayout khungThietBiHopDong;
+    LinearLayout khungThietBiHopDong, infoListNguoiThue, infoHieuLuc;
     DrawerLayout mDrawerLayout;
 
-    @SuppressLint({"WrongViewCast", "MissingInflatedId"})
+    @SuppressLint({"WrongViewCast", "MissingInflatedId", "ResourceAsColor"})
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -70,40 +76,13 @@ public class HopDongDetail extends AppCompatActivity {
             }
         });
         // Nút thoát
-        thoat = findViewById(R.id.thoat);
-        thoat.setOnClickListener(new View.OnClickListener() {
+        quayLai = findViewById(R.id.quayLai);
+        quayLai.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                AlertDialog.Builder builder = new AlertDialog.Builder(HopDongDetail.this);
-                builder.setTitle(Html.fromHtml("<font color='#71a6d5'>Thông báo!</font>")).setMessage(Html.fromHtml("<font color='#71a6d5'>Bạn có thực sự muốn thoát ?</font>"));
-                builder.setCancelable(true);
-                builder.setIcon(R.drawable.alert_bottom);
-                //check
-                builder.setPositiveButton(Html.fromHtml("<font color='#71a6d5'>Yes</font>"), new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {
-                        Toast.makeText(HopDongDetail.this, "Out", Toast.LENGTH_SHORT).show();
-                        Intent intent = new Intent(HopDongDetail.this, MainActivity.class);
-                        startActivity(intent);
-                        shp = view.getContext().getSharedPreferences("user", MODE_PRIVATE);
-                        shp.edit().clear().commit();
-//                        view.getContext();
-                    }
-                });
-                // NO
-                builder.setNegativeButton(Html.fromHtml("<font color='#71a6d5'>No</font>"), new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int id) {
-                        Toast.makeText(HopDongDetail.this, "Stay", Toast.LENGTH_SHORT).show();
-                        //  Cancel
-                        dialog.cancel();
-                    }
-                });
-                // show alert
-                AlertDialog alert = builder.create();
-                alert.show();
+                HopDongDetail.super.onBackPressed();
             }
         });
-
         // Xét ví trí tương đối
         @SuppressLint("WrongViewCast")
         FrameLayout imageFrame = findViewById(R.id.imageHopDongDetail);
@@ -120,6 +99,7 @@ public class HopDongDetail extends AppCompatActivity {
         String khachThue = bundle.getString("khachthue");
         String tenPhong = bundle.getString("phong");
         int idHopDong = bundle.getInt("idHopDong");
+        int trangthaiHD = bundle.getInt("trangthai");
         String ketthuc = bundle.getString("ketthuc");
         String batdau = bundle.getString("batdau");
         String chuphong = bundle.getString("chuphong");
@@ -159,6 +139,23 @@ public class HopDongDetail extends AppCompatActivity {
             }
         });
         khungThietBiHopDong = findViewById(R.id.khungThietBiHopDong);
+        infoListNguoiThue = findViewById(R.id.infoListNguoiThue);
+        infoHieuLuc = findViewById(R.id.infoHieuLuc);
+        titleChiTietHD = findViewById(R.id.titleChiTietHD);
+        if(trangthaiHD == 1){
+            maHopDongRoomDetail.setTextColor(Color.parseColor("#1338BD"));
+            titleChiTietHD.setBackgroundTintList(ContextCompat.getColorStateList(HopDongDetail.this, R.color.tabActive));
+            infoListNguoiThue.setBackgroundColor(Color.parseColor("#E8EDFF"));
+            infoHieuLuc.setBackgroundColor(Color.parseColor("#E8EDFF"));
+            khungThietBiHopDong.setBackgroundColor(Color.parseColor("#E8EDFF"));
+        }else{
+//            titleChiTietHD.setBackgroundColor(Color.parseColor("#ff3232"));
+            titleChiTietHD.setBackgroundTintList(ContextCompat.getColorStateList(HopDongDetail.this, R.color.tabThue));
+            maHopDongRoomDetail.setTextColor(Color.parseColor("#B71616"));
+            khungThietBiHopDong.setBackgroundColor(Color.parseColor("#FFEFEF"));
+            infoListNguoiThue.setBackgroundColor(Color.parseColor("#FFEFEF"));
+            infoHieuLuc.setBackgroundColor(Color.parseColor("#FFEFEF"));
+        }
 
         if(thietbi == null){
             khungThietBiHopDong.setVisibility(View.GONE);
@@ -177,6 +174,7 @@ public class HopDongDetail extends AppCompatActivity {
             }
         });
 
+        // slide danh muc
         menuDanhMuc = findViewById(R.id.menuDanhMuc);
         mDrawerLayout = findViewById(R.id.drawer_layout_hop_dong_detail);
 
