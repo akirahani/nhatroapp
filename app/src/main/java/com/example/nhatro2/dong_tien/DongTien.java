@@ -31,6 +31,8 @@ import com.example.nhatro2.HomeActivity;
 import com.example.nhatro2.MainActivity;
 import com.example.nhatro2.R;
 import com.example.nhatro2.api.ApiQH;
+import com.example.nhatro2.dich_vu.DichVu;
+import com.example.nhatro2.dich_vu.DichVuEdit;
 import com.example.nhatro2.dich_vu.DichVuModel;
 import com.example.nhatro2.hop_dong.HopDong;
 import com.example.nhatro2.thanhvien.KhachTro;
@@ -45,12 +47,12 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class DongTien extends AppCompatActivity {
-    ImageView logo, thoat, timInfoPhongChiTiet,menuDanhMuc;
+    ImageView logo,timInfoPhongChiTiet,menuDanhMuc;
     SharedPreferences shp;
     TextView nameRoomSearch, tienPhongCanTra, tenNopPhong, tienCocDaTra, tienCocCanTra, tenchuphong,dienthoaichuphong, soDienSuDungText, soNuocSuDungText, tienNuocPhaiThu, tienNuocDaThu, tienDienPhaiThu, tienDienDaThu, phaiTraTien ;
     RecyclerView listThietBiSuDung, listThanhVienPhong, lichSuThuTienPhong;
     SharedPreferences.Editor shpKhachEdit;
-    LinearLayout thongTinChungDongTien, dongTienPhongText, khungLichSuDongTien;
+    LinearLayout thongTinChungDongTien, dongTienPhongText, khungLichSuDongTien, quayLai;
     RadioGroup hinhThucDongTien;
     EditText tienThanhToanText;
     ImageView thanhToanTienButton;
@@ -77,37 +79,11 @@ public class DongTien extends AppCompatActivity {
             }
         });
         // Nút thoát
-        thoat = findViewById(R.id.thoat);
-        thoat.setOnClickListener(new View.OnClickListener() {
+        quayLai = findViewById(R.id.quayLai);
+        quayLai.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                AlertDialog.Builder builder = new AlertDialog.Builder(DongTien.this);
-                builder.setTitle(Html.fromHtml("<font color='#71a6d5'>Thông báo!</font>")).setMessage(Html.fromHtml("<font color='#71a6d5'>Bạn có thực sự muốn thoát ?</font>"));
-                builder.setCancelable(true);
-                builder.setIcon(R.drawable.alert_bottom);
-                //check
-                builder.setPositiveButton(Html.fromHtml("<font color='#71a6d5'>Yes</font>"), new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {
-                        Toast.makeText(DongTien.this, "Out", Toast.LENGTH_SHORT).show();
-                        Intent intent = new Intent(DongTien.this, MainActivity.class);
-                        startActivity(intent);
-                        shp = view.getContext().getSharedPreferences("user", MODE_PRIVATE);
-                        shp.edit().clear().commit();
-//                        view.getContext();
-                    }
-                });
-                // NO
-                builder.setNegativeButton(Html.fromHtml("<font color='#71a6d5'>No</font>"), new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int id) {
-                        Toast.makeText(DongTien.this, "Stay", Toast.LENGTH_SHORT).show();
-                        //  Cancel
-                        dialog.cancel();
-                    }
-                });
-                // show alert
-                AlertDialog alert = builder.create();
-                alert.show();
+                DongTien.super.onBackPressed();
             }
         });
 

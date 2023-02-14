@@ -25,6 +25,7 @@ import android.view.WindowManager;
 import android.widget.EditText;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -37,6 +38,7 @@ import com.example.nhatro2.dong_tien.DongTien;
 import com.example.nhatro2.hop_dong.HopDong;
 import com.example.nhatro2.thanhvien.KhachTro;
 import com.example.nhatro2.tien_coc.TienCocAdd;
+import com.example.nhatro2.tien_nuoc.TienNuocEdit;
 import com.google.android.material.navigation.NavigationView;
 
 import java.util.ArrayList;
@@ -47,7 +49,7 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class UuDai extends AppCompatActivity {
-    ImageView thoat, logo, menuDanhMuc, addUuDai;
+    ImageView  logo, menuDanhMuc, addUuDai;
     SharedPreferences shp;
     List<UuDaiModel> listUuDaiGet = new ArrayList<>();
     DrawerLayout mDrawerLayout;
@@ -57,6 +59,7 @@ public class UuDai extends AppCompatActivity {
     RadioButton apDungCheck, khongApDungCheck, khongApDungEdit, coApDungEdit, apDungUpdateCheck, khongApDungUpdateCheck;
     int hinhThucApDung, hinhThucApDungEdit;
     String tenUuDaiText,soNgayApDungText, tenUuDaiEditUpdate, soNgayApDungUpdate;
+    LinearLayout quayLai;
     @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -71,38 +74,12 @@ public class UuDai extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-        // Nút thoát
-        thoat = findViewById(R.id.thoat);
-        thoat.setOnClickListener(new View.OnClickListener() {
+
+        quayLai = findViewById(R.id.quayLai);
+        quayLai.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                AlertDialog.Builder builder = new AlertDialog.Builder(UuDai.this);
-                builder.setTitle(Html.fromHtml("<font color='#71a6d5'>Thông báo!</font>")).setMessage(Html.fromHtml("<font color='#71a6d5'>Bạn có thực sự muốn thoát ?</font>"));
-                builder.setCancelable(true);
-                builder.setIcon(R.drawable.alert_bottom);
-                //check
-                builder.setPositiveButton(Html.fromHtml("<font color='#71a6d5'>Yes</font>"), new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {
-                        Toast.makeText(UuDai.this, "Out", Toast.LENGTH_SHORT).show();
-                        Intent intent = new Intent(UuDai.this, MainActivity.class);
-                        startActivity(intent);
-                        shp = view.getContext().getSharedPreferences("user", MODE_PRIVATE);
-                        shp.edit().clear().commit();
-//                        view.getContext();
-                    }
-                });
-                // NO
-                builder.setNegativeButton(Html.fromHtml("<font color='#71a6d5'>No</font>"), new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int id) {
-                        Toast.makeText(UuDai.this, "Stay", Toast.LENGTH_SHORT).show();
-                        //  Cancel
-                        dialog.cancel();
-                    }
-                });
-                // show alert
-                AlertDialog alert = builder.create();
-                alert.show();
+                UuDai.super.onBackPressed();
             }
         });
 

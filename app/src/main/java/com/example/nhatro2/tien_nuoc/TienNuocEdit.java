@@ -21,6 +21,7 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -41,12 +42,13 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class TienNuocEdit extends AppCompatActivity {
-    ImageView thoat, logo, closePhongNuocEdit, menuDanhMuc;
+    ImageView logo, closePhongNuocEdit, menuDanhMuc;
     SharedPreferences shp;
     TextView tenPhongNuocEdit, daiDienPhongNuoc, infoTimePhongNuoc, tieuDeLichSuDungNuoc, btnUpdateWater;
     EditText soDauNuoc, soCuoiNuoc, soNuocSuDung, tienNuocSuDung, ngayDo;
     RecyclerView listWaterNumberUsed;
     DrawerLayout mDrawerLayout;
+    LinearLayout quayLai;
     @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,38 +63,12 @@ public class TienNuocEdit extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-        // Nút thoát
-        thoat = findViewById(R.id.thoat);
-        thoat.setOnClickListener(new View.OnClickListener() {
+
+        quayLai = findViewById(R.id.quayLai);
+        quayLai.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                AlertDialog.Builder builder = new AlertDialog.Builder(TienNuocEdit.this);
-                builder.setTitle(Html.fromHtml("<font color='#71a6d5'>Thông báo!</font>")).setMessage(Html.fromHtml("<font color='#71a6d5'>Bạn có thực sự muốn thoát ?</font>"));
-                builder.setCancelable(true);
-                builder.setIcon(R.drawable.alert_bottom);
-                //check
-                builder.setPositiveButton(Html.fromHtml("<font color='#71a6d5'>Yes</font>"), new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {
-                        Toast.makeText(TienNuocEdit.this, "Out", Toast.LENGTH_SHORT).show();
-                        Intent intent = new Intent(TienNuocEdit.this, MainActivity.class);
-                        startActivity(intent);
-                        shp = view.getContext().getSharedPreferences("user", MODE_PRIVATE);
-                        shp.edit().clear().commit();
-//                        view.getContext();
-                    }
-                });
-                // NO
-                builder.setNegativeButton(Html.fromHtml("<font color='#71a6d5'>No</font>"), new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int id) {
-                        Toast.makeText(TienNuocEdit.this, "Stay", Toast.LENGTH_SHORT).show();
-                        //  Cancel
-                        dialog.cancel();
-                    }
-                });
-                // show alert
-                AlertDialog alert = builder.create();
-                alert.show();
+                TienNuocEdit.super.onBackPressed();
             }
         });
 
@@ -178,17 +154,25 @@ public class TienNuocEdit extends AppCompatActivity {
 
                 shp = view.getContext().getSharedPreferences("user", MODE_PRIVATE);
                 int idThanhVienQuanLy = shp.getInt("idThanhVien",0);
+
+//                Log.d("thanh vien",""+idThanhVienQuanLy);
+//                Log.d("phong",""+phong);
+//                Log.d("thang",""+thang);
+//                Log.d("nam",""+nam);
+//                Log.d("so dau",""+soDauFormat);
+//                Log.d("so cuoi",""+soCuoiFormat);
                 ApiQH.apiQH.updateWater(idThanhVienQuanLy,phong,thang,nam,soDauFormat,soCuoiFormat).enqueue(new Callback<TienNuocModel>() {
                     @Override
                     public void onResponse(Call<TienNuocModel> call, Response<TienNuocModel> response) {
                         TienNuocModel phongNuoc = response.body();
+                        Toast.makeText(TienNuocEdit.this,"Cập nhật thành công",Toast.LENGTH_SHORT).show();
                         Intent intent = new Intent(TienNuocEdit.this,TienNuoc.class);
                         startActivity(intent);
                     }
 
                     @Override
                     public void onFailure(Call<TienNuocModel> call, Throwable t) {
-                        Log.d("err update nuoc",""+t.toString());
+                        Toast.makeText(TienNuocEdit.this,"Không thể cập nhật ở tháng này!",Toast.LENGTH_SHORT).show();
                     }
                 });
             }

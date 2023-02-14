@@ -21,6 +21,7 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -32,6 +33,7 @@ import com.example.nhatro2.dong_tien.DongTien;
 import com.example.nhatro2.hop_dong.HopDong;
 import com.example.nhatro2.thanhvien.KhachTro;
 import com.example.nhatro2.tien_coc.TienCocAdd;
+import com.example.nhatro2.tien_nuoc.TienNuocEdit;
 import com.google.android.material.navigation.NavigationView;
 
 
@@ -43,13 +45,14 @@ import retrofit2.Response;
 
 
 public class TienDienEdit extends AppCompatActivity {
-    ImageView thoat, logo, closePhongDienEdit, menuDanhMuc;
+    ImageView logo, closePhongDienEdit, menuDanhMuc;
     SharedPreferences shp;
     TextView tenPhongDienEdit, daiDienPhongDien, infoTimePhongDien, tieuDeLichSuDungDien, btnUpdateElectric;
     EditText soDauDien, soCuoiDien, soDienSuDung, tienDienSuDung, ngayDo;
     RecyclerView listElectricNumberUsed;
     DrawerLayout mDrawerLayout;
-
+    LinearLayout quayLai;
+    @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -62,38 +65,12 @@ public class TienDienEdit extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-        // Nút thoát
-        thoat = findViewById(R.id.thoat);
-        thoat.setOnClickListener(new View.OnClickListener() {
+
+        quayLai = findViewById(R.id.quayLai);
+        quayLai.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                AlertDialog.Builder builder = new AlertDialog.Builder(TienDienEdit.this);
-                builder.setTitle(Html.fromHtml("<font color='#71a6d5'>Thông báo!</font>")).setMessage(Html.fromHtml("<font color='#71a6d5'>Bạn có thực sự muốn thoát ?</font>"));
-                builder.setCancelable(true);
-                builder.setIcon(R.drawable.alert_bottom);
-                //check
-                builder.setPositiveButton(Html.fromHtml("<font color='#71a6d5'>Yes</font>"), new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {
-                        Toast.makeText(TienDienEdit.this, "Out", Toast.LENGTH_SHORT).show();
-                        Intent intent = new Intent(TienDienEdit.this, MainActivity.class);
-                        startActivity(intent);
-                        shp = view.getContext().getSharedPreferences("user", MODE_PRIVATE);
-                        shp.edit().clear().commit();
-//                        view.getContext();
-                    }
-                });
-                // NO
-                builder.setNegativeButton(Html.fromHtml("<font color='#71a6d5'>No</font>"), new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int id) {
-                        Toast.makeText(TienDienEdit.this, "Stay", Toast.LENGTH_SHORT).show();
-                        //  Cancel
-                        dialog.cancel();
-                    }
-                });
-                // show alert
-                AlertDialog alert = builder.create();
-                alert.show();
+                TienDienEdit.super.onBackPressed();
             }
         });
 
@@ -182,13 +159,14 @@ public class TienDienEdit extends AppCompatActivity {
                     @Override
                     public void onResponse(Call<TienDienModel> call, Response<TienDienModel> response) {
                         TienDienModel phongDien = response.body();
+                        Toast.makeText(TienDienEdit.this,"Cập nhật thành công",Toast.LENGTH_SHORT).show();
                         Intent intent = new Intent(TienDienEdit.this, TienDien.class);
                         startActivity(intent);
                     }
 
                     @Override
                     public void onFailure(Call<TienDienModel> call, Throwable t) {
-                        Log.d("err uodate nuoc",""+t.toString());
+                        Toast.makeText(TienDienEdit.this,"Không thể cập nhật ở tháng này!",Toast.LENGTH_SHORT).show();
                     }
                 });
             }

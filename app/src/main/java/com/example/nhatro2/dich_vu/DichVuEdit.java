@@ -14,6 +14,7 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -40,7 +41,8 @@ import retrofit2.Response;
 
 public class DichVuEdit extends AppCompatActivity {
     TextView tacVuThietBi,tieuDeTenThietBi,tieuDeGiaThietBi,backDV, capNhat;
-    ImageView thoat,them,logo,menuDanhMuc;
+    ImageView them,logo,menuDanhMuc;
+    LinearLayout quayLai;
     EditText ten,gia,tenTB, giaTB;
     SharedPreferences shp;
     DrawerLayout mDrawerLayout;
@@ -60,36 +62,11 @@ public class DichVuEdit extends AppCompatActivity {
             }
         });
         // Nút thoát
-        thoat = findViewById(R.id.thoat);
-        thoat.setOnClickListener(new View.OnClickListener() {
+        quayLai = findViewById(R.id.quayLai);
+        quayLai.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                AlertDialog.Builder builder = new AlertDialog.Builder(DichVuEdit.this);
-                builder.setTitle(Html.fromHtml("<font color='#71a6d5'>Thông báo!</font>")).setMessage(Html.fromHtml("<font color='#71a6d5'>Bạn có thực sự muốn thoát ?</font>"));
-                builder.setCancelable(true);
-                builder.setIcon(R.drawable.alert_bottom);
-                //check
-                builder.setPositiveButton(Html.fromHtml("<font color='#71a6d5'>Yes</font>"), new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {
-                        Toast.makeText(DichVuEdit.this,"Out", Toast.LENGTH_SHORT).show();
-                        Intent intent = new Intent(DichVuEdit.this, MainActivity.class);
-                        startActivity(intent);
-                        shp = view.getContext().getSharedPreferences("user", MODE_PRIVATE);
-                        shp.edit().clear().commit();
-                    }
-                });
-                // NO
-                builder.setNegativeButton(Html.fromHtml("<font color='#71a6d5'>No</font>"), new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int id) {
-                        Toast.makeText(DichVuEdit.this,"Stay", Toast.LENGTH_SHORT).show();
-                        //  Cancel
-                        dialog.cancel();
-                    }
-                });
-                // show alert
-                AlertDialog alert = builder.create();
-                alert.show();
+                DichVuEdit.super.onBackPressed();
             }
         });
         // onClick Back
@@ -97,8 +74,7 @@ public class DichVuEdit extends AppCompatActivity {
         backDV.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(DichVuEdit.this,DichVu.class);
-                startActivity(intent);
+                DichVuEdit.super.onBackPressed();
             }
         });
         // get ID

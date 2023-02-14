@@ -51,7 +51,9 @@ public class HetHieuLucAdapter extends RecyclerView.Adapter<HetHieuLucAdapter.He
                 String ngayKetThucText  = hetHieuLucSingle.getNgayketthuc();
                 String strThietBi = hetHieuLucSingle.getThietbi();
                 String strKhach =  hetHieuLucSingle.getKhach();
+                int trangthai = hetHieuLucSingle.getTrangthai();
                 intent.putExtra("thietbi",strThietBi);
+                intent.putExtra("trangthai",trangthai);
                 intent.putExtra("khachthue",strKhach);
                 intent.putExtra("ketthuc",ngayKetThucText);
                 intent.putExtra("batdau",ngayBatDauText);
