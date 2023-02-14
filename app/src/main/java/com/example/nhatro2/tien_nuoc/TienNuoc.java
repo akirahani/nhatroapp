@@ -169,7 +169,7 @@ public class TienNuoc extends AppCompatActivity {
                                                         intent.putExtra("soDau",detailPhongNuoc.getSodau());
                                                         intent.putExtra("soCuoi",detailPhongNuoc.getSocuoi());
                                                         intent.putExtra("donGia",detailPhongNuoc.getDongia());
-                                                        intent.putExtra("ngayChot",detailPhongNuoc.getNgaychot());
+                                                        intent.putExtra("ngayChot",detailPhongNuoc.getNgay());
                                                         intent.putExtra("thang",month);
                                                         intent.putExtra("nam",year);
                                                         startActivity(intent);
@@ -231,7 +231,7 @@ public class TienNuoc extends AppCompatActivity {
                                 intent.putExtra("soDau",detailPhongNuocChon.getSodau());
                                 intent.putExtra("soCuoi",detailPhongNuocChon.getSocuoi());
                                 intent.putExtra("donGia",detailPhongNuocChon.getDongia());
-                                intent.putExtra("ngayChot",detailPhongNuocChon.getNgaychot());
+                                intent.putExtra("ngayChot",detailPhongNuocChon.getNgay());
                                 intent.putExtra("thang",monthGet);
                                 intent.putExtra("nam",year);
                                 startActivity(intent);
@@ -305,7 +305,7 @@ public class TienNuoc extends AppCompatActivity {
                                                 intent.putExtra("soDau",detailPhongNuocTimKiem.getSodau());
                                                 intent.putExtra("soCuoi",detailPhongNuocTimKiem.getSocuoi());
                                                 intent.putExtra("donGia",detailPhongNuocTimKiem.getDongia());
-                                                intent.putExtra("ngayChot",detailPhongNuocTimKiem.getNgaychot());
+                                                intent.putExtra("ngayChot",detailPhongNuocTimKiem.getNgay());
                                                 intent.putExtra("thang",thangSend);
                                                 intent.putExtra("nam",namSend);
                                                 startActivity(intent);
