@@ -33,6 +33,7 @@
                     android:backgroundTint="@color/white" />
 
                 <TextView
+                    android:fontFamily="@font/svn_p_s_regular"
                     android:id="@+id/ten"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -112,6 +113,7 @@
                 android:layout_gravity="center"
                 android:paddingLeft="8dp"
                 android:text="Thu khác"
+                android:fontFamily="@font/svn_p_s_bold"
                 android:textAllCaps="true"
                 android:textColor="@color/textQuanLyChung"
                 android:textSize="18dp"
@@ -135,6 +137,7 @@
         <TextView
             android:id="@+id/tieuDeKhachDatCoc"
             android:layout_width="193dp"
+            android:fontFamily="@font/svn_p_s_regular"
             android:layout_height="33dp"
             android:layout_below="@+id/tieuDeDongTien"
             android:background="@drawable/title_card"
@@ -167,6 +170,7 @@
                 android:layout_width="0dp"
                 android:layout_height="35dp"
                 android:layout_weight="4"
+                android:fontFamily="@font/svn_p_s_regular"
                 android:background="@null"
                 android:hint="Phòng"
                 android:paddingLeft="12dp"
@@ -185,6 +189,7 @@
             android:id="@+id/lyDoThuKhacText"
             android:layout_width="match_parent"
             android:layout_height="35dp"
+            android:fontFamily="@font/svn_p_s_regular"
             android:layout_marginLeft="12dp"
             android:layout_marginTop="12dp"
             android:layout_marginRight="12dp"
@@ -203,6 +208,7 @@
             android:layout_marginRight="12dp"
             android:background="@null"
             android:hint="Tiền thu"
+            android:fontFamily="@font/svn_p_s_regular"
             android:inputType="number"
             android:paddingLeft="15dp"
             android:singleLine="true"
@@ -218,6 +224,7 @@
 
             <RadioButton
                 android:id="@+id/thuaTienThuKhac"
+                android:fontFamily="@font/svn_p_s_regular"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="15dp"
@@ -227,6 +234,7 @@
 
             <RadioButton
                 android:id="@+id/thieuTienThuKhac"
+                android:fontFamily="@font/svn_p_s_regular"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Thiếu tiền"
@@ -253,6 +261,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentLeft="true"
+                    android:fontFamily="@font/svn_p_s_bold"
                     android:background="@drawable/gradient_back"
                     android:paddingLeft="35dp"
                     android:paddingTop="5dp"
@@ -277,6 +286,7 @@
                     android:background="@drawable/gradient_add"
                     android:paddingLeft="35dp"
                     android:paddingTop="5dp"
+                    android:fontFamily="@font/svn_p_s_bold"
                     android:paddingRight="35dp"
                     android:paddingBottom="5dp"
                     android:text="Thêm Mới"

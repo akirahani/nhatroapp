@@ -38,6 +38,7 @@
 
                     <TextView
                         android:id="@+id/ten"
+                        android:fontFamily="@font/svn_p_s_regular"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_toRightOf="@+id/thoat"
@@ -105,7 +106,7 @@
                         android:id="@+id/imageNuoc"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_gravity="center"></FrameLayout>
+                        android:layout_gravity="center" />
                 </LinearLayout>
 
                 <TextView
@@ -115,6 +116,7 @@
                     android:paddingLeft="8dp"
                     android:text="Thông tin tiền nước"
                     android:textAllCaps="true"
+                    android:fontFamily="@font/svn_p_s_bold"
                     android:textColor="@color/textQuanLyChung"
                     android:textSize="18dp"
                     android:textStyle="bold" />
@@ -168,6 +170,7 @@
                     android:src="@drawable/choosemonth" />
 
                 <TextView
+                    android:fontFamily="@font/svn_p_s_bold"
                     android:id="@+id/chonThangNuoc"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -193,6 +196,7 @@
                 android:layout_weight="1"
                 android:gravity="center"
                 android:text="Phòng"
+                android:fontFamily="@font/svn_p_s_bold"
                 android:textColor="@color/black"
                 android:textStyle="bold" />
 
@@ -202,6 +206,7 @@
                 android:layout_weight="1"
                 android:gravity="center"
                 android:text="Số đầu"
+                android:fontFamily="@font/svn_p_s_bold"
                 android:textColor="@color/black"
                 android:textStyle="bold" />
 
@@ -211,6 +216,7 @@
                 android:layout_weight="1"
                 android:gravity="center"
                 android:text="Số cuối"
+                android:fontFamily="@font/svn_p_s_bold"
                 android:textColor="@color/black"
                 android:textStyle="bold" />
 
@@ -220,6 +226,7 @@
                 android:layout_weight="1"
                 android:gravity="center"
                 android:text="Tác vụ"
+                android:fontFamily="@font/svn_p_s_bold"
                 android:textColor="@color/black"
                 android:textStyle="bold" />
         </LinearLayout>

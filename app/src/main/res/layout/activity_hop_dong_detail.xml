@@ -32,7 +32,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:background="@drawable/quaylaitrang"
-                        android:backgroundTint="@color/white"></ImageView>
+                        android:backgroundTint="@color/white" />
 
                     <TextView
                         android:id="@+id/ten"
@@ -41,7 +41,8 @@
                         android:layout_toRightOf="@+id/thoat"
                         android:paddingLeft="5dp"
                         android:text="Quay lại"
-                        android:textColor="@color/white"></TextView>
+                        android:fontFamily="@font/svn_p_s_regular"
+                        android:textColor="@color/white" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -107,6 +108,7 @@
                     android:layout_height="wrap_content"
                     android:paddingLeft="8dp"
                     android:text="quản lí hợp đồng nhà trọ"
+                    android:fontFamily="@font/svn_p_s_bold"
                     android:textAllCaps="true"
                     android:textColor="@color/textQuanLyChung"
                     android:textSize="18dp"
@@ -138,6 +140,7 @@
                 android:paddingRight="23dp"
                 android:paddingBottom="8dp"
                 android:text="Chi tiết hợp đồng"
+                android:fontFamily="@font/svn_p_s_regular"
                 android:textColor="@color/white" />
         </LinearLayout>
         <!-- danh sách thiết bị -->
@@ -172,6 +175,7 @@
                     android:paddingBottom="11dp"
                     android:gravity="center"
                     android:textSize="14sp"
+                    android:fontFamily="@font/svn_p_s_bold"
                     android:textStyle="bold" />
                 <androidx.cardview.widget.CardView
                     android:layout_width="match_parent"
@@ -195,6 +199,7 @@
                             android:paddingLeft="9dp"
                             android:paddingTop="11dp"
                             android:textSize="16sp"
+                            android:fontFamily="@font/svn_p_s_bold"
                             android:text="Người đại diện"
                             android:textColor="@color/black"
                             android:textStyle="bold" />
@@ -222,6 +227,7 @@
                                     android:paddingLeft="6dp"
                                     android:textSize="14sp"
                                     android:text="Họ và tên: "
+                                    android:fontFamily="@font/svn_p_s_bold"
                                     android:textColor="@color/black" />
 
                                 <EditText
@@ -229,6 +235,7 @@
                                     android:id="@+id/tenDaiDienTextDetail"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
+                                    android:fontFamily="@font/svn_p_s_regular"
                                     android:background="@null" />
                             </LinearLayout>
                         </androidx.cardview.widget.CardView>
@@ -256,6 +263,7 @@
                                     android:paddingLeft="6dp"
                                     android:textSize="14sp"
                                     android:text="Số CCCD/CMND: "
+                                    android:fontFamily="@font/svn_p_s_bold"
                                     android:textColor="@color/black" />
 
                                 <EditText
@@ -263,6 +271,7 @@
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:background="@null"
+                                    android:fontFamily="@font/svn_p_s_regular"
                                     android:textSize="14sp"
                                     android:inputType="number" />
                             </LinearLayout>
@@ -291,6 +300,7 @@
                                     android:paddingLeft="6dp"
                                     android:textSize="14sp"
                                     android:text="Ngày cấp: "
+                                    android:fontFamily="@font/svn_p_s_bold"
                                     android:textColor="@color/black" />
 
                                 <TextView
@@ -298,6 +308,7 @@
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:textSize="14sp"
+                                    android:fontFamily="@font/svn_p_s_regular"
                                     android:text="dd-mm-yyyy" />
                             </LinearLayout>
                         </androidx.cardview.widget.CardView>
@@ -324,6 +335,7 @@
                                     android:layout_height="wrap_content"
                                     android:paddingLeft="6dp"
                                     android:text="Nơi cấp: "
+                                    android:fontFamily="@font/svn_p_s_bold"
                                     android:textSize="14sp"
                                     android:textColor="@color/black" />
 
@@ -332,6 +344,7 @@
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:textSize="14sp"
+                                    android:fontFamily="@font/svn_p_s_regular"
                                     android:background="@null"
                                     android:inputType="number" />
                             </LinearLayout>
@@ -358,6 +371,7 @@
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:paddingLeft="6dp"
+                                    android:fontFamily="@font/svn_p_s_bold"
                                     android:textSize="14sp"
                                     android:text="Ngày sinh: "
                                     android:textColor="@color/black" />
@@ -367,6 +381,7 @@
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:textSize="14sp"
+                                    android:fontFamily="@font/svn_p_s_regular"
                                     android:text="dd-mm-yyyy" />
                             </LinearLayout>
                         </androidx.cardview.widget.CardView>
@@ -392,6 +407,7 @@
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:paddingLeft="6dp"
+                                    android:fontFamily="@font/svn_p_s_bold"
                                     android:textSize="14sp"
                                     android:text="Số điện thoại: "
                                     android:textColor="@color/black" />
@@ -402,6 +418,7 @@
                                     android:layout_height="wrap_content"
                                     android:textSize="14sp"
                                     android:background="@null"
+                                    android:fontFamily="@font/svn_p_s_regular"
                                     android:inputType="number" />
                             </LinearLayout>
                         </androidx.cardview.widget.CardView>
@@ -446,6 +463,7 @@
                             android:paddingLeft="9dp"
                             android:paddingTop="11dp"
                             android:text="Thiết bị: "
+                            android:fontFamily="@font/svn_p_s_bold"
                             android:textSize="14sp"
                             android:textColor="@color/black" />
 
@@ -484,6 +502,7 @@
                             android:paddingLeft="9dp"
                             android:paddingTop="11dp"
                             android:textSize="16sp"
+                            android:fontFamily="@font/svn_p_s_bold"
                             android:text="Thông tin hiệu lực hợp đồng"
                             android:textColor="@color/black"
                             android:textStyle="bold" />
@@ -511,11 +530,13 @@
                                     android:paddingLeft="6dp"
                                     android:textSize="14sp"
                                     android:text="Ngày bắt đầu: "
+                                    android:fontFamily="@font/svn_p_s_bold"
                                     android:textColor="@color/black" />
 
                                 <TextView
                                     android:id="@+id/ngayBatDauDetail"
                                     android:textSize="14sp"
+                                    android:fontFamily="@font/svn_p_s_regular"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content" />
                             </LinearLayout>
@@ -543,10 +564,12 @@
                                     android:layout_height="wrap_content"
                                     android:paddingLeft="6dp"
                                     android:textSize="14sp"
+                                    android:fontFamily="@font/svn_p_s_bold"
                                     android:text="Ngày kết thúc: "
                                     android:textColor="@color/black" />
 
                                 <TextView
+                                    android:fontFamily="@font/svn_p_s_regular"
                                     android:id="@+id/ngayKetThucDetail"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
@@ -576,10 +599,12 @@
                                     android:layout_height="wrap_content"
                                     android:paddingLeft="6dp"
                                     android:text="Ghi chú: "
+                                    android:fontFamily="@font/svn_p_s_bold"
                                     android:textSize="14sp"
                                     android:textColor="@color/black" />
 
                                 <EditText
+                                    android:fontFamily="@font/svn_p_s_regular"
                                     android:id="@+id/ghiChu"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"

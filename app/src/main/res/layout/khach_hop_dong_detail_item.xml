@@ -30,6 +30,7 @@
                 android:paddingBottom="8dp">
 
                 <TextView
+                    android:fontFamily="@font/svn_p_s_bold"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:paddingLeft="6dp"
@@ -38,6 +39,7 @@
 
                 <EditText
                     android:textSize="14sp"
+                    android:fontFamily="@font/svn_p_s_regular"
                     android:id="@+id/tenKhachHopDongDetail"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -61,7 +63,9 @@
         <!--            android:paddingTop="8dp"-->
         <!--            android:paddingBottom="8dp">-->
 
-        <!--            <TextView-->
+        <!--            <TextView
+                            android:fontFamily="@font/svn_p_s_bold"
+-->
         <!--                android:layout_width="wrap_content"-->
         <!--                android:layout_height="wrap_content"-->
         <!--                android:paddingLeft="6dp"-->
@@ -69,7 +73,9 @@
         <!--                android:textColor="@color/black" /> -->
 
         <!--            <EditText-->
-        <!--                android:textSize="14sp"-->
+        <!--                android:textSize="14sp"
+                            android:fontFamily="@font/svn_p_s_regular"
+-->
         <!--                android:id="@+id/canCuocKhachAdd"-->
         <!--                android:layout_width="match_parent"-->
         <!--                android:layout_height="wrap_content"-->
@@ -98,11 +104,15 @@
 <!--                        android:layout_width="wrap_content"-->
 <!--                        android:layout_height="wrap_content"-->
 <!--                        android:paddingLeft="6dp"-->
-<!--                        android:text="Ngày cấp: "-->
+<!--                        android:text="Ngày cấp: "
+                        android:fontFamily="@font/svn_p_s_bold"
+-->
 <!--                        android:textColor="@color/black" />-->
 
         <!--            <TextView-->
-        <!--                android:textSize="14sp"-->
+        <!--                android:textSize="14sp"
+                            android:fontFamily="@font/svn_p_s_regular"
+-->
         <!--                android:id="@+id/ngayCapKhachAdd"-->
         <!--                android:layout_width="match_parent"-->
         <!--                android:layout_height="wrap_content"-->
@@ -131,7 +141,9 @@
 <!--                        android:layout_width="wrap_content"-->
 <!--                        android:layout_height="wrap_content"-->
 <!--                        android:paddingLeft="6dp"-->
-<!--                        android:text="Nơi cấp: "-->
+<!--                        android:text="Nơi cấp: "
+                        android:fontFamily="@font/svn_p_s_bold"
+-->
 <!--                        android:textColor="@color/black" />-->
 
         <!--            <EditText-->
@@ -139,7 +151,9 @@
         <!--                android:id="@+id/noiCapKhachAdd"-->
         <!--                android:layout_width="match_parent"-->
         <!--                android:layout_height="wrap_content"-->
-        <!--                android:background="@null"-->
+        <!--                android:background="@null"
+                            android:fontFamily="@font/svn_p_s_regular"
+-->
         <!--                android:inputType="number" />-->
         <!--        </LinearLayout>-->
         <!--    </androidx.cardview.widget.CardView>-->
@@ -164,12 +178,16 @@
         <!--                android:layout_width="wrap_content"-->
         <!--                android:layout_height="wrap_content"-->
         <!--                android:paddingLeft="6dp"-->
-        <!--                android:text="Ngày sinh: "-->
+        <!--                android:text="Ngày sinh: "
+                            android:fontFamily="@font/svn_p_s_bold"
+-->
         <!--                android:textColor="@color/black"></TextView>-->
 
         <!--            <TextView-->
         <!--            android:textSize="14sp"-->
-        <!--                android:id="@+id/ngaySinhHopDongAddText"-->
+        <!--                android:id="@+id/ngaySinhHopDongAddText"
+                            android:fontFamily="@font/svn_p_s_regular"
+-->
         <!--                android:layout_width="match_parent"-->
         <!--                android:layout_height="wrap_content"-->
         <!--                android:text="dd-mm-yyyy"-->
@@ -194,6 +212,7 @@
                 android:paddingBottom="8dp">
 
                 <TextView
+                    android:fontFamily="@font/svn_p_s_bold"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:paddingLeft="6dp"
@@ -201,6 +220,7 @@
                     android:textColor="@color/black" />
 
                 <EditText
+                    android:fontFamily="@font/svn_p_s_regular"
                     android:id="@+id/sdtKhachHopDongDetail"
                     android:textSize="14sp"
                     android:layout_width="match_parent"

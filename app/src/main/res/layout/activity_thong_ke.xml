@@ -45,6 +45,8 @@
                         android:layout_toRightOf="@+id/thoat"
                         android:paddingLeft="5dp"
                         android:text="Quay lại"
+                        android:fontFamily="@font/svn_p_s_regular"
+
                         android:textColor="@color/white" />
                 </LinearLayout>
 
@@ -111,6 +113,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="Doanh thu tháng này"
+                        android:fontFamily="@font/svn_p_s_bold"
                         android:textAllCaps="true"
                         android:textColor="@color/doanhThuThang"
                         android:textSize="15sp" />

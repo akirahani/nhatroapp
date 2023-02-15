@@ -27,6 +27,7 @@
                 android:layout_width="0dp"
                 android:layout_weight="14"
                 android:singleLine="true"
+                android:fontFamily="@font/svn_p_s_regular"
                 android:layout_height="wrap_content"
                 android:background="@null">
             </EditText>

@@ -9,6 +9,7 @@
         android:gravity="left"
         android:layout_width="0dp"
         android:layout_weight="1"
+        android:fontFamily="@font/svn_p_s_regular"
         android:textColor="@color/black"
         android:layout_height="wrap_content" />
     <TextView
@@ -16,6 +17,7 @@
         android:gravity="center"
         android:layout_width="0dp"
         android:layout_weight="1"
+        android:fontFamily="@font/svn_p_s_regular"
         android:textColor="@color/black"
         android:layout_height="wrap_content" />
     <TextView
@@ -23,6 +25,7 @@
         android:gravity="right"
         android:layout_width="0dp"
         android:layout_weight="1"
+        android:fontFamily="@font/svn_p_s_regular"
         android:textColor="@color/black"
         android:layout_height="wrap_content" />
 </LinearLayout>
