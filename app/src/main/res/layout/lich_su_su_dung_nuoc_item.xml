@@ -14,11 +14,13 @@
         android:layout_height="wrap_content"
         android:textColor="@color/black"
         android:textStyle="bold"
+        android:fontFamily="@font/svn_p_s_regular"
         android:textSize="14sp" />
     <TextView
         android:id="@+id/numberWaterUseText"
         android:layout_toRightOf="@+id/timeMonthDisplayHistory"
         android:textSize="14sp"
+        android:fontFamily="@font/svn_p_s_regular"
         android:paddingLeft="10dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />

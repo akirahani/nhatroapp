@@ -18,6 +18,7 @@
 
         <TextView
             android:id="@+id/tenKhachCoc"
+            android:fontFamily="@font/svn_p_s_regular"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -26,6 +27,7 @@
             android:textStyle="normal" />
 
         <TextView
+            android:fontFamily="@font/svn_p_s_regular"
             android:id="@+id/tienCocDong"
             android:layout_width="0dp"
             android:layout_height="wrap_content"

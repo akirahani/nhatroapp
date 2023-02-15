@@ -23,6 +23,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -63,6 +64,7 @@ public class HomeFragment extends Fragment {
     SharedPreferences shp;
     SharedPreferences.Editor shpEdit;
     DrawerLayout mDrawerLayout;
+    LinearLayout rightToolbar;
 
     public HomeFragment() {
         // Required empty public constructor
@@ -90,8 +92,8 @@ public class HomeFragment extends Fragment {
         String tenUserText =shp.getString("tenThanhVien","");
         tenUser.setText(tenUserText);
         // Nút thoát
-        thoat = view.findViewById(R.id.thoat);
-        thoat.setOnClickListener(new View.OnClickListener() {
+        rightToolbar = view.findViewById(R.id.rightToolbar);
+        rightToolbar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 AlertDialog.Builder builder = new AlertDialog.Builder(getContext());

@@ -37,6 +37,7 @@
 
                     <TextView
                         android:id="@+id/ten"
+                        android:fontFamily="@font/svn_p_s_regular"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_toRightOf="@+id/thoat"
@@ -118,6 +119,7 @@
                     android:textAllCaps="true"
                     android:textColor="@color/textQuanLyChung"
                     android:textSize="18dp"
+                    android:fontFamily="@font/svn_p_s_bold"
                     android:textStyle="bold" />
 
                 <RelativeLayout
@@ -171,6 +173,7 @@
                     android:src="@drawable/choosemonth" />
 
                 <TextView
+                    android:fontFamily="@font/svn_p_s_bold"
                     android:id="@+id/chonThangThuKhac"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -190,6 +193,7 @@
 
             <TextView
                 android:text="Tiền"
+                android:fontFamily="@font/svn_p_s_bold"
                 android:gravity="center"
                 android:layout_weight="1"
                 android:layout_width="0dp"
@@ -204,10 +208,12 @@
                 android:layout_width="0dp"
                 android:textColor="@color/black"
                 android:textSize="14sp"
+                android:fontFamily="@font/svn_p_s_bold"
                 android:textStyle="bold"
                 android:layout_height="wrap_content" />
             <TextView
                 android:text="Phòng"
+                android:fontFamily="@font/svn_p_s_bold"
                 android:gravity="center"
                 android:layout_weight="1"
                 android:layout_width="0dp"
@@ -217,6 +223,7 @@
                 android:layout_height="wrap_content" />
             <TextView
                 android:text="Chi tiết"
+                android:fontFamily="@font/svn_p_s_bold"
                 android:gravity="center"
                 android:layout_weight="1"
                 android:layout_width="0dp"

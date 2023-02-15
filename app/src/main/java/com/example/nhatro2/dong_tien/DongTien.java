@@ -47,18 +47,20 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class DongTien extends AppCompatActivity {
-    ImageView logo,timInfoPhongChiTiet,menuDanhMuc;
+    ImageView logo, timInfoPhongChiTiet, menuDanhMuc;
     SharedPreferences shp;
-    TextView nameRoomSearch, tienPhongCanTra, tenNopPhong, tienCocDaTra, tienCocCanTra, tenchuphong,dienthoaichuphong, soDienSuDungText, soNuocSuDungText, tienNuocPhaiThu, tienNuocDaThu, tienDienPhaiThu, tienDienDaThu, phaiTraTien ;
+    TextView nameRoomSearch, tienPhongCanTra, tienCocDaTra, tenchuphong, dienthoaichuphong, soDienSuDungText, soNuocSuDungText, tienNuocPhaiThu, tienDienPhaiThu, phaiTraTien;
     RecyclerView listThietBiSuDung, listThanhVienPhong, lichSuThuTienPhong;
     SharedPreferences.Editor shpKhachEdit;
-    LinearLayout thongTinChungDongTien, dongTienPhongText, khungLichSuDongTien, quayLai;
+    LinearLayout thongTinChungDongTien, dongTienPhongText, khungLichSuDongTien, quayLai, phanDongCocClick;
     RadioGroup hinhThucDongTien;
     EditText tienThanhToanText;
     ImageView thanhToanTienButton;
-    RadioButton tienMatDongTien,chuyenKhoanDongTien;
+    RadioButton tienMatDongTien, chuyenKhoanDongTien;
     DrawerLayout mDrawerLayout;
+    View lineCoc;
     int phuongThucThanhToan;
+
     @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -101,24 +103,22 @@ public class DongTien extends AppCompatActivity {
         timInfoPhongChiTiet.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                BottomSheetChonPhongTien chonPhongTien= new BottomSheetChonPhongTien();
+                BottomSheetChonPhongTien chonPhongTien = new BottomSheetChonPhongTien();
                 chonPhongTien.show(getSupportFragmentManager(), "ChonPhongTien");
             }
         });
 
         SharedPreferences shpPhongChon = getApplicationContext().getSharedPreferences("phongChon", MODE_PRIVATE);
-        String tenPhong = shpPhongChon.getString("idPhongChon","");
-        int maPhongChon = shpPhongChon.getInt("maPhongChon",0);
+        String tenPhong = shpPhongChon.getString("idPhongChon", "");
+        int maPhongChon = shpPhongChon.getInt("maPhongChon", 0);
 
         //Tên phòng tìm
         nameRoomSearch = findViewById(R.id.nameRoomSearch);
-        nameRoomSearch.setText("Phòng "+tenPhong);
+        nameRoomSearch.setText("Phòng " + tenPhong);
 
         // Ánh xạ tiền phòng
         tienPhongCanTra = findViewById(R.id.tienPhongCanTra);
-        tenNopPhong = findViewById(R.id.tenNopPhong);
 
-        tienCocCanTra =  findViewById(R.id.tienCocCanTra);
         tienCocDaTra = findViewById(R.id.tienCocDaTra);
 
         tenchuphong = findViewById(R.id.tenchuphong);
@@ -126,10 +126,8 @@ public class DongTien extends AppCompatActivity {
 
         soDienSuDungText = findViewById(R.id.soDienSuDungText);
         soNuocSuDungText = findViewById(R.id.soNuocSuDungText);
-        tienNuocPhaiThu  = findViewById(R.id.tienNuocPhaiThu);
-        tienNuocDaThu = findViewById(R.id.tienNuocDaThu);
-        tienDienPhaiThu  = findViewById(R.id.tienDienPhaiThu);
-        tienDienDaThu  = findViewById(R.id.tienDienDaThu);
+        tienNuocPhaiThu = findViewById(R.id.tienNuocPhaiThu);
+        tienDienPhaiThu = findViewById(R.id.tienDienPhaiThu);
 
         listThietBiSuDung = findViewById(R.id.listThietBiSuDung);
         listThanhVienPhong = findViewById(R.id.listThanhVienPhong);
@@ -144,6 +142,8 @@ public class DongTien extends AppCompatActivity {
 
         thanhToanTienButton = findViewById(R.id.thanhToanTienButton);
         tienThanhToanText = findViewById(R.id.tienThanhToanText);
+        phanDongCocClick = findViewById(R.id.phanDongCocClick);
+        lineCoc = findViewById(R.id.lineCoc);
 
         ApiQH.apiQH.getTienDongList(maPhongChon).enqueue(new Callback<ChonPhongModel>() {
             @SuppressLint("ResourceAsColor")
@@ -151,72 +151,72 @@ public class DongTien extends AppCompatActivity {
             public void onResponse(Call<ChonPhongModel> call, Response<ChonPhongModel> response) {
                 ChonPhongModel thongTinDongTienPhong = response.body();
                 int idChuPhong = thongTinDongTienPhong.getIdchuphong();
-                if(idChuPhong != 0){
-                    if(thongTinDongTienPhong.getDutienphong() < 0){
-                        tenNopPhong.setTextColor(Color.RED);
-                        tienPhongCanTra.setTextColor(Color.RED);
-                    }else{
-                        tenNopPhong.setTextColor(Color.rgb(0,128,0));
-                        tienPhongCanTra.setTextColor(Color.rgb(0,128,0));
-                    }
+                if (idChuPhong != 0) {
+
+                    tienPhongCanTra.setTextColor(Color.rgb(0, 0, 0));
 
                     thanhToanTienButton.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View view) {
-                            String tienThanhToan =  tienThanhToanText.getText().toString();
+                            String tienThanhToan = tienThanhToanText.getText().toString();
                             shp = view.getContext().getSharedPreferences("user", MODE_PRIVATE);
-                            int khuTroId = shp.getInt("idThanhVien",0);
+                            int khuTroId = shp.getInt("idThanhVien", 0);
                             tienMatDongTien = findViewById(R.id.tienMatDongTien);
                             chuyenKhoanDongTien = findViewById(R.id.chuyenKhoanDongTien);
-                            if(tienMatDongTien.isChecked()){
+                            if (tienMatDongTien.isChecked()) {
                                 phuongThucThanhToan = 1;
-                            }else if(chuyenKhoanDongTien.isChecked()){
+                            } else if (chuyenKhoanDongTien.isChecked()) {
                                 phuongThucThanhToan = 2;
                             }
 
-                            if(tienThanhToan.equals("")){
-                                Toast.makeText(getApplicationContext(),"Vui lòng nhập số tiền thanh toán !",Toast.LENGTH_SHORT).show();
-                            }else{
-                                ApiQH.apiQH.postMoney(khuTroId,idChuPhong,tenPhong,phuongThucThanhToan,tienThanhToan).enqueue(new Callback<ThanhToanModel>() {
+                            if (tienThanhToan.equals("")) {
+                                Toast.makeText(getApplicationContext(), "Vui lòng nhập số tiền thanh toán !", Toast.LENGTH_SHORT).show();
+                            } else {
+                                ApiQH.apiQH.postMoney(khuTroId, idChuPhong, tenPhong, phuongThucThanhToan, tienThanhToan).enqueue(new Callback<ThanhToanModel>() {
                                     @Override
                                     public void onResponse(Call<ThanhToanModel> call, Response<ThanhToanModel> response) {
                                         ThanhToanModel tienSauDong = response.body();
-                                        Intent intent = new Intent(DongTien.this,DongTien.class);
+                                        Intent intent = new Intent(DongTien.this, DongTien.class);
                                         startActivity(intent);
                                         finish();
                                     }
 
                                     @Override
                                     public void onFailure(Call<ThanhToanModel> call, Throwable t) {
-                                        Log.d("err","dong tien"+t.toString());
+                                        Log.d("err", "dong tien" + t.toString());
                                     }
                                 });
                             }
                         }
                     });
 
-                    tenNopPhong.setText("Tiền phòng tháng: ");
-                    tienPhongCanTra.setText(thongTinDongTienPhong.getDutienphongformat()+"đ");
 
-                    tienCocCanTra.setText(""+thongTinDongTienPhong.getTencoc()+":"+thongTinDongTienPhong.getTiencocthuthemformat());
-                    tienCocDaTra.setText("Đã cọc: "+thongTinDongTienPhong.getDacoc()+"đ");
+                    tienPhongCanTra.setText("Cần thu:  " + thongTinDongTienPhong.getDutienphongformat() + "đ");
+
+                    tienCocDaTra.setText("Đã cọc: " + thongTinDongTienPhong.getDacocformat() + "đ");
+                    if(thongTinDongTienPhong.getDacoc() < 1500000){
+                        phanDongCocClick.setVisibility(View.VISIBLE);
+                        lineCoc.setVisibility(View.GONE);
+                    }else{
+                        phanDongCocClick.setVisibility(View.GONE);
+                        lineCoc.setVisibility(View.VISIBLE);
+                    }
 
                     tenchuphong.setText(thongTinDongTienPhong.getTenchuphong());
                     dienthoaichuphong.setText(thongTinDongTienPhong.getDienthoaichuphong());
 
-                    soDienSuDungText.setText("Số điện: "+thongTinDongTienPhong.getSodiensudung());
-                    tienDienPhaiThu.setText("Thành tiền: "+thongTinDongTienPhong.getTiendiensudung()+"đ");
+                    soDienSuDungText.setText("Số điện: " + thongTinDongTienPhong.getSodiensudung());
+                    tienDienPhaiThu.setText("Thành tiền: " + thongTinDongTienPhong.getTiendiensudung() + "đ");
 
-                    soNuocSuDungText.setText("Số nước: "+thongTinDongTienPhong.getSonuocsudung());
-                    tienNuocPhaiThu.setText("Thành tiền: "+thongTinDongTienPhong.getTiennuocsudung()+"đ");
+                    soNuocSuDungText.setText("Số nước: " + thongTinDongTienPhong.getSonuocsudung());
+                    tienNuocPhaiThu.setText("Thành tiền: " + thongTinDongTienPhong.getTiennuocsudung() + "đ");
 
-                    phaiTraTien.setText(thongTinDongTienPhong.getTennopphong()+": "+thongTinDongTienPhong.getTongthuformat()+"đ");
+                    phaiTraTien.setText(thongTinDongTienPhong.getTennopphong() + ": " + thongTinDongTienPhong.getTongthuformat() + "đ");
 
-                    if(thongTinDongTienPhong.getTongthu() < 0){
+                    if (thongTinDongTienPhong.getTongthu() < 0) {
                         phaiTraTien.setTextColor(Color.RED);
-                    }
-                    else{
-                        phaiTraTien.setTextColor(Color.rgb(0,128,0));
+                    } else {
+                        phaiTraTien.setTextColor(Color.rgb(0, 128, 0));
                     }
 
 
@@ -236,7 +236,7 @@ public class DongTien extends AppCompatActivity {
                         @Override
                         public void onResponse(Call<List<ThanhVienModel>> call, Response<List<ThanhVienModel>> response) {
                             List<ThanhVienModel> listKhach = response.body();
-                            listThanhVienPhong.setAdapter(new KhachPhongTienAdapter (DongTien.this,listKhach) );
+                            listThanhVienPhong.setAdapter(new KhachPhongTienAdapter(DongTien.this, listKhach));
                         }
 
                         @Override
@@ -249,7 +249,7 @@ public class DongTien extends AppCompatActivity {
                         @Override
                         public void onResponse(Call<List<DichVuModel>> call, Response<List<DichVuModel>> response) {
                             List<DichVuModel> listThietBi = response.body();
-                            listThietBiSuDung.setAdapter(new ThietBiPhongTienAdapter(DongTien.this,listThietBi) );
+                            listThietBiSuDung.setAdapter(new ThietBiPhongTienAdapter(DongTien.this, listThietBi));
                         }
 
                         @Override
@@ -262,7 +262,7 @@ public class DongTien extends AppCompatActivity {
                         @Override
                         public void onResponse(Call<List<LichSuDongTienModel>> call, Response<List<LichSuDongTienModel>> response) {
                             List<LichSuDongTienModel> lichSuDongTien = response.body();
-                            lichSuThuTienPhong.setAdapter(new LichSuNopTienAdapter(DongTien.this,lichSuDongTien) );
+                            lichSuThuTienPhong.setAdapter(new LichSuNopTienAdapter(DongTien.this, lichSuDongTien));
                         }
 
                         @Override
@@ -272,7 +272,7 @@ public class DongTien extends AppCompatActivity {
                     });
 
 
-                }else{
+                } else {
                     thongTinChungDongTien.setVisibility(View.GONE);
                     dongTienPhongText.setVisibility(View.GONE);
                     hinhThucDongTien.setVisibility(View.GONE);
@@ -285,7 +285,7 @@ public class DongTien extends AppCompatActivity {
 
             @Override
             public void onFailure(Call<ChonPhongModel> call, Throwable t) {
-                Log.d("errRoom","Loi info phong"+t.toString());
+                Log.d("errRoom", "Loi info phong" + t.toString());
             }
         });
 
@@ -302,7 +302,7 @@ public class DongTien extends AppCompatActivity {
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                switch (item.getItemId()){
+                switch (item.getItemId()) {
                     case R.id.khach_tro:
                         Intent khachTro = new Intent(DongTien.this, KhachTro.class);
                         startActivity(khachTro);
@@ -319,8 +319,6 @@ public class DongTien extends AppCompatActivity {
                         Intent hopDong = new Intent(DongTien.this, HopDong.class);
                         startActivity(hopDong);
                         return true;
-
-
                 }
                 return true;
             }
