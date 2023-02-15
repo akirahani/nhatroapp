@@ -37,6 +37,7 @@
                         android:backgroundTint="@color/white" />
 
                     <TextView
+                        android:fontFamily="@font/svn_p_s_regular"
                         android:id="@+id/ten"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -113,6 +114,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:paddingLeft="8dp"
+                    android:fontFamily="@font/svn_p_s_bold"
                     android:text="Thông tin tiền điện"
                     android:textAllCaps="true"
                     android:textColor="@color/textQuanLyChung"
@@ -172,6 +174,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center"
+                    android:fontFamily="@font/svn_p_s_bold"
                     android:paddingTop="5dp"
                     android:paddingBottom="5dp"
                     android:text="Tháng 12 / 2022"
@@ -189,6 +192,7 @@
             android:layout_marginBottom="9dp">
 
             <TextView
+                android:fontFamily="@font/svn_p_s_bold"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -198,6 +202,7 @@
                 android:textStyle="bold" />
 
             <TextView
+                android:fontFamily="@font/svn_p_s_bold"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -207,6 +212,7 @@
                 android:textStyle="bold" />
 
             <TextView
+                android:fontFamily="@font/svn_p_s_bold"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -216,6 +222,7 @@
                 android:textStyle="bold" />
 
             <TextView
+                android:fontFamily="@font/svn_p_s_bold"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"

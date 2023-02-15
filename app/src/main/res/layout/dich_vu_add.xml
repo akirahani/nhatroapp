@@ -34,16 +34,17 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:background="@drawable/quaylaitrang"
-                        android:backgroundTint="@color/white"></ImageView>
+                        android:backgroundTint="@color/white" />
 
                     <TextView
                         android:id="@+id/ten"
+                        android:fontFamily="@font/svn_p_s_regular"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_toRightOf="@+id/thoat"
                         android:paddingLeft="5dp"
                         android:text="Quay lại"
-                        android:textColor="@color/white"></TextView>
+                        android:textColor="@color/white" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -101,7 +102,7 @@
                     android:id="@+id/imageServiceAdd"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center"></FrameLayout>
+                    android:layout_gravity="center" />
 
                 <TextView
                     android:id="@+id/textDichVuAdd"
@@ -109,6 +110,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:paddingLeft="8dp"
+                    android:fontFamily="@font/svn_p_s_bold"
                     android:text="quản lí dịch vụ nhà trọ"
                     android:textAllCaps="true"
                     android:textColor="@color/textQuanLyChung"
@@ -151,6 +153,7 @@
                     android:paddingTop="3dp"
                     android:paddingBottom="6dp"
                     android:text="Thiết bị"
+                    android:fontFamily="@font/svn_p_s_bold"
                     android:textAllCaps="true"
                     android:textColor="@color/white"
                     android:textSize="16dp"
@@ -169,12 +172,13 @@
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/tieuDeThietBi"
                     android:gravity="center"
-                    android:paddingTop="20dp"
-                    android:paddingBottom="20dp"
+                    android:paddingTop="10dp"
+                    android:paddingBottom="10dp"
                     android:text="Thêm thiết bị mới"
+                    android:fontFamily="@font/svn_p_s_bold"
                     android:textAllCaps="true"
                     android:textColor="@color/black"
-                    android:textStyle="bold"></TextView>
+                    android:textStyle="bold" />
 
                 <androidx.cardview.widget.CardView
                     android:id="@+id/tenDichVuAdd"
@@ -197,9 +201,10 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:paddingLeft="6dp"
+                            android:fontFamily="@font/svn_p_s_bold"
                             android:text="Tên thiết bị: "
                             android:textColor="@color/black"
-                            android:textStyle="bold"></TextView>
+                            android:textStyle="bold" />
 
                         <EditText
                             android:id="@+id/tenThietBiAdd"
@@ -207,7 +212,8 @@
                             android:layout_height="wrap_content"
                             android:background="@null"
                             android:singleLine="true"
-                            android:textSize="14sp"></EditText>
+                            android:fontFamily="@font/svn_p_s_regular"
+                            android:textSize="14sp" />
                     </LinearLayout>
                 </androidx.cardview.widget.CardView>
 
@@ -234,7 +240,8 @@
                             android:paddingLeft="6dp"
                             android:text="Giá hàng tháng: "
                             android:textColor="@color/black"
-                            android:textStyle="bold"></TextView>
+                            android:fontFamily="@font/svn_p_s_bold"
+                            android:textStyle="bold" />
 
                         <EditText
                             android:id="@+id/giaThietBiAdd"
@@ -243,7 +250,8 @@
                             android:background="@null"
                             android:inputType="number"
                             android:singleLine="true"
-                            android:textSize="14sp"></EditText>
+                            android:fontFamily="@font/svn_p_s_regular"
+                            android:textSize="14sp" />
                     </LinearLayout>
                 </androidx.cardview.widget.CardView>
 
@@ -273,9 +281,10 @@
                             android:paddingRight="35dp"
                             android:paddingBottom="5dp"
                             android:text="Quay lại"
+                            android:fontFamily="@font/svn_p_s_bold"
                             android:textAllCaps="true"
                             android:textColor="@color/white"
-                            android:textStyle="bold"></TextView>
+                            android:textStyle="bold" />
                     </androidx.cardview.widget.CardView>
 
                     <androidx.cardview.widget.CardView
@@ -294,9 +303,10 @@
                             android:paddingRight="35dp"
                             android:paddingBottom="5dp"
                             android:text="Thêm Mới"
+                            android:fontFamily="@font/svn_p_s_bold"
                             android:textAllCaps="true"
                             android:textColor="@color/white"
-                            android:textStyle="bold"></TextView>
+                            android:textStyle="bold" />
                     </androidx.cardview.widget.CardView>
                 </RelativeLayout>
             </LinearLayout>

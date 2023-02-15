@@ -41,9 +41,7 @@ public class NotificationFragment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         ViewGroup itemView = (ViewGroup) inflater.inflate(R.layout.notification_fragment,container,false);
-
         LinearLayout dangXuatTaiKhoan;
-
         SharedPreferences shp = getContext().getSharedPreferences("user", MODE_PRIVATE);
         String nameUser = shp.getString("tenThanhVien","");
         String phoneUser = shp.getString("dienthoaiThanhVien","");
@@ -57,16 +55,16 @@ public class NotificationFragment extends Fragment {
         dangXuatTaiKhoan.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                AlertDialog.Builder builder = new AlertDialog.Builder(itemView.getContext());
+                AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
                 builder.setTitle(Html.fromHtml("<font color='#71a6d5'>Thông báo!</font>")).setMessage(Html.fromHtml("<font color='#71a6d5'>Bạn có thực sự muốn thoát ?</font>"));
                 builder.setCancelable(true);
                 builder.setIcon(R.drawable.alert_bottom);
                 //check
-                builder.setPositiveButton(Html.fromHtml("<font color='#71a6d5'>Yes</font>"), new DialogInterface.OnClickListener() {
+                builder.setPositiveButton(Html.fromHtml("<font color='#71a6d5'>Có</font>"), new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
-                        Toast.makeText(itemView.getContext(), "Out", Toast.LENGTH_SHORT).show();
-                        Intent intent = new Intent(itemView.getContext(), MainActivity.class);
+                        Toast.makeText(getContext(),"Thoát", Toast.LENGTH_SHORT).show();
+                        Intent intent = new Intent(getContext(), MainActivity.class);
                         startActivity(intent);
                         SharedPreferences shp = view.getContext().getSharedPreferences("user", MODE_PRIVATE);
                         shp.edit().clear().commit();
@@ -74,9 +72,9 @@ public class NotificationFragment extends Fragment {
                     }
                 });
                 // NO
-                builder.setNegativeButton(Html.fromHtml("<font color='#71a6d5'>No</font>"), new DialogInterface.OnClickListener() {
+                builder.setNegativeButton(Html.fromHtml("<font color='#71a6d5'>Không</font>"), new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
-                        Toast.makeText(itemView.getContext(), "Stay", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getContext(),"Ở lại", Toast.LENGTH_SHORT).show();
                         //  Cancel
                         dialog.cancel();
                     }

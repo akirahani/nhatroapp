@@ -14,6 +14,7 @@
     <TextView
         android:paddingTop="5dp"
         android:paddingLeft="5dp"
+        android:fontFamily="@font/svn_p_s_regular"
         android:id="@+id/textThietBiAdd"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content">

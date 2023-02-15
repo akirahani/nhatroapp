@@ -22,12 +22,14 @@
             android:layout_height="wrap_content"
             android:layout_alignParentStart="true"
             android:layout_weight="1"
+            android:fontFamily="@font/svn_p_s_regular"
             android:gravity="left"
             android:textColor="@color/black" />
 
         <TextView
             android:id="@+id/sdtKhach"
             android:layout_width="0dp"
+            android:fontFamily="@font/svn_p_s_regular"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:gravity="center"

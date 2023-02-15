@@ -45,6 +45,7 @@
                         android:layout_toRightOf="@+id/thoat"
                         android:paddingLeft="5dp"
                         android:text="Quay lại"
+                        android:fontFamily="@font/svn_p_s_regular"
                         android:textColor="@color/white" />
                 </LinearLayout>
 
@@ -111,6 +112,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:paddingLeft="8dp"
+                    android:fontFamily="@font/svn_p_s_bold"
                     android:text="Quỹ tiền mặt"
                     android:textAllCaps="true"
                     android:textColor="@color/textQuanLyChung"
@@ -175,12 +177,14 @@
                                     android:layout_height="wrap_content"
                                     android:text="Tiền phòng thu:"
                                     android:textSize="16dp"
+                                    android:fontFamily="@font/svn_p_s_regular"
                                     android:textColor="@color/tieuDePhongDongTien"
                                     />
                                 <TextView
                                     android:paddingLeft="10dp"
                                     android:textColor="@color/phaiTraTien"
                                     android:id="@+id/tienTongThu"
+                                    android:fontFamily="@font/svn_p_s_regular"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content" />
 
@@ -204,12 +208,14 @@
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:text="Tiền chi"
+                                    android:fontFamily="@font/svn_p_s_regular"
                                     android:textSize="16dp"
                                     android:textColor="@color/tieuDePhongDongTien" />
                                 <TextView
                                     android:paddingLeft="10dp"
                                     android:textColor="@color/phaiTraTien"
                                     android:id="@+id/tienTongChi"
+                                    android:fontFamily="@font/svn_p_s_regular"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content" />
                             </LinearLayout>
@@ -232,6 +238,7 @@
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:text="Quỹ còn lại"
+                                    android:fontFamily="@font/svn_p_s_regular"
                                     android:textSize="16dp"
                                     android:textColor="@color/tieuDePhongDongTien"
                                     />
@@ -239,6 +246,7 @@
                                     android:paddingLeft="10dp"
                                     android:textColor="@color/phaiTraTien"
                                     android:id="@+id/tienQuyConLai"
+                                    android:fontFamily="@font/svn_p_s_regular"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content" />
                             </LinearLayout>
