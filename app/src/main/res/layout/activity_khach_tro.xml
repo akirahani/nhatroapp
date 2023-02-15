@@ -49,6 +49,7 @@
                         android:layout_toRightOf="@+id/thoat"
                         android:paddingLeft="5dp"
                         android:text="Quay lại"
+                        android:fontFamily="@font/svn_p_s_regular"
                         android:textColor="@color/white" />
                 </LinearLayout>
 
@@ -116,6 +117,7 @@
                     android:layout_height="wrap_content"
                     android:paddingLeft="8dp"
                     android:text="quản lí khách trọ"
+                    android:fontFamily="@font/svn_p_s_bold"
                     android:textAllCaps="true"
                     android:textColor="@color/textQuanLyChung"
                     android:textSize="18dp"
@@ -172,7 +174,7 @@
                 <TextView
                     android:id="@+id/tenKhach"
                     android:text="Tên"
-
+                    android:fontFamily="@font/svn_p_s_bold"
                     android:textColor="@color/black"
                     android:textStyle="bold"
                     android:layout_width="wrap_content"
@@ -186,6 +188,7 @@
                         android:layout_toRightOf="@id/tenKhach"
                         android:id="@+id/dienThoaiKhach"
                         android:text="Điện thoại"
+                        android:fontFamily="@font/svn_p_s_bold"
                         android:textColor="@color/black"
                         android:textStyle="bold"
                         android:layout_width="wrap_content"
@@ -197,6 +200,7 @@
                     android:id="@+id/tacVuThietBi"
                     android:paddingRight="10dp"
                     android:text="Tác vụ"
+                    android:fontFamily="@font/svn_p_s_bold"
                     android:textColor="@color/black"
                     android:textStyle="bold"
                     android:layout_width="wrap_content"

@@ -13,6 +13,7 @@
         android:background="@drawable/phongtienchon"/>
     <TextView
         android:paddingLeft="8dp"
+        android:fontFamily="@font/svn_p_s_bold"
         android:layout_gravity="center"
         android:textStyle="bold"
         android:textColor="@color/colorTextPhong"

@@ -7,6 +7,7 @@
     android:layout_marginBottom="10dp">
 
     <TextView
+        android:fontFamily="@font/svn_p_s_regular"
         android:id="@+id/tienThuKhac"
         android:gravity="center"
         android:layout_weight="1"
@@ -15,6 +16,7 @@
         android:textSize="14sp"
         android:layout_height="wrap_content" />
     <TextView
+        android:fontFamily="@font/svn_p_s_regular"
         android:id="@+id/lyDoThuKhac"
         android:gravity="center"
         android:singleLine="true"
@@ -24,6 +26,7 @@
         android:textSize="14sp"
         android:layout_height="wrap_content" />
     <TextView
+        android:fontFamily="@font/svn_p_s_regular"
         android:id="@+id/phongThuKhac"
         android:gravity="center"
         android:layout_weight="1"

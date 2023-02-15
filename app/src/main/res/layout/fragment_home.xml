@@ -36,7 +36,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:background="@drawable/ic_back"
-                            android:backgroundTint="@color/white"></ImageView>
+                            android:backgroundTint="@color/white" />
 
                         <TextView
                             android:id="@+id/ten"
@@ -45,7 +45,8 @@
                             android:layout_toRightOf="@+id/thoat"
                             android:paddingLeft="5dp"
                             android:text="Thoát"
-                            android:textColor="@color/white"></TextView>
+                            android:fontFamily="@font/svn_p_s_regular"
+                            android:textColor="@color/white" />
                     </LinearLayout>
 
                     <LinearLayout
@@ -111,7 +112,7 @@
                             android:layout_height="wrap_content"
                             android:layout_centerHorizontal="true"
                             android:layout_marginHorizontal="5dp"
-                            android:fontFamily="sans-serif-black"
+                            android:fontFamily="@font/svn_p_s_bold"
                             android:paddingLeft="14dp"
                             android:textAllCaps="true"
                             android:textColor="@color/black"
@@ -154,10 +155,12 @@
                                     android:layout_height="wrap_content"
                                     android:text="Doanh thu tháng này"
                                     android:textAllCaps="true"
+                                    android:fontFamily="@font/svn_p_s_regular"
                                     android:textColor="@color/doanhThuThang"
                                     android:textSize="15sp" />
 
                                 <TextView
+                                    android:fontFamily="@font/svn_p_s_bold"
                                     android:id="@+id/doanhThuThangHienTai"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
@@ -180,13 +183,14 @@
                                     android:layout_marginHorizontal="5dp"
                                     android:layout_marginTop="25dp"
                                     android:text="Xem chi tiết"
+                                    android:fontFamily="@font/svn_p_s_regular"
                                     android:textColor="@color/textChiTiet" />
 
                                 <ImageView
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_marginTop="32dp"
-                                    android:background="@drawable/nextchitiet"></ImageView>
+                                    android:background="@drawable/nextchitiet" />
                             </LinearLayout>
                         </RelativeLayout>
 
@@ -224,8 +228,8 @@
                                     android:id="@+id/textQuanLyChung"
                                     android:layout_width="wrap_content"
                                     android:layout_height="match_parent"
-                                    android:fontFamily="sans-serif-black"
                                     android:gravity="center"
+                                    android:fontFamily="@font/svn_p_s_bold"
                                     android:lineHeight="19dp"
                                     android:paddingLeft="14dp"
                                     android:paddingTop="3dp"
@@ -240,7 +244,7 @@
                                 android:id="@+id/quanLyChung"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:background="@color/white"></androidx.recyclerview.widget.RecyclerView>
+                                android:background="@color/white" />
                         </LinearLayout>
                         <!-- Khoản thu-->
                         <LinearLayout
@@ -264,12 +268,12 @@
                                 <TextView
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:fontFamily="sans-serif-black"
                                     android:gravity="center"
                                     android:lineHeight="19dp"
                                     android:paddingLeft="14dp"
                                     android:paddingTop="3dp"
                                     android:paddingBottom="6dp"
+                                    android:fontFamily="@font/svn_p_s_bold"
                                     android:text="Các khoản thu"
                                     android:textAllCaps="true"
                                     android:textColor="@color/white"
@@ -306,7 +310,7 @@
                                             android:id="@+id/imageThuKhac"
                                             android:layout_width="wrap_content"
                                             android:layout_height="wrap_content"
-                                            android:background="@drawable/thukhac"></ImageView>
+                                            android:background="@drawable/thukhac" />
 
                                         <TextView
                                             android:id="@+id/thuKhac"
@@ -315,6 +319,7 @@
                                             android:layout_toRightOf="@+id/imageThuKhac"
                                             android:paddingLeft="10dp"
                                             android:paddingTop="5dp"
+                                            android:fontFamily="@font/svn_p_s_regular"
                                             android:text="Thu khác" />
                                     </RelativeLayout>
 
@@ -335,7 +340,7 @@
                                             android:id="@+id/imageElectric"
                                             android:layout_width="wrap_content"
                                             android:layout_height="wrap_content"
-                                            android:background="@drawable/tiendien"></ImageView>
+                                            android:background="@drawable/tiendien" />
 
                                         <TextView
                                             android:id="@+id/electronic"
@@ -344,6 +349,7 @@
                                             android:layout_toRightOf="@+id/imageElectric"
                                             android:paddingLeft="10dp"
                                             android:paddingTop="5dp"
+                                            android:fontFamily="@font/svn_p_s_regular"
                                             android:text="Tiền điện" />
                                     </RelativeLayout>
 
@@ -364,7 +370,7 @@
                                             android:id="@+id/imageWater"
                                             android:layout_width="wrap_content"
                                             android:layout_height="wrap_content"
-                                            android:background="@drawable/thuchi"></ImageView>
+                                            android:background="@drawable/thuchi" />
 
                                         <TextView
                                             android:id="@+id/water"
@@ -373,6 +379,7 @@
                                             android:layout_toRightOf="@+id/imageWater"
                                             android:paddingLeft="10dp"
                                             android:paddingTop="5dp"
+                                            android:fontFamily="@font/svn_p_s_regular"
                                             android:text="Tiền nước" />
                                     </RelativeLayout>
 
@@ -402,7 +409,6 @@
                                 <TextView
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:fontFamily="sans-serif-black"
                                     android:gravity="center"
                                     android:lineHeight="19dp"
                                     android:paddingLeft="14dp"
@@ -410,6 +416,7 @@
                                     android:paddingBottom="6dp"
                                     android:text="Các khoản chi"
                                     android:textAllCaps="true"
+                                    android:fontFamily="@font/svn_p_s_bold"
                                     android:textColor="@color/white"
                                     android:textSize="16dp" />
                             </RelativeLayout>
@@ -446,7 +453,7 @@
                                             android:id="@+id/imageBatBien"
                                             android:layout_width="wrap_content"
                                             android:layout_height="wrap_content"
-                                            android:background="@drawable/batbien"></ImageView>
+                                            android:background="@drawable/batbien" />
 
                                         <TextView
                                             android:id="@+id/BatBien"
@@ -455,6 +462,7 @@
                                             android:layout_toRightOf="@+id/imageBatBien"
                                             android:paddingLeft="10dp"
                                             android:paddingTop="5dp"
+                                            android:fontFamily="@font/svn_p_s_regular"
                                             android:text="Chi phí bất biến" />
                                     </RelativeLayout>
 
@@ -485,6 +493,7 @@
                                             android:layout_toRightOf="@+id/imageKhaBien"
                                             android:paddingLeft="10dp"
                                             android:paddingTop="5dp"
+                                            android:fontFamily="@font/svn_p_s_regular"
                                             android:text="Chi phí khả biến" />
                                     </RelativeLayout>
                                 </LinearLayout>

@@ -40,6 +40,7 @@
 
                     <TextView
                         android:id="@+id/ten"
+                        android:fontFamily="@font/svn_p_s_regular"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_toRightOf="@+id/thoat"
@@ -114,6 +115,7 @@
                     android:textAllCaps="true"
                     android:textColor="@color/textQuanLyChung"
                     android:textSize="18dp"
+                    android:fontFamily="@font/svn_p_s_bold"
                     android:textStyle="bold" />
 
             </LinearLayout>
@@ -136,6 +138,7 @@
                 android:id="@+id/tieuDeKhachDatCoc"
                 android:layout_width="193dp"
                 android:layout_height="33dp"
+                android:fontFamily="@font/svn_p_s_regular"
                 android:layout_below="@+id/tieuDeDongTien"
                 android:background="@drawable/title_card"
                 android:backgroundTint="@color/tabActive"
@@ -194,6 +197,7 @@
                                 android:paddingBottom="8dp">
 
                                 <EditText
+                                    android:fontFamily="@font/svn_p_s_bold"
                                     android:id="@+id/idNguoiCocText"
                                     android:layout_width="0dp"
                                     android:layout_height="wrap_content"
@@ -227,6 +231,7 @@
                                 android:paddingBottom="8dp">
 
                                 <EditText
+                                    android:fontFamily="@font/svn_p_s_regular"
                                     android:id="@+id/nguoiDongCocText"
                                     android:layout_width="0dp"
                                     android:layout_height="wrap_content"
@@ -266,6 +271,7 @@
                                     android:layout_gravity="center"
                                     android:layout_weight="5"
                                     android:background="@null"
+                                    android:fontFamily="@font/svn_p_s_regular"
                                     android:hint="Số điện thoại"
                                     android:inputType="number"
                                     android:paddingLeft="10dp"
@@ -297,6 +303,7 @@
                                 <EditText
                                     android:id="@+id/tienThanhToanText"
                                     android:layout_width="0dp"
+                                    android:fontFamily="@font/svn_p_s_regular"
                                     android:layout_height="wrap_content"
                                     android:layout_gravity="center"
                                     android:layout_weight="5"
@@ -337,6 +344,7 @@
                                     android:textSize="14dp"
                                     android:background="@null"
                                     android:layout_height="150dp"
+                                    android:fontFamily="@font/svn_p_s_regular"
                                     android:inputType="text|textMultiLine"
                                     android:gravity="top"/>
 
@@ -356,12 +364,14 @@
                                 android:id="@+id/tienMatDongCoc"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
+                                android:fontFamily="@font/svn_p_s_regular"
                                 android:text="Tiền mặt" />
 
                             <RadioButton
                                 android:id="@+id/chuyenKhoanDongCoc"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
+                                android:fontFamily="@font/svn_p_s_regular"
                                 android:layout_marginLeft="15dp"
                                 android:text="Chuyển khoản" />
                         </RadioGroup>
@@ -384,6 +394,7 @@
                                     android:layout_height="wrap_content"
                                     android:background="@drawable/gradient_add"
                                     android:paddingLeft="35dp"
+                                    android:fontFamily="@font/svn_p_s_bold"
                                     android:paddingTop="5dp"
                                     android:paddingRight="35dp"
                                     android:paddingBottom="5dp"

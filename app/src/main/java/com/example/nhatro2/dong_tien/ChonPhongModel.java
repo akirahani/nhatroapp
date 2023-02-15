@@ -19,7 +19,8 @@ public class ChonPhongModel {
 
     private	int tiencocthuthem;
     private	String tiencocthuthemformat;
-    private	String	dacoc;
+    private	String	dacocformat;
+    private	int	dacoc;
     private	String tencoc;
 
     private	int tienphongcanthu;
@@ -52,7 +53,7 @@ public class ChonPhongModel {
     private	String uudai;
     private	int hopdong;
 
-    public ChonPhongModel(String phongtrangthai, int phithanhvien, String thuthemthanhvien, int songuoio, String danhsachthanhvien, String tienthanhvienthang, int phithietbi, String tienthietbiphaithu, String tenthietbisudung, String landongthietbi, String tienthietbithang, int tiencocthuthem, String tiencocthuthemformat, String dacoc, String tencoc, int tienphongcanthu, String tennopphong, String phong, int dutienphong, String dutienphongformat, String lichsunopphong, String tenchuphong, String dienthoaichuphong, int idchuphong, int idphong, int sodiendau, int sodiencuoi, int sodiensudung, String tiendiensudung, String sodienphaithu, int sonuocdau, int sonuoccuoi, int sonuocsudung, String tiennuocsudung, String sonuocphaithu, int tongthu, String tongthuformat, String uudai, int hopdong) {
+    public ChonPhongModel(String phongtrangthai, int phithanhvien, String thuthemthanhvien, int songuoio, String danhsachthanhvien, String tienthanhvienthang, int phithietbi, String tienthietbiphaithu, String tenthietbisudung, String landongthietbi, String tienthietbithang, int tiencocthuthem, String tiencocthuthemformat, String dacocformat, int dacoc, String tencoc, int tienphongcanthu, String tennopphong, String phong, int dutienphong, String dutienphongformat, String lichsunopphong, String tenchuphong, String dienthoaichuphong, int idchuphong, int idphong, int sodiendau, int sodiencuoi, int sodiensudung, String tiendiensudung, String sodienphaithu, int sonuocdau, int sonuoccuoi, int sonuocsudung, String tiennuocsudung, String sonuocphaithu, int tongthu, String tongthuformat, String uudai, int hopdong) {
         this.phongtrangthai = phongtrangthai;
         this.phithanhvien = phithanhvien;
         this.thuthemthanhvien = thuthemthanhvien;
@@ -66,6 +67,7 @@ public class ChonPhongModel {
         this.tienthietbithang = tienthietbithang;
         this.tiencocthuthem = tiencocthuthem;
         this.tiencocthuthemformat = tiencocthuthemformat;
+        this.dacocformat = dacocformat;
         this.dacoc = dacoc;
         this.tencoc = tencoc;
         this.tienphongcanthu = tienphongcanthu;
@@ -93,7 +95,6 @@ public class ChonPhongModel {
         this.uudai = uudai;
         this.hopdong = hopdong;
     }
-
 
     public String getPhongtrangthai() {
         return phongtrangthai;
@@ -199,13 +200,6 @@ public class ChonPhongModel {
         this.tiencocthuthemformat = tiencocthuthemformat;
     }
 
-    public String getDacoc() {
-        return dacoc;
-    }
-
-    public void setDacoc(String dacoc) {
-        this.dacoc = dacoc;
-    }
 
     public String getTencoc() {
         return tencoc;
@@ -405,5 +399,21 @@ public class ChonPhongModel {
 
     public void setHopdong(int hopdong) {
         this.hopdong = hopdong;
+    }
+
+    public String getDacocformat() {
+        return dacocformat;
+    }
+
+    public void setDacocformat(String dacocformat) {
+        this.dacocformat = dacocformat;
+    }
+
+    public int getDacoc() {
+        return dacoc;
+    }
+
+    public void setDacoc(int dacoc) {
+        this.dacoc = dacoc;
     }
 }

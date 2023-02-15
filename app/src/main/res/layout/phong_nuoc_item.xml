@@ -15,12 +15,14 @@
 
         <TextView
             android:id="@+id/tenPhongNuoc"
+            android:fontFamily="@font/svn_p_s_regular"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:textColor="@color/black" />
 
         <EditText
+            android:fontFamily="@font/svn_p_s_regular"
             android:id="@+id/soDauNuoc"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -34,6 +36,7 @@
             />
 
         <EditText
+            android:fontFamily="@font/svn_p_s_regular"
             android:id="@+id/soCuoiNuoc"
             android:layout_width="0dp"
             android:layout_height="wrap_content"

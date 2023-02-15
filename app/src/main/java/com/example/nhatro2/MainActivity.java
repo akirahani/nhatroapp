@@ -66,16 +66,16 @@ public class MainActivity extends AppCompatActivity {
                                 shpEdit.apply();
                                 Intent intent = new Intent(MainActivity.this, HomeActivity.class);
                                 startActivity(intent);
-                                Toast.makeText(MainActivity.this, "success", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(MainActivity.this, "Đăng nhập thành công", Toast.LENGTH_SHORT).show();
                                 finish();
                             } else {
-                                Toast.makeText(MainActivity.this, "Lỗi đăng nhập", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(MainActivity.this, "Đăng nhập thất bại!", Toast.LENGTH_SHORT).show();
                             }
                         }
 
                         @Override
                         public void onFailure(Call<ThanhVienModel> call, Throwable t) {
-                            Toast.makeText(MainActivity.this, "failed", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(MainActivity.this, "Lỗi đăng nhập", Toast.LENGTH_SHORT).show();
                         }
                     });
                 }

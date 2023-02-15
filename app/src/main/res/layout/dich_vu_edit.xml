@@ -45,6 +45,7 @@
                         android:layout_toRightOf="@+id/thoat"
                         android:paddingLeft="5dp"
                         android:text="Quay lại"
+                        android:fontFamily="@font/svn_p_s_regular"
                         android:textColor="@color/white" />
                 </LinearLayout>
                 <LinearLayout
@@ -109,6 +110,7 @@
                     android:layout_height="wrap_content"
                     android:textStyle="bold"
                     android:paddingLeft="8dp"
+                    android:fontFamily="@font/svn_p_s_bold"
                     android:text="quản lí dịch vụ nhà trọ"
                     android:textAllCaps="true"
                     android:textColor="@color/textQuanLyChung"
@@ -136,13 +138,13 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Thiết bị"
+                android:fontFamily="@font/svn_p_s_bold"
                 android:textAllCaps="true"
                 android:paddingTop="3dp"
                 android:paddingLeft="14dp"
                 android:paddingBottom="6dp"
                 android:gravity="center"
                 android:textColor="@color/white"
-                android:fontFamily="sans-serif-black"
                 android:textSize="16dp"
                 android:lineHeight="19dp" />
         </RelativeLayout>
@@ -165,6 +167,8 @@
                 <TextView
                     android:id="@+id/tieuDeTenThietBi"
                     android:text="Tên"
+                    android:fontFamily="@font/svn_p_s_bold"
+                    android:textColor="@color/black"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content">
                 </TextView>
@@ -172,7 +176,8 @@
                     android:layout_centerHorizontal="true"
                     android:id="@+id/tieuDeGiaThietBi"
                     android:text="Giá"
-
+                    android:fontFamily="@font/svn_p_s_bold"
+                    android:textColor="@color/black"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content">
                 </TextView>
@@ -181,7 +186,8 @@
                     android:id="@+id/tacVuThietBi"
                     android:paddingRight="10dp"
                     android:text="Tác vụ"
-
+                    android:fontFamily="@font/svn_p_s_bold"
+                    android:textColor="@color/black"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content">
                 </TextView>
@@ -222,6 +228,7 @@
                                 android:textColor="@color/black"
                                 android:textStyle="bold"
                                 android:paddingLeft="6dp"
+                                android:fontFamily="@font/svn_p_s_bold"
                                 android:text="Tên thiết bị: ">
                             </TextView>
                             <EditText
@@ -230,6 +237,7 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:background="@null"
+                                android:fontFamily="@font/svn_p_s_regular"
                                 android:textSize="14sp">
                             </EditText>
                         </LinearLayout>
@@ -253,6 +261,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:paddingLeft="6dp"
+                                android:fontFamily="@font/svn_p_s_bold"
                                 android:text="Giá hàng tháng: "
                                 android:textStyle="bold"
                                 android:textColor="@color/black">
@@ -260,6 +269,7 @@
                             <EditText
                                 android:id="@+id/giaThietBiEdit"
                                 android:singleLine="true"
+                                android:fontFamily="@font/svn_p_s_regular"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:inputType="number"
@@ -294,6 +304,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_alignParentLeft="true"
+                            android:fontFamily="@font/svn_p_s_bold"
                             android:text="Quay lại"
                             android:textAllCaps="true">
                         </TextView>
@@ -313,6 +324,7 @@
                             android:paddingBottom="5dp"
                             android:textColor="@color/white"
                             android:textStyle="bold"
+                            android:fontFamily="@font/svn_p_s_bold"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="Cập nhật"

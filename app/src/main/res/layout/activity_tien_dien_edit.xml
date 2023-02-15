@@ -37,6 +37,7 @@
                         android:backgroundTint="@color/white" />
 
                     <TextView
+                        android:fontFamily="@font/svn_p_s_regular"
                         android:id="@+id/ten"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -116,6 +117,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:paddingLeft="8dp"
+                    android:fontFamily="@font/svn_p_s_bold"
                     android:text="Thông tin tiền điện"
                     android:textAllCaps="true"
                     android:textColor="@color/textQuanLyChung"
@@ -156,9 +158,11 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:textColor="@color/black"
+                        android:fontFamily="@font/svn_p_s_bold"
                         android:textStyle="bold" />
 
                     <TextView
+                        android:fontFamily="@font/svn_p_s_bold"
                         android:id="@+id/daiDienPhongDien"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -190,6 +194,7 @@
                 android:layout_below="@+id/titleInfoElectric"
                 android:layout_marginLeft="14dp"
                 android:layout_marginRight="14dp"
+                android:fontFamily="@font/svn_p_s_regular"
                 android:textColor="@color/loginButton"
                 android:textStyle="bold" />
 
@@ -219,11 +224,13 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Số đầu: "
+                        android:fontFamily="@font/svn_p_s_regular"
                         android:textColor="@color/black"
                         android:textSize="14sp" />
 
                     <EditText
                         android:id="@+id/soDauDien"
+                        android:fontFamily="@font/svn_p_s_regular"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_toRightOf="@+id/titleSoDau"
@@ -257,6 +264,7 @@
 
                     <TextView
                         android:id="@+id/titleSoCuoi"
+                        android:fontFamily="@font/svn_p_s_regular"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Số cuối: "
@@ -269,6 +277,7 @@
                         android:layout_height="wrap_content"
                         android:layout_toRightOf="@+id/titleSoCuoi"
                         android:background="@null"
+                        android:fontFamily="@font/svn_p_s_regular"
                         android:paddingLeft="10dp"
                         android:inputType="number"
                         android:singleLine="true"
@@ -298,6 +307,7 @@
 
                     <TextView
                         android:id="@+id/titleDienDung"
+                        android:fontFamily="@font/svn_p_s_regular"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Số điện sử dụng: "
@@ -311,6 +321,7 @@
                         android:layout_toRightOf="@+id/titleDienDung"
                         android:background="@null"
                         android:paddingLeft="10dp"
+                        android:fontFamily="@font/svn_p_s_regular"
                         android:inputType="number"
                         android:singleLine="true"
                         android:textSize="14sp" />
@@ -339,6 +350,7 @@
 
                     <TextView
                         android:id="@+id/titlePay"
+                        android:fontFamily="@font/svn_p_s_regular"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Thành tiền: "
@@ -351,6 +363,7 @@
                         android:layout_height="wrap_content"
                         android:layout_toRightOf="@+id/titlePay"
                         android:background="@null"
+                        android:fontFamily="@font/svn_p_s_regular"
                         android:paddingLeft="10dp"
                         android:singleLine="true"
                         android:textSize="14sp" />
@@ -382,11 +395,13 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Ngày đo: "
+                        android:fontFamily="@font/svn_p_s_regular"
                         android:textColor="@color/black"
                         android:textSize="14sp" />
 
                     <EditText
                         android:id="@+id/ngayDoDien"
+                        android:fontFamily="@font/svn_p_s_regular"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_toRightOf="@+id/dateCalElectric"
@@ -419,6 +434,7 @@
                     android:layout_height="wrap_content"
                     android:layout_toRightOf="@id/clickDownElectric"
                     android:paddingLeft="6dp"
+                    android:fontFamily="@font/svn_p_s_bold"
                     android:textColor="@color/black"
                     android:textSize="14sp"
                     android:textStyle="bold" />
@@ -436,7 +452,7 @@
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/listElectricNumberUsed"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"></androidx.recyclerview.widget.RecyclerView>
+                    android:layout_height="wrap_content" />
             </androidx.cardview.widget.CardView>
 
             <LinearLayout
@@ -460,6 +476,7 @@
                         android:paddingTop="6dp"
                         android:paddingRight="16dp"
                         android:paddingBottom="6dp"
+                        android:fontFamily="@font/svn_p_s_bold"
                         android:text="Cập nhật thông tin"
                         android:textColor="@color/white"
                         android:textSize="18sp"

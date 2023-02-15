@@ -21,9 +21,11 @@
             android:textSize="18sp"
             android:textStyle="bold"
             android:paddingLeft="10dp"
+            android:fontFamily="@font/svn_p_s_bold"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
         <TextView
+            android:fontFamily="@font/svn_p_s_regular"
             android:textColor="@color/textTaiKhoan"
             android:id="@+id/phoneUser"
             android:textSize="14sp"
@@ -55,6 +57,7 @@
             <TextView
                 android:layout_gravity="center"
                 android:textSize="16sp"
+                android:fontFamily="@font/svn_p_s_regular"
                 android:textColor="@color/textTaiKhoan"
                 android:paddingLeft="10dp"
                 android:text="Thông tin tài khoản"
@@ -78,6 +81,7 @@
             <TextView
                 android:layout_gravity="center"
                 android:textSize="16sp"
+                android:fontFamily="@font/svn_p_s_regular"
                 android:textColor="@color/textTaiKhoan"
                 android:paddingLeft="10dp"
                 android:text="Đổi mật khẩu"
@@ -100,6 +104,7 @@
             <TextView
                 android:layout_gravity="center"
                 android:textSize="16sp"
+                android:fontFamily="@font/svn_p_s_regular"
                 android:textColor="@color/textTaiKhoan"
                 android:paddingLeft="10dp"
                 android:text="Đăng xuất"

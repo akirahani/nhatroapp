@@ -36,7 +36,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:background="@drawable/quaylaitrang"
-                        android:backgroundTint="@color/white"></ImageView>
+                        android:backgroundTint="@color/white" />
 
                     <TextView
                         android:id="@+id/ten"
@@ -45,7 +45,8 @@
                         android:layout_toRightOf="@+id/thoat"
                         android:paddingLeft="5dp"
                         android:text="Quay lại"
-                        android:textColor="@color/white"></TextView>
+                        android:fontFamily="@font/svn_p_s_regular"
+                        android:textColor="@color/white" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -108,6 +109,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:paddingLeft="8dp"
+                    android:fontFamily="@font/svn_p_s_bold"
                     android:text="quản lí dịch vụ nhà trọ"
                     android:textAllCaps="true"
                     android:textColor="@color/textQuanLyChung"
@@ -140,13 +142,13 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:fontFamily="sans-serif-black"
                 android:gravity="center"
                 android:lineHeight="19dp"
                 android:paddingLeft="14dp"
                 android:paddingTop="3dp"
                 android:paddingBottom="6dp"
                 android:text="Thiết bị"
+                android:fontFamily="@font/svn_p_s_bold"
                 android:textAllCaps="true"
                 android:textColor="@color/white"
                 android:textSize="16dp" />
@@ -172,17 +174,19 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Tên"
+                    android:fontFamily="@font/svn_p_s_bold"
                     android:textColor="@color/black"
-                    android:textStyle="bold"></TextView>
+                    android:textStyle="bold" />
 
                 <TextView
                     android:id="@+id/tieuDeGiaThietBi"
                     android:layout_width="wrap_content"
+                    android:fontFamily="@font/svn_p_s_bold"
                     android:layout_height="wrap_content"
                     android:layout_centerHorizontal="true"
                     android:text="Giá"
                     android:textColor="@color/black"
-                    android:textStyle="bold"></TextView>
+                    android:textStyle="bold" />
 
                 <TextView
                     android:id="@+id/tacVuThietBi"
@@ -191,8 +195,9 @@
                     android:layout_alignParentRight="true"
                     android:paddingRight="10dp"
                     android:text="Tác vụ"
+                    android:fontFamily="@font/svn_p_s_bold"
                     android:textColor="@color/black"
-                    android:textStyle="bold"></TextView>
+                    android:textStyle="bold" />
             </RelativeLayout>
 
             <androidx.recyclerview.widget.RecyclerView
