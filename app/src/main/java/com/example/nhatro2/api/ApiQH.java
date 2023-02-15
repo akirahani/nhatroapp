@@ -297,6 +297,14 @@ public interface ApiQH {
                                     @Field("phong") String tenPhong,
                                     @Field("phuongthuc") int phuongThuc,
                                     @Field("thanhtoan") String thanhToan);
+    // Đóng cọc phòng tiền
+    @POST("/quanghieu/admin/api/thu-tien/thu_coc.php")
+    @FormUrlEncoded
+    Call <TienCocModel> postCoc(@Field("khutroid") int khuTroId,
+                                    @Field("chuphong") int chuPhong,
+                                    @Field("phong") String tenPhong,
+                                    @Field("phuongthuc") int phuongThuc,
+                                    @Field("thanhtoan") String thanhToan);
     // Quỹ tiền
     @GET("/quanghieu/admin/api/quy-tien/list.php")
     Call <QuyTienModel> getQuyTien();

@@ -14,8 +14,10 @@ public class TienCocModel {
     private String ghichu;
     private int phuongthuc;
     private int daxuly;
+    private String trangthaicoc;
+    private String mess;
 
-    public TienCocModel(int id, int chuphong, String tenchuphong, String status, String mes, String tienformat, int last, int tien, String ngay, String gio, String ghichu, int phuongthuc, int daxuly) {
+    public TienCocModel(int id, int chuphong, String tenchuphong, String status, String mes, String tienformat, int last, int tien, String ngay, String gio, String ghichu, int phuongthuc, int daxuly, String trangthaicoc, String mess) {
         this.id = id;
         this.chuphong = chuphong;
         this.tenchuphong = tenchuphong;
@@ -29,6 +31,24 @@ public class TienCocModel {
         this.ghichu = ghichu;
         this.phuongthuc = phuongthuc;
         this.daxuly = daxuly;
+        this.trangthaicoc = trangthaicoc;
+        this.mess = mess;
+    }
+
+    public String getTrangthaicoc() {
+        return trangthaicoc;
+    }
+
+    public void setTrangthaicoc(String trangthaicoc) {
+        this.trangthaicoc = trangthaicoc;
+    }
+
+    public String getMess() {
+        return mess;
+    }
+
+    public void setMess(String mess) {
+        this.mess = mess;
     }
 
     public int getId() {
