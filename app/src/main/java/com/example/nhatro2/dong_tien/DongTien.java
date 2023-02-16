@@ -448,7 +448,6 @@ public class DongTien extends AppCompatActivity {
                                 }
                                 shp = view.getContext().getSharedPreferences("user", MODE_PRIVATE);
                                 int khuTroId = shp.getInt("idThanhVien", 0);
-
                                 ApiQH.apiQH.updateUuDaiPhong(khuTroId,chuPhongChon,tenPhong,idUuDai,apDungUuDaiPhong).enqueue(new Callback<ApDungUuDaiModel>() {
                                     @Override
                                     public void onResponse(Call<ApDungUuDaiModel> call, Response<ApDungUuDaiModel> response) {
@@ -463,7 +462,7 @@ public class DongTien extends AppCompatActivity {
 
                                     @Override
                                     public void onFailure(Call<ApDungUuDaiModel> call, Throwable t) {
-
+                                        Log.d("err j day 1602",""+t.toString());
                                     }
                                 });
                             }

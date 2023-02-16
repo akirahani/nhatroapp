@@ -47,7 +47,6 @@ public class ChonPhongTienAdapter extends RecyclerView.Adapter<ChonPhongTienAdap
             @Override
             public void onClick(View view) {
                 clickPhongId.clickPhongID(idPhong,tenPhong,chuPhongChon);
-                Log.d("chu phhong dau",""+chuPhongChon);
             }
         });
     }
