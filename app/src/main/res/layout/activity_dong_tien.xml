@@ -206,6 +206,70 @@
 
 
                     </LinearLayout>
+
+                    <!-- grid trả phòng-->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/traPhong"
+                        android:layout_marginLeft="14dp"
+                        android:layout_marginRight="14dp"
+                        android:orientation="horizontal"
+                        android:layout_marginTop="10dp">
+                        <androidx.cardview.widget.CardView
+                            app:cardCornerRadius="5dp"
+                            android:layout_marginRight="5dp"
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
+                            android:layout_height="wrap_content">
+                            <LinearLayout
+                                android:background="@color/phongThue"
+                                android:paddingTop="10dp"
+                                android:paddingBottom="10dp"
+                                android:gravity="center"
+                                android:id="@+id/traPhongThuong"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal">
+                                <TextView
+                                    android:paddingLeft="5dp"
+                                    android:textColor="@color/black"
+                                    android:textSize="14sp"
+                                    android:text="Trả phòng"
+                                    android:fontFamily="@font/svn_p_s_bold"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content" />
+                            </LinearLayout>
+                        </androidx.cardview.widget.CardView>
+                        <androidx.cardview.widget.CardView
+                            app:cardCornerRadius="5dp"
+                            android:layout_marginLeft="5dp"
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
+                            android:layout_height="wrap_content">
+                            <LinearLayout
+                                android:background="@color/phongThue"
+                                android:paddingTop="10dp"
+                                android:paddingBottom="10dp"
+                                android:gravity="center"
+                                android:id="@+id/traPhongNgay"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal">
+                                <TextView
+
+                                    android:paddingLeft="5dp"
+                                    android:textColor="@color/black"
+                                    android:textSize="14sp"
+                                    android:text="Trả phòng theo phòng"
+                                    android:fontFamily="@font/svn_p_s_bold"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content" />
+                            </LinearLayout>
+                        </androidx.cardview.widget.CardView>
+
+
+                    </LinearLayout>
                     <!-- khung đầu đóng tiền-->
                     <androidx.cardview.widget.CardView
                         android:id="@+id/khungDongTien"
@@ -302,6 +366,15 @@
                         </LinearLayout>
                     </androidx.cardview.widget.CardView>
 
+                    <!-- Áp dụng ưu đãi -->
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/listChonUuDai"
+                        android:layout_marginLeft="14dp"
+                        android:layout_marginRight="14dp"
+                        android:layout_marginBottom="14dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+                    </androidx.recyclerview.widget.RecyclerView>
                 </LinearLayout>
 
                 <!--  Khung thông tin khách -->
@@ -475,7 +548,10 @@
                                         android:textColor="@color/black"
                                         android:textSize="16sp"
                                         android:textStyle="bold" />
-
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:textSize="16sp" />
                                     <View
                                         android:layout_width="match_parent"
                                         android:layout_height="1dp"
@@ -630,7 +706,7 @@
                                         android:id="@+id/listThanhVienPhong"
                                         android:layout_width="match_parent"
                                         android:layout_height="wrap_content"
-                                        android:paddingLeft="15dp"
+                                        android:paddingLeft="9dp"
                                         android:paddingTop="10dp"
                                         android:textColor="@color/black"
                                         android:textSize="14sp" />
@@ -649,6 +725,7 @@
                                         android:layout_width="match_parent"
                                         android:layout_height="wrap_content"
                                         android:paddingTop="10dp"
+                                        android:paddingBottom="10dp"
                                         android:textSize="14sp"
                                         android:fontFamily="@font/svn_p_s_regular"
                                         android:textColor="@color/black"/>
@@ -705,7 +782,6 @@
                                         android:layout_height="wrap_content"
                                         android:paddingLeft="9dp"
                                         android:paddingTop="10dp"
-                                        android:paddingBottom="10dp"
                                         android:textColor="@color/loginButton"
                                         android:textSize="14sp" />
 
@@ -720,6 +796,7 @@
                                     <TextView
                                         android:paddingLeft="9dp"
                                         android:textSize="14sp"
+                                        android:paddingBottom="10dp"
                                         android:fontFamily="@font/svn_p_s_regular"
                                         android:textColor="@color/black"
                                         android:id="@+id/thanhTienThietBi"

@@ -107,8 +107,6 @@ public class ThuKhacAdd extends AppCompatActivity {
 
                 String tienThuKhacTextProcess = tienThuKhacText.getText().toString();
 
-                int tienThuKhacTextFinal = Integer.parseInt(tienThuKhacTextProcess);
-
                 thuaTienThuKhac = findViewById(R.id.thuaTienThuKhac);
                 thieuTienThuKhac = findViewById(R.id.thieuTienThuKhac);
 
@@ -120,20 +118,32 @@ public class ThuKhacAdd extends AppCompatActivity {
                 shp = view.getContext().getSharedPreferences("user", MODE_PRIVATE);
                 int idThanhVienQuanLy = shp.getInt("idThanhVien",0);
 
-                ApiQH.apiQH.addThuKhac(idThanhVienQuanLy,lyDoThuKhacTextFinal,tienThuKhacTextFinal,checkTien, idPhongThuKhac ).enqueue(new Callback<ThuKhacModel>() {
-                    @Override
-                    public void onResponse(Call<ThuKhacModel> call, Response<ThuKhacModel> response) {
-                        ThuKhacModel thKhacItemAdd = response.body();
-                        Intent intent = new Intent(ThuKhacAdd.this, ThuKhac.class);
-                        startActivity(intent);
-                        finish();
+
+                if(lyDoThuKhacTextFinal.equals("") ){
+                    Toast.makeText(ThuKhacAdd.this,"Vui lòng nhập lý do!",Toast.LENGTH_SHORT).show();
+                }else{
+                    if(tienThuKhacTextProcess.equals("")){
+                        Toast.makeText(ThuKhacAdd.this,"Vui lòng nhập khoản tiền thu khác!",Toast.LENGTH_SHORT).show();
+                    }else{
+                        int tienThuKhacTextFinal = Integer.parseInt(tienThuKhacTextProcess);
+                        ApiQH.apiQH.addThuKhac(idThanhVienQuanLy,lyDoThuKhacTextFinal,tienThuKhacTextFinal,checkTien, idPhongThuKhac ).enqueue(new Callback<ThuKhacModel>() {
+                            @Override
+                            public void onResponse(Call<ThuKhacModel> call, Response<ThuKhacModel> response) {
+                                ThuKhacModel thKhacItemAdd = response.body();
+                                Intent intent = new Intent(ThuKhacAdd.this, ThuKhac.class);
+                                startActivity(intent);
+                                finish();
+                                Toast.makeText(ThuKhacAdd.this,"Thêm khoản thu khác thành công",Toast.LENGTH_SHORT).show();
+                            }
+
+                            @Override
+                            public void onFailure(Call<ThuKhacModel> call, Throwable t) {
+                            }
+                        });
                     }
 
-                    @Override
-                    public void onFailure(Call<ThuKhacModel> call, Throwable t) {
-                        Log.d("loi me roi",""+t.toString());
-                    }
-                });
+                }
+
             }
         });
 

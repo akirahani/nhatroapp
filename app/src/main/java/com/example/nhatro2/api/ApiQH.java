@@ -2,6 +2,7 @@ package com.example.nhatro2.api;
 
 import com.example.nhatro2.bat_bien.BatBienModel;
 import com.example.nhatro2.dich_vu.DichVuModel;
+import com.example.nhatro2.dong_tien.ApDungUuDaiModel;
 import com.example.nhatro2.dong_tien.ChonPhongModel;
 import com.example.nhatro2.dong_tien.LichSuDongTienModel;
 import com.example.nhatro2.dong_tien.ThanhToanModel;
@@ -38,8 +39,8 @@ import retrofit2.http.POST;
 
 public interface ApiQH {
 
-  String url = "http://192.168.1.190";
-//    String url = "http://172.16.1.71";
+//  String url = "http://192.168.1.190";
+    String url = "http://172.16.1.71";
     //    String url = "https://nhatroquanghieu.com";
     Gson gson = new GsonBuilder().setDateFormat("yyyy-MM-DD HH:mm:ss").create();
     OkHttpClient okHttpClient = new OkHttpClient.Builder().build();
@@ -305,6 +306,22 @@ public interface ApiQH {
                                     @Field("phong") String tenPhong,
                                     @Field("phuongthuc") int phuongThuc,
                                     @Field("thanhtoan") String thanhToan);
+    @POST ("/quanghieu/admin/api/thu-tien/tim_phong.php")
+    @FormUrlEncoded
+    Call <List<PhongModel>> searchPhongTien( @Field("key") String key);
+
+    //ưu đãi update
+    @POST ("/quanghieu/admin/api/thu-tien/update_uu_dai_phong.php")
+    @FormUrlEncoded
+    Call <ApDungUuDaiModel> updateUuDaiPhong(@Field("khutroid") int khuTroId,
+                                                        @Field("chuphong") int chuPhong,
+                                                        @Field("phong") String tenPhong,
+                                                        @Field("uudai") int idUuDai,
+                                                        @Field("phuongthuc") int phuongThuc);
+
+    @GET ("/quanghieu/admin/api/thu-tien/uu_dai_active.php")
+    Call <List<UuDaiModel>> getUuDaiActive();
+
     // Quỹ tiền
     @GET("/quanghieu/admin/api/quy-tien/list.php")
     Call <QuyTienModel> getQuyTien();

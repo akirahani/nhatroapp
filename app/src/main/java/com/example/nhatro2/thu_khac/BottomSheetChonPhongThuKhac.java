@@ -13,6 +13,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.recyclerview.widget.GridLayoutManager;
@@ -49,6 +50,8 @@ public class BottomSheetChonPhongThuKhac extends BottomSheetDialogFragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.bottom_sheet_phong_thu_khac_chon, container, false);
+        EditText keySearchPhongThuKhac;
+        ImageView searchPhongThuKhacChon;
         listPhongClick = view.findViewById(R.id.listKhachThuKhacClick);
         listPhongClick.setLayoutManager(new GridLayoutManager(view.getContext(),2));
         listPhongClick.hasFixedSize();
@@ -77,6 +80,39 @@ public class BottomSheetChonPhongThuKhac extends BottomSheetDialogFragment {
             @Override
             public void onFailure(Call<List<PhongModel>> call, Throwable t) {
 
+            }
+        });
+
+        searchPhongThuKhacChon = view.findViewById(R.id.searchPhongThuKhacChon);
+        keySearchPhongThuKhac = view.findViewById(R.id.keySearchPhongThuKhac);
+        searchPhongThuKhacChon.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String tenPhong = keySearchPhongThuKhac.getText().toString();
+                ApiQH.apiQH.searchPhongTien(tenPhong).enqueue(new Callback<List<PhongModel>>() {
+                    @Override
+                    public void onResponse(Call<List<PhongModel>> call, Response<List<PhongModel>> response) {
+                        List<PhongModel> listPhongChon = response.body();
+                        listPhongClick.setAdapter(new ChonPhongThuKhacAdapter(view.getContext(), listPhongChon, new ChonPhongThuKhacClick() {
+                            @Override
+                            public void clickPhongThuKhac(int idPhong, String tenPhong) {
+                                shpPhongThuKhacChon = view.getContext().getSharedPreferences("phongThuKhacChon", MODE_PRIVATE);
+                                shpPhongThuKhacChonEdit = shpPhongThuKhacChon.edit();
+                                shpPhongThuKhacChonEdit.putString("idPhongThuKhacChon",tenPhong);
+                                shpPhongThuKhacChonEdit.putInt("maPhongThuKhacChon",idPhong);
+                                shpPhongThuKhacChonEdit.commit();
+                                Intent intent = new Intent(view.getContext(),ThuKhacAdd.class);
+                                startActivity(intent);
+                                getDialog().dismiss();
+                            }
+                        }));
+                    }
+
+                    @Override
+                    public void onFailure(Call<List<PhongModel>> call, Throwable t) {
+                        Log.d("err ca iquan que",""+t.toString());
+                    }
+                });
             }
         });
 
