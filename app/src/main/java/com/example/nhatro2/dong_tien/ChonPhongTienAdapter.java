@@ -1,6 +1,7 @@
 package com.example.nhatro2.dong_tien;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -40,11 +41,13 @@ public class ChonPhongTienAdapter extends RecyclerView.Adapter<ChonPhongTienAdap
         PhongModel getPhong = listPhong.get(position);
         String tenPhong = getPhong.getTen();
         int idPhong = getPhong.getId();
+        int chuPhongChon = getPhong.getChuphong();
         holder.chonPhongTienClick.setText(tenPhong);
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                clickPhongId.clickPhongID(idPhong,tenPhong);
+                clickPhongId.clickPhongID(idPhong,tenPhong,chuPhongChon);
+                Log.d("chu phhong dau",""+chuPhongChon);
             }
         });
     }
