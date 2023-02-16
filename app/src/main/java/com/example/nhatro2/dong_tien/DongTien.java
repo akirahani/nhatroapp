@@ -38,6 +38,7 @@ import com.example.nhatro2.hop_dong.HopDong;
 import com.example.nhatro2.thanhvien.KhachTro;
 import com.example.nhatro2.thanhvien.ThanhVienModel;
 import com.example.nhatro2.tien_coc.TienCocAdd;
+import com.example.nhatro2.tien_coc.TienCocModel;
 import com.google.android.material.navigation.NavigationView;
 
 import java.util.List;
@@ -47,19 +48,21 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class DongTien extends AppCompatActivity {
-    ImageView logo, timInfoPhongChiTiet, menuDanhMuc;
+    ImageView logo, timInfoPhongChiTiet, menuDanhMuc, thanhToanCocButton;
     SharedPreferences shp;
-    TextView nameRoomSearch, tienPhongCanTra, tienCocDaTra, tenchuphong, dienthoaichuphong, soDienSuDungText, soNuocSuDungText, tienNuocPhaiThu, tienDienPhaiThu, phaiTraTien;
+    TextView nameRoomSearch, tienPhongCanTra, tienCocDaTra, tenchuphong,
+            dienthoaichuphong, soDienSuDungText, soNuocSuDungText,
+            tienNuocPhaiThu, tienDienPhaiThu, phaiTraTien, thanhTienThanhVien, thanhTienThietBi;
     RecyclerView listThietBiSuDung, listThanhVienPhong, lichSuThuTienPhong;
     SharedPreferences.Editor shpKhachEdit;
     LinearLayout thongTinChungDongTien, dongTienPhongText, khungLichSuDongTien, quayLai, phanDongCocClick;
     RadioGroup hinhThucDongTien;
-    EditText tienThanhToanText;
+    EditText tienThanhToanText, tienCocThanhToanText;
     ImageView thanhToanTienButton;
-    RadioButton tienMatDongTien, chuyenKhoanDongTien;
+    RadioButton tienMatDongTien, chuyenKhoanDongTien, chuyenKhoanDongTienCoc, tienMatDongTienCoc;
     DrawerLayout mDrawerLayout;
     View lineCoc;
-    int phuongThucThanhToan;
+    int phuongThucThanhToan, phuongThucCoc;
 
     @SuppressLint("MissingInflatedId")
     @Override
@@ -144,6 +147,13 @@ public class DongTien extends AppCompatActivity {
         tienThanhToanText = findViewById(R.id.tienThanhToanText);
         phanDongCocClick = findViewById(R.id.phanDongCocClick);
         lineCoc = findViewById(R.id.lineCoc);
+        thanhToanCocButton = findViewById(R.id.thanhToanCocButton);
+
+        thanhTienThanhVien = findViewById(R.id.thanhTienThanhVien);
+        thanhTienThietBi = findViewById(R.id.thanhTienThietBi);
+        tienCocThanhToanText = findViewById(R.id.tienCocThanhToanText);
+        chuyenKhoanDongTienCoc = findViewById(R.id.chuyenKhoanDongTienCoc);
+        tienMatDongTienCoc = findViewById(R.id.tienMatDongTienCoc);
 
         ApiQH.apiQH.getTienDongList(maPhongChon).enqueue(new Callback<ChonPhongModel>() {
             @SuppressLint("ResourceAsColor")
@@ -190,6 +200,40 @@ public class DongTien extends AppCompatActivity {
                         }
                     });
 
+                    thanhToanCocButton.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            String tienCocThanhToan = tienCocThanhToanText.getText().toString();
+                            shp = view.getContext().getSharedPreferences("user", MODE_PRIVATE);
+                            int khuTroId = shp.getInt("idThanhVien", 0);
+
+                            if (tienMatDongTienCoc.isChecked()) {
+                                phuongThucCoc = 1;
+                            } else if (chuyenKhoanDongTienCoc.isChecked()) {
+                                phuongThucCoc = 2;
+                            }
+
+                            if (tienCocThanhToan.equals("")) {
+                                Toast.makeText(getApplicationContext(), "Vui lòng nhập số tiền thanh toán !", Toast.LENGTH_SHORT).show();
+                            } else {
+                                ApiQH.apiQH.postCoc(khuTroId, idChuPhong, tenPhong, phuongThucCoc, tienCocThanhToan).enqueue(new Callback<TienCocModel>() {
+                                    @Override
+                                    public void onResponse(Call<TienCocModel> call, Response<TienCocModel> response) {
+                                        TienCocModel tienCocSauDong = response.body();
+//                                        Intent intent = new Intent(DongTien.this, DongTien.class);
+//                                        startActivity(intent);
+//                                        finish();
+                                        Log.d("coc tot",""+tienCocSauDong.getMess());
+                                    }
+
+                                    @Override
+                                    public void onFailure(Call<TienCocModel> call, Throwable t) {
+                                        Log.d("loi dong coc",""+t.toString());
+                                    }
+                                });
+                            }
+                        }
+                    });
 
                     tienPhongCanTra.setText("Cần thu:  " + thongTinDongTienPhong.getDutienphongformat() + "đ");
 
@@ -219,6 +263,10 @@ public class DongTien extends AppCompatActivity {
                         phaiTraTien.setTextColor(Color.rgb(0, 128, 0));
                     }
 
+                    // Tiền thành viên cần trả
+                    thanhTienThanhVien.setText("Cần thu: "+thongTinDongTienPhong.getThuthemthanhvien()+"đ");
+                    //
+                    thanhTienThietBi.setText("Cần thu: "+thongTinDongTienPhong.getTienthietbithang()+"đ");
 
                     listThanhVienPhong.setLayoutManager(new LinearLayoutManager(DongTien.this));
                     listThanhVienPhong.hasFixedSize();

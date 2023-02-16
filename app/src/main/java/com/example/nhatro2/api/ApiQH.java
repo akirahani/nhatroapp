@@ -37,16 +37,14 @@ import retrofit2.http.GET;
 import retrofit2.http.POST;
 
 public interface ApiQH {
-//  String url = "http://192.168.1.190";
-    String url = "http://172.16.1.71";
+
+  String url = "http://192.168.1.190";
+//    String url = "http://172.16.1.71";
     //    String url = "https://nhatroquanghieu.com";
     Gson gson = new GsonBuilder().setDateFormat("yyyy-MM-DD HH:mm:ss").create();
     OkHttpClient okHttpClient = new OkHttpClient.Builder().build();
-    ApiQH apiQH = new Retrofit.Builder()
-            .baseUrl(url)
-            .addConverterFactory(GsonConverterFactory.create(gson))
-            .client(okHttpClient)
-            .build()
+    ApiQH apiQH = new Retrofit.Builder().baseUrl(url).addConverterFactory(GsonConverterFactory.create(gson))
+            .client(okHttpClient).build()
             .create(ApiQH.class);
 
     @POST("/quanghieu/admin/api/auth/login.php")
@@ -299,6 +297,14 @@ public interface ApiQH {
                                     @Field("phong") String tenPhong,
                                     @Field("phuongthuc") int phuongThuc,
                                     @Field("thanhtoan") String thanhToan);
+    // Đóng cọc phòng tiền
+    @POST("/quanghieu/admin/api/thu-tien/thu_coc.php")
+    @FormUrlEncoded
+    Call <TienCocModel> postCoc(@Field("khutroid") int khuTroId,
+                                    @Field("chuphong") int chuPhong,
+                                    @Field("phong") String tenPhong,
+                                    @Field("phuongthuc") int phuongThuc,
+                                    @Field("thanhtoan") String thanhToan);
     // Quỹ tiền
     @GET("/quanghieu/admin/api/quy-tien/list.php")
     Call <QuyTienModel> getQuyTien();
@@ -322,7 +328,7 @@ public interface ApiQH {
                                 @Field("ghichu") String ghichu,
                                 @Field("phuongthuccoc") int phuongthuc);
     // Chi tiết cọc
-    @POST ("/quanghieu/admin/api/tien-coc/xoa_coc.php")
+    @POST ("/quanghieu/quanghieu/admin/api/tien-coc/xoa_coc.php")
     @FormUrlEncoded
     Call <TienCocModel> xoaCoc(@Field("id") int id);
     //
