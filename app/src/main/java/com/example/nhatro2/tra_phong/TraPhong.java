@@ -40,7 +40,10 @@ public class TraPhong extends AppCompatActivity {
     SharedPreferences.Editor shpKhachEdit;
     LinearLayout quayLai;
     DrawerLayout mDrawerLayout;
-    TextView textTitleTraPhong, tieuDeKhachTraPhong;
+    TextView textTitleTraPhong, tieuDeKhachTraPhong,
+            tenChuPhongTra,phoneChuPhongTra,
+            addressChuPhongTra, ngayBatDauHopDong,tieuDeThanhToanTienPhong, ngayTraPhongHopDong;
+    EditText tienThanhToanCocText, tienThanhToanText;
     @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -127,15 +130,45 @@ public class TraPhong extends AppCompatActivity {
         textTitleTraPhong = findViewById(R.id.textTitleTraPhong);
         tieuDeKhachTraPhong.setText("Đóng hợp đồng số "+hopDong);
         textTitleTraPhong.setText("Trả phòng "+tenPhong);
+        tieuDeThanhToanTienPhong = findViewById(R.id.tieuDeThanhToanTienPhong);
         ApiQH.apiQH.getThongTinTraPhong(time,hopDong).enqueue(new Callback<TraPhongModel>() {
             @Override
             public void onResponse(Call<TraPhongModel> call, Response<TraPhongModel> response) {
+                TraPhongModel thongTinTraPhong = response.body();
+                tenChuPhongTra = findViewById(R.id.tenChuPhongTra);
+                phoneChuPhongTra = findViewById(R.id.phoneChuPhongTra);
+                addressChuPhongTra = findViewById(R.id.addressChuPhongTra);
+                ngayBatDauHopDong = findViewById(R.id.ngayBatDauHopDong);
+
+                // get thong tin ca nhan
+                tenChuPhongTra.setText("Chủ phòng: "+thongTinTraPhong.getTenchuphong());
+                phoneChuPhongTra.setText("Điện thoại: "+thongTinTraPhong.getDienthoai());
+                addressChuPhongTra.setText("Địa chỉ: "+thongTinTraPhong.getDiachi());
+                ngayBatDauHopDong.setText("Ngày vào thuê: "+thongTinTraPhong.getNgaybatdau());
+
+                tienThanhToanCocText = findViewById(R.id.tienThanhToanCocText);
+                tienThanhToanText = findViewById(R.id.tienThanhToanText);
+                // get tien phai chi, thu
+                tienThanhToanCocText.setText(""+thongTinTraPhong.getTiencoc());
+
+                if(thongTinTraPhong.getSoducuoi() < 0){
+                    tieuDeThanhToanTienPhong.setText("Tạo phiếu thu tiền phòng");
+                    tienThanhToanText.setText(""+Math.abs(thongTinTraPhong.getSoducuoi()));
+                }else{
+                    tieuDeThanhToanTienPhong.setText("Tạo phiếu chi tiền phòng");
+                    tienThanhToanText.setText(""+thongTinTraPhong.getSoducuoi());
+                }
+
+                ngayTraPhongHopDong = findViewById(R.id.ngayTraPhongHopDong);
+                ngayTraPhongHopDong.setText("Ngày trả phòng "+time);
+
+
 
             }
 
             @Override
             public void onFailure(Call<TraPhongModel> call, Throwable t) {
-
+                Log.d("err j the",""+t.toString());
             }
         });
 

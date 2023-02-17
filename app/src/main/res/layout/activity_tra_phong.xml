@@ -183,6 +183,51 @@
                             android:textColor="@color/black"
                             android:textSize="18sp"
                             android:textStyle="bold" />
+                        <TextView
+                            android:id="@+id/tenChuPhongTra"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/svn_p_s_regular"
+                            android:layout_marginTop="10dp"
+                            android:paddingLeft="15dp"
+                            android:textColor="@color/black"
+                            android:textSize="16sp"/>
+                        <TextView
+                            android:id="@+id/phoneChuPhongTra"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/svn_p_s_regular"
+                            android:layout_marginTop="10dp"
+                            android:paddingLeft="15dp"
+                            android:textColor="@color/black"
+                            android:textSize="16sp" />
+                        <TextView
+                            android:id="@+id/addressChuPhongTra"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/svn_p_s_regular"
+                            android:layout_marginTop="10dp"
+                            android:paddingLeft="15dp"
+                            android:textColor="@color/black"
+                            android:textSize="16sp" />
+                        <TextView
+                            android:id="@+id/ngayBatDauHopDong"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/svn_p_s_regular"
+                            android:layout_marginTop="10dp"
+                            android:paddingLeft="15dp"
+                            android:textColor="@color/black"
+                            android:textSize="16sp" />
+                        <TextView
+                            android:id="@+id/ngayTraPhongHopDong"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/svn_p_s_regular"
+                            android:layout_marginTop="10dp"
+                            android:paddingLeft="15dp"
+                            android:textColor="@color/black"
+                            android:textSize="16sp" />
                     </LinearLayout>
                 </LinearLayout>
 
@@ -217,7 +262,7 @@
                                 android:fontFamily="@font/svn_p_s_bold"
                                 android:paddingLeft="5dp"
                                 android:paddingTop="10dp"
-                                android:text="Số tiền cần thanh toán"
+                                android:id="@+id/tieuDeThanhToanTienPhong"
                                 android:textColor="@color/black"
                                 android:textSize="18sp"
                                 android:textStyle="bold" />
@@ -240,6 +285,7 @@
                                     android:paddingBottom="8dp">
 
                                     <EditText
+                                        android:enabled="false"
                                         android:id="@+id/tienThanhToanText"
                                         android:layout_width="0dp"
                                         android:layout_height="wrap_content"
@@ -337,6 +383,7 @@
                                     android:paddingBottom="8dp">
 
                                     <EditText
+                                        android:enabled="false"
                                         android:id="@+id/tienThanhToanCocText"
                                         android:layout_width="0dp"
                                         android:layout_height="wrap_content"
