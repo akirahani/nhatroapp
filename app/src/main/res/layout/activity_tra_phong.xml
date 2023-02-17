@@ -5,8 +5,9 @@
     android:id="@+id/drawer_layout_dong_tien"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/khungNgoai"
     android:orientation="vertical"
-    tools:context=".dong_tien.DongTien">
+    tools:context=".tra_phong.TraPhong">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -86,33 +87,32 @@
         </androidx.appcompat.widget.Toolbar>
         <!-- Tiêu đề đóng tiền  -->
         <RelativeLayout
-            android:id="@+id/tieuDeDongTien"
+            android:id="@+id/tieuDeTraPhong"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/header"
             android:background="@color/white">
 
             <LinearLayout
-                android:id="@+id/rowDongTien"
+                android:id="@+id/rowTraPhong"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:elevation="20dp"
                 android:orientation="horizontal">
 
                 <FrameLayout
-                    android:id="@+id/imageDongTien"
+                    android:id="@+id/imageTraPhong"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center" />
 
                 <TextView
-                    android:id="@+id/textDongTien"
+                    android:id="@+id/textTitleTraPhong"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:fontFamily="@font/svn_p_s_bold"
                     android:paddingLeft="8dp"
-                    android:text="Thu tiền phòng"
                     android:textAllCaps="true"
                     android:textColor="@color/textQuanLyChung"
                     android:textSize="18dp"
@@ -124,15 +124,468 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="20dp"
-                android:layout_below="@+id/rowDongTien"
+                android:layout_below="@+id/rowTraPhong"
                 android:layout_marginTop="-10dp"
                 android:background="@color/khungNgoai" />
 
         </RelativeLayout>
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/khungNgoai">
 
+            <TextView
+                android:id="@+id/tieuDeKhachTraPhong"
+                android:layout_width="193dp"
+                android:layout_height="33dp"
+                android:background="@drawable/title_card"
+                android:backgroundTint="@color/tabActive"
+                android:fontFamily="@font/svn_p_s_regular"
+                android:gravity="center"
+                android:paddingLeft="23dp"
+                android:paddingTop="8dp"
+                android:paddingRight="23dp"
+                android:paddingBottom="8dp"
+                android:textColor="@color/white" />
+        </LinearLayout>
 
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
 
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+                <!-- Thông tin khách -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/white"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="14dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginRight="14dp"
+                        android:layout_marginBottom="13dp"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/svn_p_s_bold"
+                            android:paddingLeft="5dp"
+                            android:text="Thông tin phòng"
+                            android:textColor="@color/black"
+                            android:textSize="18sp"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+                </LinearLayout>
+
+                <!-- Tiền phòng -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:background="@color/white"
+                    android:orientation="vertical">
+
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/khungDongTien"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/tHead"
+                        android:layout_marginLeft="14dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginRight="14dp"
+                        android:layout_marginBottom="13dp"
+                        app:cardCornerRadius="5dp">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@color/cardThietBiAdd"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/svn_p_s_bold"
+                                android:paddingLeft="5dp"
+                                android:paddingTop="10dp"
+                                android:text="Số tiền cần thanh toán"
+                                android:textColor="@color/black"
+                                android:textSize="18sp"
+                                android:textStyle="bold" />
+                            <!--  Tiền đóng-->
+                            <androidx.cardview.widget.CardView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="4dp"
+                                android:layout_marginTop="10dp"
+                                android:layout_marginRight="4dp"
+                                app:cardCornerRadius="5dp">
+
+                                <LinearLayout
+                                    android:id="@+id/dongTienPhongText"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:background="@color/white"
+                                    android:orientation="horizontal"
+                                    android:paddingTop="8dp"
+                                    android:paddingBottom="8dp">
+
+                                    <EditText
+                                        android:id="@+id/tienThanhToanText"
+                                        android:layout_width="0dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_gravity="center"
+                                        android:layout_weight="5"
+                                        android:background="@null"
+                                        android:fontFamily="@font/svn_p_s_regular"
+                                        android:hint="Số tiền cần phải thanh toán"
+                                        android:inputType="number"
+                                        android:paddingLeft="10dp"
+                                        android:singleLine="true"
+                                        android:textColor="@color/tieuDePhongDongTien" />
+                                </LinearLayout>
+                            </androidx.cardview.widget.CardView>
+                            <!-- Phương thức thanh toán -->
+                            <RadioGroup
+                                android:id="@+id/hinhThucDongTien"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="4dp"
+                                android:layout_marginTop="10dp"
+                                android:orientation="horizontal">
+
+                                <RadioButton
+                                    android:id="@+id/chuyenKhoanDongTien"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:checked="true"
+                                    android:fontFamily="@font/svn_p_s_regular"
+                                    android:text="Chuyển khoản" />
+
+                                <RadioButton
+                                    android:id="@+id/tienMatDongTien"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:fontFamily="@font/svn_p_s_regular"
+                                    android:text="Tiền mặt" />
+                            </RadioGroup>
+
+                        </LinearLayout>
+                    </androidx.cardview.widget.CardView>
+
+                </LinearLayout>
+                <!-- Tiền cọc -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:background="@color/white"
+                    android:orientation="vertical">
+
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/khungTraCoc"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/tHead"
+                        android:layout_marginLeft="14dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginRight="14dp"
+                        android:layout_marginBottom="13dp"
+                        app:cardCornerRadius="5dp">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@color/cardThietBiAdd"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/svn_p_s_bold"
+                                android:paddingLeft="5dp"
+                                android:paddingTop="10dp"
+                                android:text="Số tiền cọc trả khách"
+                                android:textColor="@color/black"
+                                android:textSize="18sp"
+                                android:textStyle="bold" />
+                            <!--  Tiền đóng-->
+                            <androidx.cardview.widget.CardView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="4dp"
+                                android:layout_marginTop="10dp"
+                                android:layout_marginRight="4dp"
+                                app:cardCornerRadius="5dp">
+
+                                <LinearLayout
+                                    android:id="@+id/chiTienCoc"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:background="@color/white"
+                                    android:orientation="horizontal"
+                                    android:paddingTop="8dp"
+                                    android:paddingBottom="8dp">
+
+                                    <EditText
+                                        android:id="@+id/tienThanhToanCocText"
+                                        android:layout_width="0dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_gravity="center"
+                                        android:layout_weight="5"
+                                        android:background="@null"
+                                        android:fontFamily="@font/svn_p_s_regular"
+                                        android:hint="Số tiền cần phải thanh toán"
+                                        android:inputType="number"
+                                        android:paddingLeft="10dp"
+                                        android:singleLine="true"
+                                        android:textColor="@color/tieuDePhongDongTien" />
+                                </LinearLayout>
+                            </androidx.cardview.widget.CardView>
+                            <!-- Phương thức thanh toán -->
+                            <RadioGroup
+                                android:id="@+id/hinhThucChiCoc"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="4dp"
+                                android:layout_marginTop="10dp"
+                                android:orientation="horizontal">
+
+                                <RadioButton
+                                    android:id="@+id/chuyenKhoanChiCoc"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:checked="true"
+                                    android:fontFamily="@font/svn_p_s_regular"
+                                    android:text="Chuyển khoản" />
+
+                                <RadioButton
+                                    android:id="@+id/tienMatKhoanChiCoc"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:fontFamily="@font/svn_p_s_regular"
+                                    android:text="Tiền mặt" />
+                            </RadioGroup>
+
+                        </LinearLayout>
+                    </androidx.cardview.widget.CardView>
+
+                </LinearLayout>
+
+                <!-- Tiền trả lại -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:background="@color/white"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="14dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginRight="14dp"
+                        android:layout_marginBottom="13dp"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/svn_p_s_bold"
+                            android:paddingLeft="5dp"
+                            android:text="Số tiền khách nhận lại"
+                            android:textColor="@color/black"
+                            android:textSize="18sp"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+                </LinearLayout>
+
+                <!-- Tiền phòng tháng -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:background="@color/white"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="14dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginRight="14dp"
+                        android:layout_marginBottom="13dp"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/svn_p_s_bold"
+                            android:paddingLeft="5dp"
+                            android:text="Tiền phòng tháng"
+                            android:textColor="@color/black"
+                            android:textSize="18sp"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+                </LinearLayout>
+
+                <!-- Tiền thành viên tháng -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:background="@color/white"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="14dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginRight="14dp"
+                        android:layout_marginBottom="13dp"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/svn_p_s_bold"
+                            android:paddingLeft="5dp"
+                            android:text="Tiền thành viên tháng"
+                            android:textColor="@color/black"
+                            android:textSize="18sp"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+                </LinearLayout>
+
+                <!-- Tiền thiết bị -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:background="@color/white"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="14dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginRight="14dp"
+                        android:layout_marginBottom="13dp"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/svn_p_s_bold"
+                            android:paddingLeft="5dp"
+                            android:text="Tiền thiết bị tháng"
+                            android:textColor="@color/black"
+                            android:textSize="18sp"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+                </LinearLayout>
+
+                <!-- Tiền điện -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:background="@color/white"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="14dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginRight="14dp"
+                        android:layout_marginBottom="13dp"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/svn_p_s_bold"
+                            android:paddingLeft="5dp"
+                            android:text="Tiền điện"
+                            android:textColor="@color/black"
+                            android:textSize="18sp"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+                </LinearLayout>
+
+                <!-- Tiền nước -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:background="@color/white"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="14dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginRight="14dp"
+                        android:layout_marginBottom="13dp"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/svn_p_s_bold"
+                            android:paddingLeft="5dp"
+                            android:text="Tiền nước"
+                            android:textColor="@color/black"
+                            android:textSize="18sp"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+                </LinearLayout>
+
+                <!-- Lịch sử đóng -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:background="@color/white"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="14dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginRight="14dp"
+                        android:layout_marginBottom="13dp"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/svn_p_s_bold"
+                            android:paddingLeft="5dp"
+                            android:text="Lịch sử đóng tiền"
+                            android:textColor="@color/black"
+                            android:textSize="18sp"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+                </LinearLayout>
+
+            </LinearLayout>
+        </androidx.core.widget.NestedScrollView>
     </LinearLayout>
 
     <com.google.android.material.navigation.NavigationView

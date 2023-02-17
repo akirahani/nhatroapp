@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatEditText;
+import androidx.appcompat.widget.AppCompatTextView;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.recyclerview.widget.GridLayoutManager;
@@ -11,6 +12,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.annotation.SuppressLint;
+import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -26,6 +28,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.FrameLayout;
 import android.widget.GridLayout;
@@ -45,6 +48,7 @@ import com.example.nhatro2.dich_vu.DichVuEdit;
 import com.example.nhatro2.dich_vu.DichVuModel;
 import com.example.nhatro2.hop_dong.HopDong;
 import com.example.nhatro2.thanhvien.KhachTro;
+import com.example.nhatro2.thanhvien.KhachTroEdit;
 import com.example.nhatro2.thanhvien.ThanhVienModel;
 import com.example.nhatro2.thu_khac.ThuKhac;
 import com.example.nhatro2.tien_coc.TienCocAdd;
@@ -54,6 +58,10 @@ import com.example.nhatro2.uu_dai.UuDaiAdapter;
 import com.example.nhatro2.uu_dai.UuDaiModel;
 import com.google.android.material.navigation.NavigationView;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 import retrofit2.Call;
@@ -71,7 +79,7 @@ public class DongTien extends AppCompatActivity {
     SharedPreferences.Editor shpKhachEdit;
     LinearLayout thongTinChungDongTien,
             dongTienPhongText, khungLichSuDongTien,
-            quayLai, phanDongCocClick,traPhongThuong, traPhongNgay;
+            quayLai, phanDongCocClick,traPhongThuong, traPhongNgay, layoutChonNgay;
     RadioGroup hinhThucDongTien;
     EditText tienThanhToanText, tienCocThanhToanText;
     ImageView thanhToanTienButton;
@@ -79,6 +87,10 @@ public class DongTien extends AppCompatActivity {
     DrawerLayout mDrawerLayout;
     View lineCoc;
     int phuongThucThanhToan, phuongThucCoc;
+    AppCompatTextView inputDate;
+    int mYear, mMonth, mDay;
+    DatePickerDialog.OnDateSetListener setListener;
+
 
     @SuppressLint("MissingInflatedId")
     @Override
@@ -174,6 +186,10 @@ public class DongTien extends AppCompatActivity {
         tienMatDongTienCoc = findViewById(R.id.tienMatDongTienCoc);
 
         listChonUuDai = findViewById(R.id.listChonUuDai);
+        // Trả phòng
+        traPhongThuong = findViewById(R.id.traPhongThuong);
+        traPhongNgay = findViewById(R.id.traPhongNgay);
+
 
         // Kiểm tra tiền phòng
         ApiQH.apiQH.getTienDongList(maPhongChon).enqueue(new Callback<ChonPhongModel>() {
@@ -182,6 +198,7 @@ public class DongTien extends AppCompatActivity {
             public void onResponse(Call<ChonPhongModel> call, Response<ChonPhongModel> response) {
                 ChonPhongModel thongTinDongTienPhong = response.body();
                 int idChuPhong = thongTinDongTienPhong.getIdchuphong();
+                int hopDongId = thongTinDongTienPhong.getHopdong();
                 if (idChuPhong != 0) {
 
                     tienPhongCanTra.setTextColor(Color.rgb(0, 0, 0));
@@ -345,6 +362,118 @@ public class DongTien extends AppCompatActivity {
                         }
                     });
 
+                    // Trả phòng ngày hiện tại
+                    traPhongThuong.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            AlertDialog.Builder builder = new AlertDialog.Builder(DongTien.this);
+                            builder.setMessage(Html.fromHtml("<font color='#71a6d5'>Bạn chắc chắn muốn trả phòng?</font>"));
+                            builder.setCancelable(true);
+                            builder.setPositiveButton(Html.fromHtml("<font color='#71a6d5'>Tiếp tục</font>"), new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialogInterface, int i) {
+                                    Date currentTime = Calendar.getInstance().getTime();
+                                    DateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
+                                    String timeCurrentConvert = dateFormat.format(currentTime);
+
+                                    Intent intent = new Intent(DongTien.this, TraPhong.class);
+                                    intent.putExtra("tenPhong",tenPhong);
+                                    intent.putExtra("idPhong",maPhongChon);
+                                    intent.putExtra("chuPhongChon",chuPhongChon);
+                                    intent.putExtra("time",timeCurrentConvert);
+                                    intent.putExtra("hopdong",hopDongId);
+                                    startActivity(intent);
+                                }
+                            });
+
+                            builder.setNegativeButton(Html.fromHtml("<font color='#71a6d5'>Đóng</font>"), new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog, int id) {
+                                    Toast.makeText(DongTien.this,"Ở lại", Toast.LENGTH_SHORT).show();
+                                    //  Cancel
+                                    dialog.cancel();
+                                }
+                            });
+                            // show alert
+                            AlertDialog alert = builder.create();
+                            alert.show();
+                        }
+                    });
+
+                    // Trả phòng chọn ngày
+                    traPhongNgay.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            AlertDialog.Builder builder = new AlertDialog.Builder(DongTien.this);
+                            builder.setMessage(Html.fromHtml("<font color='#71a6d5'>Chọn ngày trả phòng</font>"));
+                            builder.setCancelable(true);
+
+                            view = LayoutInflater.from(DongTien.this).inflate(R.layout.layout_chon_ngay, null);
+                            layoutChonNgay = view.findViewById(R.id.layoutChonNgay);
+                            inputDate = view.findViewById(R.id.ngayChotTraPhong);
+                            String ngayTraPhong = inputDate.getText().toString();
+                            // date input
+                            Calendar c = Calendar.getInstance();
+                            mYear = c.get(Calendar.YEAR);
+                            mMonth = c.get(Calendar.MONTH);
+                            mDay = c.get(Calendar.DAY_OF_MONTH);
+                            layoutChonNgay.setOnClickListener(new View.OnClickListener() {
+                                @Override
+                                public void onClick(View view) {
+                                    DatePickerDialog datePickerDialog = new DatePickerDialog(DongTien.this, android.R.style.Theme_Holo_Light_Dialog_MinWidth, setListener, mYear, mMonth, mDay);
+                                    datePickerDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+                                    datePickerDialog.show();
+                                }
+                            });
+
+                            setListener = new DatePickerDialog.OnDateSetListener() {
+                                @Override
+                                public void onDateSet(DatePicker datePicker, int yearCap, int monthCap, int dayCap) {
+                                    monthCap += 1;
+                                    String dateCap = dayCap + "-" + monthCap + "-" + yearCap;
+                                    inputDate.setText(dateCap);
+                                }
+                            };
+
+                            if(ngayTraPhong.equals("")){
+                                inputDate.setHint("Nhấn vào đây để chọn ngày trả phòng!");
+                            }
+                            else{
+                                inputDate.setText(ngayTraPhong);
+                            }
+                            builder.setView(view);
+
+                            builder.setPositiveButton(Html.fromHtml("<font color='#71a6d5'>Tiếp tục</font>"), new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialogInterface, int i) {
+                                    String ngayTraPhongCheck = inputDate.getText().toString();
+                                    if(!ngayTraPhongCheck.equals("")){
+                                        Intent intent = new Intent(DongTien.this, TraPhong.class);
+                                        intent.putExtra("tenPhong",tenPhong);
+                                        intent.putExtra("idPhong",maPhongChon);
+                                        intent.putExtra("chuPhongChon",chuPhongChon);
+                                        intent.putExtra("time",ngayTraPhongCheck);
+                                        intent.putExtra("hopdong",hopDongId);
+                                        startActivity(intent);
+                                    }else{
+                                        Toast.makeText(DongTien.this,"Vui lòng chọn ngày",Toast.LENGTH_SHORT).show();
+                                    }
+                                }
+                            });
+
+
+                            builder.setNegativeButton(Html.fromHtml("<font color='#71a6d5'>Đóng</font>"), new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog, int id) {
+                                    Toast.makeText(DongTien.this,"Ở lại", Toast.LENGTH_SHORT).show();
+                                    //  Cancel
+                                    dialog.cancel();
+                                }
+                            });
+                            // show alert
+                            AlertDialog alert = builder.create();
+                            alert.show();
+
+                        }
+                    });
 
                 } else {
                     thongTinChungDongTien.setVisibility(View.GONE);
@@ -487,53 +616,5 @@ public class DongTien extends AppCompatActivity {
             }
         });
 
-        // Trả phòng
-        traPhongThuong = findViewById(R.id.traPhongThuong);
-        traPhongNgay = findViewById(R.id.traPhongNgay);
-
-        traPhongThuong.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(DongTien.this, TraPhong.class);
-                intent.putExtra("tenPhong",tenPhong);
-                intent.putExtra("idPhong",maPhongChon);
-                intent.putExtra("chuPhongChon",chuPhongChon);
-                startActivity(intent);
-            }
-        });
-
-        traPhongNgay.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                AlertDialog.Builder builder = new AlertDialog.Builder(DongTien.this);
-                builder.setTitle(Html.fromHtml("<font color='#71a6d5'>Thông báo!</font>")).setMessage(Html.fromHtml("<font color='#71a6d5'>Bạn có thực sự muốn thoát ?</font>"));
-                builder.setCancelable(true);
-                builder.setIcon(R.drawable.alert_bottom);
-
-//                view = LayoutInflater.from(DongTien.this).inflate(R.layout.layout_chon_ngay, null);
-//                final AppCompatEditText input = (AppCompatEditText) view.findViewById(R.id.ngayChotTraPhong);
-//                builder.setView(view);
-
-                builder.setPositiveButton(Html.fromHtml("<font color='#71a6d5'>Có</font>"), new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {
-                        Intent intent = new Intent(DongTien.this, TraPhong.class);
-                        startActivity(intent);
-                    }
-                });
-
-                builder.setNegativeButton(Html.fromHtml("<font color='#71a6d5'>Không</font>"), new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int id) {
-                        Toast.makeText(DongTien.this,"Ở lại", Toast.LENGTH_SHORT).show();
-                        //  Cancel
-                        dialog.cancel();
-                    }
-                });
-                // show alert
-                AlertDialog alert = builder.create();
-                alert.show();
-
-            }
-        });
     }
 }

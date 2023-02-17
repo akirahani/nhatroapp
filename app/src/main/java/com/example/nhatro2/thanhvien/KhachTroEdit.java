@@ -262,15 +262,15 @@ public class KhachTroEdit extends AppCompatActivity {
                     doiTuong = 2;
                 }
                 int idKhachUpdate = idKhach;
-                Log.d("idK",""+idKhachUpdate);
-                Log.d("tenK",""+tenKhachPost);
-                Log.d("sdtK",""+sdtKhachPost);
-                Log.d("cancuocK",""+canCuoc);
-                Log.d("diachiK",""+diaChi);
-                Log.d("ngaycapK",""+ngayCap);
-                Log.d("ngaysinhK",""+ngaySinh);
-                Log.d("quoctichK",""+quocTich);
-                Log.d("gioitinhK",""+gioiTinhSent);
+//                Log.d("idK",""+idKhachUpdate);
+//                Log.d("tenK",""+tenKhachPost);
+//                Log.d("sdtK",""+sdtKhachPost);
+//                Log.d("cancuocK",""+canCuoc);
+//                Log.d("diachiK",""+diaChi);
+//                Log.d("ngaycapK",""+ngayCap);
+//                Log.d("ngaysinhK",""+ngaySinh);
+//                Log.d("quoctichK",""+quocTich);
+//                Log.d("gioitinhK",""+gioiTinhSent);
                 ApiQH.apiQH.updateKhach(idKhachUpdate,tenKhachPost, sdtKhachPost,canCuoc,diaChi,ngayCap,ngaySinh,quocTich,gioiTinhSent).enqueue(new Callback<ThanhVienModel>() {
                     @Override
                     public void onResponse(Call<ThanhVienModel> call, Response<ThanhVienModel> response) {
