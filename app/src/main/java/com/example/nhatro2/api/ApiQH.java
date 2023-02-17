@@ -22,6 +22,7 @@ import com.example.nhatro2.tien_dien.LichSuDienModel;
 import com.example.nhatro2.tien_dien.TienDienModel;
 import com.example.nhatro2.tien_nuoc.LichSuNuocModel;
 import com.example.nhatro2.tien_nuoc.TienNuocModel;
+import com.example.nhatro2.tra_phong.TraPhongModel;
 import com.example.nhatro2.uu_dai.UuDaiModel;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -39,8 +40,8 @@ import retrofit2.http.POST;
 
 public interface ApiQH {
 
-  String url = "http://192.168.1.190";
-//    String url = "http://172.16.1.71";
+//  String url = "http://192.168.1.190";
+    String url = "http://172.16.1.71";
     //    String url = "https://nhatroquanghieu.com";
     Gson gson = new GsonBuilder().setDateFormat("yyyy-MM-DD HH:mm:ss").create();
     OkHttpClient okHttpClient = new OkHttpClient.Builder().build();
@@ -390,6 +391,12 @@ public interface ApiQH {
                                    @Field("tien") int tien,
                                    @Field("checktien") int checkTien,
                                    @Field("phong") int phong);
+    // Trả phòng
+        //thông tin
+        @POST("/quanghieu/admin/api/tra-phong/list.php")
+        @FormUrlEncoded
+        Call <TraPhongModel> getThongTinTraPhong(@Field("ngay") String ngay,
+                                                 @Field("hopdong") int hopDong);
 
     // Thống kê
     // Tổng quan
