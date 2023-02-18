@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.annotation.SuppressLint;
@@ -25,11 +26,15 @@ import com.example.nhatro2.HomeActivity;
 import com.example.nhatro2.R;
 import com.example.nhatro2.api.ApiQH;
 import com.example.nhatro2.dong_tien.DongTien;
+import com.example.nhatro2.dong_tien.LichSuDongTienModel;
+import com.example.nhatro2.dong_tien.LichSuNopTienAdapter;
 import com.example.nhatro2.hop_dong.HopDong;
 import com.example.nhatro2.thanhvien.KhachTro;
 import com.example.nhatro2.thu_khac.ThuKhacModel;
 import com.example.nhatro2.tien_coc.TienCocAdd;
 import com.google.android.material.navigation.NavigationView;
+
+import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -40,10 +45,12 @@ public class TraPhong extends AppCompatActivity {
     SharedPreferences.Editor shpKhachEdit;
     LinearLayout quayLai;
     DrawerLayout mDrawerLayout;
-    TextView textTitleTraPhong, tieuDeKhachTraPhong,
-            tenChuPhongTra,phoneChuPhongTra,
-            addressChuPhongTra, ngayBatDauHopDong,tieuDeThanhToanTienPhong, ngayTraPhongHopDong;
+    TextView textTitleTraPhong, tieuDeKhachTraPhong,tienThanhVienCacThang,tienPhongCacThang,
+            tenChuPhongTra,phoneChuPhongTra,tienDienTongCacThang,tienNuocTongCacThang,tienTongDaDongCacThang,
+            addressChuPhongTra, ngayBatDauHopDong,tieuDeThanhToanTienPhong, ngayTraPhongHopDong, soTienKhachNhanLai, tienThietBiCacThang;
     EditText tienThanhToanCocText, tienThanhToanText;
+    RecyclerView lichSuDongTienThang, lichSuTienNuocThang, lichSuTienDienThang, lichSuTienThietBiThang, lichSuTienThanhVienThang
+            , lichSuTienPhongThang;
     @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -162,8 +169,130 @@ public class TraPhong extends AppCompatActivity {
                 ngayTraPhongHopDong = findViewById(R.id.ngayTraPhongHopDong);
                 ngayTraPhongHopDong.setText("Ngày trả phòng "+time);
 
+                soTienKhachNhanLai = findViewById(R.id.soTienKhachNhanLai);
+                soTienKhachNhanLai.setText("Số tiền khách nhận lại: "+thongTinTraPhong.getTongkhachnhanformat()+"đ");
+
+                // Tiền điện phải đóng
+                lichSuTienDienThang = findViewById(R.id.lichSuTienDienThang);
+                tienDienTongCacThang = findViewById(R.id.tienDienTongCacThang);
+                tienDienTongCacThang.setText("Tổng tiền: "+thongTinTraPhong.getTongtiendienformat()+"đ");
+                lichSuTienDienThang.setLayoutManager(new LinearLayoutManager(TraPhong.this));
+                lichSuTienDienThang.hasFixedSize();
+                lichSuTienDienThang.setNestedScrollingEnabled(false);
+                ApiQH.apiQH.getLichSuTienDienCanDong(thongTinTraPhong.getListidtiendien()).enqueue(new Callback<List<DienTraPhongModel>>() {
+                    @Override
+                    public void onResponse(Call<List<DienTraPhongModel>> call, Response<List<DienTraPhongModel>> response) {
+                        List<DienTraPhongModel> lichSuTienDienPhaiThu = response.body();
+                        lichSuTienDienThang.setAdapter(new DienTraPhongAdapter(TraPhong.this, lichSuTienDienPhaiThu));
+                    }
+
+                    @Override
+                    public void onFailure(Call<List<DienTraPhongModel>> call, Throwable t) {
+
+                    }
+                });
 
 
+                // Tiền nước phải đóng
+                tienNuocTongCacThang = findViewById(R.id.tienNuocTongCacThang);
+                tienNuocTongCacThang.setText("Tổng tiền: "+thongTinTraPhong.getTongtiennuocformat()+"đ");
+                lichSuTienNuocThang = findViewById(R.id.lichSuTienNuocThang);
+                lichSuTienNuocThang.setLayoutManager(new LinearLayoutManager(TraPhong.this));
+                lichSuTienNuocThang.hasFixedSize();
+                lichSuTienNuocThang.setNestedScrollingEnabled(false);
+                ApiQH.apiQH.getLichSuTienNuocCanDong(thongTinTraPhong.getListidtiennuoc()).enqueue(new Callback<List<NuocTraPhongModel>>() {
+                   @Override
+                   public void onResponse(Call<List<NuocTraPhongModel>> call, Response<List<NuocTraPhongModel>> response) {
+                       List<NuocTraPhongModel> lichSuTienNuocPhaiThu = response.body();
+                       lichSuTienNuocThang.setAdapter(new NuocTraPhongAdapter(TraPhong.this, lichSuTienNuocPhaiThu));
+                   }
+
+                   @Override
+                   public void onFailure(Call<List<NuocTraPhongModel>> call, Throwable t) {
+
+                   }
+                });
+
+                //Tiền phòng phải đóng
+                tienPhongCacThang = findViewById(R.id.tienPhongCacThang);
+                tienPhongCacThang.setText("Tổng tiền: "+thongTinTraPhong.getTienphongcanthuformat()+"đ");
+                lichSuTienPhongThang = findViewById(R.id.lichSuTienPhongThang);
+                lichSuTienPhongThang.setLayoutManager(new LinearLayoutManager(TraPhong.this));
+                lichSuTienPhongThang.hasFixedSize();
+                lichSuTienPhongThang.setNestedScrollingEnabled(false);
+                ApiQH.apiQH.getTienPhongCanDong(thongTinTraPhong.getListidtienphongthang()).enqueue(new Callback<List<TienPhongTraModel>>() {
+                    @Override
+                    public void onResponse(Call<List<TienPhongTraModel>> call, Response<List<TienPhongTraModel>> response) {
+                        List<TienPhongTraModel> lichSuTienPhong = response.body();
+                        lichSuTienPhongThang.setAdapter(new TienPhongTraPhongAdapter(TraPhong.this, lichSuTienPhong));
+                    }
+
+                    @Override
+                    public void onFailure(Call<List<TienPhongTraModel>> call, Throwable t) {
+
+                    }
+                });
+
+                //Tiền thiết bị phải đóng
+                tienThietBiCacThang = findViewById(R.id.tienThietBiCacThang);
+                tienThietBiCacThang.setText("Tổng tiền: "+thongTinTraPhong.getTongtienthietbiformat()+"đ");
+                lichSuTienThietBiThang = findViewById(R.id.lichSuTienThietBiThang);
+                lichSuTienThietBiThang.setLayoutManager(new LinearLayoutManager(TraPhong.this));
+                lichSuTienThietBiThang.hasFixedSize();
+                lichSuTienThietBiThang.setNestedScrollingEnabled(false);
+                ApiQH.apiQH.getThietBiCanDong(thongTinTraPhong.getListidtienthietbi()).enqueue(new Callback<List<ThietBiTraPhongModel>>() {
+                    @Override
+                    public void onResponse(Call<List<ThietBiTraPhongModel>> call, Response<List<ThietBiTraPhongModel>> response) {
+                        List<ThietBiTraPhongModel> lichSuTienThietBi = response.body();
+                        lichSuTienThietBiThang.setAdapter(new ThietBiTraPhongAdapter(TraPhong.this, lichSuTienThietBi));
+                    }
+
+                    @Override
+                    public void onFailure(Call<List<ThietBiTraPhongModel>> call, Throwable t) {
+
+                    }
+                });
+
+                //Tiền thành viên phải đóng
+                tienThanhVienCacThang = findViewById(R.id.tienThanhVienCacThang);
+                tienThanhVienCacThang.setText("Tổng tiền: "+thongTinTraPhong.getTongtienthanhvienformat()+"đ");
+                lichSuTienThanhVienThang = findViewById(R.id.lichSuTienThanhVienThang);
+                lichSuTienThanhVienThang.setLayoutManager(new LinearLayoutManager(TraPhong.this));
+                lichSuTienThanhVienThang.hasFixedSize();
+                lichSuTienThanhVienThang.setNestedScrollingEnabled(false);
+                ApiQH.apiQH.getTienThanhVienCanDong(thongTinTraPhong.getListidtienthanhvien()).enqueue(new Callback<List<ThanhVienTraPhongModel>>() {
+                    @Override
+                    public void onResponse(Call<List<ThanhVienTraPhongModel>> call, Response<List<ThanhVienTraPhongModel>> response) {
+                        List<ThanhVienTraPhongModel> lichSuTienThanhVien = response.body();
+                        lichSuTienThanhVienThang.setAdapter(new ThanhVienTraPhongAdapter(TraPhong.this, lichSuTienThanhVien));
+                    }
+
+                    @Override
+                    public void onFailure(Call<List<ThanhVienTraPhongModel>> call, Throwable t) {
+
+                    }
+                });
+
+
+                //Lịch sử đã đóng tiền
+                tienTongDaDongCacThang = findViewById(R.id.tienTongDaDongCacThang);
+                tienTongDaDongCacThang.setText("Tổng tiền: "+thongTinTraPhong.getTongtienthanhtoan());
+                lichSuDongTienThang = findViewById(R.id.lichSuDongTienThang);
+                lichSuDongTienThang.setLayoutManager(new LinearLayoutManager(TraPhong.this));
+                lichSuDongTienThang.hasFixedSize();
+                lichSuDongTienThang.setNestedScrollingEnabled(false);
+                ApiQH.apiQH.getHistoryPay(thongTinTraPhong.getListidtratien()).enqueue(new Callback<List<LichSuDongTienModel>>() {
+                    @Override
+                    public void onResponse(Call<List<LichSuDongTienModel>> call, Response<List<LichSuDongTienModel>> response) {
+                        List<LichSuDongTienModel> lichSuDongTien = response.body();
+                        lichSuDongTienThang.setAdapter(new LichSuNopTienAdapter(TraPhong.this, lichSuDongTien));
+                    }
+
+                    @Override
+                    public void onFailure(Call<List<LichSuDongTienModel>> call, Throwable t) {
+
+                    }
+                });
             }
 
             @Override

@@ -446,12 +446,12 @@
                         android:orientation="vertical">
 
                         <TextView
+                            android:id="@+id/soTienKhachNhanLai"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/svn_p_s_bold"
                             android:paddingLeft="5dp"
-                            android:text="Số tiền khách nhận lại"
-                            android:textColor="@color/black"
+                            android:textColor="@color/bgBottomNavigation"
                             android:textSize="18sp"
                             android:textStyle="bold" />
                     </LinearLayout>
@@ -483,6 +483,24 @@
                             android:textColor="@color/black"
                             android:textSize="18sp"
                             android:textStyle="bold" />
+                        <TextView
+                            android:id="@+id/tienPhongCacThang"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/svn_p_s_regular"
+                            android:paddingLeft="5dp"
+                            android:textColor="@color/bgBottomNavigation"
+                            android:textSize="14sp"
+                            android:textStyle="bold" />
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:layout_marginTop="5dp"
+                            android:background="@color/nutDongTien" />
+                        <androidx.recyclerview.widget.RecyclerView
+                            android:id="@+id/lichSuTienPhongThang"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content" />
                     </LinearLayout>
                 </LinearLayout>
 
@@ -512,6 +530,24 @@
                             android:textColor="@color/black"
                             android:textSize="18sp"
                             android:textStyle="bold" />
+                        <TextView
+                            android:id="@+id/tienThanhVienCacThang"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/svn_p_s_regular"
+                            android:paddingLeft="5dp"
+                            android:textColor="@color/bgBottomNavigation"
+                            android:textSize="14sp"
+                            android:textStyle="bold" />
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:layout_marginTop="5dp"
+                            android:background="@color/nutDongTien" />
+                        <androidx.recyclerview.widget.RecyclerView
+                            android:id="@+id/lichSuTienThanhVienThang"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content" />
                     </LinearLayout>
                 </LinearLayout>
 
@@ -541,6 +577,24 @@
                             android:textColor="@color/black"
                             android:textSize="18sp"
                             android:textStyle="bold" />
+                        <TextView
+                            android:id="@+id/tienThietBiCacThang"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/svn_p_s_regular"
+                            android:paddingLeft="5dp"
+                            android:textColor="@color/bgBottomNavigation"
+                            android:textSize="14sp"
+                            android:textStyle="bold" />
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:layout_marginTop="5dp"
+                            android:background="@color/nutDongTien" />
+                        <androidx.recyclerview.widget.RecyclerView
+                            android:id="@+id/lichSuTienThietBiThang"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content" />
                     </LinearLayout>
                 </LinearLayout>
 
@@ -570,6 +624,71 @@
                             android:textColor="@color/black"
                             android:textSize="18sp"
                             android:textStyle="bold" />
+                        <TextView
+                            android:textColor="@color/bgBottomNavigation"
+                            android:id="@+id/tienDienTongCacThang"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/svn_p_s_regular"
+                            android:paddingLeft="5dp"
+                            android:textSize="14sp"
+                            android:textStyle="bold" />
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:layout_marginTop="5dp"
+                            android:layout_marginBottom="5dp"
+                            android:background="@color/nutDongTien" />
+                        <LinearLayout
+                            android:orientation="horizontal"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+                            <TextView
+                                android:text="Tháng"
+                                android:gravity="center"
+                                android:paddingLeft="5dp"
+                                android:textSize="14sp"
+                                android:fontFamily="@font/svn_p_s_regular"
+                                android:layout_width="0dp"
+                                android:layout_weight="1"
+                                android:id="@+id/soCuoiDienTraPhong"
+                                android:textColor="@color/black"
+                                android:layout_height="wrap_content" />
+                            <TextView
+                                android:text="Số đầu"
+                                android:gravity="center"
+                                android:paddingLeft="5dp"
+                                android:textSize="14sp"
+                                android:fontFamily="@font/svn_p_s_regular"
+                                android:layout_width="0dp"
+                                android:layout_weight="1"
+                                android:textColor="@color/black"
+                                android:layout_height="wrap_content" />
+                            <TextView
+                                android:text="Số cuối"
+                                android:gravity="center"
+                                android:paddingLeft="5dp"
+                                android:textSize="14sp"
+                                android:fontFamily="@font/svn_p_s_regular"
+                                android:layout_width="0dp"
+                                android:layout_weight="1"
+                                android:textColor="@color/black"
+                                android:layout_height="wrap_content" />
+                            <TextView
+                                android:text="Tiền"
+                                android:gravity="center"
+                                android:paddingLeft="5dp"
+                                android:textSize="14sp"
+                                android:fontFamily="@font/svn_p_s_regular"
+                                android:layout_width="0dp"
+                                android:layout_weight="1"
+                                android:textColor="@color/black"
+                                android:layout_height="wrap_content" />
+                        </LinearLayout>
+                        <androidx.recyclerview.widget.RecyclerView
+                            android:id="@+id/lichSuTienDienThang"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content" />
                     </LinearLayout>
                 </LinearLayout>
 
@@ -599,6 +718,70 @@
                             android:textColor="@color/black"
                             android:textSize="18sp"
                             android:textStyle="bold" />
+                        <TextView
+                            android:id="@+id/tienNuocTongCacThang"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/svn_p_s_regular"
+                            android:paddingLeft="5dp"
+                            android:textColor="@color/bgBottomNavigation"
+                            android:textSize="14sp"
+                            android:textStyle="bold" />
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:layout_marginTop="5dp"
+                            android:layout_marginBottom="5dp"
+                            android:background="@color/nutDongTien" />
+                        <LinearLayout
+                            android:orientation="horizontal"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+                            <TextView
+                                android:text="Tháng"
+                                android:paddingLeft="5dp"
+                                android:textSize="14sp"
+                                android:fontFamily="@font/svn_p_s_regular"
+                                android:layout_width="0dp"
+                                android:layout_weight="1"
+                                android:gravity="center"
+                                android:textColor="@color/black"
+                                android:layout_height="wrap_content" />
+                            <TextView
+                                android:text="Số đầu"
+                                android:paddingLeft="5dp"
+                                android:gravity="center"
+                                android:textSize="14sp"
+                                android:fontFamily="@font/svn_p_s_regular"
+                                android:layout_width="0dp"
+                                android:layout_weight="1"
+                                android:textColor="@color/black"
+                                android:layout_height="wrap_content" />
+                            <TextView
+                                android:text="Số cuối"
+                                android:paddingLeft="5dp"
+                                android:textSize="14sp"
+                                android:gravity="center"
+                                android:fontFamily="@font/svn_p_s_regular"
+                                android:layout_width="0dp"
+                                android:layout_weight="1"
+                                android:textColor="@color/black"
+                                android:layout_height="wrap_content" />
+                            <TextView
+                                android:text="Tiền"
+                                android:paddingLeft="5dp"
+                                android:textSize="14sp"
+                                android:gravity="center"
+                                android:fontFamily="@font/svn_p_s_regular"
+                                android:layout_width="0dp"
+                                android:layout_weight="1"
+                                android:textColor="@color/black"
+                                android:layout_height="wrap_content" />
+                        </LinearLayout>
+                        <androidx.recyclerview.widget.RecyclerView
+                            android:id="@+id/lichSuTienNuocThang"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content" />
                     </LinearLayout>
                 </LinearLayout>
 
@@ -628,6 +811,25 @@
                             android:textColor="@color/black"
                             android:textSize="18sp"
                             android:textStyle="bold" />
+                        <TextView
+                            android:id="@+id/tienTongDaDongCacThang"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/svn_p_s_regular"
+                            android:paddingLeft="5dp"
+                            android:textColor="@color/bgBottomNavigation"
+                            android:textSize="14sp"
+                            android:textStyle="bold" />
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:layout_marginTop="5dp"
+                            android:background="@color/nutDongTien" />
+                        <androidx.recyclerview.widget.RecyclerView
+                            android:layout_marginTop="10dp"
+                            android:id="@+id/lichSuDongTienThang"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content" />
                     </LinearLayout>
                 </LinearLayout>
 

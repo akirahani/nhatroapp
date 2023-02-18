@@ -39,8 +39,9 @@ public class TraPhongModel {
 
     private int tongkhachnhan;
     private String tongkhachnhanformat;
+    private String tienphongcanthuformat;
 
-    public TraPhongModel(String tenchuphong, String dienthoai, String diachi, String ngaybatdau, String tongtienthanhtoan, String listidtratien, int tiencoc, String tiencocformat, int songayotraphong, String tienphongmotngayhientaiformat, String listidtienphongthang, String tienthanhvienmotthangformat, String tongtienthanhvienformat, String listidtienthanhvien, String tienthietbimotthangformat, String tongtienthietbiformat, String listidtienthietbi, String tongtiendienformat, String listidtiendien, String tongtiennuocformat, String listidtiennuoc, String tongtienphaithuformat, int tongtienphaithu, String soducuoiformat, int soducuoi, int tongkhachnhan, String tongkhachnhanformat) {
+    public TraPhongModel(String tenchuphong, String dienthoai, String diachi, String ngaybatdau, String tongtienthanhtoan, String listidtratien, int tiencoc, String tiencocformat, int songayotraphong, String tienphongmotngayhientaiformat, String listidtienphongthang, String tienthanhvienmotthangformat, String tongtienthanhvienformat, String listidtienthanhvien, String tienthietbimotthangformat, String tongtienthietbiformat, String listidtienthietbi, String tongtiendienformat, String listidtiendien, String tongtiennuocformat, String listidtiennuoc, String tongtienphaithuformat, int tongtienphaithu, String soducuoiformat, int soducuoi, int tongkhachnhan, String tongkhachnhanformat, String tienphongcanthuformat) {
         this.tenchuphong = tenchuphong;
         this.dienthoai = dienthoai;
         this.diachi = diachi;
@@ -68,7 +69,16 @@ public class TraPhongModel {
         this.soducuoi = soducuoi;
         this.tongkhachnhan = tongkhachnhan;
         this.tongkhachnhanformat = tongkhachnhanformat;
+        this.tienphongcanthuformat = tienphongcanthuformat;
     }
+    public String getTienphongcanthuformat() {
+        return tienphongcanthuformat;
+    }
+
+    public void setTienphongcanthuformat(String tienphongcanthuformat) {
+        this.tienphongcanthuformat = tienphongcanthuformat;
+    }
+
 
     public int getTongkhachnhan() {
         return tongkhachnhan;

@@ -22,6 +22,11 @@ import com.example.nhatro2.tien_dien.LichSuDienModel;
 import com.example.nhatro2.tien_dien.TienDienModel;
 import com.example.nhatro2.tien_nuoc.LichSuNuocModel;
 import com.example.nhatro2.tien_nuoc.TienNuocModel;
+import com.example.nhatro2.tra_phong.DienTraPhongModel;
+import com.example.nhatro2.tra_phong.NuocTraPhongModel;
+import com.example.nhatro2.tra_phong.ThanhVienTraPhongModel;
+import com.example.nhatro2.tra_phong.ThietBiTraPhongModel;
+import com.example.nhatro2.tra_phong.TienPhongTraModel;
 import com.example.nhatro2.tra_phong.TraPhongModel;
 import com.example.nhatro2.uu_dai.UuDaiModel;
 import com.google.gson.Gson;
@@ -31,6 +36,7 @@ import java.util.List;
 
 import okhttp3.OkHttpClient;
 import retrofit2.Call;
+import retrofit2.Callback;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 import retrofit2.http.Field;
@@ -40,8 +46,8 @@ import retrofit2.http.POST;
 
 public interface ApiQH {
 
-    String url = "http://192.168.1.190";
-//    String url = "http://172.16.1.71";
+//    String url = "http://192.168.1.190";
+    String url = "http://172.16.1.71";
     //    String url = "https://nhatroquanghieu.com";
     Gson gson = new GsonBuilder().setDateFormat("yyyy-MM-DD HH:mm:ss").create();
     OkHttpClient okHttpClient = new OkHttpClient.Builder().build();
@@ -397,8 +403,28 @@ public interface ApiQH {
         @FormUrlEncoded
         Call <TraPhongModel> getThongTinTraPhong(@Field("ngay") String ngay,
                                                  @Field("hopdong") int hopDong);
+        @POST("/quanghieu/admin/api/tra-phong/list_dien.php")
+        @FormUrlEncoded
+        Call <List<DienTraPhongModel>> getLichSuTienDienCanDong(@Field("idHistory") String idHistory);
 
-    // Thống kê
+        @POST("/quanghieu/admin/api/tra-phong/list_nuoc.php")
+        @FormUrlEncoded
+        Call <List<NuocTraPhongModel>> getLichSuTienNuocCanDong(@Field("idHistory") String idHistory);
+
+        @POST("/quanghieu/admin/api/tra-phong/list_tien_thanh_vien.php")
+        @FormUrlEncoded
+        Call <List<ThanhVienTraPhongModel>> getTienThanhVienCanDong(@Field("idHistory") String idHistory);
+
+        @POST("/quanghieu/admin/api/tra-phong/list_tien_thiet_bi.php")
+        @FormUrlEncoded
+        Call <List<ThietBiTraPhongModel>> getThietBiCanDong(@Field("idHistory") String idHistory);
+
+        @POST("/quanghieu/admin/api/tra-phong/list_tien_phong.php")
+        @FormUrlEncoded
+        Call <List<TienPhongTraModel>> getTienPhongCanDong(@Field("idHistory") String idHistory);
+
+
+        // Thống kê
     // Tổng quan
     @GET("/quanghieu/admin/api/thong-ke/tong-quan.php")
     Call <TongQuanChartModel> getTongQuan();
