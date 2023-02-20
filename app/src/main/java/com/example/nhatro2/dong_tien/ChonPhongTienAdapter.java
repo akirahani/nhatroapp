@@ -42,11 +42,13 @@ public class ChonPhongTienAdapter extends RecyclerView.Adapter<ChonPhongTienAdap
         String tenPhong = getPhong.getTen();
         int idPhong = getPhong.getId();
         int chuPhongChon = getPhong.getChuphong();
+        int trangthaiphong = getPhong.getTrangthai();
         holder.chonPhongTienClick.setText(tenPhong);
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                clickPhongId.clickPhongID(idPhong,tenPhong,chuPhongChon);
+                clickPhongId.clickPhongID(idPhong,tenPhong,chuPhongChon,trangthaiphong);
+                Log.d("trangThai day nay",""+trangthaiphong);
             }
         });
     }

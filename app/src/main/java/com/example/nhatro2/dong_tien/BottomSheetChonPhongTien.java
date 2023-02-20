@@ -58,9 +58,10 @@ public class BottomSheetChonPhongTien extends BottomSheetDialogFragment {
                 List<PhongModel> listPhongChon = response.body();
                 listPhongClick.setAdapter(new ChonPhongTienAdapter(view.getContext(), listPhongChon, new ChonPhongIdClick() {
                     @Override
-                    public void clickPhongID(int idPhong, String tenPhong, int chuPhongChon) {
+                    public void clickPhongID(int idPhong, String tenPhong, int chuPhongChon, int trangThaiPhong) {
                         shpPhongChon = view.getContext().getSharedPreferences("phongChon", MODE_PRIVATE);
                         shpPhongChonEdit = shpPhongChon.edit();
+                        shpPhongChonEdit.putInt("trangThai",trangThaiPhong);
                         shpPhongChonEdit.putString("idPhongChon",tenPhong);
                         shpPhongChonEdit.putInt("maPhongChon",idPhong);
                         shpPhongChonEdit.putInt("chuPhongChon",chuPhongChon);
@@ -90,9 +91,10 @@ public class BottomSheetChonPhongTien extends BottomSheetDialogFragment {
                         List<PhongModel> listPhongSearch = response.body();
                         listPhongClick.setAdapter(new ChonPhongTienAdapter(view.getContext(), listPhongSearch, new ChonPhongIdClick() {
                             @Override
-                            public void clickPhongID(int idPhong, String tenPhong, int chuPhongChon) {
+                            public void clickPhongID(int idPhong, String tenPhong, int chuPhongChon, int trangThaiPhong) {
                                 shpPhongChon = view.getContext().getSharedPreferences("phongChon", MODE_PRIVATE);
                                 shpPhongChonEdit = shpPhongChon.edit();
+                                shpPhongChonEdit.putInt("trangThai",trangThaiPhong);
                                 shpPhongChonEdit.putString("idPhongChon",tenPhong);
                                 shpPhongChonEdit.putInt("maPhongChon",idPhong);
                                 shpPhongChonEdit.putInt("chuPhongChon",chuPhongChon);
