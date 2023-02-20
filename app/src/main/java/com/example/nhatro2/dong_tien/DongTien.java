@@ -202,9 +202,7 @@ public class DongTien extends AppCompatActivity {
                 int idChuPhong = thongTinDongTienPhong.getIdchuphong();
                 int hopDongId = thongTinDongTienPhong.getHopdong();
                 if (idChuPhong != 0) {
-//                    chiTietCacKhoanTien.set
                     tienPhongCanTra.setTextColor(Color.rgb(0, 0, 0));
-
                     thanhToanTienButton.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View view) {
