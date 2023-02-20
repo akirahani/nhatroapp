@@ -41,7 +41,7 @@ public class TraPhongModel {
     private String tongkhachnhanformat;
     private String tienphongcanthuformat;
 
-    public TraPhongModel(String tenchuphong, String dienthoai, String diachi, String ngaybatdau, String tongtienthanhtoan, String listidtratien, int tiencoc, String tiencocformat, int songayotraphong, String tienphongmotngayhientaiformat, String listidtienphongthang, String tienthanhvienmotthangformat, String tongtienthanhvienformat, String listidtienthanhvien, String tienthietbimotthangformat, String tongtienthietbiformat, String listidtienthietbi, String tongtiendienformat, String listidtiendien, String tongtiennuocformat, String listidtiennuoc, String tongtienphaithuformat, int tongtienphaithu, String soducuoiformat, int soducuoi, int tongkhachnhan, String tongkhachnhanformat, String tienphongcanthuformat) {
+    public TraPhongModel(String tenchuphong, String dienthoai, String diachi, String ngaybatdau, String tongtienthanhtoan, String listidtratien, int tiencoc, String tiencocformat, int songayotraphong, String tienphongmotngayhientaiformat, String listidtienphongthang, String tienthanhvienmotthangformat, String tongtienthanhvienformat, String listidtienthanhvien, String tienthietbimotthangformat, String tongtienthietbiformat, String listidtienthietbi, String tongtiendienformat, String listidtiendien, String tongtiennuocformat, String listidtiennuoc, String tongtienphaithuformat, int tongtienphaithu, String soducuoiformat, int soducuoi, int tongkhachnhan, String tongkhachnhanformat, String tienphongcanthuformat, String status) {
         this.tenchuphong = tenchuphong;
         this.dienthoai = dienthoai;
         this.diachi = diachi;
@@ -70,7 +70,19 @@ public class TraPhongModel {
         this.tongkhachnhan = tongkhachnhan;
         this.tongkhachnhanformat = tongkhachnhanformat;
         this.tienphongcanthuformat = tienphongcanthuformat;
+        this.status = status;
     }
+
+    private String status;
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
     public String getTienphongcanthuformat() {
         return tienphongcanthuformat;
     }

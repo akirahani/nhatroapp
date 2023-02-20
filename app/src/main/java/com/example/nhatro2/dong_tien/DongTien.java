@@ -79,7 +79,7 @@ public class DongTien extends AppCompatActivity {
     SharedPreferences.Editor shpKhachEdit;
     LinearLayout thongTinChungDongTien,
             dongTienPhongText, khungLichSuDongTien,
-            quayLai, phanDongCocClick,traPhongThuong, traPhongNgay, layoutChonNgay;
+            quayLai, phanDongCocClick,traPhongThuong, traPhongNgay, layoutChonNgay,chiTietCacKhoanTien;
     RadioGroup hinhThucDongTien;
     EditText tienThanhToanText, tienCocThanhToanText;
     ImageView thanhToanTienButton;
@@ -190,6 +190,8 @@ public class DongTien extends AppCompatActivity {
         traPhongThuong = findViewById(R.id.traPhongThuong);
         traPhongNgay = findViewById(R.id.traPhongNgay);
 
+        chiTietCacKhoanTien = findViewById(R.id.chiTietCacKhoanTien);
+
 
         // Kiểm tra tiền phòng
         ApiQH.apiQH.getTienDongList(maPhongChon).enqueue(new Callback<ChonPhongModel>() {
@@ -200,7 +202,7 @@ public class DongTien extends AppCompatActivity {
                 int idChuPhong = thongTinDongTienPhong.getIdchuphong();
                 int hopDongId = thongTinDongTienPhong.getHopdong();
                 if (idChuPhong != 0) {
-
+//                    chiTietCacKhoanTien.set
                     tienPhongCanTra.setTextColor(Color.rgb(0, 0, 0));
 
                     thanhToanTienButton.setOnClickListener(new View.OnClickListener() {
@@ -476,6 +478,9 @@ public class DongTien extends AppCompatActivity {
                     });
 
                 } else {
+                    traPhongThuong.setVisibility(View.GONE);
+                    traPhongNgay.setVisibility(View.GONE);
+                    listChonUuDai.setVisibility(View.GONE);
                     thongTinChungDongTien.setVisibility(View.GONE);
                     dongTienPhongText.setVisibility(View.GONE);
                     hinhThucDongTien.setVisibility(View.GONE);
