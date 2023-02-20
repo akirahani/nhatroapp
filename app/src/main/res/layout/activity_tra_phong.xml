@@ -308,21 +308,21 @@
                                 android:layout_marginLeft="4dp"
                                 android:layout_marginTop="10dp"
                                 android:orientation="horizontal">
-
                                 <RadioButton
-                                    android:id="@+id/chuyenKhoanDongTien"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
                                     android:checked="true"
-                                    android:fontFamily="@font/svn_p_s_regular"
-                                    android:text="Chuyển khoản" />
-
-                                <RadioButton
                                     android:id="@+id/tienMatDongTien"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:fontFamily="@font/svn_p_s_regular"
                                     android:text="Tiền mặt" />
+                                <RadioButton
+                                    android:id="@+id/chuyenKhoanDongTien"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:fontFamily="@font/svn_p_s_regular"
+                                    android:text="Chuyển khoản" />
+
+
                             </RadioGroup>
 
                         </LinearLayout>
@@ -333,7 +333,6 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
                     android:background="@color/white"
                     android:orientation="vertical">
 
@@ -406,27 +405,55 @@
                                 android:layout_marginLeft="4dp"
                                 android:layout_marginTop="10dp"
                                 android:orientation="horizontal">
-
                                 <RadioButton
-                                    android:id="@+id/chuyenKhoanChiCoc"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
                                     android:checked="true"
-                                    android:fontFamily="@font/svn_p_s_regular"
-                                    android:text="Chuyển khoản" />
-
-                                <RadioButton
                                     android:id="@+id/tienMatKhoanChiCoc"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:fontFamily="@font/svn_p_s_regular"
                                     android:text="Tiền mặt" />
+                                <RadioButton
+                                    android:id="@+id/chuyenKhoanChiCoc"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:fontFamily="@font/svn_p_s_regular"
+                                    android:text="Chuyển khoản" />
+
+
                             </RadioGroup>
 
                         </LinearLayout>
                     </androidx.cardview.widget.CardView>
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="15dp"
+                        android:gravity="center">
 
+                        <androidx.cardview.widget.CardView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentLeft="true"
+                            app:cardCornerRadius="6dp">
+
+                            <TextView
+                                android:id="@+id/chiTraPhongButton"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:background="@drawable/gradient_add"
+                                android:paddingLeft="35dp"
+                                android:fontFamily="@font/svn_p_s_bold"
+                                android:paddingTop="5dp"
+                                android:paddingRight="35dp"
+                                android:paddingBottom="5dp"
+                                android:text="Tạo phiếu chi"
+                                android:textAllCaps="true"
+                                android:textColor="@color/white"
+                                android:textStyle="bold" />
+                        </androidx.cardview.widget.CardView>
+                    </RelativeLayout>
                 </LinearLayout>
+
 
                 <!-- Tiền trả lại -->
                 <LinearLayout

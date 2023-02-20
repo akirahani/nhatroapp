@@ -46,8 +46,8 @@ import retrofit2.http.POST;
 
 public interface ApiQH {
 
-//    String url = "http://192.168.1.190";
-    String url = "http://172.16.1.71";
+    String url = "http://192.168.1.190";
+//    String url = "http://172.16.1.71";
     //    String url = "https://nhatroquanghieu.com";
     Gson gson = new GsonBuilder().setDateFormat("yyyy-MM-DD HH:mm:ss").create();
     OkHttpClient okHttpClient = new OkHttpClient.Builder().build();
@@ -413,15 +413,15 @@ public interface ApiQH {
 
         @POST("/quanghieu/admin/api/tra-phong/list_tien_thanh_vien.php")
         @FormUrlEncoded
-        Call <List<ThanhVienTraPhongModel>> getTienThanhVienCanDong(@Field("idHistory") String idHistory);
+        Call <List<ThanhVienTraPhongModel>> getTienThanhVienCanDong(@Field("ngay") String time, @Field("idHistory") String idHistory);
 
         @POST("/quanghieu/admin/api/tra-phong/list_tien_thiet_bi.php")
         @FormUrlEncoded
-        Call <List<ThietBiTraPhongModel>> getThietBiCanDong(@Field("idHistory") String idHistory);
+        Call <List<ThietBiTraPhongModel>> getThietBiCanDong(@Field("ngay") String time,@Field("idHistory") String idHistory);
 
         @POST("/quanghieu/admin/api/tra-phong/list_tien_phong.php")
         @FormUrlEncoded
-        Call <List<TienPhongTraModel>> getTienPhongCanDong(@Field("idHistory") String idHistory);
+        Call <List<TienPhongTraModel>> getTienPhongCanDong(@Field("phong") int idPhong,@Field("ngay") String time,@Field("idHistory") String idHistory);
 
 
         // Thống kê

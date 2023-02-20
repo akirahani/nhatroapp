@@ -220,7 +220,7 @@ public class TraPhong extends AppCompatActivity {
                 lichSuTienPhongThang.setLayoutManager(new LinearLayoutManager(TraPhong.this));
                 lichSuTienPhongThang.hasFixedSize();
                 lichSuTienPhongThang.setNestedScrollingEnabled(false);
-                ApiQH.apiQH.getTienPhongCanDong(thongTinTraPhong.getListidtienphongthang()).enqueue(new Callback<List<TienPhongTraModel>>() {
+                ApiQH.apiQH.getTienPhongCanDong(idPhong,time,thongTinTraPhong.getListidtienphongthang()).enqueue(new Callback<List<TienPhongTraModel>>() {
                     @Override
                     public void onResponse(Call<List<TienPhongTraModel>> call, Response<List<TienPhongTraModel>> response) {
                         List<TienPhongTraModel> lichSuTienPhong = response.body();
@@ -229,7 +229,7 @@ public class TraPhong extends AppCompatActivity {
 
                     @Override
                     public void onFailure(Call<List<TienPhongTraModel>> call, Throwable t) {
-
+                        Log.d("err tien phong dong",""+t.toString());
                     }
                 });
 
@@ -240,7 +240,7 @@ public class TraPhong extends AppCompatActivity {
                 lichSuTienThietBiThang.setLayoutManager(new LinearLayoutManager(TraPhong.this));
                 lichSuTienThietBiThang.hasFixedSize();
                 lichSuTienThietBiThang.setNestedScrollingEnabled(false);
-                ApiQH.apiQH.getThietBiCanDong(thongTinTraPhong.getListidtienthietbi()).enqueue(new Callback<List<ThietBiTraPhongModel>>() {
+                ApiQH.apiQH.getThietBiCanDong(time,thongTinTraPhong.getListidtienthietbi()).enqueue(new Callback<List<ThietBiTraPhongModel>>() {
                     @Override
                     public void onResponse(Call<List<ThietBiTraPhongModel>> call, Response<List<ThietBiTraPhongModel>> response) {
                         List<ThietBiTraPhongModel> lichSuTienThietBi = response.body();
@@ -260,7 +260,7 @@ public class TraPhong extends AppCompatActivity {
                 lichSuTienThanhVienThang.setLayoutManager(new LinearLayoutManager(TraPhong.this));
                 lichSuTienThanhVienThang.hasFixedSize();
                 lichSuTienThanhVienThang.setNestedScrollingEnabled(false);
-                ApiQH.apiQH.getTienThanhVienCanDong(thongTinTraPhong.getListidtienthanhvien()).enqueue(new Callback<List<ThanhVienTraPhongModel>>() {
+                ApiQH.apiQH.getTienThanhVienCanDong(time,thongTinTraPhong.getListidtienthanhvien()).enqueue(new Callback<List<ThanhVienTraPhongModel>>() {
                     @Override
                     public void onResponse(Call<List<ThanhVienTraPhongModel>> call, Response<List<ThanhVienTraPhongModel>> response) {
                         List<ThanhVienTraPhongModel> lichSuTienThanhVien = response.body();
