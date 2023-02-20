@@ -22,6 +22,7 @@ import com.example.nhatro2.tien_dien.LichSuDienModel;
 import com.example.nhatro2.tien_dien.TienDienModel;
 import com.example.nhatro2.tien_nuoc.LichSuNuocModel;
 import com.example.nhatro2.tien_nuoc.TienNuocModel;
+import com.example.nhatro2.tra_phong.ChiTienTraPhongModel;
 import com.example.nhatro2.tra_phong.DienTraPhongModel;
 import com.example.nhatro2.tra_phong.NuocTraPhongModel;
 import com.example.nhatro2.tra_phong.ThanhVienTraPhongModel;
@@ -46,8 +47,8 @@ import retrofit2.http.POST;
 
 public interface ApiQH {
 
-    String url = "http://192.168.1.190";
-//    String url = "http://172.16.1.71";
+//    String url = "http://192.168.1.190";
+    String url = "http://172.16.1.71";
     //    String url = "https://nhatroquanghieu.com";
     Gson gson = new GsonBuilder().setDateFormat("yyyy-MM-DD HH:mm:ss").create();
     OkHttpClient okHttpClient = new OkHttpClient.Builder().build();
@@ -423,6 +424,17 @@ public interface ApiQH {
         @FormUrlEncoded
         Call <List<TienPhongTraModel>> getTienPhongCanDong(@Field("phong") int idPhong,@Field("ngay") String time,@Field("idHistory") String idHistory);
 
+        @POST("/quanghieu/admin/api/tra-phong/chi_tra_phong.php")
+        @FormUrlEncoded
+        Call <ChiTienTraPhongModel> taoPhieuChiTraPhong(@Field("chuphong") int chuPhong,
+                                                        @Field("tenphong") String tenPhong,
+                                                        @Field("hopdong") int hopDong,
+                                                        @Field("ngay") String time,
+                                                        @Field("trangthai") String trangthai,
+                                                        @Field("tienphong") int tienphong,
+                                                        @Field("tiencoc") int tiencoc,
+                                                        @Field("phuongthucphong") int phuongthucphong,
+                                                        @Field("phuongthuccoc") int phuongthuccoc);
 
         // Thống kê
     // Tổng quan

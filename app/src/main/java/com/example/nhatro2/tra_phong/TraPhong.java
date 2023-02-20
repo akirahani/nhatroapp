@@ -21,9 +21,11 @@ import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.nhatro2.HomeActivity;
 import com.example.nhatro2.R;
+import com.example.nhatro2.api.Api;
 import com.example.nhatro2.api.ApiQH;
 import com.example.nhatro2.dong_tien.DongTien;
 import com.example.nhatro2.dong_tien.LichSuDongTienModel;
@@ -47,10 +49,13 @@ public class TraPhong extends AppCompatActivity {
     DrawerLayout mDrawerLayout;
     TextView textTitleTraPhong, tieuDeKhachTraPhong,tienThanhVienCacThang,tienPhongCacThang,
             tenChuPhongTra,phoneChuPhongTra,tienDienTongCacThang,tienNuocTongCacThang,tienTongDaDongCacThang,
-            addressChuPhongTra, ngayBatDauHopDong,tieuDeThanhToanTienPhong, ngayTraPhongHopDong, soTienKhachNhanLai, tienThietBiCacThang;
+            addressChuPhongTra, ngayBatDauHopDong,tieuDeThanhToanTienPhong, ngayTraPhongHopDong,
+            soTienKhachNhanLai, tienThietBiCacThang, chiTraPhongButton;
     EditText tienThanhToanCocText, tienThanhToanText;
     RecyclerView lichSuDongTienThang, lichSuTienNuocThang, lichSuTienDienThang, lichSuTienThietBiThang, lichSuTienThanhVienThang
             , lichSuTienPhongThang;
+    RadioButton tienMatKhoanChiCoc, chuyenKhoanChiCoc, tienMatDongTien, chuyenKhoanDongTien ;
+    int tienCocChecked, tienPhongChecked;
     @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -138,6 +143,7 @@ public class TraPhong extends AppCompatActivity {
         tieuDeKhachTraPhong.setText("Đóng hợp đồng số "+hopDong);
         textTitleTraPhong.setText("Trả phòng "+tenPhong);
         tieuDeThanhToanTienPhong = findViewById(R.id.tieuDeThanhToanTienPhong);
+        chiTraPhongButton = findViewById(R.id.chiTraPhongButton);
         ApiQH.apiQH.getThongTinTraPhong(time,hopDong).enqueue(new Callback<TraPhongModel>() {
             @Override
             public void onResponse(Call<TraPhongModel> call, Response<TraPhongModel> response) {
@@ -156,18 +162,19 @@ public class TraPhong extends AppCompatActivity {
                 tienThanhToanCocText = findViewById(R.id.tienThanhToanCocText);
                 tienThanhToanText = findViewById(R.id.tienThanhToanText);
                 // get tien phai chi, thu
-                tienThanhToanCocText.setText(""+thongTinTraPhong.getTiencoc());
+                int tienCocPhaiTra = thongTinTraPhong.getTiencoc();
+                tienThanhToanCocText.setText(""+tienCocPhaiTra);
 
+                int soTienDuThieu = Math.abs(thongTinTraPhong.getSoducuoi());
+                tienThanhToanText.setText(""+soTienDuThieu);
                 if(thongTinTraPhong.getSoducuoi() < 0){
                     tieuDeThanhToanTienPhong.setText("Tạo phiếu thu tiền phòng");
-                    tienThanhToanText.setText(""+Math.abs(thongTinTraPhong.getSoducuoi()));
                 }else{
                     tieuDeThanhToanTienPhong.setText("Tạo phiếu chi tiền phòng");
-                    tienThanhToanText.setText(""+thongTinTraPhong.getSoducuoi());
                 }
 
                 ngayTraPhongHopDong = findViewById(R.id.ngayTraPhongHopDong);
-                ngayTraPhongHopDong.setText("Ngày trả phòng "+time);
+                ngayTraPhongHopDong.setText("Ngày trả phòng: "+time);
 
                 soTienKhachNhanLai = findViewById(R.id.soTienKhachNhanLai);
                 soTienKhachNhanLai.setText("Số tiền khách nhận lại: "+thongTinTraPhong.getTongkhachnhanformat()+"đ");
@@ -273,7 +280,6 @@ public class TraPhong extends AppCompatActivity {
                     }
                 });
 
-
                 //Lịch sử đã đóng tiền
                 tienTongDaDongCacThang = findViewById(R.id.tienTongDaDongCacThang);
                 tienTongDaDongCacThang.setText("Tổng tiền: "+thongTinTraPhong.getTongtienthanhtoan());
@@ -293,6 +299,47 @@ public class TraPhong extends AppCompatActivity {
 
                     }
                 });
+
+                tienMatDongTien = findViewById(R.id.tienMatDongTien);
+                chuyenKhoanDongTien = findViewById(R.id.chuyenKhoanDongTien);
+                if(tienMatDongTien.isChecked()){
+                    tienPhongChecked = 1;
+                }else if(chuyenKhoanDongTien.isChecked()){
+                    tienPhongChecked = 2;
+                }
+
+                tienMatKhoanChiCoc = findViewById(R.id.tienMatKhoanChiCoc);
+                chuyenKhoanChiCoc = findViewById(R.id.chuyenKhoanChiCoc);
+                if(tienMatKhoanChiCoc.isChecked()){
+                    tienCocChecked = 1;
+                }else if(chuyenKhoanChiCoc.isChecked()){
+                    tienCocChecked = 2;
+                }
+
+                String status = thongTinTraPhong.getStatus();
+                chiTraPhongButton.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+
+                        ApiQH.apiQH.taoPhieuChiTraPhong(chuPhong, tenPhong, hopDong, time, status, soTienDuThieu, tienCocPhaiTra, tienPhongChecked, tienCocChecked).enqueue(new Callback<ChiTienTraPhongModel>() {
+                            @Override
+                            public void onResponse(Call<ChiTienTraPhongModel> call, Response<ChiTienTraPhongModel> response) {
+                                ChiTienTraPhongModel chiTien = response.body();
+                                Toast.makeText(TraPhong.this,chiTien.getMessage(),Toast.LENGTH_SHORT).show();
+                                Intent intent = new Intent(TraPhong.this, TraPhong.class);
+                                startActivity(intent);
+                                finish();
+                            }
+
+                            @Override
+                            public void onFailure(Call<ChiTienTraPhongModel> call, Throwable t) {
+                                Log.d("err lỗi tao phiếu chi",""+t.toString());
+                            }
+                        });
+                    }
+                });
+
+
             }
 
             @Override
