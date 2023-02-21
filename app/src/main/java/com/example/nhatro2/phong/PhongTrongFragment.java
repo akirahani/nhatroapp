@@ -70,15 +70,15 @@ public class PhongTrongFragment extends Fragment {
                     @Override
                     public void itemOnClick(int count) {
                         //Click show hide slide
-                        View redLayout = view.findViewById(R.id.slideUp);
-                        ViewGroup parent = view.findViewById(R.id.parent);
+//                        View redLayout = view.findViewById(R.id.slideUp);
+//                        ViewGroup parent = view.findViewById(R.id.parent);
 
-                        Transition transition = new Slide(Gravity.BOTTOM);
-                        transition.setDuration(600);
-                        transition.addTarget(R.id.slideUp);
+//                        Transition transition = new Slide(Gravity.BOTTOM);
+//                        transition.setDuration(600);
+//                        transition.addTarget(R.id.slideUp);
 
-                        TransitionManager.beginDelayedTransition(parent, transition);
-                        redLayout.setVisibility((count == 0) ? View.GONE : View.VISIBLE);
+//                        TransitionManager.beginDelayedTransition(parent, transition);
+//                        redLayout.setVisibility((count == 0) ? View.GONE : View.VISIBLE);
                     }
                 }));
 
@@ -90,25 +90,25 @@ public class PhongTrongFragment extends Fragment {
             }
         });
 
-        slideUp = view.findViewById(R.id.slideUp);
-        slideUp.setVisibility(View.INVISIBLE);
-        slideUp.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
-            @SuppressLint("NonConstantResourceId")
-            @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                switch (item.getItemId())
-                {
-                    case R.id.multiroom:
-                        SharedPreferences sharedPhong = getContext().getSharedPreferences("idPhong", Context.MODE_PRIVATE);
-                        listRoom = sharedPhong.getString("items", "");
-                        Intent intent = new Intent(getContext(), MultiRoom.class);
-                        intent.putExtra("idRoom",""+listRoom);
-                        startActivity(intent);
-                        return true;
-                }
-                return false;
-            }
-        });
+//        slideUp = view.findViewById(R.id.slideUp);
+//        slideUp.setVisibility(View.INVISIBLE);
+//        slideUp.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
+//            @SuppressLint("NonConstantResourceId")
+//            @Override
+//            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+//                switch (item.getItemId())
+//                {
+//                    case R.id.multiroom:
+//                        SharedPreferences sharedPhong = getContext().getSharedPreferences("idPhong", Context.MODE_PRIVATE);
+//                        listRoom = sharedPhong.getString("items", "");
+//                        Intent intent = new Intent(getContext(), MultiRoom.class);
+//                        intent.putExtra("idRoom",""+listRoom);
+//                        startActivity(intent);
+//                        return true;
+//                }
+//                return false;
+//            }
+//        });
         return view;
     }
 
