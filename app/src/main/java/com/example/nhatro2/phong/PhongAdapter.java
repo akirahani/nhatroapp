@@ -60,6 +60,7 @@ public class PhongAdapter extends RecyclerView.Adapter<PhongAdapter.PhongViewHol
         int idPhong = data.getId();
         String ten = data.getTen();
         String khu = data.getKhu();
+        String tenChuPhong = data.getTenkhach();
         int tang = data.getTang();
         int trangthai = data.getTrangthai();
         int chuphong = data.getChuphong();
@@ -69,112 +70,115 @@ public class PhongAdapter extends RecyclerView.Adapter<PhongAdapter.PhongViewHol
         holder.day.setText(khu);
         holder.tang.setText("-" + tang);
 
-        SharedPreferences sharedPhong = context.getSharedPreferences("idPhong", Context.MODE_PRIVATE);
-        SharedPreferences.Editor roomEditor = sharedPhong.edit();
-        listRoom = sharedPhong.getString("items", "");
-        if (listRoom.equals("")) {
-            List<Integer> lst = new ArrayList<>();
-            //Set color model
-            if (lst.contains(idPhong)) {
-                holder.ten.setTextColor(Color.rgb(46, 184, 75));
-                holder.checkMulti.setChecked(true);
-            } else {
-                holder.ten.setTextColor(Color.rgb(0, 0, 0));
-                holder.checkMulti.setChecked(false);
-            }
-        } else {
-            List<Integer> lst = null;
-            if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.N) {
-                lst = Arrays.stream(listRoom.split(",")).map(Integer::parseInt).collect(Collectors.toList());
-                //Set color model
-                if (lst.contains(idPhong)) {
-                    holder.ten.setTextColor(Color.rgb(46, 184, 75));
-                    holder.checkMulti.setChecked(true);
-                } else {
-                    holder.ten.setTextColor(Color.rgb(0, 0, 0));
-                    holder.checkMulti.setChecked(false);
-                }
-            }
-        }
+//        SharedPreferences sharedPhong = context.getSharedPreferences("idPhong", Context.MODE_PRIVATE);
+//        SharedPreferences.Editor roomEditor = sharedPhong.edit();
+//        listRoom = sharedPhong.getString("items", "");
+//        if (listRoom.equals("")) {
+//            List<Integer> lst = new ArrayList<>();
+//            //Set color model
+//            if (lst.contains(idPhong)) {
+//                holder.ten.setTextColor(Color.rgb(46, 184, 75));
+//                holder.checkMulti.setChecked(true);
+//            } else {
+//                holder.ten.setTextColor(Color.rgb(0, 0, 0));
+//                holder.checkMulti.setChecked(false);
+//            }
+//        } else {
+//            List<Integer> lst = null;
+//            if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.N) {
+//                lst = Arrays.stream(listRoom.split(",")).map(Integer::parseInt).collect(Collectors.toList());
+//                //Set color model
+//                if (lst.contains(idPhong)) {
+//                    holder.ten.setTextColor(Color.rgb(46, 184, 75));
+//                    holder.checkMulti.setChecked(true);
+//                } else {
+//                    holder.ten.setTextColor(Color.rgb(0, 0, 0));
+//                    holder.checkMulti.setChecked(false);
+//                }
+//            }
+//        }
 
         tacVuTrong.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(context.getApplicationContext(), PhongEdit.class);
                 intent.putExtra("idPhong", idPhong);
+                intent.putExtra("daidien", chuphong);
                 intent.putExtra("tenPhong", ten);
                 intent.putExtra("day", khu);
                 intent.putExtra("tang", tang);
                 intent.putExtra("trangthai", trangthai);
                 intent.putExtra("gia", gia);
+                intent.putExtra("tenchuphong", tenChuPhong);
+
                 context.startActivity(intent);
             }
         });
 
-        holder.checkMulti.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                List<Integer> arrInt = new ArrayList<>();
-                //Xử lý lưu mảng số nguyên sản phẩm
-                if (listRoom.equals("")) {
-                    //Tạo mảng
-                    arrInt.add(idPhong);
-                    //Convert list to string
-                    String convertString = null;
-                    if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.N) {
-                        convertString = arrInt.stream().map(String::valueOf).collect(Collectors.joining(","));
-                    }
-                    roomEditor.putString("items", convertString);
-                    roomEditor.apply();
-                    notifyDataSetChanged();
-                } else {
-                    //Convert string to List
-                    if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.N) {
-                        arrInt = Arrays.stream(listRoom.split(",")).map(Integer::parseInt).collect(Collectors.toList());
-                    }
-
-                    if (arrInt.contains(idPhong)) {
-                        //Xóa khỏi list
-                        arrInt.remove(Integer.valueOf(idPhong));
-                        //Convert list to string
-                        String convertString = null;
-                        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.N) {
-                            convertString = arrInt.stream().map(String::valueOf).collect(Collectors.joining(","));
-                        }
-                        roomEditor.putString("items", convertString);
-                        roomEditor.apply();
-                        notifyDataSetChanged();
-                    } else {
-                        //Xử lý lưu thêm
-                        arrInt.add(idPhong);
-                        //Convert list to string
-                        String convertString = null;
-                        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.N) {
-                            convertString = arrInt.stream().map(String::valueOf).collect(Collectors.joining(","));
-                        }
-                        roomEditor.putString("items", convertString);
-                        roomEditor.apply();
-                        notifyDataSetChanged();
-                    }
-
-                }
-                listRoom = sharedPhong.getString("items", "");
-                phongClick.itemOnClick(arrInt.size());
-
-                ApiQH.apiQH.phongChecked(listRoom).enqueue(new Callback<List<PhongModel>>() {
-                    @Override
-                    public void onResponse(Call<List<PhongModel>> call, Response<List<PhongModel>> response) {
-                        Log.d("", "" + response.body());
-                    }
-
-                    @Override
-                    public void onFailure(Call<List<PhongModel>> call, Throwable t) {
-                        Log.d("err","loi phong hien thi");
-                    }
-                });
-
-            }
-        });
+//        holder.checkMulti.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                List<Integer> arrInt = new ArrayList<>();
+//                //Xử lý lưu mảng số nguyên sản phẩm
+//                if (listRoom.equals("")) {
+//                    //Tạo mảng
+//                    arrInt.add(idPhong);
+//                    //Convert list to string
+//                    String convertString = null;
+//                    if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.N) {
+//                        convertString = arrInt.stream().map(String::valueOf).collect(Collectors.joining(","));
+//                    }
+//                    roomEditor.putString("items", convertString);
+//                    roomEditor.apply();
+//                    notifyDataSetChanged();
+//                } else {
+//                    //Convert string to List
+//                    if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.N) {
+//                        arrInt = Arrays.stream(listRoom.split(",")).map(Integer::parseInt).collect(Collectors.toList());
+//                    }
+//
+//                    if (arrInt.contains(idPhong)) {
+//                        //Xóa khỏi list
+//                        arrInt.remove(Integer.valueOf(idPhong));
+//                        //Convert list to string
+//                        String convertString = null;
+//                        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.N) {
+//                            convertString = arrInt.stream().map(String::valueOf).collect(Collectors.joining(","));
+//                        }
+//                        roomEditor.putString("items", convertString);
+//                        roomEditor.apply();
+//                        notifyDataSetChanged();
+//                    } else {
+//                        //Xử lý lưu thêm
+//                        arrInt.add(idPhong);
+//                        //Convert list to string
+//                        String convertString = null;
+//                        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.N) {
+//                            convertString = arrInt.stream().map(String::valueOf).collect(Collectors.joining(","));
+//                        }
+//                        roomEditor.putString("items", convertString);
+//                        roomEditor.apply();
+//                        notifyDataSetChanged();
+//                    }
+//
+//                }
+//                listRoom = sharedPhong.getString("items", "");
+//                phongClick.itemOnClick(arrInt.size());
+//
+//                ApiQH.apiQH.phongChecked(listRoom).enqueue(new Callback<List<PhongModel>>() {
+//                    @Override
+//                    public void onResponse(Call<List<PhongModel>> call, Response<List<PhongModel>> response) {
+//                        Log.d("", "" + response.body());
+//                    }
+//
+//                    @Override
+//                    public void onFailure(Call<List<PhongModel>> call, Throwable t) {
+//                        Log.d("err","loi phong hien thi");
+//                    }
+//                });
+//
+//            }
+//        });
     }
 
     @Override
@@ -192,7 +196,7 @@ public class PhongAdapter extends RecyclerView.Adapter<PhongAdapter.PhongViewHol
             ten = itemView.findViewById(R.id.tenPhongTrong);
             day = itemView.findViewById(R.id.dayTrong);
             tang = itemView.findViewById(R.id.tangTrong);
-            checkMulti = itemView.findViewById(R.id.checkMulti);
+//            checkMulti = itemView.findViewById(R.id.checkMulti);
         }
 
     }

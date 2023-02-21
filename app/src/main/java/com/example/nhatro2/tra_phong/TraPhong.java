@@ -333,7 +333,7 @@ public class TraPhong extends AppCompatActivity {
 
                             @Override
                             public void onFailure(Call<ChiTienTraPhongModel> call, Throwable t) {
-                                Log.d("err lỗi tao phiếu chi", "" + t.toString());
+
                             }
                         });
                     }
@@ -344,7 +344,6 @@ public class TraPhong extends AppCompatActivity {
 
             @Override
             public void onFailure(Call<TraPhongModel> call, Throwable t) {
-                Log.d("err j the", "" + t.toString());
             }
         });
         // Ánh xạ

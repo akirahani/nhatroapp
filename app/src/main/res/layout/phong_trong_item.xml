@@ -20,11 +20,11 @@
             android:layout_height="wrap_content"
             android:layout_alignParentLeft="true"
             >
-            <CheckBox
-                android:id="@+id/checkMulti"
-                android:layout_centerHorizontal="true"
-                android:layout_width="18dp"
-                android:layout_height="18dp" />
+<!--            <CheckBox-->
+<!--                android:id="@+id/checkMulti"-->
+<!--                android:layout_centerHorizontal="true"-->
+<!--                android:layout_width="18dp"-->
+<!--                android:layout_height="18dp" />-->
             <TextView
                 android:layout_toRightOf="@+id/checkMulti"
                 android:id="@+id/tenPhongTrong"

@@ -51,17 +51,17 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/tHeadEmptyRoom"
         android:background="@color/white"
-        android:paddingBottom="60dp"></androidx.recyclerview.widget.RecyclerView>
+        ></androidx.recyclerview.widget.RecyclerView>
 
-    <com.google.android.material.bottomnavigation.BottomNavigationView
-        android:id="@+id/slideUp"
-        android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:layout_alignParentBottom="true"
-        android:layout_marginBottom="1dp"
-        android:background="@color/white"
-        android:orientation="vertical"
-        app:itemTextColor="@drawable/bottom_navigation_selector_checked"
-        app:itemIconTint="@drawable/bottom_navigation_selector_checked"
-        app:menu="@menu/multi_room"></com.google.android.material.bottomnavigation.BottomNavigationView>
+<!--    <com.google.android.material.bottomnavigation.BottomNavigationView-->
+<!--        android:id="@+id/slideUp"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="60dp"-->
+<!--        android:layout_alignParentBottom="true"-->
+<!--        android:layout_marginBottom="1dp"-->
+<!--        android:background="@color/white"-->
+<!--        android:orientation="vertical"-->
+<!--        app:itemTextColor="@drawable/bottom_navigation_selector_checked"-->
+<!--        app:itemIconTint="@drawable/bottom_navigation_selector_checked"-->
+<!--        app:menu="@menu/multi_room"></com.google.android.material.bottomnavigation.BottomNavigationView>-->
 </RelativeLayout>

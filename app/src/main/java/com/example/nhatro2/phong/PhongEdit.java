@@ -8,6 +8,7 @@ import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.text.Html;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
@@ -38,6 +39,7 @@ import com.example.nhatro2.hop_dong.HopDong;
 import com.example.nhatro2.kha_bien.KhaBien;
 import com.example.nhatro2.thanhvien.KhachTro;
 import com.example.nhatro2.tien_coc.TienCocAdd;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.navigation.NavigationView;
 import com.google.android.material.tabs.TabLayout;
 
@@ -59,6 +61,7 @@ public class PhongEdit extends AppCompatActivity {
     CardView rowDaiDien, rowDienThoai;
     int trangthai;
     DrawerLayout mDrawerLayout;
+    FloatingActionButton fab;
 
     @SuppressLint("MissingInflatedId")
     @Override
@@ -69,8 +72,7 @@ public class PhongEdit extends AppCompatActivity {
         closeFormEdit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(PhongEdit.this, Phong.class);
-                startActivity(intent);
+                PhongEdit.super.onBackPressed();
             }
         });
         // home
@@ -79,6 +81,12 @@ public class PhongEdit extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(PhongEdit.this, HomeActivity.class);
+                SharedPreferences shpKhachBanGiao = getApplicationContext().getSharedPreferences("khachBanGiao", MODE_PRIVATE);
+                SharedPreferences.Editor shpKhachBanGiaoEdit = shpKhachBanGiao.edit();
+                shpKhachBanGiaoEdit.remove("tenKhach");
+                shpKhachBanGiaoEdit.remove("sdtKhach");
+                shpKhachBanGiaoEdit.remove("idKhach");
+                shpKhachBanGiaoEdit.apply();
                 startActivity(intent);
             }
         });
@@ -88,6 +96,12 @@ public class PhongEdit extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 PhongEdit.super.onBackPressed();
+                SharedPreferences shpKhachBanGiao = getApplicationContext().getSharedPreferences("khachBanGiao", MODE_PRIVATE);
+                SharedPreferences.Editor shpKhachBanGiaoEdit = shpKhachBanGiao.edit();
+                shpKhachBanGiaoEdit.remove("tenKhach");
+                shpKhachBanGiaoEdit.remove("sdtKhach");
+                shpKhachBanGiaoEdit.remove("idKhach");
+                shpKhachBanGiaoEdit.apply();
             }
         });
 
@@ -123,9 +137,12 @@ public class PhongEdit extends AppCompatActivity {
         int giaPhong = bundle.getInt("gia");
         String tenPhong = bundle.getString("tenPhong");
         String dayPhong = bundle.getString("day");
-        String daiDien = bundle.getString("daidien");
+        int daiDien = bundle.getInt("daidien");
         String dienThoai = bundle.getString("dienthoai");
         int datcoc = bundle.getInt("datcoc");
+        String tenchuphong = bundle.getString("tenchuphong");
+
+        Log.d("ten chu phong",""+tenchuphong);
 
         if (bundle == null) {
             Toast.makeText(this, "Có lỗi !", Toast.LENGTH_SHORT).show();
@@ -134,7 +151,8 @@ public class PhongEdit extends AppCompatActivity {
             vitriPhongEdit.setText("Vị trí: Dãy " + dayPhong + " - Tầng " + tang);
             tienPhong.setText("" + giaPhong);
             if (trangthai == 2 || trangthai == 3) {
-                daidien.setText(daiDien);
+                Log.d("nguoiDD",""+daiDien);
+                daidien.setText(tenchuphong);
                 dienthoai.setText(dienThoai);
                 tiencoc.setText(""+datcoc);
             } else {
@@ -186,6 +204,7 @@ public class PhongEdit extends AppCompatActivity {
                 }
 
                 int finalTrangThaiPost = trangThaiPost;
+                Log.d("trang thai",""+finalTrangThaiPost);
                 ApiQH.apiQH.editPhong(idPhong, trangthai, trangThaiPost, tenDaiDien, dienThoai).enqueue(new Callback<PhongModel>() {
                     @Override
                     public void onResponse(Call<PhongModel> call, Response<PhongModel> response) {
@@ -209,6 +228,26 @@ public class PhongEdit extends AppCompatActivity {
                         Toast.makeText(PhongEdit.this, "Cập nhật phòng không thành công !", Toast.LENGTH_SHORT).show();
                     }
                 });
+            }
+        });
+
+        fab = findViewById(R.id.fabPhongTrong);
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                BottomSheetChonKhachBanGiao chonKhachBanGiao = new BottomSheetChonKhachBanGiao();
+                Bundle bundle = new Bundle();
+                bundle.putInt("idPhong",idPhong);
+                bundle.putInt("tang",tang);
+                bundle.putInt("trangthai",trangthai);
+                bundle.putInt("gia", giaPhong);
+                bundle.putString("tenPhong",tenPhong);
+                bundle.putString("day",dayPhong);
+                bundle.putInt("daidien",daiDien);
+                bundle.putString("dienthoai",dienThoai);
+                bundle.putInt("datcoc",datcoc);
+                chonKhachBanGiao.setArguments(bundle);
+                chonKhachBanGiao.show(getSupportFragmentManager() , "ChonKhachBanGiao");
             }
         });
 
@@ -242,12 +281,32 @@ public class PhongEdit extends AppCompatActivity {
                         Intent hopDong = new Intent(PhongEdit.this, HopDong.class);
                         startActivity(hopDong);
                         return true;
-
-
                 }
                 return true;
             }
         });
+
+        if(trangthai == 1){
+            SharedPreferences shpKhachBanGiao = getApplicationContext().getSharedPreferences("khachBanGiao", MODE_PRIVATE);
+            String tenKhach = shpKhachBanGiao.getString("tenKhach","");
+            String sdtKhach = shpKhachBanGiao.getString("sdtKhach","");
+            int idKhach = shpKhachBanGiao.getInt("idKhach",0);
+            daidien.setText(tenKhach);
+            dienthoai.setText(sdtKhach);
+        }
+
+    }
+
+    // Back button
+    public void onBackPressed()
+    {
+        super.onBackPressed();
+        SharedPreferences shpKhachBanGiao = getApplicationContext().getSharedPreferences("khachBanGiao", MODE_PRIVATE);
+        SharedPreferences.Editor shpKhachBanGiaoEdit = shpKhachBanGiao.edit();
+        shpKhachBanGiaoEdit.remove("tenKhach");
+        shpKhachBanGiaoEdit.remove("sdtKhach");
+        shpKhachBanGiaoEdit.remove("idKhach");
+        shpKhachBanGiaoEdit.apply();
     }
 
 
