@@ -62,7 +62,7 @@ public class PhongEdit extends AppCompatActivity {
     int trangthai;
     DrawerLayout mDrawerLayout;
     FloatingActionButton fab;
-
+    int trangThaiPost;
     @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -191,10 +191,9 @@ public class PhongEdit extends AppCompatActivity {
         editRoomButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                int trangThaiPost = 0;
+
                 String tenDaiDien = daidien.getText().toString();
                 String dienThoai = dienthoai.getText().toString();
-
                 if (trong.isChecked()) {
                     trangThaiPost = 1;
                 } else if (bangiao.isChecked()) {
@@ -203,12 +202,13 @@ public class PhongEdit extends AppCompatActivity {
                     trangThaiPost = 2;
                 }
 
-                int finalTrangThaiPost = trangThaiPost;
-                Log.d("trang thai",""+finalTrangThaiPost);
+
+                Log.d("trang thai",""+trangThaiPost);
+
                 ApiQH.apiQH.editPhong(idPhong, trangthai, trangThaiPost, tenDaiDien, dienThoai).enqueue(new Callback<PhongModel>() {
                     @Override
                     public void onResponse(Call<PhongModel> call, Response<PhongModel> response) {
-                        if( finalTrangThaiPost ==3 || finalTrangThaiPost == 2 ){
+                        if( trangThaiPost ==3 || trangThaiPost == 2 ){
                             roomEditor.remove("items");
                             roomEditor.commit();
                         }
@@ -293,6 +293,8 @@ public class PhongEdit extends AppCompatActivity {
             int idKhach = shpKhachBanGiao.getInt("idKhach",0);
             daidien.setText(tenKhach);
             dienthoai.setText(sdtKhach);
+        }else{
+            fab.setVisibility(View.GONE);
         }
 
     }
