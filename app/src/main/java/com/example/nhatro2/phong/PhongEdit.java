@@ -63,7 +63,6 @@ public class PhongEdit extends AppCompatActivity {
     DrawerLayout mDrawerLayout;
     FloatingActionButton fab;
     int trangThaiPost;
-
     @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -203,7 +202,9 @@ public class PhongEdit extends AppCompatActivity {
                     trangThaiPost = 2;
                 }
 
+
                 Log.d("trang thai",""+trangThaiPost);
+
                 ApiQH.apiQH.editPhong(idPhong, trangthai, trangThaiPost, tenDaiDien, dienThoai).enqueue(new Callback<PhongModel>() {
                     @Override
                     public void onResponse(Call<PhongModel> call, Response<PhongModel> response) {
