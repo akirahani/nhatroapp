@@ -9,6 +9,8 @@ import android.text.Html;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
+import android.webkit.WebSettings;
+import android.webkit.WebView;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -52,7 +54,7 @@ public class ThongKe extends AppCompatActivity {
     SharedPreferences shp;
     LinearLayout quayLai;
     DrawerLayout mDrawerLayout;
-    int soPhongTrong,soPhongThue,soKhachThue;
+    WebView soDo;
     @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -78,87 +80,11 @@ public class ThongKe extends AppCompatActivity {
             }
         });
 
-
-        // Biểu đồ cột: tổng quan(bar chart)
-        HIChartView chartView = (HIChartView) findViewById(R.id.tongQuanChart);
-        HIOptions options = new HIOptions();
-
-        HIChart chart = new HIChart();
-        chart.setType("column");
-        options.setChart(chart);
-
-        HITitle title = new HITitle();
-        title.setText("Tổng quan");
-        options.setTitle(title);
-
-        final HIYAxis hiyAxis = new HIYAxis();
-        hiyAxis.setMin(0);
-        hiyAxis.setTitle(new HITitle());
-        hiyAxis.getTitle().setText("");
-        options.setYAxis(new ArrayList() {{
-            add(hiyAxis);
-        }});
-//
-        final HIXAxis hixAxis = new HIXAxis();
-        ArrayList categories = new ArrayList<>();
-        categories.add("Goals");
-        categories.add("Assists");
-        categories.add("Shots On Goal");
-
-        hixAxis.setCategories(categories);
-        options.setXAxis(new ArrayList() {{
-            add(hixAxis);
-        }});
-
-        HIColumn phongTrongColumn = new HIColumn();
-        HIColumn phongThueColumn = new HIColumn();
-        HIColumn khachThueColumn = new HIColumn();
-
-        phongTrongColumn.setName("Phòng trống");
-        ArrayList phongTrongColumnData = new ArrayList<>();
-
-        phongThueColumn.setName("Phòng đang thuê");
-        ArrayList phongThueColumnData = new ArrayList<>();
-
-        khachThueColumn.setName("Khách trọ");
-        ArrayList khachThueColumnData = new ArrayList<>();
-
-
-        ApiQH.apiQH.getTongQuan().enqueue(new Callback<TongQuanChartModel>() {
-            @Override
-            public void onResponse(Call<TongQuanChartModel> call, Response<TongQuanChartModel> response) {
-                TongQuanChartModel tongQuanDetail = response.body();
-                soPhongTrong = tongQuanDetail.getPhongtrong();
-                soPhongThue = tongQuanDetail.getPhongthue();
-                soKhachThue = tongQuanDetail.getThanhvien();
-            }
-            @Override
-            public void onFailure(Call<TongQuanChartModel> call, Throwable t) {
-            }
-        });
-
-        Log.d("trong day",""+soPhongTrong);
-        Log.d("thue day",""+soPhongThue);
-        Log.d("khach day",""+soKhachThue);
-
-//        phongThueColumnData.add(100);
-//        phongThueColumnData.add(15);
-//        khachThueColumnData.add(11);
-
-        phongTrongColumn.setData(phongTrongColumnData);
-        phongThueColumn.setData(phongThueColumnData);
-        khachThueColumn.setData(khachThueColumnData);
-
-
-        ArrayList series = new ArrayList<>();
-
-        series.add(phongThueColumn);
-        series.add(phongTrongColumn);
-        series.add(khachThueColumn);
-
-        options.setSeries(series);
-        chartView.setOptions(options);
-
+        soDo = findViewById(R.id.soDo);
+        soDo.loadUrl("http://172.16.1.71/quanghieu/admin/api/thong-ke/tong-quan.php");
+        WebSettings webSettings = soDo.getSettings();
+        webSettings.setJavaScriptEnabled(true);
+        
         // menu slide
         menuDanhMuc = findViewById(R.id.menuDanhMuc);
         mDrawerLayout = findViewById(R.id.drawer_layout_thong_ke);
