@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.Html;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
@@ -35,10 +36,12 @@ import com.highsoft.highcharts.common.hichartsclasses.HIChart;
 import com.highsoft.highcharts.common.hichartsclasses.HIColumn;
 import com.highsoft.highcharts.common.hichartsclasses.HIOptions;
 import com.highsoft.highcharts.common.hichartsclasses.HITitle;
+import com.highsoft.highcharts.common.hichartsclasses.HIXAxis;
 import com.highsoft.highcharts.common.hichartsclasses.HIYAxis;
 import com.highsoft.highcharts.core.*;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -49,6 +52,7 @@ public class ThongKe extends AppCompatActivity {
     SharedPreferences shp;
     LinearLayout quayLai;
     DrawerLayout mDrawerLayout;
+    int soPhongTrong,soPhongThue,soKhachThue;
     @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -95,16 +99,16 @@ public class ThongKe extends AppCompatActivity {
             add(hiyAxis);
         }});
 //
-//        final HIXAxis hixAxis = new HIXAxis();
-//        ArrayList categories = new ArrayList<>();
-//        categories.add("Goals");
-//        categories.add("Assists");
-//        categories.add("Shots On Goal");
-//
-//        hixAxis.setCategories(categories);
-//        options.setXAxis(new ArrayList() {{
-//            add(hixAxis);
-//        }});
+        final HIXAxis hixAxis = new HIXAxis();
+        ArrayList categories = new ArrayList<>();
+        categories.add("Goals");
+        categories.add("Assists");
+        categories.add("Shots On Goal");
+
+        hixAxis.setCategories(categories);
+        options.setXAxis(new ArrayList() {{
+            add(hixAxis);
+        }});
 
         HIColumn phongTrongColumn = new HIColumn();
         HIColumn phongThueColumn = new HIColumn();
@@ -120,26 +124,26 @@ public class ThongKe extends AppCompatActivity {
         ArrayList khachThueColumnData = new ArrayList<>();
 
 
-//        ApiQH.apiQH.getTongQuan().enqueue(new Callback<TongQuanChartModel>() {
-//            @Override
-//            public void onResponse(Call<TongQuanChartModel> call, Response<TongQuanChartModel> response) {
-//                TongQuanChartModel tongQuanDetail = response.body();
-//                int soPhongTrong = tongQuanDetail.getPhongtrong();
-//                int soPhongThue = tongQuanDetail.getPhongthue();
-//                int soKhachThue = tongQuanDetail.getThanhvien();
-//
-//                Log.d("trong day",""+soPhongTrong);
-//                Log.d("thue day",""+soPhongThue);
-//                Log.d("khach day",""+soKhachThue);
-//            }
-//            @Override
-//            public void onFailure(Call<TongQuanChartModel> call, Throwable t) {
-//            }
-//        });
+        ApiQH.apiQH.getTongQuan().enqueue(new Callback<TongQuanChartModel>() {
+            @Override
+            public void onResponse(Call<TongQuanChartModel> call, Response<TongQuanChartModel> response) {
+                TongQuanChartModel tongQuanDetail = response.body();
+                soPhongTrong = tongQuanDetail.getPhongtrong();
+                soPhongThue = tongQuanDetail.getPhongthue();
+                soKhachThue = tongQuanDetail.getThanhvien();
+            }
+            @Override
+            public void onFailure(Call<TongQuanChartModel> call, Throwable t) {
+            }
+        });
 
-        phongThueColumnData.add(100);
-        phongThueColumnData.add(15);
-        khachThueColumnData.add(11);
+        Log.d("trong day",""+soPhongTrong);
+        Log.d("thue day",""+soPhongThue);
+        Log.d("khach day",""+soKhachThue);
+
+//        phongThueColumnData.add(100);
+//        phongThueColumnData.add(15);
+//        khachThueColumnData.add(11);
 
         phongTrongColumn.setData(phongTrongColumnData);
         phongThueColumn.setData(phongThueColumnData);
@@ -155,6 +159,7 @@ public class ThongKe extends AppCompatActivity {
         options.setSeries(series);
         chartView.setOptions(options);
 
+        // menu slide
         menuDanhMuc = findViewById(R.id.menuDanhMuc);
         mDrawerLayout = findViewById(R.id.drawer_layout_thong_ke);
 
@@ -164,6 +169,7 @@ public class ThongKe extends AppCompatActivity {
                 mDrawerLayout.openDrawer(GravityCompat.START);
             }
         });
+
         NavigationView navigationView = findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
