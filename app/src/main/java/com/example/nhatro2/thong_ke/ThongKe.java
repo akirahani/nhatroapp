@@ -80,12 +80,20 @@ public class ThongKe extends AppCompatActivity {
             }
         });
 
+
+        // tong quan
+
         soDo = findViewById(R.id.soDo);
         soDo.loadUrl("http://172.16.1.71/quanghieu/admin/api/thong-ke/tong-quan.php");
         WebSettings webSettings = soDo.getSettings();
         webSettings.setJavaScriptEnabled(true);
+
+
+//        soDo = findViewById(R.id.soDo);
+//        soDo.loadUrl("http://172.16.1.71/quanghieu/admin/api/thong-ke/tong-quan.php");
+//        WebSettings webSettings = soDo.getSettings();
+//        webSettings.setJavaScriptEnabled(true);
         
-        // menu slide
         menuDanhMuc = findViewById(R.id.menuDanhMuc);
         mDrawerLayout = findViewById(R.id.drawer_layout_thong_ke);
 
