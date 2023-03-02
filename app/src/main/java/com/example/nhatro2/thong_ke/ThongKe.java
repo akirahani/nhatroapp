@@ -51,7 +51,8 @@ public class ThongKe extends AppCompatActivity {
     SharedPreferences shp;
     LinearLayout quayLai;
     DrawerLayout mDrawerLayout;
-    WebView soDo;
+    WebView tongQuan, doanhThuThangHienTai, thietBiCacThang, doanhThuThangTruoc, tienThietBiCacThang
+            ,gioiTinh,tinhThanh,doTuoiKhach;
     @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -78,17 +79,45 @@ public class ThongKe extends AppCompatActivity {
         });
 
         // tong quan
-        soDo = findViewById(R.id.soDo);
-        soDo.loadUrl("http://172.16.1.71/quanghieu/admin/api/thong-ke/tong-quan.php");
-        WebSettings webSettings = soDo.getSettings();
+        tongQuan = findViewById(R.id.tongQuan);
+        tongQuan.loadUrl("http://172.16.1.71/quanghieu/admin/api/thong-ke/tong-quan.php");
+        WebSettings webSettings = tongQuan.getSettings();
         webSettings.setJavaScriptEnabled(true);
 
-//        soDo = findViewById(R.id.soDo);
-//        soDo.loadUrl("http://172.16.1.71/quanghieu/admin/api/thong-ke/tong-quan.php");
-//        WebSettings webSettings = soDo.getSettings();
-//        webSettings.setJavaScriptEnabled(true);
+        doanhThuThangHienTai = findViewById(R.id.doanhThuThangHienTai);
+        doanhThuThangHienTai.loadUrl("http://172.16.1.71/quanghieu/admin/api/thong-ke/doanh-thu.php");
+        WebSettings webSettingDTCurrent = doanhThuThangHienTai.getSettings();
+        webSettingDTCurrent.setJavaScriptEnabled(true);
 
+        doanhThuThangTruoc = findViewById(R.id.doanhThuThangTruoc);
+        doanhThuThangTruoc.loadUrl("http://172.16.1.71/quanghieu/admin/api/thong-ke/doanh-thu-truoc.php");
+        WebSettings webSettingDTBefore = doanhThuThangTruoc.getSettings();
+        webSettingDTBefore.setJavaScriptEnabled(true);
 
+        thietBiCacThang = findViewById(R.id.thietBiCacThang);
+        thietBiCacThang.loadUrl("http://172.16.1.71/quanghieu/admin/api/thong-ke/thiet-bi.php");
+        WebSettings webSettingTB = thietBiCacThang.getSettings();
+        webSettingTB.setJavaScriptEnabled(true);
+
+        tienThietBiCacThang = findViewById(R.id.tienThietBiCacThang);
+        tienThietBiCacThang.loadUrl("http://172.16.1.71/quanghieu/admin/api/thong-ke/tien-thiet-bi.php");
+        WebSettings webSettingTTB = tienThietBiCacThang.getSettings();
+        webSettingTTB.setJavaScriptEnabled(true);
+
+        gioiTinh = findViewById(R.id.gioiTinh);
+        gioiTinh.loadUrl("http://172.16.1.71/quanghieu/admin/api/thong-ke/gioi-tinh.php");
+        WebSettings webSettingGT = gioiTinh.getSettings();
+        webSettingGT.setJavaScriptEnabled(true);
+
+        tinhThanh = findViewById(R.id.tinhThanh);
+        tinhThanh.loadUrl("http://172.16.1.71/quanghieu/admin/api/thong-ke/tinh-thanh.php");
+        WebSettings webSettingTinhThanh = tinhThanh.getSettings();
+        webSettingTinhThanh.setJavaScriptEnabled(true);
+
+        doTuoiKhach = findViewById(R.id.doTuoiKhach);
+        doTuoiKhach.loadUrl("http://172.16.1.71/quanghieu/admin/api/thong-ke/do-tuoi.php");
+        WebSettings webSettingDoTuoi = doTuoiKhach.getSettings();
+        webSettingDoTuoi.setJavaScriptEnabled(true);
 
         menuDanhMuc = findViewById(R.id.menuDanhMuc);
         mDrawerLayout = findViewById(R.id.drawer_layout_thong_ke);
