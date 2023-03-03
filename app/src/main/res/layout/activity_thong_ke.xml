@@ -32,9 +32,9 @@
 
                     <ImageView
                         android:id="@+id/thoat"
-                        android:layout_gravity="center"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_gravity="center"
                         android:background="@drawable/quaylaitrang"
                         android:backgroundTint="@color/white" />
 
@@ -43,9 +43,9 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_toRightOf="@+id/thoat"
+                        android:fontFamily="@font/svn_p_s_regular"
                         android:paddingLeft="5dp"
                         android:text="Quay lại"
-                        android:fontFamily="@font/svn_p_s_regular"
 
                         android:textColor="@color/white" />
                 </LinearLayout>
@@ -90,11 +90,11 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="14dp"
-            android:layout_marginTop="14dp"
+            android:layout_marginTop="17dp"
             android:layout_marginRight="14dp"
-            android:layout_marginBottom="13dp"
+            android:layout_marginBottom="24dp"
             app:cardCornerRadius="10dp"
-            app:cardElevation="15dp"
+            app:cardElevation="5dp"
             app:contentPadding="16dp">
 
             <RelativeLayout
@@ -112,8 +112,8 @@
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Doanh thu tháng này"
                         android:fontFamily="@font/svn_p_s_bold"
+                        android:text="Doanh thu tháng này"
                         android:textAllCaps="true"
                         android:textColor="@color/doanhThuThang"
                         android:textSize="15sp" />
@@ -132,16 +132,332 @@
 
         </androidx.cardview.widget.CardView>
 
-
-        <WebView
-            android:layout_marginLeft="14dp"
-            android:layout_marginTop="14dp"
-            android:layout_marginRight="14dp"
+        <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/soDo"/>
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:background="@color/khungNgoai"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/white"
+                    android:orientation="vertical"
+                    tools:ignore="WebViewLayout">
+
+                    <RelativeLayout
+                        android:id="@+id/tieuDeQuanLiChung"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+
+                        <ImageView
+                            android:id="@+id/demuc"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/demuc" />
+
+                        <TextView
+                            android:id="@+id/textQuanLyChung"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:fontFamily="@font/svn_p_s_bold"
+                            android:gravity="center"
+                            android:lineHeight="19dp"
+                            android:paddingLeft="5dp"
+                            android:paddingTop="3dp"
+                            android:paddingBottom="6dp"
+                            android:text="Tổng quan"
+                            android:textAllCaps="true"
+                            android:textColor="@color/white"
+                            android:textSize="16dp" />
+                    </RelativeLayout>
+
+                    <WebView
+                        android:id="@+id/tongQuan"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+                </LinearLayout>
 
 
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/white"
+                    android:orientation="vertical"
+                    android:layout_marginTop="19dp"
+                    tools:ignore="WebViewLayout">
+
+                    <RelativeLayout
+                        android:id="@+id/tieuDeDoanhThuHienTai"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+                        <ImageView
+                            android:id="@+id/demucDoanhThu"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/demuc" />
+
+                        <TextView
+                            android:id="@+id/textDoanhThuHienTai"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:fontFamily="@font/svn_p_s_bold"
+                            android:gravity="center"
+                            android:lineHeight="19dp"
+                            android:paddingLeft="5dp"
+                            android:paddingTop="3dp"
+                            android:paddingBottom="6dp"
+                            android:text="DT tháng hiện tại"
+                            android:textAllCaps="true"
+                            android:textColor="@color/white"
+                            android:textSize="16dp" />
+                    </RelativeLayout>
+                    <WebView
+                        android:id="@+id/doanhThuThangHienTai"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/white"
+                    android:orientation="vertical"
+                    android:layout_marginTop="19dp"
+                    tools:ignore="WebViewLayout">
+
+                    <RelativeLayout
+                        android:id="@+id/tieuDeDoanhThuThangTruoc"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+                        <ImageView
+                            android:id="@+id/demucDoanhThuThangTruoc"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/demuc" />
+
+                        <TextView
+                            android:id="@+id/textDoanhThuThangTruoc"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:fontFamily="@font/svn_p_s_bold"
+                            android:gravity="center"
+                            android:lineHeight="19dp"
+                            android:paddingLeft="5dp"
+                            android:paddingTop="3dp"
+                            android:paddingBottom="6dp"
+                            android:text="DT Tháng Trước"
+                            android:textAllCaps="true"
+                            android:textColor="@color/white"
+                            android:textSize="16dp" />
+                    </RelativeLayout>
+                    <WebView
+                        android:id="@+id/doanhThuThangTruoc"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/white"
+                    android:orientation="vertical"
+                    android:layout_marginTop="19dp"
+                    tools:ignore="WebViewLayout">
+
+                    <RelativeLayout
+                        android:id="@+id/tieuDeThietBiSuDung"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+                        <ImageView
+                            android:id="@+id/demucThietBiSuDung"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/demuc" />
+
+                        <TextView
+                            android:id="@+id/textThietBiSuDung"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:fontFamily="@font/svn_p_s_bold"
+                            android:gravity="center"
+                            android:lineHeight="19dp"
+                            android:paddingLeft="5dp"
+                            android:paddingTop="3dp"
+                            android:paddingBottom="6dp"
+                            android:text="Thiết bị sử dụng"
+                            android:textAllCaps="true"
+                            android:textColor="@color/white"
+                            android:textSize="16dp" />
+                    </RelativeLayout>
+                    <WebView
+                        android:id="@+id/thietBiCacThang"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/white"
+                    android:orientation="vertical"
+                    android:layout_marginTop="19dp"
+                    tools:ignore="WebViewLayout">
+
+                    <RelativeLayout
+                        android:id="@+id/tieuDeTienThietBi"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+                        <ImageView
+                            android:id="@+id/demucTienThietBi"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/demuc" />
+
+                        <TextView
+                            android:id="@+id/textTienThietBi"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:fontFamily="@font/svn_p_s_bold"
+                            android:gravity="center"
+                            android:lineHeight="19dp"
+                            android:paddingLeft="5dp"
+                            android:paddingTop="3dp"
+                            android:paddingBottom="6dp"
+                            android:text="Tiền thiết bị"
+                            android:textAllCaps="true"
+                            android:textColor="@color/white"
+                            android:textSize="16dp" />
+                    </RelativeLayout>
+                    <WebView
+                        android:id="@+id/tienThietBiCacThang"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/white"
+                    android:orientation="vertical"
+                    android:layout_marginTop="19dp"
+                    tools:ignore="WebViewLayout">
+
+                    <RelativeLayout
+                        android:id="@+id/tieuDeTinhThanh"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+                        <ImageView
+                            android:id="@+id/demucTinhThanh"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/demuc" />
+
+                        <TextView
+                            android:id="@+id/textTinhThanh"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:fontFamily="@font/svn_p_s_bold"
+                            android:gravity="center"
+                            android:lineHeight="19dp"
+                            android:paddingLeft="5dp"
+                            android:paddingTop="3dp"
+                            android:paddingBottom="6dp"
+                            android:text="Tỉnh thành"
+                            android:textAllCaps="true"
+                            android:textColor="@color/white"
+                            android:textSize="16dp" />
+                    </RelativeLayout>
+                    <WebView
+                        android:id="@+id/tinhThanh"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/white"
+                    android:orientation="vertical"
+                    android:layout_marginTop="19dp"
+                    tools:ignore="WebViewLayout">
+
+                    <RelativeLayout
+                        android:id="@+id/tieuDeDoTuoiKhach"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+                        <ImageView
+                            android:id="@+id/demucDoTuoiKhach"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/demuc" />
+
+                        <TextView
+                            android:id="@+id/textDoTuoiKhach"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:fontFamily="@font/svn_p_s_bold"
+                            android:gravity="center"
+                            android:lineHeight="19dp"
+                            android:paddingLeft="5dp"
+                            android:paddingTop="3dp"
+                            android:paddingBottom="6dp"
+                            android:text="Độ tuổi khách"
+                            android:textAllCaps="true"
+                            android:textColor="@color/white"
+                            android:textSize="16dp" />
+                    </RelativeLayout>
+                    <WebView
+                        android:id="@+id/doTuoiKhach"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/white"
+                    android:orientation="vertical"
+                    android:layout_marginTop="19dp"
+                    tools:ignore="WebViewLayout">
+
+                    <RelativeLayout
+                        android:id="@+id/tieuDeGioiTinh"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+                        <ImageView
+                            android:id="@+id/demucGioiTinh"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/demuc" />
+
+                        <TextView
+                            android:id="@+id/textGioiTinh"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:fontFamily="@font/svn_p_s_bold"
+                            android:gravity="center"
+                            android:lineHeight="19dp"
+                            android:paddingLeft="5dp"
+                            android:paddingTop="3dp"
+                            android:paddingBottom="6dp"
+                            android:text="Giới tính"
+                            android:textAllCaps="true"
+                            android:textColor="@color/white"
+                            android:textSize="16dp" />
+                    </RelativeLayout>
+                    <WebView
+                        android:id="@+id/gioiTinh"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+                </LinearLayout>
+
+            </LinearLayout>
+        </ScrollView>
     </LinearLayout>
 
     <com.google.android.material.navigation.NavigationView
