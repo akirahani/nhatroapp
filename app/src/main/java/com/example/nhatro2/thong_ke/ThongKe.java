@@ -54,98 +54,127 @@ public class ThongKe extends AppCompatActivity {
     SharedPreferences shp;
     LinearLayout quayLai;
     DrawerLayout mDrawerLayout;
-    WebView soDo;
+    WebView tongQuan, doanhThuThangHienTai, thietBiCacThang, doanhThuThangTruoc, tienThietBiCacThang
+            ,gioiTinh,tinhThanh,doTuoiKhach;
     @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_thong_ke);
+            super.onCreate(savedInstanceState);
+            setContentView(R.layout.activity_thong_ke);
 
-        //Ánh xạ
-        logo = findViewById(R.id.logo);
-        logo.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(ThongKe.this, HomeActivity.class);
-                startActivity(intent);
-            }
-        });
+            //Ánh xạ
+            logo = findViewById(R.id.logo);
+            logo.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Intent intent = new Intent(ThongKe.this, HomeActivity.class);
+                    startActivity(intent);
+                }
+            });
 
-        // Nút thoát
-        quayLai = findViewById(R.id.quayLai);
-        quayLai.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                ThongKe.super.onBackPressed();
-            }
-        });
+            // Nút thoát
+            quayLai = findViewById(R.id.quayLai);
+            quayLai.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    ThongKe.super.onBackPressed();
+                }
+            });
+
+            String url = "http://172.16.1.71/quanghieu";
+            // tong quan
+            tongQuan = findViewById(R.id.tongQuan);
+            tongQuan.loadUrl(url+"/admin/api/thong-ke/tong-quan.php");
+            WebSettings webSettings = tongQuan.getSettings();
+            webSettings.setJavaScriptEnabled(true);
+
+            doanhThuThangHienTai = findViewById(R.id.doanhThuThangHienTai);
+            doanhThuThangHienTai.loadUrl(url+"/admin/api/thong-ke/doanh-thu.php");
+            WebSettings webSettingDTCurrent = doanhThuThangHienTai.getSettings();
+            webSettingDTCurrent.setJavaScriptEnabled(true);
+
+            doanhThuThangTruoc = findViewById(R.id.doanhThuThangTruoc);
+            doanhThuThangTruoc.loadUrl(url+"/admin/api/thong-ke/doanh-thu-truoc.php");
+            WebSettings webSettingDTBefore = doanhThuThangTruoc.getSettings();
+            webSettingDTBefore.setJavaScriptEnabled(true);
+
+            thietBiCacThang = findViewById(R.id.thietBiCacThang);
+            thietBiCacThang.loadUrl(url+"/admin/api/thong-ke/thiet-bi.php");
+            WebSettings webSettingTB = thietBiCacThang.getSettings();
+            webSettingTB.setJavaScriptEnabled(true);
+
+            tienThietBiCacThang = findViewById(R.id.tienThietBiCacThang);
+            tienThietBiCacThang.loadUrl(url+"/admin/api/thong-ke/tien-thiet-bi.php");
+            WebSettings webSettingTTB = tienThietBiCacThang.getSettings();
+            webSettingTTB.setJavaScriptEnabled(true);
+
+            gioiTinh = findViewById(R.id.gioiTinh);
+            gioiTinh.loadUrl(url+"/admin/api/thong-ke/gioi-tinh.php");
+            WebSettings webSettingGT = gioiTinh.getSettings();
+            webSettingGT.setJavaScriptEnabled(true);
+
+            tinhThanh = findViewById(R.id.tinhThanh);
+            tinhThanh.loadUrl(url+"/admin/api/thong-ke/tinh-thanh.php");
+            WebSettings webSettingTinhThanh = tinhThanh.getSettings();
+            webSettingTinhThanh.setJavaScriptEnabled(true);
+
+            doTuoiKhach = findViewById(R.id.doTuoiKhach);
+            doTuoiKhach.loadUrl(url+"/admin/api/thong-ke/do-tuoi.php");
+            WebSettings webSettingDoTuoi = doTuoiKhach.getSettings();
+            webSettingDoTuoi.setJavaScriptEnabled(true);
+
+            menuDanhMuc = findViewById(R.id.menuDanhMuc);
+            mDrawerLayout = findViewById(R.id.drawer_layout_thong_ke);
+
+            menuDanhMuc.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    mDrawerLayout.openDrawer(GravityCompat.START);
+                }
+            });
+
+            NavigationView navigationView = findViewById(R.id.nav_view);
+            navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
+                @Override
+                public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                    switch (item.getItemId()){
+                        case R.id.khach_tro:
+                            Intent khachTro = new Intent(ThongKe.this, KhachTro.class);
+                            startActivity(khachTro);
+                            return true;
+                        case R.id.dat_coc:
+                            Intent datCoc = new Intent(ThongKe.this, TienCocAdd.class);
+                            startActivity(datCoc);
+                            return true;
+                        case R.id.thanh_toan:
+                            Intent thanhToan = new Intent(ThongKe.this, DongTien.class);
+                            startActivity(thanhToan);
+                            return true;
+                        case R.id.hop_dong:
+                            Intent hopDong = new Intent(ThongKe.this, HopDong.class);
+                            startActivity(hopDong);
+                            return true;
 
 
-        // tong quan
+                    }
+                    return true;
+                }
+            });
 
-        soDo = findViewById(R.id.soDo);
-        soDo.loadUrl("http://172.16.1.71/quanghieu/admin/api/thong-ke/tong-quan.php");
-        WebSettings webSettings = soDo.getSettings();
-        webSettings.setJavaScriptEnabled(true);
+            TextView doanhThuThangThongKe = findViewById(R.id.doanhThuThangThongKe);
+            ApiQH.apiQH.getQuyTien().enqueue(new Callback<QuyTienModel>() {
+                @Override
+                public void onResponse(Call<QuyTienModel> call, Response<QuyTienModel> response) {
+                    QuyTienModel listQuyTien = response.body();
+                    String doanhThuHienTaiText = listQuyTien.getDoanhthu();
+                    doanhThuThangThongKe.setText(doanhThuHienTaiText+"đ");
+                }
 
-
-//        soDo = findViewById(R.id.soDo);
-//        soDo.loadUrl("http://172.16.1.71/quanghieu/admin/api/thong-ke/tong-quan.php");
-//        WebSettings webSettings = soDo.getSettings();
-//        webSettings.setJavaScriptEnabled(true);
-        
-        menuDanhMuc = findViewById(R.id.menuDanhMuc);
-        mDrawerLayout = findViewById(R.id.drawer_layout_thong_ke);
-
-        menuDanhMuc.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                mDrawerLayout.openDrawer(GravityCompat.START);
-            }
-        });
-
-        NavigationView navigationView = findViewById(R.id.nav_view);
-        navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
-            @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                switch (item.getItemId()){
-                    case R.id.khach_tro:
-                        Intent khachTro = new Intent(ThongKe.this, KhachTro.class);
-                        startActivity(khachTro);
-                        return true;
-                    case R.id.dat_coc:
-                        Intent datCoc = new Intent(ThongKe.this, TienCocAdd.class);
-                        startActivity(datCoc);
-                        return true;
-                    case R.id.thanh_toan:
-                        Intent thanhToan = new Intent(ThongKe.this, DongTien.class);
-                        startActivity(thanhToan);
-                        return true;
-                    case R.id.hop_dong:
-                        Intent hopDong = new Intent(ThongKe.this, HopDong.class);
-                        startActivity(hopDong);
-                        return true;
-
+                @Override
+                public void onFailure(Call<QuyTienModel> call, Throwable t) {
 
                 }
-                return true;
-            }
-        });
-
-        TextView doanhThuThangThongKe = findViewById(R.id.doanhThuThangThongKe);
-        ApiQH.apiQH.getQuyTien().enqueue(new Callback<QuyTienModel>() {
-            @Override
-            public void onResponse(Call<QuyTienModel> call, Response<QuyTienModel> response) {
-                QuyTienModel listQuyTien = response.body();
-                String doanhThuHienTaiText = listQuyTien.getDoanhthu();
-                doanhThuThangThongKe.setText(doanhThuHienTaiText+"đ");
-            }
-
-            @Override
-            public void onFailure(Call<QuyTienModel> call, Throwable t) {
-
-            }
-        });
+            });
     }
 
 }
