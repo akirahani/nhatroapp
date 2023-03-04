@@ -106,6 +106,11 @@ public class HopDongAdd extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 HopDongAdd.super.onBackPressed();
+                SharedPreferences shpKhach = getApplicationContext().getSharedPreferences("khachChonHopDongAdd", MODE_PRIVATE);
+                SharedPreferences.Editor shpKhachEdit = shpKhach.edit();
+                shpKhachEdit.remove("idKhachChon");
+                shpKhachEdit.apply();
+                finish();
             }
         });
         // Xét ví trí tương đối
@@ -118,13 +123,12 @@ public class HopDongAdd extends AppCompatActivity {
         params.topMargin = 18;
         imageFrame.addView(iv, params);
 
-        Bundle bundle = getIntent().getExtras();
-        int idPhong = bundle.getInt("idPhong");
-        String tenPhong = bundle.getString("tenPhong");
-        int giaPhong = bundle.getInt("gia");
-        int daiDien = bundle.getInt("daidien");
-        String dienThoai = bundle.getString("dienthoai");
-        int tienCoc = bundle.getInt("datcoc");
+        SharedPreferences shpInfoRoom = getApplicationContext().getSharedPreferences("thongTinPhongHD", Context.MODE_PRIVATE);
+        int idPhong = shpInfoRoom.getInt("idPhong",0);
+        String tenPhong = shpInfoRoom.getString("tenPhong","");
+        int giaPhong = shpInfoRoom.getInt("gia",0);
+        int daiDien = shpInfoRoom.getInt("daidien",0);
+        String dienThoai = shpInfoRoom.getString("dienthoai","");
 
         
         listThietBi = findViewById(R.id.thietbiCheck);
@@ -288,7 +292,6 @@ public class HopDongAdd extends AppCompatActivity {
 //                    }
                 }
 
-
                 String idThanhVienConvert = null;
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
                     idThanhVienConvert = thanhVienPhong.stream().map(String::valueOf).collect(Collectors.joining(","));
@@ -427,13 +430,14 @@ public class HopDongAdd extends AppCompatActivity {
     }
 
     // Back button
-//    public void onBackPressed()
-//    {
-//        super.onBackPressed();
-//        SharedPreferences shpKhach = getApplicationContext().getSharedPreferences("khachChonHopDongAdd", MODE_PRIVATE);
-//        SharedPreferences.Editor shpKhachEdit = shpKhach.edit();
-//        shpKhachEdit.remove("idKhachChon");
-//        shpKhachEdit.apply();
-//    }
+    public void onBackPressed()
+    {
+        super.onBackPressed();
+        SharedPreferences shpKhach = getApplicationContext().getSharedPreferences("khachChonHopDongAdd", MODE_PRIVATE);
+        SharedPreferences.Editor shpKhachEdit = shpKhach.edit();
+        shpKhachEdit.remove("idKhachChon");
+        shpKhachEdit.apply();
+        finish();
+    }
 
 }
