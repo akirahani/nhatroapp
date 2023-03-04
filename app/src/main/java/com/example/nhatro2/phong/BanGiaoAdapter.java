@@ -52,6 +52,8 @@ public class BanGiaoAdapter extends RecyclerView.Adapter<BanGiaoAdapter.BanGiaoV
         int gia = data.getGiaphong();
         int khach = data.getChuphong();
         String dienthoai = data.getDienthoai();
+        String giaFormat = data.getGiaphongformat();
+        String tenKhach = data.getTenkhach();
 
         holder.ten.setText(ten);
         holder.day.setText(khu);
@@ -69,6 +71,8 @@ public class BanGiaoAdapter extends RecyclerView.Adapter<BanGiaoAdapter.BanGiaoV
                 intent.putExtra("trangthai",trangthai);
                 intent.putExtra("daidien",khach);
                 intent.putExtra("dienthoai",dienthoai);
+                intent.putExtra("giaFormat", giaFormat);
+                intent.putExtra("tenkhach", tenKhach);
                 context.startActivity(intent);
             }
         });
@@ -77,11 +81,6 @@ public class BanGiaoAdapter extends RecyclerView.Adapter<BanGiaoAdapter.BanGiaoV
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(context.getApplicationContext(), HopDongAdd.class);
-                intent.putExtra("idPhong",idPhong);
-                intent.putExtra("tenPhong",ten);
-                intent.putExtra("gia",gia);
-                intent.putExtra("daidien",khach);
-                intent.putExtra("dienthoai",dienthoai);
                 //
                 SharedPreferences shpInfoRoom = context.getSharedPreferences("thongTinPhongHD",Context.MODE_PRIVATE);
                 SharedPreferences.Editor shpInfoRoomEdit = shpInfoRoom.edit();
@@ -90,6 +89,7 @@ public class BanGiaoAdapter extends RecyclerView.Adapter<BanGiaoAdapter.BanGiaoV
                 shpInfoRoomEdit.putInt("gia",gia);
                 shpInfoRoomEdit.putInt("daidien",khach);
                 shpInfoRoomEdit.putString("dienthoai",dienthoai);
+                shpInfoRoomEdit.commit();
                 // Khai báo mảng dữ liệu thiết bị
                 SharedPreferences shpThietBi = context.getSharedPreferences("idThietBiHopDong",Context.MODE_PRIVATE);
                 SharedPreferences.Editor thietBiEdit = shpThietBi.edit();

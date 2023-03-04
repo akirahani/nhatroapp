@@ -437,9 +437,9 @@ public interface ApiQH {
                                                     @Field("phuongthucphong") int phuongthucphong,
                                                     @Field("phuongthuccoc") int phuongthuccoc);
 
-    // Thống kê
-    // Tổng quan
-    @GET("admin/api/thong-ke/tong-quan.php")
-    Call <TongQuanChartModel> getTongQuan();
+    // Chuyển phòng
+    @GET ("admin/api/doi-phong/phong_trong_check.php")
+    Call <List<PhongModel>> listPhongTrong();
+
 
 }
