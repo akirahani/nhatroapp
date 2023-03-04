@@ -10,10 +10,10 @@ public class PhongModel {
     private int chuphong;
     private String tenkhach;
     private int giaphong;
+    private String giaphongformat;
     private String dienthoai;
-    //    private String daidien;
 
-    public PhongModel(int id, String ten, int trangthai, String khu, int tang, int thietbi, int chuphong, String tenkhach, int giaphong, String dienthoai) {
+    public PhongModel(int id, String ten, int trangthai, String khu, int tang, int thietbi, int chuphong, String tenkhach, int giaphong, String giaphongformat, String dienthoai) {
         this.id = id;
         this.ten = ten;
         this.trangthai = trangthai;
@@ -23,31 +23,8 @@ public class PhongModel {
         this.chuphong = chuphong;
         this.tenkhach = tenkhach;
         this.giaphong = giaphong;
+        this.giaphongformat = giaphongformat;
         this.dienthoai = dienthoai;
-    }
-    public String getTenkhach() {
-        return tenkhach;
-    }
-
-    public void setTenkhach(String tenkhach) {
-        this.tenkhach = tenkhach;
-    }
-
-
-    public String getDienthoai() {
-        return dienthoai;
-    }
-
-    public void setDienthoai(String dienthoai) {
-        this.dienthoai = dienthoai;
-    }
-
-    public int getGiaphong() {
-        return giaphong;
-    }
-
-    public void setGiaphong(int giaphong) {
-        this.giaphong = giaphong;
     }
 
     public int getId() {
@@ -106,4 +83,35 @@ public class PhongModel {
         this.chuphong = chuphong;
     }
 
+    public String getTenkhach() {
+        return tenkhach;
+    }
+
+    public void setTenkhach(String tenkhach) {
+        this.tenkhach = tenkhach;
+    }
+
+    public int getGiaphong() {
+        return giaphong;
+    }
+
+    public void setGiaphong(int giaphong) {
+        this.giaphong = giaphong;
+    }
+
+    public String getGiaphongformat() {
+        return giaphongformat;
+    }
+
+    public void setGiaphongformat(String giaphongformat) {
+        this.giaphongformat = giaphongformat;
+    }
+
+    public String getDienthoai() {
+        return dienthoai;
+    }
+
+    public void setDienthoai(String dienthoai) {
+        this.dienthoai = dienthoai;
+    }
 }

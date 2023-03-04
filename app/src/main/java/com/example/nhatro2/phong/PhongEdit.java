@@ -57,7 +57,7 @@ public class PhongEdit extends AppCompatActivity {
     LinearLayout rowFirstEditRoom, quayLai;
     RadioButton trong, thue, bangiao;
     TextView tenPhongEdit, vitriPhongEdit, editRoomButton;
-    EditText tienPhong, daidien, dienthoai,tiencoc;
+    EditText tienPhong, daidien, dienthoai;
     CardView rowDaiDien, rowDienThoai;
     int trangthai;
     DrawerLayout mDrawerLayout;
@@ -102,6 +102,7 @@ public class PhongEdit extends AppCompatActivity {
                 shpKhachBanGiaoEdit.remove("sdtKhach");
                 shpKhachBanGiaoEdit.remove("idKhach");
                 shpKhachBanGiaoEdit.apply();
+                finish();
             }
         });
 
@@ -120,14 +121,12 @@ public class PhongEdit extends AppCompatActivity {
         trong = findViewById(R.id.trong);
         bangiao = findViewById(R.id.bangiao);
         thue = findViewById(R.id.thue);
-        tienPhong = findViewById(R.id.tienPhong);
         rowFirstEditRoom = findViewById(R.id.rowFirstEditRoom);
         daidien = findViewById(R.id.daiDien);
         dienthoai = findViewById(R.id.dienThoai);
         tenPhongEdit = findViewById(R.id.tenPhongEdit);
         vitriPhongEdit = findViewById(R.id.vitriPhongEdit);
         tienPhong = findViewById(R.id.tienPhong);
-        tiencoc = findViewById(R.id.tienCoc);
 
         // Lấy thông tin gửi từ adapter
         Bundle bundle = getIntent().getExtras();
@@ -135,30 +134,25 @@ public class PhongEdit extends AppCompatActivity {
         int tang = bundle.getInt("tang");
         trangthai = bundle.getInt("trangthai");
         int giaPhong = bundle.getInt("gia");
+        String giaFormat = bundle.getString("giaFormat");
         String tenPhong = bundle.getString("tenPhong");
         String dayPhong = bundle.getString("day");
         int daiDien = bundle.getInt("daidien");
         String dienThoai = bundle.getString("dienthoai");
-        int datcoc = bundle.getInt("datcoc");
-        String tenchuphong = bundle.getString("tenchuphong");
-
-        Log.d("ten chu phong",""+tenchuphong);
+        String tenchuphong = bundle.getString("tenkhach");
 
         if (bundle == null) {
             Toast.makeText(this, "Có lỗi !", Toast.LENGTH_SHORT).show();
         } else {
             tenPhongEdit.setText("Tên: " + tenPhong);
             vitriPhongEdit.setText("Vị trí: Dãy " + dayPhong + " - Tầng " + tang);
-            tienPhong.setText("" + giaPhong);
+            tienPhong.setText(giaFormat+"đ/ tháng");
             if (trangthai == 2 || trangthai == 3) {
-                Log.d("nguoiDD",""+daiDien);
                 daidien.setText(tenchuphong);
                 dienthoai.setText(dienThoai);
-                tiencoc.setText(""+datcoc);
             } else {
                 daidien.setText("");
                 dienthoai.setText("");
-                tiencoc.setText("");
             }
 
             switch (trangthai) {
@@ -203,8 +197,6 @@ public class PhongEdit extends AppCompatActivity {
                 }
 
 
-                Log.d("trang thai",""+trangThaiPost);
-
                 ApiQH.apiQH.editPhong(idPhong, trangthai, trangThaiPost, tenDaiDien, dienThoai).enqueue(new Callback<PhongModel>() {
                     @Override
                     public void onResponse(Call<PhongModel> call, Response<PhongModel> response) {
@@ -245,7 +237,6 @@ public class PhongEdit extends AppCompatActivity {
                 bundle.putString("day",dayPhong);
                 bundle.putInt("daidien",daiDien);
                 bundle.putString("dienthoai",dienThoai);
-                bundle.putInt("datcoc",datcoc);
                 chonKhachBanGiao.setArguments(bundle);
                 chonKhachBanGiao.show(getSupportFragmentManager() , "ChonKhachBanGiao");
             }

@@ -130,7 +130,6 @@ public class HopDongAdd extends AppCompatActivity {
         int daiDien = shpInfoRoom.getInt("daidien",0);
         String dienThoai = shpInfoRoom.getString("dienthoai","");
 
-        
         listThietBi = findViewById(R.id.thietbiCheck);
         listThietBi.setLayoutManager(new GridLayoutManager(HopDongAdd.this, 3));
         listThietBi.hasFixedSize();
@@ -280,16 +279,16 @@ public class HopDongAdd extends AppCompatActivity {
 
                 if(coTaiPhong.isChecked()){
                     coOTaiPhongChecked = 1;
-//                    if(thanhVienPhong.contains(idDaiDien)){
-//                        thanhVienPhong.remove(String.valueOf(idDaiDien));
-//                    }else{
-//                        thanhVienPhong.add(String.valueOf(idDaiDien));
-//                    }
+                    if(thanhVienPhong.contains(idDaiDien)){
+                        thanhVienPhong.remove(String.valueOf(idDaiDien));
+                    }else{
+                        thanhVienPhong.add(String.valueOf(idDaiDien));
+                    }
                 }else if(khongCoTaiPhong.isChecked()){
                     coOTaiPhongChecked = 0;
-//                    if(thanhVienPhong.contains(idDaiDien)){
-//                        thanhVienPhong.remove(idDaiDien);
-//                    }
+                    if(thanhVienPhong.contains(idDaiDien)){
+                        thanhVienPhong.remove(idDaiDien);
+                    }
                 }
 
                 String idThanhVienConvert = null;
@@ -361,16 +360,6 @@ public class HopDongAdd extends AppCompatActivity {
 
                 ghiChu = findViewById(R.id.ghiChu);
                 String ghiChuText = ghiChu.getText().toString();
-                Log.i("thietbi",""+thietBiSentFinal);
-                Log.d("chuphong",""+idDaiDien);
-                Log.d("o phong",""+coOTaiPhongChecked);
-                Log.d("ket thuc",""+ngayKetThucHopDong);
-                Log.d("ghiChuText",""+ghiChuText);
-                Log.d("tienCocDongFinal",""+tienCocDongFinal);
-                Log.d("tienCocChecked",""+tienCocChecked);
-                Log.d("tienPhongDongFinal",""+tienPhongDongFinal);
-                Log.d("tienPhongChecked",""+tienPhongChecked);
-                Log.d("tenPhong",""+tenPhong);
                 ApiQH.apiQH.addContract(thietBiSentFinal,idDaiDien,coOTaiPhongChecked,ngayKetThucHopDong,ghiChuText,tienCocDongFinal,tienCocChecked,tienPhongDongFinal,tienPhongChecked,listKhachChooseString,tenPhong).enqueue(new Callback<HopDongModel>() {
                     @Override
                     public void onResponse(Call<HopDongModel> call, Response<HopDongModel> response) {
@@ -378,12 +367,11 @@ public class HopDongAdd extends AppCompatActivity {
                         Intent intent = new Intent(HopDongAdd.this, Phong.class);
                         startActivity(intent);
                         Toast.makeText(HopDongAdd.this, "Tạo hợp đồng thành công", Toast.LENGTH_SHORT).show();
-                        Log.d("thong tin","hop dong"+detailHopDong);
                     }
 
                     @Override
                     public void onFailure(Call<HopDongModel> call, Throwable t) {
-                        Log.d("error hop dong",""+t.toString());
+                        Toast.makeText(HopDongAdd.this, "Tạo hợp đồng không thành công!", Toast.LENGTH_SHORT).show();
                     }
                 });
 

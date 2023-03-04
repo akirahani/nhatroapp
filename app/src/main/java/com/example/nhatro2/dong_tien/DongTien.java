@@ -79,7 +79,7 @@ public class DongTien extends AppCompatActivity {
     SharedPreferences.Editor shpKhachEdit;
     LinearLayout thongTinChungDongTien,
             dongTienPhongText, khungLichSuDongTien,
-            quayLai, phanDongCocClick,traPhongThuong, traPhongNgay, layoutChonNgay,chiTietCacKhoanTien;
+            quayLai, phanDongCocClick,traPhongThuong, traPhongNgay, layoutChonNgay,chiTietCacKhoanTien,doiPhong;
     RadioGroup hinhThucDongTien;
     EditText tienThanhToanText, tienCocThanhToanText;
     ImageView thanhToanTienButton;
@@ -191,6 +191,15 @@ public class DongTien extends AppCompatActivity {
         traPhongNgay = findViewById(R.id.traPhongNgay);
 
         chiTietCacKhoanTien = findViewById(R.id.chiTietCacKhoanTien);
+        doiPhong = findViewById(R.id.doiPhong);
+
+        // Đổi phòng
+        doiPhong.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+            }
+        });
 
 
         // Kiểm tra tiền phòng
@@ -532,7 +541,7 @@ public class DongTien extends AppCompatActivity {
         });
 
         // set up list ưu đãi
-        listChonUuDai.setLayoutManager(new GridLayoutManager(DongTien.this, 2));
+        listChonUuDai.setLayoutManager(new GridLayoutManager(DongTien.this, 3));
         listChonUuDai.setNestedScrollingEnabled(false);
         listChonUuDai.hasFixedSize();
 
@@ -594,7 +603,6 @@ public class DongTien extends AppCompatActivity {
 
                                     @Override
                                     public void onFailure(Call<ApDungUuDaiModel> call, Throwable t) {
-                                        Log.d("err j day 1602",""+t.toString());
                                     }
                                 });
                             }

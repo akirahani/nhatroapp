@@ -240,47 +240,9 @@
                     android:layout_marginLeft="5dp">
 
                     <androidx.cardview.widget.CardView
-                        android:id="@+id/rowCoc"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:layout_marginLeft="6dp"
-                        android:layout_marginTop="9dp"
-                        android:layout_marginRight="6dp"
-                        app:cardCornerRadius="6dp">
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-
-                            android:background="@color/white"
-                            android:orientation="horizontal"
-                            android:paddingTop="8dp"
-                            android:paddingBottom="8dp">
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:paddingLeft="6dp"
-                                android:text="Đặt cọc: "
-                                android:textColor="@color/black"
-                                android:textStyle="bold" />
-
-                            <EditText
-                                android:id="@+id/tienCoc"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:background="@null"
-                                android:maxHeight="28dp"
-                                android:textSize="14sp" />
-                        </LinearLayout>
-                    </androidx.cardview.widget.CardView>
-
-                    <androidx.cardview.widget.CardView
                         android:id="@+id/rowTienPhong"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_below="@+id/rowCoc"
                         android:layout_gravity="center"
                         android:layout_marginLeft="6dp"
                         android:layout_marginTop="9dp"
@@ -304,6 +266,8 @@
                                 android:textStyle="bold" />
 
                             <EditText
+                                android:textColor="@color/black"
+                                android:enabled="false"
                                 android:id="@+id/tienPhong"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
@@ -342,6 +306,7 @@
                                 android:textStyle="bold" />
 
                             <EditText
+                                android:textColor="@color/black"
                                 android:id="@+id/daiDien"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
@@ -379,6 +344,7 @@
                                 android:textStyle="bold" />
 
                             <EditText
+                                android:textColor="@color/black"
                                 android:id="@+id/dienThoai"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"

@@ -20,5 +20,21 @@
             android:id="@+id/hop_dong"
             android:icon="@drawable/nav_hop_dong"
             android:title="Hợp đồng" />
+        <item
+            android:id="@+id/thay_cong_to_nuoc"
+            android:icon="@drawable/nav_hop_dong"
+            android:title="Thay công tơ nước" />
+        <item
+            android:id="@+id/thay_cong_to_dien"
+            android:icon="@drawable/nav_hop_dong"
+            android:title="Thay công điện" />
+        <item
+            android:id="@+id/doi_thiet_bi"
+            android:icon="@drawable/nav_hop_dong"
+            android:title="Quản lí thiết bị" />
+        <item
+            android:id="@+id/chi_khac"
+            android:icon="@drawable/nav_hop_dong"
+            android:title="Chi khác" />
     </group>
 </menu>

@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
+import android.media.Image;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -50,7 +51,6 @@ public class PhongAdapter extends RecyclerView.Adapter<PhongAdapter.PhongViewHol
     @Override
     public PhongAdapter.PhongViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(context).inflate(R.layout.phong_trong_item, parent, false);
-        tacVuTrong = view.findViewById(R.id.tacVuTrong);
         return new PhongViewHolder(view);
     }
 
@@ -65,6 +65,25 @@ public class PhongAdapter extends RecyclerView.Adapter<PhongAdapter.PhongViewHol
         int trangthai = data.getTrangthai();
         int chuphong = data.getChuphong();
         int gia = data.getGiaphong();
+        String giaFormat = data.getGiaphongformat();
+
+
+        holder.tacVuTrong.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(context.getApplicationContext(), PhongEdit.class);
+                intent.putExtra("idPhong", data.getId());
+                intent.putExtra("daidien", chuphong);
+                intent.putExtra("tenPhong", ten);
+                intent.putExtra("day", khu);
+                intent.putExtra("tang", tang);
+                intent.putExtra("trangthai", trangthai);
+                intent.putExtra("gia", gia);
+                intent.putExtra("tenchuphong", tenChuPhong);
+                intent.putExtra("giaFormat", giaFormat);
+                context.startActivity(intent);
+            }
+        });
 
         holder.ten.setText(ten);
         holder.day.setText(khu);
@@ -98,22 +117,7 @@ public class PhongAdapter extends RecyclerView.Adapter<PhongAdapter.PhongViewHol
 //            }
 //        }
 
-        tacVuTrong.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(context.getApplicationContext(), PhongEdit.class);
-                intent.putExtra("idPhong", idPhong);
-                intent.putExtra("daidien", chuphong);
-                intent.putExtra("tenPhong", ten);
-                intent.putExtra("day", khu);
-                intent.putExtra("tang", tang);
-                intent.putExtra("trangthai", trangthai);
-                intent.putExtra("gia", gia);
-                intent.putExtra("tenchuphong", tenChuPhong);
 
-                context.startActivity(intent);
-            }
-        });
 
 //        holder.checkMulti.setOnClickListener(new View.OnClickListener() {
 //            @Override
@@ -190,12 +194,15 @@ public class PhongAdapter extends RecyclerView.Adapter<PhongAdapter.PhongViewHol
     public static class PhongViewHolder extends RecyclerView.ViewHolder {
         TextView id, ten, vitri, trangthai, dichvu, datcoc, khach, day, tang;
         CheckBox checkMulti;
+        ImageView tacVuTrong;
 
         public PhongViewHolder(@NonNull View itemView) {
             super(itemView);
             ten = itemView.findViewById(R.id.tenPhongTrong);
             day = itemView.findViewById(R.id.dayTrong);
             tang = itemView.findViewById(R.id.tangTrong);
+            tacVuTrong = itemView.findViewById(R.id.tacVuTrong);
+
 //            checkMulti = itemView.findViewById(R.id.checkMulti);
         }
 
