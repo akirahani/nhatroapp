@@ -82,6 +82,14 @@ public class BanGiaoAdapter extends RecyclerView.Adapter<BanGiaoAdapter.BanGiaoV
                 intent.putExtra("gia",gia);
                 intent.putExtra("daidien",khach);
                 intent.putExtra("dienthoai",dienthoai);
+                //
+                SharedPreferences shpInfoRoom = context.getSharedPreferences("thongTinPhongHD",Context.MODE_PRIVATE);
+                SharedPreferences.Editor shpInfoRoomEdit = shpInfoRoom.edit();
+                shpInfoRoomEdit.putInt("idPhong",idPhong);
+                shpInfoRoomEdit.putString("tenPhong",ten);
+                shpInfoRoomEdit.putInt("gia",gia);
+                shpInfoRoomEdit.putInt("daidien",khach);
+                shpInfoRoomEdit.putString("dienthoai",dienthoai);
                 // Khai báo mảng dữ liệu thiết bị
                 SharedPreferences shpThietBi = context.getSharedPreferences("idThietBiHopDong",Context.MODE_PRIVATE);
                 SharedPreferences.Editor thietBiEdit = shpThietBi.edit();

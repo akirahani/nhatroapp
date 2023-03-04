@@ -178,8 +178,8 @@ public class BottomSheetThanhVienChon extends BottomSheetDialogFragment {
                             }
                         }
                         listKhachChooseString = shpKhach.getString("idKhachChon", "");
-//                        Intent intent = new Intent(getContext(),HopDongAdd.class);
-//                        startActivity(intent);
+                        Intent intent = new Intent(getContext(),HopDongAdd.class);
+                        startActivity(intent);
                         // Nếu đủ 4 người thì sẽ clear add Customer button
                         List<String> thanhVienPhong = new ArrayList<>();
                         String[] items = listKhachChooseString.split(",");
