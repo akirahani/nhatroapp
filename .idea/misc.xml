@@ -8,11 +8,17 @@
         <entry key="..\:/Users/Admin/AndroidStudioProjects/nhatro/app/src/main/res/drawable/bg_all_search_customer.xml" value="0.1" />
         <entry key="..\:/Users/Admin/AndroidStudioProjects/nhatro/app/src/main/res/drawable/bg_info_user.xml" value="0.1" />
         <entry key="..\:/Users/Admin/AndroidStudioProjects/nhatro/app/src/main/res/drawable/border_bottom_user.xml" value="0.142" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/nhatro/app/src/main/res/drawable/dienct.xml" value="0.1" />
         <entry key="..\:/Users/Admin/AndroidStudioProjects/nhatro/app/src/main/res/drawable/ic_changepassd.xml" value="0.1" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/nhatro/app/src/main/res/drawable/ic_chikhac.xml" value="0.1" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/nhatro/app/src/main/res/drawable/ic_ctdien.xml" value="0.1" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/nhatro/app/src/main/res/drawable/ic_dienct.xml" value="0.1" />
         <entry key="..\:/Users/Admin/AndroidStudioProjects/nhatro/app/src/main/res/drawable/ic_launcher_background.xml" value="0.1415" />
         <entry key="..\:/Users/Admin/AndroidStudioProjects/nhatro/app/src/main/res/drawable/ic_launcher_foreground.xml" value="0.1415" />
         <entry key="..\:/Users/Admin/AndroidStudioProjects/nhatro/app/src/main/res/drawable/ic_logout.xml" value="0.1" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/nhatro/app/src/main/res/drawable/ic_nuocct.xml" value="0.1" />
         <entry key="..\:/Users/Admin/AndroidStudioProjects/nhatro/app/src/main/res/drawable/ic_phonekhach.xml" value="0.157" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/nhatro/app/src/main/res/drawable/ic_thietbiquanli.xml" value="0.1" />
         <entry key="..\:/Users/Admin/AndroidStudioProjects/nhatro/app/src/main/res/drawable/ic_user.xml" value="0.1" />
         <entry key="..\:/Users/Admin/AndroidStudioProjects/nhatro/app/src/main/res/drawable/ic_userinfo.xml" value="0.1" />
         <entry key="..\:/Users/Admin/AndroidStudioProjects/nhatro/app/src/main/res/drawable/logo_menu.xml" value="0.1555" />
@@ -22,11 +28,17 @@
         <entry key="..\:/Users/Admin/AndroidStudioProjects/nhatro/app/src/main/res/drawable/nav_khach.xml" value="0.1" />
         <entry key="..\:/Users/Admin/AndroidStudioProjects/nhatro/app/src/main/res/drawable/nav_payment.xml" value="0.1" />
         <entry key="..\:/Users/Admin/AndroidStudioProjects/nhatro/app/src/main/res/drawable/notification_off.xml" value="0.1" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/nhatro/app/src/main/res/drawable/nuocct.xml" value="0.1" />
         <entry key="..\:/Users/Admin/AndroidStudioProjects/nhatro/app/src/main/res/drawable/paid_money.xml" value="0.1585" />
         <entry key="..\:/Users/Admin/AndroidStudioProjects/nhatro/app/src/main/res/drawable/sua.xml" value="0.1" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/nhatro/app/src/main/res/drawable/thietbiquanli.xml" value="0.1" />
         <entry key="..\:/Users/Admin/AndroidStudioProjects/nhatro/app/src/main/res/drawable/tiendien.xml" value="0.1" />
         <entry key="..\:/Users/Admin/AndroidStudioProjects/nhatro/app/src/main/res/drawable/xoa.xml" value="0.1" />
         <entry key="..\:/Users/Admin/AndroidStudioProjects/nhatro/app/src/main/res/layout/activity_bat_bien.xml" value="0.23854166666666668" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/nhatro/app/src/main/res/layout/activity_chi_khac.xml" value="0.1" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/nhatro/app/src/main/res/layout/activity_cong_to_dien.xml" value="0.13865546218487396" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/nhatro/app/src/main/res/layout/activity_cong_to_nuoc.xml" value="0.264" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/nhatro/app/src/main/res/layout/activity_doi_thiet_bi.xml" value="0.23489583333333333" />
         <entry key="..\:/Users/Admin/AndroidStudioProjects/nhatro/app/src/main/res/layout/activity_dong_tien.xml" value="0.1" />
         <entry key="..\:/Users/Admin/AndroidStudioProjects/nhatro/app/src/main/res/layout/activity_hop_dong.xml" value="0.23854166666666668" />
         <entry key="..\:/Users/Admin/AndroidStudioProjects/nhatro/app/src/main/res/layout/activity_hop_dong_add.xml" value="0.1" />
@@ -41,6 +53,7 @@
         <entry key="..\:/Users/Admin/AndroidStudioProjects/nhatro/app/src/main/res/layout/activity_quy_tien_mat.xml" value="0.2" />
         <entry key="..\:/Users/Admin/AndroidStudioProjects/nhatro/app/src/main/res/layout/activity_thong_ke.xml" value="0.264" />
         <entry key="..\:/Users/Admin/AndroidStudioProjects/nhatro/app/src/main/res/layout/activity_thu_khac.xml" value="0.19972826086956522" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/nhatro/app/src/main/res/layout/activity_thu_khac_add.xml" value="0.13043478260869565" />
         <entry key="..\:/Users/Admin/AndroidStudioProjects/nhatro/app/src/main/res/layout/activity_tien_coc.xml" value="0.22826086956521738" />
         <entry key="..\:/Users/Admin/AndroidStudioProjects/nhatro/app/src/main/res/layout/activity_tien_coc_add.xml" value="0.12183383991894631" />
         <entry key="..\:/Users/Admin/AndroidStudioProjects/nhatro/app/src/main/res/layout/activity_tien_dien.xml" value="0.20471014492753623" />
@@ -51,6 +64,10 @@
         <entry key="..\:/Users/Admin/AndroidStudioProjects/nhatro/app/src/main/res/layout/bat_bien_item.xml" value="0.24818840579710144" />
         <entry key="..\:/Users/Admin/AndroidStudioProjects/nhatro/app/src/main/res/layout/bottom_sheet_khach_chon.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/Admin/AndroidStudioProjects/nhatro/app/src/main/res/layout/bottom_sheet_phong_chon.xml" value="0.253125" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/nhatro/app/src/main/res/layout/bottom_sheet_phong_chuyen.xml" value="0.14163090128755365" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/nhatro/app/src/main/res/layout/bottom_sheet_phong_cong_to.xml" value="0.16097560975609757" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/nhatro/app/src/main/res/layout/bottom_sheet_phong_cong_to_nuoc.xml" value="0.1658291457286432" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/nhatro/app/src/main/res/layout/chi_khac_item.xml" value="0.24947916666666667" />
         <entry key="..\:/Users/Admin/AndroidStudioProjects/nhatro/app/src/main/res/layout/con_hieu_luc_item.xml" value="0.1" />
         <entry key="..\:/Users/Admin/AndroidStudioProjects/nhatro/app/src/main/res/layout/dich_vu.xml" value="0.20425724637681159" />
         <entry key="..\:/Users/Admin/AndroidStudioProjects/nhatro/app/src/main/res/layout/dich_vu_add.xml" value="0.1" />
@@ -60,7 +77,7 @@
         <entry key="..\:/Users/Admin/AndroidStudioProjects/nhatro/app/src/main/res/layout/fragment_con_hieu_luc.xml" value="0.22644927536231885" />
         <entry key="..\:/Users/Admin/AndroidStudioProjects/nhatro/app/src/main/res/layout/fragment_dang_thue.xml" value="0.22644927536231885" />
         <entry key="..\:/Users/Admin/AndroidStudioProjects/nhatro/app/src/main/res/layout/fragment_het_hieu_luc.xml" value="0.22644927536231885" />
-        <entry key="..\:/Users/Admin/AndroidStudioProjects/nhatro/app/src/main/res/layout/fragment_home.xml" value="0.13089005235602094" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/nhatro/app/src/main/res/layout/fragment_home.xml" value="0.19346049046321526" />
         <entry key="..\:/Users/Admin/AndroidStudioProjects/nhatro/app/src/main/res/layout/fragment_phong_trong.xml" value="0.264" />
         <entry key="..\:/Users/Admin/AndroidStudioProjects/nhatro/app/src/main/res/layout/het_hieu_luc_item.xml" value="0.253125" />
         <entry key="..\:/Users/Admin/AndroidStudioProjects/nhatro/app/src/main/res/layout/kha_bien_item.xml" value="0.253125" />
@@ -71,11 +88,16 @@
         <entry key="..\:/Users/Admin/AndroidStudioProjects/nhatro/app/src/main/res/layout/layout_dialog_search_khach.xml" value="0.203125" />
         <entry key="..\:/Users/Admin/AndroidStudioProjects/nhatro/app/src/main/res/layout/layout_dialog_search_phong_nuoc.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/Admin/AndroidStudioProjects/nhatro/app/src/main/res/layout/layout_dialog_them_phi_bat_bien.xml" value="0.253125" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/nhatro/app/src/main/res/layout/layout_dialog_them_phi_chi_khac.xml" value="0.24947916666666667" />
         <entry key="..\:/Users/Admin/AndroidStudioProjects/nhatro/app/src/main/res/layout/layout_dialog_them_phi_kha_bien.xml" value="0.253125" />
         <entry key="..\:/Users/Admin/AndroidStudioProjects/nhatro/app/src/main/res/layout/menu_fragment.xml" value="0.10964912280701754" />
         <entry key="..\:/Users/Admin/AndroidStudioProjects/nhatro/app/src/main/res/layout/multi_room.xml" value="0.4" />
         <entry key="..\:/Users/Admin/AndroidStudioProjects/nhatro/app/src/main/res/layout/nhom.xml" value="0.24547101449275363" />
         <entry key="..\:/Users/Admin/AndroidStudioProjects/nhatro/app/src/main/res/layout/notification_fragment.xml" value="0.2" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/nhatro/app/src/main/res/layout/phong_chon_dong_tien_item.xml" value="0.21197916666666666" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/nhatro/app/src/main/res/layout/phong_chuyen_item.xml" value="0.21197916666666666" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/nhatro/app/src/main/res/layout/phong_cong_to_dien_item.xml" value="0.20471014492753623" />
+        <entry key="..\:/Users/Admin/AndroidStudioProjects/nhatro/app/src/main/res/layout/phong_cong_to_nuoc_item.xml" value="0.20471014492753623" />
         <entry key="..\:/Users/Admin/AndroidStudioProjects/nhatro/app/src/main/res/layout/phong_dien_item.xml" value="0.1956521739130435" />
         <entry key="..\:/Users/Admin/AndroidStudioProjects/nhatro/app/src/main/res/layout/phong_edit.xml" value="0.20471014492753623" />
         <entry key="..\:/Users/Admin/AndroidStudioProjects/nhatro/app/src/main/res/layout/phong_item.xml" value="0.22644927536231885" />

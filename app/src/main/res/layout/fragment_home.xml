@@ -491,10 +491,41 @@
                                             android:layout_width="match_parent"
                                             android:layout_height="wrap_content"
                                             android:layout_toRightOf="@+id/imageKhaBien"
+                                            android:fontFamily="@font/svn_p_s_regular"
                                             android:paddingLeft="10dp"
                                             android:paddingTop="5dp"
-                                            android:fontFamily="@font/svn_p_s_regular"
                                             android:text="Chi phí khả biến" />
+                                    </RelativeLayout>
+
+                                    <View android:layout_width="match_parent"
+                                        android:layout_height="1dip"
+                                        android:background="@color/khungNgoai" />
+
+                                    <RelativeLayout
+                                        android:id="@+id/rowChiKhac"
+                                        android:layout_marginTop="10dp"
+                                        android:paddingLeft="14dp"
+                                        android:paddingRight="14dp"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginBottom="10dp"
+                                        android:gravity="center">
+
+                                        <ImageView
+                                            android:id="@+id/imageChiKhac"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:background="@drawable/ic_chikhac" />
+
+                                        <TextView
+                                            android:id="@+id/chiKhac"
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:layout_toRightOf="@+id/imageChiKhac"
+                                            android:fontFamily="@font/svn_p_s_regular"
+                                            android:paddingLeft="10dp"
+                                            android:paddingTop="5dp"
+                                            android:text="Chi khác" />
                                     </RelativeLayout>
                                 </LinearLayout>
                             </androidx.cardview.widget.CardView>

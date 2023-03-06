@@ -1,9 +1,11 @@
 package com.example.nhatro2.api;
 
 import com.example.nhatro2.bat_bien.BatBienModel;
+import com.example.nhatro2.chi_khac.ChiKhacModel;
 import com.example.nhatro2.dich_vu.DichVuModel;
 import com.example.nhatro2.dong_tien.ApDungUuDaiModel;
 import com.example.nhatro2.dong_tien.ChonPhongModel;
+import com.example.nhatro2.dong_tien.ChuyenPhongModel;
 import com.example.nhatro2.dong_tien.LichSuDongTienModel;
 import com.example.nhatro2.dong_tien.ThanhToanModel;
 import com.example.nhatro2.hop_dong.HopDongModel;
@@ -15,6 +17,8 @@ import com.example.nhatro2.quy_tien_mat.QuyChiModel;
 import com.example.nhatro2.quy_tien_mat.QuyThuModel;
 import com.example.nhatro2.quy_tien_mat.QuyTienModel;
 import com.example.nhatro2.thanhvien.ThanhVienModel;
+import com.example.nhatro2.thay_cong_to.CongToDienModel;
+import com.example.nhatro2.thay_cong_to.CongToNuocModel;
 import com.example.nhatro2.thong_ke.TongQuanChartModel;
 import com.example.nhatro2.thu_khac.ThuKhacModel;
 import com.example.nhatro2.tien_coc.TienCocModel;
@@ -48,8 +52,8 @@ import retrofit2.http.POST;
 public interface ApiQH {
 
 
-//    String url = "http://192.168.1.190/quanghieu/";
-    String url = "http://172.16.1.71/quanghieu/";
+    String url = "http://192.168.1.190/quanghieu/";
+//    String url = "http://172.16.1.71/quanghieu/";
     //    String url = "https://nhatroquanghieu.com";
     Gson gson = new GsonBuilder().setDateFormat("yyyy-MM-DD HH:mm:ss").create();
     OkHttpClient okHttpClient = new OkHttpClient.Builder().build();
@@ -220,6 +224,18 @@ public interface ApiQH {
     @POST ("admin/api/chi-phi/kha-bien/add.php")
     @FormUrlEncoded
     Call <KhaBienModel> addKhaBien(@Field("idThanhVien") int idThanhVien,@Field("lydo") String lydo, @Field("tien") int tien, @Field("hinhthuc") int hinhthuc);
+    // Chi khác
+    @GET ("admin/api/chi-phi/chi-khac/list.php")
+    Call <List<ChiKhacModel>> getChiKhac();
+    // Chọn tháng hiển thị danh sách
+    @POST ("admin/api/chi-phi/chi-khac/choose-month.php")
+    @FormUrlEncoded
+    Call <List<ChiKhacModel>> chooseTimeChiKhac(@Field("month") int month, @Field("year") int year);
+    // Thêm chi phí khác
+    @POST ("admin/api/chi-phi/chi-khac/add.php")
+    @FormUrlEncoded
+    Call <ChiKhacModel> addChiKhac(@Field("idThanhVien") int idThanhVien,@Field("lydo") String lydo, @Field("tien") int tien, @Field("hinhthuc") int hinhthuc);
+
     // Tiền điện
     // Tiền điện lựa chọn
     @POST ("admin/api/tien-dien/choose_month.php")
@@ -441,5 +457,17 @@ public interface ApiQH {
     @GET ("admin/api/doi-phong/phong_trong_check.php")
     Call <List<PhongModel>> listPhongTrong();
 
+    @POST("admin/api/doi-phong/list.php")
+    @FormUrlEncoded
+    Call <ChuyenPhongModel> chuyenPhong(@Field("doiphong") String phong, @Field("hopdong") int hopdong);
 
+    // Thay công tơ điện
+    @POST("admin/api/thay-cong-to/cong-to-dien.php")
+    @FormUrlEncoded
+    Call <CongToDienModel> congToDien(@Field("phong") String phong, @Field("chiso") String chiso);
+
+    // Thay công tơ nước
+    @POST("admin/api/thay-cong-to/cong-to-nuoc.php")
+    @FormUrlEncoded
+    Call <CongToNuocModel> congToNuoc(@Field("phong") String phong, @Field("chiso") String chiso);
 }

@@ -35,10 +35,14 @@ import com.example.nhatro2.HomeActivity;
 import com.example.nhatro2.MainActivity;
 import com.example.nhatro2.R;
 import com.example.nhatro2.api.ApiQH;
+import com.example.nhatro2.doi_thiet_bi.DoiThietBi;
 import com.example.nhatro2.dong_tien.DongTien;
 import com.example.nhatro2.hop_dong.HopDong;
 import com.example.nhatro2.thanhvien.KhachTro;
+import com.example.nhatro2.thay_cong_to.CongToDien;
+import com.example.nhatro2.thay_cong_to.CongToNuoc;
 import com.example.nhatro2.thong_ke.ThongKe;
+import com.example.nhatro2.tien_coc.TienCoc;
 import com.example.nhatro2.tien_coc.TienCocAdd;
 import com.google.android.material.navigation.NavigationView;
 import com.kal.rackmonthpicker.MonthType;
@@ -135,6 +139,18 @@ public class ThuKhac extends AppCompatActivity {
                     case R.id.hop_dong:
                         Intent hopDong = new Intent(ThuKhac.this, HopDong.class);
                         startActivity(hopDong);
+                        return true;
+                    case R.id.thay_cong_to_nuoc:
+                        Intent thay_cong_to_nuoc = new Intent(ThuKhac.this, CongToNuoc.class);
+                        startActivity(thay_cong_to_nuoc);
+                        return true;
+                    case R.id.thay_cong_to_dien:
+                        Intent thay_cong_to_dien = new Intent(ThuKhac.this, CongToDien.class);
+                        startActivity(thay_cong_to_dien);
+                        return true;
+                    case R.id.doi_thiet_bi:
+                        Intent doi_thiet_bi = new Intent(ThuKhac.this, DoiThietBi.class);
+                        startActivity(doi_thiet_bi);
                         return true;
                 }
                 return true;

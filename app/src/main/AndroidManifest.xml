@@ -16,6 +16,18 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
+            android:name=".chi_khac.ChiKhac"
+            android:exported="false" />
+        <activity
+            android:name=".doi_thiet_bi.DoiThietBi"
+            android:exported="false" />
+        <activity
+            android:name=".thay_cong_to.CongToDien"
+            android:exported="false" />
+        <activity
+            android:name=".thay_cong_to.CongToNuoc"
+            android:exported="false" />
+        <activity
             android:name=".tra_phong.TraPhong"
             android:exported="false">
             <meta-data
@@ -237,8 +249,6 @@
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
-
-
     </application>
 
 </manifest>

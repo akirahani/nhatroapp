@@ -26,8 +26,12 @@ import com.example.nhatro2.MainActivity;
 import com.example.nhatro2.R;
 import com.example.nhatro2.dich_vu.DichVu;
 import com.example.nhatro2.dich_vu.DichVuEdit;
+import com.example.nhatro2.doi_thiet_bi.DoiThietBi;
 import com.example.nhatro2.dong_tien.DongTien;
+import com.example.nhatro2.phong.Phong;
 import com.example.nhatro2.thanhvien.KhachTro;
+import com.example.nhatro2.thay_cong_to.CongToDien;
+import com.example.nhatro2.thay_cong_to.CongToNuoc;
 import com.example.nhatro2.tien_coc.TienCocAdd;
 import com.google.android.material.navigation.NavigationView;
 import com.google.android.material.tabs.TabLayout;
@@ -140,7 +144,18 @@ public class HopDong extends AppCompatActivity {
                         Intent hopDong = new Intent(HopDong.this, HopDong.class);
                         startActivity(hopDong);
                         return true;
-
+                    case R.id.thay_cong_to_nuoc:
+                        Intent thay_cong_to_nuoc = new Intent(HopDong.this, CongToNuoc.class);
+                        startActivity(thay_cong_to_nuoc);
+                        return true;
+                    case R.id.thay_cong_to_dien:
+                        Intent thay_cong_to_dien = new Intent(HopDong.this, CongToDien.class);
+                        startActivity(thay_cong_to_dien);
+                        return true;
+                    case R.id.doi_thiet_bi:
+                        Intent doi_thiet_bi = new Intent(HopDong.this, DoiThietBi.class);
+                        startActivity(doi_thiet_bi);
+                        return true;
 
                 }
                 return true;
