@@ -146,6 +146,25 @@ tools:context=".doi_thiet_bi.DoiThietBi">
             android:background="@color/khungNgoai" />
 
     </RelativeLayout>
+    <LinearLayout
+        android:layout_below="@+id/tren"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:fontFamily="@font/svn_p_s_bold"
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            android:paddingTop="15dp"
+            android:paddingLeft="25dp"
+            android:id="@+id/tenPhongThietBi"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/listThietBiHienThi"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
 
 </RelativeLayout>
 <com.google.android.material.navigation.NavigationView
