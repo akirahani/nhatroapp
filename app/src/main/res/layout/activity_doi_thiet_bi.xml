@@ -3,7 +3,7 @@
 xmlns:app="http://schemas.android.com/apk/res-auto"
 xmlns:tools="http://schemas.android.com/tools"
 android:layout_width="match_parent"
-android:id="@+id/drawer_layout_chi_khac"
+android:id="@+id/drawer_layout_quan_li_thiet_bi"
 android:layout_height="match_parent"
 tools:context=".doi_thiet_bi.DoiThietBi">
 <RelativeLayout
@@ -114,7 +114,7 @@ tools:context=".doi_thiet_bi.DoiThietBi">
                 android:layout_gravity="center"
                 android:paddingLeft="8dp"
                 android:fontFamily="@font/svn_p_s_bold"
-                android:text="Quản lí chuyển dổi thiết bị"
+                android:text="Quản lí chuyển đổi thiết bị"
                 android:textAllCaps="true"
                 android:textColor="@color/textQuanLyChung"
                 android:textSize="18dp"
@@ -127,13 +127,13 @@ tools:context=".doi_thiet_bi.DoiThietBi">
                 android:layout_marginRight="10dp">
 
                 <ImageView
-                    android:id="@+id/addChiKhac"
+                    android:id="@+id/searchPhongThietBi"
                     android:layout_width="18dp"
                     android:layout_height="18dp"
                     android:layout_alignParentRight="true"
                     android:layout_gravity="center"
                     android:layout_marginRight="5dp"
-                    android:src="@drawable/them" />
+                    android:src="@drawable/search" />
 
             </RelativeLayout>
         </LinearLayout>
@@ -141,22 +141,30 @@ tools:context=".doi_thiet_bi.DoiThietBi">
         <TextView
             android:layout_width="match_parent"
             android:layout_height="20dp"
-            android:layout_below="@+id/rowTitleChiKhac"
+            android:layout_below="@+id/rowTitleQLThietBi"
             android:layout_marginTop="-15dp"
             android:background="@color/khungNgoai" />
 
     </RelativeLayout>
-
-    <androidx.cardview.widget.CardView
-        android:id="@+id/cardMonthChiKhac"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+    <LinearLayout
         android:layout_below="@+id/tren"
-        android:layout_marginLeft="14dp"
-        android:layout_marginTop="13dp"
-        android:layout_marginRight="14dp"
-        app:cardCornerRadius="5dp">
-    </androidx.cardview.widget.CardView>
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:fontFamily="@font/svn_p_s_bold"
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            android:paddingTop="15dp"
+            android:paddingLeft="25dp"
+            android:id="@+id/tenPhongThietBi"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/listThietBiHienThi"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
 
 </RelativeLayout>
 <com.google.android.material.navigation.NavigationView

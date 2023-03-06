@@ -3,6 +3,8 @@ package com.example.nhatro2.api;
 import com.example.nhatro2.bat_bien.BatBienModel;
 import com.example.nhatro2.chi_khac.ChiKhacModel;
 import com.example.nhatro2.dich_vu.DichVuModel;
+import com.example.nhatro2.doi_thiet_bi.DoiThietBi;
+import com.example.nhatro2.doi_thiet_bi.DoiThietBiModel;
 import com.example.nhatro2.dong_tien.ApDungUuDaiModel;
 import com.example.nhatro2.dong_tien.ChonPhongModel;
 import com.example.nhatro2.dong_tien.ChuyenPhongModel;
@@ -52,8 +54,8 @@ import retrofit2.http.POST;
 public interface ApiQH {
 
 
-    String url = "http://192.168.1.190/quanghieu/";
-//    String url = "http://172.16.1.71/quanghieu/";
+//    String url = "http://192.168.1.190/quanghieu/";
+    String url = "http://172.16.1.71/quanghieu/";
     //    String url = "https://nhatroquanghieu.com";
     Gson gson = new GsonBuilder().setDateFormat("yyyy-MM-DD HH:mm:ss").create();
     OkHttpClient okHttpClient = new OkHttpClient.Builder().build();
@@ -470,4 +472,8 @@ public interface ApiQH {
     @POST("admin/api/thay-cong-to/cong-to-nuoc.php")
     @FormUrlEncoded
     Call <CongToNuocModel> congToNuoc(@Field("phong") String phong, @Field("chiso") String chiso);
+    // Phòng thiết bị hiển thị
+    @POST("admin/api/quan-li-thiet-bi/chon-phong.php")
+    @FormUrlEncoded
+    Call <DoiThietBiModel> getPhongThietBi(@Field("phong") String phong);
 }
