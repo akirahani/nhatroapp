@@ -28,10 +28,14 @@ import com.example.nhatro2.R;
 
 import com.example.nhatro2.api.ApiQH;
 
+import com.example.nhatro2.doi_thiet_bi.DoiThietBi;
 import com.example.nhatro2.dong_tien.DongTien;
 import com.example.nhatro2.hop_dong.HopDong;
 import com.example.nhatro2.quy_tien_mat.QuyTienModel;
 import com.example.nhatro2.thanhvien.KhachTro;
+import com.example.nhatro2.thay_cong_to.CongToDien;
+import com.example.nhatro2.thay_cong_to.CongToNuoc;
+import com.example.nhatro2.thu_khac.ThuKhacAdd;
 import com.example.nhatro2.tien_coc.TienCocAdd;
 import com.google.android.material.navigation.NavigationView;
 import com.highsoft.highcharts.common.hichartsclasses.HIChart;
@@ -81,8 +85,8 @@ public class ThongKe extends AppCompatActivity {
                 }
             });
 
-//            String url = "http://192.168.1.190/quanghieu";
-            String url = "http://172.16.1.71/quanghieu";
+            String url = "http://192.168.1.190/quanghieu";
+//            String url = "http://172.16.1.71/quanghieu";
         // tong quan
             tongQuan = findViewById(R.id.tongQuan);
             tongQuan.loadUrl(url+"/admin/api/thong-ke/tong-quan.php");
@@ -155,7 +159,18 @@ public class ThongKe extends AppCompatActivity {
                             Intent hopDong = new Intent(ThongKe.this, HopDong.class);
                             startActivity(hopDong);
                             return true;
-
+                        case R.id.thay_cong_to_nuoc:
+                            Intent thay_cong_to_nuoc = new Intent(ThongKe.this, CongToNuoc.class);
+                            startActivity(thay_cong_to_nuoc);
+                            return true;
+                        case R.id.thay_cong_to_dien:
+                            Intent thay_cong_to_dien = new Intent(ThongKe.this, CongToDien.class);
+                            startActivity(thay_cong_to_dien);
+                            return true;
+                        case R.id.doi_thiet_bi:
+                            Intent doi_thiet_bi = new Intent(ThongKe.this, DoiThietBi.class);
+                            startActivity(doi_thiet_bi);
+                            return true;
 
                     }
                     return true;

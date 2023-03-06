@@ -46,10 +46,14 @@ import com.example.nhatro2.api.ApiQH;
 import com.example.nhatro2.dich_vu.DichVu;
 import com.example.nhatro2.dich_vu.DichVuEdit;
 import com.example.nhatro2.dich_vu.DichVuModel;
+import com.example.nhatro2.doi_thiet_bi.DoiThietBi;
 import com.example.nhatro2.hop_dong.HopDong;
+import com.example.nhatro2.hop_dong.HopDongAdd;
 import com.example.nhatro2.thanhvien.KhachTro;
 import com.example.nhatro2.thanhvien.KhachTroEdit;
 import com.example.nhatro2.thanhvien.ThanhVienModel;
+import com.example.nhatro2.thay_cong_to.CongToDien;
+import com.example.nhatro2.thay_cong_to.CongToNuoc;
 import com.example.nhatro2.thu_khac.ThuKhac;
 import com.example.nhatro2.tien_coc.TienCocAdd;
 import com.example.nhatro2.tien_coc.TienCocModel;
@@ -193,13 +197,7 @@ public class DongTien extends AppCompatActivity {
         chiTietCacKhoanTien = findViewById(R.id.chiTietCacKhoanTien);
         doiPhong = findViewById(R.id.doiPhong);
 
-        // Đổi phòng
-        doiPhong.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
 
-            }
-        });
 
 
         // Kiểm tra tiền phòng
@@ -211,6 +209,17 @@ public class DongTien extends AppCompatActivity {
                 int idChuPhong = thongTinDongTienPhong.getIdchuphong();
                 int hopDongId = thongTinDongTienPhong.getHopdong();
                 if (idChuPhong != 0) {
+                    // Đổi phòng
+                    doiPhong.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            BottomSheetPhongChuyen bsPhongChuyen = new BottomSheetPhongChuyen();
+                            bsPhongChuyen.show(getSupportFragmentManager(), "ChonPhongChuyen");
+                            Bundle bundle = new Bundle();
+                            bundle.putInt("hopDong",hopDongId);
+                            bsPhongChuyen.setArguments(bundle);
+                        }
+                    });
                     tienPhongCanTra.setTextColor(Color.rgb(0, 0, 0));
                     thanhToanTienButton.setOnClickListener(new View.OnClickListener() {
                         @Override
@@ -494,6 +503,7 @@ public class DongTien extends AppCompatActivity {
                     phaiTraTien.setText("Phòng trống");
                     phaiTraTien.setTextColor(Color.RED);
                     khungLichSuDongTien.setVisibility(View.GONE);
+                    doiPhong.setVisibility(View.GONE);
                 }
 
             }
@@ -534,6 +544,18 @@ public class DongTien extends AppCompatActivity {
                     case R.id.hop_dong:
                         Intent hopDong = new Intent(DongTien.this, HopDong.class);
                         startActivity(hopDong);
+                        return true;
+                    case R.id.thay_cong_to_nuoc:
+                        Intent thay_cong_to_nuoc = new Intent(DongTien.this, CongToNuoc.class);
+                        startActivity(thay_cong_to_nuoc);
+                        return true;
+                    case R.id.thay_cong_to_dien:
+                        Intent thay_cong_to_dien = new Intent(DongTien.this, CongToDien.class);
+                        startActivity(thay_cong_to_dien);
+                        return true;
+                    case R.id.doi_thiet_bi:
+                        Intent doi_thiet_bi = new Intent(DongTien.this, DoiThietBi.class);
+                        startActivity(doi_thiet_bi);
                         return true;
                 }
                 return true;

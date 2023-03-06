@@ -31,6 +31,8 @@ import android.widget.Toolbar;
 
 import com.example.nhatro2.api.ApiQH;
 import com.example.nhatro2.bat_bien.BatBien;
+import com.example.nhatro2.chi_khac.ChiKhac;
+import com.example.nhatro2.doi_thiet_bi.DoiThietBi;
 import com.example.nhatro2.dong_tien.DongTien;
 import com.example.nhatro2.hop_dong.HopDong;
 import com.example.nhatro2.kha_bien.KhaBien;
@@ -39,11 +41,14 @@ import com.example.nhatro2.quanlychung.ChungModel;
 import com.example.nhatro2.quy_tien_mat.QuyTienModel;
 import com.example.nhatro2.tai_khoan.TaiKhoanModel;
 import com.example.nhatro2.thanhvien.KhachTro;
+import com.example.nhatro2.thay_cong_to.CongToDien;
+import com.example.nhatro2.thay_cong_to.CongToNuoc;
 import com.example.nhatro2.thong_ke.ThongKe;
 import com.example.nhatro2.thu_khac.ThuKhac;
 import com.example.nhatro2.tien_coc.TienCocAdd;
 import com.example.nhatro2.tien_dien.TienDien;
 import com.example.nhatro2.tien_nuoc.TienNuoc;
+import com.example.nhatro2.uu_dai.UuDai;
 import com.google.android.material.navigation.NavigationView;
 
 import java.util.ArrayList;
@@ -60,7 +65,7 @@ public class HomeFragment extends Fragment {
     TextView tenThanhVien,tenUser,xemThongKe;
     Toolbar header;
     ImageView thoat, menuDanhMuc;
-    RelativeLayout rowWater, rowElectric, rowBatBien, rowKhaBien, rowThuKhac;
+    RelativeLayout rowWater, rowElectric, rowBatBien, rowKhaBien, rowThuKhac, rowChiKhac;
     SharedPreferences shp;
     SharedPreferences.Editor shpEdit;
     DrawerLayout mDrawerLayout;
@@ -201,6 +206,16 @@ public class HomeFragment extends Fragment {
                   startActivity(intent);
               }
           });
+          // Chi khác
+          rowChiKhac = view.findViewById(R.id.rowChiKhac);
+          rowChiKhac.setOnClickListener(new View.OnClickListener() {
+              @Override
+              public void onClick(View view) {
+                  Intent intent = new Intent(getContext(), ChiKhac.class);
+                  startActivity(intent);
+              }
+          });
+
 
         xemThongKe = view.findViewById(R.id.xemThongKe);
         xemThongKe.setOnClickListener(new View.OnClickListener() {
@@ -240,6 +255,18 @@ public class HomeFragment extends Fragment {
                     case R.id.hop_dong:
                         Intent hopDong = new Intent(view.getContext(), HopDong.class);
                         startActivity(hopDong);
+                        return true;
+                    case R.id.thay_cong_to_nuoc:
+                        Intent thay_cong_to_nuoc = new Intent(view.getContext(), CongToNuoc.class);
+                        startActivity(thay_cong_to_nuoc);
+                        return true;
+                    case R.id.thay_cong_to_dien:
+                        Intent thay_cong_to_dien = new Intent(view.getContext(), CongToDien.class);
+                        startActivity(thay_cong_to_dien);
+                        return true;
+                    case R.id.doi_thiet_bi:
+                        Intent doi_thiet_bi = new Intent(view.getContext(), DoiThietBi.class);
+                        startActivity(doi_thiet_bi);
                         return true;
 
 

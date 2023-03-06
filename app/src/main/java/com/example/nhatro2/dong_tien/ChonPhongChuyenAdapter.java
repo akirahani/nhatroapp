@@ -4,6 +4,7 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -16,12 +17,12 @@ import java.util.List;
 public class ChonPhongChuyenAdapter extends RecyclerView.Adapter<ChonPhongChuyenAdapter.ChonPhongChuyenViewHolder> {
     Context context;
     List<PhongModel> listPhongChuyen;
-    ClickPhongChuyen phongChuyenItem;
+    ClickPhongChuyen phongChuyenItemClick;
 
-    public ChonPhongChuyenAdapter(Context context, List<PhongModel> listPhongChuyen, ClickPhongChuyen phongChuyenItem) {
+    public ChonPhongChuyenAdapter(Context context, List<PhongModel> listPhongChuyen, ClickPhongChuyen phongChuyenItemClick) {
         this.context = context;
         this.listPhongChuyen = listPhongChuyen;
-        this.phongChuyenItem = phongChuyenItem;
+        this.phongChuyenItemClick = phongChuyenItemClick;
     }
 
     @NonNull
@@ -33,7 +34,17 @@ public class ChonPhongChuyenAdapter extends RecyclerView.Adapter<ChonPhongChuyen
 
     @Override
     public void onBindViewHolder(@NonNull ChonPhongChuyenAdapter.ChonPhongChuyenViewHolder holder, int position) {
-
+        PhongModel phongChuyenItem = listPhongChuyen.get(position);
+        String tenPhong = phongChuyenItem.getTen();
+        int idPhong = phongChuyenItem.getId();
+        int trangthai = phongChuyenItem.getTrangthai();
+        holder.chonPhongChuyenClick.setText(tenPhong);
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                phongChuyenItemClick.chuyenPhong(idPhong,tenPhong,trangthai);
+            }
+        });
     }
 
     @Override
@@ -42,8 +53,10 @@ public class ChonPhongChuyenAdapter extends RecyclerView.Adapter<ChonPhongChuyen
     }
 
     public class ChonPhongChuyenViewHolder extends RecyclerView.ViewHolder {
+        TextView chonPhongChuyenClick;
         public ChonPhongChuyenViewHolder(@NonNull View itemView) {
             super(itemView);
+            chonPhongChuyenClick = itemView.findViewById(R.id.chonPhongChuyenClick);
         }
     }
 }
