@@ -12,6 +12,7 @@ import androidx.viewpager2.widget.ViewPager2;
 
 import android.annotation.SuppressLint;
 import android.app.Dialog;
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
@@ -27,17 +28,20 @@ import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.nhatro2.HomeActivity;
 import com.example.nhatro2.R;
+import com.example.nhatro2.api.Api;
 import com.example.nhatro2.api.ApiQH;
 import com.example.nhatro2.bat_bien.BatBien;
 import com.example.nhatro2.bat_bien.BatBienAdapter;
 import com.example.nhatro2.bat_bien.BatBienModel;
 import com.example.nhatro2.chi_khac.ChiKhac;
 import com.example.nhatro2.dich_vu.DichVuModel;
+import com.example.nhatro2.dong_tien.ChuyenPhongModel;
 import com.example.nhatro2.dong_tien.DongTien;
 import com.example.nhatro2.dong_tien.ThietBiPhongTienAdapter;
 import com.example.nhatro2.hop_dong.HopDong;
@@ -58,14 +62,15 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class DoiThietBi extends AppCompatActivity {
-    ImageView thoat, logo, menuDanhMuc, searchPhongThietBi;
+    ImageView thoat, logo, menuDanhMuc, searchPhongThietBi,timPhongDi;
     SharedPreferences shp;
     LinearLayout quayLai;
     SharedPreferences.Editor shpKhachEdit;
     DrawerLayout mDrawerLayout;
-    TextView tenPhongThietBi, statusPhongThietBi, phongThietBiAdd, phongThietBiClose;
+    TextView tenPhongThietBi, statusPhongThietBi, phongThietBiAdd, phongThietBiClose, tenPhongChuyen;
     RecyclerView listThietBiHienThi;
-    AppCompatButton themThietBiPhong;
+    AppCompatButton themThietBiPhong,chuyenThietBiPhongClick;
+    RadioGroup chonThietBiCanThem;
     @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -80,6 +85,9 @@ public class DoiThietBi extends AppCompatActivity {
                 SharedPreferences shpPhongThietBiChon = getSharedPreferences("phongThietBiChon", MODE_PRIVATE);
                 shpPhongThietBiChon.edit().remove("maPhongChon");
                 shpPhongThietBiChon.edit().commit();
+                SharedPreferences thietBiChuyen = getSharedPreferences("thietBiChuyen", Context.MODE_PRIVATE);
+                thietBiChuyen.edit().remove("idThietBi");
+                thietBiChuyen.edit().commit();
             }
         });
         // Nút thoát
@@ -91,6 +99,9 @@ public class DoiThietBi extends AppCompatActivity {
                 SharedPreferences shpPhongThietBiChon = getSharedPreferences("phongThietBiChon", MODE_PRIVATE);
                 shpPhongThietBiChon.edit().remove("maPhongChon");
                 shpPhongThietBiChon.edit().commit();
+                SharedPreferences thietBiChuyen = getSharedPreferences("thietBiChuyen", Context.MODE_PRIVATE);
+                thietBiChuyen.edit().remove("idThietBi");
+                thietBiChuyen.edit().commit();
             }
         });
 
@@ -111,6 +122,16 @@ public class DoiThietBi extends AppCompatActivity {
             public void onClick(View view) {
                 BottomSheetPhongThietBiChon bsPhongThietBi = new BottomSheetPhongThietBiChon();
                 bsPhongThietBi.show(getSupportFragmentManager(),"phongThietBiList");
+            }
+        });
+
+        //Tim phong den
+        timPhongDi = findViewById(R.id.timPhongDi);
+        timPhongDi.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                BottomSheetPhongChuyen bsPhongChuyenDi = new BottomSheetPhongChuyen();
+                bsPhongChuyenDi.show(getSupportFragmentManager(),"phongChuyenDi");
             }
         });
 
@@ -164,32 +185,78 @@ public class DoiThietBi extends AppCompatActivity {
 
                         phongThietBiAdd = dialogPhongThietBi.findViewById(R.id.phongThietBiAdd);
                         phongThietBiClose = dialogPhongThietBi.findViewById(R.id.phongThietBiClose);
-
-                        phongThietBiAdd.setOnClickListener(new View.OnClickListener() {
+                        chonThietBiCanThem = dialogPhongThietBi.findViewById(R.id.chonThietBiCanThem);
+                        // Hiển thị thiết bị không dùng
+                        ApiQH.apiQH.getThietBiPhongTien(phongThietBi.getKhongdung()).enqueue(new Callback<List<DichVuModel>>() {
+                            @SuppressLint("NewApi")
                             @Override
-                            public void onClick(View view) {
-                                shp = view.getContext().getSharedPreferences("user", MODE_PRIVATE);
-                                int idThanhVienQuanLy = shp.getInt("idThanhVien",0);
-                                ApiQH.apiQH.getThietBiPhongTien(phongThietBi.getKhongdung()).enqueue(new Callback<List<DichVuModel>>() {
-                                    @SuppressLint("NewApi")
-                                    @Override
-                                    public void onResponse(Call<List<DichVuModel>> call, Response<List<DichVuModel>> response) {
-                                        List<DichVuModel> phongThietBiCheck = response.body();
+                            public void onResponse(Call<List<DichVuModel>> call, Response<List<DichVuModel>> response) {
 
-                                        ArrayList<RadioButton> listOfRadioButtons = new ArrayList<RadioButton>();
+                                List<DichVuModel> phongThietBiCheck = response.body();
+                                List<Integer> idTBList = new ArrayList<>();  // here is list
 
-                                        phongThietBiCheck.forEach(item ->{
-                                            Log.d("",""+item);
-                                        });
+                                phongThietBiCheck.forEach(item ->{
+                                    idTBList.add(item.getId());
+                                });
+
+                                for(int itb=0;itb<idTBList.size();itb++){
+                                    RadioButton rb = new RadioButton(DoiThietBi.this);
+                                    if(idTBList.get(itb) == 1){
+                                        rb.setText("Tủ lạnh");
+                                    }else if(idTBList.get(itb) == 2){
+                                        rb.setText("Máy giắt");
+                                    }else if(idTBList.get(itb) == 3){
+                                        rb.setText("Điều hòa");
+                                    }else{
+                                        rb.setText("Sạc xe điện");
                                     }
+                                    rb.setId(idTBList.get(itb));
+                                    chonThietBiCanThem.addView(rb);
+                                }
 
+                                chonThietBiCanThem.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
                                     @Override
-                                    public void onFailure(Call<List<DichVuModel>> call, Throwable t) {
+                                    public void onCheckedChanged(RadioGroup radioGroup, int idcheck) {
+                                        int childCount = radioGroup.getChildCount();
+                                        for (int x = 0; x <childCount; x++) {
+                                            RadioButton btn = (RadioButton) radioGroup.getChildAt(x);
+                                            if (btn.getId() == idcheck) {
+                                                phongThietBiAdd.setOnClickListener(new View.OnClickListener() {
+                                                    @Override
+                                                    public void onClick(View view) {
+                                                        shp = view.getContext().getSharedPreferences("user", MODE_PRIVATE);
+                                                        int idThanhVienQuanLy = shp.getInt("idThanhVien",0);
+                                                        ApiQH.apiQH.themPhongThietBi(tenPhong,btn.getId()).enqueue(new Callback<DoiThietBiModel>() {
+                                                            @Override
+                                                            public void onResponse(Call<DoiThietBiModel> call, Response<DoiThietBiModel> response) {
+                                                                Toast.makeText(DoiThietBi.this,"Thêm thiết bị thành công",Toast.LENGTH_SHORT).show();
+                                                                Intent intent = new Intent(DoiThietBi.this,DoiThietBi.class);
+                                                                startActivity(intent);
+                                                            }
+
+                                                            @Override
+                                                            public void onFailure(Call<DoiThietBiModel> call, Throwable t) {
+                                                                Toast.makeText(DoiThietBi.this,"Thêm thiết bị thất bại",Toast.LENGTH_SHORT).show();
+
+                                                            }
+                                                        });
+                                                    }
+                                                });
+                                            }
+                                        }
 
                                     }
                                 });
+
+
+                            }
+
+                            @Override
+                            public void onFailure(Call<List<DichVuModel>> call, Throwable t) {
                             }
                         });
+
+
 
                         phongThietBiClose.setOnClickListener(new View.OnClickListener() {
                             @Override
@@ -223,6 +290,38 @@ public class DoiThietBi extends AppCompatActivity {
             }
         });
 
+        SharedPreferences thietBiChuyen = getSharedPreferences("thietBiChuyen", Context.MODE_PRIVATE);
+        int idThietBiChuyen = thietBiChuyen.getInt("idThietBi",0);
+        tenPhongChuyen = findViewById(R.id.tenPhongChuyen);
+        chuyenThietBiPhongClick = findViewById(R.id.chuyenThietBiPhongClick);
+        if(idThietBiChuyen != 0){
+            SharedPreferences shpPhongChuyenDi = getSharedPreferences("phongChuyenDi", MODE_PRIVATE);
+            shpPhongChuyenDi.getInt("idPhongChon",0);
+            String tenPhongDi = shpPhongChuyenDi.getString("maPhongChon","");
+            tenPhongChuyen.setText("Chuyển đến phòng: "+tenPhongDi);
+            chuyenThietBiPhongClick.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    ApiQH.apiQH.chuyenPhongThietBi(idThietBiChuyen,tenPhongDi,tenPhong).enqueue(new Callback<ChuyenPhongThietBiModel>() {
+                        @Override
+                        public void onResponse(Call<ChuyenPhongThietBiModel> call, Response<ChuyenPhongThietBiModel> response) {
+                            ChuyenPhongThietBiModel chuyenPhongThietBiItem = response.body();
+                            Toast.makeText(DoiThietBi.this,chuyenPhongThietBiItem.getMess(),Toast.LENGTH_SHORT).show();
+                            Intent intent = new Intent(DoiThietBi.this, DoiThietBi.class);
+                            startActivity(intent);
+                        }
+
+                        @Override
+                        public void onFailure(Call<ChuyenPhongThietBiModel> call, Throwable t) {
+                            Log.d("err ","chuyển thiết bị phòng"+t.toString());
+                        }
+                    });
+                }
+            });
+
+        }else{
+
+        }
 
         // Menu slide
         menuDanhMuc = findViewById(R.id.menuDanhMuc);
