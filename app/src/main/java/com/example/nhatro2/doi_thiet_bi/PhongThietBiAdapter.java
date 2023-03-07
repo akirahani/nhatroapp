@@ -4,6 +4,8 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -31,7 +33,17 @@ public class PhongThietBiAdapter extends RecyclerView.Adapter<PhongThietBiAdapte
 
     @Override
     public void onBindViewHolder(@NonNull PhongThietBiAdapter.PhongThietBiViewHolder holder, int position) {
-
+        DichVuModel dichVuItem = listThietBi.get(position);
+        holder.thietBiPhongThietBiItem.setText(dichVuItem.getTen());
+        if(dichVuItem.getId() == 1){
+            holder.hinhThietBi.setBackgroundResource(R.drawable.tu_lanh);
+        }else if(dichVuItem.getId() == 2){
+            holder.hinhThietBi.setBackgroundResource(R.drawable.may_giat);
+        }else if(dichVuItem.getId() == 3){
+            holder.hinhThietBi.setBackgroundResource(R.drawable.dieu_hoa);
+        }else{
+            holder.hinhThietBi.setBackgroundResource(R.drawable.xac_xe_dien);
+        }
     }
 
     @Override
@@ -40,8 +52,12 @@ public class PhongThietBiAdapter extends RecyclerView.Adapter<PhongThietBiAdapte
     }
 
     public class PhongThietBiViewHolder extends RecyclerView.ViewHolder {
+        TextView thietBiPhongThietBiItem;
+        ImageView hinhThietBi;
         public PhongThietBiViewHolder(@NonNull View itemView) {
             super(itemView);
+            thietBiPhongThietBiItem = itemView.findViewById(R.id.thietBiPhongThietBiItem);
+            hinhThietBi = itemView.findViewById(R.id.hinhThietBi);
         }
     }
 }

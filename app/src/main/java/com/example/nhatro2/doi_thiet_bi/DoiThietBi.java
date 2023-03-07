@@ -2,28 +2,40 @@ package com.example.nhatro2.doi_thiet_bi;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.AppCompatButton;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager2.widget.ViewPager2;
 
 import android.annotation.SuppressLint;
+import android.app.Dialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RadioButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.nhatro2.HomeActivity;
 import com.example.nhatro2.R;
 import com.example.nhatro2.api.ApiQH;
+import com.example.nhatro2.bat_bien.BatBien;
+import com.example.nhatro2.bat_bien.BatBienAdapter;
+import com.example.nhatro2.bat_bien.BatBienModel;
 import com.example.nhatro2.chi_khac.ChiKhac;
 import com.example.nhatro2.dich_vu.DichVuModel;
 import com.example.nhatro2.dong_tien.DongTien;
@@ -38,6 +50,7 @@ import com.example.nhatro2.tien_coc.TienCocAdd;
 import com.google.android.material.navigation.NavigationView;
 import com.google.android.material.tabs.TabLayout;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import retrofit2.Call;
@@ -50,8 +63,9 @@ public class DoiThietBi extends AppCompatActivity {
     LinearLayout quayLai;
     SharedPreferences.Editor shpKhachEdit;
     DrawerLayout mDrawerLayout;
-    TextView tenPhongThietBi;
+    TextView tenPhongThietBi, statusPhongThietBi, phongThietBiAdd, phongThietBiClose;
     RecyclerView listThietBiHienThi;
+    AppCompatButton themThietBiPhong;
     @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -82,7 +96,7 @@ public class DoiThietBi extends AppCompatActivity {
 
         // Xét vị trí tương đối
         @SuppressLint({"MissingInflatedId", "LocalSuppress"})
-        FrameLayout imageChiKhac = findViewById(R.id.imageQuanLiThietBi);
+        FrameLayout imageChiKhac = findViewById(R.id.imageQuanLiThietBi );
         ImageView iv = new ImageView(this);
         iv.setBackgroundResource(R.drawable.ic_quanlithietbi);
         FrameLayout.LayoutParams params = new FrameLayout.LayoutParams(134, 134);
@@ -100,6 +114,8 @@ public class DoiThietBi extends AppCompatActivity {
             }
         });
 
+        statusPhongThietBi = findViewById(R.id.statusPhongThietBi);
+
         tenPhongThietBi = findViewById(R.id.tenPhongThietBi);
         SharedPreferences shpPhongThietBiChon = getSharedPreferences("phongThietBiChon", MODE_PRIVATE);
         String tenPhong = shpPhongThietBiChon.getString("maPhongChon","");
@@ -110,7 +126,7 @@ public class DoiThietBi extends AppCompatActivity {
         }
 
         listThietBiHienThi = findViewById(R.id.listThietBiHienThi);
-        listThietBiHienThi.setLayoutManager(new LinearLayoutManager(DoiThietBi.this));
+        listThietBiHienThi.setLayoutManager(new GridLayoutManager(DoiThietBi.this,2));
         listThietBiHienThi.hasFixedSize();
         listThietBiHienThi.setNestedScrollingEnabled(false);
 
@@ -118,8 +134,75 @@ public class DoiThietBi extends AppCompatActivity {
             @Override
             public void onResponse(Call<DoiThietBiModel> call, Response<DoiThietBiModel> response) {
                 DoiThietBiModel phongThietBi = response.body();
-                Log.d("thiet bi phong",""+phongThietBi.getThietbi());
                 // Thiết bị sử dụng
+                if(phongThietBi.getThietbi().equals("")){
+                    statusPhongThietBi.setVisibility(View.VISIBLE);
+                }else{
+                    statusPhongThietBi.setVisibility(View.GONE);
+                }
+
+                //Thêm thiết bị
+                themThietBiPhong = findViewById(R.id.themThietBiPhong);
+                themThietBiPhong.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        Dialog dialogPhongThietBi = new Dialog(DoiThietBi.this);
+                        dialogPhongThietBi.requestWindowFeature(Window.FEATURE_NO_TITLE);
+                        dialogPhongThietBi.setContentView(R.layout.layout_dialog_them_thiet_bi_phong);
+
+                        Window window = dialogPhongThietBi.getWindow();
+                        if (window == null) {
+                            return;
+                        }
+
+                        window.setLayout(WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.WRAP_CONTENT);
+                        window.setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+
+                        WindowManager.LayoutParams windowAttr = window.getAttributes();
+                        windowAttr.gravity = Gravity.CENTER;
+                        window.setAttributes(windowAttr);
+
+                        phongThietBiAdd = dialogPhongThietBi.findViewById(R.id.phongThietBiAdd);
+                        phongThietBiClose = dialogPhongThietBi.findViewById(R.id.phongThietBiClose);
+
+                        phongThietBiAdd.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View view) {
+                                shp = view.getContext().getSharedPreferences("user", MODE_PRIVATE);
+                                int idThanhVienQuanLy = shp.getInt("idThanhVien",0);
+                                ApiQH.apiQH.getThietBiPhongTien(phongThietBi.getKhongdung()).enqueue(new Callback<List<DichVuModel>>() {
+                                    @SuppressLint("NewApi")
+                                    @Override
+                                    public void onResponse(Call<List<DichVuModel>> call, Response<List<DichVuModel>> response) {
+                                        List<DichVuModel> phongThietBiCheck = response.body();
+
+                                        ArrayList<RadioButton> listOfRadioButtons = new ArrayList<RadioButton>();
+
+                                        phongThietBiCheck.forEach(item ->{
+                                            Log.d("",""+item);
+                                        });
+                                    }
+
+                                    @Override
+                                    public void onFailure(Call<List<DichVuModel>> call, Throwable t) {
+
+                                    }
+                                });
+                            }
+                        });
+
+                        phongThietBiClose.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View view) {
+                                dialogPhongThietBi.dismiss();
+                            }
+                        });
+
+                        dialogPhongThietBi.show();
+                    }
+                });
+
+
                 ApiQH.apiQH.getThietBiPhongTien(phongThietBi.getThietbi()).enqueue(new Callback<List<DichVuModel>>() {
                     @Override
                     public void onResponse(Call<List<DichVuModel>> call, Response<List<DichVuModel>> response) {
@@ -139,6 +222,7 @@ public class DoiThietBi extends AppCompatActivity {
                 Log.d("err","phong thiet bi hien thi"+t.toString());
             }
         });
+
 
         // Menu slide
         menuDanhMuc = findViewById(R.id.menuDanhMuc);
