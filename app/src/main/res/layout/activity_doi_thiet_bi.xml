@@ -160,10 +160,51 @@ tools:context=".doi_thiet_bi.DoiThietBi">
             android:id="@+id/tenPhongThietBi"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
+        <TextView
+            android:id="@+id/statusPhongThietBi"
+            android:paddingTop="15dp"
+            android:fontFamily="@font/svn_p_s_bold"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:layout_gravity="center"
+            android:text="Phòng không có thiết bị!"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
         <androidx.recyclerview.widget.RecyclerView
+            android:layout_marginLeft="25dp"
+            android:layout_marginRight="25dp"
             android:id="@+id/listThietBiHienThi"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
+        <LinearLayout
+            android:layout_marginTop="15dp"
+            android:layout_marginLeft="25dp"
+            android:layout_marginRight="25dp"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/themThietBiPhong"
+                android:layout_marginRight="5dp"
+                android:text="Thêm thiết bị"
+                android:layout_width="0dp"
+                android:textColor="@color/white"
+                android:fontFamily="@font/svn_p_s_bold"
+                android:background="@color/nutDongTien"
+                android:textSize="14sp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content" />
+            <androidx.appcompat.widget.AppCompatButton
+                android:layout_marginLeft="5dp"
+                android:background="@color/phaiTraTien"
+                android:textColor="@color/white"
+                android:text="Chuyển thiết bị"
+                android:fontFamily="@font/svn_p_s_bold"
+                android:layout_width="0dp"
+                android:textSize="14sp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
     </LinearLayout>
 
 </RelativeLayout>

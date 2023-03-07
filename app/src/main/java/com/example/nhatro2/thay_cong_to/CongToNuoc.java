@@ -127,7 +127,7 @@ public class CongToNuoc extends AppCompatActivity {
         });
 
         menuDanhMuc = findViewById(R.id.menuDanhMuc);
-        mDrawerLayout = findViewById(R.id.drawer_layout_phong);
+        mDrawerLayout = findViewById(R.id.drawer_layout_cong_to_nuoc);
 
         menuDanhMuc.setOnClickListener(new View.OnClickListener() {
             @Override
