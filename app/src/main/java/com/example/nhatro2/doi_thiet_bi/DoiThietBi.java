@@ -177,9 +177,9 @@ public class DoiThietBi extends AppCompatActivity {
                                         List<DichVuModel> phongThietBiCheck = response.body();
 
                                         ArrayList<RadioButton> listOfRadioButtons = new ArrayList<RadioButton>();
-
+                                        Log.d("phongthietbi check",""+phongThietBiCheck);
                                         phongThietBiCheck.forEach(item ->{
-                                            Log.d("",""+item);
+                                            Log.d("item đây này",""+item);
                                         });
                                     }
 

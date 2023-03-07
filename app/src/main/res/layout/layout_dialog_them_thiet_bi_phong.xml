@@ -18,27 +18,27 @@
         android:background="@drawable/back_title_search_customer"
         android:text="Những thiết bị (dịch vụ) có thể thêm"/>
 
-    <RadioGroup
-        android:id="@+id/chonThietBiCanThem"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_marginTop="12dp"
-        android:layout_marginLeft="12dp">
-        <RadioButton
-            android:textSize="14sp"
-            android:text="Tiền mặt"
-            android:id="@+id/tienMatBatBien"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
-        <RadioButton
-            android:textSize="14sp"
-            android:layout_marginLeft="15dp"
-            android:text="Chuyển khoản"
-            android:id="@+id/chuyenKhoanBatBien"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
-    </RadioGroup>
+<!--    <RadioGroup-->
+<!--        android:id="@+id/chonThietBiCanThem"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:orientation="horizontal"-->
+<!--        android:layout_marginTop="12dp"-->
+<!--        android:layout_marginLeft="12dp">-->
+<!--        <RadioButton-->
+<!--            android:textSize="14sp"-->
+<!--            android:text="Tiền mặt"-->
+<!--            android:id="@+id/tienMatBatBien"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"/>-->
+<!--        <RadioButton-->
+<!--            android:textSize="14sp"-->
+<!--            android:layout_marginLeft="15dp"-->
+<!--            android:text="Chuyển khoản"-->
+<!--            android:id="@+id/chuyenKhoanBatBien"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"/>-->
+<!--    </RadioGroup>-->
 
     <LinearLayout
         android:layout_marginTop="12dp"
