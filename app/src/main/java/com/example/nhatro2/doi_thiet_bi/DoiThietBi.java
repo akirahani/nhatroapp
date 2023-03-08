@@ -185,7 +185,7 @@ public class DoiThietBi extends AppCompatActivity {
 
                         phongThietBiAdd = dialogPhongThietBi.findViewById(R.id.phongThietBiAdd);
                         phongThietBiClose = dialogPhongThietBi.findViewById(R.id.phongThietBiClose);
-                        chonThietBiCanThem = dialogPhongThietBi.findViewById(R.id.chonThietBiCanThem);
+                        chonThietBiCanThem = dialogPhongThietBi.findViewById(R.id.chonThietBiCanThemRadioGroup);
                         // Hiển thị thiết bị không dùng
                         ApiQH.apiQH.getThietBiPhongTien(phongThietBi.getKhongdung()).enqueue(new Callback<List<DichVuModel>>() {
                             @SuppressLint("NewApi")

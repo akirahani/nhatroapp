@@ -1,6 +1,7 @@
 package com.example.nhatro2.thanhvien;
 
 public class ThanhVienModel {
+    private String status;
     private int id;
     private String username;
     private String password;
@@ -16,7 +17,8 @@ public class ThanhVienModel {
     private int gioitinh;
     private int nhomtuoi;
 
-    public ThanhVienModel(int id, String username, String password, String fullname, int nhom, String dienthoai, String diachi, String cancuoc, String quoctich, String ngaycap, String ngaysinh, String noicap, int gioitinh, int nhomtuoi) {
+    public ThanhVienModel(String status, int id, String username, String password, String fullname, int nhom, String dienthoai, String diachi, String cancuoc, String quoctich, String ngaycap, String ngaysinh, String noicap, int gioitinh, int nhomtuoi) {
+        this.status = status;
         this.id = id;
         this.username = username;
         this.password = password;
@@ -31,6 +33,14 @@ public class ThanhVienModel {
         this.noicap = noicap;
         this.gioitinh = gioitinh;
         this.nhomtuoi = nhomtuoi;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
     }
 
     public String getNoicap() {

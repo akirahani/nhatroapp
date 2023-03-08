@@ -487,4 +487,9 @@ public interface ApiQH {
     @POST("admin/api/quan-li-thiet-bi/chuyen-thiet-bi.php")
     @FormUrlEncoded
     Call <ChuyenPhongThietBiModel> chuyenPhongThietBi(@Field("thietbi") int thietbi, @Field("chuyenden") String chuyenden, @Field("chuyendi") String chuyendi);
+
+    // Đổi mật khẩu
+    @POST("admin/api/auth/change_passd.php")
+    @FormUrlEncoded
+    Call <ThanhVienModel> changePassd(@Field("idThanhVien") int idThanhVienQuanLy,@Field("passdold") String passdOldText, @Field("passdnew") String passdNewText);
 }
