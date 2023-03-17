@@ -563,7 +563,7 @@ public class DongTien extends AppCompatActivity {
         });
 
         // set up list ưu đãi
-        listChonUuDai.setLayoutManager(new GridLayoutManager(DongTien.this, 3));
+        listChonUuDai.setLayoutManager(new GridLayoutManager(DongTien.this, 2));
         listChonUuDai.setNestedScrollingEnabled(false);
         listChonUuDai.hasFixedSize();
 

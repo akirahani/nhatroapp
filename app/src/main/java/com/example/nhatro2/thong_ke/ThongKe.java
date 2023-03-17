@@ -86,7 +86,8 @@ public class ThongKe extends AppCompatActivity {
             });
 
 //            String url = "http://192.168.1.190/quanghieu";
-            String url = "http://172.16.1.71/quanghieu";
+//            String url = "http://172.16.1.71/quanghieu";
+            String url = "https://nhatroquanghieu.com";
         // tong quan
             tongQuan = findViewById(R.id.tongQuan);
             tongQuan.loadUrl(url+"/admin/api/thong-ke/tong-quan.php");

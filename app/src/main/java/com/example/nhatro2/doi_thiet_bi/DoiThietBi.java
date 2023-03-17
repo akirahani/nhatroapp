@@ -286,7 +286,6 @@ public class DoiThietBi extends AppCompatActivity {
 
             @Override
             public void onFailure(Call<DoiThietBiModel> call, Throwable t) {
-                Log.d("err","phong thiet bi hien thi"+t.toString());
             }
         });
 
